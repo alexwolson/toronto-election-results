@@ -1,7 +1,6 @@
 """End-to-end pipeline runner: download -> assemble -> geometry -> validate.
 
 Ties the tested stages together into one command (`python -m toronto_election_results.pipeline`).
-The 2000 results and incumbency columns are curated one-time inputs joined by later steps.
 """
 
 from __future__ import annotations

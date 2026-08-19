@@ -4,7 +4,7 @@ Status: accepted
 
 ## Context
 
-Toronto ran on **44 wards (2000–2014)** and **25 wards (2018–present)** with entirely
+Toronto ran on **44 wards (2003–2014)** and **25 wards (2018–present)** with entirely
 different numbering and boundaries; the two eras are not comparable. The dataset feeds a
 ward-level vote-share model that spans the change. We had to decide whether to unify wards
 onto one geography or keep them as each election used them.
@@ -24,7 +24,7 @@ downstream model can build its own crosswalk if it wants one.
   polygons let downstream build this on demand, so we don't bake an approximation in.
 - **(c) Reproject all results onto the 25-ward geography** — rejected. Honest area-weighted
   reallocation needs subdivision-level vote data (which we deliberately don't carry — grain
-  is ward-level) and has no subdivision geometry for 2000/2003, so it would fabricate
+  is ward-level) and has no subdivision geometry for 2003, so it would fabricate
   precision for the earliest years.
 
 ## Consequences

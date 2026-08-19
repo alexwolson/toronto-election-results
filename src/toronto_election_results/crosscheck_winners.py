@@ -18,14 +18,12 @@ from rapidfuzz import fuzz, process
 from .incumbency import _key
 
 # Election Y -> the next election whose pre-election council should still hold Y's winners.
-NEXT_ELECTION = {2000: 2003, 2003: 2006, 2006: 2010, 2010: 2014, 2014: 2018, 2018: 2022}
+NEXT_ELECTION = {2003: 2006, 2006: 2010, 2010: 2014, 2014: 2018, 2018: 2022}
 _VARIANT_THRESHOLD = 85
 
 # Winners legitimately absent from the next council — verified, so they are not winner errors.
 # Each is (election_year, ward): reason.
 KNOWN_ACCOUNTED = {
-    (2000, 30): "Jack Layton resigned (federal NDP leader, 2003)",
-    (2000, 31): "Michael Prue resigned (MPP, 2001) -> Tziretas by-election",
     (2003, 20): "Olivia Chow resigned (MP, 2005) -> Silva appointed",
     (2003, 41): "Bas Balkissoon resigned (MPP, 2005) -> Ainslie appointed",
     (2010, 3): "Doug Holyday resigned (MPP, 2013)",

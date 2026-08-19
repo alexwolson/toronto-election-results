@@ -9,7 +9,7 @@ councillors who reached their seat by mid-term **appointment** (Toronto fills ma
 vacancies by appointment, not by-election). No City results file carries incumbency, and —
 verified against the City's open-data portal, Clerk pages, Archives, and TMMIS — **there is
 no single authoritative source giving full council composition (elected + appointed, with
-dates) before each election 2000–2023.** It must be assembled.
+dates) before each election 2003–2023.** It must be assembled.
 
 ## Decision
 
@@ -20,8 +20,6 @@ in-scope election) from a tiered source strategy:
   ∪ `...-voting-record`**: the distinct `City Council` members in the final pre-election
   sessions. Authoritative, dated, and **includes appointees**. Both datasets are cross-checked
   because an appointee can appear in one but not the other.
-- **2000** — Wikipedia's `(incumbent)` markers in the 2000 article (parsed mechanically; the
-  markers are clean bullets).
 - **2003, 2006** — **two independent agent-compiled rosters, reconciled**, cross-checked against
   the City's authoritative "Councillors Since 1998" roster. Both name forms are kept where the
   agents disagree. Low-confidence tier.
@@ -36,7 +34,7 @@ Two paths, in priority order:
    in-scope election. This is the robust bulk of incumbency: because it rides on the fuzzy
    candidate identity, name-form drift (`Norm`/`Norman`, `A.A.`/`Adrian`) never breaks it.
 2. **Roster** — the candidate's identity key matches a sitting member in the composition. This
-   supplies 2000 and the mid-term **appointees**/by-election winners who did not win the prior
+   supplies 2003 (no in-scope prior) and the mid-term **appointees**/by-election winners who did not win the prior
    election.
 
 ## Consequences

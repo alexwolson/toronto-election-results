@@ -25,24 +25,18 @@ def _strip_accents(text: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
 
 
-def normalize_name(raw: str, *, order: str = "surname-first") -> tuple[str, str | None, str | None]:
+def normalize_name(raw: str) -> tuple[str, str | None, str | None]:
     """Return (display "First Last", first_name, last_name) for a raw ballot name.
 
-    ``order`` describes how comma-less names are written: ``"surname-first"`` (the Excel files,
-    ``Crisanti Vincent``) or ``"given-first"`` (the 2000 archived web pages, ``MEL LASTMAN``).
-    A comma always means ``Last, First`` regardless of ``order``.
+    Comma-less names in the City Excel files are surname-first (``Crisanti Vincent``); a comma
+    means ``Last, First``.
     """
     collapsed = " ".join(raw.split())
     if "," in collapsed:
         last, _, first = collapsed.partition(",")
     else:
         tokens = collapsed.split(" ")
-        if len(tokens) == 1:
-            last, first = tokens[0], ""
-        elif order == "given-first":
-            last, first = tokens[-1], " ".join(tokens[:-1])
-        else:
-            last, first = tokens[0], " ".join(tokens[1:])
+        last, first = tokens[0], " ".join(tokens[1:])
     first, last = first.strip().title(), last.strip().title()
     display = f"{first} {last}".strip()
     return display, (first or None), (last or None)

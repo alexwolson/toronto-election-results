@@ -1,18 +1,18 @@
 # Toronto Election Results
 
-A unified dataset of City of Toronto municipal election results (2000–present) for the
+A unified dataset of City of Toronto municipal election results (2003–present) for the
 Mayor and City Councillor offices, intended to feed an election model maintained elsewhere.
 
 ## Language
 
 **Toronto municipal election**:
 An election run by the City of Toronto for local office. In scope: general elections and
-mayoral/council by-elections from 2000 onward (post-amalgamation). School-trustee races are
-out of scope.
+mayoral/council by-elections from 2003 onward. (2000 was dropped: it has no electorate data and
+weaker results provenance than later years.) School-trustee races are out of scope.
 
 **General election**:
-The city-wide election held every four years for all offices at once (2000, 2003, 2006, 2010,
-2014, 2018, 2022).
+The city-wide election held every four years for all offices at once (2003, 2006, 2010, 2014,
+2018, 2022).
 _Avoid_: regular election.
 
 **By-election**:
@@ -32,13 +32,13 @@ _Avoid_: alderman, ward councillor.
 **Ward**:
 A geographic electoral division that elects one City Councillor. Recorded **as each election
 used it** — no cross-year reprojection — and tagged with its Ward system. Toronto used 44 wards
-for 2000–2014 and 25 wards from 2018 onward; numbering and boundaries are **not** comparable
+for 2003–2014 and 25 wards from 2018 onward; numbering and boundaries are **not** comparable
 across that change.
 _Avoid_: district, riding (riding is provincial/federal).
 
 **Ward system**:
 The ward regime an election ran under, distinguishing the two non-comparable eras: `44-ward`
-(2000–2014, stable boundaries) and `25-ward` (2018 onward). Carried as a column so downstream
+(2003–2014, stable boundaries) and `25-ward` (2018 onward). Carried as a column so downstream
 models can decide how, or whether, to bridge the two.
 
 **Subdivision**:
@@ -62,8 +62,9 @@ target.
 _Avoid_: percentage, vote fraction.
 
 **Elected**:
-The boolean marking the candidate who won a contest, set from an authoritative winners list and
-cross-checked against `argmax(votes)`.
+The boolean marking the candidate who won a contest — the top vote-getter (the sole candidate if
+acclaimed), cross-checked against the council composition (every winner takes office or is a
+documented mid-term departure).
 _Avoid_: winner, successful.
 
 **Candidate ID**:
@@ -72,10 +73,20 @@ matching** and carrying a **match-confidence score** — a derived, uncertain li
 truth. Underpins incumbency.
 _Avoid_: person key, politician id.
 
-**Clerk's declaration**:
-The City Clerk's official certified statement of results (published as PDF). Authoritative source
-for winners, and the source of record for **2000**, which is absent from Open Data.
-_Avoid_: official results (ambiguous with the Open Data product of that name).
+**Eligible electors**:
+The City's `Total Eligible Electors` for a geography — electors on the Voters' List plus
+election-day additions (minus deletions, 2018+). The turnout denominator. Office-independent (one
+composite ballot), so a ward's figure attaches to both its councillor and its mayor slice.
+_Avoid_: registered voters, electorate size.
+
+**Ballots cast**:
+The City's `Number Voted` — electors who cast a ballot in a contest's geography (ward for
+councillor, city-wide for mayor). The turnout numerator.
+_Avoid_: votes (that is per-candidate), total ballots.
+
+**Turnout**:
+`ballots_cast / eligible_electors` for a contest. Distinct from `vote_share`'s denominator, which
+counts only valid votes cast *for candidates* in one office.
 
 **Incumbent**:
 A candidate who was a **sitting holder of the office at the time of the election** — whether they

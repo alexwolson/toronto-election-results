@@ -52,6 +52,17 @@ def validate(df: pd.DataFrame) -> list[str]:
     if (contested["votes"].dropna() < 0).any():
         issues.append("negative votes present")
 
+    # Electorate / turnout sanity (where present).
+    if "eligible_electors" in df.columns:
+        electorate = df[df["eligible_electors"].notna()]
+        if ((electorate["turnout"] <= 0) | (electorate["turnout"] > 1)).any():
+            issues.append("turnout outside (0, 1]")
+        if (electorate["ballots_cast"] > electorate["eligible_electors"]).any():
+            issues.append("ballots_cast exceeds eligible_electors")
+        contested_stats = electorate[~electorate["acclaimed"]]
+        if (contested_stats["ballots_cast"] < contested_stats["total_contest_votes"]).any():
+            issues.append("more valid votes than ballots cast (ballots_cast < total_contest_votes)")
+
     return issues
 
 

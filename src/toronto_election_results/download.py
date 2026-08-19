@@ -132,6 +132,12 @@ _MANIFEST = [
         "council/contact",
         {"name_regex": r"(2018-2022|2022-2026) Elected Officials Contact Info\.csv"},
     ),
+    ("elections-voter-statistics", "voter_stats", {"name_regex": r"^\d{4}-voter-statistics$"}),
+    (
+        "elections-by-election-voter-statistics",
+        "voter_stats",
+        {"name_contains": "2023-mayoral"},
+    ),
 ]
 
 

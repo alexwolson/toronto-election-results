@@ -4,8 +4,8 @@ Extracts the per-year result ZIPs, parses councillor and mayor files (all layout
 collapses to contest level, tags election metadata + provenance, derives the per-contest fields,
 normalizes names, and resolves cross-election candidate IDs.
 
-Incumbency (``incumbent`` / ``incumbent_source`` / ``incumbent_confidence``) and the 2000 results
-are curated one-time inputs; they are joined in by later steps and are absent from this table.
+Incumbency (``incumbent`` / ``incumbent_source`` / ``incumbent_confidence``) is derived from a
+curated council composition and joined in below.
 """
 
 from __future__ import annotations
@@ -18,8 +18,8 @@ import pandas as pd
 from .candidates import assign_candidate_ids, normalize_name
 from .derive import derive_contest_fields
 from .incumbency import ROSTER_CONFIDENCE, build_composition, flag_incumbents
-from .parse_2000 import parse_2000_results
 from .parse_results import parse_open_data_file, to_contest_level
+from .voter_statistics import attach_electorate, voter_statistics
 
 RAW = Path("data/raw")
 INTERIM = Path("data/interim")
@@ -56,6 +56,9 @@ FINAL_COLUMNS = [
     "vote_share",
     "vote_rank",
     "n_candidates",
+    "eligible_electors",
+    "ballots_cast",
+    "turnout",
     "elected",
     "acclaimed",
     "incumbent",
@@ -118,41 +121,22 @@ def build_base(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
             contest["source"] = "open_data"
             contest["contest_id"] = [_contest_id(year, office, w) for w in contest["ward_number"]]
             frames.append(contest)
-    frames.append(_build_2000())
     return pd.concat(frames, ignore_index=True)
 
 
-def _build_2000() -> pd.DataFrame:
-    """2000 results come from the archived City web pages, already at contest level."""
-    contest = parse_2000_results()
-    contest["election_year"] = 2000
-    contest["election_date"] = "2000-11-13"
-    contest["election_type"] = "general"
-    contest["ward_system"] = "44-ward"
-    contest["source"] = "city_web_final"
-    contest["contest_id"] = [
-        _contest_id(2000, office, ward)
-        for office, ward in zip(contest["office"], contest["ward_number"])
-    ]
-    return contest
-
-
 def assemble(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
-    """Build the full unified table (2003–2023; 2000 and incumbency joined later)."""
+    """Build the full unified table (2003–2023; incumbency joined below)."""
     df = build_base(raw, interim)
     df = derive_contest_fields(df)
 
-    # 2000 web pages write names given-first ("MEL LASTMAN"); the Excel files are surname-first.
-    normalized = [
-        normalize_name(name, order="given-first" if year == 2000 else "surname-first")
-        for name, year in zip(df["candidate_name_raw"], df["election_year"])
-    ]
+    normalized = df["candidate_name_raw"].map(normalize_name)
     df["candidate_name"] = [n[0] for n in normalized]
     df["candidate_first_name"] = [n[1] for n in normalized]
     df["candidate_last_name"] = [n[2] for n in normalized]
     df = assign_candidate_ids(df)
 
     df = flag_incumbents(df, build_composition(), roster_confidence=ROSTER_CONFIDENCE)
+    df = attach_electorate(df, voter_statistics())
 
     df["election_date"] = pd.to_datetime(df["election_date"]).dt.date
     df["ward_number"] = df["ward_number"].astype("Int64")

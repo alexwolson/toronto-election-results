@@ -8,7 +8,6 @@ from toronto_election_results.candidates import assign_candidate_ids, match_key,
 from toronto_election_results.incumbency import (
     council_members_before,
     flag_incumbents,
-    incumbents_from_2000_wikitext,
     parse_roster_text,
     reconcile_rosters,
     roster_to_composition,
@@ -87,26 +86,6 @@ class TestFlagIncumbents:
         out = flag_incumbents(results, composition, roster_confidence={2018: 0.95})
         assert out["incumbent_confidence"].between(0.0, 1.0).all()
         assert out["incumbent_confidence"].notna().all()
-
-
-class TestIncumbents2000FromWikitext:
-    WIKITEXT = (
-        "'''Ward 1 - X:'''\n"
-        "*(incumbent) [[Suzan Hall]] 2,894\n"
-        "*Vincent Crisanti 2,797\n"
-        "'''Ward 27 - Y:'''\n"
-        "*(incumbent) [[Kyle Rae]] acclaimed\n"
-    )
-
-    def test_extracts_only_incumbent_marked_candidates_plus_mayor(self):
-        comp = incumbents_from_2000_wikitext(self.WIKITEXT, mayor="Mel Lastman")
-        keys = set(comp["match_key"])
-        assert match_key("Suzan Hall") in keys
-        assert match_key("Kyle Rae") in keys
-        assert match_key("Mel Lastman") in keys
-        assert match_key("Vincent Crisanti") not in keys  # not marked incumbent
-        assert (comp["election_year"] == 2000).all()
-        assert (comp["incumbent_source"] == "wikipedia").all()
 
 
 class TestRosterReconciliation:

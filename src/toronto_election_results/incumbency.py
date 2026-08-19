@@ -8,8 +8,8 @@ City's Council **meeting-attendance** and **voting-record** open datasets:
     catches mid-term **appointees** (e.g. Jonathan Tsao) while excluding members who *departed*
     mid-term (e.g. Pam McConnell), whose latest activity predates the final year.
 
-The mayor sits on City Council, so the incumbent mayor is captured too. Elections 2000/2003/2006
-have no City data and are supplied by a curated compilation (data/reference/); the 2023 mayoral
+The mayor sits on City Council, so the incumbent mayor is captured too. Elections 2003/2006 have
+no City data and are supplied by a curated compilation (data/reference/); the 2023 mayoral
 by-election has no incumbent (the office was vacant).
 
 ``flag_incumbents`` matches a composition to candidates by identity key and writes
@@ -27,9 +27,7 @@ from .candidates import match_key, normalize_name
 
 RAW = Path("data/raw/council")
 
-_WIKILINK = re.compile(r"\[\[(?:[^\]|]*\|)?([^\]]+)\]\]")
-_INCUMBENT_LINE = re.compile(r"^\*\s*\(incumbent\)\s*(.+)$")
-WIKI_CONFIDENCE = 0.85  # Wikipedia-sourced rosters (2000–2006): lower tier than City data.
+WIKI_CONFIDENCE = 0.85  # Wikipedia-sourced rosters (2003–2006): lower tier than City data.
 
 # Election year -> the council term whose end precedes it.
 TERM_BEFORE_ELECTION = {
@@ -105,28 +103,6 @@ def council_members_before(year: int, *, raw: Path = RAW, window_days: int = 183
 def build_city_composition(*, raw: Path = RAW, years=tuple(TERM_BEFORE_ELECTION)) -> pd.DataFrame:
     """Council composition before each City-data election year (2010–2022)."""
     return pd.concat([council_members_before(y, raw=raw) for y in years], ignore_index=True)
-
-
-def incumbents_from_2000_wikitext(
-    wikitext: str, *, mayor: str = "Mel Lastman", confidence: float = WIKI_CONFIDENCE
-) -> pd.DataFrame:
-    """Sitting members before the 2000 election, from Wikipedia's ``(incumbent)`` markers.
-
-    The 2000 article marks the sitting councillor per ward as ``*(incumbent) [[Name]] votes``.
-    The incumbent mayor (Mel Lastman, elected 1997) is added explicitly.
-    """
-    names = [mayor]
-    for line in wikitext.splitlines():
-        match = _INCUMBENT_LINE.match(line.strip())
-        if not match:
-            continue
-        text = re.sub(r"\s*(?:[\d,]+|acclaimed)\s*$", "", match.group(1))
-        name = _WIKILINK.sub(r"\1", text).replace("'''", "").strip()
-        if name:
-            names.append(name)
-
-    rows = [(2000, name, _key(name), "wikipedia", confidence) for name in names]
-    return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS).drop_duplicates("match_key")
 
 
 _ROSTER_LINE = re.compile(r"^(\d{4}-\d{4})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*$")
@@ -212,7 +188,6 @@ REFERENCE = Path("data/reference")
 
 # How complete/trusted each election's roster is (drives non-incumbent confidence).
 ROSTER_CONFIDENCE = {
-    2000: WIKI_CONFIDENCE,
     2003: WIKI_CONFIDENCE,
     2006: WIKI_CONFIDENCE,
     2010: CITY_ROSTER_CONFIDENCE,
@@ -226,12 +201,11 @@ ROSTER_CONFIDENCE = {
 def build_composition(*, reference: Path = REFERENCE, raw: Path = RAW) -> pd.DataFrame:
     """Assemble council composition for every election with a roster source.
 
-    2000 from Wikipedia ``(incumbent)`` markers; 2003/2006 from the two reconciled agent rosters;
-    2010–2022 from the City attendance/voting datasets. 2023 (the mayoral by-election) is added by
-    the assembler from the 2022 winners, since its sitting council is the 2022-elected one.
+    2003/2006 from the two reconciled agent rosters; 2010–2022 from the City attendance/voting
+    datasets. 2023 (the mayoral by-election) is added by the assembler from the 2022 winners,
+    since its sitting council is the 2022-elected one.
     """
     parts = [
-        incumbents_from_2000_wikitext((reference / "wikipedia_2000.wikitext").read_text()),
         rosters_to_composition(
             (reference / "roster_agent_a.txt").read_text(),
             (reference / "roster_agent_b.txt").read_text(),
@@ -241,10 +215,9 @@ def build_composition(*, reference: Path = REFERENCE, raw: Path = RAW) -> pd.Dat
     return pd.concat(parts, ignore_index=True)
 
 
-# The prior in-scope election whose winners are the sitting incumbents. (2000 has none in scope;
-# its incumbents come only from the composition roster. 2023's sitting council is the 2022 one.)
+# The prior in-scope election whose winners are the sitting incumbents. (2003 has no in-scope
+# prior, so its incumbents come only from the composition roster. 2023's council is the 2022 one.)
 PRIOR_ELECTION = {
-    2003: 2000,
     2006: 2003,
     2010: 2006,
     2014: 2010,
@@ -269,8 +242,8 @@ def flag_incumbents(
        in-scope election. This is the robust path: it rides on the fuzzy candidate identity, so
        name-form drift (``Norm``/``Norman``, ``A.A.``/``Adrian``) never breaks it.
     2. **Roster** — the candidate's identity key matches a sitting member in the composition. This
-       supplies 2000 (Wikipedia markers) and the mid-term **appointees**/by-election winners who
-       did not win the prior election.
+       supplies 2003 (no in-scope prior election) and the mid-term **appointees**/by-election
+       winners who did not win the prior election.
 
     A candidate matching neither is not an incumbent, with confidence set by how complete that
     election's roster is.
