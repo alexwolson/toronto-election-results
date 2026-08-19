@@ -2,7 +2,11 @@
 
 import pandas as pd
 
-from toronto_election_results.candidates import assign_candidate_ids, normalize_name
+from toronto_election_results.candidates import (
+    assign_candidate_ids,
+    known_multiword_surnames,
+    normalize_name,
+)
 
 
 class TestNormalizeName:
@@ -23,6 +27,46 @@ class TestNormalizeName:
 
     def test_hyphenated_given_name(self):
         assert normalize_name("Brown Chloe-Marie") == ("Chloe-Marie Brown", "Chloe-Marie", "Brown")
+
+    def test_particle_surname_three_tokens(self):
+        assert normalize_name("DI GIORGIO FRANK") == ("Frank Di Giorgio", "Frank", "Di Giorgio")
+        assert normalize_name("DEL GRANDE TONY") == ("Tony Del Grande", "Tony", "Del Grande")
+        assert normalize_name("DE BAEREMAEKER GLENN") == (
+            "Glenn De Baeremaeker",
+            "Glenn",
+            "De Baeremaeker",
+        )
+
+    def test_particle_word_as_whole_surname_when_two_tokens(self):
+        # "Le" is the entire surname here — the particle rule must NOT swallow the given name
+        assert normalize_name("LE NHA") == ("Nha Le", "Nha", "Le")
+
+    def test_consecutive_particles(self):
+        assert normalize_name("DE LA ROSE WINSTON") == (
+            "Winston De La Rose",
+            "Winston",
+            "De La Rose",
+        )
+
+    def test_multiword_given_name_default(self):
+        assert normalize_name("SMITH JOHN PAUL") == ("John Paul Smith", "John Paul", "Smith")
+
+    def test_known_surname_non_particle(self):
+        # "Li Preti" is not a particle surname; the comma-form ground truth resolves it
+        known = {"li preti"}
+        assert normalize_name("LI PRETI PETER", known_surnames=known) == (
+            "Peter Li Preti",
+            "Peter",
+            "Li Preti",
+        )
+
+
+def test_known_multiword_surnames_extracted_from_comma_form():
+    raws = ["Di Giorgio, Frank", "Lindsay Luby, Gloria", "Miller, David", "Crisanti Vincent"]
+    known = known_multiword_surnames(raws)
+    assert "di giorgio" in known
+    assert "lindsay luby" in known
+    assert "miller" not in known  # single-word surnames are not tracked
 
 
 class TestAssignCandidateIds:

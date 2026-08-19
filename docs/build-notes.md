@@ -48,3 +48,7 @@ turnout) · `geometry` (GeoParquet) · `crosscheck_winners` · `assemble` · `va
   day-of additions inflate the denominator).
 - `candidate_id` is fuzzy — same-name-different-person could merge silently; incumbency carries a
   confidence tier reflecting this.
+- Display `candidate_name`/first/last split multi-word surnames using a particle rule + surnames
+  learned from comma-form names and the council `LastName` columns. A few **non-councillor**
+  candidates with double-barrelled surnames remain ambiguous (indistinguishable from multi-given-name
+  order, e.g. `Park Chung Jin`); `candidate_name_raw` is always exact, and `candidate_id` is unaffected.

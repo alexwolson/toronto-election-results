@@ -88,6 +88,18 @@ class TestFlagIncumbents:
         assert out["incumbent_confidence"].notna().all()
 
 
+def test_council_surnames_extracts_multiword_lastnames():
+    from toronto_election_results.incumbency import RAW, council_surnames
+
+    if not (RAW / "attendance").exists():
+        import pytest
+
+        pytest.skip("council data not downloaded")
+    surnames = council_surnames()
+    assert "carmichael greb" in surnames  # double-barrelled surname, authoritative from LastName
+    assert "di giorgio" in surnames
+
+
 class TestRosterReconciliation:
     ROSTER_A = "2000-2003 | 1 | Suzan Hall | elected\n2000-2003 | 30 | Laura Jones | appointed\n"
     ROSTER_B = "2000-2003 | 1 | Suzan Hall | elected\n2000-2003 | 30 | L. Jones | appointed\n"

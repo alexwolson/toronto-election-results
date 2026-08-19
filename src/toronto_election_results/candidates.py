@@ -1,8 +1,11 @@
 """Candidate name normalization and cross-election identity.
 
 Names arrive in three formats — ``Last, First`` (2003), ``LAST FIRST`` (2006–2014, upper), and
-``Last First`` (2018+) — all **surname-first**. Normalization produces a display ``First Last``
-plus a best-effort first/last split (imperfect for multi-word surnames in the comma-less years).
+``Last First`` (2018+) — all **surname-first**. Splitting a comma-less name into surname vs given
+name is ambiguous for multi-word surnames, so two signals are used: **known multi-word surnames**
+learned from the comma-form years (ground truth), and a **particle rule** (a leading run of
+particles like ``Di``/``De``/``Van`` plus the next token is the surname) that only fires with 3+
+tokens, so a two-token name whose surname happens to be a particle word (``Le Nha``) is left alone.
 
 Identity is resolved with a **token-sorted, accent-stripped, case-folded key** so that ordering
 and split differences collapse (``Frank Di Giorgio`` and ``Giorgio Frank Di`` share a key), then a
@@ -20,23 +23,80 @@ from rapidfuzz import fuzz, process
 
 DEFAULT_THRESHOLD = 88
 
+# Surname prefixes that attach to the following token (e.g. "Di Giorgio", "De La Rose").
+PARTICLES = frozenset(
+    {
+        "di",
+        "de",
+        "del",
+        "della",
+        "da",
+        "dos",
+        "des",
+        "der",
+        "den",
+        "du",
+        "van",
+        "von",
+        "la",
+        "le",
+        "lo",
+        "mac",
+        "mc",
+        "san",
+        "santa",
+        "st",
+    }
+)
+
 
 def _strip_accents(text: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
 
 
-def normalize_name(raw: str) -> tuple[str, str | None, str | None]:
+def known_multiword_surnames(raw_names) -> set[str]:
+    """Collect multi-word surnames from comma-form (``Last, First``) names — the ground truth."""
+    surnames = set()
+    for raw in raw_names:
+        text = str(raw)
+        if "," in text:
+            surname = " ".join(text.split(",")[0].split())
+            if " " in surname:
+                surnames.add(surname.lower())
+    return surnames
+
+
+def _split_surname_first(tokens: list[str], known_surnames) -> tuple[list[str], list[str]]:
+    """Split surname-first tokens into (surname tokens, given-name tokens)."""
+    lower = [t.lower() for t in tokens]
+    # 1) Longest known multi-word surname that prefixes the tokens (leaving a given name).
+    for k in range(min(len(tokens) - 1, 4), 1, -1):
+        if " ".join(lower[:k]) in known_surnames:
+            return tokens[:k], tokens[k:]
+    # 2) Particle rule — only with 3+ tokens, so "Le Nha" (surname Le) is untouched.
+    if len(tokens) >= 3 and lower[0] in PARTICLES:
+        end = 0
+        while end < len(tokens) - 1 and lower[end] in PARTICLES:
+            end += 1
+        if end + 1 < len(tokens):  # keep at least one given-name token
+            return tokens[: end + 1], tokens[end + 1 :]
+    # 3) Default: first token is the surname.
+    return tokens[:1], tokens[1:]
+
+
+def normalize_name(raw: str, *, known_surnames=frozenset()) -> tuple[str, str | None, str | None]:
     """Return (display "First Last", first_name, last_name) for a raw ballot name.
 
-    Comma-less names in the City Excel files are surname-first (``Crisanti Vincent``); a comma
-    means ``Last, First``.
+    Comma-less names are surname-first (``Crisanti Vincent``); a comma means ``Last, First``.
+    ``known_surnames`` (multi-word surnames learned from the comma-form years) improves the split
+    of comma-less multi-word surnames.
     """
     collapsed = " ".join(raw.split())
     if "," in collapsed:
         last, _, first = collapsed.partition(",")
     else:
-        tokens = collapsed.split(" ")
-        last, first = tokens[0], " ".join(tokens[1:])
+        surname_tokens, first_tokens = _split_surname_first(collapsed.split(" "), known_surnames)
+        last, first = " ".join(surname_tokens), " ".join(first_tokens)
     first, last = first.strip().title(), last.strip().title()
     display = f"{first} {last}".strip()
     return display, (first or None), (last or None)

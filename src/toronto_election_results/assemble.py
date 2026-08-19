@@ -15,9 +15,14 @@ from pathlib import Path
 
 import pandas as pd
 
-from .candidates import assign_candidate_ids, normalize_name
+from .candidates import assign_candidate_ids, known_multiword_surnames, normalize_name
 from .derive import derive_contest_fields
-from .incumbency import ROSTER_CONFIDENCE, build_composition, flag_incumbents
+from .incumbency import (
+    ROSTER_CONFIDENCE,
+    build_composition,
+    council_surnames,
+    flag_incumbents,
+)
 from .parse_results import parse_open_data_file, to_contest_level
 from .voter_statistics import attach_electorate, voter_statistics
 
@@ -129,7 +134,8 @@ def assemble(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
     df = build_base(raw, interim)
     df = derive_contest_fields(df)
 
-    normalized = df["candidate_name_raw"].map(normalize_name)
+    known = known_multiword_surnames(df["candidate_name_raw"]) | council_surnames()
+    normalized = [normalize_name(name, known_surnames=known) for name in df["candidate_name_raw"]]
     df["candidate_name"] = [n[0] for n in normalized]
     df["candidate_first_name"] = [n[1] for n in normalized]
     df["candidate_last_name"] = [n[2] for n in normalized]
@@ -152,7 +158,9 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUT / "toronto_election_results.csv", index=False)
     df.to_parquet(OUT / "toronto_election_results.parquet", index=False)
-    build_composition().to_csv(OUT / "council_composition.csv", index=False)
+    # Sort for a stable, reproducible file (the composition is built from unordered sets).
+    composition = build_composition().sort_values(["election_year", "match_key"])
+    composition.to_csv(OUT / "council_composition.csv", index=False)
     print(f"wrote {len(df)} rows to {OUT}/toronto_election_results.{{csv,parquet}}")
     print(df.groupby(["election_year", "office"]).size().to_string())
 

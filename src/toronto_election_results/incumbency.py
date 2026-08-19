@@ -105,6 +105,28 @@ def build_city_composition(*, raw: Path = RAW, years=tuple(TERM_BEFORE_ELECTION)
     return pd.concat([council_members_before(y, raw=raw) for y in years], ignore_index=True)
 
 
+def council_surnames(*, raw: Path = RAW) -> set[str]:
+    """Multi-word surnames from the City attendance/voting ``LastName`` columns (ground truth).
+
+    These are authoritative for anyone who sat on Council — they disambiguate double-barrelled
+    surnames (``Carmichael Greb``, ``Buxton Potts``) that surname-first splitting can't resolve.
+    """
+    surnames: set[str] = set()
+    for path in sorted((raw / "attendance").glob("*.csv")):
+        for last in pd.read_csv(path)["LastName"].dropna().astype(str):
+            cleaned = " ".join(last.split())
+            if " " in cleaned:
+                surnames.add(cleaned.lower())
+    for path in sorted((raw / "voting").glob("*.csv")):
+        frame = pd.read_csv(path)
+        column = "Last Name" if "Last Name" in frame.columns else "LastName"
+        for last in frame[column].dropna().astype(str):
+            cleaned = " ".join(_fix_mojibake(last).split())
+            if " " in cleaned:
+                surnames.add(cleaned.lower())
+    return surnames
+
+
 _ROSTER_LINE = re.compile(r"^(\d{4}-\d{4})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*$")
 # Which term's end-of-term roster supplies incumbents for which election.
 TERM_TO_ELECTION = {"2000-2003": 2003, "2003-2006": 2006}
