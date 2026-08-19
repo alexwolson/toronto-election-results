@@ -3,14 +3,15 @@
 Record of how the dataset was built. See `docs/data-dictionary.md` for the schema and
 `docs/adr/` for the load-bearing decisions.
 
-## Status: complete (2003–2023)
+## Status: complete (2003–present)
 
-The unified table covers the six general elections + the 2023 mayoral by-election, with derived
-winners, vote share, cross-election candidate IDs, incumbency, and electorate/turnout. QC gates
-and the winner cross-check pass; voter-stats totals match the City's published figures.
+The unified table covers the six general elections, the 2023 mayoral by-election, and the council
+by-elections (2016–2025), with derived winners, vote share, cross-election candidate IDs,
+incumbency, and electorate/turnout. QC gates and the winner cross-check pass; voter-stats totals
+match the City's published figures.
 
 Outputs (`data/out/`):
-- `toronto_election_results.{csv,parquet}` — **1871 rows, 2003–2023, 28 columns**.
+- `toronto_election_results.{csv,parquet}` — **2001 rows, 2003–2025, 28 columns**.
 - `subdivision_boundaries.parquet` — 7539 subdivision polygons, 2006–2023 (GeoParquet).
 - `council_composition.csv` — the incumbency reference.
 

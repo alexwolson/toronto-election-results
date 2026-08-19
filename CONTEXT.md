@@ -16,8 +16,11 @@ The city-wide election held every four years for all offices at once (2003, 2006
 _Avoid_: regular election.
 
 **By-election**:
-An off-cycle election to fill a single vacant seat between general elections (e.g. the June 26,
-2023 mayoral by-election following John Tory's resignation).
+An off-cycle election to fill a single vacant seat between general elections. A **council**
+by-election fills one vacant ward, so no candidate is a sitting holder of it (`incumbent = false`);
+a **mayoral** by-election (e.g. June 26, 2023) is a city-wide contest that sitting councillors
+enter, so person-based incumbency still applies. Available from City Open Data from 2016 onward —
+earlier mid-term vacancies were filled by appointment, not by-election.
 _Avoid_: special election, supplementary election.
 
 **Office**:

@@ -109,6 +109,18 @@ _MANIFEST = [
         "byelection",
         {"name_contains": "2023 Office of the Mayor"},
     ),
+    # Council by-election results (2016–2025); all carry "Councillor", unlike mayor/school-board.
+    (
+        "elections-official-by-election-results",
+        "byelection",
+        {"name_contains": "Councillor"},
+    ),
+    # Council by-election voter statistics: any ward file that is not school-board or mayoral.
+    (
+        "elections-by-election-voter-statistics",
+        "byelection_voter_stats",
+        {"name_regex": r"^(?!.*(tdsb|tcdsb|mayoral)).*ward"},
+    ),
     (
         "elections-subdivisions",
         "subdivisions",

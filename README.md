@@ -4,7 +4,7 @@ A unified, analysis-ready dataset of City of Toronto municipal election results,
 for **Mayor** and **City Councillor** races — built to feed an election model.
 
 - **Grain**: one row per candidate per contest, ward-level. Target: `vote_share`.
-- **Coverage**: general elections 2003, 2006, 2010, 2014, 2018, 2022 + the 2023 mayoral by-election.
+- **Coverage**: general elections 2003–2022, the 2023 mayoral by-election, and council by-elections (2016–2025).
 - **Per contest**: derived winner, incumbency, and electorate/turnout (`eligible_electors`, `ballots_cast`, `turnout`).
 - **Non-partisan**: no party labels (none exist on Toronto ballots); none imputed.
 
@@ -16,6 +16,7 @@ for **Mayor** and **City Councillor** races — built to feed an election model.
   - `0001` — record wards as-run; no reprojection across the 2018 boundary change.
   - `0002` — derive incumbency from council-attendance data + Wikipedia.
   - `0003` — drop 2000; add electorate/turnout from the Voter Statistics datasets.
+  - `0004` — by-election scope and (office-dependent) incumbency.
 
 ## Outputs
 

@@ -23,8 +23,9 @@ import pandas as pd
 from openpyxl.utils.exceptions import InvalidFileException
 
 RAW = Path("data/raw/voter_stats")
+BY_ELECTION_RAW = Path("data/raw/byelection_voter_stats")
 
-# election year -> filename under RAW
+# General-election voter statistics: year -> filename under RAW.
 VOTER_STATS_FILES = {
     2003: "2003-voter-statistics.xls",
     2006: "2006-voter-statistics.xls",
@@ -32,8 +33,19 @@ VOTER_STATS_FILES = {
     2014: "2014-voter-statistics.xls",
     2018: "2018-voter-statistics.zip",
     2022: "2022_voter_turnout_statistics_final.xlsx",
-    2023: "2023-mayoral-by-election-voter-statistics-1.xlsx",
 }
+
+# Council by-election voter statistics (single ward each): year -> (ward, filename under BY_ELECTION_RAW).
+BY_ELECTION_COUNCIL_FILES = {
+    2016: (2, "2016-councillor-ward-2-by-election-voter-statistics.xlsx"),
+    2017: (42, "2017-councillor-ward-42-by-election-voter-statistics.xlsx"),
+    2021: (22, "2021_voter_turnout_statistics_ward_22_by-election.xlsx"),
+    2023: (20, "2023-councillor-ward-20-by-election-voter-statistics.xlsx"),
+    2024: (15, "2024-councillor-ward-15-by-election-voter-statistics.xlsx"),
+    2025: (25, "2025-ward-25-by-election-voter-statistics.xlsx"),
+}
+# The 2023 mayoral by-election (city-wide) lives under RAW.
+MAYORAL_BY_ELECTION_FILE = "2023-mayoral-by-election-voter-statistics-1.xlsx"
 
 COLUMNS = ["election_year", "ward_number", "eligible_electors", "ballots_cast"]
 
@@ -97,7 +109,7 @@ def parse_voter_statistics_file(path: str | Path, *, year: int) -> pd.DataFrame:
 
 
 def voter_statistics(*, raw: Path = RAW) -> pd.DataFrame:
-    """Per-ward eligible electors + ballots cast for every year with data (2003–2023)."""
+    """Per-ward general-election eligible electors + ballots cast (2003–2022)."""
     frames = [
         parse_voter_statistics_file(raw / filename, year=year)
         for year, filename in VOTER_STATS_FILES.items()
@@ -105,26 +117,80 @@ def voter_statistics(*, raw: Path = RAW) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
-def attach_electorate(results: pd.DataFrame, stats: pd.DataFrame) -> pd.DataFrame:
-    """Add ``eligible_electors`` / ``ballots_cast`` / ``turnout`` to results rows.
+BY_ELECTION_COLUMNS = [
+    "election_year",
+    "office",
+    "ward_number",
+    "eligible_electors",
+    "ballots_cast",
+]
 
-    Councillor contests take their ward's figures; mayor contests (city-wide) take the sum of all
-    wards that year. Electorate is office-independent (one composite ballot), so both draw from the
-    same per-ward source.
+
+def by_election_voter_statistics(
+    *, raw: Path = RAW, by_election_raw: Path = BY_ELECTION_RAW
+) -> pd.DataFrame:
+    """Per-contest electorate for by-elections: one row per council ward, one for the 2023 mayor.
+
+    Council by-elections are a single ward; the 2023 mayoral by-election is city-wide (summed).
     """
-    ward_lookup = {
+    rows = []
+    for year, (ward, filename) in BY_ELECTION_COUNCIL_FILES.items():
+        parsed = parse_voter_statistics_file(by_election_raw / filename, year=year)
+        row = parsed[parsed["ward_number"] == ward].iloc[0]
+        rows.append(
+            (year, "councillor", ward, int(row["eligible_electors"]), int(row["ballots_cast"]))
+        )
+    mayoral = parse_voter_statistics_file(raw / MAYORAL_BY_ELECTION_FILE, year=2023)
+    rows.append(
+        (
+            2023,
+            "mayor",
+            pd.NA,
+            int(mayoral["eligible_electors"].sum()),
+            int(mayoral["ballots_cast"].sum()),
+        )
+    )
+    return pd.DataFrame(rows, columns=BY_ELECTION_COLUMNS)
+
+
+def attach_electorate(
+    results: pd.DataFrame, general: pd.DataFrame, by_election: pd.DataFrame
+) -> pd.DataFrame:
+    """Add ``eligible_electors`` / ``ballots_cast`` / ``turnout``, routed per contest.
+
+    A councillor contest takes its ward's electorate; a mayor contest takes the city-wide total.
+    By-election contests draw from the by-election statistics (a council by-election has a
+    different, and much lower, turnout than the general in the same ward). ``(year, office, ward)``
+    is unique across generals and by-elections — they never share a year — so routing is by
+    ``election_type`` + ``office``.
+    """
+    gen_ward = {
         (int(r.election_year), int(r.ward_number)): (r.eligible_electors, r.ballots_cast)
-        for r in stats.itertuples(index=False)
+        for r in general.itertuples(index=False)
     }
-    city = stats.groupby("election_year")[["eligible_electors", "ballots_cast"]].sum()
-    city_lookup = {int(y): (row.eligible_electors, row.ballots_cast) for y, row in city.iterrows()}
+    gen_city = general.groupby("election_year")[["eligible_electors", "ballots_cast"]].sum()
+    gen_city = {int(y): (row.eligible_electors, row.ballots_cast) for y, row in gen_city.iterrows()}
+    be = by_election
+    be_council = {
+        (int(r.election_year), int(r.ward_number)): (r.eligible_electors, r.ballots_cast)
+        for r in be[be.office == "councillor"].itertuples(index=False)
+    }
+    be_mayor = {
+        int(r.election_year): (r.eligible_electors, r.ballots_cast)
+        for r in be[be.office == "mayor"].itertuples(index=False)
+    }
 
     eligible, ballots = [], []
     for r in results.itertuples(index=False):
-        if r.office == "mayor":
-            hit = city_lookup.get(int(r.election_year))
+        year = int(r.election_year)
+        if r.election_type == "by_election" and r.office == "councillor":
+            hit = be_council.get((year, int(r.ward_number))) if pd.notna(r.ward_number) else None
+        elif r.election_type == "by_election" and r.office == "mayor":
+            hit = be_mayor.get(year)
+        elif r.office == "mayor":
+            hit = gen_city.get(year)
         elif pd.notna(r.ward_number):
-            hit = ward_lookup.get((int(r.election_year), int(r.ward_number)))
+            hit = gen_ward.get((year, int(r.ward_number)))
         else:
             hit = None
         eligible.append(hit[0] if hit else pd.NA)

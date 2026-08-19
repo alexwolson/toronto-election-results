@@ -8,6 +8,7 @@ import pytest
 from toronto_election_results.voter_statistics import (
     VOTER_STATS_FILES,
     attach_electorate,
+    by_election_voter_statistics,
     parse_voter_statistics_file,
     voter_statistics,
 )
@@ -34,41 +35,87 @@ class TestParse:
 
 
 class TestAttachElectorate:
-    def _stats(self):
-        return pd.DataFrame(
-            {
-                "election_year": [2022, 2022],
-                "ward_number": [1, 2],
-                "eligible_electors": [330, 400],
-                "ballots_cast": [160, 250],
-            }
+    GENERAL = pd.DataFrame(
+        {
+            "election_year": [2022, 2022],
+            "ward_number": [1, 2],
+            "eligible_electors": [330, 400],
+            "ballots_cast": [160, 250],
+        }
+    )
+    # by-election stats: a 2023 council ward and a 2023 mayoral (city-wide) — same year, different contests
+    BY_ELECTION = pd.DataFrame(
+        {
+            "election_year": [2023, 2023],
+            "office": ["councillor", "mayor"],
+            "ward_number": [20, pd.NA],
+            "eligible_electors": [78906, 1947242],
+            "ballots_cast": [16974, 724638],
+        }
+    )
+
+    def _attach(self, rows):
+        return attach_electorate(pd.DataFrame(rows), self.GENERAL, self.BY_ELECTION)
+
+    def test_general_councillor_gets_ward_electorate(self):
+        out = self._attach(
+            [
+                {
+                    "election_year": 2022,
+                    "election_type": "general",
+                    "office": "councillor",
+                    "ward_number": 1,
+                }
+            ]
         )
+        assert out.iloc[0]["eligible_electors"] == 330
+        assert abs(out.iloc[0]["turnout"] - 160 / 330) < 1e-9
 
-    def test_councillor_gets_ward_electorate(self):
-        results = pd.DataFrame([{"election_year": 2022, "office": "councillor", "ward_number": 1}])
-        out = attach_electorate(results, self._stats())
-        row = out.iloc[0]
-        assert row["eligible_electors"] == 330
-        assert row["ballots_cast"] == 160
-        assert abs(row["turnout"] - 160 / 330) < 1e-9
+    def test_general_mayor_gets_city_wide(self):
+        out = self._attach(
+            [
+                {
+                    "election_year": 2022,
+                    "election_type": "general",
+                    "office": "mayor",
+                    "ward_number": pd.NA,
+                }
+            ]
+        )
+        assert out.iloc[0]["eligible_electors"] == 730  # sum of wards
 
-    def test_mayor_gets_city_wide_electorate(self):
-        results = pd.DataFrame([{"election_year": 2022, "office": "mayor", "ward_number": pd.NA}])
-        out = attach_electorate(results, self._stats())
-        row = out.iloc[0]
-        assert row["eligible_electors"] == 730  # sum of wards
-        assert row["ballots_cast"] == 410
+    def test_by_election_council_and_mayor_dont_collide(self):
+        """2023 has both a mayoral by-election (city-wide) and a Ward 20 councillor by-election."""
+        out = self._attach(
+            [
+                {
+                    "election_year": 2023,
+                    "election_type": "by_election",
+                    "office": "councillor",
+                    "ward_number": 20,
+                },
+                {
+                    "election_year": 2023,
+                    "election_type": "by_election",
+                    "office": "mayor",
+                    "ward_number": pd.NA,
+                },
+            ]
+        )
+        council, mayor = out.iloc[0], out.iloc[1]
+        assert council["eligible_electors"] == 78906 and council["ballots_cast"] == 16974
+        assert mayor["eligible_electors"] == 1947242  # city-wide, not the ward figure
 
 
 @pytest.mark.skipif(
     not (RAW / VOTER_STATS_FILES[2022]).exists(), reason="voter-stats not downloaded"
 )
-def test_real_city_totals_match_published_figures():
-    """Integration: parsed city-wide totals match the City's published counts."""
-    stats = voter_statistics()
-    city = stats.groupby("election_year")[["eligible_electors", "ballots_cast"]].sum()
-    # verified against the City's published voter-statistics grand totals
-    assert city.loc[2022, "eligible_electors"] == 1898750
-    assert city.loc[2022, "ballots_cast"] == 563124
-    assert city.loc[2023, "eligible_electors"] == 1947242
-    assert city.loc[2018, "ballots_cast"] == 769044
+def test_real_totals_match_published_figures():
+    """Integration: parsed totals match the City's published counts (general + by-election)."""
+    general = (
+        voter_statistics().groupby("election_year")[["eligible_electors", "ballots_cast"]].sum()
+    )
+    assert general.loc[2022, "eligible_electors"] == 1898750
+    assert general.loc[2018, "ballots_cast"] == 769044
+    by_election = by_election_voter_statistics().set_index(["election_year", "office"])
+    assert by_election.loc[(2023, "mayor"), "eligible_electors"] == 1947242

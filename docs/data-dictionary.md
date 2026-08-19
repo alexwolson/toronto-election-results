@@ -6,7 +6,8 @@ for vocabulary and `docs/adr/` for the load-bearing decisions.
 
 ## Scope
 
-- **Elections**: general (2003, 2006, 2010, 2014, 2018, 2022) + the 2023 mayoral by-election.
+- **Elections**: general (2003, 2006, 2010, 2014, 2018, 2022); the 2023 mayoral by-election; and
+  the council by-elections 2016 W2, 2017 W42, 2021 W22, 2023 W20, 2024 W15, 2025 W25 (ADR 0004).
   2000 was dropped (no electorate data; weaker results provenance) — see ADR 0003.
 - **Offices**: Mayor, City Councillor. School-trustee races excluded.
 - **Grain**: ward-level (subdivision votes summed to the ward). Target variable: `vote_share`.
@@ -18,7 +19,7 @@ Sorted by `election_year, office, ward_number, vote_rank`.
 
 | Column | Type | Null rule | Notes |
 |---|---|---|---|
-| `election_year` | int | never | 2003, 2006, 2010, 2014, 2018, 2022, 2023 |
+| `election_year` | int | never | 2003–2025 (generals every 4 yrs + by-election years) |
 | `election_date` | date | never | actual polling date |
 | `election_type` | enum | never | `general` \| `by_election` |
 | `ward_system` | enum | never | `44-ward` (2003–2014) \| `25-ward` (2018+); a property of the election |
@@ -57,12 +58,15 @@ Sorted by `election_year, office, ward_number, vote_rank`.
 ## Companion outputs
 
 - `data/out/subdivision_boundaries.parquet` — **GeoParquet**, keyed `(election_year, ward, subdivision_id)`, EPSG:4326, **2006+ only** (per ADR 0001).
-- `data/out/council_composition.csv` — sitting members before each election (feeds incumbency; shipped for transparency).
+- `data/out/council_composition.csv` — sitting members before each election (feeds incumbency; shipped for transparency). Columns: `election_year`, `member_name`, `candidate_id`, `office` (`councillor`/`mayor`), `match_key`, `incumbent_source`, `confidence`, `candidate_id_resolution`.
+  - **`candidate_id`** resolves each member to their stable results id via a global identity-key map over *all* years (trying an agent name-form alias where the two rosters disagreed on spelling, e.g. George/Giorgio Mammoliti), so a consumer can join a sitting incumbent to their most-recent prior-win results row without re-implementing name matching. Null (`candidate_id_resolution` = `no_results_match`) only where the member never ran in scope (a pre-dataset retiree, or an appointee like Harvey Barron who never stood); `ambiguous` if a key ever maps to >1 id.
+  - **`office`** is the office of that member's most-recent win before the year (tracking councillor→mayor moves), falling back to the roster's office for members with no in-scope prior win (e.g. an incumbent mayor whose only win predates the data). Lets a consumer filter councillors vs mayor across the 44→25 ward change and by-election entries.
+  - **Known limitation**: in the City-attendance years (2014, 2018) a ward whose councillor was replaced by appointment in the final months lists *both* people (the window catches each), so those years carry ~2 extra members. The roster years (2003, 2006) list exactly one member per seat.
 
 ## Sources (per row `source`, ADR 0002/0003)
 
-- **Results (2003–2023)**: City Open Data "Elections – Official Results" (+ By-Election Results for 2023). Read each candidate's `Total`; ignore subdivision columns.
-- **Electorate/turnout (2003–2023)**: City Open Data "Elections – Voter Statistics" (+ the 2023 mayoral By-Election Voter Statistics). Sum subdivision rows to ward level; take `Total Eligible Electors` and `Number Voted`. **No 2000 file exists.**
+- **Results**: City Open Data "Elections – Official Results" (generals) + "Elections – Official By-Election Results" (mayor 2023, council 2016–2025). Read each candidate's `Total`; ignore subdivision columns.
+- **Electorate/turnout**: City Open Data "Elections – Voter Statistics" (generals) + "Elections – By-Election Voter Statistics" (each by-election). Sum subdivision rows to ward level; take `Total Eligible Electors` and `Number Voted`. Electorate is routed **per contest** — a council by-election's ward turnout is distinct from a same-year mayoral (e.g. 2023 Ward 20 ≠ the June mayoral). **No 2000 file exists.**
 - **Incumbency 2010–2022**: City Council Meeting Attendance ∪ Voting Record datasets. **2003/2006**: two independent agent-compiled council rosters, reconciled (versioned in `data/reference/roster_agent_{a,b}.txt`). The bulk is `prior_winner` (won the prior in-scope election), robust to name drift.
 
 ## QC gates

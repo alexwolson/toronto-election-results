@@ -21,10 +21,15 @@ from .incumbency import (
     ROSTER_CONFIDENCE,
     build_composition,
     council_surnames,
+    enrich_composition,
     flag_incumbents,
 )
 from .parse_results import parse_open_data_file, to_contest_level
-from .voter_statistics import attach_electorate, voter_statistics
+from .voter_statistics import (
+    attach_electorate,
+    by_election_voter_statistics,
+    voter_statistics,
+)
 
 RAW = Path("data/raw")
 INTERIM = Path("data/interim")
@@ -40,6 +45,16 @@ ELECTIONS = {
     2022: ("2022-10-24", "general", "25-ward", ("councillor", "mayor")),
     2023: ("2023-06-26", "by_election", "25-ward", ("mayor",)),
 }
+
+# Council by-elections: (year, ward, filename under data/raw/byelection, date, ward system).
+BY_ELECTIONS = [
+    (2016, 2, "2016-councillor-ward-2.xlsx", "2016-07-25", "44-ward"),
+    (2017, 42, "2017-councillor-ward-42.xlsx", "2017-02-13", "44-ward"),
+    (2021, 22, "2021-councillor-ward-22-scarborough-agincourt-1.xlsx", "2021-01-15", "25-ward"),
+    (2023, 20, "2023-office-of-the-councillor-ward-20-poll-by-poll.xlsx", "2023-11-30", "25-ward"),
+    (2024, 15, "2024-councillor-ward-15-poll-by-poll.xlsx", "2024-11-04", "25-ward"),
+    (2025, 25, "2025-councillor-ward25-poll-by-poll.xlsx", "2025-09-29", "25-ward"),
+]
 
 FINAL_COLUMNS = [
     "election_year",
@@ -126,11 +141,21 @@ def build_base(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
             contest["source"] = "open_data"
             contest["contest_id"] = [_contest_id(year, office, w) for w in contest["ward_number"]]
             frames.append(contest)
+    for year, ward, filename, date, ward_system in BY_ELECTIONS:
+        wardwise = parse_open_data_file(raw / "byelection" / filename, office="councillor")
+        contest = to_contest_level(wardwise, office="councillor")
+        contest["election_year"] = year
+        contest["election_date"] = date
+        contest["election_type"] = "by_election"
+        contest["ward_system"] = ward_system
+        contest["source"] = "open_data"
+        contest["contest_id"] = [_contest_id(year, "councillor", w) for w in contest["ward_number"]]
+        frames.append(contest)
     return pd.concat(frames, ignore_index=True)
 
 
 def assemble(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
-    """Build the full unified table (2003–2023; incumbency joined below)."""
+    """Build the full unified table (2003–present; incumbency joined below)."""
     df = build_base(raw, interim)
     df = derive_contest_fields(df)
 
@@ -142,7 +167,7 @@ def assemble(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
     df = assign_candidate_ids(df)
 
     df = flag_incumbents(df, build_composition(), roster_confidence=ROSTER_CONFIDENCE)
-    df = attach_electorate(df, voter_statistics())
+    df = attach_electorate(df, voter_statistics(), by_election_voter_statistics())
 
     df["election_date"] = pd.to_datetime(df["election_date"]).dt.date
     df["ward_number"] = df["ward_number"].astype("Int64")
@@ -158,9 +183,17 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     df.to_csv(OUT / "toronto_election_results.csv", index=False)
     df.to_parquet(OUT / "toronto_election_results.parquet", index=False)
-    # Sort for a stable, reproducible file (the composition is built from unordered sets).
-    composition = build_composition().sort_values(["election_year", "match_key"])
+    # Enrich with candidate_id + office, then sort for a stable file (built from unordered sets).
+    composition = enrich_composition(build_composition(), df).sort_values(
+        ["election_year", "match_key"]
+    )
     composition.to_csv(OUT / "council_composition.csv", index=False)
+    null_ids = int(composition["candidate_id"].isna().sum())
+    ambiguous = int((composition["candidate_id_resolution"] == "ambiguous").sum())
+    print(
+        f"composition: {len(composition)} members, {null_ids} without a resolved candidate_id "
+        f"(pre-dataset retirees or agent name-form variants), {ambiguous} ambiguous"
+    )
     print(f"wrote {len(df)} rows to {OUT}/toronto_election_results.{{csv,parquet}}")
     print(df.groupby(["election_year", "office"]).size().to_string())
 

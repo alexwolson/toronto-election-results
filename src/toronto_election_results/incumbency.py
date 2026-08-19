@@ -46,9 +46,25 @@ _COMPOSITION_COLUMNS = [
     "election_year",
     "member_name",
     "match_key",
+    "alt_key",
+    "office",
     "incumbent_source",
     "confidence",
 ]
+
+
+def _roster_office(ward: object) -> str:
+    """A roster ward field of 'mayor' means the mayor; anything else is a councillor."""
+    return "mayor" if str(ward).strip().lower() == "mayor" else "councillor"
+
+
+def _shared_token(name_a: str, name_b: str) -> bool:
+    """True if two names share a substantial token (a common surname => a name-form variant)."""
+
+    def tokens(name):
+        return {t for t in name.lower().split() if len(t) >= 3}
+
+    return bool(tokens(name_a) & tokens(name_b))
 
 
 def _fix_mojibake(text: str) -> str:
@@ -93,10 +109,16 @@ def council_members_before(year: int, *, raw: Path = RAW, window_days: int = 183
     active_through_end = set(latest_by_member[latest_by_member >= final_year].index)
     voting_only = active_through_end - attendees
 
+    # City attendance/voting doesn't flag the mayor; default to councillor. The mayor is corrected
+    # to "mayor" later from their candidate_id's most-recent mayoral win.
     rows = [
-        (year, name, _key(name), "city_attendance", ATTENDANCE_CONFIDENCE) for name in attendees
+        (year, name, _key(name), None, "councillor", "city_attendance", ATTENDANCE_CONFIDENCE)
+        for name in attendees
     ]
-    rows += [(year, name, _key(name), "city_voting", VOTING_CONFIDENCE) for name in voting_only]
+    rows += [
+        (year, name, _key(name), None, "councillor", "city_voting", VOTING_CONFIDENCE)
+        for name in voting_only
+    ]
     return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS)
 
 
@@ -162,45 +184,46 @@ def reconcile_rosters(text_a: str, text_b: str) -> tuple[pd.DataFrame, list[str]
         name_b = b.loc[seat, "member_name"] if seat in b.index else None
         arrival = a.loc[seat, "arrival"] if seat in a.index else b.loc[seat, "arrival"]
         if name_a and name_b and _key(name_a) == _key(name_b):
-            rows.append((term, ward, name_a, arrival, RECONCILED_CONFIDENCE))
+            rows.append((term, ward, name_a, None, arrival, RECONCILED_CONFIDENCE))
         else:
+            # Keep A's name (verified end-of-term member). If the two names are a name-form
+            # *variant* of one person (they share a token, e.g. George/Giorgio Mammoliti), keep
+            # B's form as an alias so it still matches results. If they name *different* people
+            # (a mid-term replacement, e.g. Dominelli vs Disero), there is no alias — A is the
+            # end-of-term occupant and B has departed.
             chosen = name_a or name_b
-            rows.append((term, ward, chosen, arrival, SINGLE_SOURCE_CONFIDENCE))
+            alt = name_b if (name_a and name_b and _shared_token(name_a, name_b)) else None
+            rows.append((term, ward, chosen, alt, arrival, SINGLE_SOURCE_CONFIDENCE))
             disagreements.append(f"{term} ward {ward}: A={name_a!r} B={name_b!r}")
     reconciled = pd.DataFrame(
-        rows, columns=["term", "ward", "member_name", "arrival", "confidence"]
+        rows, columns=["term", "ward", "member_name", "alt_name", "arrival", "confidence"]
     )
     return reconciled, disagreements
 
 
 def roster_to_composition(reconciled: pd.DataFrame) -> pd.DataFrame:
-    """Turn a reconciled roster into composition rows keyed by election year."""
+    """Turn a reconciled roster into composition rows — one per seat, keyed by election year.
+
+    A name-form variant that the agents disagreed on (``alt_name``) becomes an ``alt_key`` alias so
+    the single row still matches results under either form (``George``/``Giorgio`` Mammoliti).
+    """
     rows = []
     for r in reconciled.itertuples(index=False):
         year = TERM_TO_ELECTION.get(r.term)
         if year is None:
             continue
-        rows.append((year, r.member_name, _key(r.member_name), "wikipedia", r.confidence))
-    return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS).drop_duplicates(
-        ["election_year", "match_key"]
-    )
-
-
-def rosters_to_composition(
-    text_a: str, text_b: str, *, confidence: float = WIKI_CONFIDENCE
-) -> pd.DataFrame:
-    """Composition from the **union** of both agents' rosters.
-
-    Including both name forms is deliberate: where the agents disagree on a first-name variant
-    (``George``/``Giorgio``) both refer to the same incumbent seat, so carrying both lets whichever
-    form the results use match. Keyed by election year, deduplicated by identity key.
-    """
-    both = pd.concat([parse_roster_text(text_a), parse_roster_text(text_b)], ignore_index=True)
-    rows = []
-    for r in both.itertuples(index=False):
-        year = TERM_TO_ELECTION.get(r.term)
-        if year is not None:
-            rows.append((year, r.member_name, _key(r.member_name), "wikipedia", confidence))
+        alt_key = _key(r.alt_name) if pd.notna(r.alt_name) else None
+        rows.append(
+            (
+                year,
+                r.member_name,
+                _key(r.member_name),
+                alt_key,
+                _roster_office(r.ward),
+                "wikipedia",
+                r.confidence,
+            )
+        )
     return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS).drop_duplicates(
         ["election_year", "match_key"]
     )
@@ -227,14 +250,67 @@ def build_composition(*, reference: Path = REFERENCE, raw: Path = RAW) -> pd.Dat
     datasets. 2023 (the mayoral by-election) is added by the assembler from the 2022 winners,
     since its sitting council is the 2022-elected one.
     """
-    parts = [
-        rosters_to_composition(
-            (reference / "roster_agent_a.txt").read_text(),
-            (reference / "roster_agent_b.txt").read_text(),
-        ),
-        build_city_composition(raw=raw),
-    ]
+    reconciled, _ = reconcile_rosters(
+        (reference / "roster_agent_a.txt").read_text(),
+        (reference / "roster_agent_b.txt").read_text(),
+    )
+    parts = [roster_to_composition(reconciled), build_city_composition(raw=raw)]
     return pd.concat(parts, ignore_index=True)
+
+
+def enrich_composition(composition: pd.DataFrame, results: pd.DataFrame) -> pd.DataFrame:
+    """Resolve each composition member's stable ``candidate_id`` and ``office`` from the results.
+
+    ``candidate_id`` comes from a **global** identity-key -> id map over *all* results years, so a
+    retiree who did not run in the composition's year still resolves from a prior appearance.
+    ``office`` is the office of the member's most-recent *win* strictly before the composition year
+    (which tracks a councillor -> mayor move), falling back to the roster's office when the member
+    has no prior win in scope (e.g. an incumbent mayor whose only win predates the dataset).
+    A ``candidate_id_resolution`` note records ``matched`` / ``no_results_match`` / ``ambiguous``.
+    """
+    key_to_ids: dict[str, set] = {}
+    for candidate_id, name in zip(results["candidate_id"], results["candidate_name"]):
+        if pd.notna(candidate_id):
+            key_to_ids.setdefault(_key(name), set()).add(candidate_id)
+
+    wins_by_id: dict[str, list] = {}
+    won = results[results["elected"]]
+    for candidate_id, year, office in zip(won["candidate_id"], won["election_year"], won["office"]):
+        if pd.notna(candidate_id):
+            wins_by_id.setdefault(candidate_id, []).append((int(year), office))
+
+    composition = composition.copy()
+    candidate_ids, offices, notes = [], [], []
+    for row in composition.itertuples(index=False):
+        ids = key_to_ids.get(row.match_key, set())
+        if not ids and pd.notna(row.alt_key):  # try the name-form variant alias
+            ids = key_to_ids.get(row.alt_key, set())
+        if len(ids) == 1:
+            candidate_id = next(iter(ids))
+            prior = [w for w in wins_by_id.get(candidate_id, []) if w[0] < int(row.election_year)]
+            candidate_ids.append(candidate_id)
+            offices.append(max(prior, key=lambda w: w[0])[1] if prior else row.office)
+            notes.append("matched")
+        else:
+            candidate_ids.append(pd.NA)
+            offices.append(row.office)  # roster office is the fallback for unmatched members
+            notes.append("ambiguous" if len(ids) > 1 else "no_results_match")
+
+    composition["candidate_id"] = candidate_ids
+    composition["office"] = offices
+    composition["candidate_id_resolution"] = notes
+    return composition[
+        [
+            "election_year",
+            "member_name",
+            "candidate_id",
+            "office",
+            "match_key",
+            "incumbent_source",
+            "confidence",
+            "candidate_id_resolution",
+        ]
+    ]
 
 
 # The prior in-scope election whose winners are the sitting incumbents. (2003 has no in-scope
@@ -248,6 +324,7 @@ PRIOR_ELECTION = {
     2023: 2022,
 }
 PRIOR_WINNER_CONFIDENCE = 0.95
+BY_ELECTION_VACANT_CONFIDENCE = 0.95  # a council by-election fills a vacant ward — no incumbent
 
 
 def flag_incumbents(
@@ -275,15 +352,29 @@ def flag_incumbents(
         int(year): set(group.loc[group["elected"], "candidate_id"].dropna())
         for year, group in results.groupby("election_year")
     }
-    roster = {
-        (int(r.election_year), r.match_key): (r.incumbent_source, r.confidence)
-        for r in composition.itertuples(index=False)
-    }
+    roster = {}
+    for r in composition.itertuples(index=False):
+        roster[(int(r.election_year), r.match_key)] = (r.incumbent_source, r.confidence)
+        if pd.notna(r.alt_key):  # a name-form variant matches under either form
+            roster[(int(r.election_year), r.alt_key)] = (r.incumbent_source, r.confidence)
     keys = results["candidate_name"].map(_key)
 
     incumbent, source, confidence = [], [], []
-    for year, candidate_id, key in zip(results["election_year"], results["candidate_id"], keys):
+    for year, candidate_id, key, election_type, office in zip(
+        results["election_year"],
+        results["candidate_id"],
+        keys,
+        results["election_type"],
+        results["office"],
+    ):
         year = int(year)
+        # A council by-election fills a vacant ward, so no candidate holds it (ADR 0004). The
+        # mayoral by-election is unaffected: sitting councillors run and stay person-based incumbents.
+        if election_type == "by_election" and office == "councillor":
+            incumbent.append(False)
+            source.append(pd.NA)
+            confidence.append(BY_ELECTION_VACANT_CONFIDENCE)
+            continue
         prior = PRIOR_ELECTION.get(year)
         won_prior = (
             prior is not None
