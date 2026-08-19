@@ -1,0 +1,14 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Data: raw downloads + interim are re-derivable; reference (one-time) + out (deliverable) are tracked
+data/raw/
+data/interim/

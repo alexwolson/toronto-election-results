@@ -1,0 +1,4 @@
+_id,Term,FirstName,LastName,Committee,MTGNum,SessionDate,SessionType,SessionStart_EndTime,Present
+1,2014-2018,Ana,Bailao,City Council,40,2018-09-01,Afternoon,x,Y
+2,2014-2018,Pam,McConnell,City Council,10,2017-01-01,Afternoon,x,Y
+3,2014-2018,Ana,Bailao,Budget Committee,5,2018-09-01,Afternoon,x,Y
