@@ -7,9 +7,15 @@ import pandas as pd
 import pytest
 
 from toronto_election_results.mayoral_career import (
+    BACKFILL_COLUMNS,
+    DECISION_COLUMNS,
     EXPECTED_COHORT_SIZE,
+    MAPPING_COLUMNS,
+    REVIEW_COLUMNS,
+    load_contract_table,
     load_mayoral_career_cohort,
     validate_mayoral_career_cohort,
+    validate_mayoral_career_contracts,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,3 +73,179 @@ def test_frozen_source_mutation_is_rejected(field: str, value: str, message: str
 
     with pytest.raises(ValueError, match=message):
         validate_mayoral_career_cohort(rows, results)
+
+
+def _contract_inputs(tmp_path: Path):
+    cohort = load_mayoral_career_cohort(COHORT_PATH)
+    subject = cohort[0]
+    report_dir = tmp_path / "docs/research/mayoral-career/2026"
+    report_dir.mkdir(parents=True)
+    for agent in ["luna", "terra"]:
+        (report_dir / f"{subject.subject_candidacy_id}-{agent}.md").write_text(
+            f"# {agent}\n", encoding="utf-8"
+        )
+    reviews = pd.DataFrame(
+        [
+            {
+                "cohort_id": subject.cohort_id,
+                "subject_candidacy_id": subject.subject_candidacy_id,
+                "certified_name": subject.certified_name,
+                "resulting_person_id": subject.current_person_id or "",
+                "luna_report_path": (
+                    f"docs/research/mayoral-career/2026/{subject.subject_candidacy_id}-luna.md"
+                ),
+                "terra_report_path": (
+                    f"docs/research/mayoral-career/2026/{subject.subject_candidacy_id}-terra.md"
+                ),
+                "review_date": "2026-08-26",
+                "source_release": subject.source_release,
+                "review_status": "reviewed",
+                "limitations": "",
+                "confirmed_count": "1",
+                "held_count": "0",
+                "split_count": "0",
+                "rejected_count": "0",
+                "primary_rationale": "Independent reports and authoritative results agree.",
+            }
+        ],
+        columns=REVIEW_COLUMNS,
+        dtype="string",
+    )
+    decisions = pd.DataFrame(
+        [
+            {
+                "decision_id": "mcd_test",
+                "cohort_id": subject.cohort_id,
+                "subject_candidacy_id": subject.subject_candidacy_id,
+                "proposed_occurrence_key": "test-2022-mayor",
+                "observed_ballot_name": subject.certified_name,
+                "election_date": "2022-10-24",
+                "jurisdiction": "Ontario",
+                "office": "mayor",
+                "district": "Example",
+                "decision": "confirm",
+                "ingestion_action": "add_backfill",
+                "identity_bridge": "Candidate-controlled biography identifies the contest.",
+                "result_source_authority": "Example Clerk",
+                "result_source_resource": "Official results",
+                "result_source_locator": "https://example.ca/results",
+                "rationale": "Exact result and independent identity evidence agree.",
+            }
+        ],
+        columns=DECISION_COLUMNS,
+        dtype="string",
+    )
+    backfill = pd.DataFrame(
+        [
+            {
+                "backfill_id": "mcb_test",
+                "decision_id": "mcd_test",
+                "subject_candidacy_id": subject.subject_candidacy_id,
+                "election_date": "2022-10-24",
+                "election_type": "general",
+                "election_authority": "Example Clerk",
+                "represented_body": "example_council",
+                "office_type": "mayor",
+                "district_name": "Example",
+                "candidate_name_raw": subject.certified_name,
+                "party_name_raw": "",
+                "votes": "100",
+                "total_contest_votes": "1000",
+                "vote_share": "0.1",
+                "vote_rank": "2",
+                "elected": "false",
+                "acclaimed": "false",
+                "result_status": "official",
+                "source_authority": "Example Clerk",
+                "source_resource": "Official results",
+                "source_locator": "https://example.ca/results",
+            }
+        ],
+        columns=BACKFILL_COLUMNS,
+        dtype="string",
+    )
+    mappings = pd.DataFrame(columns=MAPPING_COLUMNS, dtype="string")
+    return cohort, reviews, decisions, backfill, mappings
+
+
+def _validate_contract_inputs(tmp_path: Path, inputs, **kwargs):
+    validate_mayoral_career_contracts(
+        *inputs, repository_root=tmp_path, require_complete=False, **kwargs
+    )
+
+
+def test_valid_partial_review_contract_is_accepted(tmp_path: Path):
+    inputs = _contract_inputs(tmp_path)
+
+    _validate_contract_inputs(tmp_path, inputs)
+
+
+@pytest.mark.parametrize(
+    ("filename", "columns"),
+    [
+        ("mayoral_career_reviews.csv", REVIEW_COLUMNS),
+        ("mayoral_career_decisions.csv", DECISION_COLUMNS),
+        ("mayoral_career_backfill.csv", BACKFILL_COLUMNS),
+        ("mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
+    ],
+)
+def test_repository_contract_tables_have_exact_schema(filename: str, columns: list[str]):
+    table = load_contract_table(ROOT / "data/reference" / filename, columns)
+
+    assert table.empty
+
+
+def test_invalid_review_status_is_rejected(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[1].loc[0, "review_status"] = "probably_reviewed"
+
+    with pytest.raises(ValueError, match="invalid review_status"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_missing_or_wrong_candidate_report_is_rejected(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[1].loc[0, "luna_report_path"] = "docs/research/mayoral-career/2026/other-luna.md"
+
+    with pytest.raises(ValueError, match="luna report path"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_duplicate_occurrence_decision_is_rejected(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[2] = pd.concat([inputs[2], inputs[2]], ignore_index=True)
+
+    with pytest.raises(ValueError, match="duplicate decision_id"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+@pytest.mark.parametrize(
+    ("column", "message"),
+    [
+        ("identity_bridge", "confirmed decision requires identity_bridge"),
+        ("result_source_locator", "confirmed decision requires result_source_locator"),
+    ],
+)
+def test_confirmed_decision_requires_identity_and_result_evidence(
+    tmp_path: Path, column: str, message: str
+):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[2].loc[0, column] = ""
+
+    with pytest.raises(ValueError, match=message):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_nonconfirmed_decision_cannot_enter_backfill(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[2].loc[0, "decision"] = "hold"
+
+    with pytest.raises(ValueError, match="cannot be ingested"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_complete_review_requires_every_cohort_candidate(tmp_path: Path):
+    inputs = _contract_inputs(tmp_path)
+
+    with pytest.raises(ValueError, match="review registry is incomplete"):
+        validate_mayoral_career_contracts(*inputs, repository_root=tmp_path, require_complete=True)

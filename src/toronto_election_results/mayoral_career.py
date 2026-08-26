@@ -10,6 +10,13 @@ import pandas as pd
 
 COHORT_ID = "toronto-mayor-2026"
 EXPECTED_COHORT_SIZE = 53
+REVIEW_STATUSES = {
+    "reviewed",
+    "no_verified_prior_candidacy",
+    "reviewed_with_limitations",
+}
+OCCURRENCE_DECISIONS = {"confirm", "hold", "split", "reject"}
+INGESTION_ACTIONS = {"add_backfill", "reuse_existing", "none"}
 
 _COHORT_COLUMNS = [
     "cohort_id",
@@ -21,6 +28,74 @@ _COHORT_COLUMNS = [
     "contest_id",
     "source_release",
     "source_commit",
+]
+
+REVIEW_COLUMNS = [
+    "cohort_id",
+    "subject_candidacy_id",
+    "certified_name",
+    "resulting_person_id",
+    "luna_report_path",
+    "terra_report_path",
+    "review_date",
+    "source_release",
+    "review_status",
+    "limitations",
+    "confirmed_count",
+    "held_count",
+    "split_count",
+    "rejected_count",
+    "primary_rationale",
+]
+
+DECISION_COLUMNS = [
+    "decision_id",
+    "cohort_id",
+    "subject_candidacy_id",
+    "proposed_occurrence_key",
+    "observed_ballot_name",
+    "election_date",
+    "jurisdiction",
+    "office",
+    "district",
+    "decision",
+    "ingestion_action",
+    "identity_bridge",
+    "result_source_authority",
+    "result_source_resource",
+    "result_source_locator",
+    "rationale",
+]
+
+BACKFILL_COLUMNS = [
+    "backfill_id",
+    "decision_id",
+    "subject_candidacy_id",
+    "election_date",
+    "election_type",
+    "election_authority",
+    "represented_body",
+    "office_type",
+    "district_name",
+    "candidate_name_raw",
+    "party_name_raw",
+    "votes",
+    "total_contest_votes",
+    "vote_share",
+    "vote_rank",
+    "elected",
+    "acclaimed",
+    "result_status",
+    "source_authority",
+    "source_resource",
+    "source_locator",
+]
+
+MAPPING_COLUMNS = [
+    "cohort_id",
+    "subject_candidacy_id",
+    "decision_id",
+    "canonical_candidacy_id",
 ]
 
 
@@ -76,6 +151,215 @@ def load_mayoral_career_cohort(path: str | Path) -> list[MayoralCareerCohortRow]
             )
             for row in reader
         ]
+
+
+def load_contract_table(path: str | Path, columns: list[str]) -> pd.DataFrame:
+    """Load a career-review contract table and enforce its exact schema."""
+
+    table = pd.read_csv(path, dtype="string", keep_default_na=False)
+    if table.columns.tolist() != columns:
+        raise ValueError(f"{Path(path).name} columns must be exactly: {', '.join(columns)}")
+    return table
+
+
+def _require_unique(table: pd.DataFrame, columns: list[str], label: str) -> None:
+    if table.duplicated(columns, keep=False).any():
+        values = table.loc[table.duplicated(columns, keep=False), columns].iloc[0].tolist()
+        raise ValueError(f"duplicate {label}: {values}")
+
+
+def _require_values(table: pd.DataFrame, columns: list[str], label: str) -> None:
+    for column in columns:
+        if table[column].str.strip().eq("").any():
+            raise ValueError(f"{label} requires {column}")
+
+
+def _validate_report_path(
+    value: str, *, repository_root: Path, subject_candidacy_id: str, agent: str
+) -> None:
+    expected = f"docs/research/mayoral-career/2026/{subject_candidacy_id}-{agent}.md"
+    if value != expected:
+        raise ValueError(f"{agent} report path for {subject_candidacy_id} must be {expected}")
+    resolved = (repository_root / value).resolve()
+    if not resolved.is_relative_to(repository_root.resolve()) or not resolved.is_file():
+        raise ValueError(f"missing {agent} report for {subject_candidacy_id}: {value}")
+
+
+def validate_mayoral_career_contracts(
+    cohort: list[MayoralCareerCohortRow],
+    reviews: pd.DataFrame,
+    decisions: pd.DataFrame,
+    backfill: pd.DataFrame,
+    mappings: pd.DataFrame,
+    *,
+    repository_root: str | Path,
+    require_complete: bool = False,
+    require_ingested: bool = False,
+) -> None:
+    """Validate research decisions separately from publishable canonical ingestion."""
+
+    tables = [
+        (reviews, REVIEW_COLUMNS, "reviews"),
+        (decisions, DECISION_COLUMNS, "decisions"),
+        (backfill, BACKFILL_COLUMNS, "backfill"),
+        (mappings, MAPPING_COLUMNS, "mappings"),
+    ]
+    for table, columns, label in tables:
+        if table.columns.tolist() != columns:
+            raise ValueError(f"{label} columns must be exactly: {', '.join(columns)}")
+
+    cohort_by_id = {row.subject_candidacy_id: row for row in cohort}
+    cohort_ids = set(cohort_by_id)
+    _require_unique(reviews, ["subject_candidacy_id"], "candidate review")
+    _require_unique(decisions, ["decision_id"], "decision_id")
+    _require_unique(
+        decisions,
+        ["subject_candidacy_id", "proposed_occurrence_key"],
+        "candidate occurrence decision",
+    )
+    _require_unique(backfill, ["backfill_id"], "backfill_id")
+    _require_unique(backfill, ["decision_id"], "backfill decision_id")
+    _require_unique(mappings, ["decision_id"], "mapping decision_id")
+    _require_unique(mappings, ["canonical_candidacy_id"], "canonical candidacy mapping")
+
+    for label, table in [("review", reviews), ("decision", decisions), ("mapping", mappings)]:
+        unknown = sorted(set(table["subject_candidacy_id"]) - cohort_ids)
+        if unknown:
+            raise ValueError(f"{label} references candidate outside cohort: {unknown[0]}")
+        wrong_cohort = table.loc[~table["cohort_id"].eq(COHORT_ID)]
+        if not wrong_cohort.empty:
+            raise ValueError(f"{label} cohort_id must be {COHORT_ID}")
+    unknown_backfill = sorted(set(backfill["subject_candidacy_id"]) - cohort_ids)
+    if unknown_backfill:
+        raise ValueError(f"backfill references candidate outside cohort: {unknown_backfill[0]}")
+
+    invalid_statuses = sorted(set(reviews["review_status"]) - REVIEW_STATUSES)
+    if invalid_statuses:
+        raise ValueError(f"invalid review_status: {invalid_statuses[0]}")
+    invalid_decisions = sorted(set(decisions["decision"]) - OCCURRENCE_DECISIONS)
+    if invalid_decisions:
+        raise ValueError(f"invalid occurrence decision: {invalid_decisions[0]}")
+    invalid_actions = sorted(set(decisions["ingestion_action"]) - INGESTION_ACTIONS)
+    if invalid_actions:
+        raise ValueError(f"invalid ingestion_action: {invalid_actions[0]}")
+
+    _require_values(
+        reviews,
+        [
+            "certified_name",
+            "luna_report_path",
+            "terra_report_path",
+            "review_date",
+            "source_release",
+            "review_status",
+            "primary_rationale",
+        ],
+        "candidate review",
+    )
+    root = Path(repository_root)
+    for row in reviews.itertuples(index=False):
+        cohort_row = cohort_by_id[row.subject_candidacy_id]
+        if row.certified_name != cohort_row.certified_name:
+            raise ValueError(f"certified_name changed for {row.subject_candidacy_id}")
+        if row.source_release != cohort_row.source_release:
+            raise ValueError(f"source_release changed for {row.subject_candidacy_id}")
+        _validate_report_path(
+            row.luna_report_path,
+            repository_root=root,
+            subject_candidacy_id=row.subject_candidacy_id,
+            agent="luna",
+        )
+        _validate_report_path(
+            row.terra_report_path,
+            repository_root=root,
+            subject_candidacy_id=row.subject_candidacy_id,
+            agent="terra",
+        )
+
+    confirmation_fields = [
+        "observed_ballot_name",
+        "election_date",
+        "jurisdiction",
+        "office",
+        "identity_bridge",
+        "result_source_authority",
+        "result_source_resource",
+        "result_source_locator",
+        "rationale",
+    ]
+    confirmed = decisions.loc[decisions["decision"].eq("confirm")]
+    _require_values(confirmed, confirmation_fields, "confirmed decision")
+    invalid_confirm_action = confirmed.loc[
+        ~confirmed["ingestion_action"].isin({"add_backfill", "reuse_existing"})
+    ]
+    if not invalid_confirm_action.empty:
+        raise ValueError("confirmed decision requires add_backfill or reuse_existing")
+    nonconfirmed_with_ingest = decisions.loc[
+        ~decisions["decision"].eq("confirm") & ~decisions["ingestion_action"].eq("none")
+    ]
+    if not nonconfirmed_with_ingest.empty:
+        raise ValueError("held, split, or rejected decision cannot be ingested")
+
+    decisions_by_id = decisions.set_index("decision_id", drop=False)
+    required_backfill = set(
+        decisions.loc[
+            decisions["decision"].eq("confirm") & decisions["ingestion_action"].eq("add_backfill"),
+            "decision_id",
+        ]
+    )
+    actual_backfill = set(backfill["decision_id"])
+    if actual_backfill != required_backfill:
+        raise ValueError(
+            "backfill decisions must exactly equal confirmed add_backfill decisions; "
+            f"required={sorted(required_backfill)}, actual={sorted(actual_backfill)}"
+        )
+    if not backfill.empty:
+        _require_values(
+            backfill,
+            [column for column in BACKFILL_COLUMNS if column != "party_name_raw"],
+            "backfill row",
+        )
+        for row in backfill.itertuples(index=False):
+            decision = decisions_by_id.loc[row.decision_id]
+            if row.subject_candidacy_id != decision.subject_candidacy_id:
+                raise ValueError(f"backfill subject does not match decision {row.decision_id}")
+
+    confirmed_ids = set(confirmed["decision_id"])
+    invalid_mapping = sorted(set(mappings["decision_id"]) - confirmed_ids)
+    if invalid_mapping:
+        raise ValueError(f"mapping references non-confirmed decision: {invalid_mapping[0]}")
+    if not mappings.empty:
+        _require_values(mappings, MAPPING_COLUMNS, "mapping row")
+
+    if require_complete:
+        reviewed_ids = set(reviews["subject_candidacy_id"])
+        if reviewed_ids != cohort_ids:
+            missing = sorted(cohort_ids - reviewed_ids)
+            extra = sorted(reviewed_ids - cohort_ids)
+            raise ValueError(f"review registry is incomplete; missing={missing}, extra={extra}")
+        count_columns = {
+            "confirm": "confirmed_count",
+            "hold": "held_count",
+            "split": "split_count",
+            "reject": "rejected_count",
+        }
+        for row in reviews.itertuples(index=False):
+            subject = decisions.loc[decisions["subject_candidacy_id"].eq(row.subject_candidacy_id)]
+            for decision, count_column in count_columns.items():
+                actual = int(subject["decision"].eq(decision).sum())
+                try:
+                    expected = int(getattr(row, count_column))
+                except ValueError as exc:
+                    raise ValueError(
+                        f"{row.subject_candidacy_id} has invalid {count_column}"
+                    ) from exc
+                if actual != expected:
+                    raise ValueError(
+                        f"{row.subject_candidacy_id} {count_column} is {expected}; expected {actual}"
+                    )
+    if require_ingested and set(mappings["decision_id"]) != confirmed_ids:
+        missing = sorted(confirmed_ids - set(mappings["decision_id"]))
+        raise ValueError(f"confirmed decisions are not fully mapped: {missing}")
 
 
 def validate_mayoral_career_cohort(
