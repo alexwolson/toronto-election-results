@@ -48,6 +48,10 @@ plus unavailable or non-searchable records.
 ## Limitations
 
 State anything that materially limits a complete-career conclusion.
+Ordinary nationwide archive fragmentation is the review boundary, not automatically
+a candidate-level limitation. Use `reviewed_with_limitations` only for a concrete,
+material gap such as an inaccessible likely record, a missing identity anchor, or
+an unresolved career lead.
 
 ## Discovery conclusion
 

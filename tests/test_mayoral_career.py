@@ -192,7 +192,23 @@ def test_valid_partial_review_contract_is_accepted(tmp_path: Path):
 def test_repository_contract_tables_have_exact_schema(filename: str, columns: list[str]):
     table = load_contract_table(ROOT / "data/reference" / filename, columns)
 
-    assert table.empty
+    assert table.columns.tolist() == columns
+
+
+def test_reconciled_pilot_registry_is_valid_and_fully_mapped():
+    cohort = load_mayoral_career_cohort(COHORT_PATH)
+    reference = ROOT / "data/reference"
+
+    validate_mayoral_career_contracts(
+        cohort,
+        load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS),
+        load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS),
+        load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS),
+        load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
+        repository_root=ROOT,
+        require_complete=False,
+        require_ingested=True,
+    )
 
 
 def test_invalid_review_status_is_rejected(tmp_path: Path):
@@ -249,3 +265,39 @@ def test_complete_review_requires_every_cohort_candidate(tmp_path: Path):
 
     with pytest.raises(ValueError, match="review registry is incomplete"):
         validate_mayoral_career_contracts(*inputs, repository_root=tmp_path, require_complete=True)
+
+
+def test_limited_review_requires_a_concrete_limitation(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[1].loc[0, "review_status"] = "reviewed_with_limitations"
+    inputs[1].loc[0, "limitations"] = ""
+
+    with pytest.raises(ValueError, match="requires limitations"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_no_verified_prior_candidacy_cannot_count_confirmation(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[1].loc[0, "review_status"] = "no_verified_prior_candidacy"
+
+    with pytest.raises(ValueError, match="cannot have confirmed occurrences"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_mapping_subject_must_match_confirmed_decision(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[4] = pd.DataFrame(
+        [
+            {
+                "cohort_id": "toronto-mayor-2026",
+                "subject_candidacy_id": inputs[0][1].subject_candidacy_id,
+                "decision_id": "mcd_test",
+                "canonical_candidacy_id": "can_existing",
+            }
+        ],
+        columns=MAPPING_COLUMNS,
+        dtype="string",
+    )
+
+    with pytest.raises(ValueError, match="mapping subject does not match"):
+        _validate_contract_inputs(tmp_path, inputs)

@@ -275,6 +275,23 @@ def validate_mayoral_career_contracts(
             subject_candidacy_id=row.subject_candidacy_id,
             agent="terra",
         )
+        if row.review_status == "reviewed_with_limitations" and not row.limitations.strip():
+            raise ValueError(
+                f"reviewed_with_limitations requires limitations for {row.subject_candidacy_id}"
+            )
+        try:
+            confirmed_count = int(row.confirmed_count)
+        except ValueError as exc:
+            raise ValueError(f"{row.subject_candidacy_id} has invalid confirmed_count") from exc
+        if row.review_status == "reviewed" and confirmed_count < 1:
+            raise ValueError(
+                f"reviewed status requires a confirmed occurrence for {row.subject_candidacy_id}"
+            )
+        if row.review_status == "no_verified_prior_candidacy" and confirmed_count != 0:
+            raise ValueError(
+                "no_verified_prior_candidacy cannot have confirmed occurrences for "
+                f"{row.subject_candidacy_id}"
+            )
 
     confirmation_fields = [
         "observed_ballot_name",
@@ -330,6 +347,10 @@ def validate_mayoral_career_contracts(
         raise ValueError(f"mapping references non-confirmed decision: {invalid_mapping[0]}")
     if not mappings.empty:
         _require_values(mappings, MAPPING_COLUMNS, "mapping row")
+        for row in mappings.itertuples(index=False):
+            decision = decisions_by_id.loc[row.decision_id]
+            if row.subject_candidacy_id != decision.subject_candidacy_id:
+                raise ValueError(f"mapping subject does not match decision {row.decision_id}")
 
     if require_complete:
         reviewed_ids = set(reviews["subject_candidacy_id"])
