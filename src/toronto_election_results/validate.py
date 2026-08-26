@@ -1,8 +1,8 @@
-"""Quality-control gates over the assembled results table.
+"""Legacy v1 single-table quality gates retained for historical unit tests.
 
 ``validate`` returns a list of human-readable issue strings; an empty list means the table passed
 every gate. The gates encode the invariants a correct unified table must hold (see
-docs/data-dictionary.md).
+the repository history). Public v2 releases use ``release_validation.validate_release``.
 """
 
 from __future__ import annotations
@@ -66,14 +66,15 @@ def validate(df: pd.DataFrame) -> list[str]:
     return issues
 
 
-if __name__ == "__main__":
-    from pathlib import Path
+def main() -> None:
+    """Refuse to validate the deleted v1 artifact from the command line."""
 
-    table = pd.read_parquet(Path("data/out/toronto_election_results.parquet"))
-    problems = validate(table)
-    if problems:
-        print(f"{len(problems)} issue(s):")
-        for problem in problems:
-            print(f"  - {problem}")
-    else:
-        print(f"OK: {len(table)} rows passed all QC gates")
+    raise SystemExit(
+        "The legacy v1 validation command is retired; run "
+        "`python -m toronto_election_results.pipeline --skip-download` to rebuild and "
+        "validate the v2 relational release."
+    )
+
+
+if __name__ == "__main__":
+    main()

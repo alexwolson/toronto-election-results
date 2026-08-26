@@ -1,6 +1,6 @@
 # Derive incumbency from council-attendance data + Wikipedia, not a single roster
 
-Status: accepted
+Status: accepted; cross-office incumbency semantics superseded by ADR 0005
 
 ## Context
 

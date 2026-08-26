@@ -165,6 +165,7 @@ class TestRosterReconciliation:
         comp = roster_to_composition(reconciled)
         assert (comp["election_year"] == 2003).all()
         assert match_key("Suzan Hall") in set(comp["match_key"])
+        assert comp.set_index("member_name").loc["Laura Jones", "arrival"] == "appointed"
 
     def test_name_variant_disagreement_keeps_alias(self):
         """Same surname -> a name-form variant: keep A's name, carry B's form as an alias key."""

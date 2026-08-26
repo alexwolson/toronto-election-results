@@ -1,6 +1,6 @@
 # By-election scope and incumbency
 
-Status: accepted
+Status: accepted; incumbency definition superseded by ADR 0005
 
 ## Context
 

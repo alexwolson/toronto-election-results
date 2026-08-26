@@ -50,6 +50,7 @@ _COMPOSITION_COLUMNS = [
     "office",
     "incumbent_source",
     "confidence",
+    "arrival",
 ]
 
 
@@ -112,11 +113,29 @@ def council_members_before(year: int, *, raw: Path = RAW, window_days: int = 183
     # City attendance/voting doesn't flag the mayor; default to councillor. The mayor is corrected
     # to "mayor" later from their candidate_id's most-recent mayoral win.
     rows = [
-        (year, name, _key(name), None, "councillor", "city_attendance", ATTENDANCE_CONFIDENCE)
+        (
+            year,
+            name,
+            _key(name),
+            None,
+            "councillor",
+            "city_attendance",
+            ATTENDANCE_CONFIDENCE,
+            pd.NA,
+        )
         for name in attendees
     ]
     rows += [
-        (year, name, _key(name), None, "councillor", "city_voting", VOTING_CONFIDENCE)
+        (
+            year,
+            name,
+            _key(name),
+            None,
+            "councillor",
+            "city_voting",
+            VOTING_CONFIDENCE,
+            pd.NA,
+        )
         for name in voting_only
     ]
     return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS)
@@ -222,6 +241,7 @@ def roster_to_composition(reconciled: pd.DataFrame) -> pd.DataFrame:
                 _roster_office(r.ward),
                 "wikipedia",
                 r.confidence,
+                r.arrival,
             )
         )
     return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS).drop_duplicates(

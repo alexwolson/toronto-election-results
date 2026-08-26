@@ -1,7 +1,7 @@
 [project]
 name = "toronto-election-results"
-version = "0.1.0"
-description = "Unified dataset of Toronto municipal election results (2000–present), Mayor and Councillor."
+version = "0.2.0"
+description = "Unified City of Toronto municipal, trustee, federal, and provincial election results."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [

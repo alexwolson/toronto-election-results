@@ -1,0 +1,38 @@
+{
+  "seq": "fixture-sequence",
+  "ward": [
+    {
+      "name": "Name:1",
+      "num": "1",
+      "candidate": [
+        {"name": "One, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "One", "email": "private@example.test", "phone": "416-555-0101", "socialMedias": [{"name": "web", "url": "https://example.test"}]},
+        {"name": "One, Inactive", "office": 2, "status": "Inactive", "firstName": "Inactive", "lastName": "One", "email": "", "phone": null, "socialMedias": []}
+      ],
+      "n": 1
+    },
+    {"name": "Name:2", "num": "2", "candidate": [{"name": "Two, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Two"}], "n": 2},
+    {"name": "Name:3", "num": "3", "candidate": [{"name": "Three, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Three"}], "n": 3},
+    {"name": "Name:4", "num": "4", "candidate": [{"name": "Four, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Four"}], "n": 4},
+    {"name": "Name:5", "num": "5", "candidate": [{"name": "Five, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Five"}], "n": 5},
+    {"name": "Name:6", "num": "6", "candidate": [{"name": "Six, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Six"}], "n": 6},
+    {"name": "Name:7", "num": "7", "candidate": [{"name": "Seven, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Seven"}], "n": 7},
+    {"name": "Name:8", "num": "8", "candidate": [{"name": "Eight, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Eight"}], "n": 8},
+    {"name": "Name:9", "num": "9", "candidate": [{"name": "Nine, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Nine"}], "n": 9},
+    {"name": "Name:10", "num": "10", "candidate": [{"name": "Ten, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Ten"}], "n": 10},
+    {"name": "Name:11", "num": "11", "candidate": [{"name": "Eleven, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Eleven"}], "n": 11},
+    {"name": "Name:12", "num": "12", "candidate": [{"name": "Twelve, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Twelve"}], "n": 12},
+    {"name": "Name:13", "num": "13", "candidate": [{"name": "Thirteen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Thirteen"}], "n": 13},
+    {"name": "Name:14", "num": "14", "candidate": [{"name": "Fourteen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Fourteen"}], "n": 14},
+    {"name": "Name:15", "num": "15", "candidate": [{"name": "Fifteen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Fifteen"}], "n": 15},
+    {"name": "Name:16", "num": "16", "candidate": [{"name": "Sixteen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Sixteen"}], "n": 16},
+    {"name": "Name:17", "num": "17", "candidate": [{"name": "Seventeen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Seventeen"}], "n": 17},
+    {"name": "Name:18", "num": "18", "candidate": [{"name": "Eighteen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Eighteen"}], "n": 18},
+    {"name": "Name:19", "num": "19", "candidate": [{"name": "Nineteen, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Nineteen"}], "n": 19},
+    {"name": "Name:20", "num": "20", "candidate": [{"name": "Twenty, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Twenty"}], "n": 20},
+    {"name": "Name:21", "num": "21", "candidate": [{"name": "Nisha Kumari", "office": 2, "status": "Active", "firstName": "", "lastName": "Nisha Kumari"}], "n": 21},
+    {"name": "Name:22", "num": "22", "candidate": [{"name": "Twenty Two, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Twenty Two"}], "n": 22},
+    {"name": "Name:23", "num": "23", "candidate": [{"name": "Twenty Three, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Twenty Three"}], "n": 23},
+    {"name": "Name:24", "num": "24", "candidate": [{"name": "Twenty Four, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Twenty Four"}], "n": 24},
+    {"name": "Name:25", "num": "25", "candidate": [{"name": "Twenty Five, Active", "office": 2, "status": "Active", "firstName": "Active", "lastName": "Twenty Five"}], "n": 25}
+  ]
+}
