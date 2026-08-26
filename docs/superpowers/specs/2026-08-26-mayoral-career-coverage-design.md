@@ -1,7 +1,7 @@
 # Canada-wide mayoral candidate career coverage
 
 **Date:** 2026-08-26  
-**Status:** Approved in conversation; awaiting review of this written specification
+**Status:** Approved 2026-08-26
 
 ## Purpose
 
