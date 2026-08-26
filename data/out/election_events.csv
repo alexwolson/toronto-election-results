@@ -1,4 +1,8 @@
 event_id,election_date,election_year,election_type,election_authority
+toronto-1991-general,1991-11-12,1991,general,toronto_city_clerk
+toronto-1994-general,1994-11-14,1994,general,toronto_city_clerk
+toronto-1997-general,1997-11-10,1997,general,toronto_city_clerk
+toronto-2000-general,2000-11-13,2000,general,toronto_city_clerk
 on-2003-general,2003-10-02,2003,general,elections_ontario
 evt_d89f777f34365c37b114ca39fb376591,2003-11-10,2003,general,toronto_city_clerk
 ec-ge-38,2004-06-28,2004,general,elections_canada
@@ -25,6 +29,7 @@ ec-be-2013-11-25,2013-11-25,2013,by_election,elections_canada
 on-2014-general,2014-06-12,2014,general,elections_ontario
 ec-be-2014-06-30,2014-06-30,2014,by_election,elections_canada
 evt_54673fd104ab5ef08eb865e162ac040c,2014-10-27,2014,general,toronto_city_clerk
+on-2015-09-03-by-091,2015-09-03,2015,by_election,elections_ontario
 ec-ge-42,2015-10-19,2015,general,elections_canada
 evt_3db5605f67e85c3a988ee6fcbcee0c3b,2016-01-25,2016,by_election,toronto_city_clerk
 evt_8ca589beb65b56f5863df3f1f1b621fd,2016-06-20,2016,by_election,toronto_city_clerk
@@ -46,6 +51,7 @@ evt_46748e0a4d03523eacc3872451cccd25,2023-01-23,2023,by_election,toronto_city_cl
 evt_eabc9f0a14165449acd2f9a1e7d557ce,2023-06-26,2023,by_election,toronto_city_clerk
 on-2023-07-27-by-095,2023-07-27,2023,by_election,elections_ontario
 evt_ee5715a80b5a532c8b778d94f6b7c9b8,2023-11-30,2023,by_election,toronto_city_clerk
+mississauga-2024-06-10-mayoral-by-election,2024-06-10,2024,by_election,mississauga_city_clerk
 ec-be-2024-06-24,2024-06-24,2024,by_election,elections_canada
 evt_af73d490abf95ffdae38ca2c830e51f4,2024-11-04,2024,by_election,toronto_city_clerk
 on-2025-general,2025-02-27,2025,general,elections_ontario

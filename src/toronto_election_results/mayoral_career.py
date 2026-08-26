@@ -8,6 +8,9 @@ from pathlib import Path
 
 import pandas as pd
 
+from .identity_curations import CandidacyLocator, CuratedIdentityAssertion
+from .schema import normalize_adapter_frame, stable_id
+
 COHORT_ID = "toronto-mayor-2026"
 EXPECTED_COHORT_SIZE = 53
 REVIEW_STATUSES = {
@@ -83,6 +86,7 @@ BACKFILL_COLUMNS = [
     "total_contest_votes",
     "vote_share",
     "vote_rank",
+    "n_candidates",
     "elected",
     "acclaimed",
     "result_status",
@@ -97,6 +101,54 @@ MAPPING_COLUMNS = [
     "decision_id",
     "canonical_candidacy_id",
 ]
+
+_BACKFILL_METADATA = {
+    "mcb_04e95c9a724c54999be8e7d630bca53e": (
+        "ec-ge-41",
+        "federal-2003-representation-order",
+        "35001",
+    ),
+    "mcb_318578ea26775989886cc960cd9d578e": (
+        "ec-ge-42",
+        "federal-2013-representation-order",
+        "35001",
+    ),
+    "mcb_9c7aef4fac8d5654b76124195615fb03": (
+        "mississauga-2024-06-10-mayoral-by-election",
+        "mississauga-2024-citywide",
+        "city",
+    ),
+    "mcb_a14d901d7faa5d15abbbbf553bfed1b5": (
+        "on-2015-09-03-by-091",
+        "ontario-2007-107",
+        "091",
+    ),
+    "mcb_f5f1e935bd9e57ff82a4507255752612": (
+        "on-2022-general",
+        "ontario-2018-124",
+        "092",
+    ),
+    "mcb_acb473030b2554299e80456052ab7773": (
+        "toronto-1991-general",
+        "metro-toronto-1991",
+        "downtown",
+    ),
+    "mcb_a0d89937c2e2598ea6bebe4303fa39df": (
+        "toronto-1994-general",
+        "metro-toronto-1994",
+        "downtown",
+    ),
+    "mcb_9df884ee157a57d887f9b7e165384eaf": (
+        "toronto-1997-general",
+        "toronto-1997-wards",
+        "24",
+    ),
+    "mcb_a63809d41357505c95f345cf0e63acf9": (
+        "toronto-2000-general",
+        "toronto-2000-wards",
+        "20",
+    ),
+}
 
 
 @dataclass(frozen=True)
@@ -160,6 +212,155 @@ def load_contract_table(path: str | Path, columns: list[str]) -> pd.DataFrame:
     if table.columns.tolist() != columns:
         raise ValueError(f"{Path(path).name} columns must be exactly: {', '.join(columns)}")
     return table
+
+
+def load_mayoral_career_backfills(reference_dir: str | Path) -> pd.DataFrame:
+    """Adapt only adjudicated career backfills to the normalized source boundary."""
+
+    reference = Path(reference_dir)
+    backfill = load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS)
+    decisions = load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS)
+    allowed = decisions.loc[
+        decisions["decision"].eq("confirm")
+        & decisions["ingestion_action"].eq("add_backfill"),
+        "decision_id",
+    ]
+    if set(backfill["decision_id"]) != set(allowed):
+        raise ValueError("career backfills must exactly match confirmed add_backfill decisions")
+    unknown = sorted(set(backfill["backfill_id"]) - set(_BACKFILL_METADATA))
+    if unknown:
+        raise ValueError(f"missing canonical metadata for career backfill {unknown[0]}")
+
+    rows: list[dict[str, object]] = []
+    for row in backfill.itertuples(index=False):
+        event_id, boundary_regime, official_district_id = _BACKFILL_METADATA[row.backfill_id]
+        rows.append(
+            {
+                "event_id": event_id,
+                "election_date": row.election_date,
+                "election_type": row.election_type,
+                "election_authority": row.election_authority,
+                "represented_body": row.represented_body,
+                "office_type": row.office_type,
+                "boundary_regime": boundary_regime,
+                "official_district_id": official_district_id,
+                "district_name": row.district_name,
+                "candidate_name_raw": row.candidate_name_raw,
+                "source_candidacy_id": row.backfill_id,
+                "party_name_raw": row.party_name_raw or pd.NA,
+                "votes": row.votes,
+                "elected": row.elected.casefold() == "true",
+                "outcome_method": "vote",
+                "result_status": row.result_status,
+                "coverage_status": "candidate_record",
+                "reported_total_contest_votes": row.total_contest_votes,
+                "reported_vote_share": row.vote_share,
+                "reported_vote_rank": row.vote_rank,
+                "reported_n_candidates": row.n_candidates,
+                "source_authority": row.source_authority,
+                "source_resource": row.source_resource,
+                "source_detail": row.source_locator,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def build_mayoral_career_identity_assertions(
+    reference_dir: str | Path,
+    adapter_frames: list[pd.DataFrame],
+) -> tuple[CuratedIdentityAssertion, ...]:
+    """Build explicit identity assertions from the completed adjudication registry."""
+
+    reference = Path(reference_dir)
+    cohort = load_mayoral_career_cohort(reference / "mayoral_career_cohort_2026.csv")
+    reviews = load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS)
+    decisions = load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS)
+    backfill = load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS)
+    mappings = load_contract_table(
+        reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS
+    )
+    validate_mayoral_career_contracts(
+        cohort,
+        reviews,
+        decisions,
+        backfill,
+        mappings,
+        repository_root=reference.parent.parent,
+        require_complete=True,
+        require_ingested=False,
+    )
+
+    normalized = pd.concat(
+        [
+            normalize_adapter_frame(frame, require_persistent_candidacy_id=True)
+            for frame in adapter_frames
+            if not frame.empty
+        ],
+        ignore_index=True,
+        sort=False,
+    )
+    by_candidacy = normalized.drop_duplicates("candidacy_id").set_index("candidacy_id")
+    backfill_ids = normalized.loc[
+        normalized["source_candidacy_id"].isin(backfill["backfill_id"]),
+        ["source_candidacy_id", "candidacy_id"],
+    ].set_index("source_candidacy_id")["candidacy_id"]
+    mapped = mappings.set_index("decision_id")["canonical_candidacy_id"].to_dict()
+    mapped.update(
+        backfill.set_index("decision_id")["backfill_id"].map(backfill_ids).to_dict()
+    )
+    reviews_by_subject = reviews.set_index("subject_candidacy_id")
+    assertions: list[CuratedIdentityAssertion] = []
+    confirmed = decisions.loc[decisions["decision"].eq("confirm")]
+    for subject_id, subject_decisions in confirmed.groupby("subject_candidacy_id", sort=True):
+        candidacy_ids = [subject_id, *subject_decisions["decision_id"].map(mapped).tolist()]
+        candidacy_ids = list(dict.fromkeys(candidacy_ids))
+        missing = [value for value in candidacy_ids if value not in by_candidacy.index]
+        if missing:
+            raise ValueError(f"career assertion references missing candidacy {missing[0]}")
+        occurrences = tuple(
+            CandidacyLocator(
+                event_id=str(by_candidacy.loc[candidacy_id, "event_id"]),
+                represented_body=str(by_candidacy.loc[candidacy_id, "represented_body"]),
+                office_type=str(by_candidacy.loc[candidacy_id, "office_type"]),
+                candidate_name=str(by_candidacy.loc[candidacy_id, "candidate_name"]),
+                candidacy_id=candidacy_id,
+            )
+            for candidacy_id in candidacy_ids
+        )
+        review = reviews_by_subject.loc[subject_id]
+        evidence_urls = tuple(
+            dict.fromkeys(
+                url
+                for url in subject_decisions["result_source_locator"]
+                if str(url).startswith("https://")
+            )
+        )
+        assertions.append(
+            CuratedIdentityAssertion(
+                assertion_id=stable_id("ast", COHORT_ID, subject_id),
+                preferred_name=str(review["certified_name"]),
+                occurrences=occurrences,
+                evidence_urls=evidence_urls,
+                rationale=str(review["primary_rationale"]),
+                registry_person_ids=(str(review["resulting_person_id"]),),
+                canonical_person_id=str(review["resulting_person_id"]),
+            )
+        )
+    return tuple(assertions)
+
+
+def exclude_superseded_identity_decisions(
+    identity_decisions: pd.DataFrame, reference_dir: str | Path
+) -> pd.DataFrame:
+    """Let the newer complete-career adjudication supersede older occurrence reviews."""
+
+    mappings = load_contract_table(
+        Path(reference_dir) / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS
+    )
+    superseded = set(mappings["canonical_candidacy_id"])
+    return identity_decisions.loc[
+        ~identity_decisions["candidacy_id"].isin(superseded)
+    ].reset_index(drop=True)
 
 
 def _require_unique(table: pd.DataFrame, columns: list[str], label: str) -> None:
@@ -446,7 +647,6 @@ def validate_mayoral_career_cohort(
         expected = {
             "candidate_name": row.certified_name,
             "candidate_name_raw": row.certified_name_raw,
-            "person_id": row.current_person_id,
             "event_id": row.event_id,
             "contest_id": row.contest_id,
         }

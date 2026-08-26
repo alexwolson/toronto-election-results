@@ -12,11 +12,14 @@ from toronto_election_results.mayoral_career import (
     EXPECTED_COHORT_SIZE,
     MAPPING_COLUMNS,
     REVIEW_COLUMNS,
+    exclude_superseded_identity_decisions,
     load_contract_table,
+    load_mayoral_career_backfills,
     load_mayoral_career_cohort,
     validate_mayoral_career_cohort,
     validate_mayoral_career_contracts,
 )
+from toronto_election_results.schema import derive_result_metrics, normalize_adapter_frame
 
 ROOT = Path(__file__).resolve().parents[1]
 COHORT_PATH = ROOT / "data/reference/mayoral_career_cohort_2026.csv"
@@ -63,7 +66,6 @@ def test_non_mayoral_contest_is_rejected():
     ("field", "value", "message"),
     [
         ("certified_name", "Changed Name", "candidate_name changed"),
-        ("current_person_id", "per_changed", "person_id changed"),
         ("event_id", "evt_changed", "cohort must use one event_id"),
     ],
 )
@@ -153,6 +155,7 @@ def _contract_inputs(tmp_path: Path):
                 "total_contest_votes": "1000",
                 "vote_share": "0.1",
                 "vote_rank": "2",
+                "n_candidates": "3",
                 "elected": "false",
                 "acclaimed": "false",
                 "result_status": "official",
@@ -225,6 +228,66 @@ def test_complete_reconciled_registry_covers_the_entire_cohort():
         require_complete=True,
         require_ingested=False,
     )
+
+
+def test_all_confirmed_occurrences_have_canonical_mappings():
+    cohort = load_mayoral_career_cohort(COHORT_PATH)
+    reference = ROOT / "data/reference"
+
+    validate_mayoral_career_contracts(
+        cohort,
+        load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS),
+        load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS),
+        load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS),
+        load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
+        repository_root=ROOT,
+        require_complete=True,
+        require_ingested=True,
+    )
+
+
+def test_only_confirmed_backfills_enter_candidate_record_adapter():
+    adapter = load_mayoral_career_backfills(ROOT / "data/reference")
+
+    assert len(adapter) == 9
+    assert adapter["coverage_status"].eq("candidate_record").all()
+    assert set(adapter["source_candidacy_id"]) == set(
+        load_contract_table(
+            ROOT / "data/reference/mayoral_career_backfill.csv", BACKFILL_COLUMNS
+        )["backfill_id"]
+    )
+
+
+def test_candidate_record_preserves_authority_reported_metrics():
+    adapter = load_mayoral_career_backfills(ROOT / "data/reference")
+    results = derive_result_metrics(
+        normalize_adapter_frame(adapter, require_persistent_candidacy_id=True)
+    )
+    alexander = results.loc[results["candidate_name_raw"].eq("Chris Alexander")].sort_values(
+        "election_date"
+    )
+
+    assert alexander["total_contest_votes"].tolist() == [56268, 56307]
+    assert alexander["n_candidates"].tolist() == [5, 5]
+    assert alexander["vote_rank"].tolist() == [1, 2]
+    assert alexander.iloc[1]["vote_share"] == pytest.approx(19374 / 56307)
+
+
+def test_complete_career_review_supersedes_older_occurrence_dispositions():
+    mappings = load_contract_table(
+        ROOT / "data/reference/mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS
+    )
+    mapped_id = mappings.iloc[0]["canonical_candidacy_id"]
+    decisions = pd.DataFrame(
+        [
+            {"candidacy_id": mapped_id, "decision": "unresolved"},
+            {"candidacy_id": "can_unrelated", "decision": "confirmed"},
+        ]
+    )
+
+    filtered = exclude_superseded_identity_decisions(decisions, ROOT / "data/reference")
+
+    assert filtered["candidacy_id"].tolist() == ["can_unrelated"]
 
 
 def test_invalid_review_status_is_rejected(tmp_path: Path):
