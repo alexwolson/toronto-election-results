@@ -10,6 +10,8 @@ import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
 
+import pandas as pd
+
 from .build_manifest import sha256_file
 from .frontend_feeds import write_mayoral_candidates_feed, write_person_aliases_feed
 
@@ -29,6 +31,7 @@ def build_results_release_bundle(
     source_commit: str,
     dirty: bool,
     generated_at: str | None = None,
+    reference_dir: str | Path | None = None,
 ) -> Path:
     """Atomically package canonical tables and factual frontend feeds."""
 
@@ -37,7 +40,16 @@ def build_results_release_bundle(
     results_path = source / "election_results.csv"
     people_path = source / "people.csv"
     build_manifest_path = source / "build_manifest.json"
-    for required in (results_path, people_path, build_manifest_path):
+    reference = Path(reference_dir) if reference_dir is not None else source.parent / "reference"
+    career_reviews_path = reference / "mayoral_career_reviews.csv"
+    career_mappings_path = reference / "mayoral_career_occurrence_mapping.csv"
+    for required in (
+        results_path,
+        people_path,
+        build_manifest_path,
+        career_reviews_path,
+        career_mappings_path,
+    ):
         if not required.is_file():
             raise FileNotFoundError(f"missing results release input: {required}")
 
@@ -50,7 +62,28 @@ def build_results_release_bundle(
         staging = Path(tmp)
         for asset in assets:
             shutil.copy2(asset, staging / asset.name)
-        write_mayoral_candidates_feed(results_path, staging / "mayoral_candidates.json")
+        reviews = pd.read_csv(career_reviews_path, dtype="string", keep_default_na=False)
+        public_coverage_columns = [
+            "cohort_id",
+            "subject_candidacy_id",
+            "certified_name",
+            "resulting_person_id",
+            "review_date",
+            "source_release",
+            "review_status",
+            "limitations",
+            "confirmed_count",
+            "held_count",
+            "split_count",
+            "rejected_count",
+        ]
+        reviews[public_coverage_columns].to_csv(
+            staging / "mayoral_career_coverage.csv", index=False
+        )
+        shutil.copy2(career_mappings_path, staging / career_mappings_path.name)
+        write_mayoral_candidates_feed(
+            results_path, career_reviews_path, staging / "mayoral_candidates.json"
+        )
         write_person_aliases_feed(results_path, people_path, staging / "person_aliases.json")
 
         packaged = sorted(
@@ -75,7 +108,7 @@ def build_results_release_bundle(
                 "mayoral_candidates": "mayoral_candidates.json",
                 "person_aliases": "person_aliases.json",
             },
-            "feed_versions": {"mayoral_candidates": 2, "person_aliases": 1},
+            "feed_versions": {"mayoral_candidates": 3, "person_aliases": 1},
         }
         (staging / "release_manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

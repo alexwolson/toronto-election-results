@@ -58,6 +58,19 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
         "person_id,preferred_name,identity_status\nper_chow,Olivia Chow,active\n"
     )
     (source / "build_manifest.json").write_text('{"schema_version":"2.1.0"}\n')
+    reference = tmp_path / "reference"
+    reference.mkdir()
+    (reference / "mayoral_career_reviews.csv").write_text(
+        "cohort_id,subject_candidacy_id,certified_name,resulting_person_id,luna_report_path,"
+        "terra_report_path,review_date,source_release,review_status,limitations,confirmed_count,"
+        "held_count,split_count,rejected_count,primary_rationale\n"
+        "toronto-mayor-2026,can_chow_2026,Olivia Chow,per_chow,,,2026-08-26,"
+        "results-2026-08-26.1,reviewed,,1,0,0,0,Verified.\n"
+    )
+    (reference / "mayoral_career_occurrence_mapping.csv").write_text(
+        "cohort_id,subject_candidacy_id,decision_id,canonical_candidacy_id\n"
+        "toronto-mayor-2026,can_chow_2026,mcd_chow,can_chow_2023\n"
+    )
 
     output = build_results_release_bundle(
         source,
@@ -65,11 +78,13 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
         source_commit="abc123",
         dirty=False,
         generated_at="2026-08-26T12:00:00Z",
+        reference_dir=reference,
     )
 
     manifest = json.loads((output / "release_manifest.json").read_text())
     assert manifest["source_commit"] == "abc123"
     assert manifest["source_dirty"] is False
+    assert manifest["feed_versions"]["mayoral_candidates"] == 3
     assert manifest["feeds"] == {
         "mayoral_candidates": "mayoral_candidates.json",
         "person_aliases": "person_aliases.json",
@@ -81,6 +96,8 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
         "people.csv",
         "mayoral_candidates.json",
         "person_aliases.json",
+        "mayoral_career_coverage.csv",
+        "mayoral_career_occurrence_mapping.csv",
     } <= set(assets)
     for filename, record in assets.items():
         assert record["sha256"] == hashlib.sha256((output / filename).read_bytes()).hexdigest()

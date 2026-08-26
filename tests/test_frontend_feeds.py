@@ -34,6 +34,22 @@ def _row(**overrides):
     return row
 
 
+def _reviews(*candidacy_ids):
+    return pd.DataFrame(
+        [
+            {
+                "cohort_id": "toronto-mayor-2026",
+                "subject_candidacy_id": candidacy_id,
+                "source_release": "results-2026-08-26.1",
+                "review_date": "2026-08-26",
+                "review_status": "reviewed",
+                "limitations": "",
+            }
+            for candidacy_id in candidacy_ids
+        ]
+    )
+
+
 def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     rows = pd.DataFrame(
         [
@@ -102,10 +118,12 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
         ]
     )
 
-    feed = build_mayoral_candidates_feed(rows)
+    feed = build_mayoral_candidates_feed(rows, _reviews("can_chow_2026", "can_gong_2026"))
 
-    assert feed["schema_version"] == 2
+    assert feed["schema_version"] == 3
     assert feed["ballot_certified"] is True
+    assert feed["coverage"]["policy"] == "full_verified_canadian_electoral_career"
+    assert feed["coverage"]["year_cutoff"] is None
     assert [candidate["display_name"] for candidate in feed["candidates"]] == [
         "Olivia Chow",
         "Edward Gong",
@@ -125,7 +143,7 @@ def test_candidate_feed_rejects_an_incomplete_current_field():
     rows = pd.DataFrame([_row(coverage_status="partial")])
 
     with pytest.raises(ValueError, match="complete certified roster"):
-        build_mayoral_candidates_feed(rows)
+        build_mayoral_candidates_feed(rows, _reviews("can_current"))
 
 
 def test_person_aliases_are_owned_by_results_and_ambiguous_names_do_not_resolve():
