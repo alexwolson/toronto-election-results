@@ -339,9 +339,9 @@ def normalize_adapter_frame(
     out["reported_n_candidates"] = _as_nullable_integer(
         out["reported_n_candidates"], "reported_n_candidates"
     )
-    out["reported_vote_share"] = pd.to_numeric(
-        out["reported_vote_share"], errors="coerce"
-    ).astype("Float64")
+    out["reported_vote_share"] = pd.to_numeric(out["reported_vote_share"], errors="coerce").astype(
+        "Float64"
+    )
     out["elected"] = _as_nullable_boolean(out["elected"], "elected")
     out["incumbent_reported"] = _as_nullable_boolean(
         out["incumbent_reported"], "incumbent_reported"
@@ -457,12 +457,8 @@ def derive_result_metrics(frame: pd.DataFrame) -> pd.DataFrame:
         out.loc[candidate_record, "total_contest_votes"] = out.loc[
             candidate_record, "reported_total_contest_votes"
         ]
-        out.loc[candidate_record, "vote_share"] = out.loc[
-            candidate_record, "reported_vote_share"
-        ]
-        out.loc[candidate_record, "vote_rank"] = out.loc[
-            candidate_record, "reported_vote_rank"
-        ]
+        out.loc[candidate_record, "vote_share"] = out.loc[candidate_record, "reported_vote_share"]
+        out.loc[candidate_record, "vote_rank"] = out.loc[candidate_record, "reported_vote_rank"]
         out.loc[candidate_record, "n_candidates"] = out.loc[
             candidate_record, "reported_n_candidates"
         ]

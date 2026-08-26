@@ -29,12 +29,12 @@ from .federal import load_federal_results
 from .identity import validate_identity_tables
 from .identity_curations import DEFAULT_IDENTITY_ASSERTIONS
 from .identity_dispositions import read_identity_review_decisions
-from .municipal import load_council_results
 from .mayoral_career import (
     build_mayoral_career_identity_assertions,
     exclude_superseded_identity_decisions,
     load_mayoral_career_backfills,
 )
+from .municipal import load_council_results
 from .ontario import download_ontario_sources, load_ontario_results
 from .pending_candidates import load_pending_council_candidates
 from .release import assemble_bootstrapped_release, validate_tables, write_release

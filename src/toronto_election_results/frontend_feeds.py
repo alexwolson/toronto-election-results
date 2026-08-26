@@ -165,9 +165,7 @@ def build_mayoral_candidates_feed(
     }
     missing_reviews = sorted(required_reviews - set(career_reviews.columns))
     if missing_reviews:
-        raise ValueError(
-            f"career reviews are missing feed columns: {', '.join(missing_reviews)}"
-        )
+        raise ValueError(f"career reviews are missing feed columns: {', '.join(missing_reviews)}")
     if career_reviews["subject_candidacy_id"].duplicated().any():
         raise ValueError("career reviews must contain one row per current candidacy")
 

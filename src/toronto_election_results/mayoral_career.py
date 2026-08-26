@@ -221,8 +221,7 @@ def load_mayoral_career_backfills(reference_dir: str | Path) -> pd.DataFrame:
     backfill = load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS)
     decisions = load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS)
     allowed = decisions.loc[
-        decisions["decision"].eq("confirm")
-        & decisions["ingestion_action"].eq("add_backfill"),
+        decisions["decision"].eq("confirm") & decisions["ingestion_action"].eq("add_backfill"),
         "decision_id",
     ]
     if set(backfill["decision_id"]) != set(allowed):
@@ -305,9 +304,7 @@ def build_mayoral_career_identity_assertions(
         ["source_candidacy_id", "candidacy_id"],
     ].set_index("source_candidacy_id")["candidacy_id"]
     mapped = mappings.set_index("decision_id")["canonical_candidacy_id"].to_dict()
-    mapped.update(
-        backfill.set_index("decision_id")["backfill_id"].map(backfill_ids).to_dict()
-    )
+    mapped.update(backfill.set_index("decision_id")["backfill_id"].map(backfill_ids).to_dict())
     reviews_by_subject = reviews.set_index("subject_candidacy_id")
     assertions: list[CuratedIdentityAssertion] = []
     confirmed = decisions.loc[decisions["decision"].eq("confirm")]
@@ -358,9 +355,9 @@ def exclude_superseded_identity_decisions(
         Path(reference_dir) / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS
     )
     superseded = set(mappings["canonical_candidacy_id"])
-    return identity_decisions.loc[
-        ~identity_decisions["candidacy_id"].isin(superseded)
-    ].reset_index(drop=True)
+    return identity_decisions.loc[~identity_decisions["candidacy_id"].isin(superseded)].reset_index(
+        drop=True
+    )
 
 
 def _require_unique(table: pd.DataFrame, columns: list[str], label: str) -> None:

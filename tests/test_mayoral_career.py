@@ -252,9 +252,9 @@ def test_only_confirmed_backfills_enter_candidate_record_adapter():
     assert len(adapter) == 9
     assert adapter["coverage_status"].eq("candidate_record").all()
     assert set(adapter["source_candidacy_id"]) == set(
-        load_contract_table(
-            ROOT / "data/reference/mayoral_career_backfill.csv", BACKFILL_COLUMNS
-        )["backfill_id"]
+        load_contract_table(ROOT / "data/reference/mayoral_career_backfill.csv", BACKFILL_COLUMNS)[
+            "backfill_id"
+        ]
     )
 
 

@@ -103,8 +103,7 @@ def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[st
     if outside.any():
         value = frame.loc[outside, "election_date"].iloc[0]
         issues.append(
-            f"{table_label}.election_date {value!r} is after the pending "
-            "2026-10-26 municipal event"
+            f"{table_label}.election_date {value!r} is after the pending 2026-10-26 municipal event"
         )
     if "election_year" not in frame:
         issues.append(f"{table_label} is missing election_year")
@@ -371,9 +370,9 @@ def validate_release(
                 | group["vote_rank"].gt(group["n_candidates"])
                 | group["n_candidates"].lt(len(group))
             )
-            expected_share = group["votes"].astype(float) / group[
-                "total_contest_votes"
-            ].astype(float)
+            expected_share = group["votes"].astype(float) / group["total_contest_votes"].astype(
+                float
+            )
             inconsistent_share = [
                 not math.isclose(float(actual), float(expected), abs_tol=1e-12)
                 for actual, expected in zip(group["vote_share"], expected_share, strict=True)
