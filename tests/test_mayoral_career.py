@@ -211,6 +211,22 @@ def test_reconciled_registry_is_valid_before_backfill_ingestion():
     )
 
 
+def test_complete_reconciled_registry_covers_the_entire_cohort():
+    cohort = load_mayoral_career_cohort(COHORT_PATH)
+    reference = ROOT / "data/reference"
+
+    validate_mayoral_career_contracts(
+        cohort,
+        load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS),
+        load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS),
+        load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS),
+        load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
+        repository_root=ROOT,
+        require_complete=True,
+        require_ingested=False,
+    )
+
+
 def test_invalid_review_status_is_rejected(tmp_path: Path):
     inputs = list(_contract_inputs(tmp_path))
     inputs[1].loc[0, "review_status"] = "probably_reviewed"
