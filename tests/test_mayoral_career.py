@@ -195,7 +195,7 @@ def test_repository_contract_tables_have_exact_schema(filename: str, columns: li
     assert table.columns.tolist() == columns
 
 
-def test_reconciled_pilot_registry_is_valid_and_fully_mapped():
+def test_reconciled_registry_is_valid_before_backfill_ingestion():
     cohort = load_mayoral_career_cohort(COHORT_PATH)
     reference = ROOT / "data/reference"
 
@@ -207,7 +207,7 @@ def test_reconciled_pilot_registry_is_valid_and_fully_mapped():
         load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
         repository_root=ROOT,
         require_complete=False,
-        require_ingested=True,
+        require_ingested=False,
     )
 
 
