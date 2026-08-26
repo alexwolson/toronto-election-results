@@ -1,6 +1,6 @@
 # Record wards as-run; do not reproject across the 2018 boundary change
 
-Status: accepted
+Status: accepted; generalized across election authorities by ADR 0006
 
 ## Context
 

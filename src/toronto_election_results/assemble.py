@@ -1,4 +1,4 @@
-"""Assemble the unified Toronto election results table from the raw Open Data files.
+"""Legacy Mayor/Councillor parsing used internally by the v2 municipal adapter.
 
 Extracts the per-year result ZIPs, parses councillor and mayor files (all layout families),
 collapses to contest level, tags election metadata + provenance, derives the per-contest fields,
@@ -6,6 +6,9 @@ normalizes names, and resolves cross-election candidate IDs.
 
 Incumbency (``incumbent`` / ``incumbent_source`` / ``incumbent_confidence``) is derived from a
 curated council composition and joined in below.
+
+The old command-line publisher is retired because it writes the superseded v1 artifacts. Use
+``python -m toronto_election_results.pipeline`` for the public v2 release.
 """
 
 from __future__ import annotations
@@ -21,7 +24,6 @@ from .incumbency import (
     ROSTER_CONFIDENCE,
     build_composition,
     council_surnames,
-    enrich_composition,
     flag_incumbents,
 )
 from .parse_results import parse_open_data_file, to_contest_level
@@ -33,7 +35,6 @@ from .voter_statistics import (
 
 RAW = Path("data/raw")
 INTERIM = Path("data/interim")
-OUT = Path("data/out")
 
 # year -> (polling date, election type, ward system, offices present)
 ELECTIONS = {
@@ -138,17 +139,18 @@ def build_base(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
             contest["election_date"] = date
             contest["election_type"] = etype
             contest["ward_system"] = ward_system
-            contest["source"] = "open_data"
+            contest["source"] = path.as_posix()
             contest["contest_id"] = [_contest_id(year, office, w) for w in contest["ward_number"]]
             frames.append(contest)
     for year, ward, filename, date, ward_system in BY_ELECTIONS:
-        wardwise = parse_open_data_file(raw / "byelection" / filename, office="councillor")
+        path = raw / "byelection" / filename
+        wardwise = parse_open_data_file(path, office="councillor")
         contest = to_contest_level(wardwise, office="councillor")
         contest["election_year"] = year
         contest["election_date"] = date
         contest["election_type"] = "by_election"
         contest["ward_system"] = ward_system
-        contest["source"] = "open_data"
+        contest["source"] = path.as_posix()
         contest["contest_id"] = [_contest_id(year, "councillor", w) for w in contest["ward_number"]]
         frames.append(contest)
     return pd.concat(frames, ignore_index=True)
@@ -179,23 +181,10 @@ def assemble(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
 
 
 def main() -> None:
-    df = assemble()
-    OUT.mkdir(parents=True, exist_ok=True)
-    df.to_csv(OUT / "toronto_election_results.csv", index=False)
-    df.to_parquet(OUT / "toronto_election_results.parquet", index=False)
-    # Enrich with candidate_id + office, then sort for a stable file (built from unordered sets).
-    composition = enrich_composition(build_composition(), df).sort_values(
-        ["election_year", "match_key"]
+    raise SystemExit(
+        "The legacy v1 assemble command is retired; run "
+        "`python -m toronto_election_results.pipeline` to build the v2 release."
     )
-    composition.to_csv(OUT / "council_composition.csv", index=False)
-    null_ids = int(composition["candidate_id"].isna().sum())
-    ambiguous = int((composition["candidate_id_resolution"] == "ambiguous").sum())
-    print(
-        f"composition: {len(composition)} members, {null_ids} without a resolved candidate_id "
-        f"(pre-dataset retirees or agent name-form variants), {ambiguous} ambiguous"
-    )
-    print(f"wrote {len(df)} rows to {OUT}/toronto_election_results.{{csv,parquet}}")
-    print(df.groupby(["election_year", "office"]).size().to_string())
 
 
 if __name__ == "__main__":

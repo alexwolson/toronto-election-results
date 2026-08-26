@@ -1,87 +1,255 @@
-# Data dictionary — Toronto Election Results
+# Data dictionary — Toronto Election Results v2.1
 
-Unified dataset of City of Toronto municipal election results, 2003–present, for **Mayor** and
-**City Councillor**. Grain: **one row per candidate per contest**, ward-level. See `CONTEXT.md`
-for vocabulary and `docs/adr/` for the load-bearing decisions.
+The release covers completed, single-seat election contests wholly within the City of Toronto from
+2003-01-01 through 2026-08-20. It also includes the official candidate-list snapshot as of
+2026-08-21 for the Toronto municipal general election scheduled for 2026-10-26; its Candidacies and
+Contests are marked `pending` and contain no result values. The dataset includes Mayor, City
+Councillor, all four School Board Trustee systems, MP, and MPP elections. General elections,
+by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
+used only to produce Contest totals and are not published.
 
-## Scope
+The release contains 5,731 Candidacies, 881 Contests, and 55 Election events. Of those, 243
+Candidacies in 26 Contests belong to the pending 2026 municipal event; the other 5,488 Candidacies
+and 855 Contests are final. Evidence-backed Endorsement companion tables cover Mayor and City
+Councillor Contests only.
 
-- **Elections**: general (2003, 2006, 2010, 2014, 2018, 2022); the 2023 mayoral by-election; and
-  the council by-elections 2016 W2, 2017 W42, 2021 W22, 2023 W20, 2024 W15, 2025 W25 (ADR 0004).
-  2000 was dropped (no electorate data; weaker results provenance) — see ADR 0003.
-- **Offices**: Mayor, City Councillor. School-trustee races excluded.
-- **Grain**: ward-level (subdivision votes summed to the ward). Target variable: `vote_share`.
-- **Parties**: none — Toronto ballots are non-partisan; no party/affiliation is imputed.
+See `CONTEXT.md` for canonical domain language and `docs/adr/` for design decisions.
 
-## Primary table — `data/out/toronto_election_results.{csv,parquet}`
+## Primary table: `election_results`
 
-Sorted by `election_year, office, ward_number, vote_rank`.
+Grain: one Candidacy in one Contest. Common Contest labels and metrics are repeated here for direct
+modelling. The authoritative normalized entities remain available as companion tables.
 
-| Column | Type | Null rule | Notes |
+| Column | Type | Null rule | Meaning |
 |---|---|---|---|
-| `election_year` | int | never | 2003–2025 (generals every 4 yrs + by-election years) |
-| `election_date` | date | never | actual polling date |
-| `election_type` | enum | never | `general` \| `by_election` |
-| `ward_system` | enum | never | `44-ward` (2003–2014) \| `25-ward` (2018+); a property of the election |
-| `office` | enum | never | `mayor` \| `councillor` |
-| `ward_number` | int | null for mayor | ward number as that election used it |
-| `ward_name` | str | null for mayor / where absent | e.g. "Scarborough Southwest" |
-| `contest_id` | str | never | `{year}-{office}-{ward\|city}`, e.g. `2014-councillor-20`, `2003-mayor-city` |
-| `candidate_name` | str | never | normalized "First Last" |
-| `candidate_first_name` | str | best-effort (nullable) | split for matching |
-| `candidate_last_name` | str | best-effort (nullable) | split for matching |
-| `candidate_name_raw` | str | never | verbatim from source |
-| `candidate_id` | str | nullable | persistent person id (fuzzy match) |
-| `candidate_id_confidence` | float | null where no id | 0–1 |
-| `votes` | int | **null if acclaimed** | ward-summed valid votes |
-| `total_contest_votes` | int | null if acclaimed | the `vote_share` denominator, exposed |
-| `vote_share` | float | null if acclaimed | `votes / total_contest_votes` |
-| `vote_rank` | int | null if acclaimed | 1 = top vote-getter |
-| `n_candidates` | int | never | contest size (model feature) |
-| `eligible_electors` | int | never | `Total Eligible Electors` for the geography (ward for councillor, city-wide for mayor); the turnout denominator |
-| `ballots_cast` | int | never | `Number Voted` (electors who cast a ballot); the turnout numerator |
-| `turnout` | float | never | `ballots_cast / eligible_electors` |
-| `elected` | bool | never | set from authoritative winners; `argmax(votes)` QC |
-| `acclaimed` | bool | never | uncontested win, no ballots |
-| `incumbent` | bool | never | sitting holder at election time (person-based) |
-| `incumbent_source` | enum | null if not incumbent | `prior_winner` \| `city_attendance` \| `city_voting` \| `wikipedia` |
-| `incumbent_confidence` | float | never | tiered: prior-winner/City 0.90–0.95, Wikipedia 0.85 |
-| `source` | enum | never | row provenance: `open_data` |
-| `source_detail` | str | nullable | dataset resource id / PDF page |
+| `candidacy_id` | string | never | Stable source-occurrence identity for this ballot appearance. |
+| `person_id` | string | unresolved identity | Confirmed persistent Person; never assigned by fuzzy matching alone. |
+| `event_id` | string | never | Election event foreign key. |
+| `contest_id` | string | never | Contest foreign key. |
+| `election_date` | date | never | Scheduled polling date; may be in the future when `result_status=pending`. |
+| `election_year` | integer | never | Convenience feature derived from `election_date`. |
+| `election_type` | enum | never | `general` or `by_election`. |
+| `election_authority` | enum | never | `toronto_city_clerk`, `elections_canada`, or `elections_ontario`. |
+| `represented_body` | enum | never | Institution whose membership the Contest fills. |
+| `office_type` | enum | never | `mayor`, `councillor`, `trustee`, `mp`, or `mpp`. |
+| `district_id` | string | never | Native as-run Electoral district/ward foreign key. |
+| `official_district_id` | string | never | Authority's key within the represented body and Boundary regime. |
+| `district_name` | string | never | Authority-reported or deterministic display label. |
+| `boundary_regime` | string | never | Identifies the non-comparable geography system used for the vote. |
+| `candidate_name` | string | never | Normalized display form where the source format can be interpreted safely. |
+| `candidate_name_raw` | string | never | Ballot/result-source representation, preserved independently. |
+| `party_id` | string | affiliation is `party` | Party foreign key. Null for independent/non-partisan/not-reported rows. |
+| `party_name` | string | no Party | Canonical Party display label repeated for modelling. |
+| `party_name_raw` | string | source reports none | Exact authority-reported affiliation label. |
+| `party_jurisdiction` | string | never | Authority/jurisdiction in which Party identity is scoped. |
+| `affiliation_status` | enum | never | `party`, `independent`, `non_partisan`, or `not_reported`. |
+| `votes` | integer | pending/no poll | Certified valid candidate votes. Zero means an observed zero. |
+| `total_contest_votes` | integer | pending/no poll/incomplete | Sum of valid candidate votes; Vote share denominator. |
+| `vote_share` | float | pending/no poll/incomplete/zero denominator | `votes / total_contest_votes`. |
+| `vote_rank` | integer | pending/no poll/incomplete | Competition rank; tied vote totals share a rank. |
+| `n_candidates` | integer | never on Candidacy rows | Number of known Candidacies in the Contest. |
+| `eligible_electors` | integer | pending/unavailable/inapplicable | Authority count at the stated `turnout_scope`. |
+| `ballots_cast` | integer | pending/unavailable/inapplicable | Electors voting at the same scope as `eligible_electors`. |
+| `turnout` | float | pending/either operand unavailable | `ballots_cast / eligible_electors`. |
+| `turnout_scope` | string | turnout unavailable | Qualification/geography shared by both turnout operands. |
+| `elected` | boolean | pending or unresolved official outcome | Authority-certified result; not blindly rederived from vote maximum. |
+| `acclaimed` | boolean | never | True only for an official Acclamation. |
+| `outcome_method` | enum | never | `pending`, `vote`, `acclamation`, `void`, or another authority disposition. |
+| `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for the 2026 candidate snapshot. |
+| `coverage_status` | enum | never | `complete`, `partial`, or `source_missing`; independent of legal outcome. |
+| `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
+| `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
+| `incumbent_reported` | boolean | authority does not report it | Unmodified source flag; the modelled `incumbent` field uses project semantics. |
+| `source_authority` | string | never | Organization responsible for the row's official record. |
+| `source_resource` | string | never | Official dataset/report family. |
+| `source_detail` | string | never | Concrete official URL/file detail. |
+| `source_candidacy_id` | string | never | Authority candidate key where one exists; otherwise the opaque occurrence key persisted in the project Candidacy ledger. |
 
-### Null-rule summary
+### Important null semantics
 
-- **Acclaimed** rows: `votes`, `total_contest_votes`, `vote_share`, `vote_rank` all null; `elected=true`, `acclaimed=true`. (`eligible_electors`/`ballots_cast`/`turnout` are still populated — the ward's electors voted for other offices.)
-- **Mayor** rows: `ward_number`, `ward_name` null; electorate is the city-wide total.
-- `candidate_id` / `candidate_id_confidence` null where the fuzzy matcher makes no confident link.
+- Numeric zero always means an observed zero. Missing and not-applicable values are null.
+- A pending Candidacy has null votes, contest vote total, Vote share, rank, elected outcome,
+  electorate, ballots cast, and turnout. Its `outcome_method` and `result_status` are both
+  `pending`; no winner is inferred. The same persistent Candidacy ID is retained when certified
+  results replace the pending state.
+- An Acclamation has one `elected=true` row and null votes, total, share, and rank.
+- A legally void Contest may have no Candidacy rows; it remains in `contests`.
+- A source-missing Contest is a Contest placeholder only. No candidate or zero vote is fabricated.
+- Toronto trustee turnout is null: the City's municipal-ballot participation count is not a
+  board-qualified trustee measure. Mayor/Councillor composite turnout is retained and explicitly
+  labelled; federal and provincial turnout is district-specific.
+- A Person link is null when identity evidence is unresolved. Exact/fuzzy name similarity can
+  create a review proposal but cannot create a confirmed link by itself.
+- `incumbent=false` requires a confirmed Person and evidence sufficient to establish absence from
+  the same-body/same-office roster. Otherwise it is null.
 
-## Companion outputs
+## Companion tables
 
-- `data/out/subdivision_boundaries.parquet` — **GeoParquet**, keyed `(election_year, ward, subdivision_id)`, EPSG:4326, **2006+ only** (per ADR 0001).
-- `data/out/council_composition.csv` — sitting members before each election (feeds incumbency; shipped for transparency). Columns: `election_year`, `member_name`, `candidate_id`, `office` (`councillor`/`mayor`), `match_key`, `incumbent_source`, `confidence`, `candidate_id_resolution`.
-  - **`candidate_id`** resolves each member to their stable results id via a global identity-key map over *all* years (trying an agent name-form alias where the two rosters disagreed on spelling, e.g. George/Giorgio Mammoliti), so a consumer can join a sitting incumbent to their most-recent prior-win results row without re-implementing name matching. Null (`candidate_id_resolution` = `no_results_match`) only where the member never ran in scope (a pre-dataset retiree, or an appointee like Harvey Barron who never stood); `ambiguous` if a key ever maps to >1 id.
-  - **`office`** is the office of that member's most-recent win before the year (tracking councillor→mayor moves), falling back to the roster's office for members with no in-scope prior win (e.g. an incumbent mayor whose only win predates the data). Lets a consumer filter councillors vs mayor across the 44→25 ward change and by-election entries.
-  - **Known limitation**: in the City-attendance years (2014, 2018) a ward whose councillor was replaced by appointment in the final months lists *both* people (the window catches each), so those years carry ~2 extra members. The roster years (2003, 2006) list exactly one member per seat.
+### `election_events`
 
-## Sources (per row `source`, ADR 0002/0003)
+One row per officially called Election event: `event_id`, polling date/year, type, and authority.
+Separately called by-elections may share a date without sharing identity. The scheduled 2026
+Toronto municipal general election is present because its official candidate roster is published.
 
-- **Results**: City Open Data "Elections – Official Results" (generals) + "Elections – Official By-Election Results" (mayor 2023, council 2016–2025). Read each candidate's `Total`; ignore subdivision columns.
-- **Electorate/turnout**: City Open Data "Elections – Voter Statistics" (generals) + "Elections – By-Election Voter Statistics" (each by-election). Sum subdivision rows to ward level; take `Total Eligible Electors` and `Number Voted`. Electorate is routed **per contest** — a council by-election's ward turnout is distinct from a same-year mayoral (e.g. 2023 Ward 20 ≠ the June mayoral). **No 2000 file exists.**
-- **Incumbency 2010–2022**: City Council Meeting Attendance ∪ Voting Record datasets. **2003/2006**: two independent agent-compiled council rosters, reconciled (versioned in `data/reference/roster_agent_{a,b}.txt`). The bulk is `prior_winner` (won the prior in-scope election), robust to name drift.
+### `contests`
 
-## QC gates
+One row per Contest, including event/body/office/district keys, Outcome method, Result status,
+Coverage status, single-seat cardinality, vote total, turnout operands/scope, and source fields.
+This table also contains pending Contests with null result metrics and void/source-missing Contests
+that correctly have no Candidacy row.
 
-`validate.py`:
-- Exactly one `elected=true` per single-seat contest; every contest has a winner.
-- `vote_share` sums to ~1.0 per contested contest; `total_contest_votes == sum(votes)`.
-- Acclaimed contests have null votes and `elected=true`.
-- No duplicate `(contest_id, candidate_name_raw)`; no negative votes.
-- `turnout ∈ (0, 1]`; `ballots_cast ≤ eligible_electors`; `ballots_cast ≥ total_contest_votes`.
+### `people`
 
-`crosscheck_winners.py`:
-- Every derived councillor winner is a sitting member of the next council or a documented mid-term departure (`KNOWN_ACCOUNTED`) — 0 unexplained.
-- Voter-stats parse verified: city-wide totals match the City's published figures (2018 ≈ 41%, 2022 ≈ 30%, 2023 ≈ 37%).
+The persistent identity registry: opaque `person_id`, preferred name, active/deprecated status,
+visible redirect target, and creation release. A Person name never rewrites a historical ballot
+name.
 
-## Caveats
+### `candidacy_person_links`
 
-- `eligible_electors` is not a clean cross-year population series — the Voters' List is rebuilt each cycle (e.g. 2003 counts ~300K more than 2006), and election-day additions inflate the denominator, slightly depressing apparent turnout.
+Audited occurrence-to-Person history. `link_status` is `confirmed`, `proposed`, `rejected`, or
+`unresolved`; method, evidence, reviewer, and release-validity fields make merges and later
+corrections visible. `proposed` means not yet adjudicated; `unresolved` may retain the reviewed
+candidate Person when evidence is insufficient; `rejected` records a disproved candidate Person.
+Only active confirmed links populate `election_results.person_id`.
+
+### `parties`
+
+One row per legal Party identity within a jurisdiction: `party_id`, jurisdiction, canonical name,
+and retained source label. Party is a Candidacy relationship, never a permanent Person attribute.
+
+### `office_tenures`
+
+Evidence that a Person held one Office type in one Represented body, including known/approximate
+dates, district where available, entry method, and source. Appointments may appear here even though
+appointments are not Election results. Date-precision fields distinguish exact election dates from
+unknown or reference-bounded dates; `source_authority` and `source_detail` retain the evidence.
+
+### `electoral_districts`
+
+One row per native `(represented_body, boundary_regime, official_district_id)` identity. Geometry
+is EPSG:4326 Polygon/MultiPolygon where acquired. `geometry_status` and
+`geometry_missing_reason` make unavailable historical/authority geometries explicit; missing
+geometry never excludes a result. Geometry provenance records the authority, resource, concrete
+source file, and source year. The CSV serializes geometry as WKT; the Parquet artifact is
+GeoParquet. The release does not publish subdivision-level polygons.
+
+### `endorsers`
+
+One row per exact Endorser. The 9-row release panel contains people, organizations, and editorial
+boards; a parent, affiliate, local, owner, member, or editorial board is never treated as another
+entity's alias. Core fields are `endorser_id`, `canonical_name`, `endorser_type`, optional
+`person_id`, and `is_panel_endorser`. Panel-basis, eligibility, office-applicability, and evidence
+fields record why and when an Endorser belongs in the systematic panel. Every approved panel
+Endorser applies to both Mayor and City Councillor Contests; that scope flag neither creates an
+Endorsement nor claims that a specific Contest was searched.
+
+### `endorsement_assertions`
+
+One row per source-specific Endorsement claim. `assertion_id` is the assertion identity;
+`endorsement_id` is populated only when a confirmed assertion produces a fact. The row locates the
+Endorser and Contest, the Candidacy when resolvable, the asserted candidate name, review state,
+Endorsement kind, announcement date/precision, source type, and primary/secondary evidence URLs.
+Review states are `proposed`, `confirmed`, `unresolved`, `rejected`, and `withdrawn`. The release
+contains 155 assertions: 154 confirmed and one unresolved assertion whose supported target has no
+published Candidacy row.
+
+### `endorsements`
+
+The 154 adjudicated positive facts, at one exact `(endorser_id, contest_id, candidacy_id)` edge per
+row, with a stable `endorsement_id`. Facts are derived only from confirmed assertions and target
+Mayor or City Councillor Candidacies. One Endorser may support multiple Candidacies in one Contest.
+An Endorsement does not create a negative observation for any other Candidacy, and the absence of
+an Endorsement row never means opposition, neutrality, or a decision not to endorse.
+
+### `endorsement_coverage`
+
+One row per approved Endorser and Mayor/City Councillor Contest: `endorser_id`, `contest_id`,
+`coverage_state`, `assessed_through`, and `coverage_basis`. The 2,385 cells distinguish
+`not_applicable`, `not_searched`, `partially_searched`, `searched_no_endorsement_found`,
+`comprehensive_source_found`, and `source_unavailable`. Coverage is open-world metadata, not a set
+of candidate-level negatives. Even `searched_no_endorsement_found` records only what the completed
+search found; it does not assert that the Endorser opposed any Candidacy. `assessed_through` is null
+for `not_searched` cells, so a release date cannot be mistaken for evidence that a historical
+Contest-specific search occurred. The current release contains 643 `not_applicable`, 145
+`not_searched`, 1,277 `partially_searched`, 207 `comprehensive_source_found`, and 113
+`source_unavailable` cells; it uses no `searched_no_endorsement_found` cells.
+
+### `build_manifest.json`
+
+Records the fixed completed-results cutoff, the pending candidate-snapshot and event horizons,
+schema version, generation timestamp, source and artifact SHA-256 checksums, known archive
+uncertainty, deliberately excluded election calls, and the separately enumerated pending event.
+
+### `data/reference/candidacy_identity_ledger.csv`
+
+Project-owned source-occurrence registry used as a build input. It records the immutable public
+`candidacy_id`, its authority or project occurrence key, Contest identity, the active source-name
+locator, and release-validity history. The initial project occurrence key is derived from source
+position, never from a candidate name. Later name-only corrections close the old locator and append
+a new one with a reason; an existing Contest cannot silently gain, lose, or rename a Candidacy. The
+ledger is included among the checksummed build-manifest sources.
+
+### `data/reference/identity_review_dispositions.csv`
+
+One row per adjudicated machine-proposed Candidacy-to-Person link. It records `candidacy_id`, the
+reviewed `target_person_id`, final `decision`, confidence, rationale, evidence URLs, and reviewer.
+`confirmed` closes the proposal and publishes the Person on the modelling table; `unresolved`
+closes the proposal but keeps `election_results.person_id` null because evidence was insufficient;
+`rejected` closes a contradicted proposal and likewise remains null. The table is a checksummed
+build input and is replayed idempotently against the append-only link history.
+
+### Endorsement curation inputs
+
+`data/reference/endorser_panel_curations.csv` records the approved panel, exact Person locators for
+individual Endorsers, eligibility/applicability rules, and panel evidence.
+`data/reference/endorsement_assertion_curations.csv` records the exact Contest/Candidacy locators,
+review disposition, dates, source type, and evidence URLs behind the published assertions.
+`data/reference/endorsement_coverage_curations.csv` records independently verified search work at
+exact Endorser-by-Contest or Endorser-by-event/office grain, with evidence and research-report
+provenance. All three are checksummed build inputs; exact locators fail closed instead of falling
+back to name matching or blanket historical coverage claims.
+
+## Sources and known coverage limits
+
+- City of Toronto Open Data official general/by-election results and Clerk declarations for Mayor,
+  Councillor, and all four trustee systems.
+- Elections Canada official poll-result archives and available official summary tables.
+- Elections Ontario official candidate/statistics/party CSV reports.
+- City voter-statistics files for explicitly scoped municipal turnout.
+- City Council attendance/voting records and reconciled historical rosters for municipal
+  incumbency evidence.
+- City Clerk candidate-list JSON snapshots for pending 2026 Mayor and City Councillor Candidacies.
+- Endorsement evidence retained with each audited assertion, using original Endorser publications
+  where available and attributable contemporaneous sources where archival recovery requires them.
+
+The City trustee by-election index begins in 2012. Event enumeration for 2003–2011 is therefore
+marked `uncertain`; this is an archive-level limitation, not a license to invent event placeholders.
+Federal legacy wide files that do not provide a structured party/incumbency field retain
+`not_reported`/null unless an official structured summary is joined and strictly reconciled. In
+this release, 2004 party/incumbent fields are joined to Elections Canada Table 12, and 2008–2014
+Toronto by-election party labels are joined to Elections Canada Historical Results. Those early
+by-election pages do not report incumbency, so that source field remains null.
+
+Trustee result sources do not report a structured incumbent flag, and a complete historical roster
+for all four boards has not been acquired. Trustee `incumbent` is therefore null rather than
+inferred from repeated names or prior winners.
+
+## Quality gates
+
+The build fails on completed election dates outside 2003-01-01 through 2026-08-20, or on a
+post-cutoff Candidacy that is not the explicitly allowed pending 2026-10-26 municipal event. Pending
+rows must have `result_status=pending`, a complete official candidate roster, null result metrics,
+and no Acclamation. The build also rejects broken foreign keys, duplicate stable identities,
+missing persistent `source_candidacy_id` values, or disagreement between repeated
+Event/Contest/Electoral district labels and their keyed dimensions. It rejects invalid Party
+relationships, negative votes, non-reconciling totals/shares, invalid Acclamation nulls, resolved
+single-seat Contests without exactly one elected Candidacy, mismatched turnout operands, ballots
+exceeding eligible electors, unsupported published Person/incumbency links, or invalid/materially
+out-of-bounds available geometry.
+
+Endorsement gates enforce exact Endorser, Contest, Candidacy, and optional Person foreign keys;
+Mayor/City Councillor targets only; stable, unique fact edges; facts derived exactly from confirmed
+assertions; and one non-contradictory coverage cell per Endorser and Contest. Source adapters also
+enforce their exact event/district manifests and expected row counts against the real official
+archives. All release tables are serialized to a temporary sibling directory before any output is
+promoted.

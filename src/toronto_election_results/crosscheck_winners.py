@@ -1,4 +1,4 @@
-"""Cross-check derived winners against the (authoritative) council composition.
+"""Legacy v1 council-winner cross-check retained for historical unit tests.
 
 The ``elected`` flag is derived as the top vote-getter per contest (Q9). To confirm it, every
 councillor winner of election Y should be a sitting member of the council just before the *next*
@@ -70,15 +70,15 @@ def unexplained_winners(df: pd.DataFrame, composition: pd.DataFrame) -> list[tup
     ]
 
 
-if __name__ == "__main__":
-    from pathlib import Path
+def main() -> None:
+    """Refuse to cross-check the deleted v1 artifact from the command line."""
 
-    from .incumbency import build_composition
-
-    table = pd.read_parquet(Path("data/out/toronto_election_results.parquet"))
-    residue = crosscheck_winners(table, build_composition())
-    print(
-        f"councillor winners not in the next council (expected: mid-term departures): {len(residue)}"
+    raise SystemExit(
+        "The legacy v1 winner cross-check command is retired; run "
+        "`python -m toronto_election_results.pipeline --skip-download` to rebuild and "
+        "validate the v2 relational release."
     )
-    for year, ward, name in residue:
-        print(f"  {year} ward {ward}: {name}")
+
+
+if __name__ == "__main__":
+    main()

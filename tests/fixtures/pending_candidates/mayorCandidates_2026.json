@@ -1,0 +1,35 @@
+{
+  "seq": "fixture-sequence",
+  "candidates": [
+    {
+      "name": "Alexander, Chris",
+      "office": 1,
+      "status": "Active",
+      "firstName": "Chris",
+      "lastName": "Alexander",
+      "email": "private@example.test",
+      "phone": "416-555-0100",
+      "socialMedias": [{"name": "web", "url": "https://example.test"}]
+    },
+    {
+      "name": "Adib, Alaa",
+      "office": 1,
+      "status": "Active",
+      "firstName": "Ala'a",
+      "lastName": "Adib",
+      "email": "",
+      "phone": null,
+      "socialMedias": []
+    },
+    {
+      "name": "Withdrawn, Wendy",
+      "office": 1,
+      "status": "Withdrawn",
+      "firstName": "Wendy",
+      "lastName": "Withdrawn",
+      "email": "",
+      "phone": null,
+      "socialMedias": []
+    }
+  ]
+}

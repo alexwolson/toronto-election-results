@@ -8,6 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+.agents/
+.claude/
+skills-lock.json
 
 # Data: raw downloads + interim are re-derivable; reference (one-time) + out (deliverable) are tracked
 data/raw/

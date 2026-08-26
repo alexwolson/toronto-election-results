@@ -1,11 +1,12 @@
-"""Voting-subdivision boundaries — the optional spatial companion dataset.
+"""Legacy v1 voting-subdivision parser retained for historical unit tests.
 
 The City publishes subdivision polygons from 2006 onward (per ADR 0001, earlier years have no
 geometry). Each subdivision carries a 5-character code = 2-digit ward + 3-digit subdivision, so
 the boundaries key back to results by ``(election_year, ward_number, subdivision_id)``. Results
 are ward-level, so this dataset is a pure add-on; no join is required.
 
-Output: ``data/out/subdivision_boundaries.parquet`` (GeoParquet, EPSG:4326).
+Subdivision-level output is outside the v2 release scope. Public v2 geometry is
+Contest-level and is assembled by ``district_geometry`` through the main pipeline.
 """
 
 from __future__ import annotations
@@ -61,11 +62,13 @@ def build_boundaries() -> gpd.GeoDataFrame:
 
 
 def main() -> None:
-    boundaries = build_boundaries()
-    OUT.mkdir(parents=True, exist_ok=True)
-    boundaries.to_parquet(OUT / "subdivision_boundaries.parquet", index=False)
-    print(f"wrote {len(boundaries)} subdivisions to {OUT}/subdivision_boundaries.parquet")
-    print(boundaries.groupby("election_year").size().to_string())
+    """Refuse to recreate the deleted, out-of-scope v1 spatial artifact."""
+
+    raise SystemExit(
+        "The subdivision-geometry command is retired; run "
+        "`python -m toronto_election_results.pipeline --skip-download` to build the v2 "
+        "Contest-level electoral_districts artifacts."
+    )
 
 
 if __name__ == "__main__":

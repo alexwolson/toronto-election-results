@@ -1,0 +1,942 @@
+{
+  "artifacts": [
+    {
+      "bytes": 6030624,
+      "local_path": "data/out/candidacy_person_links.csv",
+      "rows": 7814,
+      "sha256": "9cf11eeadfad5713ca8cd55e5f18d647a91ca19531a1ea7e12928bc92211cb4f",
+      "written_at": "2026-08-26T17:30:54.321607Z"
+    },
+    {
+      "bytes": 1360211,
+      "local_path": "data/out/candidacy_person_links.parquet",
+      "rows": 7814,
+      "sha256": "b321f5b2b895f4917bd2cbab7ad431f742ee08bfd5965405d7d53d33c4afde74",
+      "written_at": "2026-08-26T17:30:54.329216Z"
+    },
+    {
+      "bytes": 402905,
+      "local_path": "data/out/contests.csv",
+      "rows": 881,
+      "sha256": "bebceb43af46e61641668398c1bb11c58ce72fc1f756cc022d62418cea5f6be4",
+      "written_at": "2026-08-26T17:30:54.267988Z"
+    },
+    {
+      "bytes": 87443,
+      "local_path": "data/out/contests.parquet",
+      "rows": 881,
+      "sha256": "f9b2bbb31f7d00da1dd550cc13832b92c981a1bb9cecb8502539716bb7ae1e6f",
+      "written_at": "2026-08-26T17:30:54.269828Z"
+    },
+    {
+      "bytes": 3862,
+      "local_path": "data/out/election_events.csv",
+      "rows": 55,
+      "sha256": "144979c416aba154cafa017c316c747890590c422c8239c473ca7b42b4ccb56a",
+      "written_at": "2026-08-26T17:30:54.262268Z"
+    },
+    {
+      "bytes": 5199,
+      "local_path": "data/out/election_events.parquet",
+      "rows": 55,
+      "sha256": "460fa7d132e47c163a5138a88d674aaf15732a28ff82a77aada1c5166a5f7c9e",
+      "written_at": "2026-08-26T17:30:54.262978Z"
+    },
+    {
+      "bytes": 4273132,
+      "local_path": "data/out/election_results.csv",
+      "rows": 5731,
+      "sha256": "941af9146c60e35427aa51740613f9fac8075b38bd07d2fbec808267e4f444d8",
+      "written_at": "2026-08-26T17:30:54.199452Z"
+    },
+    {
+      "bytes": 880337,
+      "local_path": "data/out/election_results.parquet",
+      "rows": 5731,
+      "sha256": "3203d9dd880e0cc670c12cce5b15bf0dc1b908106df15e443725288bab01e6fe",
+      "written_at": "2026-08-26T17:30:54.261222Z"
+    },
+    {
+      "bytes": 2912984,
+      "local_path": "data/out/electoral_districts.csv",
+      "rows": 445,
+      "sha256": "93c5ff04c8bd9670bc4db9032a8937db0add7bf6e18875fc96d23cd2e437316b",
+      "written_at": "2026-08-26T17:30:54.362773Z"
+    },
+    {
+      "bytes": 1209290,
+      "local_path": "data/out/electoral_districts.parquet",
+      "rows": 445,
+      "sha256": "a3586dbc921e6fa54a0604fde65a8e57d097a66c74735b2eb4478a7ac794ada5",
+      "written_at": "2026-08-26T17:30:54.370282Z"
+    },
+    {
+      "bytes": 68039,
+      "local_path": "data/out/endorsement_assertions.csv",
+      "rows": 155,
+      "sha256": "27b04bde1bde1d828659579cf854faad7893fcf53c054b1dc17fb818298a2fe1",
+      "written_at": "2026-08-26T17:30:54.372959Z"
+    },
+    {
+      "bytes": 36230,
+      "local_path": "data/out/endorsement_assertions.parquet",
+      "rows": 155,
+      "sha256": "b243e999b20a0af02ea9d4f9c9bdd1f83dc5ad1b077e419b2f4aacf185e33a96",
+      "written_at": "2026-08-26T17:30:54.373855Z"
+    },
+    {
+      "bytes": 391569,
+      "local_path": "data/out/endorsement_coverage.csv",
+      "rows": 2385,
+      "sha256": "17537c9961e39c555e82ecb77dee8bc1ade638996b502e2d39a49b46b08d96bd",
+      "written_at": "2026-08-26T17:30:54.378521Z"
+    },
+    {
+      "bytes": 19468,
+      "local_path": "data/out/endorsement_coverage.parquet",
+      "rows": 2385,
+      "sha256": "eb3342bacd3a0a413fe17d96a170cd4e4fd62c29fb1a4f35421d1aef3e377b11",
+      "written_at": "2026-08-26T17:30:54.379758Z"
+    },
+    {
+      "bytes": 22843,
+      "local_path": "data/out/endorsements.csv",
+      "rows": 154,
+      "sha256": "015ab34f93bc539e4c2af66aabbcd6b988103e83b4e3195d5c8a573711fed933",
+      "written_at": "2026-08-26T17:30:54.374366Z"
+    },
+    {
+      "bytes": 16583,
+      "local_path": "data/out/endorsements.parquet",
+      "rows": 154,
+      "sha256": "bf16f45a6efa8ca920452e9a6f2927422d35ea876a4f513a33c75fa7bc5fa968",
+      "written_at": "2026-08-26T17:30:54.374808Z"
+    },
+    {
+      "bytes": 2537,
+      "local_path": "data/out/endorsers.csv",
+      "rows": 9,
+      "sha256": "9bfdb461ff5f4279be215031a4a9ca996c2235b3ea967e7b169d781480a2b7d1",
+      "written_at": "2026-08-26T17:30:54.371052Z"
+    },
+    {
+      "bytes": 8618,
+      "local_path": "data/out/endorsers.parquet",
+      "rows": 9,
+      "sha256": "e10fb740979dfda5df2de1ce891ace8795295a35c465b62644a0a1dbd3705b36",
+      "written_at": "2026-08-26T17:30:54.371826Z"
+    },
+    {
+      "bytes": 478666,
+      "local_path": "data/out/office_tenures.csv",
+      "rows": 725,
+      "sha256": "49c14c0c245de0cd34fcc6d2e84bef66f3a256c84cb41b3d13f96102e10f4f8b",
+      "written_at": "2026-08-26T17:30:54.334942Z"
+    },
+    {
+      "bytes": 98912,
+      "local_path": "data/out/office_tenures.parquet",
+      "rows": 725,
+      "sha256": "8d285c0d6e5c8c2975df910cfbc6bf893708db50cb80bcbd8c46c87dd585f0ac",
+      "written_at": "2026-08-26T17:30:54.336550Z"
+    },
+    {
+      "bytes": 5978,
+      "local_path": "data/out/parties.csv",
+      "rows": 58,
+      "sha256": "90801a0351ccdeae777f561c97420969919b2a27cd85c4f9415b5253340cff61",
+      "written_at": "2026-08-26T17:30:54.329988Z"
+    },
+    {
+      "bytes": 7226,
+      "local_path": "data/out/parties.parquet",
+      "rows": 58,
+      "sha256": "8774b0631e8f96132000fc570a3eb5684d95b65c524113620f0df2e5f73b83b3",
+      "written_at": "2026-08-26T17:30:54.330581Z"
+    },
+    {
+      "bytes": 267958,
+      "local_path": "data/out/people.csv",
+      "rows": 3759,
+      "sha256": "bea219e6c16a7b33151a91d3e173c81e951d774224807b02ab2df7e78615f4d1",
+      "written_at": "2026-08-26T17:30:54.273041Z"
+    },
+    {
+      "bytes": 184960,
+      "local_path": "data/out/people.parquet",
+      "rows": 3759,
+      "sha256": "ca0453303b4e683c6c9e8fbbb89da9ac6ad5e1c0956272dd9330e026f4cda11a",
+      "written_at": "2026-08-26T17:30:54.274907Z"
+    }
+  ],
+  "coverage": {
+    "from": "2003-01-01",
+    "pending_candidate_snapshot_through": "2026-08-21",
+    "pending_event_through": "2026-10-26",
+    "through": "2026-08-20",
+    "timezone": "America/Toronto"
+  },
+  "event_archive_caveats": [
+    {
+      "authority": "toronto_city_clerk",
+      "period": "2003-01-01/2011-12-31",
+      "scope": "trustee_by_elections",
+      "status": "uncertain"
+    }
+  ],
+  "excluded_calls": [
+    {
+      "label": "Don Valley West federal by-election",
+      "reason": "cancelled when superseded by a general-election writ; no result",
+      "scheduled_date": "2008-09-22"
+    },
+    {
+      "label": "Beaches—East York federal by-election",
+      "reason": "polling date is after the release cutoff",
+      "scheduled_date": "2026-08-31"
+    },
+    {
+      "label": "Scarborough Southwest provincial by-election",
+      "reason": "polling date is after the release cutoff",
+      "scheduled_date": "2026-09-03"
+    }
+  ],
+  "generated_at": "2026-08-26T17:30:54.388495Z",
+  "pending_events": [
+    {
+      "candidate_snapshot_through": "2026-08-21",
+      "label": "2026 Toronto municipal general election",
+      "scheduled_date": "2026-10-26",
+      "status": "pending"
+    }
+  ],
+  "schema_version": "2.1.0",
+  "sources": [
+    {
+      "bytes": 10415,
+      "local_path": "data/raw/byelection/2016-councillor-ward-2.xlsx",
+      "retrieved_at": "2026-08-19T19:33:19.963408Z",
+      "sha256": "f0b92c18c99724ce814a2adbdcd9512c71f059f4f62c7db0ccd0e9457630f9fc"
+    },
+    {
+      "bytes": 47087,
+      "local_path": "data/raw/byelection/2017-councillor-ward-42.xlsx",
+      "retrieved_at": "2026-08-19T19:33:19.850635Z",
+      "sha256": "c45b4109e6688aece0e007c59a49ec00f4ee49ef23818efda64440b3e50c8755"
+    },
+    {
+      "bytes": 22002,
+      "local_path": "data/raw/byelection/2021-councillor-ward-22-scarborough-agincourt-1.xlsx",
+      "retrieved_at": "2026-08-19T19:33:19.705561Z",
+      "sha256": "7b2c1f98d22c44f8190338f048ad513d0fc0f2d256362bc963314c18e5183bf4"
+    },
+    {
+      "bytes": 23682,
+      "local_path": "data/raw/byelection/2023-office-of-the-councillor-ward-20-poll-by-poll.xlsx",
+      "retrieved_at": "2026-08-19T19:33:19.586157Z",
+      "sha256": "489a78b37eae4b3b90b8a7907bf4ee852c29449f2703d874e17572ca8c9df9f1"
+    },
+    {
+      "bytes": 553579,
+      "local_path": "data/raw/byelection/2023_office_of_the_mayor.xlsx",
+      "retrieved_at": "2026-08-19T16:41:20.879986Z",
+      "sha256": "8077b5b94ebd25fb97d34cdeaeeadfb8a8c058d4530c06ab1ad56665a3fe435a"
+    },
+    {
+      "bytes": 20639,
+      "local_path": "data/raw/byelection/2024-councillor-ward-15-poll-by-poll.xlsx",
+      "retrieved_at": "2026-08-19T19:33:19.421131Z",
+      "sha256": "f7e2c9023a041982a5645732b92fb70dad92962fc5f9cf6d567c4f5641b5d872"
+    },
+    {
+      "bytes": 26780,
+      "local_path": "data/raw/byelection/2025-councillor-ward25-poll-by-poll.xlsx",
+      "retrieved_at": "2026-08-19T19:33:19.301091Z",
+      "sha256": "ce9b2d1466aa87b603d4a1cc4c77e23a111af21bab09d198e9b8a06fa5645fed"
+    },
+    {
+      "bytes": 16518,
+      "local_path": "data/raw/byelection_voter_stats/2016-councillor-ward-2-by-election-voter-statistics.xlsx",
+      "retrieved_at": "2026-08-19T19:33:20.800440Z",
+      "sha256": "9916d20f0e7ce75ad8a64be5587cc2ac63945b0f37ec31598443ffca8c750fc6"
+    },
+    {
+      "bytes": 15382,
+      "local_path": "data/raw/byelection_voter_stats/2017-councillor-ward-42-by-election-voter-statistics.xlsx",
+      "retrieved_at": "2026-08-19T19:33:20.676071Z",
+      "sha256": "bbed41eab9ce69a3724973db2b44705cdf6175e30e36dadf88c97376e253e221"
+    },
+    {
+      "bytes": 18869,
+      "local_path": "data/raw/byelection_voter_stats/2021_voter_turnout_statistics_ward_22_by-election.xlsx",
+      "retrieved_at": "2026-08-19T19:33:20.549877Z",
+      "sha256": "0d043fc437fa56d81de5573eacef8145ab0f8feee757b8bea03ea0e722195d40"
+    },
+    {
+      "bytes": 18192,
+      "local_path": "data/raw/byelection_voter_stats/2023-councillor-ward-20-by-election-voter-statistics.xlsx",
+      "retrieved_at": "2026-08-19T19:33:20.400277Z",
+      "sha256": "93e49416eede00d082d3a0c6fe063fca362df32c8da055a1c0142cca4e724eb5"
+    },
+    {
+      "bytes": 21040,
+      "local_path": "data/raw/byelection_voter_stats/2024-councillor-ward-15-by-election-voter-statistics.xlsx",
+      "retrieved_at": "2026-08-19T19:33:20.247951Z",
+      "sha256": "d6ae5f09e9ef57355a8df8f39c1a0792311e815800fe244c6766994cb58540dd"
+    },
+    {
+      "bytes": 19935,
+      "local_path": "data/raw/byelection_voter_stats/2025-ward-25-by-election-voter-statistics.xlsx",
+      "retrieved_at": "2026-08-19T19:33:20.120008Z",
+      "sha256": "9dbe8fd3a3c751f4d0dbfb12e7d7aa9927da15f36c2ee7770b5d23a60319ece0"
+    },
+    {
+      "bytes": 10756,
+      "local_path": "data/raw/ckan/elected-officials-contact-information.json",
+      "retrieved_at": "2026-08-19T16:39:35.528702Z",
+      "sha256": "ff1ffeba8aa0e79927cbf339b674248ff9bb1404a1eb7326a76797b12330c433"
+    },
+    {
+      "bytes": 7319,
+      "local_path": "data/raw/ckan/election-results-official.json",
+      "retrieved_at": "2026-08-19T16:39:34.645232Z",
+      "sha256": "c53959b6c4e28b53e0fd3e21497f84c4e5368de2ecfb018abe39d2b6264b5678"
+    },
+    {
+      "bytes": 15454,
+      "local_path": "data/raw/ckan/elections-official-by-election-results.json",
+      "retrieved_at": "2026-08-19T16:39:34.835074Z",
+      "sha256": "a46e458a69377101138fac3e07b4d75e065e7096cf930c5f2f6a4111844f70de"
+    },
+    {
+      "bytes": 43998,
+      "local_path": "data/raw/ckan/elections-subdivisions.json",
+      "retrieved_at": "2026-08-19T16:39:35.039763Z",
+      "sha256": "3d7136a1f6a88359b6c77c41d4d30919d366cb6287d5a9d9bbf56cc20ffb037f"
+    },
+    {
+      "bytes": 21950,
+      "local_path": "data/raw/ckan/members-of-toronto-city-council-meeting-attendance.json",
+      "retrieved_at": "2026-08-19T16:39:35.215235Z",
+      "sha256": "26df800c03990d3e8f59ef308c5c8fbec917a4b422b072d69ccb96c3af10decb"
+    },
+    {
+      "bytes": 21506,
+      "local_path": "data/raw/ckan/members-of-toronto-city-council-voting-record.json",
+      "retrieved_at": "2026-08-19T16:39:35.412927Z",
+      "sha256": "7a8d99c06194f3147940689da9b581fa77e041a29007fa3520cd859abc4f7278"
+    },
+    {
+      "bytes": 828937,
+      "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2006-2010.csv",
+      "retrieved_at": "2026-08-19T16:41:23.728561Z",
+      "sha256": "d4c2de3b47fc9774dcd1c484c7023f015a83a87abb82993129e9c1a86e44bbf7"
+    },
+    {
+      "bytes": 3046613,
+      "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2010-2014.csv",
+      "retrieved_at": "2026-08-19T16:41:24.044462Z",
+      "sha256": "961bb371b593eb0cf5d1ae1ce2e232e50175644b9fb7a32916a56d7e0ab4b462"
+    },
+    {
+      "bytes": 2948088,
+      "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2014-2018.csv",
+      "retrieved_at": "2026-08-19T16:41:24.339296Z",
+      "sha256": "ae1095e79574ad77f5f814171dbffd4e14883f251b593378aebee34bf5a38bcb"
+    },
+    {
+      "bytes": 1278423,
+      "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2018-2022.csv",
+      "retrieved_at": "2026-08-19T16:41:24.541340Z",
+      "sha256": "b35a9f85573d2d3db9a5149d90eb474cdee922870f3f3ff8e5b3984e6a7b726f"
+    },
+    {
+      "bytes": 52759,
+      "local_path": "data/raw/council/candidates_2026/councilorCandidates_2026.json",
+      "retrieved_at": "2026-08-21T23:45:15.569194Z",
+      "sha256": "b7cf3b63f2f0cc8073f77e58da97ab867ebc996708333a4c121ace4c6283fc9b"
+    },
+    {
+      "bytes": 12801,
+      "local_path": "data/raw/council/candidates_2026/mayorCandidates_2026.json",
+      "retrieved_at": "2026-08-21T23:45:15.530385Z",
+      "sha256": "768e7f27ef4176ffce8e090724b1cec869804f38a08a3273584399ffcc89f5b1"
+    },
+    {
+      "bytes": 11713,
+      "local_path": "data/raw/council/contact/2018-2022-elected-officials-contact-info.csv",
+      "retrieved_at": "2026-08-19T16:41:33.250798Z",
+      "sha256": "3892d377c82dbbcef0809d10c6cc2e35f50a956375bb81b291621656d4fb5ce0"
+    },
+    {
+      "bytes": 9281,
+      "local_path": "data/raw/council/contact/2022-2026-elected-officials-contact-info.csv",
+      "retrieved_at": "2026-08-19T16:41:33.073374Z",
+      "sha256": "e4d8c780e4dc0d4c07aa7486e485e4cf8a2cd4293ae21eb0dd2058b0b2c1ed52"
+    },
+    {
+      "bytes": 14637520,
+      "local_path": "data/raw/council/voting/member-voting-record-2006-2010.csv",
+      "retrieved_at": "2026-08-19T16:41:25.557498Z",
+      "sha256": "8cb59a59d2c8a546eade971c4789270a556768c81e188d03bd11581d50e27f17"
+    },
+    {
+      "bytes": 88703573,
+      "local_path": "data/raw/council/voting/member-voting-record-2010-2014.csv",
+      "retrieved_at": "2026-08-19T16:41:29.310048Z",
+      "sha256": "e07c93723f70526112947fec856f9e5f0ca803aa99abbbe806c5826a33f747b5"
+    },
+    {
+      "bytes": 50379770,
+      "local_path": "data/raw/council/voting/member-voting-record-2014-2018.csv",
+      "retrieved_at": "2026-08-19T16:41:32.922677Z",
+      "sha256": "059f88b52780843151088fe7556d8c47ec23ebc2d8159f4d2517204ea31748d1"
+    },
+    {
+      "bytes": 14460550,
+      "local_path": "data/raw/council/voting/member-voting-record-2018-2022.csv",
+      "retrieved_at": "2026-08-19T16:41:30.270808Z",
+      "sha256": "da62a64ce755ebe82731f61644a40e8df0c432d2009a63e4a8970219464dc62c"
+    },
+    {
+      "bytes": 25628,
+      "local_path": "data/raw/federal/ec-be-2008-03-17/35093_e.html",
+      "retrieved_at": "2026-08-20T15:52:33.489641Z",
+      "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb"
+    },
+    {
+      "bytes": 16712,
+      "local_path": "data/raw/federal/ec-be-2008-03-17/35100_e.html",
+      "retrieved_at": "2026-08-20T15:52:33.599066Z",
+      "sha256": "11c37e4d7a3a17f8560aef31ab35a1b6c202fbe3b2f49661dd39ed3029f90a62"
+    },
+    {
+      "bytes": 23297,
+      "local_path": "data/raw/federal/ec-be-2008-03-17/pollbypoll35093.csv",
+      "retrieved_at": "2026-08-20T15:27:18.410004Z",
+      "sha256": "ced1d008019c0d709147d2abb0c53e51ab23f83729a4f34397cbfb12ae5b8772"
+    },
+    {
+      "bytes": 20781,
+      "local_path": "data/raw/federal/ec-be-2008-03-17/pollbypoll35100.csv",
+      "retrieved_at": "2026-08-20T15:27:18.517658Z",
+      "sha256": "ca81bdb276b3a064c3fa90181cdae4b4eade04ab7fc36e8ac024a3ec7076c911"
+    },
+    {
+      "bytes": 20265,
+      "local_path": "data/raw/federal/ec-be-2012-03-19/35094_e.html",
+      "retrieved_at": "2026-08-20T15:52:33.710650Z",
+      "sha256": "6b1aa1d6ff3ff93fee818710578e66452020442de9e6f8ad1c60b72b89314fea"
+    },
+    {
+      "bytes": 19701,
+      "local_path": "data/raw/federal/ec-be-2012-03-19/pollbypoll_bureauparbureau35094.csv",
+      "retrieved_at": "2026-08-20T15:27:19.704211Z",
+      "sha256": "fca4934f0532bcb937a75634dbc936adf1893c90b4c1e4049c78fad099d2804f"
+    },
+    {
+      "bytes": 20487,
+      "local_path": "data/raw/federal/ec-be-2013-11-25/35093_e.csv",
+      "retrieved_at": "2026-08-20T15:27:19.824448Z",
+      "sha256": "038c05bd923461178b957077e1ff8a6ee3983892095afab9ac31d4dba1aaa2cb"
+    },
+    {
+      "bytes": 25628,
+      "local_path": "data/raw/federal/ec-be-2013-11-25/35093_e.html",
+      "retrieved_at": "2026-08-20T15:52:33.865449Z",
+      "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb"
+    },
+    {
+      "bytes": 22007,
+      "local_path": "data/raw/federal/ec-be-2014-06-30/35080.csv",
+      "retrieved_at": "2026-08-20T15:27:19.946979Z",
+      "sha256": "66a3e7d538214ee39d7c6f3beafe5677d9b8502697ba8de6e6b53239ee41d00f"
+    },
+    {
+      "bytes": 16460,
+      "local_path": "data/raw/federal/ec-be-2014-06-30/35080_e.html",
+      "retrieved_at": "2026-08-20T15:52:33.974471Z",
+      "sha256": "f48ad24aeeed0efefa56708aaa14c0285528cff5615e29655581d5eaf89aa1f9"
+    },
+    {
+      "bytes": 32786,
+      "local_path": "data/raw/federal/ec-be-2014-06-30/35095.csv",
+      "retrieved_at": "2026-08-20T15:27:20.060722Z",
+      "sha256": "7cbe7ba791fc4eaf4b58b62411217ef057b41d65f150e3a628c4b31457cea27b"
+    },
+    {
+      "bytes": 19936,
+      "local_path": "data/raw/federal/ec-be-2014-06-30/35095_e.html",
+      "retrieved_at": "2026-08-20T15:52:34.087640Z",
+      "sha256": "c899bae92ac08d1ee6b96a45c7461f76201f55e99221b25be0a314d15cda8248"
+    },
+    {
+      "bytes": 216935,
+      "local_path": "data/raw/federal/ec-be-2017-12-11/pollresults_resultatsbureau35093.csv",
+      "retrieved_at": "2026-08-20T15:27:20.828791Z",
+      "sha256": "03cd92b843582c6bdddc25dfa28d30640195c04cd441e94948ed9a3ebbfb9d38"
+    },
+    {
+      "bytes": 293325,
+      "local_path": "data/raw/federal/ec-be-2020-10-26/pollresults_resultatsbureau35108.csv",
+      "retrieved_at": "2026-08-20T15:27:21.624732Z",
+      "sha256": "59bb5388f5fdd288f4ebd362a33c47b08d567be6dce2d923a8f58076bbd0bc89"
+    },
+    {
+      "bytes": 164391,
+      "local_path": "data/raw/federal/ec-be-2020-10-26/pollresults_resultatsbureau35118.csv",
+      "retrieved_at": "2026-08-20T15:27:21.762848Z",
+      "sha256": "d5a790971a21f76cd50d94d70995f1e1df68aeb401076178fd20ec7ae229517f"
+    },
+    {
+      "bytes": 2669753,
+      "local_path": "data/raw/federal/ec-be-2024-06-24/pollresults_resultatsbureau35090.csv",
+      "retrieved_at": "2026-08-20T15:27:22.796560Z",
+      "sha256": "4394dcd99d0fce14f48f35773f4c900053956c074200aa77b185dd0e30d46121"
+    },
+    {
+      "bytes": 240232,
+      "local_path": "data/raw/federal/ec-be-2026-04-13/pollresults_resultatsbureau35096.csv",
+      "retrieved_at": "2026-08-20T15:27:23.645800Z",
+      "sha256": "1bc267e652038752f70a56b7c77328618ce4d57b206f3202aa28ddf2160febe5"
+    },
+    {
+      "bytes": 356448,
+      "local_path": "data/raw/federal/ec-be-2026-04-13/pollresults_resultatsbureau35112.csv",
+      "retrieved_at": "2026-08-20T15:27:23.815065Z",
+      "sha256": "b97fdea917dcef943ed00371e8e13b86a8f4eadb53f263b9ed4112f6c980ce74"
+    },
+    {
+      "bytes": 419535,
+      "local_path": "data/raw/federal/ec-ge-38/ON.zip",
+      "retrieved_at": "2026-08-20T15:27:17.523609Z",
+      "sha256": "4ba7c74457e010c5eeabc823213079074d1b29251e280f4cf9fbbe2d167dc4a1"
+    },
+    {
+      "bytes": 245421,
+      "local_path": "data/raw/federal/ec-ge-38/table12.csv",
+      "retrieved_at": "2026-08-20T15:52:33.376848Z",
+      "sha256": "de20c50955fd0f6d0bb38ae3afabe9ea5cc7e4900073e8dce86590f95f594318"
+    },
+    {
+      "bytes": 845777,
+      "local_path": "data/raw/federal/ec-ge-39/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:17.962507Z",
+      "sha256": "aac2aa7b56e97a31e90a901b5c9b3c6460c71c042ddece2329e66741ace8e9e5"
+    },
+    {
+      "bytes": 949400,
+      "local_path": "data/raw/federal/ec-ge-40/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:18.726375Z",
+      "sha256": "a24b937e34688804139cdbd2325eb10f00d67b9db2971187660d9ca1fa920152"
+    },
+    {
+      "bytes": 971466,
+      "local_path": "data/raw/federal/ec-ge-41/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:19.280871Z",
+      "sha256": "83ec0819d7455b2ea6094d8841c031b79c8b91f6d6049b64a83e37ea0630f7a2"
+    },
+    {
+      "bytes": 1092431,
+      "local_path": "data/raw/federal/ec-ge-42/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:20.285244Z",
+      "sha256": "fdbf80bb71a0fdb45297436000eda765443ac582540b2f004ef6640d5f621b33"
+    },
+    {
+      "bytes": 1281096,
+      "local_path": "data/raw/federal/ec-ge-43/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:21.092566Z",
+      "sha256": "b33e23a4d88a18d56ee65258a836e7d5dc9525e10b6e563b9684d20f4deea751"
+    },
+    {
+      "bytes": 1194554,
+      "local_path": "data/raw/federal/ec-ge-44/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:22.120937Z",
+      "sha256": "63e0c9a2a507b53fa67559b68b0d4db2b20bfa61fab9fd04d40191aaea05e781"
+    },
+    {
+      "bytes": 1319530,
+      "local_path": "data/raw/federal/ec-ge-45/pollresults_resultatsbureau35.zip",
+      "retrieved_at": "2026-08-20T15:27:23.115733Z",
+      "sha256": "454dc2a1d0a4b41b8504ee18bcb147198d6fb4752f942e6a443b406df04288e1"
+    },
+    {
+      "bytes": 162523,
+      "local_path": "data/raw/ontario/report-group-1/candidates-932.csv",
+      "retrieved_at": "2026-08-20T15:22:00.851032Z",
+      "sha256": "f2c00411b4fc7af46f64b5cac1aa69a512c7f56a0939a814db958358131331cd"
+    },
+    {
+      "bytes": 10962,
+      "local_path": "data/raw/ontario/report-group-1/parties-930.csv",
+      "retrieved_at": "2026-08-20T15:22:01.030254Z",
+      "sha256": "2324f385538177b8871aeddb6222cda201a5719efc26718ef10ac89a83143d06"
+    },
+    {
+      "bytes": 23613,
+      "local_path": "data/raw/ontario/report-group-1/statistics-925.csv",
+      "retrieved_at": "2026-08-20T15:22:00.949237Z",
+      "sha256": "b72633fda6f74af112cadcbc7edeb19557cc27b1318a43f15c187d6989fa39d7"
+    },
+    {
+      "bytes": 124320,
+      "local_path": "data/raw/ontario/report-group-2/candidates-488.csv",
+      "retrieved_at": "2026-08-20T15:22:00.533498Z",
+      "sha256": "2961c5d4f12c1c3a2bb1e5d462050cd6fb43ed32751d483468c738b5fa2ce9b1"
+    },
+    {
+      "bytes": 7591,
+      "local_path": "data/raw/ontario/report-group-2/parties-486.csv",
+      "retrieved_at": "2026-08-20T15:22:00.750619Z",
+      "sha256": "c1d85d92bbc8503047f4d9351cf1dc1891077599ef23090b10f94232d3183969"
+    },
+    {
+      "bytes": 21030,
+      "local_path": "data/raw/ontario/report-group-2/statistics-481.csv",
+      "retrieved_at": "2026-08-20T15:22:00.654233Z",
+      "sha256": "a5f234fd80e4d688df4779e9fa42fb34797d5d6add68853e8c29fcb82179c632"
+    },
+    {
+      "bytes": 124223,
+      "local_path": "data/raw/ontario/report-group-3/candidates-499.csv",
+      "retrieved_at": "2026-08-20T15:22:00.292547Z",
+      "sha256": "f8b4590c82a7fb6ae2aca1477d3163ac3c9e0de676795c5e3ff5a18152f1309c"
+    },
+    {
+      "bytes": 6508,
+      "local_path": "data/raw/ontario/report-group-3/parties-497.csv",
+      "retrieved_at": "2026-08-20T15:22:00.441668Z",
+      "sha256": "db8bcef4b140dca3e14f917b07bf83a223ab154c959aa596c2409178af9b96ce"
+    },
+    {
+      "bytes": 20129,
+      "local_path": "data/raw/ontario/report-group-3/statistics-492.csv",
+      "retrieved_at": "2026-08-20T15:22:00.366997Z",
+      "sha256": "6755033c4ad895e9becab538fe42284f1db3b086941338ad5ffc8e7d8da465df"
+    },
+    {
+      "bytes": 119481,
+      "local_path": "data/raw/ontario/report-group-4/candidates-510.csv",
+      "retrieved_at": "2026-08-20T15:21:59.992969Z",
+      "sha256": "c889e39d00b29498ca665d68f73ccbd9ad01b875e30187de9f0b8388d91714d5"
+    },
+    {
+      "bytes": 6865,
+      "local_path": "data/raw/ontario/report-group-4/parties-508.csv",
+      "retrieved_at": "2026-08-20T15:22:00.189689Z",
+      "sha256": "baa6badaae6bd6a656a72a756b4dc62c68100be967d0d690314020ee06d7dd40"
+    },
+    {
+      "bytes": 21036,
+      "local_path": "data/raw/ontario/report-group-4/statistics-503.csv",
+      "retrieved_at": "2026-08-20T15:22:00.077640Z",
+      "sha256": "29c9fdeef97a70a2226abf7f55e4d75190e335055d273ce70c79bf1b34023c5d"
+    },
+    {
+      "bytes": 218483,
+      "local_path": "data/raw/ontario/report-group-45/candidates-1050.csv",
+      "retrieved_at": "2026-08-20T15:22:01.130545Z",
+      "sha256": "86d1fb5ec1a8710a844152e0704d43d2b2eceed86a62022d820d03ee4c99b024"
+    },
+    {
+      "bytes": 5782,
+      "local_path": "data/raw/ontario/report-group-45/parties-1048.csv",
+      "retrieved_at": "2026-08-20T15:22:01.348816Z",
+      "sha256": "6c813ab8ce2b423a279fcb5597e11a419243fa1c8c01bd97300057c3a203a10a"
+    },
+    {
+      "bytes": 28146,
+      "local_path": "data/raw/ontario/report-group-45/statistics-1043.csv",
+      "retrieved_at": "2026-08-20T15:22:01.211352Z",
+      "sha256": "3d8784f3c068aa6488054968e1d7664ca13d39693a5d7e430cb3078aad46100e"
+    },
+    {
+      "bytes": 186015,
+      "local_path": "data/raw/ontario/report-group-48/candidates-1096.csv",
+      "retrieved_at": "2026-08-20T15:22:01.499829Z",
+      "sha256": "21c09e8729eda6dd996091861aa59aa2cb4af3565c296eee8232a9313848c04e"
+    },
+    {
+      "bytes": 12215,
+      "local_path": "data/raw/ontario/report-group-48/parties-1094.csv",
+      "retrieved_at": "2026-08-20T15:22:01.675798Z",
+      "sha256": "516a7d5c84706dd95cf34b3a527121e3252635d1d545b356e1399df8d1a78dc0"
+    },
+    {
+      "bytes": 25452,
+      "local_path": "data/raw/ontario/report-group-48/statistics-1089.csv",
+      "retrieved_at": "2026-08-20T15:22:01.591261Z",
+      "sha256": "6d106d334bc7ec02a4e0208dc151233f6dba18bf5d0990d3c35f06b1a15bd365"
+    },
+    {
+      "bytes": 100363,
+      "local_path": "data/raw/ontario/report-group-5/candidates-521.csv",
+      "retrieved_at": "2026-08-20T15:21:59.719084Z",
+      "sha256": "267ece0aef7a14e038c89c0b0012d18698627958b22132b3ab3400bd78064aa1"
+    },
+    {
+      "bytes": 4436,
+      "local_path": "data/raw/ontario/report-group-5/parties-519.csv",
+      "retrieved_at": "2026-08-20T15:21:59.902573Z",
+      "sha256": "f0c01e15b5f73423fd72fd38a5be8f6f658a06c89f9805aababecdbb38c85c18"
+    },
+    {
+      "bytes": 19388,
+      "local_path": "data/raw/ontario/report-group-5/statistics-514.csv",
+      "retrieved_at": "2026-08-20T15:21:59.821460Z",
+      "sha256": "3e0220ef8d7d1fa4f2d6e8af226f9bd50d9cc5e007cd9d41f2623bf35ddd6d30"
+    },
+    {
+      "bytes": 288273,
+      "local_path": "data/raw/results/2003-results.zip",
+      "retrieved_at": "2026-08-19T16:41:20.574298Z",
+      "sha256": "d6f4346f4a8371d4b66db69079ff17f5b39f0559b8513245efb1ffb4cdc442d8"
+    },
+    {
+      "bytes": 297663,
+      "local_path": "data/raw/results/2006-results.zip",
+      "retrieved_at": "2026-08-19T16:41:20.441373Z",
+      "sha256": "924289fd4d6401587e806b21e747c285a0171a04279a61c9dc5a48ec30304628"
+    },
+    {
+      "bytes": 273425,
+      "local_path": "data/raw/results/2010-results.zip",
+      "retrieved_at": "2026-08-19T16:41:20.324691Z",
+      "sha256": "1579650581ef38dcecd9b59b554221ad0da2df65615caca0149c34bfa959e4a3"
+    },
+    {
+      "bytes": 261053,
+      "local_path": "data/raw/results/2014-results.zip",
+      "retrieved_at": "2026-08-19T16:41:20.194962Z",
+      "sha256": "a6e7b8acaa4c7acc8756a582b2a4b2a8ac324cdd6823f62a7c1bc22ddb6c4a6b"
+    },
+    {
+      "bytes": 727155,
+      "local_path": "data/raw/results/2018-results.zip",
+      "retrieved_at": "2026-08-19T16:41:20.053518Z",
+      "sha256": "786aa376d5b4d5d3042d3e0b8af148f3cf4edce0c9345677e412ccc744f940e0"
+    },
+    {
+      "bytes": 939065,
+      "local_path": "data/raw/results/2022-results.zip",
+      "retrieved_at": "2026-08-19T16:41:19.835434Z",
+      "sha256": "127d0a29ee82b1e9694078588999e825377cfbb2c5d9f1d1bfaf234f9dbaba76"
+    },
+    {
+      "bytes": 1223076,
+      "local_path": "data/raw/subdivisions/voting-subdivisions-2006.zip",
+      "retrieved_at": "2026-08-19T16:41:23.449511Z",
+      "sha256": "acbebafd85d72535d994f1a20204ae9458bb73a60a411c6d528516412e76e10b"
+    },
+    {
+      "bytes": 4699592,
+      "local_path": "data/raw/subdivisions/voting-subdivisions-2010-4326.geojson",
+      "retrieved_at": "2026-08-19T16:41:21.419546Z",
+      "sha256": "1e011bfae69f48a69163d55a70930f1ad60d76a124968658326e5032d16b0c03"
+    },
+    {
+      "bytes": 4875461,
+      "local_path": "data/raw/subdivisions/voting-subdivisions-2014-4326.geojson",
+      "retrieved_at": "2026-08-19T16:41:22.122566Z",
+      "sha256": "fcd866a2d0f7c138aefc395923be74aaac3a02a129fdc3f9eee0968a232324d2"
+    },
+    {
+      "bytes": 4807539,
+      "local_path": "data/raw/subdivisions/voting-subdivisions-2018-4326.geojson",
+      "retrieved_at": "2026-08-19T16:41:22.485562Z",
+      "sha256": "4cff92903855e57f92ea9be962450591f92ae7fbef90e330864429b622d29307"
+    },
+    {
+      "bytes": 4967952,
+      "local_path": "data/raw/subdivisions/voting-subdivisions-2022-4326.geojson",
+      "retrieved_at": "2026-08-19T16:41:22.896664Z",
+      "sha256": "b5ea30c673c89c0a53eb62802cba6e2a5cee9bb5da1786bbb1958b7a7c3d1aef"
+    },
+    {
+      "bytes": 4918707,
+      "local_path": "data/raw/subdivisions/voting-subdivisions-2023-4326.geojson",
+      "retrieved_at": "2026-08-19T16:41:23.225021Z",
+      "sha256": "a409309a206977951bc3b0e83ea84f450cf3c3669aa3ab458e891fec6f74a7dc"
+    },
+    {
+      "bytes": 15376,
+      "local_path": "data/raw/trustee_byelections/2012-tcdsb-ward-8.xls",
+      "retrieved_at": "2026-08-20T15:17:37.861311Z",
+      "sha256": "000d935374ca9a1ed51ee77d6194def97d4b3342ab405190a9dddd94e5a5e599"
+    },
+    {
+      "bytes": 23543,
+      "local_path": "data/raw/trustee_byelections/2012-tdsb-wards-17-20.xls",
+      "retrieved_at": "2026-08-20T15:17:37.707006Z",
+      "sha256": "49879352ace7c5ee08c8869176e77686ce19ce19d2e60650bb2d9834fe24c346"
+    },
+    {
+      "bytes": 12867,
+      "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-1-.xlsx",
+      "retrieved_at": "2026-08-20T15:17:38.522523Z",
+      "sha256": "0c3b820c268ae4a0b4701690bc1e6caad9b3aa684171b28a56dc0e1aa9d95269"
+    },
+    {
+      "bytes": 18255,
+      "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-14.xlsx",
+      "retrieved_at": "2026-08-20T15:17:38.306024Z",
+      "sha256": "93523bac1cb62f7153265ba3a0d2c7860d6b00616fa123b651338b75e8fca6d7"
+    },
+    {
+      "bytes": 13147,
+      "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-21.xlsx",
+      "retrieved_at": "2026-08-20T15:17:38.027447Z",
+      "sha256": "a690a5096df51eddc1db36c4c494f478e097bbd349fd46a864e0c036a7b42883"
+    },
+    {
+      "bytes": 11086,
+      "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-5.xlsx",
+      "retrieved_at": "2026-08-20T15:17:38.721245Z",
+      "sha256": "b0a07ed079465cf09da137f497cb0a302bdfab99ca9ef88fe2e9900d2bc0b042"
+    },
+    {
+      "bytes": 32114,
+      "local_path": "data/raw/trustee_byelections/2023-csv-ward-3-centre-csc-monavenir-ward-4-toronto-est.zip",
+      "retrieved_at": "2026-08-20T15:17:38.890338Z",
+      "sha256": "ce62bf25fb6f739ad6c93b161e055431e07552e0f246246e44edd202f1c71194"
+    },
+    {
+      "bytes": 17867,
+      "local_path": "data/raw/trustee_byelections/2025-tdsb-ward-11.xlsx",
+      "retrieved_at": "2026-08-20T15:17:39.055881Z",
+      "sha256": "734a7276f74161c1a8bb8984e1d6d0887d32ed9a0bf5ef03eeb4365cdaeee44c"
+    },
+    {
+      "bytes": 138288,
+      "local_path": "data/raw/voter_stats/2003-voter-statistics.xls",
+      "retrieved_at": "2026-08-19T18:44:53.452889Z",
+      "sha256": "c0f0ce783382dd8de745cb6976fe077569b8ade7bb575a01f9b3a094d1bd2d76"
+    },
+    {
+      "bytes": 145423,
+      "local_path": "data/raw/voter_stats/2006-voter-statistics.xls",
+      "retrieved_at": "2026-08-19T18:44:53.657769Z",
+      "sha256": "67a006f762cd4b170f8f0ccc01b9b817a71665b9d05a7fd325fcd4cd00b2da8d"
+    },
+    {
+      "bytes": 330240,
+      "local_path": "data/raw/voter_stats/2010-voter-statistics.xls",
+      "retrieved_at": "2026-08-19T18:44:53.835701Z",
+      "sha256": "7e0de20d2a24e7a227fcdc80becfb3a22f4c4170e336b63ffd856fcb59f31183"
+    },
+    {
+      "bytes": 196608,
+      "local_path": "data/raw/voter_stats/2014-voter-statistics.xls",
+      "retrieved_at": "2026-08-19T18:44:53.986651Z",
+      "sha256": "9dee143b9348f6d81d2076f4e752990787933104737bbc5d4d2a7e66890153dc"
+    },
+    {
+      "bytes": 226402,
+      "local_path": "data/raw/voter_stats/2018-voter-statistics.zip",
+      "retrieved_at": "2026-08-19T18:44:54.159444Z",
+      "sha256": "da01568efc8057e685d188c3b793cc5cff88fcdcd19bc6475452f1044d0679fd"
+    },
+    {
+      "bytes": 185514,
+      "local_path": "data/raw/voter_stats/2022_voter_turnout_statistics_final.xlsx",
+      "retrieved_at": "2026-08-19T18:44:54.320070Z",
+      "sha256": "ab66fa7da43c0118ee3455c804b431ae0ec03e491f7496b3061004c1721cbf21"
+    },
+    {
+      "bytes": 139993,
+      "local_path": "data/raw/voter_stats/2023-mayoral-by-election-voter-statistics-1.xlsx",
+      "retrieved_at": "2026-08-19T18:44:54.578602Z",
+      "sha256": "e2073b8814e505b7f9e53be8fee9e75a407323fc23f6563ddaf9bf32c0bb2fd5"
+    },
+    {
+      "bytes": 2776467,
+      "local_path": "data/reference/candidacy_identity_ledger.csv",
+      "retrieved_at": "2026-08-26T17:30:53.579235Z",
+      "sha256": "53fb661e997be7a9e4f1d421b8409e518212a64f3338d95e2c60c52140c92693"
+    },
+    {
+      "bytes": 60935,
+      "local_path": "data/reference/endorsement_assertion_curations.csv",
+      "retrieved_at": "2026-08-23T11:55:40.406858Z",
+      "sha256": "6db9f049c647e12042e0994bc847e74f933bbe12d4938e3948ab1c8964382227"
+    },
+    {
+      "bytes": 50021,
+      "local_path": "data/reference/endorsement_coverage_curations.csv",
+      "retrieved_at": "2026-08-23T11:55:40.459906Z",
+      "sha256": "c5aa74c9d4ad023107bcf2bfe861d45edfeea19a9b6d3b0992b2271d8dc200ab"
+    },
+    {
+      "bytes": 2401,
+      "local_path": "data/reference/endorser_panel_curations.csv",
+      "retrieved_at": "2026-08-22T12:36:04.527642Z",
+      "sha256": "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231"
+    },
+    {
+      "bytes": 393276,
+      "local_path": "data/reference/identity_review_dispositions.csv",
+      "retrieved_at": "2026-08-24T21:30:34.522400Z",
+      "sha256": "94e07068883b018214d3764cbc8eaeec54ecb69a80663da7657bd1ef07ad2f65"
+    },
+    {
+      "bytes": 3698,
+      "local_path": "data/reference/roster_agent_a.txt",
+      "retrieved_at": "2026-08-19T17:42:20.984296Z",
+      "sha256": "d4d1757db16f00ad4905ca9432e5046481454cf09fb85082809f69901222f55b"
+    },
+    {
+      "bytes": 3696,
+      "local_path": "data/reference/roster_agent_b.txt",
+      "retrieved_at": "2026-08-19T17:40:16.612264Z",
+      "sha256": "4780ad055a1d4c0015ca9244b524161a58e9700b9915a363064c417142ce9e3d"
+    },
+    {
+      "bytes": 17038,
+      "local_path": "docs/research/endorsement-coverage-luna-editorial-2003-2025.md",
+      "retrieved_at": "2026-08-22T11:26:51.074357Z",
+      "sha256": "65f872e37d367d904f859646d17b8d0711f82ea3a9d9172e479f9ec94c843e9a"
+    },
+    {
+      "bytes": 20938,
+      "local_path": "docs/research/endorsement-coverage-luna-organizations-2003-2025.md",
+      "retrieved_at": "2026-08-22T11:25:23.773390Z",
+      "sha256": "c7d7dfd60ea42bccf60dccebc33c0509b671d6d3901777489e6e4ca3accb7aaf"
+    },
+    {
+      "bytes": 10781,
+      "local_path": "docs/research/endorsement-coverage-terra-mayors-2003-2025.md",
+      "retrieved_at": "2026-08-22T11:22:37.313013Z",
+      "sha256": "d29c972ff7b7849268fb34bd34caa3613f5c5c98442590c6dd79e16bf219c28a"
+    },
+    {
+      "bytes": 11381,
+      "local_path": "docs/research/endorsement-coverage-terra-verification-editorial.md",
+      "retrieved_at": "2026-08-22T11:29:59.074929Z",
+      "sha256": "3daad2ff23108abc8fbc48a19e394fdaf9c0da15ee70ea4c95f5e052ccecaa38"
+    },
+    {
+      "bytes": 6650,
+      "local_path": "docs/research/endorsement-coverage-terra-verification-hold-recovery.md",
+      "retrieved_at": "2026-08-22T12:39:18.287674Z",
+      "sha256": "4a266b5a75907353758c0bc014498bb0b2b1821c6232328afb1a825736cebf01"
+    },
+    {
+      "bytes": 14337,
+      "local_path": "docs/research/endorsement-coverage-terra-verification-organizations.md",
+      "retrieved_at": "2026-08-22T12:38:50.324678Z",
+      "sha256": "3a785912e4394f6e2b43addd6e6a24dd9e085a1a8794c68a27fc17f077589dbc"
+    },
+    {
+      "bytes": 7008,
+      "local_path": "docs/research/endorsement-coverage-terra-verification-wave1.md",
+      "retrieved_at": "2026-08-22T11:24:56.958025Z",
+      "sha256": "b69a78cc45028b0665b13797f2ac7b8964f4c05e8669ca7cd21247422ce3599a"
+    },
+    {
+      "bytes": 25058,
+      "local_path": "docs/research/matt-elliott-2022-endorsement-matrix-audit.md",
+      "retrieved_at": "2026-08-23T11:57:57.409036Z",
+      "sha256": "907149a95a5d6f92c4191e86feff7296d724fe829975ae82dd68d12d9d09bf77"
+    }
+  ]
+}
