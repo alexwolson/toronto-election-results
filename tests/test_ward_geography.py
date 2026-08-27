@@ -60,6 +60,24 @@ def test_generalized_crosswalk_reproduces_2026_trustee_labels() -> None:
     assert derived.loc[("monavenir", 3), "district_display_name"] == ("Ward 3 — Toronto Ouest")
 
 
+def test_each_2026_board_partitions_all_25_city_wards_exactly_once() -> None:
+    city = load_city_ward_geographic_names(REFERENCE / "city_ward_geographic_names.csv")
+    crosswalk = load_trustee_ward_crosswalks(REFERENCE / "trustee_ward_crosswalks.csv", city)
+    current = crosswalk[crosswalk["boundary_regime"].str.endswith("-2026")]
+
+    expected_counts = {"tdsb": 12, "tcdsb": 12, "viamonde": 3, "monavenir": 2}
+    for board_id, expected_count in expected_counts.items():
+        board = current[current["board_id"] == board_id]
+        component_wards = [ward for wards in board["city_wards"] for ward in wards]
+
+        assert len(board) == expected_count
+        assert len(component_wards) == len(set(component_wards))
+        assert set(component_wards) == set(range(1, 26))
+        assert board["source_authority"].eq("City of Toronto").all()
+        assert board["source_url"].str.contains("2026-School-board-ward-reference-chart").all()
+        assert board["source_date"].eq("2026-04-23").all()
+
+
 def test_historical_crosswalk_covers_every_board_regime_and_city_ward() -> None:
     city = load_city_ward_geographic_names(REFERENCE / "city_ward_geographic_names.csv")
     crosswalk = load_trustee_ward_crosswalks(REFERENCE / "trustee_ward_crosswalks.csv", city)
