@@ -13,7 +13,11 @@ from pathlib import Path
 import pandas as pd
 
 from .build_manifest import sha256_file
-from .frontend_feeds import write_mayoral_candidates_feed, write_person_aliases_feed
+from .frontend_feeds import (
+    MAYORAL_CANDIDATES_SCHEMA_VERSION,
+    write_mayoral_candidates_feed,
+    write_person_aliases_feed,
+)
 
 RELEASE_MANIFEST_SCHEMA_VERSION = 1
 REPOSITORY = "alexwolson/toronto-election-results"
@@ -71,7 +75,7 @@ def build_results_release_bundle(
             "review_date",
             "source_release",
             "review_status",
-            "limitations",
+            "public_coverage_note",
             "confirmed_count",
             "held_count",
             "split_count",
@@ -108,7 +112,10 @@ def build_results_release_bundle(
                 "mayoral_candidates": "mayoral_candidates.json",
                 "person_aliases": "person_aliases.json",
             },
-            "feed_versions": {"mayoral_candidates": 3, "person_aliases": 1},
+            "feed_versions": {
+                "mayoral_candidates": MAYORAL_CANDIDATES_SCHEMA_VERSION,
+                "person_aliases": 1,
+            },
         }
         (staging / "release_manifest.json").write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n",

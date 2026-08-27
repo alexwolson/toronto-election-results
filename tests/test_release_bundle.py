@@ -62,10 +62,11 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     reference.mkdir()
     (reference / "mayoral_career_reviews.csv").write_text(
         "cohort_id,subject_candidacy_id,certified_name,resulting_person_id,luna_report_path,"
-        "terra_report_path,review_date,source_release,review_status,limitations,confirmed_count,"
-        "held_count,split_count,rejected_count,primary_rationale\n"
+        "terra_report_path,review_date,source_release,review_status,limitations,"
+        "public_coverage_note,confirmed_count,held_count,split_count,rejected_count,"
+        "primary_rationale\n"
         "toronto-mayor-2026,can_chow_2026,Olivia Chow,per_chow,,,2026-08-26,"
-        "results-2026-08-26.1,reviewed,,1,0,0,0,Verified.\n"
+        "results-2026-08-26.1,reviewed,,,1,0,0,0,Verified.\n"
     )
     (reference / "mayoral_career_occurrence_mapping.csv").write_text(
         "cohort_id,subject_candidacy_id,decision_id,canonical_candidacy_id\n"
@@ -89,6 +90,9 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
         "mayoral_candidates": "mayoral_candidates.json",
         "person_aliases": "person_aliases.json",
     }
+    public_coverage = pd.read_csv(output / "mayoral_career_coverage.csv")
+    assert "public_coverage_note" in public_coverage.columns
+    assert "limitations" not in public_coverage.columns
     assets = {asset["filename"]: asset for asset in manifest["assets"]}
     assert {
         "build_manifest.json",

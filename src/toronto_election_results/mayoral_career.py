@@ -45,6 +45,7 @@ REVIEW_COLUMNS = [
     "source_release",
     "review_status",
     "limitations",
+    "public_coverage_note",
     "confirmed_count",
     "held_count",
     "split_count",

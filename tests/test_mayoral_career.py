@@ -108,6 +108,7 @@ def _contract_inputs(tmp_path: Path):
                 "source_release": subject.source_release,
                 "review_status": "reviewed",
                 "limitations": "",
+                "public_coverage_note": "",
                 "confirmed_count": "1",
                 "held_count": "0",
                 "split_count": "0",

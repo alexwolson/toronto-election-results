@@ -230,7 +230,7 @@ def build_mayoral_candidates_feed(
                 "display_name": str(candidate["candidate_name"]),
                 "is_incumbent": person_id == incumbent_person_id,
                 "review_status": str(review["review_status"]),
-                "review_limitations": _text(review["limitations"]),
+                "review_limitations": _text(review["public_coverage_note"]),
                 "past_elections": _past_elections(history_rows),
             }
         )

@@ -44,6 +44,7 @@ def _reviews(*candidacy_ids):
                 "review_date": "2026-08-26",
                 "review_status": "reviewed",
                 "limitations": "",
+                "public_coverage_note": "",
             }
             for candidacy_id in candidacy_ids
         ]
@@ -118,7 +119,15 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
         ]
     )
 
-    feed = build_mayoral_candidates_feed(rows, _reviews("can_chow_2026", "can_gong_2026"))
+    reviews = _reviews("can_chow_2026", "can_gong_2026")
+    reviews.loc[reviews["subject_candidacy_id"].eq("can_chow_2026"), "public_coverage_note"] = (
+        "We identified a Toronto school trustee candidacy in 1985 "
+        "but could not recover authoritative results."
+    )
+    reviews.loc[reviews["subject_candidacy_id"].eq("can_chow_2026"), "limitations"] = (
+        "Internal technical review limitation."
+    )
+    feed = build_mayoral_candidates_feed(rows, reviews)
 
     assert feed["schema_version"] == 3
     assert feed["ballot_certified"] is True
@@ -130,7 +139,13 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     ]
     chow, gong = feed["candidates"]
     assert chow["is_incumbent"] is True
+    assert chow["review_limitations"] == (
+        "We identified a Toronto school trustee candidacy in 1985 "
+        "but could not recover authoritative results."
+    )
+    assert "Internal technical review limitation." not in chow.values()
     assert gong["is_incumbent"] is False
+    assert gong["review_limitations"] is None
     assert gong["person_id"] == "per_gong"
     assert [(race["year"], race["office_type"]) for race in gong["past_elections"]] == [
         (2025, "mp"),
