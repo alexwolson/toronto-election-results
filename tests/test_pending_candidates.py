@@ -116,7 +116,7 @@ def test_parser_preserves_official_raw_name_and_uses_first_plus_last_as_canonica
     assert monavenir_3["district_name"] == "Ward 3 — Toronto Ouest"
 
 
-def test_adapter_excludes_contact_social_status_and_source_occurrence_fields():
+def test_adapter_keeps_primary_campaign_url_but_excludes_other_contact_fields():
     results = parse_pending_candidate_rosters(MAYOR_FIXTURE, COUNCILLOR_FIXTURE, TRUSTEE_FIXTURE)
 
     forbidden = {
@@ -128,6 +128,8 @@ def test_adapter_excludes_contact_social_status_and_source_occurrence_fields():
         "source_candidacy_id",
     }
     assert forbidden.isdisjoint(results.columns)
+    assert results["campaign_url"].notna().sum() == 2
+    assert set(results["campaign_url"].dropna()) == {"https://example.test"}
     source_details = set(results["source_detail"])
     assert {MAYOR_CANDIDATES_URL, COUNCILLOR_CANDIDATES_URL, TRUSTEE_CANDIDATES_URL}.issubset(
         source_details

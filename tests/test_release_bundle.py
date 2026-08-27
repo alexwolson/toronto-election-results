@@ -223,8 +223,8 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     manifest = json.loads((output / "release_manifest.json").read_text())
     assert manifest["source_commit"] == "abc123"
     assert manifest["source_dirty"] is False
-    assert manifest["feed_versions"]["mayoral_candidates"] == 3
-    assert manifest["feed_versions"]["trustee_races"] == 1
+    assert manifest["feed_versions"]["mayoral_candidates"] == 4
+    assert manifest["feed_versions"]["trustee_races"] == 2
     assert manifest["feeds"] == {
         "mayoral_candidates": "mayoral_candidates.json",
         "trustee_races": "trustee_races.json",

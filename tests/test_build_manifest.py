@@ -21,7 +21,7 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
 
     assert manifest["coverage"]["through"] == "2026-08-20"
     assert manifest["coverage"]["pending_candidate_snapshot_through"] == "2026-08-27"
-    assert manifest["schema_version"] == "2.1.0"
+    assert manifest["schema_version"] == "2.2.0"
     assert manifest["sources"][0]["sha256"] == sha256_file(source)
     assert manifest["artifacts"][0]["rows"] == 1
     assert manifest["event_archive_caveats"] == [

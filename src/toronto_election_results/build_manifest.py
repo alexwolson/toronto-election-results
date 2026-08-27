@@ -90,7 +90,7 @@ def build_manifest(
     source_paths = sorted((Path(path) for path in sources), key=lambda path: path.as_posix())
     artifact_paths = sorted((Path(path) for path in artifacts), key=lambda path: path.as_posix())
     return {
-        "schema_version": "2.1.0",
+        "schema_version": "2.2.0",
         "generated_at": generated_at,
         "coverage": COVERAGE,
         "sources": [_file_record(path, timestamp_field="retrieved_at") for path in source_paths],

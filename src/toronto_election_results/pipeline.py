@@ -294,6 +294,7 @@ def _load_source_adapters(
     pending_council = load_pending_council_candidates(
         raw / "council" / "candidates_2026",
         download=download,
+        overwrite=download,
         trustee_crosswalk_path=reference / TRUSTEE_CROSSWALK_FILENAME,
     )
     mayoral_career = load_mayoral_career_backfills(reference)

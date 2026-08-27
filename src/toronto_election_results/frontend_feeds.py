@@ -26,8 +26,8 @@ from .trustee_career import (
 )
 from .trustee_continuity import load_trustee_continuity, validate_trustee_continuity
 
-MAYORAL_CANDIDATES_SCHEMA_VERSION = 3
-TRUSTEE_RACES_SCHEMA_VERSION = 1
+MAYORAL_CANDIDATES_SCHEMA_VERSION = 4
+TRUSTEE_RACES_SCHEMA_VERSION = 2
 PERSON_ALIASES_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
 _CERTIFIED_CANDIDATES_RESOURCE = "2026 Municipal Election — Certified Candidates"
@@ -293,6 +293,7 @@ def build_mayoral_candidates_feed(
                 "candidacy_id": str(candidate["candidacy_id"]),
                 "person_id": person_id,
                 "display_name": str(candidate["candidate_name"]),
+                "campaign_url": _text(candidate.get("campaign_url")),
                 "is_incumbent": person_id == incumbent_person_id,
                 "review_status": str(review["review_status"]),
                 "review_limitations": _text(review["public_coverage_note"]),
@@ -536,6 +537,7 @@ def build_trustee_races_feed(
                         "candidacy_id": candidacy_id,
                         "person_id": person_id,
                         "display_name": str(candidate["candidate_name"]),
+                        "campaign_url": _text(candidate.get("campaign_url")),
                         "is_incumbent": incumbent,
                         "past_elections": _past_elections(history_rows),
                     }

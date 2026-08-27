@@ -41,6 +41,7 @@ _REQUIRED_ADAPTER_COLUMNS = {
 _OPTIONAL_DEFAULTS: dict[str, object] = {
     "result_status": "final",
     "candidate_name": pd.NA,
+    "campaign_url": pd.NA,
     "source_candidacy_id": pd.NA,
     "party_name_raw": pd.NA,
     "affiliation_status": pd.NA,
@@ -281,6 +282,7 @@ def normalize_adapter_frame(
         "district_name",
         "candidate_name_raw",
         "candidate_name",
+        "campaign_url",
         "party_name_raw",
         "source_candidacy_id",
         "outcome_method",

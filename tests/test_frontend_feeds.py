@@ -26,6 +26,7 @@ def _row(**overrides):
         "office_type": "mayor",
         "candidate_name": "Current Candidate",
         "candidate_name_raw": "Candidate, Current",
+        "campaign_url": pd.NA,
         "party_name": pd.NA,
         "district_name": "City of Toronto",
         "result_status": "pending",
@@ -66,6 +67,7 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
                 person_id="per_chow",
                 candidate_name="Olivia Chow",
                 candidate_name_raw="Chow, Olivia",
+                campaign_url="https://www.oliviachow.ca",
             ),
             _row(
                 candidacy_id="can_gong_2026",
@@ -136,7 +138,7 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     )
     feed = build_mayoral_candidates_feed(rows, reviews)
 
-    assert feed["schema_version"] == 3
+    assert feed["schema_version"] == 4
     assert feed["ballot_certified"] is True
     assert feed["coverage"]["policy"] == "full_verified_canadian_electoral_career"
     assert feed["coverage"]["year_cutoff"] is None
@@ -146,6 +148,7 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     ]
     chow, gong = feed["candidates"]
     assert chow["is_incumbent"] is True
+    assert chow["campaign_url"] == "https://www.oliviachow.ca"
     assert chow["review_limitations"] == (
         "We identified a Toronto school trustee candidacy in 1985 "
         "but could not recover authoritative results."
@@ -230,7 +233,7 @@ def test_trustee_feed_publishes_the_complete_field_and_only_confirmed_history():
         ),
     )
 
-    assert feed["schema_version"] == 1
+    assert feed["schema_version"] == 2
     assert feed["ballot_certified"] is True
     assert [board["board_id"] for board in feed["boards"]] == [
         "tdsb",

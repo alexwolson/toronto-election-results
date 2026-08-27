@@ -5,8 +5,9 @@ results.  This adapter keeps that lifecycle distinction explicit: it emits the s
 source-adapter contract as the completed-result adapters, but every result field is
 unknown and ``result_status`` is ``pending``.
 
-The source also publishes contact details and social links.  They are intentionally
-not part of the adapter output; the roster is used only to establish Candidacy facts.
+The source also publishes contact details and social links. Only the candidate's
+primary campaign link is retained as a Candidacy fact; private contact fields and
+the noisier platform-specific social entries remain outside the adapter contract.
 """
 
 from __future__ import annotations
@@ -15,6 +16,7 @@ import json
 import re
 import unicodedata
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pandas as pd
 import requests
@@ -98,6 +100,7 @@ PENDING_ADAPTER_COLUMNS = [
     "district_name",
     "candidate_name_raw",
     "candidate_name",
+    "campaign_url",
     "party_name_raw",
     "affiliation_status",
     "votes",
@@ -223,6 +226,30 @@ def _active_candidate(candidate: object) -> dict[str, object] | None:
     return candidate if status.casefold() == "active" else None
 
 
+def _campaign_url(candidate: dict[str, object]) -> object:
+    """Return the candidate-submitted primary link from the City's ``web`` slot."""
+
+    links = candidate.get("socialMedias")
+    if links is None:
+        return pd.NA
+    if not isinstance(links, list):
+        raise TypeError("official candidate socialMedias must be an array")
+    websites = []
+    for link in links:
+        if not isinstance(link, dict):
+            raise TypeError("official candidate social-media entry is not an object")
+        name = _optional_text(link.get("name"))
+        if name is not None and name.casefold() == "web":
+            url = _text(link.get("url"), field="web URL")
+            parsed = urlparse(url)
+            if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                raise ValueError(f"official candidate web URL is invalid: {url!r}")
+            websites.append(url)
+    if len(websites) > 1:
+        raise ValueError("official candidate has more than one web link")
+    return websites[0] if websites else pd.NA
+
+
 def _candidate_row(
     candidate: dict[str, object],
     *,
@@ -266,6 +293,7 @@ def _candidate_row(
         "district_name": district_name,
         "candidate_name_raw": _text(candidate.get("name"), field="name"),
         "candidate_name": " ".join(name_parts),
+        "campaign_url": _campaign_url(candidate),
         "party_name_raw": pd.NA,
         "affiliation_status": "non_partisan",
         "votes": pd.NA,

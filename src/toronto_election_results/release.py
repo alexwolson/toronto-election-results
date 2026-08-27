@@ -55,6 +55,7 @@ ELECTION_RESULT_COLUMNS = [
     "boundary_regime",
     "candidate_name",
     "candidate_name_raw",
+    "campaign_url",
     "party_id",
     "party_name",
     "party_name_raw",
