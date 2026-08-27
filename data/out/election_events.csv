@@ -1,8 +1,13 @@
 event_id,election_date,election_year,election_type,election_authority
 toronto-1991-general,1991-11-12,1991,general,toronto_city_clerk
+east-york-1994-general,1994-11-14,1994,general,east_york_city_clerk
 toronto-1994-general,1994-11-14,1994,general,toronto_city_clerk
+on-1995-general,1995-06-08,1995,general,elections_ontario
+on-1996-05-23-by-york-south,1996-05-23,1996,by_election,elections_ontario
+ec-ge-36,1997-06-02,1997,general,elections_canada
 toronto-1997-general,1997-11-10,1997,general,toronto_city_clerk
 toronto-2000-general,2000-11-13,2000,general,toronto_city_clerk
+on-2001-09-20-by-003,2001-09-20,2001,by_election,elections_ontario
 on-2003-general,2003-10-02,2003,general,elections_ontario
 evt_d89f777f34365c37b114ca39fb376591,2003-11-10,2003,general,toronto_city_clerk
 ec-ge-38,2004-06-28,2004,general,elections_canada
@@ -22,10 +27,12 @@ ec-ge-41,2011-05-02,2011,general,elections_canada
 on-2011-general,2011-10-06,2011,general,elections_ontario
 evt_0053e297e0b15f179a94dee854971a09,2012-02-27,2012,by_election,toronto_city_clerk
 ec-be-2012-03-19,2012-03-19,2012,by_election,elections_canada
+on-2012-09-06-by-039,2012-09-06,2012,by_election,elections_ontario
 evt_a87f3eb9595a59af890e07aadd93c89c,2012-12-10,2012,by_election,toronto_city_clerk
 on-2013-08-01-by-024,2013-08-01,2013,by_election,elections_ontario
 on-2013-08-01-by-082,2013-08-01,2013,by_election,elections_ontario
 ec-be-2013-11-25,2013-11-25,2013,by_election,elections_canada
+on-2014-02-13-by-089,2014-02-13,2014,by_election,elections_ontario
 on-2014-general,2014-06-12,2014,general,elections_ontario
 ec-be-2014-06-30,2014-06-30,2014,by_election,elections_canada
 evt_54673fd104ab5ef08eb865e162ac040c,2014-10-27,2014,general,toronto_city_clerk

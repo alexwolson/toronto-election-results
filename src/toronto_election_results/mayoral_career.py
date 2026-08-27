@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -148,7 +149,49 @@ _BACKFILL_METADATA = {
         "toronto-2000-wards",
         "20",
     ),
+    "mcb_8c58d53e645d5f06a946a88bb13b258a": (
+        "east-york-1994-general",
+        "east-york-1994-citywide",
+        "city",
+    ),
+    "mcb_37e25614fdc95e7791c39c3debf7dbf7": (
+        "on-1995-general",
+        "ontario-1987-130",
+        "york-south",
+    ),
+    "mcb_7c623313af1b56c4a37bcc5e554a7472": (
+        "on-1996-05-23-by-york-south",
+        "ontario-1987-130",
+        "york-south",
+    ),
+    "mcb_f2c19ef41cbe59fbb23e7dbf1f81cb7e": (
+        "ec-ge-36",
+        "federal-1996-representation-order",
+        "broadview-greenwood",
+    ),
+    "mcb_e54d7615fb4c5014860831cc25a81d2c": (
+        "toronto-2000-general",
+        "toronto-2000-citywide",
+        "city",
+    ),
+    "mcb_547a8362a0225badb1bcdd82276851d0": (
+        "on-2001-09-20-by-003",
+        "ontario-1999-103",
+        "003",
+    ),
+    "mcb_0995465250bb5713ab61c235d7286bff": (
+        "on-2012-09-06-by-039",
+        "ontario-2007-107",
+        "039",
+    ),
+    "mcb_9c1681da701258cba51b5f3272ea3241": (
+        "on-2014-02-13-by-089",
+        "ontario-2007-107",
+        "089",
+    ),
 }
+
+_HTTPS_URL = re.compile(r"https://[^\s<>]+")
 
 
 @dataclass(frozen=True)
@@ -178,6 +221,32 @@ def _optional(value: object) -> str | None:
         return None
     text = str(value).strip()
     return text or None
+
+
+def _assertion_identity_target(
+    resulting_person_id: object, assertion_id: str
+) -> tuple[tuple[str, ...], str | None]:
+    """Pin an existing Person, or let curation create its planned stable Person."""
+
+    person_id = _optional(resulting_person_id)
+    generated_person_id = stable_id("per", "curated_identity_assertion", assertion_id)
+    if person_id is None or person_id == generated_person_id:
+        return (), None
+    return (person_id,), person_id
+
+
+def _identity_evidence_urls(subject_decisions: pd.DataFrame) -> tuple[str, ...]:
+    """Collect result and identity URLs recorded in the occurrence decisions."""
+
+    urls: list[str] = []
+    for column in ["result_source_locator", "identity_bridge"]:
+        for value in subject_decisions[column]:
+            for match in _HTTPS_URL.findall(str(value)):
+                for url in match.split(";"):
+                    cleaned = url.rstrip(".,")
+                    if cleaned and cleaned not in urls:
+                        urls.append(cleaned)
+    return tuple(urls)
 
 
 def load_mayoral_career_cohort(path: str | Path) -> list[MayoralCareerCohortRow]:
@@ -325,22 +394,19 @@ def build_mayoral_career_identity_assertions(
             for candidacy_id in candidacy_ids
         )
         review = reviews_by_subject.loc[subject_id]
-        evidence_urls = tuple(
-            dict.fromkeys(
-                url
-                for url in subject_decisions["result_source_locator"]
-                if str(url).startswith("https://")
-            )
+        assertion_id = stable_id("ast", COHORT_ID, subject_id)
+        registry_person_ids, canonical_person_id = _assertion_identity_target(
+            review["resulting_person_id"], assertion_id
         )
         assertions.append(
             CuratedIdentityAssertion(
-                assertion_id=stable_id("ast", COHORT_ID, subject_id),
+                assertion_id=assertion_id,
                 preferred_name=str(review["certified_name"]),
                 occurrences=occurrences,
-                evidence_urls=evidence_urls,
+                evidence_urls=_identity_evidence_urls(subject_decisions),
                 rationale=str(review["primary_rationale"]),
-                registry_person_ids=(str(review["resulting_person_id"]),),
-                canonical_person_id=str(review["resulting_person_id"]),
+                registry_person_ids=registry_person_ids,
+                canonical_person_id=canonical_person_id,
             )
         )
     return tuple(assertions)

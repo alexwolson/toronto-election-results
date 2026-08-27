@@ -43,3 +43,13 @@ The absent 2026 identity anchor is a concrete material limitation. It prevents c
 - `toronto:2022:tdsb-trustee:ward-2:thomas-hall`; status: `hold` — exact result, no 2026 identity bridge.
 - `toronto:2023:mayor:thomas-hall`; status: `hold` — exact result, no 2026 identity bridge.
 - `toronto:2023:councillor:ward-20:thomas-hall`; status: `hold` — exact result, no 2026 identity bridge.
+
+## Primary second-pass adjudication (post-verification)
+
+The primary reviewer applied the clarified reliable-source threshold. The
+[Ward 20 reference](https://en.wikipedia.org/wiki/Ward_20_Scarborough_Southwest)
+explicitly identifies the 2023 council candidate as having run in that year's
+mayoral by-election. Those two occurrences are confirmed with a new scoped Person
+for the 2023 and 2026 candidacies. The 2022 TDSB trustee result stays held and
+retains its separate Person because no reliable source connects it to that
+municipal sequence.

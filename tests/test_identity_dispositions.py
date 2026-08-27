@@ -516,7 +516,7 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
     active = links.loc[links["valid_to_release"].isna()]
     proposed = active.loc[active["link_status"].eq("proposed")]
-    assert len(proposed) == 64
+    assert len(proposed) == 59
     assert proposed["candidacy_id"].is_unique
     proposed_results = results.loc[proposed["candidacy_id"]]
     assert proposed_results["result_status"].eq("pending").all()

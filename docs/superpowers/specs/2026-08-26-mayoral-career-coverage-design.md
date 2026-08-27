@@ -64,8 +64,12 @@ defensible bridge from one or more of the following:
 - a candidate-controlled or candidate-authored source explicitly describing the
   prior candidacy or office;
 - an archived first-party source with equivalent specificity; or
-- when primary sources are unavailable, multiple independent authoritative sources
-  whose combined evidence is explicit, consistent, and free of collision signals.
+- a reliable independent article or reference work, including Wikipedia, that
+  explicitly attributes multiple election occurrences to the same person.
+
+One such reliable source is sufficient for the identity bridge when its attribution
+is explicit and collision and contradiction checks are clear. Exact result facts
+still require official or otherwise authoritative result evidence.
 
 Official or authoritative result evidence must support the exact contest, ballot
 name, date, office, geography, votes, vote share, placement, and outcome that will

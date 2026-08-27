@@ -35,6 +35,11 @@ class FederalGeneralRosterReference:
 
 
 FEDERAL_GENERAL_ROSTER_REFERENCES: dict[str, FederalGeneralRosterReference] = {
+    "ec-ge-36": FederalGeneralRosterReference(
+        "1997-04-27",
+        "1997-04-26",
+        "https://www.elections.ca/content.aspx?anchor=circonscription&dir=rep%2Foff%2Fdec3097&document=synopsis02&lang=e&section=res",
+    ),
     "ec-ge-38": FederalGeneralRosterReference(
         "2004-05-23",
         "2004-05-22",

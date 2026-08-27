@@ -12,6 +12,7 @@ from toronto_election_results.mayoral_career import (
     EXPECTED_COHORT_SIZE,
     MAPPING_COLUMNS,
     REVIEW_COLUMNS,
+    _assertion_identity_target,
     exclude_superseded_identity_decisions,
     load_contract_table,
     load_mayoral_career_backfills,
@@ -19,7 +20,11 @@ from toronto_election_results.mayoral_career import (
     validate_mayoral_career_cohort,
     validate_mayoral_career_contracts,
 )
-from toronto_election_results.schema import derive_result_metrics, normalize_adapter_frame
+from toronto_election_results.schema import (
+    derive_result_metrics,
+    normalize_adapter_frame,
+    stable_id,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 COHORT_PATH = ROOT / "data/reference/mayoral_career_cohort_2026.csv"
@@ -249,12 +254,23 @@ def test_all_confirmed_occurrences_have_canonical_mappings():
 def test_only_confirmed_backfills_enter_candidate_record_adapter():
     adapter = load_mayoral_career_backfills(ROOT / "data/reference")
 
-    assert len(adapter) == 9
+    assert len(adapter) == 17
     assert adapter["coverage_status"].eq("candidate_record").all()
     assert set(adapter["source_candidacy_id"]) == set(
         load_contract_table(ROOT / "data/reference/mayoral_career_backfill.csv", BACKFILL_COLUMNS)[
             "backfill_id"
         ]
+    )
+
+
+def test_planned_assertion_person_is_created_instead_of_pinned():
+    assertion_id = stable_id("ast", "toronto-mayor-2026", "can_new_subject")
+    planned_person_id = stable_id("per", "curated_identity_assertion", assertion_id)
+
+    assert _assertion_identity_target(planned_person_id, assertion_id) == ((), None)
+    assert _assertion_identity_target("per_existing", assertion_id) == (
+        ("per_existing",),
+        "per_existing",
     )
 
 

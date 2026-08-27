@@ -55,3 +55,12 @@
 - Confirm every listed occurrence from 1991 through 2023; each has an authoritative result source and overwhelming identity continuity.
 - `toronto-board-of-education-1985-ward-6-olivia-chow`: **hold** pending an official detailed tabulation, despite the City-confirmed election to the office.
 - Overall: **reviewed_with_limitations** solely because of the unresolved 1985 result detail.
+
+## Primary second-pass adjudication (post-verification)
+
+The primary reviewer applied the clarified standard that one reliable source may
+establish an explicit cross-result identity bridge. That does not change this
+case: the City biography already establishes that the 1985 trustee was Olivia
+Chow, but no detailed final tabulation was recovered. The hold is therefore about
+missing exact result facts rather than identity. The twelve later occurrences
+remain confirmed.
