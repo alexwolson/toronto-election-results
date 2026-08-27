@@ -1,4 +1,4 @@
-"""Official pending Mayor and Councillor Candidacies for Toronto's 2026 election.
+"""Official Mayor, Councillor, and Trustee Candidacies for Toronto's 2026 election.
 
 The City publishes the certified candidate roster separately from completed election
 results.  This adapter keeps that lifecycle distinction explicit: it emits the same
@@ -20,6 +20,13 @@ import pandas as pd
 import requests
 
 from .schema import stable_id
+from .trustee_2026 import (
+    BOARD_ID_BY_OFFICE_CODE,
+    BOARD_METADATA,
+    EXPECTED_WARDS,
+    TRUSTEE_CROSSWALK_FILENAME,
+    load_trustee_ward_crosswalk,
+)
 
 ELECTION_DATE = "2026-10-26"
 BOUNDARY_REGIME = "toronto_council_25_wards"
@@ -29,13 +36,27 @@ MAYOR_CANDIDATES_URL = (
 COUNCILLOR_CANDIDATES_URL = (
     "https://www.toronto.ca/data/elections/candidate_list/councilorCandidates_2026.json"
 )
+TRUSTEE_CANDIDATES_URL = (
+    "https://www.toronto.ca/data/elections/candidate_list/trusteeCandidates_2026.json"
+)
+TRUSTEE_ACCLAMATION_URL = (
+    "https://www.toronto.ca/wp-content/uploads/2026/08/8ed9-2026-Declaration-of-Acclamation.pdf"
+)
 
 MAYOR_CANDIDATES_FILENAME = "mayorCandidates_2026.json"
 COUNCILLOR_CANDIDATES_FILENAME = "councilorCandidates_2026.json"
+TRUSTEE_CANDIDATES_FILENAME = "trusteeCandidates_2026.json"
 
 _EVENT_ID = stable_id("evt", "toronto_city_clerk", ELECTION_DATE, "general")
 _SOURCE_RESOURCE = "2026 Municipal Election — Certified Candidates"
 _WHITESPACE = re.compile(r"\s+")
+
+_TRUSTEE_ACCLAMATIONS = {
+    ("tcdsb", 6): "Frank D'Amico",
+    ("tcdsb", 12): "Nancy Crawford",
+    ("viamonde", 2): "Benoit Fortin",
+    ("viamonde", 4): "Geneviève Oger",
+}
 
 _WARD_NAMES = {
     1: "Etobicoke North",
@@ -94,11 +115,15 @@ PENDING_ADAPTER_COLUMNS = [
 ]
 
 
-def pending_candidate_paths(source_dir: str | Path) -> tuple[Path, Path]:
-    """Return the deterministic local cache paths for both official rosters."""
+def pending_candidate_paths(source_dir: str | Path) -> tuple[Path, Path, Path]:
+    """Return the deterministic local cache paths for all official rosters."""
 
     root = Path(source_dir)
-    return root / MAYOR_CANDIDATES_FILENAME, root / COUNCILLOR_CANDIDATES_FILENAME
+    return (
+        root / MAYOR_CANDIDATES_FILENAME,
+        root / COUNCILLOR_CANDIDATES_FILENAME,
+        root / TRUSTEE_CANDIDATES_FILENAME,
+    )
 
 
 def _download_json(
@@ -138,10 +163,10 @@ def download_pending_candidate_rosters(
     *,
     session: requests.Session | None = None,
     overwrite: bool = False,
-) -> tuple[Path, Path]:
-    """Download both official 2026 candidate rosters atomically and idempotently."""
+) -> tuple[Path, Path, Path]:
+    """Download all official 2026 candidate rosters atomically and idempotently."""
 
-    mayor_path, councillor_path = pending_candidate_paths(source_dir)
+    mayor_path, councillor_path, trustee_path = pending_candidate_paths(source_dir)
     _download_json(
         MAYOR_CANDIDATES_URL,
         mayor_path,
@@ -154,7 +179,13 @@ def download_pending_candidate_rosters(
         session=session,
         overwrite=overwrite,
     )
-    return mayor_path, councillor_path
+    _download_json(
+        TRUSTEE_CANDIDATES_URL,
+        trustee_path,
+        session=session,
+        overwrite=overwrite,
+    )
+    return mayor_path, councillor_path, trustee_path
 
 
 def _load_json(path: str | Path) -> dict[str, object]:
@@ -199,9 +230,16 @@ def _candidate_row(
     official_district_id: str,
     district_name: str,
     source_detail: str,
+    represented_body: str = "toronto_city_council",
+    boundary_regime: str = BOUNDARY_REGIME,
+    expected_office: int | None = None,
+    outcome_method: str = "pending",
+    result_status: str = "pending",
 ) -> dict[str, object]:
-    expected_office = 1 if office_type == "mayor" else 2
-    if candidate.get("office") != expected_office:
+    office_code = (
+        expected_office if expected_office is not None else (1 if office_type == "mayor" else 2)
+    )
+    if candidate.get("office") != office_code:
         raise ValueError(
             f"official {office_type} candidate has unexpected office code: "
             f"{candidate.get('office')!r}"
@@ -221,9 +259,9 @@ def _candidate_row(
         "election_date": pd.Timestamp(ELECTION_DATE).date(),
         "election_type": "general",
         "election_authority": "toronto_city_clerk",
-        "represented_body": "toronto_city_council",
+        "represented_body": represented_body,
         "office_type": office_type,
-        "boundary_regime": BOUNDARY_REGIME,
+        "boundary_regime": boundary_regime,
         "official_district_id": official_district_id,
         "district_name": district_name,
         "candidate_name_raw": _text(candidate.get("name"), field="name"),
@@ -231,13 +269,13 @@ def _candidate_row(
         "party_name_raw": pd.NA,
         "affiliation_status": "non_partisan",
         "votes": pd.NA,
-        "elected": pd.NA,
+        "elected": True if outcome_method == "acclamation" else pd.NA,
         "incumbent_reported": pd.NA,
         "eligible_electors": pd.NA,
         "ballots_cast": pd.NA,
         "turnout_scope": pd.NA,
-        "outcome_method": "pending",
-        "result_status": "pending",
+        "outcome_method": outcome_method,
+        "result_status": result_status,
         "coverage_status": "complete",
         "source_authority": "City of Toronto",
         "source_resource": _SOURCE_RESOURCE,
@@ -321,6 +359,128 @@ def _councillor_rows(payload: dict[str, object]) -> list[dict[str, object]]:
     return rows
 
 
+def _trustee_rows(
+    payload: dict[str, object], crosswalk_path: str | Path
+) -> list[dict[str, object]]:
+    boards = payload.get("schoolBoard")
+    if not isinstance(boards, list):
+        raise TypeError("official trustee roster is missing its schoolBoard array")
+
+    crosswalk = load_trustee_ward_crosswalk(crosswalk_path)
+    crosswalk_by_key = {
+        (str(row.board_id), int(row.ward_id)): row for row in crosswalk.itertuples(index=False)
+    }
+    rows: list[dict[str, object]] = []
+    seen_boards: set[str] = set()
+    seen_contests: set[tuple[str, int]] = set()
+
+    for board_entry in boards:
+        if not isinstance(board_entry, dict):
+            raise TypeError("official trustee school-board entry is not an object")
+        try:
+            office_code = int(board_entry.get("id"))
+        except (TypeError, ValueError) as exc:
+            raise ValueError(
+                f"invalid official trustee board id: {board_entry.get('id')!r}"
+            ) from exc
+        board_id = BOARD_ID_BY_OFFICE_CODE.get(office_code)
+        if board_id is None:
+            raise ValueError(f"official trustee roster has unexpected board id: {office_code}")
+        if board_id in seen_boards:
+            raise ValueError(f"official trustee roster repeats board {board_id}")
+        seen_boards.add(board_id)
+        metadata = BOARD_METADATA[board_id]
+
+        wards = board_entry.get("ward")
+        if not isinstance(wards, list):
+            raise TypeError(f"official trustee board {board_id} is missing its ward array")
+        seen_wards: set[int] = set()
+        for ward_entry in wards:
+            if not isinstance(ward_entry, dict):
+                raise TypeError("official trustee ward entry is not an object")
+            try:
+                ward = int(_text(ward_entry.get("num"), field="trustee ward number"))
+            except ValueError as exc:
+                raise ValueError(
+                    f"invalid official trustee ward number: {ward_entry.get('num')!r}"
+                ) from exc
+            if ward in seen_wards:
+                raise ValueError(f"official trustee roster repeats {board_id} ward {ward}")
+            seen_wards.add(ward)
+            key = (board_id, ward)
+            if key not in crosswalk_by_key:
+                raise ValueError(f"official trustee roster has out-of-scope contest {key!r}")
+            if key in seen_contests:
+                raise ValueError(f"official trustee roster repeats contest {key!r}")
+            seen_contests.add(key)
+
+            candidates = ward_entry.get("candidate")
+            if not isinstance(candidates, list):
+                raise TypeError(
+                    f"official trustee {board_id} ward {ward} is missing its candidate array"
+                )
+            active = [candidate for value in candidates if (candidate := _active_candidate(value))]
+            if not active:
+                raise ValueError(
+                    f"official trustee {board_id} ward {ward} contains no active candidates"
+                )
+            raw_names = [_text(candidate.get("name"), field="name") for candidate in active]
+            if len(raw_names) != len(set(raw_names)):
+                raise ValueError(
+                    f"official trustee {board_id} ward {ward} repeats an active candidacy"
+                )
+
+            acclaimed_name = _TRUSTEE_ACCLAMATIONS.get(key)
+            if acclaimed_name is not None:
+                canonical_names = [
+                    " ".join(
+                        part
+                        for value in [candidate.get("firstName"), candidate.get("lastName")]
+                        if (part := _optional_text(value)) is not None
+                    )
+                    for candidate in active
+                ]
+                if canonical_names != [acclaimed_name]:
+                    raise ValueError(
+                        f"declared acclamation {board_id} ward {ward} must contain only "
+                        f"{acclaimed_name}"
+                    )
+
+            district = crosswalk_by_key[key]
+            for candidate in active:
+                outcome_method = "acclamation" if acclaimed_name is not None else "pending"
+                detail = TRUSTEE_CANDIDATES_URL
+                if acclaimed_name is not None:
+                    detail = f"{detail};{TRUSTEE_ACCLAMATION_URL}"
+                rows.append(
+                    _candidate_row(
+                        candidate,
+                        office_type="trustee",
+                        official_district_id=str(ward),
+                        district_name=str(district.district_name),
+                        source_detail=detail,
+                        represented_body=str(metadata["represented_body"]),
+                        boundary_regime=str(metadata["boundary_regime"]),
+                        expected_office=office_code,
+                        outcome_method=outcome_method,
+                        result_status="final" if acclaimed_name is not None else "pending",
+                    )
+                )
+
+        if tuple(sorted(seen_wards)) != EXPECTED_WARDS[board_id]:
+            raise ValueError(
+                f"official trustee {board_id} roster does not cover the expected wards: "
+                f"expected={list(EXPECTED_WARDS[board_id])}, actual={sorted(seen_wards)}"
+            )
+
+    if seen_boards != set(EXPECTED_WARDS):
+        raise ValueError(
+            "official trustee roster does not cover the four expected boards: "
+            f"missing={sorted(set(EXPECTED_WARDS) - seen_boards)}"
+        )
+    return rows
+
+
 def _pending_frame(rows: list[dict[str, object]]) -> pd.DataFrame:
     frame = pd.DataFrame(rows, columns=PENDING_ADAPTER_COLUMNS)
     for column in ["votes", "eligible_electors", "ballots_cast"]:
@@ -335,12 +495,16 @@ def _pending_frame(rows: list[dict[str, object]]) -> pd.DataFrame:
 def parse_pending_candidate_rosters(
     mayor_path: str | Path,
     councillor_path: str | Path,
+    trustee_path: str | Path,
+    *,
+    trustee_crosswalk_path: str | Path = Path("data/reference") / TRUSTEE_CROSSWALK_FILENAME,
 ) -> pd.DataFrame:
     """Parse official cached rosters into pending source-adapter rows."""
 
     rows = [
         *_mayor_rows(_load_json(mayor_path)),
         *_councillor_rows(_load_json(councillor_path)),
+        *_trustee_rows(_load_json(trustee_path), trustee_crosswalk_path),
     ]
     return _pending_frame(rows)
 
@@ -351,8 +515,9 @@ def load_pending_council_candidates(
     download: bool = False,
     session: requests.Session | None = None,
     overwrite: bool = False,
+    trustee_crosswalk_path: str | Path = Path("data/reference") / TRUSTEE_CROSSWALK_FILENAME,
 ) -> pd.DataFrame:
-    """Load the 2026 Mayor/Councillor roster, optionally acquiring its two JSON files."""
+    """Load all certified 2026 Toronto municipal candidate rosters."""
 
     paths = pending_candidate_paths(source_dir)
     if download:
@@ -366,4 +531,7 @@ def load_pending_council_candidates(
         raise FileNotFoundError(
             "missing official 2026 candidate roster file(s): " + ", ".join(missing)
         )
-    return parse_pending_candidate_rosters(*paths)
+    return parse_pending_candidate_rosters(
+        *paths,
+        trustee_crosswalk_path=trustee_crosswalk_path,
+    )

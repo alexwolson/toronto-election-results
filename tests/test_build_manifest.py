@@ -20,7 +20,7 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
     )
 
     assert manifest["coverage"]["through"] == "2026-08-20"
-    assert manifest["coverage"]["pending_candidate_snapshot_through"] == "2026-08-21"
+    assert manifest["coverage"]["pending_candidate_snapshot_through"] == "2026-08-27"
     assert manifest["schema_version"] == "2.1.0"
     assert manifest["sources"][0]["sha256"] == sha256_file(source)
     assert manifest["artifacts"][0]["rows"] == 1
@@ -49,7 +49,7 @@ def test_manifest_discloses_cancelled_and_post_cutoff_calls(tmp_path):
         {
             "label": "2026 Toronto municipal general election",
             "scheduled_date": "2026-10-26",
-            "candidate_snapshot_through": "2026-08-21",
+            "candidate_snapshot_through": "2026-08-27",
             "status": "pending",
         }
     ]
@@ -69,6 +69,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     endorsement_coverage = reference / "endorsement_coverage_curations.csv"
     verification_report = tmp_path / "verification-report.md"
     search_certificate = tmp_path / "search-certificate.md"
+    trustee_crosswalk = reference / "trustee_ward_crosswalk_2026.csv"
     ignored = reference / "notes.md"
     roster_a.write_text("officially reconciled A", encoding="utf-8")
     roster_b.write_text("officially reconciled B", encoding="utf-8")
@@ -78,6 +79,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     endorsement_assertions.write_text("audited,endorsement\n", encoding="utf-8")
     verification_report.write_text("verified", encoding="utf-8")
     search_certificate.write_text("searched", encoding="utf-8")
+    trustee_crosswalk.write_text("official,crosswalk\n", encoding="utf-8")
     endorsement_coverage.write_text(
         "verification_report_path,search_certificate_path\n"
         f"{verification_report},{search_certificate}\n",
@@ -96,6 +98,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
             roster_b,
             verification_report,
             search_certificate,
+            trustee_crosswalk,
         ],
         key=lambda path: path.as_posix(),
     )

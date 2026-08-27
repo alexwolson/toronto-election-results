@@ -10,6 +10,9 @@ _GEOMETRY_CONTAINMENT_RELATIVE_TOLERANCE = 1e-12
 _GEOMETRY_CONTAINMENT_ABSOLUTE_TOLERANCE = 1e-18
 _COMPLETED_RESULTS_END = pd.Timestamp("2026-08-20")
 _PENDING_EVENT_END = pd.Timestamp("2026-10-26")
+_TORONTO_2026_ACCLAMATION_DECLARATION = (
+    "https://www.toronto.ca/wp-content/uploads/2026/08/8ed9-2026-Declaration-of-Acclamation.pdf"
+)
 
 
 def _duplicate_issue(frame: pd.DataFrame, key: str, table: str, issues: list[str]) -> None:
@@ -306,8 +309,21 @@ def validate_release(
         issues.append("candidate votes cannot be negative")
 
     parsed_dates = pd.to_datetime(candidacies["election_date"], errors="coerce")
-    future_completed = parsed_dates.gt(_COMPLETED_RESULTS_END) & ~candidacies["result_status"].eq(
-        "pending"
+    declared_future_acclamation = (
+        candidacies["result_status"].eq("final")
+        & candidacies["outcome_method"].eq("acclamation")
+        & candidacies["election_authority"].eq("toronto_city_clerk")
+        & candidacies["election_type"].eq("general")
+        & candidacies["office_type"].eq("trustee")
+        & parsed_dates.eq(_PENDING_EVENT_END)
+        & candidacies["source_detail"]
+        .astype("string")
+        .str.contains(_TORONTO_2026_ACCLAMATION_DECLARATION, regex=False, na=False)
+    )
+    future_completed = (
+        parsed_dates.gt(_COMPLETED_RESULTS_END)
+        & ~candidacies["result_status"].eq("pending")
+        & ~declared_future_acclamation
     )
     if future_completed.any():
         issues.append("post-cutoff Candidacies must have result_status=pending")

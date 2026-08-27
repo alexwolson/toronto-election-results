@@ -7,10 +7,12 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
+PENDING_CANDIDATE_SNAPSHOT_THROUGH = "2026-08-27"
+
 COVERAGE = {
     "from": "2003-01-01",
     "through": "2026-08-20",
-    "pending_candidate_snapshot_through": "2026-08-21",
+    "pending_candidate_snapshot_through": PENDING_CANDIDATE_SNAPSHOT_THROUGH,
     "pending_event_through": "2026-10-26",
     "timezone": "America/Toronto",
 }
@@ -46,7 +48,7 @@ PENDING_EVENTS = [
     {
         "label": "2026 Toronto municipal general election",
         "scheduled_date": "2026-10-26",
-        "candidate_snapshot_through": "2026-08-21",
+        "candidate_snapshot_through": PENDING_CANDIDATE_SNAPSHOT_THROUGH,
         "status": "pending",
     }
 ]

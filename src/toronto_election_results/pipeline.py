@@ -38,6 +38,7 @@ from .municipal import load_council_results
 from .ontario import download_ontario_sources, load_ontario_results
 from .pending_candidates import load_pending_council_candidates
 from .release import assemble_bootstrapped_release, validate_tables, write_release
+from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
 from .trustees import load_trustee_results, trustee_event_manifest
 
 RAW = Path("data/raw")
@@ -93,6 +94,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "mayoral_career_decisions.csv",
         "mayoral_career_backfill.csv",
         "mayoral_career_occurrence_mapping.csv",
+        TRUSTEE_CROSSWALK_FILENAME,
     ):
         endorsement_path = reference / filename
         if endorsement_path.is_file():
@@ -257,6 +259,7 @@ def _load_source_adapters(
     pending_council = load_pending_council_candidates(
         raw / "council" / "candidates_2026",
         download=download,
+        trustee_crosswalk_path=reference / TRUSTEE_CROSSWALK_FILENAME,
     )
     mayoral_career = load_mayoral_career_backfills(reference)
     contest_manifest = trustee_event_manifest(

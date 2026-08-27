@@ -2,9 +2,11 @@
 
 A unified, analysis-ready history of elections within the City of Toronto. Completed results cover
 **2003-01-01 through 2026-08-20**. The scheduled **2026-10-26 Toronto municipal general election**
-is also represented by the City's official candidate-list snapshot as of **2026-08-21**; those
-Candidacies are explicitly pending, not results. The primary table has one row per Candidacy in a
-single-seat Contest and is designed for election modelling, with `vote_share` as the main target.
+is also represented by the City's certified candidate-list snapshot as of **2026-08-27**. Mayor,
+Councillor, and contested Trustee Candidacies remain pending. Four Trustees declared elected by
+acclamation on August 24 are final results with null vote totals. The primary table has one row per
+Candidacy in a single-seat Contest and is designed for election modelling, with `vote_share` as the
+main target.
 
 Coverage includes:
 

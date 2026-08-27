@@ -149,6 +149,66 @@ def test_pending_candidate_roster_allows_future_event_and_null_results():
     assert validate_release(*release) == []
 
 
+def _future_trustee_acclamation(source_detail: str):
+    rows = pd.DataFrame(
+        {
+            "event_id": ["toronto-2026"],
+            "election_date": ["2026-10-26"],
+            "election_type": ["general"],
+            "election_authority": ["toronto_city_clerk"],
+            "represented_body": ["toronto_catholic_district_school_board"],
+            "office_type": ["trustee"],
+            "boundary_regime": ["tcdsb-trustee-wards-2026"],
+            "official_district_id": ["6"],
+            "district_name": ["Ward 6"],
+            "candidate_name_raw": ["DAmico, Frank"],
+            "candidate_name": ["Frank D'Amico"],
+            "source_candidacy_id": ["toronto-2026-tcdsb-6-frank-damico"],
+            "party_name_raw": [pd.NA],
+            "affiliation_status": ["non_partisan"],
+            "votes": [pd.NA],
+            "elected": [True],
+            "outcome_method": ["acclamation"],
+            "result_status": ["final"],
+            "coverage_status": ["complete"],
+            "source_detail": [source_detail],
+        }
+    )
+    candidacies = derive_result_metrics(attach_parties(normalize_adapter_frame(rows)))
+    candidacies["person_id"] = pd.Series(pd.NA, index=candidacies.index, dtype="string")
+    events = build_events(candidacies)
+    contests = build_contests(candidacies)
+    parties = build_parties(candidacies)
+    districts = candidacies[
+        [
+            "district_id",
+            "represented_body",
+            "boundary_regime",
+            "official_district_id",
+            "district_name",
+        ]
+    ].drop_duplicates()
+    districts["geometry_status"] = "not_acquired"
+    people = pd.DataFrame(columns=["person_id"])
+    return candidacies, events, contests, parties, districts, people
+
+
+def test_official_future_trustee_acclamation_is_a_valid_final_result():
+    declaration = (
+        "https://www.toronto.ca/data/elections/candidate_list/trusteeCandidates_2026.json;"
+        "https://www.toronto.ca/wp-content/uploads/2026/08/"
+        "8ed9-2026-Declaration-of-Acclamation.pdf"
+    )
+
+    assert validate_release(*_future_trustee_acclamation(declaration)) == []
+
+
+def test_future_trustee_acclamation_without_the_clerk_declaration_is_rejected():
+    issues = validate_release(*_future_trustee_acclamation("candidate roster only"))
+
+    assert "post-cutoff Candidacies must have result_status=pending" in issues
+
+
 @pytest.mark.parametrize(
     ("table_index", "column", "replacement", "expected"),
     [

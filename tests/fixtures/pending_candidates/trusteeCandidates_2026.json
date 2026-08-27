@@ -1,0 +1,83 @@
+{
+  "seq": "fixture-certified-2026-08-27",
+  "schoolBoard": [
+    {
+      "id": 3,
+      "ward": [
+        {
+          "name": "1",
+          "num": "1",
+          "candidate": [
+            {"name": "Bryan, Rosemarie", "office": 3, "status": "Active", "firstName": "Rosemarie", "lastName": "Bryan", "email": "private@example.test", "phone": "555", "socialMedias": []},
+            {"name": "de Dovitiis, Matias", "office": 3, "status": "Active", "firstName": "Matias", "lastName": "de Dovitiis", "email": "", "phone": null, "socialMedias": []},
+            {"name": "Withdrawn, Wendy", "office": 3, "status": "Withdrawn", "firstName": "Wendy", "lastName": "Withdrawn", "email": "", "phone": null, "socialMedias": []}
+          ]
+        },
+        {"name": "2", "num": "2", "candidate": [{"name": "Ellis, Timothy", "office": 3, "status": "Active", "firstName": "Timothy", "lastName": "Ellis"}]},
+        {"name": "3", "num": "3", "candidate": [{"name": "Dawson, Alexis", "office": 3, "status": "Active", "firstName": "Alexis", "lastName": "Dawson"}]},
+        {"name": "4", "num": "4", "candidate": [{"name": "Gough, Pamela", "office": 3, "status": "Active", "firstName": "Pamela", "lastName": "Gough"}]},
+        {"name": "5", "num": "5", "candidate": [{"name": "Story, Jennifer", "office": 3, "status": "Active", "firstName": "Jennifer", "lastName": "Story"}]},
+        {"name": "6", "num": "6", "candidate": [{"name": "Tonks, Chris", "office": 3, "status": "Active", "firstName": "Chris", "lastName": "Tonks"}]},
+        {"name": "7", "num": "7", "candidate": [{"name": "Laskin, Shelley", "office": 3, "status": "Active", "firstName": "Shelley", "lastName": "Laskin"}]},
+        {"name": "8", "num": "8", "candidate": [{"name": "Sharp, Sheena", "office": 3, "status": "Active", "firstName": "Sheena", "lastName": "Sharp"}]},
+        {"name": "9", "num": "9", "candidate": [{"name": "Rajakulasingam, Yalini", "office": 3, "status": "Active", "firstName": "Yalini", "lastName": "Rajakulasingam"}]},
+        {"name": "10", "num": "10", "candidate": [{"name": "Payne, Stephnie", "office": 3, "status": "Active", "firstName": "Stephnie", "lastName": "Payne"}]},
+        {"name": "11", "num": "11", "candidate": [{"name": "Patel, Zakir", "office": 3, "status": "Active", "firstName": "Zakir", "lastName": "Patel"}]},
+        {
+          "name": "12",
+          "num": "12",
+          "candidate": [
+            {"name": "Manna, Wong", "office": 3, "status": "Active", "firstName": "Manna", "lastName": "Wong"},
+            {"name": "Nguyễn, Chi", "office": 3, "status": "Active", "firstName": "Chi", "lastName": "Nguyễn"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "ward": [
+        {
+          "name": "1",
+          "num": "1",
+          "candidate": [
+            {"name": "Martino, Joseph", "office": 4, "status": "Active", "firstName": "Joseph", "lastName": "Martino"},
+            {"name": "Example, Catholic", "office": 4, "status": "Active", "firstName": "Catholic", "lastName": "Example"}
+          ]
+        },
+        {"name": "2", "num": "2", "candidate": [{"name": "Andrachuk, Ann", "office": 4, "status": "Active", "firstName": "Ann", "lastName": "Andrachuk"}]},
+        {"name": "3", "num": "3", "candidate": [{"name": "Piccininni, Sal", "office": 4, "status": "Active", "firstName": "Sal", "lastName": "Piccininni"}]},
+        {"name": "4", "num": "4", "candidate": [{"name": "Poplawski, Barbara", "office": 4, "status": "Active", "firstName": "Barbara", "lastName": "Poplawski"}]},
+        {"name": "5", "num": "5", "candidate": [{"name": "Rizzo, Maria", "office": 4, "status": "Active", "firstName": "Maria", "lastName": "Rizzo"}]},
+        {"name": "6", "num": "6", "candidate": [{"name": "DAmico, Frank", "office": 4, "status": "Active", "firstName": "Frank", "lastName": "D'Amico"}]},
+        {"name": "7", "num": "7", "candidate": [{"name": "De Domenico, Markus", "office": 4, "status": "Active", "firstName": "Markus", "lastName": "De Domenico"}]},
+        {"name": "8", "num": "8", "candidate": [{"name": "Tanuan, Garry", "office": 4, "status": "Active", "firstName": "Garry", "lastName": "Tanuan"}]},
+        {"name": "9", "num": "9", "candidate": [{"name": "Carroll, Oliver", "office": 4, "status": "Active", "firstName": "Oliver", "lastName": "Carroll"}]},
+        {"name": "10", "num": "10", "candidate": [{"name": "Bottoni, Patrizia", "office": 4, "status": "Active", "firstName": "Patrizia", "lastName": "Bottoni"}]},
+        {"name": "11", "num": "11", "candidate": [{"name": "Di Giorgio, Daniel", "office": 4, "status": "Active", "firstName": "Daniel", "lastName": "Di Giorgio"}]},
+        {"name": "12", "num": "12", "candidate": [{"name": "Crawford, Nancy", "office": 4, "status": "Active", "firstName": "Nancy", "lastName": "Crawford"}]}
+      ]
+    },
+    {
+      "id": 5,
+      "ward": [
+        {"name": "2", "num": "2", "candidate": [{"name": "Fortin, Benoit", "office": 5, "status": "Active", "firstName": "Benoit", "lastName": "Fortin"}]},
+        {"name": "3", "num": "3", "candidate": [{"name": "Robert, Chloë", "office": 5, "status": "Active", "firstName": "Chloë", "lastName": "Robert"}]},
+        {"name": "4", "num": "4", "candidate": [{"name": "Oger, Geneviève", "office": 5, "status": "Active", "firstName": "Geneviève", "lastName": "Oger"}]}
+      ]
+    },
+    {
+      "id": 6,
+      "ward": [
+        {
+          "name": "3",
+          "num": "3",
+          "candidate": [
+            {"name": "Dufour Séguin, Nathalie", "office": 6, "status": "Active", "firstName": "Nathalie", "lastName": "Dufour Séguin"},
+            {"name": "Example, Ouest", "office": 6, "status": "Active", "firstName": "Ouest", "lastName": "Example"}
+          ]
+        },
+        {"name": "4", "num": "4", "candidate": [{"name": "Example, Est", "office": 6, "status": "Active", "firstName": "Est", "lastName": "Example"}]}
+      ]
+    }
+  ]
+}
