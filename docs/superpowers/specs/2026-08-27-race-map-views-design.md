@@ -182,6 +182,7 @@ The common conceptual shape is:
       "label_x": 612.4,
       "label_y": 388.1,
       "signal_key": "two_incumbents",
+      "signal_value": null,
       "panel": {
         "heading": "Ward 11",
         "geography": ["Toronto-Danforth", "Don Valley West"],
@@ -198,7 +199,8 @@ The common conceptual shape is:
 }
 ```
 
-The field names and responsibilities shown above are the minimum public
+`signal_value` is null for categorical maps and the prior winner's fractional
+vote share for continuous trustee maps. The field names and responsibilities shown above are the minimum public
 contract. The implementation plan may add validated fields but must not rename
 these fields or move spatial work downstream. Styling values such as literal
 colours remain Frontend concerns; Backend emits semantic keys and factual
