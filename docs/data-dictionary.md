@@ -131,7 +131,10 @@ is EPSG:4326 Polygon/MultiPolygon where acquired. `geometry_status` and
 `geometry_missing_reason` make unavailable historical/authority geometries explicit; missing
 geometry never excludes a result. Geometry provenance records the authority, resource, concrete
 source file, and source year. The CSV serializes geometry as WKT; the Parquet artifact is
-GeoParquet. The release does not publish subdivision-level polygons.
+GeoParquet. Current 2026 trustee polygons are exact unions of the canonical current City wards;
+`geometry_derivation` and the membership-source fields record the verified crosswalk used in that
+derivation. Historical trustee geometry remains explicitly unavailable. The release does not
+publish subdivision-level polygons.
 
 ### `endorsers`
 

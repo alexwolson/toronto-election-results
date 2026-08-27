@@ -4,6 +4,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
+import shapely
 
 from toronto_election_results.district_geometry import (
     DEFAULT_COUNCIL_GEOMETRY_SOURCES,
@@ -116,6 +117,74 @@ def test_leaves_school_board_federal_and_provincial_geometry_explicitly_missing(
         "canada_house_of_commons": "federal_district_geometry_not_acquired",
         "ontario_legislative_assembly": "provincial_district_geometry_not_acquired",
     }
+
+
+def test_derives_current_trustee_geometry_from_verified_city_ward_membership():
+    districts = pd.concat(
+        [
+            _districts(),
+            pd.DataFrame(
+                [
+                    {
+                        "district_id": "tdsb-2026-1",
+                        "represented_body": "toronto_district_school_board",
+                        "boundary_regime": "tdsb-trustee-wards-2026",
+                        "official_district_id": "1",
+                        "district_name": "Ward 1",
+                    },
+                    {
+                        "district_id": "tdsb-2026-2",
+                        "represented_body": "toronto_district_school_board",
+                        "boundary_regime": "tdsb-trustee-wards-2026",
+                        "official_district_id": "2",
+                        "district_name": "Ward 2",
+                    },
+                ]
+            ),
+        ],
+        ignore_index=True,
+    )
+    crosswalk = pd.DataFrame(
+        [
+            {
+                "board_id": "tdsb",
+                "represented_body": "toronto_district_school_board",
+                "boundary_regime": "tdsb-trustee-wards-2026",
+                "ward_id": 1,
+                "city_wards": (5, 6),
+                "source_authority": "City of Toronto",
+                "source_url": "https://example.com/2026-trustees",
+                "source_date": "2026-04-23",
+            },
+            {
+                "board_id": "tdsb",
+                "represented_body": "toronto_district_school_board",
+                "boundary_regime": "tdsb-trustee-wards-2026",
+                "ward_id": 2,
+                "city_wards": (11,),
+                "source_authority": "City of Toronto",
+                "source_url": "https://example.com/2026-trustees",
+                "source_date": "2026-04-23",
+            },
+        ]
+    )
+
+    enriched = enrich_district_geometries(
+        districts, sources=_fixture_sources(), trustee_crosswalks=crosswalk
+    )
+    trustees = enriched[enriched["boundary_regime"] == "tdsb-trustee-wards-2026"]
+    city = enriched[
+        (enriched["boundary_regime"] == "toronto_council_25_wards")
+        & (enriched["official_district_id"] == "city")
+    ].geometry.item()
+
+    assert len(trustees) == 2
+    assert trustees["geometry_status"].eq("available").all()
+    assert trustees.geometry.is_valid.all()
+    assert shapely.union_all(trustees.geometry).equals(city)
+    assert trustees["geometry_derivation"].eq("union_of_city_wards").all()
+    assert trustees["geometry_membership_source_authority"].eq("City of Toronto").all()
+    assert trustees["geometry_membership_source_date"].eq("2026-04-23").all()
 
 
 def test_missing_source_file_is_reported_without_excluding_the_district(tmp_path: Path):

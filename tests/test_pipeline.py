@@ -286,7 +286,7 @@ def test_pipeline_advances_ledger_before_promoting_public_release(tmp_path, monk
         "enrich_electoral_districts",
         lambda districts, *_: districts,
     )
-    monkeypatch.setattr(pipeline, "enrich_district_geometries", lambda frame: frame)
+    monkeypatch.setattr(pipeline, "enrich_district_geometries", lambda frame, **_: frame)
     monkeypatch.setattr(
         pipeline,
         "build_default_endorsement_inputs",

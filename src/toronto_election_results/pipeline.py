@@ -408,7 +408,9 @@ def run_all(
     )
     release = replace(
         built.tables,
-        electoral_districts=enrich_district_geometries(named_districts),
+        electoral_districts=enrich_district_geometries(
+            named_districts, trustee_crosswalks=trustee_crosswalks
+        ),
     )
     endorsement_inputs = build_default_endorsement_inputs(
         release.election_results,

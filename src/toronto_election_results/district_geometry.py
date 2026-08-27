@@ -166,6 +166,7 @@ def enrich_district_geometries(
     electoral_districts: pd.DataFrame,
     *,
     sources: Mapping[str, CouncilGeometrySource] | None = None,
+    trustee_crosswalks: pd.DataFrame | None = None,
 ) -> gpd.GeoDataFrame:
     """Return ``electoral_districts`` with optional native contest-level geometry.
 
@@ -193,8 +194,15 @@ def enrich_district_geometries(
     out["geometry_source_resource"] = pd.Series(pd.NA, index=out.index, dtype="string")
     out["geometry_source_detail"] = pd.Series(pd.NA, index=out.index, dtype="string")
     out["geometry_source_year"] = pd.Series(pd.NA, index=out.index, dtype="Int64")
+    out["geometry_derivation"] = pd.Series(pd.NA, index=out.index, dtype="string")
+    out["geometry_membership_source_authority"] = pd.Series(pd.NA, index=out.index, dtype="string")
+    out["geometry_membership_source_resource"] = pd.Series(pd.NA, index=out.index, dtype="string")
+    out["geometry_membership_source_date"] = pd.Series(pd.NA, index=out.index, dtype="string")
 
     council = out["represented_body"].eq(COUNCIL_BODY)
+    current_wards: dict[int, Polygon | MultiPolygon] | None = None
+    current_city: Polygon | MultiPolygon | None = None
+    current_source: CouncilGeometrySource | None = None
     for regime, indexes in out.loc[council].groupby("boundary_regime", sort=False).groups.items():
         source = configured_sources.get(str(regime))
         if source is None:
@@ -212,6 +220,10 @@ def enrich_district_geometries(
             continue
 
         wards, city = _load_council_polygons(source)
+        if regime == "toronto_council_25_wards":
+            current_wards = wards
+            current_city = city
+            current_source = source
         for index in indexes:
             official_id = str(out.at[index, "official_district_id"])
             geometry: BaseGeometry | None
@@ -226,6 +238,61 @@ def enrich_district_geometries(
             geometry_values[index] = geometry
             out.at[index, "geometry_status"] = "available"
             out.at[index, "geometry_missing_reason"] = pd.NA
+
+    if trustee_crosswalks is not None and not trustee_crosswalks.empty:
+        current_crosswalks = trustee_crosswalks[
+            trustee_crosswalks["boundary_regime"].astype(str).str.endswith("-2026")
+        ]
+        crosswalk_by_key = {
+            (str(row.represented_body), str(row.boundary_regime), str(row.ward_id)): row
+            for row in current_crosswalks.itertuples(index=False)
+        }
+        current_trustees = out["represented_body"].isin(_SCHOOL_BOARD_BODIES) & out[
+            "boundary_regime"
+        ].astype(str).str.endswith("-2026")
+        if current_wards is None or current_city is None or current_source is None:
+            out.loc[current_trustees, "geometry_missing_reason"] = (
+                "current_city_ward_geometry_unavailable"
+            )
+        else:
+            board_geometries: dict[str, list[Polygon | MultiPolygon]] = {}
+            for index in out.index[current_trustees]:
+                key = (
+                    str(out.at[index, "represented_body"]),
+                    str(out.at[index, "boundary_regime"]),
+                    str(out.at[index, "official_district_id"]),
+                )
+                crosswalk = crosswalk_by_key.get(key)
+                if crosswalk is None:
+                    out.at[index, "geometry_missing_reason"] = "trustee_crosswalk_missing"
+                    continue
+                parts = [current_wards.get(int(ward)) for ward in crosswalk.city_wards]
+                if any(part is None for part in parts):
+                    out.at[index, "geometry_missing_reason"] = "component_city_ward_missing"
+                    continue
+                geometry = _valid_polygonal(
+                    shapely.union_all(parts),
+                    label=f"{crosswalk.board_id} trustee ward {crosswalk.ward_id}",
+                )
+                geometry_values[index] = geometry
+                board_geometries.setdefault(str(crosswalk.board_id), []).append(geometry)
+                out.at[index, "geometry_status"] = "available"
+                out.at[index, "geometry_missing_reason"] = pd.NA
+                out.at[index, "geometry_source_authority"] = "City of Toronto"
+                out.at[index, "geometry_source_resource"] = "Elections — Voting Subdivisions"
+                out.at[index, "geometry_source_detail"] = str(current_source.path)
+                out.at[index, "geometry_source_year"] = current_source.source_year
+                out.at[index, "geometry_derivation"] = "union_of_city_wards"
+                out.at[index, "geometry_membership_source_authority"] = crosswalk.source_authority
+                out.at[index, "geometry_membership_source_resource"] = crosswalk.source_url
+                out.at[index, "geometry_membership_source_date"] = crosswalk.source_date
+
+            for board_id, geometries in board_geometries.items():
+                union = _valid_polygonal(
+                    shapely.union_all(geometries), label=f"{board_id} trustee district union"
+                )
+                if not union.equals(current_city):
+                    raise ValueError(f"{board_id} trustee districts do not partition Toronto")
 
     out["geometry"] = gpd.GeoSeries(geometry_values, index=out.index, crs=TARGET_CRS)
     return gpd.GeoDataFrame(out, geometry="geometry", crs=TARGET_CRS)
