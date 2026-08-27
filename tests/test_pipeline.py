@@ -264,6 +264,12 @@ def test_pipeline_advances_ledger_before_promoting_public_release(tmp_path, monk
     monkeypatch.setattr(pipeline, "_load_source_adapters", lambda **_: ([empty], empty))
     monkeypatch.setattr(pipeline, "assign_candidacy_ids", lambda *_, **__: assignment)
     monkeypatch.setattr(pipeline, "build_mayoral_career_identity_assertions", lambda *_, **__: ())
+    monkeypatch.setattr(pipeline, "build_trustee_career_identity_assertions", lambda *_, **__: ())
+    monkeypatch.setattr(
+        pipeline,
+        "reconcile_trustee_identity_decisions",
+        lambda decisions, *_: decisions,
+    )
     monkeypatch.setattr(
         pipeline, "exclude_superseded_identity_decisions", lambda decisions, *_: decisions
     )

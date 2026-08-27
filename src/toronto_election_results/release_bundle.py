@@ -15,8 +15,10 @@ import pandas as pd
 from .build_manifest import sha256_file
 from .frontend_feeds import (
     MAYORAL_CANDIDATES_SCHEMA_VERSION,
+    TRUSTEE_RACES_SCHEMA_VERSION,
     write_mayoral_candidates_feed,
     write_person_aliases_feed,
+    write_trustee_races_feed,
 )
 
 RELEASE_MANIFEST_SCHEMA_VERSION = 1
@@ -47,12 +49,22 @@ def build_results_release_bundle(
     reference = Path(reference_dir) if reference_dir is not None else source.parent / "reference"
     career_reviews_path = reference / "mayoral_career_reviews.csv"
     career_mappings_path = reference / "mayoral_career_occurrence_mapping.csv"
+    trustee_cohort_path = reference / "trustee_career_cohort_2026.csv"
+    trustee_reviews_path = reference / "trustee_career_reviews.csv"
+    trustee_decisions_path = reference / "trustee_career_decisions.csv"
+    trustee_crosswalk_path = reference / "trustee_ward_crosswalk_2026.csv"
+    trustee_continuity_path = reference / "trustee_contest_continuity_2026.csv"
     for required in (
         results_path,
         people_path,
         build_manifest_path,
         career_reviews_path,
         career_mappings_path,
+        trustee_cohort_path,
+        trustee_reviews_path,
+        trustee_decisions_path,
+        trustee_crosswalk_path,
+        trustee_continuity_path,
     ):
         if not required.is_file():
             raise FileNotFoundError(f"missing results release input: {required}")
@@ -88,6 +100,15 @@ def build_results_release_bundle(
         write_mayoral_candidates_feed(
             results_path, career_reviews_path, staging / "mayoral_candidates.json"
         )
+        write_trustee_races_feed(
+            results_path,
+            trustee_crosswalk_path,
+            trustee_continuity_path,
+            trustee_cohort_path,
+            trustee_reviews_path,
+            trustee_decisions_path,
+            staging / "trustee_races.json",
+        )
         write_person_aliases_feed(results_path, people_path, staging / "person_aliases.json")
 
         packaged = sorted(
@@ -110,10 +131,12 @@ def build_results_release_bundle(
             ],
             "feeds": {
                 "mayoral_candidates": "mayoral_candidates.json",
+                "trustee_races": "trustee_races.json",
                 "person_aliases": "person_aliases.json",
             },
             "feed_versions": {
                 "mayoral_candidates": MAYORAL_CANDIDATES_SCHEMA_VERSION,
+                "trustee_races": TRUSTEE_RACES_SCHEMA_VERSION,
                 "person_aliases": 1,
             },
         }

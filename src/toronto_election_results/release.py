@@ -36,6 +36,7 @@ from .schema import (
     derive_result_metrics,
     normalize_adapter_frame,
 )
+from .trustee_incumbency import build_trustee_incumbency_evidence
 
 ELECTION_RESULT_COLUMNS = [
     "candidacy_id",
@@ -429,6 +430,11 @@ def assemble_bootstrapped_release(
         review.people,
         review.candidacy_person_links,
     )
+    trustee_incumbency = (
+        build_trustee_incumbency_evidence(linked, municipal_reference)
+        if municipal_reference is not None
+        else None
+    )
     reported = build_reported_incumbency(
         linked.loc[linked["represented_body"].eq("ontario_legislative_assembly")].copy()
     )
@@ -438,12 +444,18 @@ def assemble_bootstrapped_release(
             municipal_evidence.office_tenures,
             federal.office_tenures,
             reported.office_tenures,
+            *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
         ],
         ignore_index=True,
         sort=False,
     )
     incumbency_rosters = pd.concat(
-        [municipal_evidence.rosters, federal.rosters, reported.rosters],
+        [
+            municipal_evidence.rosters,
+            federal.rosters,
+            reported.rosters,
+            *([trustee_incumbency.rosters] if trustee_incumbency is not None else []),
+        ],
         ignore_index=True,
         sort=False,
     )

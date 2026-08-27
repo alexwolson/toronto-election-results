@@ -1,10 +1,17 @@
+from pathlib import Path
+
 import pandas as pd
 import pytest
 
 from toronto_election_results.frontend_feeds import (
     build_mayoral_candidates_feed,
     build_person_aliases_feed,
+    build_trustee_races_feed,
 )
+from toronto_election_results.trustee_2026 import load_trustee_ward_crosswalk
+from toronto_election_results.trustee_continuity import load_trustee_continuity
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def _row(**overrides):
@@ -196,3 +203,77 @@ def test_person_aliases_are_owned_by_results_and_ambiguous_names_do_not_resolve(
     assert by_name["Xiaohua Gong"]["person_id"] == "per_gong"
     assert by_name["Alex Lee"]["person_id"] is None
     assert by_name["Alex Lee"]["is_unambiguous"] is False
+
+
+def test_trustee_feed_publishes_the_complete_field_and_only_confirmed_history():
+    results = pd.read_csv(ROOT / "data/out/election_results.csv", low_memory=False)
+    reference = ROOT / "data/reference"
+
+    feed = build_trustee_races_feed(
+        results,
+        load_trustee_ward_crosswalk(reference / "trustee_ward_crosswalk_2026.csv"),
+        load_trustee_continuity(reference / "trustee_contest_continuity_2026.csv"),
+        pd.read_csv(
+            reference / "trustee_career_cohort_2026.csv",
+            dtype="string",
+            keep_default_na=False,
+        ),
+        pd.read_csv(
+            reference / "trustee_career_reviews.csv",
+            dtype="string",
+            keep_default_na=False,
+        ),
+        pd.read_csv(
+            reference / "trustee_career_decisions.csv",
+            dtype="string",
+            keep_default_na=False,
+        ),
+    )
+
+    assert feed["schema_version"] == 1
+    assert feed["ballot_certified"] is True
+    assert [board["board_id"] for board in feed["boards"]] == [
+        "tdsb",
+        "tcdsb",
+        "viamonde",
+        "monavenir",
+    ]
+    assert [board["candidate_count"] for board in feed["boards"]] == [77, 31, 4, 6]
+    assert sum(len(board["wards"]) for board in feed["boards"]) == 29
+    assert sum(ward["acclaimed"] for board in feed["boards"] for ward in board["wards"]) == 4
+    prior_results = {
+        (board["board_id"], ward["ward_id"]): ward["comparable_prior_result"]
+        for board in feed["boards"]
+        for ward in board["wards"]
+    }
+    assert all(prior_results[("tdsb", str(ward))] is None for ward in range(1, 13))
+    assert sum(result is not None for result in prior_results.values()) == 14
+    assert prior_results[("tcdsb", "1")]["winner_name"] == "Joseph Martino"
+    assert prior_results[("tcdsb", "1")]["margin_votes"] == 1
+    assert prior_results[("viamonde", "3")]["winner_name"] == "Anna-Karyna Ruszkowski"
+    assert prior_results[("monavenir", "4")]["winner_name"] == "Rhea Dechaine"
+    assert prior_results[("viamonde", "2")] is None
+    assert prior_results[("viamonde", "4")] is None
+    assert prior_results[("monavenir", "3")] is None
+    candidates = [
+        candidate
+        for board in feed["boards"]
+        for ward in board["wards"]
+        for candidate in ward["candidates"]
+    ]
+    assert len(candidates) == 118
+    assert sum(candidate["is_incumbent"] is True for candidate in candidates) == 20
+    assert sum(candidate["is_incumbent"] is None for candidate in candidates) == 98
+    assert sum(bool(candidate["past_elections"]) for candidate in candidates) == 28
+    assert sum(len(candidate["past_elections"]) for candidate in candidates) == 80
+    assert all(
+        election["election_date"] >= "2003-01-01"
+        for candidate in candidates
+        for election in candidate["past_elections"]
+    )
+    assert all("review_status" not in candidate for candidate in candidates)
+    assert all("review_limitations" not in candidate for candidate in candidates)
+    rosina = next(
+        candidate for candidate in candidates if candidate["display_name"] == "Rosina Bonavota"
+    )
+    assert rosina["past_elections"] == []

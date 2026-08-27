@@ -38,7 +38,12 @@ from .municipal import load_council_results
 from .ontario import download_ontario_sources, load_ontario_results
 from .pending_candidates import load_pending_council_candidates
 from .release import assemble_bootstrapped_release, validate_tables, write_release
+from .schema import normalize_adapter_frame
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
+from .trustee_career import (
+    build_trustee_career_identity_assertions,
+    reconcile_trustee_identity_decisions,
+)
 from .trustees import load_trustee_results, trustee_event_manifest
 
 RAW = Path("data/raw")
@@ -94,6 +99,12 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "mayoral_career_decisions.csv",
         "mayoral_career_backfill.csv",
         "mayoral_career_occurrence_mapping.csv",
+        "trustee_career_cohort_2026.csv",
+        "trustee_career_reviews.csv",
+        "trustee_career_decisions.csv",
+        "trustee_career_sol_reviews.csv",
+        "trustee_contest_continuity_2026.csv",
+        "trustee_incumbents_2026.csv",
         TRUSTEE_CROSSWALK_FILENAME,
     ):
         endorsement_path = reference / filename
@@ -113,6 +124,30 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
                         report_path = Path(str(value))
                         if report_path.is_file():
                             source_paths.add(report_path)
+    trustee_reviews_path = reference / "trustee_career_reviews.csv"
+    if trustee_reviews_path.is_file():
+        trustee_reviews = pd.read_csv(
+            trustee_reviews_path,
+            dtype="string",
+            usecols=["luna_report_path", "terra_report_path"],
+        )
+        for column in trustee_reviews.columns:
+            for value in trustee_reviews[column].dropna().unique():
+                report_path = Path(str(value))
+                if report_path.is_file():
+                    source_paths.add(report_path)
+    trustee_sol_reviews_path = reference / "trustee_career_sol_reviews.csv"
+    if trustee_sol_reviews_path.is_file():
+        trustee_sol_reviews = pd.read_csv(
+            trustee_sol_reviews_path,
+            dtype="string",
+            usecols=["sol_report_path", "sol_batch_path"],
+        )
+        for column in trustee_sol_reviews.columns:
+            for value in trustee_sol_reviews[column].dropna().unique():
+                review_path = Path(str(value))
+                if review_path.is_file():
+                    source_paths.add(review_path)
     return sorted(
         (path for path in source_paths if path.is_file()),
         key=lambda path: path.as_posix(),
@@ -319,6 +354,28 @@ def run_all(
                 "the prior registry is ledger-compatible but its manifest does not track "
                 "the ledger; recover or explicitly rebuild after an interrupted publication"
             )
+    normalized_frames = [
+        normalize_adapter_frame(frame, require_persistent_candidacy_id=True)
+        for frame in resolved.adapter_frames
+        if not frame.empty
+    ]
+    normalized_results = (
+        pd.concat(normalized_frames, ignore_index=True, sort=False)
+        if normalized_frames
+        else pd.DataFrame()
+    )
+    trustee_identity_assertions = build_trustee_career_identity_assertions(
+        reference, normalized_results
+    )
+    identity_review_decisions = exclude_superseded_identity_decisions(
+        read_identity_review_decisions(reference / IDENTITY_REVIEW_DISPOSITIONS_FILENAME),
+        reference,
+    )
+    identity_review_decisions = reconcile_trustee_identity_decisions(
+        identity_review_decisions,
+        reference,
+        trustee_identity_assertions,
+    )
     built = assemble_bootstrapped_release(
         resolved.adapter_frames,
         release_id=RELEASE_ID,
@@ -331,11 +388,9 @@ def run_all(
         identity_assertions=(
             DEFAULT_IDENTITY_ASSERTIONS
             + build_mayoral_career_identity_assertions(reference, resolved.adapter_frames)
+            + trustee_identity_assertions
         ),
-        identity_review_decisions=exclude_superseded_identity_decisions(
-            read_identity_review_decisions(reference / IDENTITY_REVIEW_DISPOSITIONS_FILENAME),
-            reference,
-        ),
+        identity_review_decisions=identity_review_decisions,
     )
     release = replace(
         built.tables,

@@ -11,6 +11,10 @@ from toronto_election_results.identity_dispositions import (
     read_identity_review_decisions,
 )
 from toronto_election_results.mayoral_career import exclude_superseded_identity_decisions
+from toronto_election_results.trustee_career import (
+    build_trustee_career_identity_assertions,
+    reconcile_trustee_identity_decisions,
+)
 
 REPO_ROOT = Path(__file__).parents[1]
 
@@ -510,9 +514,13 @@ def test_all_published_proposals_have_an_audited_final_disposition():
         original_decisions, REPO_ROOT / "data" / "reference"
     )
 
-    results = pd.read_csv(
-        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
-    ).set_index("candidacy_id")
+    result_rows = pd.read_csv(REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string")
+    decisions = reconcile_trustee_identity_decisions(
+        decisions,
+        REPO_ROOT / "data" / "reference",
+        build_trustee_career_identity_assertions(REPO_ROOT / "data" / "reference", result_rows),
+    )
+    results = result_rows.set_index("candidacy_id")
     links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
     active = links.loc[links["valid_to_release"].isna()]
     proposed = active.loc[active["link_status"].eq("proposed")]

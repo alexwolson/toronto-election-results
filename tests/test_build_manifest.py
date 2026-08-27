@@ -70,6 +70,15 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     verification_report = tmp_path / "verification-report.md"
     search_certificate = tmp_path / "search-certificate.md"
     trustee_crosswalk = reference / "trustee_ward_crosswalk_2026.csv"
+    trustee_cohort = reference / "trustee_career_cohort_2026.csv"
+    trustee_reviews = reference / "trustee_career_reviews.csv"
+    trustee_decisions = reference / "trustee_career_decisions.csv"
+    trustee_sol_reviews = reference / "trustee_career_sol_reviews.csv"
+    trustee_continuity = reference / "trustee_contest_continuity_2026.csv"
+    luna_report = tmp_path / "candidate-luna.md"
+    terra_report = tmp_path / "candidate-terra.md"
+    sol_report = tmp_path / "candidate-sol.md"
+    sol_batch = tmp_path / "sol-review-batch-a.csv"
     ignored = reference / "notes.md"
     roster_a.write_text("officially reconciled A", encoding="utf-8")
     roster_b.write_text("officially reconciled B", encoding="utf-8")
@@ -80,6 +89,21 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     verification_report.write_text("verified", encoding="utf-8")
     search_certificate.write_text("searched", encoding="utf-8")
     trustee_crosswalk.write_text("official,crosswalk\n", encoding="utf-8")
+    trustee_cohort.write_text("frozen,cohort\n", encoding="utf-8")
+    trustee_decisions.write_text("audited,decisions\n", encoding="utf-8")
+    trustee_continuity.write_text("audited,continuity\n", encoding="utf-8")
+    luna_report.write_text("luna", encoding="utf-8")
+    terra_report.write_text("terra", encoding="utf-8")
+    sol_report.write_text("sol", encoding="utf-8")
+    sol_batch.write_text("sol,batch\n", encoding="utf-8")
+    trustee_reviews.write_text(
+        f"luna_report_path,terra_report_path\n{luna_report},{terra_report}\n",
+        encoding="utf-8",
+    )
+    trustee_sol_reviews.write_text(
+        f"sol_report_path,sol_batch_path\n{sol_report},{sol_batch}\n",
+        encoding="utf-8",
+    )
     endorsement_coverage.write_text(
         "verification_report_path,search_certificate_path\n"
         f"{verification_report},{search_certificate}\n",
@@ -99,6 +123,15 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
             verification_report,
             search_certificate,
             trustee_crosswalk,
+            trustee_cohort,
+            trustee_decisions,
+            trustee_sol_reviews,
+            trustee_continuity,
+            trustee_reviews,
+            luna_report,
+            terra_report,
+            sol_report,
+            sol_batch,
         ],
         key=lambda path: path.as_posix(),
     )
