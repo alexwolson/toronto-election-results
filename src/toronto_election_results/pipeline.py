@@ -29,6 +29,11 @@ from .federal import load_federal_results
 from .identity import validate_identity_tables
 from .identity_curations import DEFAULT_IDENTITY_ASSERTIONS
 from .identity_dispositions import read_identity_review_decisions
+from .mayoral_career import (
+    build_mayoral_career_identity_assertions,
+    exclude_superseded_identity_decisions,
+    load_mayoral_career_backfills,
+)
 from .municipal import load_council_results
 from .ontario import download_ontario_sources, load_ontario_results
 from .pending_candidates import load_pending_council_candidates
@@ -83,6 +88,11 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         ENDORSER_PANEL_FILENAME,
         ENDORSEMENT_ASSERTIONS_FILENAME,
         ENDORSEMENT_COVERAGE_FILENAME,
+        "mayoral_career_cohort_2026.csv",
+        "mayoral_career_reviews.csv",
+        "mayoral_career_decisions.csv",
+        "mayoral_career_backfill.csv",
+        "mayoral_career_occurrence_mapping.csv",
     ):
         endorsement_path = reference / filename
         if endorsement_path.is_file():
@@ -229,7 +239,7 @@ def _verify_prior_ledger_checksum(output_dir: Path, ledger_path: Path) -> None:
 
 
 def _load_source_adapters(
-    *, raw: Path, interim: Path, download: bool
+    *, raw: Path, interim: Path, reference: Path, download: bool
 ) -> tuple[list[pd.DataFrame], pd.DataFrame]:
     if download:
         city_download.download_all(root=raw)
@@ -248,11 +258,12 @@ def _load_source_adapters(
         raw / "council" / "candidates_2026",
         download=download,
     )
+    mayoral_career = load_mayoral_career_backfills(reference)
     contest_manifest = trustee_event_manifest(
         results_root=interim / "results",
         by_election_root=raw / "trustee_byelections",
     )
-    return [council, trustees, federal, ontario, pending_council], contest_manifest
+    return [council, trustees, federal, ontario, pending_council, mayoral_career], contest_manifest
 
 
 def run_all(
@@ -277,7 +288,7 @@ def run_all(
         _verify_prior_ledger_checksum(out, ledger_path)
     candidacy_ledger = read_candidacy_ledger(ledger_path)
     adapters, contest_manifest = _load_source_adapters(
-        raw=raw, interim=interim, download=not skip_download
+        raw=raw, interim=interim, reference=reference, download=not skip_download
     )
     resolved = assign_candidacy_ids(
         adapters,
@@ -314,9 +325,13 @@ def run_all(
         candidacy_ledger=resolved.ledger,
         existing_people=existing_people,
         existing_candidacy_person_links=existing_links,
-        identity_assertions=DEFAULT_IDENTITY_ASSERTIONS,
-        identity_review_decisions=read_identity_review_decisions(
-            reference / IDENTITY_REVIEW_DISPOSITIONS_FILENAME
+        identity_assertions=(
+            DEFAULT_IDENTITY_ASSERTIONS
+            + build_mayoral_career_identity_assertions(reference, resolved.adapter_frames)
+        ),
+        identity_review_decisions=exclude_superseded_identity_decisions(
+            read_identity_review_decisions(reference / IDENTITY_REVIEW_DISPOSITIONS_FILENAME),
+            reference,
         ),
     )
     release = replace(

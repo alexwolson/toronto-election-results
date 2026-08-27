@@ -10,6 +10,7 @@ from toronto_election_results.identity_dispositions import (
     apply_identity_review_decisions,
     read_identity_review_decisions,
 )
+from toronto_election_results.mayoral_career import exclude_superseded_identity_decisions
 
 REPO_ROOT = Path(__file__).parents[1]
 
@@ -496,15 +497,18 @@ def test_review_decisions_distinguish_confirmation_hold_and_rejection():
 
 
 def test_all_published_proposals_have_an_audited_final_disposition():
-    decisions = read_identity_review_decisions(
+    original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(decisions) == 931
-    assert decisions["decision"].value_counts().to_dict() == {
+    assert len(original_decisions) == 931
+    assert original_decisions["decision"].value_counts().to_dict() == {
         "unresolved": 783,
         "confirmed": 143,
         "rejected": 5,
     }
+    decisions = exclude_superseded_identity_decisions(
+        original_decisions, REPO_ROOT / "data" / "reference"
+    )
 
     results = pd.read_csv(
         REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
@@ -512,7 +516,7 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
     active = links.loc[links["valid_to_release"].isna()]
     proposed = active.loc[active["link_status"].eq("proposed")]
-    assert len(proposed) == 77
+    assert len(proposed) == 59
     assert proposed["candidacy_id"].is_unique
     proposed_results = results.loc[proposed["candidacy_id"]]
     assert proposed_results["result_status"].eq("pending").all()

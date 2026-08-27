@@ -91,17 +91,32 @@ def test_flags_candidacy_event_metadata_that_disagrees_with_event_dimension(colu
     assert any(f"Candidacy.{column} must match Election event" in issue for issue in issues)
 
 
-@pytest.mark.parametrize("election_date", ["2002-12-31", "2026-10-27"])
-def test_flags_election_dates_outside_release_cutoff(election_date):
+def test_flags_election_dates_after_release_cutoff():
     release = list(_release())
     events = release[1].copy()
-    events["election_date"] = election_date
-    events["election_year"] = int(election_date[:4])
+    events["election_date"] = "2026-10-27"
+    events["election_year"] = 2026
     release[1] = events
 
     issues = validate_release(*release)
 
-    assert any("outside the release coverage window" in issue for issue in issues)
+    assert any("after the pending" in issue for issue in issues)
+
+
+def test_historical_career_date_has_no_lower_bound():
+    release = list(_release())
+    events = release[1].copy()
+    candidacies = release[0].copy()
+    events["election_date"] = "1991-11-12"
+    events["election_year"] = 1991
+    candidacies["election_date"] = "1991-11-12"
+    candidacies["election_year"] = 1991
+    release[0] = candidacies
+    release[1] = events
+
+    issues = validate_release(*release)
+
+    assert not any("election_date" in issue for issue in issues)
 
 
 def test_post_result_cutoff_candidacy_requires_pending_status():

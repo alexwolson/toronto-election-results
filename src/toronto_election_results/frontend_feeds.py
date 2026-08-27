@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pandas as pd
 
-MAYORAL_CANDIDATES_SCHEMA_VERSION = 2
+MAYORAL_CANDIDATES_SCHEMA_VERSION = 3
 PERSON_ALIASES_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
 
@@ -121,7 +121,9 @@ def _past_elections(rows: pd.DataFrame) -> list[dict[str, object]]:
     return sorted(elections, key=lambda row: str(row["election_date"]), reverse=True)
 
 
-def build_mayoral_candidates_feed(results: pd.DataFrame) -> dict[str, object]:
+def build_mayoral_candidates_feed(
+    results: pd.DataFrame, career_reviews: pd.DataFrame
+) -> dict[str, object]:
     """Build the certified current mayoral field with canonical identity history.
 
     The current field comes directly from the canonical pending Candidacies. Past
@@ -153,6 +155,19 @@ def build_mayoral_candidates_feed(results: pd.DataFrame) -> dict[str, object]:
         raise ValueError(
             f"canonical results are missing candidate-feed columns: {', '.join(missing)}"
         )
+    required_reviews = {
+        "cohort_id",
+        "subject_candidacy_id",
+        "source_release",
+        "review_date",
+        "review_status",
+        "limitations",
+    }
+    missing_reviews = sorted(required_reviews - set(career_reviews.columns))
+    if missing_reviews:
+        raise ValueError(f"career reviews are missing feed columns: {', '.join(missing_reviews)}")
+    if career_reviews["subject_candidacy_id"].duplicated().any():
+        raise ValueError("career reviews must contain one row per current candidacy")
 
     election_year = pd.to_numeric(results["election_year"], errors="coerce")
     current = results.loc[
@@ -196,9 +211,13 @@ def build_mayoral_candidates_feed(results: pd.DataFrame) -> dict[str, object]:
     incumbent_person_id = next(iter(incumbent_people))
 
     candidates: list[dict[str, object]] = []
+    reviews = career_reviews.set_index("subject_candidacy_id")
+    if set(current["candidacy_id"].astype(str)) != set(reviews.index.astype(str)):
+        raise ValueError("career reviews must exactly cover the certified mayoral field")
     current = current.sort_values("candidate_name_raw", key=lambda values: values.str.casefold())
     for _, candidate in current.iterrows():
         person_id = _text(candidate["person_id"])
+        review = reviews.loc[str(candidate["candidacy_id"])]
         history_rows = (
             historical.loc[historical["person_id"].astype("string").eq(person_id)]
             if person_id is not None
@@ -210,24 +229,51 @@ def build_mayoral_candidates_feed(results: pd.DataFrame) -> dict[str, object]:
                 "person_id": person_id,
                 "display_name": str(candidate["candidate_name"]),
                 "is_incumbent": person_id == incumbent_person_id,
+                "review_status": str(review["review_status"]),
+                "review_limitations": _text(review["limitations"]),
                 "past_elections": _past_elections(history_rows),
             }
         )
 
+    cohort_ids = career_reviews["cohort_id"].dropna().astype(str).unique()
+    source_releases = career_reviews["source_release"].dropna().astype(str).unique()
+    review_dates = career_reviews["review_date"].dropna().astype(str).unique()
+    if len(cohort_ids) != 1 or len(source_releases) != 1 or len(review_dates) != 1:
+        raise ValueError("career reviews must use one cohort, source release, and review date")
     return {
         "schema_version": MAYORAL_CANDIDATES_SCHEMA_VERSION,
         "event_id": str(current["event_id"].iloc[0]),
         "contest_id": str(current["contest_id"].iloc[0]),
         "election_date": current_date,
         "ballot_certified": True,
+        "coverage": {
+            "policy": "full_verified_canadian_electoral_career",
+            "jurisdiction": "Canada",
+            "year_cutoff": None,
+            "cohort_id": cohort_ids[0],
+            "source_release": source_releases[0],
+            "review_date": review_dates[0],
+            "methodology_note": (
+                "Mayoral histories cover verified Canadian public-election candidacies "
+                "nationwide with no year cutoff. Councillor histories retain the ordinary "
+                "Toronto-centred Results coverage. Identity evidence standards are the same."
+            ),
+        },
         "candidates": candidates,
     }
 
 
-def write_mayoral_candidates_feed(results_path: str | Path, output_path: str | Path) -> Path:
+def write_mayoral_candidates_feed(
+    results_path: str | Path,
+    career_reviews_path: str | Path,
+    output_path: str | Path,
+) -> Path:
     """Read canonical CSV results and atomically write the factual JSON feed."""
 
-    feed = build_mayoral_candidates_feed(pd.read_csv(results_path, low_memory=False))
+    feed = build_mayoral_candidates_feed(
+        pd.read_csv(results_path, low_memory=False),
+        pd.read_csv(career_reviews_path, dtype="string", keep_default_na=False),
+    )
     destination = Path(output_path)
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_suffix(destination.suffix + ".tmp")

@@ -8,7 +8,6 @@ import pandas as pd
 
 _GEOMETRY_CONTAINMENT_RELATIVE_TOLERANCE = 1e-12
 _GEOMETRY_CONTAINMENT_ABSOLUTE_TOLERANCE = 1e-18
-_COVERAGE_START = pd.Timestamp("2003-01-01")
 _COMPLETED_RESULTS_END = pd.Timestamp("2026-08-20")
 _PENDING_EVENT_END = pd.Timestamp("2026-10-26")
 
@@ -88,7 +87,10 @@ def _agreement_issues(
 
 
 def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[str]) -> None:
-    """Enforce the fixed public coverage window and date/year consistency."""
+    """Enforce the public upper bound and date/year consistency.
+
+    Historical career records intentionally have no lower date bound.
+    """
 
     if "election_date" not in frame:
         issues.append(f"{table_label} is missing election_date")
@@ -97,12 +99,11 @@ def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[st
     if parsed.isna().any():
         issues.append(f"{table_label}.election_date must contain valid non-null dates")
         return
-    outside = parsed.lt(_COVERAGE_START) | parsed.gt(_PENDING_EVENT_END)
+    outside = parsed.gt(_PENDING_EVENT_END)
     if outside.any():
         value = frame.loc[outside, "election_date"].iloc[0]
         issues.append(
-            f"{table_label}.election_date {value!r} is outside the release coverage window "
-            "2003-01-01 through the pending 2026-10-26 municipal event"
+            f"{table_label}.election_date {value!r} is after the pending 2026-10-26 municipal event"
         )
     if "election_year" not in frame:
         issues.append(f"{table_label} is missing election_year")
@@ -348,6 +349,37 @@ def validate_release(
             if len(group) != 1 or not numeric.isna().all().all() or group["elected"].ne(True).any():
                 issues.append(
                     f"contest {contest_id!r} acclamation must have one elected row and null votes"
+                )
+            continue
+
+        if coverage == "candidate_record":
+            numeric = group[
+                ["votes", "total_contest_votes", "vote_share", "vote_rank", "n_candidates"]
+            ]
+            if numeric.isna().any().any():
+                issues.append(
+                    f"candidate-record contest {contest_id!r} requires exact reported metrics"
+                )
+                continue
+            invalid = (
+                group["total_contest_votes"].le(0)
+                | group["votes"].gt(group["total_contest_votes"])
+                | group["vote_share"].lt(0)
+                | group["vote_share"].gt(1)
+                | group["vote_rank"].lt(1)
+                | group["vote_rank"].gt(group["n_candidates"])
+                | group["n_candidates"].lt(len(group))
+            )
+            expected_share = group["votes"].astype(float) / group["total_contest_votes"].astype(
+                float
+            )
+            inconsistent_share = [
+                not math.isclose(float(actual), float(expected), abs_tol=1e-12)
+                for actual, expected in zip(group["vote_share"], expected_share, strict=True)
+            ]
+            if invalid.any() or any(inconsistent_share):
+                issues.append(
+                    f"candidate-record contest {contest_id!r} has inconsistent reported metrics"
                 )
             continue
 

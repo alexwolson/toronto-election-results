@@ -50,6 +50,10 @@ _OPTIONAL_DEFAULTS: dict[str, object] = {
     "turnout_scope": pd.NA,
     "source_authority": pd.NA,
     "source_resource": pd.NA,
+    "reported_total_contest_votes": pd.NA,
+    "reported_vote_share": pd.NA,
+    "reported_vote_rank": pd.NA,
+    "reported_n_candidates": pd.NA,
 }
 
 _INDEPENDENT_LABELS = {
@@ -326,6 +330,18 @@ def normalize_adapter_frame(
     out["votes"] = _as_nullable_integer(out["votes"], "votes")
     out["eligible_electors"] = _as_nullable_integer(out["eligible_electors"], "eligible_electors")
     out["ballots_cast"] = _as_nullable_integer(out["ballots_cast"], "ballots_cast")
+    out["reported_total_contest_votes"] = _as_nullable_integer(
+        out["reported_total_contest_votes"], "reported_total_contest_votes"
+    )
+    out["reported_vote_rank"] = _as_nullable_integer(
+        out["reported_vote_rank"], "reported_vote_rank"
+    )
+    out["reported_n_candidates"] = _as_nullable_integer(
+        out["reported_n_candidates"], "reported_n_candidates"
+    )
+    out["reported_vote_share"] = pd.to_numeric(out["reported_vote_share"], errors="coerce").astype(
+        "Float64"
+    )
     out["elected"] = _as_nullable_boolean(out["elected"], "elected")
     out["incumbent_reported"] = _as_nullable_boolean(
         out["incumbent_reported"], "incumbent_reported"
@@ -427,6 +443,25 @@ def derive_result_metrics(frame: pd.DataFrame) -> pd.DataFrame:
         method="min", ascending=False, na_option="keep"
     )
     out["vote_rank"] = ranks.where(metrics_allowed).astype("Int64")
+
+    candidate_record = out["coverage_status"].eq("candidate_record")
+    if candidate_record.any():
+        required_reported = [
+            "reported_total_contest_votes",
+            "reported_vote_share",
+            "reported_vote_rank",
+            "reported_n_candidates",
+        ]
+        if out.loc[candidate_record, required_reported].isna().any().any():
+            raise ValueError("candidate_record coverage requires all reported contest metrics")
+        out.loc[candidate_record, "total_contest_votes"] = out.loc[
+            candidate_record, "reported_total_contest_votes"
+        ]
+        out.loc[candidate_record, "vote_share"] = out.loc[candidate_record, "reported_vote_share"]
+        out.loc[candidate_record, "vote_rank"] = out.loc[candidate_record, "reported_vote_rank"]
+        out.loc[candidate_record, "n_candidates"] = out.loc[
+            candidate_record, "reported_n_candidates"
+        ]
 
     if {"eligible_electors", "ballots_cast"}.issubset(out.columns):
         turnout = out["ballots_cast"].astype("Float64") / out["eligible_electors"].astype("Float64")
