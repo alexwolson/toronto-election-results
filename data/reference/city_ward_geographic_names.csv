@@ -1,0 +1,70 @@
+boundary_regime,official_district_id,geographic_name,source_authority,source_url,source_date
+toronto_council_44_wards,1,Etobicoke North,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,2,Etobicoke North,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,3,Etobicoke Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,4,Etobicoke Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,5,Etobicoke-Lakeshore,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,6,Etobicoke-Lakeshore,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,7,York West,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,8,York West,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,9,York Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,10,York Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,11,York South-Weston,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,12,York South-Weston,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,13,Parkdale-High Park,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,14,Parkdale-High Park,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,15,Eglinton-Lawrence,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,16,Eglinton-Lawrence,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,17,Davenport,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,18,Davenport,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,19,Trinity-Spadina,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,20,Trinity-Spadina,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,21,St. Paul's,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,22,St. Paul's,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,23,Willowdale,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,24,Willowdale,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,25,Don Valley West,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,26,Don Valley West,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,27,Toronto Centre-Rosedale,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,28,Toronto Centre-Rosedale,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,29,Toronto-Danforth,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,30,Toronto-Danforth,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,31,Beaches-East York,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,32,Beaches-East York,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,33,Don Valley East,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,34,Don Valley East,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,35,Scarborough Southwest,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,36,Scarborough Southwest,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,37,Scarborough Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,38,Scarborough Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,39,Scarborough-Agincourt,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,40,Scarborough-Agincourt,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,41,Scarborough-Rouge River,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,42,Scarborough-Rouge River,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,43,Scarborough East,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_44_wards,44,Scarborough East,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial6/MapServer/39,2003-11-10
+toronto_council_25_wards,1,Etobicoke North,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,2,Etobicoke Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,3,Etobicoke-Lakeshore,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,4,Parkdale-High Park,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,5,York South-Weston,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,6,York Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,7,Humber River-Black Creek,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,8,Eglinton-Lawrence,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,9,Davenport,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,10,Spadina-Fort York,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,11,University-Rosedale,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,12,Toronto-St. Paul's,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,13,Toronto Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,14,Toronto-Danforth,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,15,Don Valley West,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,16,Don Valley East,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,17,Don Valley North,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,18,Willowdale,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,19,Beaches-East York,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,20,Scarborough Southwest,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,21,Scarborough Centre,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,22,Scarborough-Agincourt,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,23,Scarborough North,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,24,Scarborough-Guildwood,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01
+toronto_council_25_wards,25,Scarborough-Rouge Park,City of Toronto,https://gis.toronto.ca/arcgis/rest/services/cot_geospatial28/FeatureServer/0,2018-12-01

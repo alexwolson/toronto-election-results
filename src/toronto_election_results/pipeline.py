@@ -45,6 +45,11 @@ from .trustee_career import (
     reconcile_trustee_identity_decisions,
 )
 from .trustees import load_trustee_results, trustee_event_manifest
+from .ward_geography import (
+    enrich_electoral_districts,
+    load_city_ward_geographic_names,
+    load_trustee_ward_crosswalks,
+)
 
 RAW = Path("data/raw")
 INTERIM = Path("data/interim")
@@ -105,6 +110,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "trustee_career_sol_reviews.csv",
         "trustee_contest_continuity_2026.csv",
         "trustee_incumbents_2026.csv",
+        "city_ward_geographic_names.csv",
         TRUSTEE_CROSSWALK_FILENAME,
     ):
         endorsement_path = reference / filename
@@ -393,9 +399,16 @@ def run_all(
         ),
         identity_review_decisions=identity_review_decisions,
     )
+    city_ward_names = load_city_ward_geographic_names(reference / "city_ward_geographic_names.csv")
+    trustee_crosswalks = load_trustee_ward_crosswalks(
+        reference / TRUSTEE_CROSSWALK_FILENAME, city_ward_names
+    )
+    named_districts = enrich_electoral_districts(
+        built.tables.electoral_districts, city_ward_names, trustee_crosswalks
+    )
     release = replace(
         built.tables,
-        electoral_districts=enrich_district_geometries(built.tables.electoral_districts),
+        electoral_districts=enrich_district_geometries(named_districts),
     )
     endorsement_inputs = build_default_endorsement_inputs(
         release.election_results,

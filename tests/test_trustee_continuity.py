@@ -19,7 +19,7 @@ def _inputs() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     return (
         load_trustee_continuity(REFERENCE / "trustee_contest_continuity_2026.csv"),
         pd.read_csv(ROOT / "data/out/election_results.csv", low_memory=False),
-        load_trustee_ward_crosswalk(REFERENCE / "trustee_ward_crosswalk_2026.csv"),
+        load_trustee_ward_crosswalk(REFERENCE / "trustee_ward_crosswalks.csv"),
     )
 
 

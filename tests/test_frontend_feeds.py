@@ -4,6 +4,7 @@ import pandas as pd
 import pytest
 
 from toronto_election_results.frontend_feeds import (
+    attach_district_display_names,
     build_mayoral_candidates_feed,
     build_person_aliases_feed,
     build_trustee_races_feed,
@@ -138,7 +139,7 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     )
     feed = build_mayoral_candidates_feed(rows, reviews)
 
-    assert feed["schema_version"] == 4
+    assert feed["schema_version"] == 5
     assert feed["ballot_certified"] is True
     assert feed["coverage"]["policy"] == "full_verified_canadian_electoral_career"
     assert feed["coverage"]["year_cutoff"] is None
@@ -210,11 +211,15 @@ def test_person_aliases_are_owned_by_results_and_ambiguous_names_do_not_resolve(
 
 def test_trustee_feed_publishes_the_complete_field_and_only_confirmed_history():
     results = pd.read_csv(ROOT / "data/out/election_results.csv", low_memory=False)
+    results = attach_district_display_names(
+        results,
+        pd.read_csv(ROOT / "data/out/electoral_districts.csv", low_memory=False),
+    )
     reference = ROOT / "data/reference"
 
     feed = build_trustee_races_feed(
         results,
-        load_trustee_ward_crosswalk(reference / "trustee_ward_crosswalk_2026.csv"),
+        load_trustee_ward_crosswalk(reference / "trustee_ward_crosswalks.csv"),
         load_trustee_continuity(reference / "trustee_contest_continuity_2026.csv"),
         pd.read_csv(
             reference / "trustee_career_cohort_2026.csv",
@@ -233,7 +238,7 @@ def test_trustee_feed_publishes_the_complete_field_and_only_confirmed_history():
         ),
     )
 
-    assert feed["schema_version"] == 2
+    assert feed["schema_version"] == 3
     assert feed["ballot_certified"] is True
     assert [board["board_id"] for board in feed["boards"]] == [
         "tdsb",
@@ -273,6 +278,12 @@ def test_trustee_feed_publishes_the_complete_field_and_only_confirmed_history():
         election["election_date"] >= "2003-01-01"
         for candidate in candidates
         for election in candidate["past_elections"]
+    )
+    assert all(
+        election["district_display_name"]
+        for candidate in candidates
+        for election in candidate["past_elections"]
+        if election["office_type"] == "trustee"
     )
     assert all("review_status" not in candidate for candidate in candidates)
     assert all("review_limitations" not in candidate for candidate in candidates)

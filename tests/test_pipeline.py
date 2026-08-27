@@ -279,6 +279,13 @@ def test_pipeline_advances_ledger_before_promoting_public_release(tmp_path, monk
         return built
 
     monkeypatch.setattr(pipeline, "assemble_bootstrapped_release", assemble)
+    monkeypatch.setattr(pipeline, "load_city_ward_geographic_names", lambda _: empty)
+    monkeypatch.setattr(pipeline, "load_trustee_ward_crosswalks", lambda *_: empty)
+    monkeypatch.setattr(
+        pipeline,
+        "enrich_electoral_districts",
+        lambda districts, *_: districts,
+    )
     monkeypatch.setattr(pipeline, "enrich_district_geometries", lambda frame: frame)
     monkeypatch.setattr(
         pipeline,

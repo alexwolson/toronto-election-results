@@ -26,8 +26,8 @@ from .trustee_career import (
 )
 from .trustee_continuity import load_trustee_continuity, validate_trustee_continuity
 
-MAYORAL_CANDIDATES_SCHEMA_VERSION = 4
-TRUSTEE_RACES_SCHEMA_VERSION = 2
+MAYORAL_CANDIDATES_SCHEMA_VERSION = 5
+TRUSTEE_RACES_SCHEMA_VERSION = 3
 PERSON_ALIASES_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
 _CERTIFIED_CANDIDATES_RESOURCE = "2026 Municipal Election — Certified Candidates"
@@ -61,6 +61,23 @@ def _name_key(value: object) -> str:
     """Return the exact-match key published for downstream identity lookup."""
 
     return " ".join(unicodedata.normalize("NFKC", str(value)).split()).casefold()
+
+
+def attach_district_display_names(results: pd.DataFrame, districts: pd.DataFrame) -> pd.DataFrame:
+    required_results = {"district_id"}
+    required_districts = {"district_id", "district_display_name"}
+    if missing := sorted(required_results - set(results.columns)):
+        raise ValueError(f"canonical results are missing district columns: {', '.join(missing)}")
+    if missing := sorted(required_districts - set(districts.columns)):
+        raise ValueError(f"district dimension is missing display columns: {', '.join(missing)}")
+    if districts["district_id"].duplicated().any():
+        raise ValueError("district dimension repeats district_id")
+    return results.drop(columns="district_display_name", errors="ignore").merge(
+        districts[["district_id", "district_display_name"]],
+        on="district_id",
+        how="left",
+        validate="many_to_one",
+    )
 
 
 def build_person_aliases_feed(results: pd.DataFrame, people: pd.DataFrame) -> dict[str, object]:
@@ -126,6 +143,7 @@ def _past_elections(rows: pd.DataFrame) -> list[dict[str, object]]:
                 "office_type": str(head["office_type"]),
                 "represented_body": str(head["represented_body"]),
                 "district_name": _text(head.get("district_name")),
+                "district_display_name": _text(head.get("district_display_name")),
                 "party_name": _text(head.get("party_name")),
                 "result": (
                     "won"
@@ -356,6 +374,7 @@ def build_trustee_races_feed(
         "office_type",
         "official_district_id",
         "district_name",
+        "district_display_name",
         "candidate_name",
         "candidate_name_raw",
         "party_name",
@@ -403,6 +422,7 @@ def build_trustee_races_feed(
         "boundary_regime",
         "ward_id",
         "district_name",
+        "district_display_name",
         "city_wards",
     }
     for label, table, required in (
@@ -546,7 +566,7 @@ def build_trustee_races_feed(
                 {
                     "contest_id": str(contest_id),
                     "ward_id": str(int(crosswalk_row.ward_id)),
-                    "district_name": str(crosswalk_row.district_name),
+                    "district_name": str(crosswalk_row.district_display_name),
                     "city_wards": [int(value) for value in crosswalk_row.city_wards],
                     "result_status": str(ward_rows["result_status"].iloc[0]),
                     "outcome_method": str(ward_rows["outcome_method"].iloc[0]),
@@ -592,13 +612,18 @@ def build_trustee_races_feed(
 
 def write_mayoral_candidates_feed(
     results_path: str | Path,
+    districts_path: str | Path,
     career_reviews_path: str | Path,
     output_path: str | Path,
 ) -> Path:
     """Read canonical CSV results and atomically write the factual JSON feed."""
 
-    feed = build_mayoral_candidates_feed(
+    results = attach_district_display_names(
         pd.read_csv(results_path, low_memory=False),
+        pd.read_csv(districts_path, low_memory=False),
+    )
+    feed = build_mayoral_candidates_feed(
+        results,
         pd.read_csv(career_reviews_path, dtype="string", keep_default_na=False),
     )
     destination = Path(output_path)
@@ -614,6 +639,7 @@ def write_mayoral_candidates_feed(
 
 def write_trustee_races_feed(
     results_path: str | Path,
+    districts_path: str | Path,
     ward_crosswalk_path: str | Path,
     contest_continuity_path: str | Path,
     career_cohort_path: str | Path,
@@ -623,8 +649,12 @@ def write_trustee_races_feed(
 ) -> Path:
     """Read canonical trustee inputs and atomically write the public JSON feed."""
 
-    feed = build_trustee_races_feed(
+    results = attach_district_display_names(
         pd.read_csv(results_path, low_memory=False),
+        pd.read_csv(districts_path, low_memory=False),
+    )
+    feed = build_trustee_races_feed(
+        results,
         load_trustee_ward_crosswalk(ward_crosswalk_path),
         load_trustee_continuity(contest_continuity_path),
         pd.read_csv(career_cohort_path, dtype="string", keep_default_na=False),

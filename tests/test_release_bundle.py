@@ -6,6 +6,7 @@ from pathlib import Path
 import pandas as pd
 
 from toronto_election_results.release_bundle import build_results_release_bundle
+from toronto_election_results.trustee_2026 import load_trustee_ward_crosswalk
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -16,6 +17,7 @@ def _row(**overrides):
         "person_id": "per_chow",
         "event_id": "evt_2026",
         "contest_id": "con_2026",
+        "district_id": "dst_citywide",
         "election_date": "2026-10-26",
         "election_year": 2026,
         "represented_body": "toronto_city_council",
@@ -50,7 +52,7 @@ def _trustee_fixture():
         "conseil_scolaire_viamonde": {2: 2, 3: 1, 4: 1},
         "conseil_scolaire_catholique_monavenir": {3: 3, 4: 3},
     }
-    crosswalk = pd.read_csv(ROOT / "data/reference/trustee_ward_crosswalk_2026.csv")
+    crosswalk = load_trustee_ward_crosswalk(ROOT / "data/reference/trustee_ward_crosswalks.csv")
     rows = []
     cohort = []
     reviews = []
@@ -77,6 +79,7 @@ def _trustee_fixture():
                         candidacy_id=candidacy_id,
                         person_id=pd.NA,
                         contest_id=contest_id,
+                        district_id=f"dst_{body}_{ward}",
                         represented_body=body,
                         office_type="trustee",
                         official_district_id=str(ward),
@@ -128,6 +131,7 @@ def _trustee_fixture():
                             person_id=pd.NA,
                             event_id="evt_2022",
                             contest_id=prior_contest_id,
+                            district_id=f"dst_{body}_{ward}",
                             election_date="2022-10-24",
                             election_year=2022,
                             represented_body=body,
@@ -157,7 +161,7 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     trustee_rows, trustee_prior_rows, trustee_cohort, trustee_reviews, continuity = (
         _trustee_fixture()
     )
-    pd.DataFrame(
+    results = pd.DataFrame(
         [
             _row(),
             _row(
@@ -176,7 +180,11 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
             *trustee_rows,
             *trustee_prior_rows,
         ]
-    ).to_csv(source / "election_results.csv", index=False)
+    )
+    results.to_csv(source / "election_results.csv", index=False)
+    districts = results[["district_id", "district_name"]].drop_duplicates("district_id")
+    districts["district_display_name"] = districts["district_name"]
+    districts.to_csv(source / "electoral_districts.csv", index=False)
     (source / "people.csv").write_text(
         "person_id,preferred_name,identity_status\nper_chow,Olivia Chow,active\n"
     )
@@ -207,8 +215,12 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     ).to_csv(reference / "trustee_career_decisions.csv", index=False)
     pd.DataFrame(continuity).to_csv(reference / "trustee_contest_continuity_2026.csv", index=False)
     shutil.copy2(
-        ROOT / "data/reference/trustee_ward_crosswalk_2026.csv",
-        reference / "trustee_ward_crosswalk_2026.csv",
+        ROOT / "data/reference/trustee_ward_crosswalks.csv",
+        reference / "trustee_ward_crosswalks.csv",
+    )
+    shutil.copy2(
+        ROOT / "data/reference/city_ward_geographic_names.csv",
+        reference / "city_ward_geographic_names.csv",
     )
 
     output = build_results_release_bundle(
@@ -223,8 +235,8 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     manifest = json.loads((output / "release_manifest.json").read_text())
     assert manifest["source_commit"] == "abc123"
     assert manifest["source_dirty"] is False
-    assert manifest["feed_versions"]["mayoral_candidates"] == 4
-    assert manifest["feed_versions"]["trustee_races"] == 2
+    assert manifest["feed_versions"]["mayoral_candidates"] == 5
+    assert manifest["feed_versions"]["trustee_races"] == 3
     assert manifest["feeds"] == {
         "mayoral_candidates": "mayoral_candidates.json",
         "trustee_races": "trustee_races.json",
@@ -237,6 +249,7 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     assert {
         "build_manifest.json",
         "election_results.csv",
+        "electoral_districts.csv",
         "people.csv",
         "mayoral_candidates.json",
         "trustee_races.json",

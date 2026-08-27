@@ -69,7 +69,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     endorsement_coverage = reference / "endorsement_coverage_curations.csv"
     verification_report = tmp_path / "verification-report.md"
     search_certificate = tmp_path / "search-certificate.md"
-    trustee_crosswalk = reference / "trustee_ward_crosswalk_2026.csv"
+    trustee_crosswalk = reference / "trustee_ward_crosswalks.csv"
     trustee_cohort = reference / "trustee_career_cohort_2026.csv"
     trustee_reviews = reference / "trustee_career_reviews.csv"
     trustee_decisions = reference / "trustee_career_decisions.csv"

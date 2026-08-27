@@ -7,7 +7,7 @@ import pytest
 
 from toronto_election_results.trustee_2026 import load_trustee_ward_crosswalk
 
-REFERENCE = Path(__file__).parents[1] / "data" / "reference" / "trustee_ward_crosswalk_2026.csv"
+REFERENCE = Path(__file__).parents[1] / "data" / "reference" / "trustee_ward_crosswalks.csv"
 
 
 def test_crosswalk_covers_all_four_boards_and_29_contests() -> None:
@@ -38,18 +38,20 @@ def test_crosswalk_preserves_the_authoritative_monavenir_ward_3_city_wards() -> 
 
 
 def test_crosswalk_rejects_duplicate_or_invalid_rows(tmp_path: Path) -> None:
+    city_reference = REFERENCE.with_name("city_ward_geographic_names.csv")
+    pd.read_csv(city_reference, dtype="string").to_csv(tmp_path / city_reference.name, index=False)
     rows = pd.read_csv(REFERENCE, dtype="string")
     rows = pd.concat([rows, rows.iloc[[0]]], ignore_index=True)
     duplicate = tmp_path / "duplicate.csv"
     rows.to_csv(duplicate, index=False)
 
-    with pytest.raises(ValueError, match="unique"):
+    with pytest.raises(ValueError, match="repeats a board/regime/ward key"):
         load_trustee_ward_crosswalk(duplicate)
 
     rows = pd.read_csv(REFERENCE, dtype="string")
-    rows.loc[0, "city_wards"] = "1;26"
+    rows.loc[0, "city_wards"] = "1;99"
     invalid = tmp_path / "invalid.csv"
     rows.to_csv(invalid, index=False)
 
-    with pytest.raises(ValueError, match="City wards"):
+    with pytest.raises(ValueError, match="unknown City ward 99"):
         load_trustee_ward_crosswalk(invalid)
