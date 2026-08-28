@@ -32,12 +32,12 @@ ENDORSEMENT_COVERAGE_FILENAME = "endorsement_coverage_curations.csv"
 # manifest starts publishing them as sources.  Custom fixture directories are
 # validated structurally but intentionally are not compared with these hashes.
 _DEFAULT_REFERENCE_SHA256 = {
-    ENDORSER_PANEL_FILENAME: "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231",
+    ENDORSER_PANEL_FILENAME: "43787c2056423e147749e98860318a52ee7201e1c51ba18ec94ec9f169ce0e66",
     ENDORSEMENT_ASSERTIONS_FILENAME: (
-        "6db9f049c647e12042e0994bc847e74f933bbe12d4938e3948ab1c8964382227"
+        "e0638128bebd5909750952d52afe93dad78dd77eb2822508136a4f83e4b150a4"
     ),
     ENDORSEMENT_COVERAGE_FILENAME: (
-        "c5aa74c9d4ad023107bcf2bfe861d45edfeea19a9b6d3b0992b2271d8dc200ab"
+        "03f655cad5cb6a1baa4914c9f9af265561d8b6069d808e6974549113ef03ce28"
     ),
 }
 
@@ -277,12 +277,12 @@ def _prepare_panel(
             row.is_panel_endorser,
             label=f"endorser_panel_curations[{key}].is_panel_endorser",
         )
-        if not is_panel:
-            raise ValueError(f"default Endorser {key!r} must be panel-approved")
-        if not mayor_applicable or not councillor_applicable:
+        if is_panel and (not mayor_applicable or not councillor_applicable):
             raise ValueError(
                 f"default panel Endorser {key!r} must apply to both Mayor and City Councillor"
             )
+        if not mayor_applicable and not councillor_applicable:
+            raise ValueError(f"default Endorser {key!r} must apply to at least one office")
         endorser_id = stable_id("edr", "curated_endorser", key)
         records.append(
             {
@@ -300,6 +300,7 @@ def _prepare_panel(
         )
         rules[key] = {
             "endorser_id": endorser_id,
+            "is_panel_endorser": is_panel,
             "eligibility_start_date": eligibility_start,
             "mayor_applicable": mayor_applicable,
             "councillor_applicable": councillor_applicable,
@@ -750,6 +751,8 @@ def _build_coverage(
 ) -> pd.DataFrame:
     rows: list[dict[str, object]] = []
     for endorser_key, rule in endorser_rules.items():
+        if not bool(rule["is_panel_endorser"]):
+            continue
         for contest in contest_meta.values():
             coverage_state, basis = _coverage_state(endorser_key, rule, contest)
             # A release-as-of date must not imply that a Contest-specific search

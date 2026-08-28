@@ -254,15 +254,15 @@ def _endorser_id(inputs, name: str) -> str:
     return inputs.endorsers.loc[inputs.endorsers.canonical_name.eq(name), "endorser_id"].item()
 
 
-def test_default_inputs_publish_only_the_154_cleared_positive_facts(tmp_path):
+def test_default_inputs_publish_only_the_322_cleared_positive_facts(tmp_path):
     inputs, election_results, contests, people, _ = _build(tmp_path)
 
-    assert len(inputs.endorsers) == 9
-    assert inputs.endorsers["is_panel_endorser"].all()
+    assert len(inputs.endorsers) == 10
+    assert inputs.endorsers["is_panel_endorser"].sum() == 9
     assert inputs.endorsers["mayor_applicable"].all()
-    assert inputs.endorsers["councillor_applicable"].all()
+    assert inputs.endorsers["councillor_applicable"].sum() == 9
     assert set(inputs.assertions["review_state"].value_counts().to_dict().items()) == {
-        ("confirmed", 154),
+        ("confirmed", 322),
         ("unresolved", 1),
     }
 
@@ -274,7 +274,7 @@ def test_default_inputs_publish_only_the_154_cleared_positive_facts(tmp_path):
         assertions=inputs.assertions,
         coverage=inputs.coverage,
     )
-    assert len(assembled.endorsements) == 154
+    assert len(assembled.endorsements) == 322
     assert assembled.endorsements["endorsement_id"].str.startswith("end_").all()
 
     unresolved = inputs.assertions.query("review_state == 'unresolved'").iloc[0]
@@ -342,69 +342,77 @@ def test_verified_miller_assertions_preserve_the_independently_audited_sources(t
     )
 
 
-def test_verified_sun_2018_editorial_imports_only_the_13_publisher_choices(tmp_path):
+def test_authenticated_sun_2018_editorial_imports_all_27_positive_choices(tmp_path):
     inputs, _, _, _, _ = _build(tmp_path)
     sun_id = _endorser_id(inputs, "Toronto Sun Editorial Board")
     assertions = inputs.assertions.loc[
         inputs.assertions["endorser_id"].eq(sun_id)
-        & inputs.assertions["contest_id"].isin(
-            {
-                "con_922d425132ad5243b459c0ca40a6dcd9",
-                "con_3fc9df4b254c5eb6a2a7fb629a124bfb",
-                "con_612115bf42b450d3aeb63bb430d3aec9",
-                "con_f961284da53f5a38ba3a20e7e998ef4f",
-                "con_ac347f98e5715159b3adecf8debcbde8",
-                "con_849867f583195ad38c77941612883bd9",
-                "con_caa23fae586656b2bab11ee711073a2c",
-                "con_7a4043e26d4256e78ee3861fb81e718a",
-                "con_4def6d4e85f85950babb9030e4eae0cb",
-                "con_16fad19349255393a28639cd62e83ae3",
-                "con_c85783d7c9a4550bae21b8e14f2ff992",
-                "con_7e6cf2fd75ba560a900bb024e72fe99c",
-                "con_eeda9883ca2d57148405d41f7f5a80a4",
-            }
-        )
+        & inputs.assertions["source_type"].eq("publisher_editorial_authenticated_archive")
     ]
 
-    assert len(assertions) == 13
-    assert set(assertions["candidacy_id"]) == {
-        "can_b52f6554caab5bc08b7deca203ffd5d5",
-        "can_02d0984005935af0b592f3ad185eff48",
-        "can_881b56db387e50b19b0aa61d56b09724",
-        "can_b6b790f30421564ca2e9c8263737a42e",
-        "can_8c722fdcbad151f7a215974077dcdcbb",
-        "can_56769676131c5f708884abdfea79deef",
-        "can_6f92d616fbc254aa87d1296422abbdae",
-        "can_a6628f45e8ae5f50a48d6645d8d8646f",
-        "can_fafe793aa442549aa62e15c5f44bc07f",
-        "can_44edb32c95a155788c97ba51aab252a9",
-        "can_736c4515a83c5c4d99d7bbb1acdd5f7a",
-        "can_a138036d836c5c8da46d76df542f931f",
-        "can_76a5898fec8b5e3983638f5c9354afe3",
-    }
-    assert set(assertions["announcement_date"]) == {"2018-10-21"}
+    assert len(assertions) == 27
+    assert assertions["contest_id"].nunique() == 25
+    assert set(
+        assertions.loc[
+            assertions["contest_id"].eq("con_6a1f4d7470675d869b3b11aede0812f2"),
+            "asserted_candidate_name",
+        ]
+    ) == {"Jon Burnside", "Jaye Robinson"}
+    assert set(
+        assertions.loc[
+            assertions["contest_id"].eq("con_6fd864aec40c5bbc9f3eb32d2e9e4379"),
+            "asserted_candidate_name",
+        ]
+    ) == {"Michelle Holland-Berardinetti", "Gary Crawford"}
+    assert set(assertions["announcement_date"]) == {"2018-10-20"}
     assert set(assertions["endorsement_kind"]) == {"editorial_choice"}
-    assert set(assertions["source_type"]) == {"publisher_editorial"}
-    assert set(assertions["source_url"]) == {
+    assert set(assertions["source_type"]) == {"publisher_editorial_authenticated_archive"}
+    assert set(assertions["source_url"]) == {"https://www.proquest.com/docview/2125467176"}
+    assert set(assertions["secondary_source_url"]) == {
         "https://torontosun.com/news/local-news/toronto-sun-endorsements-for-city-council"
     }
-    assert not set(assertions["asserted_candidate_name"]).intersection(
-        {
-            "Giorgio Mammoliti",
-            "Ana Bailão",
-            "Kevin Vuong",
-            "Joyce Rowlands",
-            "Joe Mihevc",
-            "Lucy Troisi",
-            "Mary Fragedakis",
-            "Jaye Robinson",
-            "Denzil Minnan-Wong",
-            "Brad Bradford",
-            "Gary Crawford",
-            "Michelle Holland-Berardinetti",
-            "Norm Kelly",
-        }
-    )
+
+
+def test_authenticated_star_packages_import_all_151_validated_choices(tmp_path):
+    inputs, _, _, _, _ = _build(tmp_path)
+    star_id = _endorser_id(inputs, "Toronto Star Editorial Board")
+    assertions = inputs.assertions.loc[
+        inputs.assertions["endorser_id"].eq(star_id)
+        & inputs.assertions["source_type"].eq("publisher_editorial_authenticated_archive")
+    ]
+
+    assert len(assertions) == 151
+    keys = assertions["curation_key"]
+    assert keys.str.startswith("star_2003_w").sum() == 40
+    assert keys.str.startswith("star_2006_w").sum() == 41
+    assert keys.eq("star_2006_mayor_miller").sum() == 1
+    assert keys.str.startswith("star_2014_w").sum() == 44
+    assert keys.str.startswith("star_2018_w").sum() == 25
+    assert set(assertions["review_state"]) == {"confirmed"}
+    assert set(assertions["date_precision"]) == {"day"}
+
+
+def test_verified_globe_facts_import_without_expanding_the_frozen_panel(tmp_path):
+    inputs, _, _, _, _ = _build(tmp_path)
+    globe = inputs.endorsers.loc[
+        inputs.endorsers["canonical_name"].eq("The Globe and Mail Editorial Board")
+    ].iloc[0]
+    assertions = inputs.assertions.loc[
+        inputs.assertions["endorser_id"].eq(globe["endorser_id"])
+    ].sort_values("announcement_date")
+
+    assert not bool(globe["is_panel_endorser"])
+    assert bool(globe["mayor_applicable"])
+    assert not bool(globe["councillor_applicable"])
+    assert list(assertions["candidacy_id"]) == [
+        "can_1179f79bea135e8d82289930ed974496",
+        "can_3d13fbd9fab452a5b347fb048574b6c4",
+        "can_b3ecaef663ba56adbab70efbcb5004da",
+    ]
+    assert set(assertions["review_state"]) == {"confirmed"}
+    assert set(assertions["endorsement_kind"]) == {"editorial_choice"}
+    assert set(assertions["source_type"]) == {"publisher_editorial_authenticated_archive"}
+    assert inputs.coverage["endorser_id"].ne(globe["endorser_id"]).all()
 
 
 def test_matt_elliott_audit_recovers_the_22_star_2022_council_choices(tmp_path):
@@ -448,7 +456,7 @@ def test_matt_elliott_audit_recovers_the_22_star_2022_council_choices(tmp_path):
     assert set(star_coverage["coverage_state"]) == {"comprehensive_source_found"}
 
 
-def test_editorial_coverage_curations_preserve_all_24_audited_batch_decisions(tmp_path):
+def test_editorial_coverage_curations_preserve_prior_partial_search_decisions(tmp_path):
     inputs, _, _, _, reference_dir = _build(tmp_path)
     curations = pd.read_csv(reference_dir / ENDORSEMENT_COVERAGE_FILENAME, dtype="string")
     editorial = curations.loc[
@@ -456,22 +464,11 @@ def test_editorial_coverage_curations_preserve_all_24_audited_batch_decisions(tm
             "docs/research/endorsement-coverage-terra-verification-editorial.md"
         )
     ]
-    assert len(editorial) == 24
+    assert len(editorial) == 15
     assert set(editorial["search_certificate_path"]) == {
         "docs/research/endorsement-coverage-luna-editorial-2003-2025.md"
     }
-    assert (
-        editorial.loc[
-            editorial["curation_key"].eq("sun_2018_council_editorial_slate"),
-            "coverage_state",
-        ].item()
-        == "comprehensive_source_found"
-    )
-    assert set(
-        editorial.loc[
-            editorial["curation_key"].ne("sun_2018_council_editorial_slate"), "coverage_state"
-        ]
-    ) == {"partially_searched"}
+    assert set(editorial["coverage_state"]) == {"partially_searched"}
 
     sun_id = _endorser_id(inputs, "Toronto Sun Editorial Board")
     sun_2018_council = inputs.coverage.loc[
@@ -480,7 +477,8 @@ def test_editorial_coverage_curations_preserve_all_24_audited_batch_decisions(tm
     ]
     assert sun_2018_council["coverage_state"].item() == "comprehensive_source_found"
     assert sun_2018_council["coverage_basis"].item() == (
-        "Recovered publisher editorial lists its city-council choices."
+        "Authenticated publisher editorial provides at least one positive choice in every "
+        "Ward 1-25, including two choices in Wards 15 and 20."
     )
 
 
@@ -670,16 +668,13 @@ def test_coverage_is_complete_open_world_and_respects_applicability(tmp_path):
     assert "searched_no_endorsement_found" not in set(inputs.coverage["coverage_state"])
 
     star_id = _endorser_id(inputs, "Toronto Star Editorial Board")
-    for contest_id in (
-        "con_fixture_2014_w01",
-        "con_612115bf42b450d3aeb63bb430d3aec9",
-    ):
+    for contest_id in ("con_fixture_2014_w01", "con_612115bf42b450d3aeb63bb430d3aec9"):
         state = inputs.coverage.loc[
             inputs.coverage["endorser_id"].eq(star_id)
             & inputs.coverage["contest_id"].eq(contest_id),
             "coverage_state",
         ].item()
-        assert state == "source_unavailable"
+        assert state == "comprehensive_source_found"
 
     star_2022_w03 = inputs.coverage.loc[
         inputs.coverage["endorser_id"].eq(star_id)
