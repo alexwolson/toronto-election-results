@@ -276,12 +276,16 @@ def test_repository_poll_aliases_resolve_to_the_audited_people():
     assert by_name["David DiGiorgio"]["person_id"] == ("per_c420decb6687572fa82550c1eae3dd23")
     assert by_name["Gabe Blanc"]["person_id"] == ("per_a1e80916906e5b1a9c91b435e6499ea7")
     assert by_name["Dana Fisher"]["person_id"] == ("per_0598fabaa9a944ef91808b0f8037e884")
+    assert by_name["John Tory Jr."]["person_id"] == (
+        "per_7fb1837d6e46437981669ead106c6b86"
+    )
     assert all(
         by_name[name]["is_unambiguous"]
         for name in (
             "David DiGiorgio",
             "Gabe Blanc",
             "Dana Fisher",
+            "John Tory Jr.",
         )
     )
 
