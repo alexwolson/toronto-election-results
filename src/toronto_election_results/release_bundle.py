@@ -20,6 +20,7 @@ from .frontend_feeds import (
     write_person_aliases_feed,
     write_trustee_races_feed,
 )
+from .person_alias_curations import PERSON_ALIAS_CURATIONS_FILENAME
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
 
 RELEASE_MANIFEST_SCHEMA_VERSION = 1
@@ -56,6 +57,7 @@ def build_results_release_bundle(
     trustee_decisions_path = reference / "trustee_career_decisions.csv"
     trustee_crosswalk_path = reference / TRUSTEE_CROSSWALK_FILENAME
     trustee_continuity_path = reference / "trustee_contest_continuity_2026.csv"
+    person_alias_curations_path = reference / PERSON_ALIAS_CURATIONS_FILENAME
     for required in (
         results_path,
         districts_path,
@@ -68,6 +70,7 @@ def build_results_release_bundle(
         trustee_decisions_path,
         trustee_crosswalk_path,
         trustee_continuity_path,
+        person_alias_curations_path,
     ):
         if not required.is_file():
             raise FileNotFoundError(f"missing results release input: {required}")
@@ -116,7 +119,12 @@ def build_results_release_bundle(
             trustee_decisions_path,
             staging / "trustee_races.json",
         )
-        write_person_aliases_feed(results_path, people_path, staging / "person_aliases.json")
+        write_person_aliases_feed(
+            results_path,
+            people_path,
+            staging / "person_aliases.json",
+            curated_aliases_path=person_alias_curations_path,
+        )
 
         packaged = sorted(
             (path for path in staging.iterdir() if path.name != "release_manifest.json"),

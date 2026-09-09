@@ -9,6 +9,7 @@ from toronto_election_results.frontend_feeds import (
     build_person_aliases_feed,
     build_trustee_races_feed,
 )
+from toronto_election_results.person_alias_curations import load_person_alias_curations
 from toronto_election_results.trustee_2026 import load_trustee_ward_crosswalk
 from toronto_election_results.trustee_continuity import load_trustee_continuity
 
@@ -207,6 +208,82 @@ def test_person_aliases_are_owned_by_results_and_ambiguous_names_do_not_resolve(
     assert by_name["Xiaohua Gong"]["person_id"] == "per_gong"
     assert by_name["Alex Lee"]["person_id"] is None
     assert by_name["Alex Lee"]["is_unambiguous"] is False
+
+
+def test_person_aliases_include_evidence_backed_names_without_result_rows():
+    results = pd.DataFrame([_row(person_id="per_existing", candidate_name="Gabriel Blanc")])
+    people = pd.DataFrame(
+        [
+            {
+                "person_id": "per_existing",
+                "preferred_name": "Gabriel Blanc",
+                "identity_status": "active",
+            },
+            {
+                "person_id": "per_withdrawn",
+                "preferred_name": "Dana Fisher",
+                "identity_status": "active",
+            },
+        ]
+    )
+    curations = pd.DataFrame(
+        [
+            {"reported_name": "Gabe Blanc", "person_id": "per_existing"},
+            {"reported_name": "Dana Fisher", "person_id": "per_withdrawn"},
+        ]
+    )
+
+    feed = build_person_aliases_feed(results, people, curations)
+
+    by_name = {row["reported_name"]: row for row in feed["aliases"]}
+    assert by_name["Gabe Blanc"]["person_id"] == "per_existing"
+    assert by_name["Dana Fisher"]["person_id"] == "per_withdrawn"
+
+
+def test_person_aliases_keep_a_curated_collision_ambiguous():
+    results = pd.DataFrame([_row(person_id="per_result", candidate_name="Shared Name")])
+    people = pd.DataFrame(
+        [
+            {
+                "person_id": "per_result",
+                "preferred_name": "Result Person",
+                "identity_status": "active",
+            },
+            {
+                "person_id": "per_curated",
+                "preferred_name": "Curated Person",
+                "identity_status": "active",
+            },
+        ]
+    )
+    curations = pd.DataFrame([{"reported_name": "Shared Name", "person_id": "per_curated"}])
+
+    feed = build_person_aliases_feed(results, people, curations)
+
+    aliases = [row for row in feed["aliases"] if row["reported_name"] == "Shared Name"]
+    assert {row["person_id"] for row in aliases} == {None}
+    assert {row["is_unambiguous"] for row in aliases} == {False}
+
+
+def test_repository_poll_aliases_resolve_to_the_audited_people():
+    feed = build_person_aliases_feed(
+        pd.read_csv(ROOT / "data/out/election_results.csv", low_memory=False),
+        pd.read_csv(ROOT / "data/out/people.csv", low_memory=False),
+        load_person_alias_curations(ROOT / "data/reference/person_alias_curations.csv"),
+    )
+
+    by_name = {row["reported_name"]: row for row in feed["aliases"]}
+    assert by_name["David DiGiorgio"]["person_id"] == ("per_c420decb6687572fa82550c1eae3dd23")
+    assert by_name["Gabe Blanc"]["person_id"] == ("per_a1e80916906e5b1a9c91b435e6499ea7")
+    assert by_name["Dana Fisher"]["person_id"] == ("per_0598fabaa9a944ef91808b0f8037e884")
+    assert all(
+        by_name[name]["is_unambiguous"]
+        for name in (
+            "David DiGiorgio",
+            "Gabe Blanc",
+            "Dana Fisher",
+        )
+    )
 
 
 def test_trustee_feed_publishes_the_complete_field_and_only_confirmed_history():

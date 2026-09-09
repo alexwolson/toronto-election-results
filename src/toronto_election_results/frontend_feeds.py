@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from .person_alias_curations import load_person_alias_curations
 from .trustee_2026 import load_trustee_ward_crosswalk
 from .trustee_career import (
     COHORT_ID as TRUSTEE_COHORT_ID,
@@ -80,7 +81,11 @@ def attach_district_display_names(results: pd.DataFrame, districts: pd.DataFrame
     )
 
 
-def build_person_aliases_feed(results: pd.DataFrame, people: pd.DataFrame) -> dict[str, object]:
+def build_person_aliases_feed(
+    results: pd.DataFrame,
+    people: pd.DataFrame,
+    curated_aliases: pd.DataFrame | None = None,
+) -> dict[str, object]:
     """Publish Results-owned names without asking consumers to match people.
 
     Every spelling comes from a confirmed canonical candidacy or the Person
@@ -113,6 +118,18 @@ def build_person_aliases_feed(results: pd.DataFrame, people: pd.DataFrame) -> di
             if _present(value):
                 alias = str(value).strip()
                 names.add((_name_key(alias), alias, str(row.person_id)))
+    if curated_aliases is not None:
+        required_aliases = {"reported_name", "person_id"}
+        if missing := sorted(required_aliases - set(curated_aliases.columns)):
+            raise ValueError(f"curated aliases are missing columns: {', '.join(missing)}")
+        for row in curated_aliases.itertuples(index=False):
+            person_id = str(row.person_id)
+            if person_id not in active_ids:
+                raise ValueError(f"curated alias references inactive Person {person_id!r}")
+            alias = str(row.reported_name).strip()
+            if not alias:
+                raise ValueError("curated alias reported_name cannot be blank")
+            names.add((_name_key(alias), alias, person_id))
 
     people_by_key: dict[str, set[str]] = {}
     for key, _, person_id in names:
@@ -673,13 +690,22 @@ def write_trustee_races_feed(
 
 
 def write_person_aliases_feed(
-    results_path: str | Path, people_path: str | Path, output_path: str | Path
+    results_path: str | Path,
+    people_path: str | Path,
+    output_path: str | Path,
+    *,
+    curated_aliases_path: str | Path | None = None,
 ) -> Path:
     """Atomically write the Results-owned exact identity crosswalk."""
 
     feed = build_person_aliases_feed(
         pd.read_csv(results_path, low_memory=False),
         pd.read_csv(people_path, low_memory=False),
+        (
+            load_person_alias_curations(curated_aliases_path)
+            if curated_aliases_path is not None
+            else None
+        ),
     )
     destination = Path(output_path)
     destination.parent.mkdir(parents=True, exist_ok=True)

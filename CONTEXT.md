@@ -133,9 +133,13 @@ votes or outcome; the same persistent Candidacy becomes final when the Election 
 the result.
 
 **Person**:
-An individual represented by at least one Candidacy or Office tenure. Candidacies link many-to-one
-to a Person only when the identity link is confirmed. A Person has a canonical name and audited
-aliases without rewriting names on historical Candidacies.
+An individual represented by a Candidacy, Office tenure, or an evidence-backed electoral source
+needed by a dependent dataset. Existence as a Person does not imply inclusion in a certified field.
+
+**Person alias**:
+An evidence-backed source name that identifies exactly one Person. An alias supports exact
+cross-dataset resolution but never creates or rewrites a Candidacy.
+_Avoid_: Candidate alias, fuzzy name match.
 
 **Person ID**:
 An opaque, persistent identifier for one Person across every in-scope election and Office type. It

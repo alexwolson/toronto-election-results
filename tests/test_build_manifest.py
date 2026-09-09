@@ -67,6 +67,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     endorser_panel = reference / "endorser_panel_curations.csv"
     endorsement_assertions = reference / "endorsement_assertion_curations.csv"
     endorsement_coverage = reference / "endorsement_coverage_curations.csv"
+    person_alias_curations = reference / "person_alias_curations.csv"
     verification_report = tmp_path / "verification-report.md"
     search_certificate = tmp_path / "search-certificate.md"
     trustee_crosswalk = reference / "trustee_ward_crosswalks.csv"
@@ -86,6 +87,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     dispositions.write_text("audited,identity\n", encoding="utf-8")
     endorser_panel.write_text("audited,endorser\n", encoding="utf-8")
     endorsement_assertions.write_text("audited,endorsement\n", encoding="utf-8")
+    person_alias_curations.write_text("audited,aliases\n", encoding="utf-8")
     verification_report.write_text("verified", encoding="utf-8")
     search_certificate.write_text("searched", encoding="utf-8")
     trustee_crosswalk.write_text("official,crosswalk\n", encoding="utf-8")
@@ -118,6 +120,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
             endorsement_coverage,
             endorser_panel,
             dispositions,
+            person_alias_curations,
             roster_a,
             roster_b,
             verification_report,
