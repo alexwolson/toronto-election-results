@@ -32,8 +32,8 @@ while retaining the proposed Person for audit, and contrary evidence produces `r
 mistaken for untouched review debt.
 
 People may exist without an in-scope Candidacy when a pre-window officeholder or appointee is
-needed to classify Incumbency, or when an evidence-bearing downstream dataset names a registered
-candidate who is absent from the final certified field. Those downstream aliases are explicit,
-sourced curations: they neither create a Candidacy nor permit fuzzy matching. Identity research is
-limited to people needed by in-scope release contracts rather than attempting a comprehensive
-political-biography dataset.
+needed to classify Incumbency, or when an evidence-bearing downstream dataset names a registered,
+withdrawn, or hypothetical candidate who is absent from the final certified field. Those
+downstream aliases are explicit, sourced curations: they neither create a Candidacy nor permit
+fuzzy matching. Identity research is limited to people needed by in-scope release contracts rather
+than attempting a comprehensive political-biography dataset.

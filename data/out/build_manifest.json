@@ -155,18 +155,18 @@
       "written_at": "2026-09-09T13:11:26.477529Z"
     },
     {
-      "bytes": 273385,
+      "bytes": 273455,
       "local_path": "data/out/people.csv",
-      "rows": 3832,
-      "sha256": "4a21713b1bfeb9199b735ad076efb439d98be13969b98734bcd21d2f3e59713e",
-      "written_at": "2026-09-09T13:11:26.411247Z"
+      "rows": 3833,
+      "sha256": "250760f390d83e69f8460debad8d62c014be01e4a2f8475eb42c1230805eca24",
+      "written_at": "2026-09-09T22:10:48.264147Z"
     },
     {
-      "bytes": 188794,
+      "bytes": 188860,
       "local_path": "data/out/people.parquet",
-      "rows": 3832,
-      "sha256": "0604b5a445d1f1b3c51690472325cd75d78ff60541dcfeeeb4baab98e3a15479",
-      "written_at": "2026-09-09T13:11:26.413562Z"
+      "rows": 3833,
+      "sha256": "edb3345c7295b35e7b98ecdd68e9e1ca35ddb76ce9f498a0e01fb8327ae8330b",
+      "written_at": "2026-09-09T22:10:48.264147Z"
     }
   ],
   "coverage": {
@@ -201,7 +201,7 @@
       "scheduled_date": "2026-09-03"
     }
   ],
-  "generated_at": "2026-09-09T13:11:26.551551Z",
+  "generated_at": "2026-09-09T22:10:48.264147Z",
   "pending_events": [
     {
       "candidate_snapshot_through": "2026-08-27",
@@ -921,10 +921,10 @@
       "sha256": "9cbc5d0bb3670a61d377a6801dda6c8bdc868b133e084075dc0219ff6e765726"
     },
     {
-      "bytes": 1479,
+      "bytes": 1941,
       "local_path": "data/reference/person_alias_curations.csv",
-      "retrieved_at": "2026-09-09T13:07:14.433156Z",
-      "sha256": "1ebea0b796e4d78e29a5cfce77384dc77eab6c256ff2990387c05ae252bcfcc9"
+      "retrieved_at": "2026-09-09T22:10:48.264147Z",
+      "sha256": "30cbee55aedaaf5ceb718b2f37dd8926b15b75a4d5601046330a9d78a1082552"
     },
     {
       "bytes": 3698,
