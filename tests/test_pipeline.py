@@ -325,6 +325,10 @@ def test_pipeline_advances_ledger_before_promoting_public_release(tmp_path, monk
         "candidacy_id,target_person_id,decision,confidence,rationale,evidence_urls,reviewer\n",
         encoding="utf-8",
     )
+    (reference / pipeline.PERSON_ALIAS_CURATIONS_FILENAME).write_text(
+        "person_id,person_action,preferred_name,reported_name,evidence_urls,rationale\n",
+        encoding="utf-8",
+    )
 
     with pytest.raises(RuntimeError, match="simulated release promotion failure"):
         pipeline.run_all(

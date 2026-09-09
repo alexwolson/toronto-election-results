@@ -37,6 +37,11 @@ from .mayoral_career import (
 from .municipal import load_council_results
 from .ontario import download_ontario_sources, load_ontario_results
 from .pending_candidates import load_pending_council_candidates
+from .person_alias_curations import (
+    PERSON_ALIAS_CURATIONS_FILENAME,
+    apply_person_alias_curations,
+    load_person_alias_curations,
+)
 from .release import assemble_bootstrapped_release, validate_tables, write_release
 from .schema import normalize_adapter_frame
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
@@ -111,6 +116,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "trustee_contest_continuity_2026.csv",
         "trustee_incumbents_2026.csv",
         "city_ward_geographic_names.csv",
+        PERSON_ALIAS_CURATIONS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
     ):
         endorsement_path = reference / filename
@@ -408,6 +414,11 @@ def run_all(
     )
     release = replace(
         built.tables,
+        people=apply_person_alias_curations(
+            built.tables.people,
+            load_person_alias_curations(reference / PERSON_ALIAS_CURATIONS_FILENAME),
+            release_id=RELEASE_ID,
+        ),
         electoral_districts=enrich_district_geometries(
             named_districts, trustee_crosswalks=trustee_crosswalks
         ),

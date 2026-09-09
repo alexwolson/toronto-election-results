@@ -5,168 +5,168 @@
       "local_path": "data/out/candidacy_person_links.csv",
       "rows": 8255,
       "sha256": "1b3684a9b68541410faf1f4a9b41e6a76146bccddff7cd9f3a0f7efc1206d0a5",
-      "written_at": "2026-09-04T15:09:39.020387Z"
+      "written_at": "2026-09-09T13:11:26.469607Z"
     },
     {
       "bytes": 1692234,
       "local_path": "data/out/candidacy_person_links.parquet",
       "rows": 8255,
       "sha256": "6e3e28c42c804bab839274ade3a0a91acec2b9c841fec1ff5588a57d919f066b",
-      "written_at": "2026-09-04T15:09:39.027754Z"
+      "written_at": "2026-09-09T13:11:26.476345Z"
     },
     {
       "bytes": 420458,
       "local_path": "data/out/contests.csv",
       "rows": 927,
       "sha256": "12603f66875047b282907b00a6f48b52ef74be62d65a5f62dd93f6b1afc2ecef",
-      "written_at": "2026-09-04T15:09:38.962335Z"
+      "written_at": "2026-09-09T13:11:26.405228Z"
     },
     {
       "bytes": 92903,
       "local_path": "data/out/contests.parquet",
       "rows": 927,
       "sha256": "88f11bb0121244ececc76b73636336eeb2c5646ac741ba465a16a4e8d146e87f",
-      "written_at": "2026-09-04T15:09:38.963859Z"
+      "written_at": "2026-09-09T13:11:26.407280Z"
     },
     {
       "bytes": 4730,
       "local_path": "data/out/election_events.csv",
       "rows": 68,
       "sha256": "89d6c18ee42fa12fcd9caaac2aa18b45086ea6cc7c49389370abce7c2f6e9acf",
-      "written_at": "2026-09-04T15:09:38.957055Z"
+      "written_at": "2026-09-09T13:11:26.397554Z"
     },
     {
       "bytes": 5620,
       "local_path": "data/out/election_events.parquet",
       "rows": 68,
       "sha256": "30e9119c1408e73cf5fe2353e7dd57af23fcf60b002e46adc6fed7bdd04bc359",
-      "written_at": "2026-09-04T15:09:38.957586Z"
+      "written_at": "2026-09-09T13:11:26.398310Z"
     },
     {
       "bytes": 4369833,
       "local_path": "data/out/election_results.csv",
       "rows": 5866,
       "sha256": "42d2064c25f450716f41e1b22508c3b3f9be4d24de0147789108e9c4699f865e",
-      "written_at": "2026-09-04T15:09:38.891782Z"
+      "written_at": "2026-09-09T13:11:26.022044Z"
     },
     {
       "bytes": 907550,
       "local_path": "data/out/election_results.parquet",
       "rows": 5866,
       "sha256": "225341853639a4fee60cbe2da54d90820a589888522120d0715814aa7b7e03b7",
-      "written_at": "2026-09-04T15:09:38.956294Z"
+      "written_at": "2026-09-09T13:11:26.396646Z"
     },
     {
       "bytes": 5797675,
       "local_path": "data/out/electoral_districts.csv",
       "rows": 489,
       "sha256": "614e7b6d0f34ca47fcedac32ffff36a44740392278a0d419c5e718ddfa508d96",
-      "written_at": "2026-09-04T15:09:39.081742Z"
+      "written_at": "2026-09-09T13:11:26.524917Z"
     },
     {
       "bytes": 2321376,
       "local_path": "data/out/electoral_districts.parquet",
       "rows": 489,
       "sha256": "3c8e44e98e5d0bbdcbb4be20f7d1820e9014beeca9fbef21c184ddb7d3b29d94",
-      "written_at": "2026-09-04T15:09:39.090458Z"
+      "written_at": "2026-09-09T13:11:26.533762Z"
     },
     {
       "bytes": 68039,
       "local_path": "data/out/endorsement_assertions.csv",
       "rows": 155,
       "sha256": "27b04bde1bde1d828659579cf854faad7893fcf53c054b1dc17fb818298a2fe1",
-      "written_at": "2026-09-04T15:09:39.092516Z"
+      "written_at": "2026-09-09T13:11:26.535879Z"
     },
     {
       "bytes": 36230,
       "local_path": "data/out/endorsement_assertions.parquet",
       "rows": 155,
       "sha256": "b243e999b20a0af02ea9d4f9c9bdd1f83dc5ad1b077e419b2f4aacf185e33a96",
-      "written_at": "2026-09-04T15:09:39.093216Z"
+      "written_at": "2026-09-09T13:11:26.536568Z"
     },
     {
       "bytes": 395592,
       "local_path": "data/out/endorsement_coverage.csv",
       "rows": 2412,
       "sha256": "ebcd34d71cb1bcd9a17241ee498ae3fb88d6f9e02eba0020a0a33af3ec74ba84",
-      "written_at": "2026-09-04T15:09:39.097305Z"
+      "written_at": "2026-09-09T13:11:26.540484Z"
     },
     {
       "bytes": 17908,
       "local_path": "data/out/endorsement_coverage.parquet",
       "rows": 2412,
       "sha256": "3a11f26863520043ae3eaf2963fa0be66a32d29961a15ebb16a2e62bf0636691",
-      "written_at": "2026-09-04T15:09:39.098329Z"
+      "written_at": "2026-09-09T13:11:26.541472Z"
     },
     {
       "bytes": 22843,
       "local_path": "data/out/endorsements.csv",
       "rows": 154,
       "sha256": "015ab34f93bc539e4c2af66aabbcd6b988103e83b4e3195d5c8a573711fed933",
-      "written_at": "2026-09-04T15:09:39.093585Z"
+      "written_at": "2026-09-09T13:11:26.536952Z"
     },
     {
       "bytes": 16583,
       "local_path": "data/out/endorsements.parquet",
       "rows": 154,
       "sha256": "bf16f45a6efa8ca920452e9a6f2927422d35ea876a4f513a33c75fa7bc5fa968",
-      "written_at": "2026-09-04T15:09:39.093927Z"
+      "written_at": "2026-09-09T13:11:26.537296Z"
     },
     {
       "bytes": 2537,
       "local_path": "data/out/endorsers.csv",
       "rows": 9,
       "sha256": "9bfdb461ff5f4279be215031a4a9ca996c2235b3ea967e7b169d781480a2b7d1",
-      "written_at": "2026-09-04T15:09:39.091022Z"
+      "written_at": "2026-09-09T13:11:26.534396Z"
     },
     {
       "bytes": 8618,
       "local_path": "data/out/endorsers.parquet",
       "rows": 9,
       "sha256": "e10fb740979dfda5df2de1ce891ace8795295a35c465b62644a0a1dbd3705b36",
-      "written_at": "2026-09-04T15:09:39.091589Z"
+      "written_at": "2026-09-09T13:11:26.534944Z"
     },
     {
       "bytes": 490750,
       "local_path": "data/out/office_tenures.csv",
       "rows": 746,
       "sha256": "f6d6c36398e7822567c66c0381366b57807b6d58a3e236ec81019e7380744abe",
-      "written_at": "2026-09-04T15:09:39.033021Z"
+      "written_at": "2026-09-09T13:11:26.481341Z"
     },
     {
       "bytes": 105242,
       "local_path": "data/out/office_tenures.parquet",
       "rows": 746,
       "sha256": "97e5e454e2c59f751795cb65011f526d0d89bd98871a16b36074d8b821931604",
-      "written_at": "2026-09-04T15:09:39.034163Z"
+      "written_at": "2026-09-09T13:11:26.482393Z"
     },
     {
       "bytes": 6063,
       "local_path": "data/out/parties.csv",
       "rows": 59,
       "sha256": "745e3b4bdaab734b928f574fcd11d850417e601108ee939159e8e598f12411bd",
-      "written_at": "2026-09-04T15:09:39.028305Z"
+      "written_at": "2026-09-09T13:11:26.477098Z"
     },
     {
       "bytes": 7269,
       "local_path": "data/out/parties.parquet",
       "rows": 59,
       "sha256": "4684aa1100ad843e845da167a5263a526c6307fa1c3a8f5bf075d7208534f167",
-      "written_at": "2026-09-04T15:09:39.028722Z"
+      "written_at": "2026-09-09T13:11:26.477529Z"
     },
     {
-      "bytes": 273317,
+      "bytes": 273385,
       "local_path": "data/out/people.csv",
-      "rows": 3831,
-      "sha256": "25f0fbf2878c88f444840083c599c15a0c36256aec25b802f13f03b749d5b6ae",
-      "written_at": "2026-09-04T15:09:38.966851Z"
+      "rows": 3832,
+      "sha256": "4a21713b1bfeb9199b735ad076efb439d98be13969b98734bcd21d2f3e59713e",
+      "written_at": "2026-09-09T13:11:26.411247Z"
     },
     {
-      "bytes": 188753,
+      "bytes": 188794,
       "local_path": "data/out/people.parquet",
-      "rows": 3831,
-      "sha256": "e9bcdf245ab24b6e2ff66ed2994c6b7cb77689a5788d2fa7c7dd1fe854c192ce",
-      "written_at": "2026-09-04T15:09:38.968230Z"
+      "rows": 3832,
+      "sha256": "0604b5a445d1f1b3c51690472325cd75d78ff60541dcfeeeb4baab98e3a15479",
+      "written_at": "2026-09-09T13:11:26.413562Z"
     }
   ],
   "coverage": {
@@ -201,7 +201,7 @@
       "scheduled_date": "2026-09-03"
     }
   ],
-  "generated_at": "2026-09-04T15:09:39.108315Z",
+  "generated_at": "2026-09-09T13:11:26.551551Z",
   "pending_events": [
     {
       "candidate_snapshot_through": "2026-08-27",
@@ -857,1801 +857,1807 @@
     {
       "bytes": 2838317,
       "local_path": "data/reference/candidacy_identity_ledger.csv",
-      "retrieved_at": "2026-09-04T15:09:38.294934Z",
+      "retrieved_at": "2026-09-09T13:11:25.479557Z",
       "sha256": "583200462df3af0a869f05c4f7db647cfa741bc53a6aec781eff86142856958b"
     },
     {
       "bytes": 10201,
       "local_path": "data/reference/city_ward_geographic_names.csv",
-      "retrieved_at": "2026-08-27T21:05:44.582145Z",
+      "retrieved_at": "2026-09-09T13:02:20.079774Z",
       "sha256": "0f5f3a92280eb46cf6004997d664012284c58ed433b50cb6e327f97ab82bfee8"
     },
     {
       "bytes": 60935,
       "local_path": "data/reference/endorsement_assertion_curations.csv",
-      "retrieved_at": "2026-08-28T18:12:35.785007Z",
+      "retrieved_at": "2026-09-09T13:02:20.079926Z",
       "sha256": "6db9f049c647e12042e0994bc847e74f933bbe12d4938e3948ab1c8964382227"
     },
     {
       "bytes": 50021,
       "local_path": "data/reference/endorsement_coverage_curations.csv",
-      "retrieved_at": "2026-08-28T18:12:35.785160Z",
+      "retrieved_at": "2026-09-09T13:02:20.080017Z",
       "sha256": "c5aa74c9d4ad023107bcf2bfe861d45edfeea19a9b6d3b0992b2271d8dc200ab"
     },
     {
       "bytes": 2401,
       "local_path": "data/reference/endorser_panel_curations.csv",
-      "retrieved_at": "2026-08-28T18:12:35.785288Z",
+      "retrieved_at": "2026-09-09T13:02:20.080296Z",
       "sha256": "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231"
     },
     {
       "bytes": 393276,
       "local_path": "data/reference/identity_review_dispositions.csv",
-      "retrieved_at": "2026-08-26T19:02:22.729421Z",
+      "retrieved_at": "2026-09-09T13:02:20.080845Z",
       "sha256": "94e07068883b018214d3764cbc8eaeec54ecb69a80663da7657bd1ef07ad2f65"
     },
     {
       "bytes": 7437,
       "local_path": "data/reference/mayoral_career_backfill.csv",
-      "retrieved_at": "2026-08-27T01:47:43.838903Z",
+      "retrieved_at": "2026-09-09T13:02:20.080914Z",
       "sha256": "10c42c963990ca45d6d53936b39a330428bb477ceb5702bace31bf4066eea093"
     },
     {
       "bytes": 13148,
       "local_path": "data/reference/mayoral_career_cohort_2026.csv",
-      "retrieved_at": "2026-08-27T01:47:43.839211Z",
+      "retrieved_at": "2026-09-09T13:02:20.081012Z",
       "sha256": "78119e69b21bcaa1dc05e75cc1a5846d52c7b58b8eb2e7a77650c448db6af8b7"
     },
     {
       "bytes": 63906,
       "local_path": "data/reference/mayoral_career_decisions.csv",
-      "retrieved_at": "2026-08-27T01:47:43.839486Z",
+      "retrieved_at": "2026-09-09T13:02:20.081108Z",
       "sha256": "276a988e85852a072897a0007bf70cd662d79999ab0520374220fcf14f945c05"
     },
     {
       "bytes": 12286,
       "local_path": "data/reference/mayoral_career_occurrence_mapping.csv",
-      "retrieved_at": "2026-08-27T01:47:43.839827Z",
+      "retrieved_at": "2026-09-09T13:02:20.081183Z",
       "sha256": "1b0511206201a4c2872a3295df6be4ceb6111e010d5ee8d897da390d5f2132dd"
     },
     {
       "bytes": 27705,
       "local_path": "data/reference/mayoral_career_reviews.csv",
-      "retrieved_at": "2026-08-27T12:05:14.771599Z",
+      "retrieved_at": "2026-09-09T13:02:20.081258Z",
       "sha256": "9cbc5d0bb3670a61d377a6801dda6c8bdc868b133e084075dc0219ff6e765726"
+    },
+    {
+      "bytes": 1479,
+      "local_path": "data/reference/person_alias_curations.csv",
+      "retrieved_at": "2026-09-09T13:07:14.433156Z",
+      "sha256": "1ebea0b796e4d78e29a5cfce77384dc77eab6c256ff2990387c05ae252bcfcc9"
     },
     {
       "bytes": 3698,
       "local_path": "data/reference/roster_agent_a.txt",
-      "retrieved_at": "2026-08-19T17:42:20.984296Z",
+      "retrieved_at": "2026-09-09T13:02:20.081328Z",
       "sha256": "d4d1757db16f00ad4905ca9432e5046481454cf09fb85082809f69901222f55b"
     },
     {
       "bytes": 3696,
       "local_path": "data/reference/roster_agent_b.txt",
-      "retrieved_at": "2026-08-19T17:40:16.612264Z",
+      "retrieved_at": "2026-09-09T13:02:20.081376Z",
       "sha256": "4780ad055a1d4c0015ca9244b524161a58e9700b9915a363064c417142ce9e3d"
     },
     {
       "bytes": 27577,
       "local_path": "data/reference/trustee_career_cohort_2026.csv",
-      "retrieved_at": "2026-08-27T17:41:03.493565Z",
+      "retrieved_at": "2026-09-09T13:02:20.081456Z",
       "sha256": "2c7399907a7535dada52ea01f12c7ce470b6fb2ef337ea84b83ab1de8369c27c"
     },
     {
       "bytes": 135979,
       "local_path": "data/reference/trustee_career_decisions.csv",
-      "retrieved_at": "2026-08-27T17:41:03.493735Z",
+      "retrieved_at": "2026-09-09T13:02:20.081613Z",
       "sha256": "e7267b0e7d792652d96113e5a54e3396f1411d67c1d2d97a939f29f46b86a4ae"
     },
     {
       "bytes": 87818,
       "local_path": "data/reference/trustee_career_reviews.csv",
-      "retrieved_at": "2026-08-27T17:41:03.493859Z",
+      "retrieved_at": "2026-09-09T13:02:20.081762Z",
       "sha256": "36b09b439f9e9ffe7cf6e54458ca12a383dc3e2705699d842c5788f2d1966834"
     },
     {
       "bytes": 49326,
       "local_path": "data/reference/trustee_career_sol_reviews.csv",
-      "retrieved_at": "2026-08-27T17:41:03.493955Z",
+      "retrieved_at": "2026-09-09T13:02:20.081867Z",
       "sha256": "3360843c2c9b46d41886eddfe0ee217e9ab7003fd588ed213d9b0a6c331cd851"
     },
     {
       "bytes": 10946,
       "local_path": "data/reference/trustee_contest_continuity_2026.csv",
-      "retrieved_at": "2026-08-27T17:41:03.494043Z",
+      "retrieved_at": "2026-09-09T13:02:20.081933Z",
       "sha256": "0166dd35d1ef345f00bf625aadc8a61fd569dbd02b929d19ec57eeeb2f8f81b6"
     },
     {
       "bytes": 5607,
       "local_path": "data/reference/trustee_incumbents_2026.csv",
-      "retrieved_at": "2026-08-27T17:41:03.494111Z",
+      "retrieved_at": "2026-09-09T13:02:20.081987Z",
       "sha256": "a4ecfa0dcd0e0269e8713d7f8edcc2b9fefc523b3945a902418db89ccf217371"
     },
     {
       "bytes": 81229,
       "local_path": "data/reference/trustee_ward_crosswalks.csv",
-      "retrieved_at": "2026-08-27T21:05:44.582414Z",
+      "retrieved_at": "2026-09-09T13:02:20.082208Z",
       "sha256": "45dbd353b9dc4d457bace2538177b589c05c24d1561a80f9265ae724b628becb"
     },
     {
       "bytes": 17038,
       "local_path": "docs/research/endorsement-coverage-luna-editorial-2003-2025.md",
-      "retrieved_at": "2026-08-26T19:02:22.736458Z",
+      "retrieved_at": "2026-09-09T13:02:20.084505Z",
       "sha256": "65f872e37d367d904f859646d17b8d0711f82ea3a9d9172e479f9ec94c843e9a"
     },
     {
       "bytes": 20938,
       "local_path": "docs/research/endorsement-coverage-luna-organizations-2003-2025.md",
-      "retrieved_at": "2026-08-26T19:02:22.736843Z",
+      "retrieved_at": "2026-09-09T13:02:20.084641Z",
       "sha256": "c7d7dfd60ea42bccf60dccebc33c0509b671d6d3901777489e6e4ca3accb7aaf"
     },
     {
       "bytes": 10781,
       "local_path": "docs/research/endorsement-coverage-terra-mayors-2003-2025.md",
-      "retrieved_at": "2026-08-26T19:02:22.737071Z",
+      "retrieved_at": "2026-09-09T13:02:20.084732Z",
       "sha256": "d29c972ff7b7849268fb34bd34caa3613f5c5c98442590c6dd79e16bf219c28a"
     },
     {
       "bytes": 11381,
       "local_path": "docs/research/endorsement-coverage-terra-verification-editorial.md",
-      "retrieved_at": "2026-08-26T19:02:22.737664Z",
+      "retrieved_at": "2026-09-09T13:02:20.084868Z",
       "sha256": "3daad2ff23108abc8fbc48a19e394fdaf9c0da15ee70ea4c95f5e052ccecaa38"
     },
     {
       "bytes": 6650,
       "local_path": "docs/research/endorsement-coverage-terra-verification-hold-recovery.md",
-      "retrieved_at": "2026-08-26T19:02:22.738134Z",
+      "retrieved_at": "2026-09-09T13:02:20.084932Z",
       "sha256": "4a266b5a75907353758c0bc014498bb0b2b1821c6232328afb1a825736cebf01"
     },
     {
       "bytes": 14337,
       "local_path": "docs/research/endorsement-coverage-terra-verification-organizations.md",
-      "retrieved_at": "2026-08-26T19:02:22.738370Z",
+      "retrieved_at": "2026-09-09T13:02:20.085058Z",
       "sha256": "3a785912e4394f6e2b43addd6e6a24dd9e085a1a8794c68a27fc17f077589dbc"
     },
     {
       "bytes": 7008,
       "local_path": "docs/research/endorsement-coverage-terra-verification-wave1.md",
-      "retrieved_at": "2026-08-26T19:02:22.738505Z",
+      "retrieved_at": "2026-09-09T13:02:20.085110Z",
       "sha256": "b69a78cc45028b0665b13797f2ac7b8964f4c05e8669ca7cd21247422ce3599a"
     },
     {
       "bytes": 25058,
       "local_path": "docs/research/matt-elliott-2022-endorsement-matrix-audit.md",
-      "retrieved_at": "2026-08-26T19:02:22.739601Z",
+      "retrieved_at": "2026-09-09T13:02:20.085533Z",
       "sha256": "907149a95a5d6f92c4191e86feff7296d724fe829975ae82dd68d12d9d09bf77"
     },
     {
       "bytes": 2534,
       "local_path": "docs/research/trustee-career/2026/can_00559d83c281555b8fb8ef52039a18c3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.494458Z",
+      "retrieved_at": "2026-09-09T13:02:20.093588Z",
       "sha256": "a97f92d2f1aac085a13b17bbcfff88613c0647131e6226af2653fc9a2ef0894e"
     },
     {
       "bytes": 2224,
       "local_path": "docs/research/trustee-career/2026/can_00559d83c281555b8fb8ef52039a18c3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.494514Z",
+      "retrieved_at": "2026-09-09T13:02:20.093652Z",
       "sha256": "755a412776df4bd3f87e2e75d52d5ed3d242d029e51959e3abf4894ba334327f"
     },
     {
       "bytes": 2827,
       "local_path": "docs/research/trustee-career/2026/can_01172eb55cf256048374d94ac7781410-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.494578Z",
+      "retrieved_at": "2026-09-09T13:02:20.093728Z",
       "sha256": "77958b695e5689f4331c856c30cbc3e514c9ace56be3d75ead523755ecea5d45"
     },
     {
       "bytes": 2356,
       "local_path": "docs/research/trustee-career/2026/can_01172eb55cf256048374d94ac7781410-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.494638Z",
+      "retrieved_at": "2026-09-09T13:02:20.093801Z",
       "sha256": "78ea4cc80bd7f810c78d3f619bf70d4d21026def7730236eec3afec6c4fa8d27"
     },
     {
       "bytes": 2988,
       "local_path": "docs/research/trustee-career/2026/can_01a1f4255c465a66ae1e93b82ef01b63-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.494705Z",
+      "retrieved_at": "2026-09-09T13:02:20.093875Z",
       "sha256": "4ab0304b9b3bfc90ffd7b68126b2ccdd0af8b20caada9341a08bc04b56e701fb"
     },
     {
       "bytes": 1520,
       "local_path": "docs/research/trustee-career/2026/can_01a1f4255c465a66ae1e93b82ef01b63-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.494762Z",
+      "retrieved_at": "2026-09-09T13:02:20.093946Z",
       "sha256": "447534d4e661a883684f32123a591026b0483635ac1c54350264e58f3620505c"
     },
     {
       "bytes": 4528,
       "local_path": "docs/research/trustee-career/2026/can_0223966eed3453f8a109f60a720eb111-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.494840Z",
+      "retrieved_at": "2026-09-09T13:02:20.094026Z",
       "sha256": "d34a524941c82cef957d5a230b100ac1bde269a6a109e41073dcfb684e7abf84"
     },
     {
       "bytes": 2782,
       "local_path": "docs/research/trustee-career/2026/can_0223966eed3453f8a109f60a720eb111-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.494899Z",
+      "retrieved_at": "2026-09-09T13:02:20.094111Z",
       "sha256": "706185a7fa22b21e46a037f74751284d5e0acdd9cd3f5fbae5348e08c9f830b5"
     },
     {
       "bytes": 3649,
       "local_path": "docs/research/trustee-career/2026/can_0223966eed3453f8a109f60a720eb111-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.494958Z",
+      "retrieved_at": "2026-09-09T13:02:20.094182Z",
       "sha256": "1e745a0cf3de139f79d9612a46ef2633699f862a94863ac26fe059b50a36a1ee"
     },
     {
       "bytes": 3346,
       "local_path": "docs/research/trustee-career/2026/can_0977564d534e5317abbd4b3955f27b83-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495021Z",
+      "retrieved_at": "2026-09-09T13:02:20.094265Z",
       "sha256": "3036eee7f9712e0edc60a6733a1ab93907dab1345d9475e5a4b33a737434c323"
     },
     {
       "bytes": 1975,
       "local_path": "docs/research/trustee-career/2026/can_0977564d534e5317abbd4b3955f27b83-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495086Z",
+      "retrieved_at": "2026-09-09T13:02:20.094344Z",
       "sha256": "7abc7a91014ff8af4f242bdbd2da95b20ff74bfc8204308976d5cf664e6c6c25"
     },
     {
       "bytes": 4001,
       "local_path": "docs/research/trustee-career/2026/can_0bec302f9a5656f68d9317faf79bd81c-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495150Z",
+      "retrieved_at": "2026-09-09T13:02:20.094440Z",
       "sha256": "e301cff0f3216194b9d5cdf7d4f2c01bbeb8004b4298976a2afea5f4710200f8"
     },
     {
       "bytes": 4596,
       "local_path": "docs/research/trustee-career/2026/can_0bec302f9a5656f68d9317faf79bd81c-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495221Z",
+      "retrieved_at": "2026-09-09T13:02:20.094562Z",
       "sha256": "585370eee4469fb06bc495c79d9aaa7991b3258274f33d1a2b25a46e37223a06"
     },
     {
       "bytes": 3121,
       "local_path": "docs/research/trustee-career/2026/can_0c6cc096ee3759faa4245e67c2840b10-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495288Z",
+      "retrieved_at": "2026-09-09T13:02:20.094667Z",
       "sha256": "90b3bd98b71980ef065b694c0dd6e581d3bd8510cab4c759ddb01de3415be98b"
     },
     {
       "bytes": 1894,
       "local_path": "docs/research/trustee-career/2026/can_0c6cc096ee3759faa4245e67c2840b10-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495351Z",
+      "retrieved_at": "2026-09-09T13:02:20.094754Z",
       "sha256": "273ad84681f2acf9d0bc592bbbd4d29a760140bba1edab841dffb7e1b7901775"
     },
     {
       "bytes": 2851,
       "local_path": "docs/research/trustee-career/2026/can_0f374e3c7faf50efad35d99d3ded7c81-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495414Z",
+      "retrieved_at": "2026-09-09T13:02:20.094839Z",
       "sha256": "6fafc065954b5f53c833dfdcfb04728443aa6248d0ed96a96aba1300c00832c4"
     },
     {
       "bytes": 1893,
       "local_path": "docs/research/trustee-career/2026/can_0f374e3c7faf50efad35d99d3ded7c81-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.495476Z",
+      "retrieved_at": "2026-09-09T13:02:20.094922Z",
       "sha256": "0e0448734ef130cf1cdfdb697605c8a375d52af642a01fa0b89886115b356e77"
     },
     {
       "bytes": 2368,
       "local_path": "docs/research/trustee-career/2026/can_0f374e3c7faf50efad35d99d3ded7c81-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495538Z",
+      "retrieved_at": "2026-09-09T13:02:20.095016Z",
       "sha256": "f3190bb5293d6e7e600663488cb24f6fc5abbc6daec66f63c889b341697d6621"
     },
     {
       "bytes": 2664,
       "local_path": "docs/research/trustee-career/2026/can_0fafd29d4a225baf98cecc410765a8c3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495594Z",
+      "retrieved_at": "2026-09-09T13:02:20.095092Z",
       "sha256": "bc4aba44c70c59c1a2aabe40e3e9c9ed560ab00038d464a31e243e62b9e93853"
     },
     {
       "bytes": 2078,
       "local_path": "docs/research/trustee-career/2026/can_0fafd29d4a225baf98cecc410765a8c3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495646Z",
+      "retrieved_at": "2026-09-09T13:02:20.095158Z",
       "sha256": "874643c13fb5af9a47335a3ec77bca90f31b884d0e8fae85893d0eed5c0fbb3f"
     },
     {
       "bytes": 2906,
       "local_path": "docs/research/trustee-career/2026/can_1161ca93a4615c7698106e70b18a5d53-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495702Z",
+      "retrieved_at": "2026-09-09T13:02:20.095227Z",
       "sha256": "4ab9b175e3654f1aedd0a6035f8026b48e4de6feafbebb0f095c06f20ce07ca3"
     },
     {
       "bytes": 1991,
       "local_path": "docs/research/trustee-career/2026/can_1161ca93a4615c7698106e70b18a5d53-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495771Z",
+      "retrieved_at": "2026-09-09T13:02:20.095329Z",
       "sha256": "6acdc6260956db3d57a38473675aa742cbc0ea6fbb75d9dd397455618c8dadba"
     },
     {
       "bytes": 6074,
       "local_path": "docs/research/trustee-career/2026/can_16a76ce95d88555e9f4c4fe393854af1-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495856Z",
+      "retrieved_at": "2026-09-09T13:02:20.095399Z",
       "sha256": "af27684df0730eb44ed51b242abe5a66a3c4b5ea31d44fe6a7f0102351563276"
     },
     {
       "bytes": 3637,
       "local_path": "docs/research/trustee-career/2026/can_16a76ce95d88555e9f4c4fe393854af1-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.495917Z",
+      "retrieved_at": "2026-09-09T13:02:20.095470Z",
       "sha256": "0984a6dcfe604b4249cdb55d643359c504c239f65bcc9115e8bcf87e0533afcf"
     },
     {
       "bytes": 2334,
       "local_path": "docs/research/trustee-career/2026/can_19957a0f657f53778c8d080c975d3a6c-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.495975Z",
+      "retrieved_at": "2026-09-09T13:02:20.095544Z",
       "sha256": "bcdfa2bce2e3462ca2456addd5d535832f111531048f5eb2d1514e648d4c5911"
     },
     {
       "bytes": 1788,
       "local_path": "docs/research/trustee-career/2026/can_19957a0f657f53778c8d080c975d3a6c-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496032Z",
+      "retrieved_at": "2026-09-09T13:02:20.095628Z",
       "sha256": "7a91bc720efdb036443fe4d12f1686f3e84f3d4294c03867cb54081ae6284ced"
     },
     {
       "bytes": 2543,
       "local_path": "docs/research/trustee-career/2026/can_202423c400a55a29b4aeabbd24a546b6-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496084Z",
+      "retrieved_at": "2026-09-09T13:02:20.095696Z",
       "sha256": "a05e441faf7f51bb8ff46db9911f6791ab240d5e3c0f78eb65c6c94706e07914"
     },
     {
       "bytes": 1971,
       "local_path": "docs/research/trustee-career/2026/can_202423c400a55a29b4aeabbd24a546b6-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496138Z",
+      "retrieved_at": "2026-09-09T13:02:20.095778Z",
       "sha256": "5e05d170d9ad723bb2da1c4492f1af576676e06a24ff289329fff6e0ee1ca2ef"
     },
     {
       "bytes": 3122,
       "local_path": "docs/research/trustee-career/2026/can_225459bb53e25835a16c1731cd216699-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496206Z",
+      "retrieved_at": "2026-09-09T13:02:20.095861Z",
       "sha256": "d4372757aa1b41c11777648c66a9c18be8dece2e4102b8fb46a8058d12abb262"
     },
     {
       "bytes": 1888,
       "local_path": "docs/research/trustee-career/2026/can_225459bb53e25835a16c1731cd216699-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.496266Z",
+      "retrieved_at": "2026-09-09T13:02:20.095946Z",
       "sha256": "1b87e7ac668cf6d4bafbf193b8ace17dcdb39f6c3760f1b08f37655078b3cba6"
     },
     {
       "bytes": 1946,
       "local_path": "docs/research/trustee-career/2026/can_225459bb53e25835a16c1731cd216699-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496327Z",
+      "retrieved_at": "2026-09-09T13:02:20.096024Z",
       "sha256": "9e7dc5d0a530429cb5e034fae002b47c9fb4c119caf36445b4aa988f212528d7"
     },
     {
       "bytes": 2464,
       "local_path": "docs/research/trustee-career/2026/can_292fef10530b5163a82e65c79829e541-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496387Z",
+      "retrieved_at": "2026-09-09T13:02:20.096102Z",
       "sha256": "1aa8f30f1b7d54a3e8bf9c5d62f6f5b805e5334333cbdea2cfac6cad8f33ebf4"
     },
     {
       "bytes": 1709,
       "local_path": "docs/research/trustee-career/2026/can_292fef10530b5163a82e65c79829e541-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496448Z",
+      "retrieved_at": "2026-09-09T13:02:20.096183Z",
       "sha256": "4af1ec5989e86ca61039f1033332708326206c9646c5500006675f63cdfca5eb"
     },
     {
       "bytes": 2577,
       "local_path": "docs/research/trustee-career/2026/can_2975279df8ce5342b8cf405d186453ca-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496505Z",
+      "retrieved_at": "2026-09-09T13:02:20.096261Z",
       "sha256": "444fb05a6dcb6427e3609f9d7d22cc565c1f19814a15c9d7ece331b557e3c5c8"
     },
     {
       "bytes": 1839,
       "local_path": "docs/research/trustee-career/2026/can_2975279df8ce5342b8cf405d186453ca-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496570Z",
+      "retrieved_at": "2026-09-09T13:02:20.096350Z",
       "sha256": "b76b279ac946adc31b6cb6749f958a2851457ecdb5e35e80cebc1f9d8589564b"
     },
     {
       "bytes": 6144,
       "local_path": "docs/research/trustee-career/2026/can_2ad9fa52dee954d4a11c8e3bdbbbb5d7-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496654Z",
+      "retrieved_at": "2026-09-09T13:02:20.096431Z",
       "sha256": "91b578336336b09737a530c7d8d3358e64db68f3ed5075a453a6c92aad61b452"
     },
     {
       "bytes": 3584,
       "local_path": "docs/research/trustee-career/2026/can_2ad9fa52dee954d4a11c8e3bdbbbb5d7-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496708Z",
+      "retrieved_at": "2026-09-09T13:02:20.096510Z",
       "sha256": "a8a7e60904d81198faf0d0600cab711a7b0a92f5ebef0018a9c351f0fff79f03"
     },
     {
       "bytes": 3244,
       "local_path": "docs/research/trustee-career/2026/can_2c8f5a36cc6057549899360a49a4182a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496763Z",
+      "retrieved_at": "2026-09-09T13:02:20.096583Z",
       "sha256": "1986fca4ee4cf27a5f418180254bdce61890b48a45c3ac7e072343a31c3520f4"
     },
     {
       "bytes": 2452,
       "local_path": "docs/research/trustee-career/2026/can_2c8f5a36cc6057549899360a49a4182a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496817Z",
+      "retrieved_at": "2026-09-09T13:02:20.096657Z",
       "sha256": "5ca1e28d4428d4a8ba0fc565d7e01b37c92493e64e351ffebb9170eabf9de22f"
     },
     {
       "bytes": 3207,
       "local_path": "docs/research/trustee-career/2026/can_2ce1f567f57052e09357e59dd3ac8cec-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.496877Z",
+      "retrieved_at": "2026-09-09T13:02:20.096732Z",
       "sha256": "a0ab7c115b800fa4d615379d0362b8b52049f9538dae6d91ec69691036a6adb3"
     },
     {
       "bytes": 2916,
       "local_path": "docs/research/trustee-career/2026/can_2ce1f567f57052e09357e59dd3ac8cec-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.496935Z",
+      "retrieved_at": "2026-09-09T13:02:20.096808Z",
       "sha256": "05a9296a1d0de2d9bd2bcce0e23ed195286a78c4878930b572f3a4e9baee0bf6"
     },
     {
       "bytes": 4542,
       "local_path": "docs/research/trustee-career/2026/can_2f91a36290e058ea8f377bacce7ea2ff-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497005Z",
+      "retrieved_at": "2026-09-09T13:02:20.096887Z",
       "sha256": "d9a658f22ea94fe2d70270fad6cdcf2c7f93e81eb854d01508c546ff5b091d16"
     },
     {
       "bytes": 3111,
       "local_path": "docs/research/trustee-career/2026/can_2f91a36290e058ea8f377bacce7ea2ff-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497066Z",
+      "retrieved_at": "2026-09-09T13:02:20.096963Z",
       "sha256": "1b8b2906349f5703529c4bd877d6f46ca67837d9b07dae449d3451fc87487297"
     },
     {
       "bytes": 2944,
       "local_path": "docs/research/trustee-career/2026/can_30a3b17f2636579aa3e5b4bf92256517-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497123Z",
+      "retrieved_at": "2026-09-09T13:02:20.097037Z",
       "sha256": "cd49e18dfc709c60f6144e2da29a4e41d8768cc48c746bd16a909043ebf14eb9"
     },
     {
       "bytes": 1878,
       "local_path": "docs/research/trustee-career/2026/can_30a3b17f2636579aa3e5b4bf92256517-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497174Z",
+      "retrieved_at": "2026-09-09T13:02:20.097110Z",
       "sha256": "72e49616436abda4b865d82cf359f4cc1b6a4c0c7a5907614e33bfcf93c4dc61"
     },
     {
       "bytes": 4840,
       "local_path": "docs/research/trustee-career/2026/can_3224e16ce5535e459bc5e4b8f8214aff-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497248Z",
+      "retrieved_at": "2026-09-09T13:02:20.097181Z",
       "sha256": "0c03cbaf0f3f5017f0555871a7f9e293684062bf8fddffb427169fe64b269515"
     },
     {
       "bytes": 2921,
       "local_path": "docs/research/trustee-career/2026/can_3224e16ce5535e459bc5e4b8f8214aff-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.497309Z",
+      "retrieved_at": "2026-09-09T13:02:20.097252Z",
       "sha256": "15f48c04bed849d8ae23bad891e2a8602aba621419a9f89cd9f5c77d671ea1ad"
     },
     {
       "bytes": 2349,
       "local_path": "docs/research/trustee-career/2026/can_3224e16ce5535e459bc5e4b8f8214aff-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497370Z",
+      "retrieved_at": "2026-09-09T13:02:20.097322Z",
       "sha256": "3272473dd3551e4c0ba08064711d0b8c1ae4eceb64436a1d4614f8804ee49343"
     },
     {
       "bytes": 2515,
       "local_path": "docs/research/trustee-career/2026/can_333b58acfcd252b9b730bdee59c14909-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497426Z",
+      "retrieved_at": "2026-09-09T13:02:20.097392Z",
       "sha256": "ff4d026c2e17eab6d725cf459fd0c5596c4891fc83cea5dd275688411b8ed259"
     },
     {
       "bytes": 2117,
       "local_path": "docs/research/trustee-career/2026/can_333b58acfcd252b9b730bdee59c14909-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497479Z",
+      "retrieved_at": "2026-09-09T13:02:20.097460Z",
       "sha256": "f8ce29c0dae52a77cebd462a08bd7af20555b55f61b99ef2c7858fbebfce0789"
     },
     {
       "bytes": 2651,
       "local_path": "docs/research/trustee-career/2026/can_3aa1d130e8f3503c941983d9258b7fb9-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497535Z",
+      "retrieved_at": "2026-09-09T13:02:20.097527Z",
       "sha256": "4229c90ecb569f9b62e18626da859bb3beab5e392c02db366f3847dd3de427f1"
     },
     {
       "bytes": 2159,
       "local_path": "docs/research/trustee-career/2026/can_3aa1d130e8f3503c941983d9258b7fb9-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497589Z",
+      "retrieved_at": "2026-09-09T13:02:20.097611Z",
       "sha256": "9a2a826de070528ce01ce25f8cbb4d026c0cf2d21de7b95982586f8de1883280"
     },
     {
       "bytes": 3819,
       "local_path": "docs/research/trustee-career/2026/can_3c5cf71c069a58b5802a61568489e9b3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497652Z",
+      "retrieved_at": "2026-09-09T13:02:20.097693Z",
       "sha256": "21f5910e61f369bd0d3e8f45898db2c8a393cbfdffe4e639494cceae810cf711"
     },
     {
       "bytes": 2843,
       "local_path": "docs/research/trustee-career/2026/can_3c5cf71c069a58b5802a61568489e9b3-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.497711Z",
+      "retrieved_at": "2026-09-09T13:02:20.097774Z",
       "sha256": "1ca5529219790c719c8f62363642e7270275cd24ef23d5519ab8c0f11da2c2ce"
     },
     {
       "bytes": 3488,
       "local_path": "docs/research/trustee-career/2026/can_3c5cf71c069a58b5802a61568489e9b3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497770Z",
+      "retrieved_at": "2026-09-09T13:02:20.097855Z",
       "sha256": "8be4ea3a60246d4b4fc61ecf1861e59f21b30d9225c1b4ef7d0eff817a05fcff"
     },
     {
       "bytes": 2796,
       "local_path": "docs/research/trustee-career/2026/can_3f03082b897b5f678b63116eaa7b9871-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497834Z",
+      "retrieved_at": "2026-09-09T13:02:20.097934Z",
       "sha256": "c6c91fc3307c29a5246bc917a5664228406c044a27437d7602f6b7984de1fae1"
     },
     {
       "bytes": 2096,
       "local_path": "docs/research/trustee-career/2026/can_3f03082b897b5f678b63116eaa7b9871-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.497886Z",
+      "retrieved_at": "2026-09-09T13:02:20.098006Z",
       "sha256": "2d17d9cc91b31ff941e924ec24aa2afdfd31571a3614f6eb580caa621b049dbf"
     },
     {
       "bytes": 4182,
       "local_path": "docs/research/trustee-career/2026/can_3fd9bf5aab3652fc8710e2fb9b72e168-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.497954Z",
+      "retrieved_at": "2026-09-09T13:02:20.098077Z",
       "sha256": "423766395bf21f8db81ec3e5d66b6285b89df4377a654d6d926885b71024621b"
     },
     {
       "bytes": 1845,
       "local_path": "docs/research/trustee-career/2026/can_3fd9bf5aab3652fc8710e2fb9b72e168-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.498015Z",
+      "retrieved_at": "2026-09-09T13:02:20.098141Z",
       "sha256": "7d718aa4a42d65f9356054a81c40afa334aa7915660d9faf5a451ab2415aaeba"
     },
     {
       "bytes": 2606,
       "local_path": "docs/research/trustee-career/2026/can_3fd9bf5aab3652fc8710e2fb9b72e168-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.498094Z",
+      "retrieved_at": "2026-09-09T13:02:20.098210Z",
       "sha256": "556275b4abf9366b24f0f3f3a557ea76e1b06e3a4f8f4523304c6ee33bf23a10"
     },
     {
       "bytes": 2989,
       "local_path": "docs/research/trustee-career/2026/can_4014990417345d95a6017de5bcd2c6e1-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.498168Z",
+      "retrieved_at": "2026-09-09T13:02:20.098278Z",
       "sha256": "735757d364bf52aa341b154defb0839a19dd77d80baf438ab843b868b73518ba"
     },
     {
       "bytes": 1897,
       "local_path": "docs/research/trustee-career/2026/can_4014990417345d95a6017de5bcd2c6e1-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.498238Z",
+      "retrieved_at": "2026-09-09T13:02:20.098347Z",
       "sha256": "a13d41086bab0ac5297ee8e0c3ea769cc1c6d656eb8b26f45ea36d25838de50b"
     },
     {
       "bytes": 4221,
       "local_path": "docs/research/trustee-career/2026/can_489331f6970f5c4cae48691377937359-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.498324Z",
+      "retrieved_at": "2026-09-09T13:02:20.098412Z",
       "sha256": "914399658cfaa3dd6df54459060e0455052070b4a10e0d87572d5360ce5e471b"
     },
     {
       "bytes": 2832,
       "local_path": "docs/research/trustee-career/2026/can_489331f6970f5c4cae48691377937359-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.498394Z",
+      "retrieved_at": "2026-09-09T13:02:20.098476Z",
       "sha256": "00f60bc5b643eab6635f7349785fc09d4cf211349c05c66335b071ba398baa08"
     },
     {
       "bytes": 4129,
       "local_path": "docs/research/trustee-career/2026/can_489331f6970f5c4cae48691377937359-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.498477Z",
+      "retrieved_at": "2026-09-09T13:02:20.098553Z",
       "sha256": "741a3b9cd65c13a5e41a13a8d5aaa569fcce6c51c1f07a9e52e307957574e42b"
     },
     {
       "bytes": 6455,
       "local_path": "docs/research/trustee-career/2026/can_4b90bb3f92415cbeacd9c49294844657-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.498565Z",
+      "retrieved_at": "2026-09-09T13:02:20.098630Z",
       "sha256": "8ab1e0016ebe55ddd5dba7f7a6049400b46ead997591fc537283fc584765d113"
     },
     {
       "bytes": 3025,
       "local_path": "docs/research/trustee-career/2026/can_4b90bb3f92415cbeacd9c49294844657-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.498625Z",
+      "retrieved_at": "2026-09-09T13:02:20.098704Z",
       "sha256": "cc60d297e3ea450e163682225a83188a6f139064de9ea4b041fa1deb03157922"
     },
     {
       "bytes": 5004,
       "local_path": "docs/research/trustee-career/2026/can_4b90bb3f92415cbeacd9c49294844657-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.498711Z",
+      "retrieved_at": "2026-09-09T13:02:20.098776Z",
       "sha256": "ad8c62c446c1b24f19f18e909d4cd459712ba06b39578d2b7c69831bb88234af"
     },
     {
       "bytes": 4032,
       "local_path": "docs/research/trustee-career/2026/can_4b9c0c3975265308b0e050b612a05da2-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.498772Z",
+      "retrieved_at": "2026-09-09T13:02:20.098850Z",
       "sha256": "f51507399ca44da73b983b20ee3a8fa6a01520f62da5db93b6ca7e0988035a36"
     },
     {
       "bytes": 3562,
       "local_path": "docs/research/trustee-career/2026/can_4b9c0c3975265308b0e050b612a05da2-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.498840Z",
+      "retrieved_at": "2026-09-09T13:02:20.098929Z",
       "sha256": "1f412f774a0201458249ce0cc2639623760cf3565f42fa211975d74c2a9c3aa8"
     },
     {
       "bytes": 3397,
       "local_path": "docs/research/trustee-career/2026/can_4eae390042ec54b1ac198df07635ab16-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.498916Z",
+      "retrieved_at": "2026-09-09T13:02:20.099000Z",
       "sha256": "b36cd84d97c9d8cc2e4e6962b67e9143a14230e583ebdee4c528dd2e8faada1e"
     },
     {
       "bytes": 2406,
       "local_path": "docs/research/trustee-career/2026/can_4eae390042ec54b1ac198df07635ab16-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.498987Z",
+      "retrieved_at": "2026-09-09T13:02:20.099066Z",
       "sha256": "c0f534802db11ca72ab5b0e09c6ee56ecc1b318d4daab82b29e84a1400a0ca62"
     },
     {
       "bytes": 3354,
       "local_path": "docs/research/trustee-career/2026/can_50bb1753ca4b578ca50b7ae0fc5a3cb1-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.499068Z",
+      "retrieved_at": "2026-09-09T13:02:20.099129Z",
       "sha256": "7194451fd5de4b6c2e90c5e05823fad8835cee235646db09245a9bea7256f3f0"
     },
     {
       "bytes": 1689,
       "local_path": "docs/research/trustee-career/2026/can_50bb1753ca4b578ca50b7ae0fc5a3cb1-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.499143Z",
+      "retrieved_at": "2026-09-09T13:02:20.099188Z",
       "sha256": "7276adcfb81dc5f82d163eb56cb938d869c3a0643072f9e207ae5a8b7712b8f0"
     },
     {
       "bytes": 3169,
       "local_path": "docs/research/trustee-career/2026/can_50bb1753ca4b578ca50b7ae0fc5a3cb1-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.499216Z",
+      "retrieved_at": "2026-09-09T13:02:20.099395Z",
       "sha256": "dd9c79adcddcf565cdfbeaa5094e22ea263f1dff2aa5bd9dc3868f9b4b29e3f0"
     },
     {
       "bytes": 3134,
       "local_path": "docs/research/trustee-career/2026/can_578ca769a6ce55f68cce5609ee2d0a36-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.499283Z",
+      "retrieved_at": "2026-09-09T13:02:20.099466Z",
       "sha256": "104fdcee937f07f3a3f41ffc57e6bccf69dcac5d357255bc61c3060092d4f7ed"
     },
     {
       "bytes": 1514,
       "local_path": "docs/research/trustee-career/2026/can_578ca769a6ce55f68cce5609ee2d0a36-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.499346Z",
+      "retrieved_at": "2026-09-09T13:02:20.099540Z",
       "sha256": "51c11169d24432dde903602481189f95c40122c53219b1ff35405beb26064d0a"
     },
     {
       "bytes": 2317,
       "local_path": "docs/research/trustee-career/2026/can_578ca769a6ce55f68cce5609ee2d0a36-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.499407Z",
+      "retrieved_at": "2026-09-09T13:02:20.099616Z",
       "sha256": "8bf0f9a2c38f068055fb753096ba48877836beb629612ecd2ca597a20a74e3e3"
     },
     {
       "bytes": 2735,
       "local_path": "docs/research/trustee-career/2026/can_57ef18de278e5abdabf014c172641e96-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.499476Z",
+      "retrieved_at": "2026-09-09T13:02:20.099684Z",
       "sha256": "e93d6dacf5f2b4c4525bd6bd19ad61d084be8522c1215a1c4fc0b3f1c3c81984"
     },
     {
       "bytes": 2192,
       "local_path": "docs/research/trustee-career/2026/can_57ef18de278e5abdabf014c172641e96-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.499544Z",
+      "retrieved_at": "2026-09-09T13:02:20.099753Z",
       "sha256": "df86e00de2d2ae913d97492bb28d397e4776c55d33de3cf65a60755057c66705"
     },
     {
       "bytes": 2951,
       "local_path": "docs/research/trustee-career/2026/can_5a2aca85c3f35652ac94534b8180ca30-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.499603Z",
+      "retrieved_at": "2026-09-09T13:02:20.099812Z",
       "sha256": "c6b89d0142b87ceabb66fed81dee1049c01a719f8171bd2708e1c790cdc299c4"
     },
     {
       "bytes": 1738,
       "local_path": "docs/research/trustee-career/2026/can_5a2aca85c3f35652ac94534b8180ca30-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.499658Z",
+      "retrieved_at": "2026-09-09T13:02:20.099877Z",
       "sha256": "bd5e74e8513b2b7d6661de81f23c48204cae2cc94cb593da2d03dd00d6600634"
     },
     {
       "bytes": 2942,
       "local_path": "docs/research/trustee-career/2026/can_5b869f11c2e7501e8360fe5110cb4c1e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.499722Z",
+      "retrieved_at": "2026-09-09T13:02:20.099947Z",
       "sha256": "b6c64c2e2bb057150442e41a3914b00cdefa20a45e87505704e59c7085f240f1"
     },
     {
       "bytes": 1391,
       "local_path": "docs/research/trustee-career/2026/can_5b869f11c2e7501e8360fe5110cb4c1e-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.499779Z",
+      "retrieved_at": "2026-09-09T13:02:20.100010Z",
       "sha256": "e7ac50e421f957a8ae0553d14330fa76e9dcea98f3950add71257a4e75c6287f"
     },
     {
       "bytes": 2517,
       "local_path": "docs/research/trustee-career/2026/can_5b869f11c2e7501e8360fe5110cb4c1e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.499838Z",
+      "retrieved_at": "2026-09-09T13:02:20.100076Z",
       "sha256": "5f5b4917b3189a48cbdabab8b232ef43c70a52c56f0887c94b9decdbe8a6b26f"
     },
     {
       "bytes": 4386,
       "local_path": "docs/research/trustee-career/2026/can_5d2f89362ab7548b817c10597e7bff66-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.499908Z",
+      "retrieved_at": "2026-09-09T13:02:20.100143Z",
       "sha256": "83d1646934b6b9df9175ae61d2a5b4ad6a6a4aa46d597b0f015ca338e74b941b"
     },
     {
       "bytes": 1990,
       "local_path": "docs/research/trustee-career/2026/can_5d2f89362ab7548b817c10597e7bff66-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.499966Z",
+      "retrieved_at": "2026-09-09T13:02:20.100209Z",
       "sha256": "6cdef2e57c7c6439c95d05c02c5e1cbdb9d23659ff02360dd6957651098c35bd"
     },
     {
       "bytes": 3957,
       "local_path": "docs/research/trustee-career/2026/can_5d2f89362ab7548b817c10597e7bff66-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.500031Z",
+      "retrieved_at": "2026-09-09T13:02:20.100277Z",
       "sha256": "8edc693b1e0e0eebcb263d8cada804dedb4a5763442ed908d31acf6e1ee663ab"
     },
     {
       "bytes": 2702,
       "local_path": "docs/research/trustee-career/2026/can_5e7c969bca2f5afb8c9048f5723b4519-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.500095Z",
+      "retrieved_at": "2026-09-09T13:02:20.100347Z",
       "sha256": "49d5ace9b439c3c3a930340cb3e1cd956ae1fe423c02e3e6267c7d78b455ff49"
     },
     {
       "bytes": 1889,
       "local_path": "docs/research/trustee-career/2026/can_5e7c969bca2f5afb8c9048f5723b4519-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.500160Z",
+      "retrieved_at": "2026-09-09T13:02:20.100415Z",
       "sha256": "df19294449ed976d407af59e1eaead7a7471974b5d3823c843423e18a29e1410"
     },
     {
       "bytes": 2822,
       "local_path": "docs/research/trustee-career/2026/can_5f7f158aef535d02960dc4c058b3359a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.500226Z",
+      "retrieved_at": "2026-09-09T13:02:20.100473Z",
       "sha256": "44a076b553ac474bdf2cc8d1c5f20f0ead956cd87c8bbd0bdb2185943d25d8af"
     },
     {
       "bytes": 1563,
       "local_path": "docs/research/trustee-career/2026/can_5f7f158aef535d02960dc4c058b3359a-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.500291Z",
+      "retrieved_at": "2026-09-09T13:02:20.100538Z",
       "sha256": "ec00c6c7ed83e997ca7f0686b89f3a88e1b0c5cde2e7027ff43a118e7ffb6fa6"
     },
     {
       "bytes": 2337,
       "local_path": "docs/research/trustee-career/2026/can_5f7f158aef535d02960dc4c058b3359a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.500355Z",
+      "retrieved_at": "2026-09-09T13:02:20.100596Z",
       "sha256": "9ae450f920e7e7c73fd375d5324f44743e6068cf448e7f95d332445d09d86dd4"
     },
     {
       "bytes": 3167,
       "local_path": "docs/research/trustee-career/2026/can_607efb391571594e977ad02672037327-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.500436Z",
+      "retrieved_at": "2026-09-09T13:02:20.100655Z",
       "sha256": "787c0b0c9dc23f7e660250fba271117dd9ac1e02dae756cc68af845455eb0204"
     },
     {
       "bytes": 1643,
       "local_path": "docs/research/trustee-career/2026/can_607efb391571594e977ad02672037327-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.500516Z",
+      "retrieved_at": "2026-09-09T13:02:20.100723Z",
       "sha256": "bb65f4bbb2d4e23c1d626cdcbbe6c75608d1f78b91dccdfb728e5dddc952ceff"
     },
     {
       "bytes": 3195,
       "local_path": "docs/research/trustee-career/2026/can_607efb391571594e977ad02672037327-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.500591Z",
+      "retrieved_at": "2026-09-09T13:02:20.100783Z",
       "sha256": "215df4748ef0d156c42c72cf178564821ca39cc6045aff51d91152db7a8c2063"
     },
     {
       "bytes": 4225,
       "local_path": "docs/research/trustee-career/2026/can_614647480cb456b4acff2b95864b823a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.500673Z",
+      "retrieved_at": "2026-09-09T13:02:20.100841Z",
       "sha256": "3f944c2244026f6261fe0faeca885aa20200ae47d83d6715d68d3919e6edf190"
     },
     {
       "bytes": 2484,
       "local_path": "docs/research/trustee-career/2026/can_614647480cb456b4acff2b95864b823a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.500737Z",
+      "retrieved_at": "2026-09-09T13:02:20.100906Z",
       "sha256": "2fa8b502e58161f39e4d5e1b80bb58458835fd229858ca61d0415a4263cc081b"
     },
     {
       "bytes": 5041,
       "local_path": "docs/research/trustee-career/2026/can_61fa7af81c8957a0b39ed8104548795f-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.500820Z",
+      "retrieved_at": "2026-09-09T13:02:20.100965Z",
       "sha256": "e5717436911a92dc72a5d9005d98627ba0976083258849a4476a4fd2526e5c36"
     },
     {
       "bytes": 4970,
       "local_path": "docs/research/trustee-career/2026/can_61fa7af81c8957a0b39ed8104548795f-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.500902Z",
+      "retrieved_at": "2026-09-09T13:02:20.101027Z",
       "sha256": "2f74d3c62259ddb80ec934dff9560a0d7d27c5386d0c066b3a1ba243606c1151"
     },
     {
       "bytes": 4593,
       "local_path": "docs/research/trustee-career/2026/can_62de67b8b5ec5d119f07221a40f6132a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.500980Z",
+      "retrieved_at": "2026-09-09T13:02:20.101091Z",
       "sha256": "fc302263b7ecd117ba48a739ca7d0a7b5ea41b6d7981c1cabbd61ac0bd2a6280"
     },
     {
       "bytes": 1646,
       "local_path": "docs/research/trustee-career/2026/can_62de67b8b5ec5d119f07221a40f6132a-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.501045Z",
+      "retrieved_at": "2026-09-09T13:02:20.101152Z",
       "sha256": "f98ebfaf6cb5fa6df9870c4ed839e97ef442396fa2558db5310ab77376b1d19c"
     },
     {
       "bytes": 2642,
       "local_path": "docs/research/trustee-career/2026/can_62de67b8b5ec5d119f07221a40f6132a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501107Z",
+      "retrieved_at": "2026-09-09T13:02:20.101216Z",
       "sha256": "97869f2481483167679d9fabed015071ba300c595a477aa41db5dd683d394118"
     },
     {
       "bytes": 2596,
       "local_path": "docs/research/trustee-career/2026/can_633c21ab1fb85a4d8e053f67b033741f-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501166Z",
+      "retrieved_at": "2026-09-09T13:02:20.101275Z",
       "sha256": "dce0047be62553535c617bc744513c665c20b8a838379762c0bfb855fb63028d"
     },
     {
       "bytes": 1983,
       "local_path": "docs/research/trustee-career/2026/can_633c21ab1fb85a4d8e053f67b033741f-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501217Z",
+      "retrieved_at": "2026-09-09T13:02:20.101340Z",
       "sha256": "ed1c934fdc2e919fc94f05c57b13275e83efb1766b388707d44e871e6e69e40d"
     },
     {
       "bytes": 2961,
       "local_path": "docs/research/trustee-career/2026/can_6564e3e01a3c506b880b505fb4c79615-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501264Z",
+      "retrieved_at": "2026-09-09T13:02:20.101398Z",
       "sha256": "828dfdfd4f328d9ad4580138c7d235d85aeb9dba422a5bc0366dab18507e5958"
     },
     {
       "bytes": 2521,
       "local_path": "docs/research/trustee-career/2026/can_6564e3e01a3c506b880b505fb4c79615-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501318Z",
+      "retrieved_at": "2026-09-09T13:02:20.101463Z",
       "sha256": "6ebc7aa88d954f4aa2b9dc57ad74040bb3151bec487fded846df1e31a32b6908"
     },
     {
       "bytes": 3371,
       "local_path": "docs/research/trustee-career/2026/can_656fcfdc512c5d22b05715336b449ee6-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501379Z",
+      "retrieved_at": "2026-09-09T13:02:20.101516Z",
       "sha256": "58bd05871a4866c842d0aa3f8d8dd3c68e9f85e9c1e911c0621f4315e5f7dc4d"
     },
     {
       "bytes": 1649,
       "local_path": "docs/research/trustee-career/2026/can_656fcfdc512c5d22b05715336b449ee6-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.501435Z",
+      "retrieved_at": "2026-09-09T13:02:20.101567Z",
       "sha256": "a2fcbea4b019102f09338e0a6211027249965b10aaa7cf945b71cc7030030e94"
     },
     {
       "bytes": 2870,
       "local_path": "docs/research/trustee-career/2026/can_656fcfdc512c5d22b05715336b449ee6-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501489Z",
+      "retrieved_at": "2026-09-09T13:02:20.101617Z",
       "sha256": "c5074bb19fdcdb025860a23f51c0afbd0f1f6a3a1584bf0c20e14c914367f95a"
     },
     {
       "bytes": 2883,
       "local_path": "docs/research/trustee-career/2026/can_68adaabd04ca53548df0dd7eaf2158c8-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501542Z",
+      "retrieved_at": "2026-09-09T13:02:20.101667Z",
       "sha256": "a9c0d94b62b9a6151788452e9c5696dc719fb5265e30c1dceca0c9de5af6af88"
     },
     {
       "bytes": 2060,
       "local_path": "docs/research/trustee-career/2026/can_68adaabd04ca53548df0dd7eaf2158c8-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501594Z",
+      "retrieved_at": "2026-09-09T13:02:20.101725Z",
       "sha256": "4ec51aa3ccfb8e32bf998789522d3948a95776367045b4f06c84021b15c02972"
     },
     {
       "bytes": 2656,
       "local_path": "docs/research/trustee-career/2026/can_6b662e46d4595c758ff1692fdcc69824-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501643Z",
+      "retrieved_at": "2026-09-09T13:02:20.101769Z",
       "sha256": "1855de773fcddde6b9f8f6655d2f539a689ce5d5f28244deca810356d10b6b67"
     },
     {
       "bytes": 2070,
       "local_path": "docs/research/trustee-career/2026/can_6b662e46d4595c758ff1692fdcc69824-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501700Z",
+      "retrieved_at": "2026-09-09T13:02:20.101813Z",
       "sha256": "4d0dacb319cffdb4357218dd67c04cdf2e295f8afbce1c8535c336ca31c218af"
     },
     {
       "bytes": 3242,
       "local_path": "docs/research/trustee-career/2026/can_6c24eafe36fc5421b1f20a497568e3b3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501760Z",
+      "retrieved_at": "2026-09-09T13:02:20.101858Z",
       "sha256": "abd40b3e9c2e0a1d97d815e8a366277fc4125e08329b7991612db722e35565b6"
     },
     {
       "bytes": 2275,
       "local_path": "docs/research/trustee-career/2026/can_6c24eafe36fc5421b1f20a497568e3b3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501815Z",
+      "retrieved_at": "2026-09-09T13:02:20.101903Z",
       "sha256": "3d9aba47c01ce670ee3eb5d679e02aa9aad4418c10a814ce265983f35b41ca3a"
     },
     {
       "bytes": 3130,
       "local_path": "docs/research/trustee-career/2026/can_752ab998917e5fa1b787e159beed8dc3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501868Z",
+      "retrieved_at": "2026-09-09T13:02:20.101947Z",
       "sha256": "0fabd0a91e9d0f626946012ad85fb0fafcb2be52511d3fff09fdc5253926cdb4"
     },
     {
       "bytes": 1824,
       "local_path": "docs/research/trustee-career/2026/can_752ab998917e5fa1b787e159beed8dc3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.501918Z",
+      "retrieved_at": "2026-09-09T13:02:20.101994Z",
       "sha256": "d12a50de733788e7212b0a16e1d0f183bf57fa70514ee7173732bdf125c04ef1"
     },
     {
       "bytes": 2816,
       "local_path": "docs/research/trustee-career/2026/can_76567c8edf995fafadd960dfba8bfc6a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.501975Z",
+      "retrieved_at": "2026-09-09T13:02:20.102043Z",
       "sha256": "efb6717c2ecc66fa0868fecce8e8585083552c1f5b93d2d7253b99957225e3ca"
     },
     {
       "bytes": 2035,
       "local_path": "docs/research/trustee-career/2026/can_76567c8edf995fafadd960dfba8bfc6a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502049Z",
+      "retrieved_at": "2026-09-09T13:02:20.102114Z",
       "sha256": "46c1ddd18f8dcfadfbb7118d5b89c2e38ef90f2fb1ce833ecd5f8c700c9f35f2"
     },
     {
       "bytes": 5606,
       "local_path": "docs/research/trustee-career/2026/can_7a668b3b98d35daa915ae28fc4204ae2-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.502130Z",
+      "retrieved_at": "2026-09-09T13:02:20.102165Z",
       "sha256": "4cccbcfe5ae668d137c1adf95ad05a528e578a42bd5493b1250e9c03def4986b"
     },
     {
       "bytes": 2213,
       "local_path": "docs/research/trustee-career/2026/can_7a668b3b98d35daa915ae28fc4204ae2-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.502192Z",
+      "retrieved_at": "2026-09-09T13:02:20.102210Z",
       "sha256": "f3f4038822a6c7ab6685abc082c5491b6abb87ed4bde67f30bc7fce55564173a"
     },
     {
       "bytes": 3623,
       "local_path": "docs/research/trustee-career/2026/can_7a668b3b98d35daa915ae28fc4204ae2-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502255Z",
+      "retrieved_at": "2026-09-09T13:02:20.102256Z",
       "sha256": "f61bae3f9e7a7fcd8d54d043fc02f1b745944c423123c8c1cca78ceed338b41e"
     },
     {
       "bytes": 3829,
       "local_path": "docs/research/trustee-career/2026/can_7aab9acba89353a7a68beeb8345c4884-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.502322Z",
+      "retrieved_at": "2026-09-09T13:02:20.102305Z",
       "sha256": "e15c12b67525fb39c906819caae997fe4762fe021505dbb9b6ef956515bc018a"
     },
     {
       "bytes": 1540,
       "local_path": "docs/research/trustee-career/2026/can_7aab9acba89353a7a68beeb8345c4884-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.502394Z",
+      "retrieved_at": "2026-09-09T13:02:20.102354Z",
       "sha256": "7b284f0d1bce4d629025fe4347d5706387baddf4ca25d07d92efdb10b3b99cb5"
     },
     {
       "bytes": 2717,
       "local_path": "docs/research/trustee-career/2026/can_7aab9acba89353a7a68beeb8345c4884-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502475Z",
+      "retrieved_at": "2026-09-09T13:02:20.102409Z",
       "sha256": "befe015060a5e005a2ea5e2187ddea335312d184dd7772dd7c3b2b3dd1dd14c2"
     },
     {
       "bytes": 2222,
       "local_path": "docs/research/trustee-career/2026/can_7b4b0ea086df596fbb7d773fc59d64ef-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.502550Z",
+      "retrieved_at": "2026-09-09T13:02:20.102454Z",
       "sha256": "0b935bf5b605911573b4cc436c5c9dfda233ce045f32a1682437e83f63e9132c"
     },
     {
       "bytes": 1912,
       "local_path": "docs/research/trustee-career/2026/can_7b4b0ea086df596fbb7d773fc59d64ef-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502615Z",
+      "retrieved_at": "2026-09-09T13:02:20.102501Z",
       "sha256": "d7a69c3a1ed190dab61869f946d3806a7ea5e1e2fe36a7085f160d4e54fe04f0"
     },
     {
       "bytes": 2971,
       "local_path": "docs/research/trustee-career/2026/can_8076abf4a10552f8bb04fa484ec74c3d-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.502675Z",
+      "retrieved_at": "2026-09-09T13:02:20.102547Z",
       "sha256": "7614faf0ff7a78b5eda91e2d1b25e8d32ed9efaed20bf5bce60dfe01cf290392"
     },
     {
       "bytes": 1881,
       "local_path": "docs/research/trustee-career/2026/can_8076abf4a10552f8bb04fa484ec74c3d-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502728Z",
+      "retrieved_at": "2026-09-09T13:02:20.102594Z",
       "sha256": "cbe5d967bdaff2728b0c7d060d1e038c8e48a8da5d9a5d176cf4af2820fac2ed"
     },
     {
       "bytes": 2743,
       "local_path": "docs/research/trustee-career/2026/can_822c91dc5b7859f3bffaebc49cb4a0ed-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.502781Z",
+      "retrieved_at": "2026-09-09T13:02:20.102642Z",
       "sha256": "efbae9be10e2ea4360d869fe5768f261dbe0fcf22c51c902a32676194ace7fdb"
     },
     {
       "bytes": 1687,
       "local_path": "docs/research/trustee-career/2026/can_822c91dc5b7859f3bffaebc49cb4a0ed-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502835Z",
+      "retrieved_at": "2026-09-09T13:02:20.102690Z",
       "sha256": "a066bf0bb9044e71e0c1ce092f3a08ef0a39a0a8f7cc194ec7abe71497268f77"
     },
     {
       "bytes": 2765,
       "local_path": "docs/research/trustee-career/2026/can_860f8fe35a785ef1b8adc09927d517da-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.502894Z",
+      "retrieved_at": "2026-09-09T13:02:20.102738Z",
       "sha256": "c4913cf8e656ed1a286f4b1f358fdc4442ad4829a9f7db4311e06bc21834c6bb"
     },
     {
       "bytes": 2126,
       "local_path": "docs/research/trustee-career/2026/can_860f8fe35a785ef1b8adc09927d517da-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.502954Z",
+      "retrieved_at": "2026-09-09T13:02:20.102784Z",
       "sha256": "ddfc9c38b3a1f37d937ceb96b10dbfcde290729c45ac8bd0460c10074fc81d04"
     },
     {
       "bytes": 4325,
       "local_path": "docs/research/trustee-career/2026/can_87691f4eaa3b5fad89bc09b6719b79e5-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503020Z",
+      "retrieved_at": "2026-09-09T13:02:20.102833Z",
       "sha256": "c726a92112582458068e34d8983dc3ad0cca9e83536635e6fcbb342cefe32db7"
     },
     {
       "bytes": 2365,
       "local_path": "docs/research/trustee-career/2026/can_87691f4eaa3b5fad89bc09b6719b79e5-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.503073Z",
+      "retrieved_at": "2026-09-09T13:02:20.102881Z",
       "sha256": "4af16d9dae14083fb8c420eed0abd201c6323d85dc3dc44f25c8d7371a0accc2"
     },
     {
       "bytes": 2646,
       "local_path": "docs/research/trustee-career/2026/can_87691f4eaa3b5fad89bc09b6719b79e5-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503125Z",
+      "retrieved_at": "2026-09-09T13:02:20.102933Z",
       "sha256": "4e5a8772477488f4049e3871912723e92c934fb8a98b45c7084aec629c08263a"
     },
     {
       "bytes": 2548,
       "local_path": "docs/research/trustee-career/2026/can_87d3e98df80d51819382dc33965bc920-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503179Z",
+      "retrieved_at": "2026-09-09T13:02:20.102977Z",
       "sha256": "b901326b024be0d2ce3a5e1a002cce16c05faa864f9a4ce5810fdb443623dfe7"
     },
     {
       "bytes": 1636,
       "local_path": "docs/research/trustee-career/2026/can_87d3e98df80d51819382dc33965bc920-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503235Z",
+      "retrieved_at": "2026-09-09T13:02:20.103021Z",
       "sha256": "c98a415b1c2806e45cdb1e7e573164969b0015fc52590d597162ec2e8ef26e81"
     },
     {
       "bytes": 4370,
       "local_path": "docs/research/trustee-career/2026/can_89044a41dd6059df8e8c780e41562ab7-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503310Z",
+      "retrieved_at": "2026-09-09T13:02:20.103071Z",
       "sha256": "8d26bcbaf6cfbf99d6cbc9897513234cd18092e078da3d50ac93b71747bd0bd6"
     },
     {
       "bytes": 1997,
       "local_path": "docs/research/trustee-career/2026/can_89044a41dd6059df8e8c780e41562ab7-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.503365Z",
+      "retrieved_at": "2026-09-09T13:02:20.103118Z",
       "sha256": "806ba8f7a7eecae8776ef71bba2d6d3d923ba93a9ffa91688248f9ef6cfd4d21"
     },
     {
       "bytes": 3139,
       "local_path": "docs/research/trustee-career/2026/can_89044a41dd6059df8e8c780e41562ab7-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503422Z",
+      "retrieved_at": "2026-09-09T13:02:20.103165Z",
       "sha256": "9a1dd5d6836980bff2384017ee8288a5022f12c99a8776fd1045205356e3afa3"
     },
     {
       "bytes": 3149,
       "local_path": "docs/research/trustee-career/2026/can_8bbdbc503f8c50d1843f6094decf28c4-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503481Z",
+      "retrieved_at": "2026-09-09T13:02:20.103217Z",
       "sha256": "ae503a5c0140359bbf0e677af086d21e8746a69f3386b9ea16a8bd4d473a242a"
     },
     {
       "bytes": 2024,
       "local_path": "docs/research/trustee-career/2026/can_8bbdbc503f8c50d1843f6094decf28c4-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503543Z",
+      "retrieved_at": "2026-09-09T13:02:20.103268Z",
       "sha256": "750b411dd28e2c3b596b95231171737a5aeb9945b7cf1d917ab1738878fac19c"
     },
     {
       "bytes": 2967,
       "local_path": "docs/research/trustee-career/2026/can_8fcf4a8990375683ba8d7255bdf4328e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503605Z",
+      "retrieved_at": "2026-09-09T13:02:20.103313Z",
       "sha256": "467043b8b7c0ba66d019a5fb12d975b922144fc25ad07e55372181eba557077c"
     },
     {
       "bytes": 2114,
       "local_path": "docs/research/trustee-career/2026/can_8fcf4a8990375683ba8d7255bdf4328e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503659Z",
+      "retrieved_at": "2026-09-09T13:02:20.103360Z",
       "sha256": "9e74ec075a9b6620ec6d35315d11703c186fbb5123639b9cb7846af17369046b"
     },
     {
       "bytes": 4361,
       "local_path": "docs/research/trustee-career/2026/can_907c9762c2315f14a14ef10fa5bc0950-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503725Z",
+      "retrieved_at": "2026-09-09T13:02:20.103408Z",
       "sha256": "80156a7deac303875524fbd8733bc8a2c2660a74b49814213442152772c7fb40"
     },
     {
       "bytes": 2699,
       "local_path": "docs/research/trustee-career/2026/can_907c9762c2315f14a14ef10fa5bc0950-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503786Z",
+      "retrieved_at": "2026-09-09T13:02:20.103459Z",
       "sha256": "56b5d552e944e8bb41039fca5acb7dee8f01977046bbe813b7e29af5ad334805"
     },
     {
       "bytes": 4561,
       "local_path": "docs/research/trustee-career/2026/can_980559d390bb5a989f597daa3a932014-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503865Z",
+      "retrieved_at": "2026-09-09T13:02:20.103518Z",
       "sha256": "3d040e5343f0a4292e19e359af7257701da488da961a765319f913a386dd0b9f"
     },
     {
       "bytes": 2698,
       "local_path": "docs/research/trustee-career/2026/can_980559d390bb5a989f597daa3a932014-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.503925Z",
+      "retrieved_at": "2026-09-09T13:02:20.103570Z",
       "sha256": "7b78877bcd0492dc5c55c250a10b715615fc51780506ee6ccdec2ec49ce4d50b"
     },
     {
       "bytes": 2510,
       "local_path": "docs/research/trustee-career/2026/can_98881d67eba65ad08f3713f8be9fa98e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.503976Z",
+      "retrieved_at": "2026-09-09T13:02:20.103613Z",
       "sha256": "9ad653909e1e77ef74284e132a2f02986fdd72779226f03894077b8bbd020c1f"
     },
     {
       "bytes": 1824,
       "local_path": "docs/research/trustee-career/2026/can_98881d67eba65ad08f3713f8be9fa98e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.504025Z",
+      "retrieved_at": "2026-09-09T13:02:20.103652Z",
       "sha256": "f0c2d50fe627d4f8a3bf938fbc48d05fba35b27e8594b820fd75454a2535e2e0"
     },
     {
       "bytes": 3020,
       "local_path": "docs/research/trustee-career/2026/can_990783c8b1b75211892caa7a4326511e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.504077Z",
+      "retrieved_at": "2026-09-09T13:02:20.103702Z",
       "sha256": "2a906d5e4ce80d0a728e7d4d431307d8348825e001ad68fe50d596cd5d34f0fd"
     },
     {
       "bytes": 1653,
       "local_path": "docs/research/trustee-career/2026/can_990783c8b1b75211892caa7a4326511e-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.504129Z",
+      "retrieved_at": "2026-09-09T13:02:20.103749Z",
       "sha256": "5be9ce5856fb0ab829f23b86c6c27615b5a4c54e0b1d6af5e95b1e1c9217173e"
     },
     {
       "bytes": 2466,
       "local_path": "docs/research/trustee-career/2026/can_990783c8b1b75211892caa7a4326511e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.504186Z",
+      "retrieved_at": "2026-09-09T13:02:20.103796Z",
       "sha256": "ba203ba6a9fed78d436b1867b70dad143105fcb2f2a1997e222838efebc78677"
     },
     {
       "bytes": 4187,
       "local_path": "docs/research/trustee-career/2026/can_9b9511aaebde561a82cfbb130bb8d0b6-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.504256Z",
+      "retrieved_at": "2026-09-09T13:02:20.103847Z",
       "sha256": "2c3d00cb6fe07c6cd983b26934982e40039dd144fb125777e6f6765fc9d03154"
     },
     {
       "bytes": 3721,
       "local_path": "docs/research/trustee-career/2026/can_9b9511aaebde561a82cfbb130bb8d0b6-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.504323Z",
+      "retrieved_at": "2026-09-09T13:02:20.103895Z",
       "sha256": "48dbe27c49bb8538633892c355e95d87f35f1309a1d9dec0c432a172f74b4897"
     },
     {
       "bytes": 2693,
       "local_path": "docs/research/trustee-career/2026/can_9d5866ae07e957428f16ad530a1999a4-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.504383Z",
+      "retrieved_at": "2026-09-09T13:02:20.103949Z",
       "sha256": "2068f787d64365f937f6b86234f8a5a26de0c4184db7077fd7927d55302d7f5c"
     },
     {
       "bytes": 2345,
       "local_path": "docs/research/trustee-career/2026/can_9d5866ae07e957428f16ad530a1999a4-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.504433Z",
+      "retrieved_at": "2026-09-09T13:02:20.103994Z",
       "sha256": "6880dd1e5b38deb72b8e15ad054ee04b68920e941f197b72dc5c5923411211fc"
     },
     {
       "bytes": 3108,
       "local_path": "docs/research/trustee-career/2026/can_a89be4d40dfb52bf86ec3f81bf39741a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.504489Z",
+      "retrieved_at": "2026-09-09T13:02:20.104043Z",
       "sha256": "c2be822e9eef2cfa43c80669530efcd35ed572f11871013b888114751f57e55f"
     },
     {
       "bytes": 1995,
       "local_path": "docs/research/trustee-career/2026/can_a89be4d40dfb52bf86ec3f81bf39741a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.504541Z",
+      "retrieved_at": "2026-09-09T13:02:20.104093Z",
       "sha256": "e0a2b7d1a0181a602ecc7a15e4aa7248757aa667fad3bdfeb05886e05d60599a"
     },
     {
       "bytes": 2986,
       "local_path": "docs/research/trustee-career/2026/can_a914bd264614594fa4f70250bd565593-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.504601Z",
+      "retrieved_at": "2026-09-09T13:02:20.104144Z",
       "sha256": "2bcce3f95c40f5b877458b2184cf0cba85bf2d1529867f813447d02f657b5255"
     },
     {
       "bytes": 2978,
       "local_path": "docs/research/trustee-career/2026/can_a914bd264614594fa4f70250bd565593-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.504670Z",
+      "retrieved_at": "2026-09-09T13:02:20.104197Z",
       "sha256": "843f839a4b3205acc4bdc8b0d165abb9243224f02c87e8ba4d97b24a64a34185"
     },
     {
       "bytes": 3075,
       "local_path": "docs/research/trustee-career/2026/can_a9f750bd470c5703b5be465e2dbc65fe-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.504732Z",
+      "retrieved_at": "2026-09-09T13:02:20.104249Z",
       "sha256": "34489b9a1afbf41deb4c39cc269d62287c43205885b086adb1348ecec23796a5"
     },
     {
       "bytes": 1383,
       "local_path": "docs/research/trustee-career/2026/can_a9f750bd470c5703b5be465e2dbc65fe-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.504799Z",
+      "retrieved_at": "2026-09-09T13:02:20.104299Z",
       "sha256": "53071a7ddd664b0c58c2cb93262e7614cae5846403bfb93f35486808cd8157a3"
     },
     {
       "bytes": 2701,
       "local_path": "docs/research/trustee-career/2026/can_a9f750bd470c5703b5be465e2dbc65fe-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.505297Z",
+      "retrieved_at": "2026-09-09T13:02:20.104352Z",
       "sha256": "de0d3e9b2f199f32f6d992fd0a03e9b7b39d81fe984bdf87b9422a8fe4fd4022"
     },
     {
       "bytes": 5385,
       "local_path": "docs/research/trustee-career/2026/can_b224bbdcb6f75bf9ab2e818f00be2435-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.505398Z",
+      "retrieved_at": "2026-09-09T13:02:20.104405Z",
       "sha256": "2e35941a7d2c28b550b5d74a10d6a98d318d95720e3afca75f52ff06c4217529"
     },
     {
       "bytes": 2435,
       "local_path": "docs/research/trustee-career/2026/can_b224bbdcb6f75bf9ab2e818f00be2435-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.505455Z",
+      "retrieved_at": "2026-09-09T13:02:20.104452Z",
       "sha256": "3fb1959a61db4987eb2eef2b1fd6262b60fb81c5a1a5e1da8a41fe99f059ee3c"
     },
     {
       "bytes": 4193,
       "local_path": "docs/research/trustee-career/2026/can_b224bbdcb6f75bf9ab2e818f00be2435-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.505519Z",
+      "retrieved_at": "2026-09-09T13:02:20.104500Z",
       "sha256": "0582ee030b0d25fb8ab55d44dc135acf870be01a5105cfe8fff6d02f055b3cc5"
     },
     {
       "bytes": 2801,
       "local_path": "docs/research/trustee-career/2026/can_b2f8da7a927653cba9608bfeb72f3296-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.505581Z",
+      "retrieved_at": "2026-09-09T13:02:20.104551Z",
       "sha256": "3a506b4e71819ed3e3c9ed4dc6b101326f80b838a5fe4f196aafe589ee75dc48"
     },
     {
       "bytes": 1887,
       "local_path": "docs/research/trustee-career/2026/can_b2f8da7a927653cba9608bfeb72f3296-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.505633Z",
+      "retrieved_at": "2026-09-09T13:02:20.104699Z",
       "sha256": "5d1db52cd91386b9304d35bc0e2fad35d4c84a7d4cf0829b774577f1fb04ef69"
     },
     {
       "bytes": 6205,
       "local_path": "docs/research/trustee-career/2026/can_b400c405df765e08a0a6a8644aaa701d-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.505704Z",
+      "retrieved_at": "2026-09-09T13:02:20.104754Z",
       "sha256": "c3ede27de2b8e4a933c0c54799648ea0c5f6a6a0846f1c50d6b7af7584743503"
     },
     {
       "bytes": 1825,
       "local_path": "docs/research/trustee-career/2026/can_b400c405df765e08a0a6a8644aaa701d-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.505757Z",
+      "retrieved_at": "2026-09-09T13:02:20.104847Z",
       "sha256": "aa1f901ccaf4b4b375963a2fd9ea2c5d538eab007e2068c95d434e71ec93d3b4"
     },
     {
       "bytes": 3363,
       "local_path": "docs/research/trustee-career/2026/can_b400c405df765e08a0a6a8644aaa701d-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.505823Z",
+      "retrieved_at": "2026-09-09T13:02:20.104896Z",
       "sha256": "2c82e060e80b4b05e941849e886d64dd3e12e14bbaa4c85010aeb99dd1f531d7"
     },
     {
       "bytes": 3171,
       "local_path": "docs/research/trustee-career/2026/can_b6cae47cada7527bbcbba6257c5ae67e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.505892Z",
+      "retrieved_at": "2026-09-09T13:02:20.104946Z",
       "sha256": "30946f9af85c9ed3826b1c46e73fa863dfe66705ea2ed737e01ddea14315a7b8"
     },
     {
       "bytes": 2105,
       "local_path": "docs/research/trustee-career/2026/can_b6cae47cada7527bbcbba6257c5ae67e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.505952Z",
+      "retrieved_at": "2026-09-09T13:02:20.104991Z",
       "sha256": "4aa185c15999ab11b5e2e80accd0f17b417b3d4419fede78a369ae5d922c5eb3"
     },
     {
       "bytes": 3122,
       "local_path": "docs/research/trustee-career/2026/can_b9b5b55f5f265132afd62fd721c56705-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506016Z",
+      "retrieved_at": "2026-09-09T13:02:20.105042Z",
       "sha256": "ef7861fac99e6bcfbcdd3b7ffd9352760e49ae95828fd92c03c8546e2013fb95"
     },
     {
       "bytes": 2753,
       "local_path": "docs/research/trustee-career/2026/can_b9b5b55f5f265132afd62fd721c56705-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.506072Z",
+      "retrieved_at": "2026-09-09T13:02:20.105097Z",
       "sha256": "7a51a2dde4127b3aa6817658f8d18e3192f3e54993e1a44b03f613732960d4bd"
     },
     {
       "bytes": 2782,
       "local_path": "docs/research/trustee-career/2026/can_bb43967e9b9856a8a1afd8e3e33a0aab-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506179Z",
+      "retrieved_at": "2026-09-09T13:02:20.105145Z",
       "sha256": "08822094b87d8a9efe2a5989c253169842f6ce19e27d8c64061560894e2a2177"
     },
     {
       "bytes": 2036,
       "local_path": "docs/research/trustee-career/2026/can_bb43967e9b9856a8a1afd8e3e33a0aab-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.506239Z",
+      "retrieved_at": "2026-09-09T13:02:20.105187Z",
       "sha256": "43b45277bf165b1780fd0f92967629f3a78b4665275f5b6b95cc676a4fba451f"
     },
     {
       "bytes": 4333,
       "local_path": "docs/research/trustee-career/2026/can_bb720ba2d1685e488eb701b6d49711a2-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506313Z",
+      "retrieved_at": "2026-09-09T13:02:20.105233Z",
       "sha256": "46d49cdec671765c12bcb7d12890e4b5140c872bff9f40d8b30ae2e16df43be2"
     },
     {
       "bytes": 2929,
       "local_path": "docs/research/trustee-career/2026/can_bb720ba2d1685e488eb701b6d49711a2-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.506374Z",
+      "retrieved_at": "2026-09-09T13:02:20.105281Z",
       "sha256": "07248f8a5b8e1ba5e933057b5f65703730888e6c331a2e6362282c1f6c3f5bc9"
     },
     {
       "bytes": 3053,
       "local_path": "docs/research/trustee-career/2026/can_bc5bceaa50ee5a4fab8b14f50f41450f-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506437Z",
+      "retrieved_at": "2026-09-09T13:02:20.105331Z",
       "sha256": "bfe8b310f190f121a73b24238944b770cbf3f33a118120eefa1a0b2a29cd905b"
     },
     {
       "bytes": 2244,
       "local_path": "docs/research/trustee-career/2026/can_bc5bceaa50ee5a4fab8b14f50f41450f-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.506502Z",
+      "retrieved_at": "2026-09-09T13:02:20.105378Z",
       "sha256": "ba3e9f24d1b425dfcd8b6ae514f162e748685e4ba303cedb06f1d5bf5f6680b1"
     },
     {
       "bytes": 4226,
       "local_path": "docs/research/trustee-career/2026/can_bcfeb2fa3b35551290bbd95e4de965b1-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506578Z",
+      "retrieved_at": "2026-09-09T13:02:20.105435Z",
       "sha256": "4cc8bbca041cd1f84b06d7c2592034883f55ba6f6c0bb0666a9d359a6dbdec5c"
     },
     {
       "bytes": 3595,
       "local_path": "docs/research/trustee-career/2026/can_bcfeb2fa3b35551290bbd95e4de965b1-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.506647Z",
+      "retrieved_at": "2026-09-09T13:02:20.105487Z",
       "sha256": "4b0ce016e2b8e6cbc59a8f48b06aafb05706a0177a8b1de21c29c3e95d1bdff6"
     },
     {
       "bytes": 3263,
       "local_path": "docs/research/trustee-career/2026/can_be841f8d506757cfb0c1b93dd102e85f-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506707Z",
+      "retrieved_at": "2026-09-09T13:02:20.105535Z",
       "sha256": "255b40fcb43f1a50e125044fb53bf7656f1743a4748a913160f79d16b07385e4"
     },
     {
       "bytes": 3015,
       "local_path": "docs/research/trustee-career/2026/can_be841f8d506757cfb0c1b93dd102e85f-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.506827Z",
+      "retrieved_at": "2026-09-09T13:02:20.105583Z",
       "sha256": "ab452228eb6f2e4ae280e62726c4e6a4209b8a18916d1bb46eb250b1e8fe3c60"
     },
     {
       "bytes": 3705,
       "local_path": "docs/research/trustee-career/2026/can_c43ef763892b58168e61705d887e1c97-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.506882Z",
+      "retrieved_at": "2026-09-09T13:02:20.105631Z",
       "sha256": "96c299e66ab80c6c6d43f2231733c8d76ec039b1c51cad65230003683fd6349a"
     },
     {
       "bytes": 2164,
       "local_path": "docs/research/trustee-career/2026/can_c43ef763892b58168e61705d887e1c97-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.506943Z",
+      "retrieved_at": "2026-09-09T13:02:20.105686Z",
       "sha256": "c9d51da36f70e0f3f1ea2e2a5940448d5db95464fca40decfef07485ca91ec29"
     },
     {
       "bytes": 3602,
       "local_path": "docs/research/trustee-career/2026/can_c43ef763892b58168e61705d887e1c97-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507002Z",
+      "retrieved_at": "2026-09-09T13:02:20.105733Z",
       "sha256": "65335cba40462ce7547321816afd560fed745ba6ebb26eab01d19f3b8c0940f7"
     },
     {
       "bytes": 3348,
       "local_path": "docs/research/trustee-career/2026/can_c653fe3a72c05a0caeb56eee3eb8fd12-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507064Z",
+      "retrieved_at": "2026-09-09T13:02:20.105786Z",
       "sha256": "b7cb20ce80b445d512da921f1eb5002863b7c88b253b37f6c6f44e88e6a785bb"
     },
     {
       "bytes": 2130,
       "local_path": "docs/research/trustee-career/2026/can_c653fe3a72c05a0caeb56eee3eb8fd12-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507120Z",
+      "retrieved_at": "2026-09-09T13:02:20.105833Z",
       "sha256": "5b91adfbf02697386e19187defbc3221926143bac31f1f31e17e338bc8caece7"
     },
     {
       "bytes": 4458,
       "local_path": "docs/research/trustee-career/2026/can_c9f5d329538656ab8517f5c70c4b6939-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507188Z",
+      "retrieved_at": "2026-09-09T13:02:20.105879Z",
       "sha256": "bfa92aec230653a295db9981a7529752da7a200e854c0a4a2f74420531956697"
     },
     {
       "bytes": 4041,
       "local_path": "docs/research/trustee-career/2026/can_c9f5d329538656ab8517f5c70c4b6939-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507244Z",
+      "retrieved_at": "2026-09-09T13:02:20.105931Z",
       "sha256": "28219048d166551cfdbb38c58794ad641b9c5f4a14a06f577eba23e1b1889c89"
     },
     {
       "bytes": 3454,
       "local_path": "docs/research/trustee-career/2026/can_caef49e28ab35c5fb3a3711fd31a5bbe-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507316Z",
+      "retrieved_at": "2026-09-09T13:02:20.105984Z",
       "sha256": "471a3bb24782e9063de606020c0f20c9136fa35efa2230d06e60828e203b53f2"
     },
     {
       "bytes": 2107,
       "local_path": "docs/research/trustee-career/2026/can_caef49e28ab35c5fb3a3711fd31a5bbe-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507382Z",
+      "retrieved_at": "2026-09-09T13:02:20.106035Z",
       "sha256": "f5127871871fcba867c6d44276c26fe1689ca18224d9367a44882d5aca4be419"
     },
     {
       "bytes": 2957,
       "local_path": "docs/research/trustee-career/2026/can_ccf2917813195c81bfabc1dbfeeebfb3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507435Z",
+      "retrieved_at": "2026-09-09T13:02:20.106084Z",
       "sha256": "3cc0b31154c826d2280e3f1bdabeaed451656a6d109f9ff24b598f9904491c98"
     },
     {
       "bytes": 2626,
       "local_path": "docs/research/trustee-career/2026/can_ccf2917813195c81bfabc1dbfeeebfb3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507498Z",
+      "retrieved_at": "2026-09-09T13:02:20.106132Z",
       "sha256": "4bf26d5dce0692bd057c1266d32d1a3e9e3e0948b55e56f45a0c8b04ebeb8539"
     },
     {
       "bytes": 3163,
       "local_path": "docs/research/trustee-career/2026/can_ce2847d87160597bb60ecb945f851a26-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507555Z",
+      "retrieved_at": "2026-09-09T13:02:20.106177Z",
       "sha256": "cc33413ee5543d12d9b9255bbf99966ef6f89cd61bafe864f96c1cc02efd8e94"
     },
     {
       "bytes": 2248,
       "local_path": "docs/research/trustee-career/2026/can_ce2847d87160597bb60ecb945f851a26-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507607Z",
+      "retrieved_at": "2026-09-09T13:02:20.106221Z",
       "sha256": "230721e22685428c1a63324f3185d2c4f5275f851396c5a50390cbed02a1e105"
     },
     {
       "bytes": 3341,
       "local_path": "docs/research/trustee-career/2026/can_cf329ed10ed3594894c05b6766a5436b-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507660Z",
+      "retrieved_at": "2026-09-09T13:02:20.106282Z",
       "sha256": "f563fdb0b5681df589ddc2c763930f75299a4badcfc8339b4114bce3a68caf07"
     },
     {
       "bytes": 2327,
       "local_path": "docs/research/trustee-career/2026/can_cf329ed10ed3594894c05b6766a5436b-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507714Z",
+      "retrieved_at": "2026-09-09T13:02:20.106334Z",
       "sha256": "105425d641f80ae5c17088cd74c1a9d05d2cba4bf5dfdd432f9bb6b36ef7278f"
     },
     {
       "bytes": 3203,
       "local_path": "docs/research/trustee-career/2026/can_d1935130d0db55959dd7c5c1988ba9b3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507766Z",
+      "retrieved_at": "2026-09-09T13:02:20.106387Z",
       "sha256": "026e14ce3e5c76889995fee9b4d1e0512acf0d779c452dd17d10067caca20b31"
     },
     {
       "bytes": 2624,
       "local_path": "docs/research/trustee-career/2026/can_d1935130d0db55959dd7c5c1988ba9b3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.507824Z",
+      "retrieved_at": "2026-09-09T13:02:20.106441Z",
       "sha256": "57a02d4d134a4e8a638ddce9bacab8db93de56e368d5a97d75438d265cedffc3"
     },
     {
       "bytes": 3002,
       "local_path": "docs/research/trustee-career/2026/can_d408d29fb4c353eb9f90086e7df9836c-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.507892Z",
+      "retrieved_at": "2026-09-09T13:02:20.106497Z",
       "sha256": "e62e1419666e24f440f9ea1dcfed324b840caf1a6c5ab9ca5aa522d3bfeeda11"
     },
     {
       "bytes": 1433,
       "local_path": "docs/research/trustee-career/2026/can_d408d29fb4c353eb9f90086e7df9836c-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.508006Z",
+      "retrieved_at": "2026-09-09T13:02:20.106546Z",
       "sha256": "65b87faee296acc1cb7cff51843171e12a77d5420f952dedbd8426a3314684cf"
     },
     {
       "bytes": 1593,
       "local_path": "docs/research/trustee-career/2026/can_d408d29fb4c353eb9f90086e7df9836c-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.508219Z",
+      "retrieved_at": "2026-09-09T13:02:20.106602Z",
       "sha256": "58effcf6769aeaf63f8d4e59274c6ef899ef54501ea01d835a3481da66eff92a"
     },
     {
       "bytes": 3693,
       "local_path": "docs/research/trustee-career/2026/can_d4ab584a9bbd5256acfef42edaf29d1e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.508287Z",
+      "retrieved_at": "2026-09-09T13:02:20.106661Z",
       "sha256": "50d448265b86b65bc4367da5fe5bd0883fb73dc8be1477892ed1065e62a8275d"
     },
     {
       "bytes": 1781,
       "local_path": "docs/research/trustee-career/2026/can_d4ab584a9bbd5256acfef42edaf29d1e-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.508346Z",
+      "retrieved_at": "2026-09-09T13:02:20.106714Z",
       "sha256": "e3c2b72efc43362412d3f737f01e76692c0534edfc1fb2a519a6fb17d95afdb7"
     },
     {
       "bytes": 3127,
       "local_path": "docs/research/trustee-career/2026/can_d4ab584a9bbd5256acfef42edaf29d1e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.508412Z",
+      "retrieved_at": "2026-09-09T13:02:20.106765Z",
       "sha256": "4c521a86e5a7802c341009d9f42f38aec33b4f9c3ca853f737493cb0df6c6e73"
     },
     {
       "bytes": 4314,
       "local_path": "docs/research/trustee-career/2026/can_d4c1bd7d367e520b8bbc362ec0f3fc2c-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.508493Z",
+      "retrieved_at": "2026-09-09T13:02:20.106819Z",
       "sha256": "425a44f8f8b08cafb0bb768512eca53dffedf923aef69dc55ead44a78b39c13a"
     },
     {
       "bytes": 1862,
       "local_path": "docs/research/trustee-career/2026/can_d4c1bd7d367e520b8bbc362ec0f3fc2c-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.508549Z",
+      "retrieved_at": "2026-09-09T13:02:20.106879Z",
       "sha256": "ddf7b976315882f546785ad39bcbd4c07c7235d51353cfbda346388c355dff12"
     },
     {
       "bytes": 3258,
       "local_path": "docs/research/trustee-career/2026/can_d4c1bd7d367e520b8bbc362ec0f3fc2c-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.508648Z",
+      "retrieved_at": "2026-09-09T13:02:20.106936Z",
       "sha256": "311e5ec719f8a6def7c47735ed0c5dfd5af805b7fc9cb4c096e54d0a64eb759f"
     },
     {
       "bytes": 3828,
       "local_path": "docs/research/trustee-career/2026/can_d6ebf240b3f35a67acc9e1ffc80d4ddf-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.508712Z",
+      "retrieved_at": "2026-09-09T13:02:20.106989Z",
       "sha256": "d7292e44f6b0d9f446c50fa96a13f3e5a93fba0a941269537b494f08f45fdc32"
     },
     {
       "bytes": 2207,
       "local_path": "docs/research/trustee-career/2026/can_d6ebf240b3f35a67acc9e1ffc80d4ddf-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.508819Z",
+      "retrieved_at": "2026-09-09T13:02:20.107045Z",
       "sha256": "33a87296d6e054ca1fd905826ef7ec3c7a76183da6e924a3f068666a262c1bf8"
     },
     {
       "bytes": 3535,
       "local_path": "docs/research/trustee-career/2026/can_d6ebf240b3f35a67acc9e1ffc80d4ddf-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.508887Z",
+      "retrieved_at": "2026-09-09T13:02:20.107100Z",
       "sha256": "b49ae604fd90019ce27bb7243f8cad5a6824b22e94f92c27e12b3bc487bcd415"
     },
     {
       "bytes": 9176,
       "local_path": "docs/research/trustee-career/2026/can_d8004d3122615bda892d893bba4560ee-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.509126Z",
+      "retrieved_at": "2026-09-09T13:02:20.107167Z",
       "sha256": "95230dda88b2113bd4f9ae4caae28a2b3e04807d8fd365af9fcc72bdd10f4655"
     },
     {
       "bytes": 3458,
       "local_path": "docs/research/trustee-career/2026/can_d8004d3122615bda892d893bba4560ee-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.509222Z",
+      "retrieved_at": "2026-09-09T13:02:20.107219Z",
       "sha256": "aa7e54dd1b8cb5121327dc229d66833ad4d8b6ccf1f124683b586c8cbf3cd1b1"
     },
     {
       "bytes": 6465,
       "local_path": "docs/research/trustee-career/2026/can_d8004d3122615bda892d893bba4560ee-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.509317Z",
+      "retrieved_at": "2026-09-09T13:02:20.107311Z",
       "sha256": "52fd10c36c4d727b12126baa8909c587ae229ffac0e95aebd1b66b88683bd328"
     },
     {
       "bytes": 2378,
       "local_path": "docs/research/trustee-career/2026/can_dd2201161043523fa07a932b7990349a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.509382Z",
+      "retrieved_at": "2026-09-09T13:02:20.107374Z",
       "sha256": "e05eba59dad31f51e7d9f5a1fc2ef269066d7b91f914ffa0577784c4fe020f41"
     },
     {
       "bytes": 1849,
       "local_path": "docs/research/trustee-career/2026/can_dd2201161043523fa07a932b7990349a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.509536Z",
+      "retrieved_at": "2026-09-09T13:02:20.107434Z",
       "sha256": "1eb4e8eebd22d5c4364ff3f527b2a5b196186a2d383f7b6bf1f35a0fff9dc1e5"
     },
     {
       "bytes": 2523,
       "local_path": "docs/research/trustee-career/2026/can_de9b983c8f4d56819344555bfa37b15f-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.509705Z",
+      "retrieved_at": "2026-09-09T13:02:20.107483Z",
       "sha256": "bccac61b7b57bbd6961331f26de4dc3d8c547f164745ccaa7b4f921418736e83"
     },
     {
       "bytes": 1597,
       "local_path": "docs/research/trustee-career/2026/can_de9b983c8f4d56819344555bfa37b15f-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.509770Z",
+      "retrieved_at": "2026-09-09T13:02:20.107537Z",
       "sha256": "56eefa7c1b42ce8db0e9c722882d91f9944423d61447a72529475c45803196f7"
     },
     {
       "bytes": 2765,
       "local_path": "docs/research/trustee-career/2026/can_dfc9ea28b5d053e4bfd0d7f836e1761c-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.509835Z",
+      "retrieved_at": "2026-09-09T13:02:20.107593Z",
       "sha256": "043910fdffcbd01b8f7afff60ac014d399ef382fa7ae4a8d5daf3f4a1cc5bfa8"
     },
     {
       "bytes": 2599,
       "local_path": "docs/research/trustee-career/2026/can_dfc9ea28b5d053e4bfd0d7f836e1761c-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.509903Z",
+      "retrieved_at": "2026-09-09T13:02:20.107653Z",
       "sha256": "0d5721a75ec0b830a22f4ad284e1d107f0f51d2c518fbe9e12dc91b3a25f5ecd"
     },
     {
       "bytes": 2944,
       "local_path": "docs/research/trustee-career/2026/can_e42ba466410057ac951b8a14440c49c6-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.509972Z",
+      "retrieved_at": "2026-09-09T13:02:20.107705Z",
       "sha256": "e314e9b8b35736ac8f24a71386fc1cae7898924cc28e5b53c5b04f7ceb8ab96c"
     },
     {
       "bytes": 2358,
       "local_path": "docs/research/trustee-career/2026/can_e42ba466410057ac951b8a14440c49c6-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510036Z",
+      "retrieved_at": "2026-09-09T13:02:20.107750Z",
       "sha256": "f12d870ad9bfe83a33c4f0350f15e7cdc3051a34618d48fb5f218f4099f48544"
     },
     {
       "bytes": 4398,
       "local_path": "docs/research/trustee-career/2026/can_e51ffe35a51f5794b51c81ab5ad77cbc-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510115Z",
+      "retrieved_at": "2026-09-09T13:02:20.107797Z",
       "sha256": "d07e8a9e8f6ce0e6369edfcdc023d04f54c13fa1ee81cb7e7ceb32e8ddef1187"
     },
     {
       "bytes": 3659,
       "local_path": "docs/research/trustee-career/2026/can_e51ffe35a51f5794b51c81ab5ad77cbc-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510178Z",
+      "retrieved_at": "2026-09-09T13:02:20.107848Z",
       "sha256": "1407434a684f0c20c522be17dca24ef8ba9ef94be90a87b2080e0c21638d07a7"
     },
     {
       "bytes": 2488,
       "local_path": "docs/research/trustee-career/2026/can_e774167e9f6c5178b56326acdfda9279-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510241Z",
+      "retrieved_at": "2026-09-09T13:02:20.107893Z",
       "sha256": "fc8b630449c596fb44281913397cc9a860fb59de02d3b030f1d6ace8aaa918ab"
     },
     {
       "bytes": 1933,
       "local_path": "docs/research/trustee-career/2026/can_e774167e9f6c5178b56326acdfda9279-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510315Z",
+      "retrieved_at": "2026-09-09T13:02:20.107952Z",
       "sha256": "ce3f4c307423844652afe8fb98a8e2b19fdaa2267b08a63a11581a26856727d7"
     },
     {
       "bytes": 3005,
       "local_path": "docs/research/trustee-career/2026/can_e7c787f550605ea09c7eb8e0a4972aef-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510379Z",
+      "retrieved_at": "2026-09-09T13:02:20.108021Z",
       "sha256": "4619bce22c303c833fa501f9792016d9c6a51fb241a966f2a7567149d8ef97c1"
     },
     {
       "bytes": 2723,
       "local_path": "docs/research/trustee-career/2026/can_e7c787f550605ea09c7eb8e0a4972aef-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510439Z",
+      "retrieved_at": "2026-09-09T13:02:20.108081Z",
       "sha256": "c424424627cc90cef929c2ff39e1b3f2cc6ed2dacd86682f341bce5396580928"
     },
     {
       "bytes": 3137,
       "local_path": "docs/research/trustee-career/2026/can_e9e640f8a9925817add41bb96547bd63-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510504Z",
+      "retrieved_at": "2026-09-09T13:02:20.108145Z",
       "sha256": "5eec5ada156b0327caa1bab0349f88d02b3f8e5384c3c3aa89679aa3a269ec40"
     },
     {
       "bytes": 2130,
       "local_path": "docs/research/trustee-career/2026/can_e9e640f8a9925817add41bb96547bd63-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510572Z",
+      "retrieved_at": "2026-09-09T13:02:20.108208Z",
       "sha256": "2e793bb7a824d9bfa189b1ba629f242d1e768f9cc56356ad40b990cb05f76744"
     },
     {
       "bytes": 3171,
       "local_path": "docs/research/trustee-career/2026/can_ea87f678374751f0983b5f6848ce6b59-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510633Z",
+      "retrieved_at": "2026-09-09T13:02:20.108271Z",
       "sha256": "a0247c715232a2a07b9b58766ba7a9ef5759da5115501574674bbae79804ecfa"
     },
     {
       "bytes": 2294,
       "local_path": "docs/research/trustee-career/2026/can_ea87f678374751f0983b5f6848ce6b59-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510696Z",
+      "retrieved_at": "2026-09-09T13:02:20.108333Z",
       "sha256": "5dfea0a72a60111f0452caa5a42be502dd181771d3140a66aa09a84206a437db"
     },
     {
       "bytes": 3724,
       "local_path": "docs/research/trustee-career/2026/can_eaaf331141da5743a5e9fe87cbfc73e4-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510765Z",
+      "retrieved_at": "2026-09-09T13:02:20.108397Z",
       "sha256": "ba608d279b72086da0eb6192b46d5e9bf485baad8d2756d2c474e0d8b2ec0115"
     },
     {
       "bytes": 3228,
       "local_path": "docs/research/trustee-career/2026/can_eaaf331141da5743a5e9fe87cbfc73e4-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.510822Z",
+      "retrieved_at": "2026-09-09T13:02:20.108456Z",
       "sha256": "2dd78bcf3e7be67a13546e60cd8df62facc53142310334af48a86c89f6b28fc4"
     },
     {
       "bytes": 5304,
       "local_path": "docs/research/trustee-career/2026/can_ebe410d080165a28b82f117b6af06140-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.510897Z",
+      "retrieved_at": "2026-09-09T13:02:20.108519Z",
       "sha256": "c0a38ef5e93290f8a0b9f9163ed7ebe20388db376986f5883c9c1cd350f4d92c"
     },
     {
       "bytes": 2824,
       "local_path": "docs/research/trustee-career/2026/can_ebe410d080165a28b82f117b6af06140-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.510957Z",
+      "retrieved_at": "2026-09-09T13:02:20.108580Z",
       "sha256": "1394ca2a9f2703de4df31ff0a029e730ec16fbd9f446c7adbaada016bcb52336"
     },
     {
       "bytes": 4371,
       "local_path": "docs/research/trustee-career/2026/can_ebe410d080165a28b82f117b6af06140-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511037Z",
+      "retrieved_at": "2026-09-09T13:02:20.108643Z",
       "sha256": "a772ec4b558ae6d60074d97a02891057425c64e0e957af1b91e3918aab6927d8"
     },
     {
       "bytes": 3206,
       "local_path": "docs/research/trustee-career/2026/can_efde46a33f0b56afa02321b17910321a-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511103Z",
+      "retrieved_at": "2026-09-09T13:02:20.108708Z",
       "sha256": "d123e85741fd74139486504fa837c9634827cc928b6b6f23b789e7fcfebf4689"
     },
     {
       "bytes": 2026,
       "local_path": "docs/research/trustee-career/2026/can_efde46a33f0b56afa02321b17910321a-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511169Z",
+      "retrieved_at": "2026-09-09T13:02:20.108777Z",
       "sha256": "35e9c2aef5dadc5f9b69fe8550653fd65ee3d9980237939e78ca1afd9b52ebc2"
     },
     {
       "bytes": 3146,
       "local_path": "docs/research/trustee-career/2026/can_f01007545e60587691515c07e4a903e8-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511234Z",
+      "retrieved_at": "2026-09-09T13:02:20.108843Z",
       "sha256": "c8e61a99b2c48c8adadc7ab995e92dcaa80fa6e6bb2fb78e5558ea447190184e"
     },
     {
       "bytes": 1760,
       "local_path": "docs/research/trustee-career/2026/can_f01007545e60587691515c07e4a903e8-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511317Z",
+      "retrieved_at": "2026-09-09T13:02:20.108907Z",
       "sha256": "5274121413825abe201b61bc6431d849d8927a0813546f4483976e25c6ce5ab2"
     },
     {
       "bytes": 2249,
       "local_path": "docs/research/trustee-career/2026/can_f06a857d2fc055c8bdcbd1222e6a13ba-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511389Z",
+      "retrieved_at": "2026-09-09T13:02:20.108964Z",
       "sha256": "1a887c5c24e98daad5db923878b21216c67ddfe54689a4f12ea827c4fcee00a3"
     },
     {
       "bytes": 1910,
       "local_path": "docs/research/trustee-career/2026/can_f06a857d2fc055c8bdcbd1222e6a13ba-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511450Z",
+      "retrieved_at": "2026-09-09T13:02:20.109025Z",
       "sha256": "c8a305d5ff8a1bedb5c06fc1a6a6f4fd1c0a46d3729b5d17fa5226b1c8fe3209"
     },
     {
       "bytes": 2761,
       "local_path": "docs/research/trustee-career/2026/can_f0fb2688068356ad9277ff0a7a01a2f5-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511525Z",
+      "retrieved_at": "2026-09-09T13:02:20.109094Z",
       "sha256": "52560d30ed0f5d2de05b8b3983a4e01939a969f27337bfaf9fbd5cbb49b7b102"
     },
     {
       "bytes": 2615,
       "local_path": "docs/research/trustee-career/2026/can_f0fb2688068356ad9277ff0a7a01a2f5-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511594Z",
+      "retrieved_at": "2026-09-09T13:02:20.109166Z",
       "sha256": "4dfaf92dd20da03626a7f1d11b5aaa88a5522d4eb816ebf6397f6fe7bdc7ef4c"
     },
     {
       "bytes": 4446,
       "local_path": "docs/research/trustee-career/2026/can_f1195ba08c7e563a8ac820d7773ed670-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511667Z",
+      "retrieved_at": "2026-09-09T13:02:20.109229Z",
       "sha256": "d77060834110034df9b8535fdf919e509e36beebf7d85db67dc837d7fc1b319d"
     },
     {
       "bytes": 3958,
       "local_path": "docs/research/trustee-career/2026/can_f1195ba08c7e563a8ac820d7773ed670-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511726Z",
+      "retrieved_at": "2026-09-09T13:02:20.109291Z",
       "sha256": "dcb5f0205cd1e55341a595978df213022e487c9f86377601b1bfb0d935f2cabf"
     },
     {
       "bytes": 2928,
       "local_path": "docs/research/trustee-career/2026/can_f26542d736ec5d39ba661dbefd895ea7-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511780Z",
+      "retrieved_at": "2026-09-09T13:02:20.109354Z",
       "sha256": "65a304d277958d2c2d033ddeaaa638e57cd42fc1b0eae80495d8ecb3469e5ff4"
     },
     {
       "bytes": 1916,
       "local_path": "docs/research/trustee-career/2026/can_f26542d736ec5d39ba661dbefd895ea7-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.511835Z",
+      "retrieved_at": "2026-09-09T13:02:20.109413Z",
       "sha256": "87b7b072daadb4fedc96a6c9f89e37fd79da20e068130b6ebc31146c9fd2eac1"
     },
     {
       "bytes": 4172,
       "local_path": "docs/research/trustee-career/2026/can_f41f04d241c35894a49f580c4eaab821-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.511909Z",
+      "retrieved_at": "2026-09-09T13:02:20.109474Z",
       "sha256": "32fc96a99785570ce8c22eef2a2153fdb9dc7f860ecd67d2e727126fcb027e86"
     },
     {
       "bytes": 1885,
       "local_path": "docs/research/trustee-career/2026/can_f41f04d241c35894a49f580c4eaab821-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.511962Z",
+      "retrieved_at": "2026-09-09T13:02:20.109541Z",
       "sha256": "3f22370053fe8dc9fcf777c41912811573249f299d978c39d98195d70a584cb6"
     },
     {
       "bytes": 2730,
       "local_path": "docs/research/trustee-career/2026/can_f41f04d241c35894a49f580c4eaab821-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.512017Z",
+      "retrieved_at": "2026-09-09T13:02:20.109605Z",
       "sha256": "47d8fd0c8031d962bca7d06dd148870330076ea0206208df7570274f4d3a77f0"
     },
     {
       "bytes": 2524,
       "local_path": "docs/research/trustee-career/2026/can_f45567e7c92656f88222bb24d854e9a9-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.512071Z",
+      "retrieved_at": "2026-09-09T13:02:20.109663Z",
       "sha256": "c5844c0e92d2f48b2e956d3df45a8a66f381289e25dbe869ab39c605b21911ec"
     },
     {
       "bytes": 2090,
       "local_path": "docs/research/trustee-career/2026/can_f45567e7c92656f88222bb24d854e9a9-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.512126Z",
+      "retrieved_at": "2026-09-09T13:02:20.109723Z",
       "sha256": "3d456674f3b79785d1caf1c34d336f2ecf614b6a8bd1fd3618c9e268f475e9b3"
     },
     {
       "bytes": 2804,
       "local_path": "docs/research/trustee-career/2026/can_f522f78a24de5f9195043e5091a4906e-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.512180Z",
+      "retrieved_at": "2026-09-09T13:02:20.109784Z",
       "sha256": "4123cc7a3b5c09d5b3a0ac2e8e5b74a18ae54d970d82180b4f652d683c0189ef"
     },
     {
       "bytes": 1890,
       "local_path": "docs/research/trustee-career/2026/can_f522f78a24de5f9195043e5091a4906e-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.512234Z",
+      "retrieved_at": "2026-09-09T13:02:20.109843Z",
       "sha256": "71cbeb971d3c2bb0c686c01f536d7b2facd7c89bb3f9db3029459c41998e16f1"
     },
     {
       "bytes": 3674,
       "local_path": "docs/research/trustee-career/2026/can_f6cdb98f716f5927a6d7702be80db45f-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.512298Z",
+      "retrieved_at": "2026-09-09T13:02:20.109906Z",
       "sha256": "141507db34fe65f651d43386015f3a791c23881ef183029f96733c2bc12c9f12"
     },
     {
       "bytes": 1653,
       "local_path": "docs/research/trustee-career/2026/can_f6cdb98f716f5927a6d7702be80db45f-sol.md",
-      "retrieved_at": "2026-08-27T17:41:03.512351Z",
+      "retrieved_at": "2026-09-09T13:02:20.109966Z",
       "sha256": "cd42acdf1474955b33067b3cbd5b59865b565b98d35a687e7ab8d0037f6ba927"
     },
     {
       "bytes": 2683,
       "local_path": "docs/research/trustee-career/2026/can_f6cdb98f716f5927a6d7702be80db45f-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.512406Z",
+      "retrieved_at": "2026-09-09T13:02:20.110024Z",
       "sha256": "25a19da02d21d14b547b4a28d2e7e83f5d8f590e89efc0bd16b0d2015c369fed"
     },
     {
       "bytes": 3982,
       "local_path": "docs/research/trustee-career/2026/can_fbfd95dc861f59e3a88736d6aeb23bf3-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.512458Z",
+      "retrieved_at": "2026-09-09T13:02:20.110083Z",
       "sha256": "503f8f35b0c20538032fb780a760d797e9191fd6f0f5a21c9bf8485afd2adf4c"
     },
     {
       "bytes": 2815,
       "local_path": "docs/research/trustee-career/2026/can_fbfd95dc861f59e3a88736d6aeb23bf3-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.512510Z",
+      "retrieved_at": "2026-09-09T13:02:20.110147Z",
       "sha256": "9d797183aa7d31337d9810c12dc2c1681071265f7c20c849e8f9bf201771e099"
     },
     {
       "bytes": 2871,
       "local_path": "docs/research/trustee-career/2026/can_fe42206a6fe95bdeb68178b4e8826d73-luna.md",
-      "retrieved_at": "2026-08-27T17:41:03.512570Z",
+      "retrieved_at": "2026-09-09T13:02:20.110208Z",
       "sha256": "b0584f7b468c696d3464db91f440915599786bf2c7cddcddd20d970311cf0c62"
     },
     {
       "bytes": 2004,
       "local_path": "docs/research/trustee-career/2026/can_fe42206a6fe95bdeb68178b4e8826d73-terra.md",
-      "retrieved_at": "2026-08-27T17:41:03.512620Z",
+      "retrieved_at": "2026-09-09T13:02:20.110275Z",
       "sha256": "a9cd4b95626323c71e9b54f03cb7c8f1f47c2e3bdc60ee9da0a411084035b393"
     },
     {
       "bytes": 12245,
       "local_path": "docs/research/trustee-career/2026/sol-review-batch-a.csv",
-      "retrieved_at": "2026-08-27T17:41:03.512699Z",
+      "retrieved_at": "2026-09-09T13:02:20.110347Z",
       "sha256": "9152cf94031c905b7736e0d3f1e7a66090f75f09162151217417dbc55f8bef02"
     },
     {
       "bytes": 12360,
       "local_path": "docs/research/trustee-career/2026/sol-review-batch-b.csv",
-      "retrieved_at": "2026-08-27T17:41:03.512782Z",
+      "retrieved_at": "2026-09-09T13:02:20.110448Z",
       "sha256": "3fce3d0fc3de792908c7abaacc23d312bfc756a65c6f2b70003b7e9b20c43d2f"
     },
     {
       "bytes": 12278,
       "local_path": "docs/research/trustee-career/2026/sol-review-batch-c.csv",
-      "retrieved_at": "2026-08-27T17:41:03.512861Z",
+      "retrieved_at": "2026-09-09T13:02:20.110519Z",
       "sha256": "ce6f81204e2c8ca3e15d2a3e0fdde14c2c40f2b719a187697c4418b8df6b17cc"
     }
   ]

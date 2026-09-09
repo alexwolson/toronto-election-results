@@ -191,6 +191,9 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     (source / "build_manifest.json").write_text('{"schema_version":"2.1.0"}\n')
     reference = tmp_path / "reference"
     reference.mkdir()
+    (reference / "person_alias_curations.csv").write_text(
+        "person_id,person_action,preferred_name,reported_name,evidence_urls,rationale\n"
+    )
     (reference / "mayoral_career_reviews.csv").write_text(
         "cohort_id,subject_candidacy_id,certified_name,resulting_person_id,luna_report_path,"
         "terra_report_path,review_date,source_release,review_status,limitations,"

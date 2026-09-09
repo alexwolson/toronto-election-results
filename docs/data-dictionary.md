@@ -101,8 +101,16 @@ that correctly have no Candidacy row.
 ### `people`
 
 The persistent identity registry: opaque `person_id`, preferred name, active/deprecated status,
-visible redirect target, and creation release. A Person name never rewrites a historical ballot
-name.
+visible redirect target, and creation release. A Person may be retained for exact downstream
+identity resolution even when withdrawal leaves no certified Candidacy row; that does not add the
+Person to an election field. A Person name never rewrites a historical ballot name.
+
+### `person_aliases.json`
+
+The release-owned exact-name crosswalk for downstream datasets. Names come from confirmed
+Candidacies, active Person preferred names, or `data/reference/person_alias_curations.csv` with
+retained evidence and rationale. A normalized name resolves only when all occurrences identify one
+active Person; collisions remain published as ambiguous with a null `person_id`.
 
 ### `candidacy_person_links`
 
