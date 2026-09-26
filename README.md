@@ -29,8 +29,8 @@ each approved Endorser was searched.
 
 The release contains **5,731 Candidacies in 881 Contests across 55 Election events**: 5,488 final
 Candidacies in 855 completed Contests, plus 243 pending Candidacies in the 26 Contests scheduled
-for 2026-10-26. The endorsement companion dataset contains **9 Endorsers, 155 audited source
-assertions, 154 confirmed positive Endorsement facts, and 2,385 Endorser-by-Contest coverage
+for 2026-10-26. The endorsement companion dataset contains **9 Endorsers, 161 audited source
+assertions, 160 confirmed positive Endorsement facts, and 2,385 Endorser-by-Contest coverage
 records**.
 
 ## Documentation

@@ -254,7 +254,7 @@ def _endorser_id(inputs, name: str) -> str:
     return inputs.endorsers.loc[inputs.endorsers.canonical_name.eq(name), "endorser_id"].item()
 
 
-def test_default_inputs_publish_only_the_154_cleared_positive_facts(tmp_path):
+def test_default_inputs_publish_only_the_160_cleared_positive_facts(tmp_path):
     inputs, election_results, contests, people, _ = _build(tmp_path)
 
     assert len(inputs.endorsers) == 9
@@ -262,7 +262,7 @@ def test_default_inputs_publish_only_the_154_cleared_positive_facts(tmp_path):
     assert inputs.endorsers["mayor_applicable"].all()
     assert inputs.endorsers["councillor_applicable"].all()
     assert set(inputs.assertions["review_state"].value_counts().to_dict().items()) == {
-        ("confirmed", 154),
+        ("confirmed", 160),
         ("unresolved", 1),
     }
 
@@ -274,7 +274,14 @@ def test_default_inputs_publish_only_the_154_cleared_positive_facts(tmp_path):
         assertions=inputs.assertions,
         coverage=inputs.coverage,
     )
-    assert len(assembled.endorsements) == 154
+    assert len(assembled.endorsements) == 160
+    # Progress Toronto's first 2026 list (six council candidates, page undated)
+    progress_2026 = inputs.assertions[
+        inputs.assertions["curation_key"].str.startswith("progress_2026_")
+    ]
+    assert len(progress_2026) == 6
+    assert (progress_2026["date_precision"] == "unknown").all()
+    assert progress_2026["candidacy_id"].notna().all()
     assert assembled.endorsements["endorsement_id"].str.startswith("end_").all()
 
     unresolved = inputs.assertions.query("review_state == 'unresolved'").iloc[0]
