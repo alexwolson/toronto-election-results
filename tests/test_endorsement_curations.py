@@ -276,7 +276,9 @@ def test_default_inputs_publish_only_the_160_cleared_positive_facts(tmp_path):
     )
     assert len(assembled.endorsements) == 160
     # Progress Toronto's first 2026 list (six council candidates, page undated)
-    progress_2026 = inputs.assertions[inputs.assertions["curation_key"].str.startswith("progress_2026_")]
+    progress_2026 = inputs.assertions[
+        inputs.assertions["curation_key"].str.startswith("progress_2026_")
+    ]
     assert len(progress_2026) == 6
     assert (progress_2026["date_precision"] == "unknown").all()
     assert progress_2026["candidacy_id"].notna().all()
