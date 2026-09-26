@@ -161,12 +161,12 @@ One row per source-specific Endorsement claim. `assertion_id` is the assertion i
 Endorser and Contest, the Candidacy when resolvable, the asserted candidate name, review state,
 Endorsement kind, announcement date/precision, source type, and primary/secondary evidence URLs.
 Review states are `proposed`, `confirmed`, `unresolved`, `rejected`, and `withdrawn`. The release
-contains 155 assertions: 154 confirmed and one unresolved assertion whose supported target has no
+contains 161 assertions: 160 confirmed and one unresolved assertion whose supported target has no
 published Candidacy row.
 
 ### `endorsements`
 
-The 154 adjudicated positive facts, at one exact `(endorser_id, contest_id, candidacy_id)` edge per
+The 160 adjudicated positive facts, at one exact `(endorser_id, contest_id, candidacy_id)` edge per
 row, with a stable `endorsement_id`. Facts are derived only from confirmed assertions and target
 Mayor or City Councillor Candidacies. One Endorser may support multiple Candidacies in one Contest.
 An Endorsement does not create a negative observation for any other Candidacy, and the absence of
