@@ -241,8 +241,14 @@ def _campaign_url(candidate: dict[str, object]) -> object:
         name = _optional_text(link.get("name"))
         if name is not None and name.casefold() == "web":
             url = _text(link.get("url"), field="web URL")
+            if url.casefold().startswith("www.") and not urlparse(url).scheme:
+                url = f"https://{url}"
             parsed = urlparse(url)
-            if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+            if (
+                parsed.scheme not in {"http", "https"}
+                or not parsed.netloc
+                or parsed.hostname == "www."
+            ):
                 raise ValueError(f"official candidate web URL is invalid: {url!r}")
             websites.append(url)
     if len(websites) > 1:

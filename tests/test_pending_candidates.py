@@ -139,6 +139,31 @@ def test_adapter_keeps_primary_campaign_url_but_excludes_other_contact_fields():
     assert results["source_resource"].eq("2026 Municipal Election — Certified Candidates").all()
 
 
+def test_official_trustee_website_without_a_scheme_does_not_block_the_roster(tmp_path):
+    payload = json.loads(TRUSTEE_FIXTURE.read_text())
+    candidate = payload["schoolBoard"][0]["ward"][0]["candidate"][0]
+    candidate["socialMedias"] = [{"name": "web", "url": "www.maureenlarkinto.ca"}]
+    source = tmp_path / TRUSTEE_CANDIDATES_FILENAME
+    source.write_text(json.dumps(payload), encoding="utf-8")
+
+    result = parse_pending_candidate_rosters(MAYOR_FIXTURE, COUNCILLOR_FIXTURE, source)
+
+    assert len(result) == 60
+    actual = result.loc[result["candidate_name_raw"].eq(candidate["name"]), "campaign_url"]
+    assert actual.item() == "https://www.maureenlarkinto.ca"
+
+
+@pytest.mark.parametrize("url", ["javascript:alert(1)", "ftp://example.test", "/campaign", "www."])
+def test_invalid_campaign_links_remain_rejected(tmp_path, url):
+    payload = json.loads(TRUSTEE_FIXTURE.read_text())
+    candidate = payload["schoolBoard"][0]["ward"][0]["candidate"][0]
+    candidate["socialMedias"] = [{"name": "web", "url": url}]
+    source = tmp_path / TRUSTEE_CANDIDATES_FILENAME
+    source.write_text(json.dumps(payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="web URL is invalid"):
+        parse_pending_candidate_rosters(MAYOR_FIXTURE, COUNCILLOR_FIXTURE, source)
+
+
 class _Response:
     def __init__(self, content: bytes):
         self.content = content

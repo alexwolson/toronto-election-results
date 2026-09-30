@@ -3,15 +3,17 @@
 The release covers completed, single-seat election contests wholly within the City of Toronto from
 2003-01-01 through 2026-10-26 (the inclusive election-date scope, not a claim that
 future outcomes are known). It also includes the official candidate-list snapshot as of
-2026-08-21 for the Toronto municipal general election scheduled for 2026-10-26; its Candidacies and
-Contests are marked `pending` and contain no result values. The dataset includes Mayor, City
+2026-09-30 for the Toronto municipal general election scheduled for 2026-10-26. Contested
+Candidacies remain `pending` with no result values; four officially declared trustee Acclamations
+are final with null vote totals. The dataset includes Mayor, City
 Councillor, all four School Board Trustee systems, MP, and MPP elections. General elections,
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 5,731 Candidacies, 881 Contests, and 55 Election events. Of those, 243
-Candidacies in 26 Contests belong to the pending 2026 municipal event; the other 5,488 Candidacies
-and 855 Contests are final. Evidence-backed Endorsement companion tables cover Mayor and City
+The release contains 5,872 Candidacies, 928 Contests, and 69 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 5,515 Candidacies in 875
+Contests are final. Two historical source-missing Contests have no Candidacy rows.
+Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
 
 See `CONTEXT.md` for canonical domain language and `docs/adr/` for design decisions.
@@ -182,7 +184,7 @@ One row per approved Endorser and Mayor/City Councillor Contest: `endorser_id`, 
 of candidate-level negatives. Even `searched_no_endorsement_found` records only what the completed
 search found; it does not assert that the Endorser opposed any Candidacy. `assessed_through` is null
 for `not_searched` cells, so a release date cannot be mistaken for evidence that a historical
-Contest-specific search occurred. The current release contains 643 `not_applicable`, 145
+Contest-specific search occurred. The current release contains 670 `not_applicable`, 145
 `not_searched`, 1,277 `partially_searched`, 207 `comprehensive_source_found`, and 113
 `source_unavailable` cells; it uses no `searched_no_endorsement_found` cells.
 
@@ -233,6 +235,8 @@ back to name matching or blanket historical coverage claims.
 - City Council attendance/voting records and reconciled historical rosters for municipal
   incumbency evidence.
 - City Clerk candidate-list JSON snapshots for pending 2026 Mayor and City Councillor Candidacies.
+- The same City roster acquisition includes all four trustee boards. The candidate snapshot date
+  is the oldest of the three roster retrieval dates in Toronto time, not a fixed nomination date.
 - Endorsement evidence retained with each audited assertion, using original Endorser publications
   where available and attributable contemporaneous sources where archival recovery requires them.
 

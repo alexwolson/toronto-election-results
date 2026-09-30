@@ -4,7 +4,7 @@ A unified, analysis-ready history of elections within the City of Toronto. The i
 election-date coverage window is **2003-01-01 through 2026-10-26**. Only validated or certified
 outcomes are published as final; future elections retain pending results. The scheduled
 **2026-10-26 Toronto municipal general election** is also represented by the City's certified
-candidate-list snapshot as of **2026-08-27**. Mayor,
+candidate-list snapshot acquired on **2026-09-30**. Mayor,
 Councillor, and contested Trustee Candidacies remain pending. Four Trustees declared elected by
 acclamation on August 24 are final results with null vote totals. The primary table has one row per
 Candidacy in a single-seat Contest and is designed for election modelling, with `vote_share` as the
@@ -89,4 +89,10 @@ uv sync                                        # install deps
 uv run pytest                                  # run tests
 uv run python -m toronto_election_results.pipeline                  # download -> build -> QC
 uv run python -m toronto_election_results.pipeline --skip-download  # reuse local raw cache
+uv run python -m toronto_election_results.pipeline --skip-download --refresh-candidates
 ```
+
+Use `--refresh-candidates` to overwrite all three City candidate rosters while reusing the
+historical-result cache. The build manifest derives its candidate snapshot date from the oldest
+of those three source retrieval times in Toronto time. Scheme-less `www.` campaign links in the
+official roster receive an HTTPS scheme; other unsupported or malformed links still fail validation.
