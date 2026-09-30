@@ -47,6 +47,12 @@ records**.
   - `0007` — persistent Person identities, linked separately from individual Candidacies.
   - `0008` — model Endorsements as open-world, evidence-backed positive facts.
 
+Candidate-submitted campaign websites supplement the official roster through
+`data/reference/campaign_url_curations.csv`. Each reviewed link targets an exact Candidacy
+and records first-party evidence, verification date, and rationale. The pipeline applies
+these links to `election_results.campaign_url` and tracks the curation file in the build manifest;
+refreshing the official roster preserves the reviewed additions.
+
 ## Outputs
 
 Every table is written as CSV and Parquet unless noted otherwise:
