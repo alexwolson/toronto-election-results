@@ -7,13 +7,15 @@ import json
 from datetime import UTC, datetime
 from pathlib import Path
 
+from .coverage import ELECTION_DAY
+
 PENDING_CANDIDATE_SNAPSHOT_THROUGH = "2026-08-27"
 
 COVERAGE = {
     "from": "2003-01-01",
-    "through": "2026-08-20",
+    "through": ELECTION_DAY.isoformat(),
     "pending_candidate_snapshot_through": PENDING_CANDIDATE_SNAPSHOT_THROUGH,
-    "pending_event_through": "2026-10-26",
+    "pending_event_through": ELECTION_DAY.isoformat(),
     "timezone": "America/Toronto",
 }
 
@@ -32,22 +34,21 @@ EXCLUDED_CALLS = [
         "scheduled_date": "2008-09-22",
         "reason": "cancelled when superseded by a general-election writ; no result",
     },
-    {
-        "label": "Beaches—East York federal by-election",
-        "scheduled_date": "2026-08-31",
-        "reason": "polling date is after the release cutoff",
-    },
+]
+
+UNACQUIRED_RESULTS = [
     {
         "label": "Scarborough Southwest provincial by-election",
         "scheduled_date": "2026-09-03",
-        "reason": "polling date is after the release cutoff",
-    },
+        "reason": "not yet present in Elections Ontario's official result CSV export",
+        "source_url": "https://www.elections.on.ca/en/election-results/098.html",
+    }
 ]
 
 PENDING_EVENTS = [
     {
         "label": "2026 Toronto municipal general election",
-        "scheduled_date": "2026-10-26",
+        "scheduled_date": ELECTION_DAY.isoformat(),
         "candidate_snapshot_through": PENDING_CANDIDATE_SNAPSHOT_THROUGH,
         "status": "pending",
     }
@@ -100,6 +101,7 @@ def build_manifest(
         ],
         "event_archive_caveats": EVENT_ARCHIVE_CAVEATS,
         "excluded_calls": EXCLUDED_CALLS,
+        "unacquired_results": UNACQUIRED_RESULTS,
         "pending_events": PENDING_EVENTS,
     }
 

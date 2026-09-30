@@ -19,7 +19,7 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
         generated_at="2026-08-20T12:00:00Z",
     )
 
-    assert manifest["coverage"]["through"] == "2026-08-20"
+    assert manifest["coverage"]["through"] == "2026-10-26"
     assert manifest["coverage"]["pending_candidate_snapshot_through"] == "2026-08-27"
     assert manifest["schema_version"] == "2.2.0"
     assert manifest["sources"][0]["sha256"] == sha256_file(source)
@@ -37,13 +37,14 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
     assert json.loads(output.read_text(encoding="utf-8")) == manifest
 
 
-def test_manifest_discloses_cancelled_and_post_cutoff_calls(tmp_path):
+def test_manifest_separates_cancelled_calls_from_in_scope_acquisition_gaps(tmp_path):
     manifest = build_manifest(sources=[], artifacts=[], row_counts={}, generated_at="fixed")
 
     labels = {item["label"] for item in manifest["excluded_calls"]}
     assert "Don Valley West federal by-election" in labels
-    assert "Beaches—East York federal by-election" in labels
-    assert "Scarborough Southwest provincial by-election" in labels
+    assert "Beaches—East York federal by-election" not in labels
+    assert "Scarborough Southwest provincial by-election" not in labels
+    assert manifest["unacquired_results"][0]["scheduled_date"] == "2026-09-03"
     assert "2026 Toronto municipal general election" not in labels
     assert manifest["pending_events"] == [
         {

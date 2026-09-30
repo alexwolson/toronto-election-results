@@ -1,7 +1,8 @@
 # Data dictionary — Toronto Election Results v2.1
 
 The release covers completed, single-seat election contests wholly within the City of Toronto from
-2003-01-01 through 2026-08-20. It also includes the official candidate-list snapshot as of
+2003-01-01 through 2026-10-26 (the inclusive election-date scope, not a claim that
+future outcomes are known). It also includes the official candidate-list snapshot as of
 2026-08-21 for the Toronto municipal general election scheduled for 2026-10-26; its Candidacies and
 Contests are marked `pending` and contain no result values. The dataset includes Mayor, City
 Councillor, all four School Board Trustee systems, MP, and MPP elections. General elections,
@@ -187,9 +188,10 @@ Contest-specific search occurred. The current release contains 643 `not_applicab
 
 ### `build_manifest.json`
 
-Records the fixed completed-results cutoff, the pending candidate-snapshot and event horizons,
+Records the inclusive election-date coverage horizon, the pending candidate-snapshot and event horizons,
 schema version, generation timestamp, source and artifact SHA-256 checksums, known archive
-uncertainty, deliberately excluded election calls, and the separately enumerated pending event.
+uncertainty, deliberately excluded election calls, in-scope results awaiting acquisition, and the
+separately enumerated pending event.
 
 ### `data/reference/candidacy_identity_ledger.csv`
 
@@ -224,7 +226,8 @@ back to name matching or blanket historical coverage claims.
 
 - City of Toronto Open Data official general/by-election results and Clerk declarations for Mayor,
   Councillor, and all four trustee systems.
-- Elections Canada official poll-result archives and available official summary tables.
+- Elections Canada official poll-result archives, official summary tables, and returning-officer
+  validated contest totals when the poll-level export is not yet available.
 - Elections Ontario official candidate/statistics/party CSV reports.
 - City voter-statistics files for explicitly scoped municipal turnout.
 - City Council attendance/voting records and reconciled historical rosters for municipal
@@ -241,14 +244,22 @@ this release, 2004 party/incumbent fields are joined to Elections Canada Table 1
 Toronto by-election party labels are joined to Elections Canada Historical Results. Those early
 by-election pages do not report incumbency, so that source field remains null.
 
+The August 31, 2026 Beaches–East York federal by-election uses the returning officer's validated
+totals, including valid votes, rejected ballots, total ballots, and electors. It does not report
+an incumbent indicator. The September 3, 2026 Scarborough Southwest provincial by-election is an
+in-scope acquisition gap: its results are absent from the Elections Ontario official CSV export
+used by this build. The manifest records it in `unacquired_results` until acquisition.
+
 Trustee result sources do not report a structured incumbent flag, and a complete historical roster
 for all four boards has not been acquired. Trustee `incumbent` is therefore null rather than
 inferred from repeated names or prior winners.
 
 ## Quality gates
 
-The build fails on completed election dates outside 2003-01-01 through 2026-08-20, or on a
-post-cutoff Candidacy that is not the explicitly allowed pending 2026-10-26 municipal event. Pending
+The build rejects election dates after October 26, 2026. Future dated Candidacies must remain
+pending relative to the validation date, except for officially declared trustee Acclamations.
+Validated or certified results dated on or before election day are in scope, including elections
+after August 20. Historical career records retain their documented lack of a lower date bound. Pending
 rows must have `result_status=pending`, a complete official candidate roster, null result metrics,
 and no Acclamation. The build also rejects broken foreign keys, duplicate stable identities,
 missing persistent `source_candidacy_id` values, or disagreement between repeated

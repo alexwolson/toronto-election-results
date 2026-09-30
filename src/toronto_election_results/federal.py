@@ -13,6 +13,8 @@ Table 12 CSV supplies affiliation, incumbent, and declared-winner fields and is 
 the poll-derived contest totals. EC's structured Historical Results tables supply affiliation for
 the early by-elections. They do not publish an incumbent indicator there, so it remains null rather
 than being invented; the certified poll totals still identify only a unique top vote-getter.
+Recent by-elections can use the returning officer's validated contest totals before the official
+poll-level export appears. Those totals must reconcile, and source incumbency remains unreported.
 """
 
 from __future__ import annotations
@@ -30,11 +32,14 @@ from zipfile import ZipFile
 import pandas as pd
 import requests
 
+from .coverage import ELECTION_DAY
+from .validated_federal import parse_validated_contest
+
 ELECTION_AUTHORITY = "Elections Canada"
 REPRESENTED_BODY = "House of Commons of Canada"
 OFFICE_TYPE = "mp"
 SOURCE_RESOURCE = "Official Voting Results — Raw Data"
-CUTOFF_DATE = date(2026, 8, 20)
+CUTOFF_DATE = ELECTION_DAY
 
 NORMALIZED_COLUMNS = [
     "event_id",
@@ -354,6 +359,12 @@ FEDERAL_EVENTS = (
             ),
         ),
     ),
+    _by_election(
+        date(2026, 8, 31),
+        _RO_2023,
+        (("35007", "Beaches—East York"),),
+        ("https://enr.elections.ca/ElectoralDistricts.aspx?ed=2385&lang=e",),
+    ),
 )
 
 _EVENT_BY_ID = {event.event_id: event for event in FEDERAL_EVENTS}
@@ -404,10 +415,14 @@ def federal_event_manifest() -> pd.DataFrame:
                 "source_urls": event.source_urls,
                 "summary_source_urls": event.summary_source_urls,
                 "source_layout": (
-                    "wide_poll" if event.event_id in _WIDE_EVENT_IDS else "long_poll"
+                    "validated_contest"
+                    if event.event_id == "ec-be-2026-08-31"
+                    else ("wide_poll" if event.event_id in _WIDE_EVENT_IDS else "long_poll")
                 ),
                 "unavailable_source_fields": (
-                    ()
+                    ("incumbent_reported",)
+                    if event.event_id == "ec-be-2026-08-31"
+                    else ()
                     if event.event_id == "ec-ge-38"
                     else (
                         ("incumbent_reported", "elected")
@@ -416,7 +431,9 @@ def federal_event_manifest() -> pd.DataFrame:
                     )
                 ),
                 "winner_derivation": (
-                    "official_summary_indicator"
+                    "unique_validated_vote_maximum"
+                    if event.event_id == "ec-be-2026-08-31"
+                    else "official_summary_indicator"
                     if event.event_id == "ec-ge-38"
                     else (
                         "unique_certified_vote_maximum"
@@ -464,6 +481,20 @@ def parse_federal_results(
     frames = []
     for source_path in source_paths:
         path = Path(source_path)
+        if event.event_id == "ec-be-2026-08-31":
+            district_id, district_name = event.districts[0]
+            frames.append(
+                _add_event_fields(
+                    parse_validated_contest(
+                        path,
+                        district_id=district_id,
+                        district_name=district_name,
+                        election_date=event.election_date,
+                    ),
+                    event,
+                )
+            )
+            continue
         if path.suffix.casefold() == ".zip":
             wanted = {district_id for district_id, _ in event.districts}
             with ZipFile(path) as archive:
@@ -1069,7 +1100,11 @@ def _add_event_fields(frame: pd.DataFrame, event: FederalEvent) -> pd.DataFrame:
     result["outcome_method"] = "vote"
     result["coverage_status"] = "complete"
     result["source_authority"] = ELECTION_AUTHORITY
-    result["source_resource"] = SOURCE_RESOURCE
+    result["source_resource"] = (
+        "Results Validated by the Returning Officer"
+        if event.event_id == "ec-be-2026-08-31"
+        else SOURCE_RESOURCE
+    )
     result["source_detail"] = result["official_district_id"].map(
         lambda district_id: _source_for_district(event, district_id)
     )

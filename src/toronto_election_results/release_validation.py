@@ -3,13 +3,16 @@
 from __future__ import annotations
 
 import math
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 
+from .coverage import ELECTION_DAY
+
 _GEOMETRY_CONTAINMENT_RELATIVE_TOLERANCE = 1e-12
 _GEOMETRY_CONTAINMENT_ABSOLUTE_TOLERANCE = 1e-18
-_COMPLETED_RESULTS_END = pd.Timestamp("2026-08-20")
-_PENDING_EVENT_END = pd.Timestamp("2026-10-26")
+_ELECTION_HORIZON = pd.Timestamp(ELECTION_DAY)
 _TORONTO_2026_ACCLAMATION_DECLARATION = (
     "https://www.toronto.ca/wp-content/uploads/2026/08/8ed9-2026-Declaration-of-Acclamation.pdf"
 )
@@ -102,11 +105,11 @@ def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[st
     if parsed.isna().any():
         issues.append(f"{table_label}.election_date must contain valid non-null dates")
         return
-    outside = parsed.gt(_PENDING_EVENT_END)
+    outside = parsed.gt(_ELECTION_HORIZON)
     if outside.any():
         value = frame.loc[outside, "election_date"].iloc[0]
         issues.append(
-            f"{table_label}.election_date {value!r} is after the pending 2026-10-26 municipal event"
+            f"{table_label}.election_date {value!r} is after the {ELECTION_DAY} coverage horizon"
         )
     if "election_year" not in frame:
         issues.append(f"{table_label} is missing election_year")
@@ -139,6 +142,8 @@ def validate_release(
     people: pd.DataFrame,
     office_tenures: pd.DataFrame | None = None,
     candidacy_person_links: pd.DataFrame | None = None,
+    *,
+    as_of: date | None = None,
 ) -> list[str]:
     """Return human-readable violations of the public relational contract."""
 
@@ -315,18 +320,18 @@ def validate_release(
         & candidacies["election_authority"].eq("toronto_city_clerk")
         & candidacies["election_type"].eq("general")
         & candidacies["office_type"].eq("trustee")
-        & parsed_dates.eq(_PENDING_EVENT_END)
+        & parsed_dates.eq(_ELECTION_HORIZON)
         & candidacies["source_detail"]
         .astype("string")
         .str.contains(_TORONTO_2026_ACCLAMATION_DECLARATION, regex=False, na=False)
     )
     future_completed = (
-        parsed_dates.gt(_COMPLETED_RESULTS_END)
+        parsed_dates.gt(pd.Timestamp(as_of or datetime.now(ZoneInfo("America/Toronto")).date()))
         & ~candidacies["result_status"].eq("pending")
         & ~declared_future_acclamation
     )
     if future_completed.any():
-        issues.append("post-cutoff Candidacies must have result_status=pending")
+        issues.append("future Candidacies must have result_status=pending")
 
     for contest_id, group in candidacies.groupby("contest_id", sort=False, dropna=False):
         methods = group["outcome_method"].dropna().unique()

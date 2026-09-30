@@ -1,8 +1,10 @@
 # Toronto Election Results
 
-A unified, analysis-ready history of elections within the City of Toronto. Completed results cover
-**2003-01-01 through 2026-08-20**. The scheduled **2026-10-26 Toronto municipal general election**
-is also represented by the City's certified candidate-list snapshot as of **2026-08-27**. Mayor,
+A unified, analysis-ready history of elections within the City of Toronto. The inclusive
+election-date coverage window is **2003-01-01 through 2026-10-26**. Only validated or certified
+outcomes are published as final; future elections retain pending results. The scheduled
+**2026-10-26 Toronto municipal general election** is also represented by the City's certified
+candidate-list snapshot as of **2026-08-27**. Mayor,
 Councillor, and contested Trustee Candidacies remain pending. Four Trustees declared elected by
 acclamation on August 24 are final results with null vote totals. The primary table has one row per
 Candidacy in a single-seat Contest and is designed for election modelling, with `vote_share` as the
@@ -27,10 +29,11 @@ Endorsements are positive, open-world facts: an absent fact never means that an 
 declined to endorse a Candidacy. Separate Endorser-by-Contest coverage records say how completely
 each approved Endorser was searched.
 
-The release contains **5,731 Candidacies in 881 Contests across 55 Election events**: 5,488 final
-Candidacies in 855 completed Contests, plus 243 pending Candidacies in the 26 Contests scheduled
-for 2026-10-26. The endorsement companion dataset contains **9 Endorsers, 161 audited source
-assertions, 160 confirmed positive Endorsement facts, and 2,385 Endorser-by-Contest coverage
+The release contains **5,872 Candidacies in 928 Contests across 69 Election events**: 5,515 final
+Candidacies in 875 Contests, plus 357 pending Candidacies in 51 Contests scheduled for
+2026-10-26. Two historical source-missing Contests also remain in the inventory. The endorsement
+companion dataset contains **9 Endorsers, 161 audited source
+assertions, 160 confirmed positive Endorsement facts, and 2,412 Endorser-by-Contest coverage
 records**.
 
 ## Documentation
@@ -68,9 +71,9 @@ Every table is written as CSV and Parquet unless noted otherwise:
 - `data/out/endorsements.*` — confirmed positive Endorser-to-Candidacy facts;
 - `data/out/endorsement_coverage.*` — open-world search state for every approved
   Endorser-by-Contest cell; and
-- `data/out/build_manifest.json` — source/artifact checksums, the completed-results cutoff, the
-  pending candidate snapshot and event horizon, known archive uncertainty, and deliberately
-  excluded election calls.
+- `data/out/build_manifest.json` — source/artifact checksums, the inclusive election-date horizon,
+  the pending candidate snapshot, known archive uncertainty, deliberately excluded election calls,
+  and in-scope results awaiting acquisition.
 
 The City trustee by-election archive begins in 2012, so event enumeration for 2003–2011 is
 explicitly marked uncertain. No known result rows are fabricated to fill that archive gap.

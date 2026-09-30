@@ -390,3 +390,5 @@ def test_manifest_cutoff_and_uncertain_early_by_election_coverage():
     assert uncertain["start_date"] == date(2003, 1, 1)
     assert uncertain["end_date"] == date(2011, 12, 31)
     assert uncertain["election_type"] == "by_election"
+    complete = coverage[coverage["event_coverage"] == "complete"].iloc[0]
+    assert complete["end_date"] == date(2026, 10, 26)
