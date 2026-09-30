@@ -504,10 +504,10 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 931
+    assert len(original_decisions) == 932
     assert original_decisions["decision"].value_counts().to_dict() == {
         "unresolved": 783,
-        "confirmed": 143,
+        "confirmed": 144,
         "rejected": 5,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -545,6 +545,26 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     held = expected_status.index[~expected_status.eq("confirmed")]
     assert results.loc[confirmed, "person_id"].to_dict() == expected_people.loc[confirmed].to_dict()
     assert results.loc[held, "person_id"].isna().all()
+
+
+def test_2026_federal_repeat_candidacy_uses_the_explicit_party_identity_bridge():
+    results = pd.read_csv(REPO_ROOT / "data/out/election_results.csv", dtype="string").set_index(
+        "candidacy_id"
+    )
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data/reference/identity_review_dispositions.csv"
+    ).set_index("candidacy_id")
+    current = "can_3276cb4ff23b5a5ebb50591cae7884c3"
+    prior = "can_badbc189906252d8b0dee7f0e4158c58"
+
+    assert results.loc[current, "person_id"] == results.loc[prior, "person_id"]
+    assert results.loc[current, "person_id"] == "per_2d514d5238de53a28cb16b664d6c38b1"
+    assert results.loc[current, "votes"] == "8496"
+    assert decisions.loc[current, "decision"] == "confirmed"
+    assert (
+        "ndp-announces-candidates-august-31-federal-byelections"
+        in decisions.loc[current, "evidence_urls"]
+    )
 
 
 def test_council_batch_2_identity_corrections_are_published_without_result_changes():

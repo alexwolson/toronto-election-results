@@ -64,7 +64,7 @@ RAW = Path("data/raw")
 INTERIM = Path("data/interim")
 OUT = Path("data/out")
 REFERENCE = Path("data/reference")
-RELEASE_ID = "2026-08-21"
+RELEASE_ID = "2026-09-30"
 CANDIDACY_LEDGER_FILENAME = "candidacy_identity_ledger.csv"
 IDENTITY_REVIEW_DISPOSITIONS_FILENAME = "identity_review_dispositions.csv"
 _PRIOR_REGISTRY_ARTIFACTS = {
@@ -293,7 +293,7 @@ def _verify_prior_ledger_checksum(output_dir: Path, ledger_path: Path) -> None:
 
 
 def _load_source_adapters(
-    *, raw: Path, interim: Path, reference: Path, download: bool
+    *, raw: Path, interim: Path, reference: Path, download: bool, refresh_candidates: bool = False
 ) -> tuple[list[pd.DataFrame], pd.DataFrame]:
     if download:
         city_download.download_all(root=raw)
@@ -310,8 +310,8 @@ def _load_source_adapters(
     ontario = load_ontario_results(raw / "ontario")
     pending_council = load_pending_council_candidates(
         raw / "council" / "candidates_2026",
-        download=download,
-        overwrite=download,
+        download=download or refresh_candidates,
+        overwrite=download or refresh_candidates,
         trustee_crosswalk_path=reference / TRUSTEE_CROSSWALK_FILENAME,
     )
     mayoral_career = load_mayoral_career_backfills(reference)
@@ -325,6 +325,7 @@ def _load_source_adapters(
 def run_all(
     *,
     skip_download: bool = False,
+    refresh_candidates: bool = False,
     raw: Path = RAW,
     interim: Path = INTERIM,
     out: Path = OUT,
@@ -344,7 +345,11 @@ def run_all(
         _verify_prior_ledger_checksum(out, ledger_path)
     candidacy_ledger = read_candidacy_ledger(ledger_path)
     adapters, contest_manifest = _load_source_adapters(
-        raw=raw, interim=interim, reference=reference, download=not skip_download
+        raw=raw,
+        interim=interim,
+        reference=reference,
+        download=not skip_download,
+        refresh_candidates=refresh_candidates,
     )
     resolved = assign_candidacy_ids(
         adapters,
@@ -500,8 +505,13 @@ def main() -> None:
         action="store_true",
         help="reuse the existing local official-source cache",
     )
+    parser.add_argument(
+        "--refresh-candidates",
+        action="store_true",
+        help="overwrite all three official candidate rosters, including with --skip-download",
+    )
     args = parser.parse_args()
-    issues = run_all(skip_download=args.skip_download)
+    issues = run_all(skip_download=args.skip_download, refresh_candidates=args.refresh_candidates)
     if issues:
         raise SystemExit(1)
 

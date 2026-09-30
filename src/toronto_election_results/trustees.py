@@ -44,9 +44,10 @@ import requests
 from openpyxl.utils.exceptions import InvalidFileException
 
 from .candidates import known_multiword_surnames, normalize_name
+from .coverage import ELECTION_DAY
 from .schema import stable_id
 
-COVERAGE_END = date(2026, 8, 20)
+COVERAGE_END = ELECTION_DAY
 ELECTION_AUTHORITY = "toronto_city_clerk"
 OFFICE_TYPE = "trustee"
 

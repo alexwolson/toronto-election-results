@@ -34,15 +34,15 @@ def test_manifest_covers_completed_toronto_federal_events_through_cutoff():
     events = federal_event_manifest()
     contests = federal_contest_manifest()
 
-    assert len(events) == 16
+    assert len(events) == 17
     assert (events["election_type"] == "general").sum() == 8
-    assert (events["election_type"] == "by_election").sum() == 8
-    assert events["election_date"].max().isoformat() == "2026-04-13"
+    assert (events["election_type"] == "by_election").sum() == 9
+    assert events["election_date"].max().isoformat() == "2026-08-31"
 
     general = contests[contests["election_type"] == "general"]
     by_election = contests[contests["election_type"] == "by_election"]
     assert len(general) == 187
-    assert len(by_election) == 12
+    assert len(by_election) == 13
 
     assert list(
         by_election[["election_date", "official_district_id", "district_name"]].itertuples(
@@ -61,6 +61,7 @@ def test_manifest_covers_completed_toronto_federal_events_through_cutoff():
         (pd.Timestamp("2024-06-24").date(), "35090", "Toronto—St. Paul's"),
         (pd.Timestamp("2026-04-13").date(), "35096", "Scarborough Southwest"),
         (pd.Timestamp("2026-04-13").date(), "35112", "University—Rosedale"),
+        (pd.Timestamp("2026-08-31").date(), "35007", "Beaches—East York"),
     ]
 
     # The 2008 Don Valley West call was cancelled when the general-election writ superseded it.
@@ -69,7 +70,7 @@ def test_manifest_covers_completed_toronto_federal_events_through_cutoff():
         & (contests["district_name"] == "Don Valley West")
     ).any()
     assert all(
-        url.startswith("https://www.elections.ca/")
+        url.startswith(("https://www.elections.ca/", "https://enr.elections.ca/"))
         for urls in events["source_urls"]
         for url in urls
     )

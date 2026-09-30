@@ -8,10 +8,11 @@ contests. It is intended to feed an election model maintained elsewhere.
 
 **Coverage window**:
 Every completed in-scope election whose scheduled polling date is from January 1, 2003 through
-August 20, 2026, inclusive, plus the October 26, 2026 Toronto municipal general Election event,
-which enters as pending Candidacies and later receives its certified results. Other later elections
-are out of scope unless the Coverage window is explicitly revised; a cancelled call that produces
-no result is excluded.
+October 26, 2026, inclusive. Results are added as they are validated or certified by the
+Election authority. The October 26 Toronto municipal general Election event enters as pending
+Candidacies and later receives its certified results. An in-scope election whose authoritative
+results have not been acquired is a coverage gap, not a date-based exclusion. Elections after
+October 26 are out of scope; a cancelled call that produces no result is excluded.
 
 **Endorsement collection window**:
 Public Endorsements for in-scope Toronto Mayor and City Councillor Contests are collected through

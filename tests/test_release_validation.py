@@ -100,7 +100,7 @@ def test_flags_election_dates_after_release_cutoff():
 
     issues = validate_release(*release)
 
-    assert any("after the pending" in issue for issue in issues)
+    assert any("after the 2026-10-26 coverage horizon" in issue for issue in issues)
 
 
 def test_historical_career_date_has_no_lower_bound():
@@ -119,7 +119,7 @@ def test_historical_career_date_has_no_lower_bound():
     assert not any("election_date" in issue for issue in issues)
 
 
-def test_post_result_cutoff_candidacy_requires_pending_status():
+def test_future_election_candidacy_requires_pending_status():
     release = list(_release())
     candidacies = release[0].copy()
     candidacies["election_date"] = date(2026, 10, 26)
@@ -127,9 +127,9 @@ def test_post_result_cutoff_candidacy_requires_pending_status():
     release[0] = candidacies
     release[1] = build_events(candidacies)
 
-    issues = validate_release(*release)
+    issues = validate_release(*release, as_of=date(2026, 9, 30))
 
-    assert "post-cutoff Candidacies must have result_status=pending" in issues
+    assert "future Candidacies must have result_status=pending" in issues
 
 
 def test_pending_candidate_roster_allows_future_event_and_null_results():
@@ -200,13 +200,17 @@ def test_official_future_trustee_acclamation_is_a_valid_final_result():
         "8ed9-2026-Declaration-of-Acclamation.pdf"
     )
 
-    assert validate_release(*_future_trustee_acclamation(declaration)) == []
+    assert (
+        validate_release(*_future_trustee_acclamation(declaration), as_of=date(2026, 9, 30)) == []
+    )
 
 
 def test_future_trustee_acclamation_without_the_clerk_declaration_is_rejected():
-    issues = validate_release(*_future_trustee_acclamation("candidate roster only"))
+    issues = validate_release(
+        *_future_trustee_acclamation("candidate roster only"), as_of=date(2026, 9, 30)
+    )
 
-    assert "post-cutoff Candidacies must have result_status=pending" in issues
+    assert "future Candidacies must have result_status=pending" in issues
 
 
 @pytest.mark.parametrize(
@@ -431,3 +435,21 @@ def test_geometry_containment_still_rejects_a_materially_outside_ward():
     issues = validate_release(*release)
 
     assert any("council geometry is not contained" in issue for issue in issues)
+
+
+@pytest.mark.parametrize("election_date", [date(2026, 8, 31), date(2026, 9, 3), date(2026, 10, 26)])
+def test_completed_results_are_allowed_through_election_day(election_date):
+    release = list(_release())
+    release[0]["election_date"] = election_date
+    release[0]["election_year"] = 2026
+    release[1] = build_events(release[0])
+    assert validate_release(*release, as_of=date(2026, 10, 26)) == []
+
+
+def test_final_results_after_election_day_remain_out_of_scope():
+    release = list(_release())
+    release[0]["election_date"] = date(2026, 10, 27)
+    release[0]["election_year"] = 2026
+    release[1] = build_events(release[0])
+    issues = validate_release(*release, as_of=date(2026, 10, 28))
+    assert any("after the 2026-10-26 coverage horizon" in issue for issue in issues)

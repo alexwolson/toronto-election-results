@@ -1,9 +1,35 @@
 """Auditable, deterministic build/source manifest."""
 
 import json
+import os
+from datetime import UTC, datetime
+
+import pytest
 
 from toronto_election_results.build_manifest import build_manifest, sha256_file, write_manifest
+from toronto_election_results.pending_candidates import pending_candidate_paths
 from toronto_election_results.pipeline import _source_files
+
+
+def test_candidate_snapshot_uses_the_oldest_roster_retrieval_in_toronto_time(tmp_path):
+    paths = pending_candidate_paths(tmp_path)
+    for path, hour in zip(paths, (2, 16, 17), strict=True):
+        path.write_text("{}")
+        timestamp = datetime(2026, 9, 30, hour, tzinfo=UTC).timestamp()
+        os.utime(path, (timestamp, timestamp))
+    manifest = build_manifest(
+        sources=list(paths), artifacts=[], row_counts={}, generated_at="fixed"
+    )
+    # 02:00 UTC is still September 29 in Toronto; the other two sources are newer.
+    assert manifest["coverage"]["pending_candidate_snapshot_through"] == "2026-09-29"
+    assert manifest["pending_events"][0]["candidate_snapshot_through"] == "2026-09-29"
+
+
+def test_partial_roster_inventory_cannot_claim_a_complete_snapshot(tmp_path):
+    path = pending_candidate_paths(tmp_path)[0]
+    path.write_text("{}")
+    with pytest.raises(ValueError, match="exactly one of each official roster"):
+        build_manifest(sources=[path], artifacts=[], row_counts={}, generated_at="fixed")
 
 
 def test_manifest_records_source_and_artifact_checksums(tmp_path):
@@ -19,8 +45,8 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
         generated_at="2026-08-20T12:00:00Z",
     )
 
-    assert manifest["coverage"]["through"] == "2026-08-20"
-    assert manifest["coverage"]["pending_candidate_snapshot_through"] == "2026-08-27"
+    assert manifest["coverage"]["through"] == "2026-10-26"
+    assert manifest["coverage"]["pending_candidate_snapshot_through"] is None
     assert manifest["schema_version"] == "2.2.0"
     assert manifest["sources"][0]["sha256"] == sha256_file(source)
     assert manifest["artifacts"][0]["rows"] == 1
@@ -37,19 +63,20 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
     assert json.loads(output.read_text(encoding="utf-8")) == manifest
 
 
-def test_manifest_discloses_cancelled_and_post_cutoff_calls(tmp_path):
+def test_manifest_separates_cancelled_calls_from_in_scope_acquisition_gaps(tmp_path):
     manifest = build_manifest(sources=[], artifacts=[], row_counts={}, generated_at="fixed")
 
     labels = {item["label"] for item in manifest["excluded_calls"]}
     assert "Don Valley West federal by-election" in labels
-    assert "Beaches—East York federal by-election" in labels
-    assert "Scarborough Southwest provincial by-election" in labels
+    assert "Beaches—East York federal by-election" not in labels
+    assert "Scarborough Southwest provincial by-election" not in labels
+    assert manifest["unacquired_results"][0]["scheduled_date"] == "2026-09-03"
     assert "2026 Toronto municipal general election" not in labels
     assert manifest["pending_events"] == [
         {
             "label": "2026 Toronto municipal general election",
             "scheduled_date": "2026-10-26",
-            "candidate_snapshot_through": "2026-08-27",
+            "candidate_snapshot_through": None,
             "status": "pending",
         }
     ]

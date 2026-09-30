@@ -1,6 +1,8 @@
 """Public command behavior for the v2 release pipeline."""
 
 import json
+from contextlib import nullcontext
+from pathlib import Path
 from types import SimpleNamespace
 
 import pandas as pd
@@ -10,12 +12,72 @@ from toronto_election_results import (
     assemble,
     crosscheck_winners,
     geometry,
+    pending_candidates,
     pipeline,
 )
 from toronto_election_results import (
     validate as legacy_validate,
 )
 from toronto_election_results.release import ReleaseTables
+
+
+def test_candidates_only_refresh_overwrites_all_rosters_without_downloading_history(
+    tmp_path, monkeypatch
+):
+    raw = tmp_path / "raw"
+    source_dir = raw / "council/candidates_2026"
+    source_dir.mkdir(parents=True)
+    fixtures = Path(__file__).parent / "fixtures/pending_candidates"
+    paths = pending_candidates.pending_candidate_paths(source_dir)
+    urls = (
+        pending_candidates.MAYOR_CANDIDATES_URL,
+        pending_candidates.COUNCILLOR_CANDIDATES_URL,
+        pending_candidates.TRUSTEE_CANDIDATES_URL,
+    )
+    payloads = {}
+    for url, path in zip(urls, paths, strict=True):
+        data = (fixtures / path.name).read_bytes()
+        path.write_bytes(data)
+        payloads[url] = data.replace(b"https://example.test", b"https://fresh.example.test")
+    calls = []
+
+    def get(url, **_kwargs):
+        calls.append(url)
+        return nullcontext(
+            SimpleNamespace(
+                raise_for_status=lambda: None,
+                iter_content=lambda chunk_size: [payloads[url]],
+            )
+        )
+
+    def historical_adapter(*_args, download=False, **_kwargs):
+        assert not download
+        return pd.DataFrame()
+
+    monkeypatch.setattr(pending_candidates.requests, "get", get)
+    monkeypatch.setattr(pipeline, "load_council_results", historical_adapter)
+    monkeypatch.setattr(pipeline, "load_trustee_results", historical_adapter)
+    monkeypatch.setattr(pipeline, "load_federal_results", historical_adapter)
+    monkeypatch.setattr(pipeline, "load_ontario_results", historical_adapter)
+    monkeypatch.setattr(pipeline, "load_mayoral_career_backfills", historical_adapter)
+    monkeypatch.setattr(pipeline, "trustee_event_manifest", historical_adapter)
+    monkeypatch.setattr(
+        pipeline.city_download, "download_all", lambda **_: pytest.fail("historical download")
+    )
+    monkeypatch.setattr(
+        pipeline, "download_ontario_sources", lambda *_: pytest.fail("historical download")
+    )
+    adapters, _ = pipeline._load_source_adapters(
+        raw=raw,
+        interim=tmp_path / "interim",
+        reference=pipeline.REFERENCE,
+        download=False,
+        refresh_candidates=True,
+    )
+    assert calls == list(urls)
+    for url, path in zip(urls, paths, strict=True):
+        assert path.read_bytes() == payloads[url]
+    assert adapters[4]["campaign_url"].dropna().eq("https://fresh.example.test").all()
 
 
 def test_prior_manifest_marks_completion_of_the_candidacy_ledger_migration(tmp_path):
