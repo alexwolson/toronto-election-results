@@ -12,6 +12,10 @@ import pandas as pd
 
 from . import download as city_download
 from .build_manifest import build_manifest, sha256_file, write_manifest
+from .campaign_url_curations import (
+    CAMPAIGN_URL_CURATIONS_FILENAME,
+    apply_campaign_url_curations,
+)
 from .candidacy_ledger import (
     assign_candidacy_ids,
     read_candidacy_ledger,
@@ -116,6 +120,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "trustee_contest_continuity_2026.csv",
         "trustee_incumbents_2026.csv",
         "city_ward_geographic_names.csv",
+        CAMPAIGN_URL_CURATIONS_FILENAME,
         PERSON_ALIAS_CURATIONS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
     ):
@@ -414,6 +419,9 @@ def run_all(
     )
     release = replace(
         built.tables,
+        election_results=apply_campaign_url_curations(
+            built.tables.election_results, reference / CAMPAIGN_URL_CURATIONS_FILENAME
+        ),
         people=apply_person_alias_curations(
             built.tables.people,
             load_person_alias_curations(reference / PERSON_ALIAS_CURATIONS_FILENAME),
