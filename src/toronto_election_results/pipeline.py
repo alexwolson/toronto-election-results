@@ -12,6 +12,7 @@ import pandas as pd
 
 from . import download as city_download
 from .build_manifest import build_manifest, sha256_file, write_manifest
+from .campaign_suspension_curations import CAMPAIGN_SUSPENSION_CURATIONS_FILENAME
 from .campaign_url_curations import (
     CAMPAIGN_URL_CURATIONS_FILENAME,
     apply_campaign_url_curations,
@@ -121,6 +122,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "trustee_incumbents_2026.csv",
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
+        CAMPAIGN_SUSPENSION_CURATIONS_FILENAME,
         PERSON_ALIAS_CURATIONS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
     ):

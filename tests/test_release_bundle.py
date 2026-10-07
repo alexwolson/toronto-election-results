@@ -4,6 +4,7 @@ import shutil
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from toronto_election_results.release_bundle import build_results_release_bundle
 from toronto_election_results.trustee_2026 import load_trustee_ward_crosswalk
@@ -194,6 +195,11 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     (reference / "person_alias_curations.csv").write_text(
         "person_id,person_action,preferred_name,reported_name,evidence_urls,rationale\n"
     )
+    (reference / "campaign_suspension_curations.csv").write_text(
+        "candidacy_id,candidate_name,campaign_suspended_on,evidence_url,verified_on,rationale\n"
+        "can_chow_2026,Olivia Chow,2026-10-06,https://news.example/fixture,2026-10-07,"
+        "Synthetic fixture suspension.\n"
+    )
     (reference / "mayoral_career_reviews.csv").write_text(
         "cohort_id,subject_candidacy_id,certified_name,resulting_person_id,luna_report_path,"
         "terra_report_path,review_date,source_release,review_status,limitations,"
@@ -238,7 +244,7 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     manifest = json.loads((output / "release_manifest.json").read_text())
     assert manifest["source_commit"] == "abc123"
     assert manifest["source_dirty"] is False
-    assert manifest["feed_versions"]["mayoral_candidates"] == 5
+    assert manifest["feed_versions"]["mayoral_candidates"] == 6
     assert manifest["feed_versions"]["trustee_races"] == 3
     assert manifest["feeds"] == {
         "mayoral_candidates": "mayoral_candidates.json",
@@ -262,3 +268,18 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     } <= set(assets)
     for filename, record in assets.items():
         assert record["sha256"] == hashlib.sha256((output / filename).read_bytes()).hexdigest()
+    candidates_feed = json.loads((output / "mayoral_candidates.json").read_text())
+    assert candidates_feed["schema_version"] == 6
+    assert [candidate["campaign_suspended_on"] for candidate in candidates_feed["candidates"]] == [
+        "2026-10-06"
+    ]
+
+    (reference / "campaign_suspension_curations.csv").unlink()
+    with pytest.raises(FileNotFoundError, match="campaign_suspension_curations.csv"):
+        build_results_release_bundle(
+            source,
+            tmp_path / "dist-missing-curation",
+            source_commit="abc123",
+            dirty=False,
+            reference_dir=reference,
+        )

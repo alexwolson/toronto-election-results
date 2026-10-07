@@ -103,6 +103,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     trustee_decisions = reference / "trustee_career_decisions.csv"
     trustee_sol_reviews = reference / "trustee_career_sol_reviews.csv"
     trustee_continuity = reference / "trustee_contest_continuity_2026.csv"
+    campaign_suspension_curations = reference / "campaign_suspension_curations.csv"
     luna_report = tmp_path / "candidate-luna.md"
     terra_report = tmp_path / "candidate-terra.md"
     sol_report = tmp_path / "candidate-sol.md"
@@ -121,6 +122,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
     trustee_cohort.write_text("frozen,cohort\n", encoding="utf-8")
     trustee_decisions.write_text("audited,decisions\n", encoding="utf-8")
     trustee_continuity.write_text("audited,continuity\n", encoding="utf-8")
+    campaign_suspension_curations.write_text("audited,suspensions\n", encoding="utf-8")
     luna_report.write_text("luna", encoding="utf-8")
     terra_report.write_text("terra", encoding="utf-8")
     sol_report.write_text("sol", encoding="utf-8")
@@ -148,6 +150,7 @@ def test_source_inventory_includes_historical_rosters_used_for_incumbency(tmp_pa
             endorser_panel,
             dispositions,
             person_alias_curations,
+            campaign_suspension_curations,
             roster_a,
             roster_b,
             verification_report,

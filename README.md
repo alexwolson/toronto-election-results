@@ -49,12 +49,20 @@ records**.
   - `0006` — one cross-office results table, preserving every electoral geography as run.
   - `0007` — persistent Person identities, linked separately from individual Candidacies.
   - `0008` — model Endorsements as open-world, evidence-backed positive facts.
+  - `0009` — record Suspended Campaigns as evidence-backed candidate facts.
 
 Candidate-submitted campaign websites supplement the official roster through
 `data/reference/campaign_url_curations.csv`. Each reviewed link targets an exact Candidacy
 and records first-party evidence, verification date, and rationale. The pipeline applies
 these links to `election_results.campaign_url` and tracks the curation file in the build manifest;
 refreshing the official roster preserves the reviewed additions.
+
+Suspended Campaigns are recorded in `data/reference/campaign_suspension_curations.csv`. Each row
+dates the day a 2026 mayoral candidate publicly ended the campaign after the withdrawal deadline,
+with evidence, verification date, and rationale. The City's roster still lists such a Candidacy as
+Active, so the release publishes the date only as `campaign_suspended_on` in
+`mayoral_candidates.json`; the canonical tables are unchanged. The build manifest tracks the
+curation file, and the release refuses to build without it.
 
 ## Outputs
 
