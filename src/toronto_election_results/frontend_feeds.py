@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from .campaign_suspension_curations import apply_campaign_suspension_curations
 from .person_alias_curations import load_person_alias_curations
 from .trustee_2026 import load_trustee_ward_crosswalk
 from .trustee_career import (
@@ -27,7 +28,7 @@ from .trustee_career import (
 )
 from .trustee_continuity import load_trustee_continuity, validate_trustee_continuity
 
-MAYORAL_CANDIDATES_SCHEMA_VERSION = 5
+MAYORAL_CANDIDATES_SCHEMA_VERSION = 6
 TRUSTEE_RACES_SCHEMA_VERSION = 3
 PERSON_ALIASES_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
@@ -228,10 +229,13 @@ def build_mayoral_candidates_feed(
 
     The current field comes directly from the canonical pending Candidacies. Past
     elections join only through ``person_id``; this module performs no name match.
+    ``campaign_suspended_on`` must already carry the reviewed Suspended Campaign
+    curation, so an unapplied curation fails instead of publishing every date as null.
     """
 
     required = {
         "candidacy_id",
+        "campaign_suspended_on",
         "person_id",
         "event_id",
         "contest_id",
@@ -329,6 +333,7 @@ def build_mayoral_candidates_feed(
                 "person_id": person_id,
                 "display_name": str(candidate["candidate_name"]),
                 "campaign_url": _text(candidate.get("campaign_url")),
+                "campaign_suspended_on": _text(candidate["campaign_suspended_on"]),
                 "is_incumbent": person_id == incumbent_person_id,
                 "review_status": str(review["review_status"]),
                 "review_limitations": _text(review["public_coverage_note"]),
@@ -632,12 +637,17 @@ def write_mayoral_candidates_feed(
     districts_path: str | Path,
     career_reviews_path: str | Path,
     output_path: str | Path,
+    *,
+    campaign_suspensions_path: str | Path,
 ) -> Path:
     """Read canonical CSV results and atomically write the factual JSON feed."""
 
-    results = attach_district_display_names(
-        pd.read_csv(results_path, low_memory=False),
-        pd.read_csv(districts_path, low_memory=False),
+    results = apply_campaign_suspension_curations(
+        attach_district_display_names(
+            pd.read_csv(results_path, low_memory=False),
+            pd.read_csv(districts_path, low_memory=False),
+        ),
+        Path(campaign_suspensions_path),
     )
     feed = build_mayoral_candidates_feed(
         results,

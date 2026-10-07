@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -8,6 +9,7 @@ from toronto_election_results.frontend_feeds import (
     build_mayoral_candidates_feed,
     build_person_aliases_feed,
     build_trustee_races_feed,
+    write_mayoral_candidates_feed,
 )
 from toronto_election_results.person_alias_curations import load_person_alias_curations
 from toronto_election_results.trustee_2026 import load_trustee_ward_crosswalk
@@ -29,6 +31,7 @@ def _row(**overrides):
         "candidate_name": "Current Candidate",
         "candidate_name_raw": "Candidate, Current",
         "campaign_url": pd.NA,
+        "campaign_suspended_on": pd.NA,
         "party_name": pd.NA,
         "district_name": "City of Toronto",
         "result_status": "pending",
@@ -76,6 +79,7 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
                 person_id="per_gong",
                 candidate_name="Edward Gong",
                 candidate_name_raw="Gong, Edward",
+                campaign_suspended_on="2026-10-06",
             ),
             _row(
                 candidacy_id="can_chow_2023",
@@ -140,7 +144,7 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     )
     feed = build_mayoral_candidates_feed(rows, reviews)
 
-    assert feed["schema_version"] == 5
+    assert feed["schema_version"] == 6
     assert feed["ballot_certified"] is True
     assert feed["coverage"]["policy"] == "full_verified_canadian_electoral_career"
     assert feed["coverage"]["year_cutoff"] is None
@@ -151,6 +155,8 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     chow, gong = feed["candidates"]
     assert chow["is_incumbent"] is True
     assert chow["campaign_url"] == "https://www.oliviachow.ca"
+    assert chow["campaign_suspended_on"] is None
+    assert gong["campaign_suspended_on"] == "2026-10-06"
     assert chow["review_limitations"] == (
         "We identified a Toronto school trustee candidacy in 1985 "
         "but could not recover authoritative results."
@@ -164,6 +170,37 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
         (2023, "mayor"),
     ]
     assert gong["past_elections"][1]["rank"] == 11
+
+
+def test_candidate_feed_requires_the_campaign_suspension_column():
+    rows = pd.DataFrame([_row()]).drop(columns="campaign_suspended_on")
+
+    with pytest.raises(ValueError, match="campaign_suspended_on"):
+        build_mayoral_candidates_feed(rows, _reviews("can_current"))
+
+
+def test_repository_candidates_feed_dates_only_alexanders_suspended_campaign(tmp_path):
+    reference = ROOT / "data/reference"
+    output = write_mayoral_candidates_feed(
+        ROOT / "data/out/election_results.csv",
+        ROOT / "data/out/electoral_districts.csv",
+        reference / "mayoral_career_reviews.csv",
+        tmp_path / "mayoral_candidates.json",
+        campaign_suspensions_path=reference / "campaign_suspension_curations.csv",
+    )
+
+    feed = json.loads(output.read_text(encoding="utf-8"))
+    assert feed["schema_version"] == 6
+    assert len(feed["candidates"]) == 53
+    assert all("campaign_suspended_on" in candidate for candidate in feed["candidates"])
+    suspended = {
+        candidate["candidacy_id"]: (candidate["display_name"], candidate["campaign_suspended_on"])
+        for candidate in feed["candidates"]
+        if candidate["campaign_suspended_on"] is not None
+    }
+    assert suspended == {
+        "can_b43d9b5795cf5aed9b587a956e49951b": ("Chris Alexander", "2026-10-06"),
+    }
 
 
 def test_candidate_feed_rejects_an_incomplete_current_field():
@@ -276,9 +313,7 @@ def test_repository_poll_aliases_resolve_to_the_audited_people():
     assert by_name["David DiGiorgio"]["person_id"] == ("per_c420decb6687572fa82550c1eae3dd23")
     assert by_name["Gabe Blanc"]["person_id"] == ("per_a1e80916906e5b1a9c91b435e6499ea7")
     assert by_name["Dana Fisher"]["person_id"] == ("per_0598fabaa9a944ef91808b0f8037e884")
-    assert by_name["John Tory Jr."]["person_id"] == (
-        "per_7fb1837d6e46437981669ead106c6b86"
-    )
+    assert by_name["John Tory Jr."]["person_id"] == ("per_7fb1837d6e46437981669ead106c6b86")
     assert all(
         by_name[name]["is_unambiguous"]
         for name in (

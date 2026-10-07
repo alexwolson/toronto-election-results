@@ -133,6 +133,13 @@ Whether a Candidacy's election outcome is `pending` or `final`. A pending Candid
 votes or outcome; the same persistent Candidacy becomes final when the Election authority certifies
 the result.
 
+**Suspended Campaign**:
+A certified Candidacy's campaign that the candidate publicly ended after the withdrawal deadline.
+The Candidacy stays on the certified candidate list and the ballot, and can still receive votes.
+The City's roster still lists it as Active, so the date is an evidence-backed curated fact. A
+withdrawal is the legal act before the deadline; it leaves no Candidacy.
+_Avoid_: Withdrawn candidate, dropped out.
+
 **Person**:
 An individual represented by a Candidacy, Office tenure, or an evidence-backed electoral source
 needed by a dependent dataset. Existence as a Person does not imply inclusion in a certified field.

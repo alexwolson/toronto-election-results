@@ -13,6 +13,7 @@ from pathlib import Path
 import pandas as pd
 
 from .build_manifest import sha256_file
+from .campaign_suspension_curations import CAMPAIGN_SUSPENSION_CURATIONS_FILENAME
 from .frontend_feeds import (
     MAYORAL_CANDIDATES_SCHEMA_VERSION,
     TRUSTEE_RACES_SCHEMA_VERSION,
@@ -58,6 +59,7 @@ def build_results_release_bundle(
     trustee_crosswalk_path = reference / TRUSTEE_CROSSWALK_FILENAME
     trustee_continuity_path = reference / "trustee_contest_continuity_2026.csv"
     person_alias_curations_path = reference / PERSON_ALIAS_CURATIONS_FILENAME
+    campaign_suspensions_path = reference / CAMPAIGN_SUSPENSION_CURATIONS_FILENAME
     for required in (
         results_path,
         districts_path,
@@ -71,6 +73,7 @@ def build_results_release_bundle(
         trustee_crosswalk_path,
         trustee_continuity_path,
         person_alias_curations_path,
+        campaign_suspensions_path,
     ):
         if not required.is_file():
             raise FileNotFoundError(f"missing results release input: {required}")
@@ -108,6 +111,7 @@ def build_results_release_bundle(
             districts_path,
             career_reviews_path,
             staging / "mayoral_candidates.json",
+            campaign_suspensions_path=campaign_suspensions_path,
         )
         write_trustee_races_feed(
             results_path,

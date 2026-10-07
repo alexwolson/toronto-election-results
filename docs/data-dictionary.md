@@ -115,6 +115,21 @@ Candidacies, active Person preferred names, or `data/reference/person_alias_cura
 retained evidence and rationale. A normalized name resolves only when all occurrences identify one
 active Person; collisions remain published as ambiguous with a null `person_id`.
 
+### `mayoral_candidates.json`
+
+The release feed of the certified 2026 Toronto mayoral field, at `schema_version` 6. Each
+candidate has `candidacy_id`, `person_id`, `display_name`, `campaign_url`,
+`campaign_suspended_on`, `is_incumbent`, career-review status, and `past_elections`, which are
+joined only through confirmed Person IDs. The release manifest's
+`feed_versions.mayoral_candidates` matches `schema_version`.
+
+| Field | Type | Null rule | Meaning |
+|---|---|---|---|
+| `campaign_suspended_on` | date (`YYYY-MM-DD`) | no Suspended Campaign recorded | The day the candidate publicly ended the campaign after the withdrawal deadline. Required on every candidate; never later than `election_date`. The Candidacy stays on the certified ballot and can still receive votes. |
+
+A null date means no Suspended Campaign is recorded. It is not a reviewed claim that the campaign
+is still running.
+
 ### `candidacy_person_links`
 
 Audited occurrence-to-Person history. `link_status` is `confirmed`, `proposed`, `rejected`, or
@@ -212,6 +227,16 @@ reviewed `target_person_id`, final `decision`, confidence, rationale, evidence U
 closes the proposal but keeps `election_results.person_id` null because evidence was insufficient;
 `rejected` closes a contradicted proposal and likewise remains null. The table is a checksummed
 build input and is replayed idempotently against the append-only link history.
+
+### `data/reference/campaign_suspension_curations.csv`
+
+One row per Suspended Campaign: `candidacy_id`, `candidate_name`, `campaign_suspended_on`,
+`evidence_url`, `verified_on`, and `rationale`. The evidence is a first-party statement or major
+news coverage. A row must name exactly one 2026 Toronto mayoral Candidacy, under its exact
+`candidate_name`. Both dates are strict `YYYY-MM-DD`, and the suspension date is no later than its
+verification or election day. Any other row fails the release instead of being skipped. The file
+is a checksummed build-manifest source and a required release input; it sets only
+`mayoral_candidates.json` `campaign_suspended_on`.
 
 ### Endorsement curation inputs
 
