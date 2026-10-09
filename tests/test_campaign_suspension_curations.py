@@ -49,6 +49,15 @@ def test_curated_suspension_dates_exactly_one_current_mayoral_candidacy(tmp_path
     assert apply_campaign_suspension_curations(results, path).equals(updated)
 
 
+def test_curated_suspension_dates_a_current_councillor_candidacy(tmp_path):
+    path = tmp_path / "curations.csv"
+    path.write_text(_curation())
+
+    updated = apply_campaign_suspension_curations(_results(office_type="councillor"), path)
+
+    assert updated["campaign_suspended_on"].tolist() == ["2026-10-06", pd.NA]
+
+
 def test_empty_curation_leaves_every_candidacy_undated(tmp_path):
     path = tmp_path / "curations.csv"
     path.write_text(HEADER)
@@ -63,13 +72,17 @@ def test_empty_curation_leaves_every_candidacy_undated(tmp_path):
     [
         ({"candidacy_id": "can_unknown"}, {}, "exactly one Candidacy"),
         ({"candidate_name": "Christopher Alexander"}, {}, "candidate name mismatch"),
-        ({}, {"office_type": "councillor"}, "2026 Toronto mayoral Candidacy"),
+        ({}, {"office_type": "trustee"}, "2026 Toronto City Council Candidacy"),
         (
             {},
             {"election_year": 2022, "election_date": "2022-10-24"},
-            "2026 Toronto mayoral Candidacy",
+            "2026 Toronto City Council Candidacy",
         ),
-        ({}, {"represented_body": "canada_house_of_commons"}, "2026 Toronto mayoral Candidacy"),
+        (
+            {},
+            {"represented_body": "canada_house_of_commons"},
+            "2026 Toronto City Council Candidacy",
+        ),
         ({"campaign_suspended_on": "2026-10-6"}, {}, "invalid .* campaign_suspended_on"),
         ({"campaign_suspended_on": "2026-02-30"}, {}, "invalid .* campaign_suspended_on"),
         (
@@ -85,7 +98,7 @@ def test_empty_curation_leaves_every_candidacy_undated(tmp_path):
     ids=[
         "unknown",
         "wrong_name",
-        "councillor",
+        "trustee",
         "not_2026",
         "not_toronto",
         "unpadded_date",
@@ -97,7 +110,7 @@ def test_empty_curation_leaves_every_candidacy_undated(tmp_path):
         "blank_rationale",
     ],
 )
-def test_rejects_curations_that_do_not_date_a_current_mayoral_candidacy(
+def test_rejects_curations_that_do_not_date_a_current_council_candidacy(
     tmp_path, curation, results, message
 ):
     path = tmp_path / "curations.csv"

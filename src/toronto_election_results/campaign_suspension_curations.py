@@ -1,4 +1,4 @@
-"""Evidence-backed Suspended Campaign dates for the current mayoral field."""
+"""Evidence-backed Suspended Campaign dates for the current City Council field."""
 
 from datetime import date
 from pathlib import Path
@@ -9,6 +9,7 @@ import pandas as pd
 CAMPAIGN_SUSPENSION_CURATIONS_FILENAME = "campaign_suspension_curations.csv"
 _CURRENT_ELECTION_YEAR = 2026
 _TORONTO_COUNCIL = "toronto_city_council"
+_COUNCIL_OFFICES = {"mayor", "councillor"}
 
 
 def _iso_date(value: str, column: str) -> date:
@@ -22,7 +23,7 @@ def _iso_date(value: str, column: str) -> date:
 
 
 def apply_campaign_suspension_curations(results: pd.DataFrame, path: Path) -> pd.DataFrame:
-    """Date reviewed Suspended Campaigns on exact current mayoral Candidacies.
+    """Date reviewed Suspended Campaigns on exact current mayoral or councillor Candidacies.
 
     The City's roster marks a Candidacy only Active or Withdrawn, so a campaign the
     candidate publicly ended after the withdrawal deadline is a curated fact. Every
@@ -60,14 +61,14 @@ def apply_campaign_suspension_curations(results: pd.DataFrame, path: Path) -> pd
         candidacy = updated.loc[target].iloc[0]
         if candidacy["candidate_name"] != row["candidate_name"]:
             raise ValueError("campaign suspension curation candidate name mismatch")
-        current_mayoral = (
-            candidacy["office_type"] == "mayor"
+        current_council = (
+            candidacy["office_type"] in _COUNCIL_OFFICES
             and candidacy["represented_body"] == _TORONTO_COUNCIL
             and int(candidacy["election_year"]) == _CURRENT_ELECTION_YEAR
         )
-        if not current_mayoral:
+        if not current_council:
             raise ValueError(
-                "campaign suspension curation must identify a 2026 Toronto mayoral Candidacy"
+                "campaign suspension curation must identify a 2026 Toronto City Council Candidacy"
             )
         if suspended_on > date.fromisoformat(str(candidacy["election_date"])):
             raise ValueError("campaign suspension curation is dated after election day")

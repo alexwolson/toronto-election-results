@@ -166,6 +166,15 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
         [
             _row(),
             _row(
+                candidacy_id="can_ward_5_2026",
+                person_id="per_ward_5",
+                office_type="councillor",
+                contest_id="con_2026_ward_5",
+                district_id="dst_ward_5",
+                official_district_id="ward-5",
+                district_name="Ward 5 — York South-Weston",
+            ),
+            _row(
                 candidacy_id="can_chow_2023",
                 event_id="evt_2023",
                 contest_id="con_2023",
@@ -246,7 +255,9 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     assert manifest["source_dirty"] is False
     assert manifest["feed_versions"]["mayoral_candidates"] == 6
     assert manifest["feed_versions"]["trustee_races"] == 3
+    assert manifest["feed_versions"]["council_campaign_suspensions"] == 1
     assert manifest["feeds"] == {
+        "council_campaign_suspensions": "council_campaign_suspensions.json",
         "mayoral_candidates": "mayoral_candidates.json",
         "trustee_races": "trustee_races.json",
         "person_aliases": "person_aliases.json",
@@ -260,6 +271,7 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
         "election_results.csv",
         "electoral_districts.csv",
         "people.csv",
+        "council_campaign_suspensions.json",
         "mayoral_candidates.json",
         "trustee_races.json",
         "person_aliases.json",
@@ -273,6 +285,9 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     assert [candidate["campaign_suspended_on"] for candidate in candidates_feed["candidates"]] == [
         "2026-10-06"
     ]
+
+    council_feed = json.loads((output / "council_campaign_suspensions.json").read_text())
+    assert council_feed["suspensions"] == []
 
     (reference / "campaign_suspension_curations.csv").unlink()
     with pytest.raises(FileNotFoundError, match="campaign_suspension_curations.csv"):

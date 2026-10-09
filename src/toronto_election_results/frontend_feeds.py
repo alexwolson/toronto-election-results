@@ -31,6 +31,7 @@ from .trustee_continuity import load_trustee_continuity, validate_trustee_contin
 MAYORAL_CANDIDATES_SCHEMA_VERSION = 6
 TRUSTEE_RACES_SCHEMA_VERSION = 3
 PERSON_ALIASES_SCHEMA_VERSION = 1
+COUNCIL_CAMPAIGN_SUSPENSIONS_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
 _CERTIFIED_CANDIDATES_RESOURCE = "2026 Municipal Election — Certified Candidates"
 
@@ -369,6 +370,60 @@ def build_mayoral_candidates_feed(
     }
 
 
+def build_council_campaign_suspensions_feed(results: pd.DataFrame) -> dict[str, object]:
+    """List the curated Suspended Campaigns in the current councillor field.
+
+    A councillor whose campaign ended after the withdrawal deadline stays on the
+    ballot, so the Backend reads the date here rather than from the canonical tables.
+    ``campaign_suspended_on`` must already carry the reviewed curation.
+    """
+
+    required = {
+        "candidacy_id",
+        "campaign_suspended_on",
+        "person_id",
+        "election_date",
+        "election_year",
+        "represented_body",
+        "office_type",
+        "official_district_id",
+        "candidate_name",
+        "result_status",
+    }
+    missing = sorted(required - set(results.columns))
+    if missing:
+        raise ValueError(
+            f"canonical results are missing council suspension columns: {', '.join(missing)}"
+        )
+    election_year = pd.to_numeric(results["election_year"], errors="coerce")
+    current = results.loc[
+        election_year.eq(2026)
+        & results["represented_body"].eq(_TORONTO_COUNCIL)
+        & results["office_type"].eq("councillor")
+        & results["result_status"].eq("pending")
+    ]
+    if current.empty:
+        raise ValueError("canonical results contain no pending 2026 Toronto councillor field")
+    if current["election_date"].nunique(dropna=False) != 1:
+        raise ValueError("current councillor field must have exactly one election_date")
+    suspended = current.loc[current["campaign_suspended_on"].notna()]
+    suspensions = [
+        {
+            "candidacy_id": str(candidate["candidacy_id"]),
+            "person_id": _text(candidate["person_id"]),
+            "display_name": str(candidate["candidate_name"]),
+            "ward": str(candidate["official_district_id"]).removeprefix("ward-"),
+            "campaign_suspended_on": str(candidate["campaign_suspended_on"]),
+        }
+        for _, candidate in suspended.iterrows()
+    ]
+    return {
+        "schema_version": COUNCIL_CAMPAIGN_SUSPENSIONS_SCHEMA_VERSION,
+        "election_date": str(current["election_date"].iloc[0]),
+        "suspensions": sorted(suspensions, key=lambda row: (int(row["ward"]), row["candidacy_id"])),
+    }
+
+
 def build_trustee_races_feed(
     results: pd.DataFrame,
     ward_crosswalk: pd.DataFrame,
@@ -653,6 +708,30 @@ def write_mayoral_candidates_feed(
         results,
         pd.read_csv(career_reviews_path, dtype="string", keep_default_na=False),
     )
+    destination = Path(output_path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    temporary = destination.with_suffix(destination.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(feed, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(destination)
+    return destination
+
+
+def write_council_campaign_suspensions_feed(
+    results_path: str | Path,
+    output_path: str | Path,
+    *,
+    campaign_suspensions_path: str | Path,
+) -> Path:
+    """Read canonical CSV results and atomically write the council suspensions feed."""
+
+    results = apply_campaign_suspension_curations(
+        pd.read_csv(results_path, low_memory=False),
+        Path(campaign_suspensions_path),
+    )
+    feed = build_council_campaign_suspensions_feed(results)
     destination = Path(output_path)
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_suffix(destination.suffix + ".tmp")
