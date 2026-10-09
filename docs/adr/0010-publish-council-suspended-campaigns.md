@@ -1,6 +1,6 @@
 # Publish Suspended Campaigns for councillor candidates
 
-Status: accepted
+Status: proposed — contingent on a confirmed Suspended Campaign; the report may not hold
 
 Amends: 0009
 
@@ -8,7 +8,7 @@ Amends: 0009
 
 ADR 0009 limited Suspended Campaign curations to the 2026 mayoral field and said that extending
 them to other offices would be a new decision. On October 9, 2026, CityNews reported that Frances
-Nunziata, the Ward 5 incumbent, was going to end her campaign. The withdrawal deadline was
+Nunziata, the Ward 5 incumbent, was going to end her campaign; it was not confirmed. The withdrawal deadline was
 August 21, so she would stay on the certified ballot, as Chris Alexander did. The Backend's council
 race cards need the date. They read the councillor field from the canonical tables, and ADR 0009
 keeps the curation out of those tables.
