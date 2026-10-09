@@ -15,8 +15,10 @@ import pandas as pd
 from .build_manifest import sha256_file
 from .campaign_suspension_curations import CAMPAIGN_SUSPENSION_CURATIONS_FILENAME
 from .frontend_feeds import (
+    COUNCIL_CAMPAIGN_SUSPENSIONS_SCHEMA_VERSION,
     MAYORAL_CANDIDATES_SCHEMA_VERSION,
     TRUSTEE_RACES_SCHEMA_VERSION,
+    write_council_campaign_suspensions_feed,
     write_mayoral_candidates_feed,
     write_person_aliases_feed,
     write_trustee_races_feed,
@@ -113,6 +115,11 @@ def build_results_release_bundle(
             staging / "mayoral_candidates.json",
             campaign_suspensions_path=campaign_suspensions_path,
         )
+        write_council_campaign_suspensions_feed(
+            results_path,
+            staging / "council_campaign_suspensions.json",
+            campaign_suspensions_path=campaign_suspensions_path,
+        )
         write_trustee_races_feed(
             results_path,
             districts_path,
@@ -149,11 +156,13 @@ def build_results_release_bundle(
                 for path in packaged
             ],
             "feeds": {
+                "council_campaign_suspensions": "council_campaign_suspensions.json",
                 "mayoral_candidates": "mayoral_candidates.json",
                 "trustee_races": "trustee_races.json",
                 "person_aliases": "person_aliases.json",
             },
             "feed_versions": {
+                "council_campaign_suspensions": COUNCIL_CAMPAIGN_SUSPENSIONS_SCHEMA_VERSION,
                 "mayoral_candidates": MAYORAL_CANDIDATES_SCHEMA_VERSION,
                 "trustee_races": TRUSTEE_RACES_SCHEMA_VERSION,
                 "person_aliases": 1,

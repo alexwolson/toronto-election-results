@@ -6,9 +6,11 @@ import pytest
 
 from toronto_election_results.frontend_feeds import (
     attach_district_display_names,
+    build_council_campaign_suspensions_feed,
     build_mayoral_candidates_feed,
     build_person_aliases_feed,
     build_trustee_races_feed,
+    write_council_campaign_suspensions_feed,
     write_mayoral_candidates_feed,
 )
 from toronto_election_results.person_alias_curations import load_person_alias_curations
@@ -201,6 +203,74 @@ def test_repository_candidates_feed_dates_only_alexanders_suspended_campaign(tmp
     assert suspended == {
         "can_b43d9b5795cf5aed9b587a956e49951b": ("Chris Alexander", "2026-10-06"),
     }
+
+
+def _councillor(**overrides):
+    return _row(
+        office_type="councillor",
+        contest_id="con_2026_ward_5",
+        official_district_id="ward-5",
+        district_name="Ward 5 — York South-Weston",
+        **overrides,
+    )
+
+
+def test_council_suspensions_feed_lists_only_dated_current_councillors():
+    rows = pd.DataFrame(
+        [
+            _row(candidacy_id="can_mayor", campaign_suspended_on="2026-10-06"),
+            _councillor(),
+            _councillor(
+                candidacy_id="can_ward_5_incumbent",
+                person_id="per_ward_5_incumbent",
+                candidate_name="Ward Incumbent",
+                campaign_suspended_on="2026-10-09",
+            ),
+            _councillor(
+                candidacy_id="can_2022",
+                election_year=2022,
+                election_date="2022-10-24",
+                result_status="final",
+                campaign_suspended_on="2022-10-01",
+            ),
+        ]
+    )
+
+    feed = build_council_campaign_suspensions_feed(rows)
+
+    assert feed == {
+        "schema_version": 1,
+        "election_date": "2026-10-26",
+        "suspensions": [
+            {
+                "candidacy_id": "can_ward_5_incumbent",
+                "person_id": "per_ward_5_incumbent",
+                "display_name": "Ward Incumbent",
+                "ward": "5",
+                "campaign_suspended_on": "2026-10-09",
+            }
+        ],
+    }
+
+
+def test_council_suspensions_feed_requires_the_campaign_suspension_column():
+    rows = pd.DataFrame([_councillor()]).drop(columns="campaign_suspended_on")
+
+    with pytest.raises(ValueError, match="campaign_suspended_on"):
+        build_council_campaign_suspensions_feed(rows)
+
+
+def test_repository_council_suspensions_feed_is_empty_until_a_curation_is_confirmed(tmp_path):
+    output = write_council_campaign_suspensions_feed(
+        ROOT / "data/out/election_results.csv",
+        tmp_path / "council_campaign_suspensions.json",
+        campaign_suspensions_path=ROOT / "data/reference/campaign_suspension_curations.csv",
+    )
+
+    feed = json.loads(output.read_text(encoding="utf-8"))
+    assert feed["schema_version"] == 1
+    assert feed["election_date"] == "2026-10-26"
+    assert feed["suspensions"] == []
 
 
 def test_candidate_feed_rejects_an_incomplete_current_field():

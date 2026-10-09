@@ -130,6 +130,15 @@ joined only through confirmed Person IDs. The release manifest's
 A null date means no Suspended Campaign is recorded. It is not a reviewed claim that the campaign
 is still running.
 
+### `council_campaign_suspensions.json`
+
+The release feed of curated Suspended Campaigns in the pending 2026 councillor field, at
+`schema_version` 1 (ADR 0010). It has `election_date` and `suspensions`, sorted by ward. Each entry
+has `candidacy_id`, `person_id`, `display_name`, `ward` (the ward number as a string, such as
+`"5"`), and `campaign_suspended_on`. An empty list means no councillor Suspended Campaign is
+recorded. The release manifest's `feed_versions.council_campaign_suspensions` matches
+`schema_version`.
+
 ### `candidacy_person_links`
 
 Audited occurrence-to-Person history. `link_status` is `confirmed`, `proposed`, `rejected`, or
@@ -232,11 +241,11 @@ build input and is replayed idempotently against the append-only link history.
 
 One row per Suspended Campaign: `candidacy_id`, `candidate_name`, `campaign_suspended_on`,
 `evidence_url`, `verified_on`, and `rationale`. The evidence is a first-party statement or major
-news coverage. A row must name exactly one 2026 Toronto mayoral Candidacy, under its exact
+news coverage. A row must name exactly one 2026 Toronto mayoral or councillor Candidacy, under its exact
 `candidate_name`. Both dates are strict `YYYY-MM-DD`, and the suspension date is no later than its
 verification or election day. Any other row fails the release instead of being skipped. The file
 is a checksummed build-manifest source and a required release input; it sets only
-`mayoral_candidates.json` `campaign_suspended_on`.
+`mayoral_candidates.json` `campaign_suspended_on` and `council_campaign_suspensions.json`.
 
 ### Endorsement curation inputs
 
