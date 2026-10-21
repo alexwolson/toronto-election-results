@@ -179,7 +179,7 @@ def test_candidate_feed_requires_the_campaign_suspension_column():
         build_mayoral_candidates_feed(rows, _reviews("can_current"))
 
 
-def test_repository_candidates_feed_dates_only_alexanders_suspended_campaign(tmp_path):
+def test_repository_candidates_feed_dates_the_curated_suspended_campaigns(tmp_path):
     reference = ROOT / "data/reference"
     output = write_mayoral_candidates_feed(
         ROOT / "data/out/election_results.csv",
@@ -200,6 +200,7 @@ def test_repository_candidates_feed_dates_only_alexanders_suspended_campaign(tmp
     }
     assert suspended == {
         "can_b43d9b5795cf5aed9b587a956e49951b": ("Chris Alexander", "2026-10-06"),
+        "can_4da98e5abddc51ceb2a0eca7fc79c228": ("Odessa Paloma Parker", "2026-10-21"),
     }
 
 
