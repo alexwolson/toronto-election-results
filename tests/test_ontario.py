@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import pandas as pd
 import pytest
 
 from toronto_election_results.ontario import (
@@ -9,13 +10,19 @@ from toronto_election_results.ontario import (
     EVENTS,
     REPORTS,
     RESULT_COLUMNS,
+    TABULATIONS,
+    TabulatedCandidate,
+    TabulationSpec,
     download_official_csv,
     download_ontario_sources,
+    download_ontario_tabulations,
     load_ontario_results,
     ontario_district_manifest,
     ontario_event_manifest,
     ontario_source_files,
     parse_official_results,
+    parse_tabulation,
+    tabulation_path,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures" / "ontario"
@@ -215,3 +222,100 @@ def test_downloads_each_official_report_component_to_its_stable_path(tmp_path):
             downloaded[0].parties_csv,
         )
     )
+
+
+def _tabulation(tmp_path, content=b"official tabulation", **overrides):
+    import hashlib
+
+    path = tmp_path / "tabulation.pdf"
+    path.write_bytes(content)
+    fields = {
+        "event_id": "on-2099-01-01-by-098",
+        "election_date": pd.Timestamp("2099-01-01").date(),
+        "boundary_regime": "ontario-2018-124",
+        "district_number": 98,
+        "tabulation_url": "https://example.com/tabulation.pdf",
+        "tabulation_sha256": hashlib.sha256(content).hexdigest(),
+        "affiliations_url": "https://example.com/results.html",
+        "candidates": (
+            TabulatedCandidate("ROE, ANN", "Ontario Liberal Party", 300),
+            TabulatedCandidate("DOE, JO", "Independent", 100),
+        ),
+        "rejected": 4,
+        "unmarked": 3,
+        "declined": 2,
+    }
+    fields.update(overrides)
+    return path, TabulationSpec(**fields)
+
+
+def test_pinned_tabulation_becomes_a_complete_by_election_contest(tmp_path):
+    path, spec = _tabulation(tmp_path)
+    result = parse_tabulation(path, spec)
+
+    assert list(result["candidate_name_raw"]) == ["ROE, ANN", "DOE, JO"]
+    assert list(result["elected"]) == [True, False]
+    assert list(result["affiliation_status"]) == ["party", "independent"]
+    assert set(result["official_district_id"]) == {"098"}
+    assert set(result["district_name"]) == {"Scarborough Southwest"}
+    assert result["eligible_electors"].isna().all()
+    assert result["ballots_cast"].isna().all()
+    assert set(result["source_resource"]) == {"Vote Totals From Official Tabulation"}
+    assert set(result.columns) == {*RESULT_COLUMNS, "source_resource"}
+
+
+def test_tabulation_that_differs_from_its_pin_fails(tmp_path):
+    path, spec = _tabulation(tmp_path)
+    path.write_bytes(b"a different file")
+    with pytest.raises(ValueError, match="pinned checksum"):
+        parse_tabulation(path, spec)
+
+
+def test_tabulation_needs_one_unique_winner(tmp_path):
+    path, spec = _tabulation(
+        tmp_path,
+        candidates=(
+            TabulatedCandidate("ROE, ANN", "Ontario Liberal Party", 300),
+            TabulatedCandidate("DOE, JO", "Independent", 300),
+        ),
+    )
+    with pytest.raises(ValueError, match="one unique winner"):
+        parse_tabulation(path, spec)
+
+
+def test_scarborough_southwest_2026_transcription_reconciles():
+    (spec,) = TABULATIONS
+    assert spec.event_id == "on-2026-09-03-by-098"
+    assert spec.event_id not in {event.event_id for event in EVENTS}
+    assert sum(candidate.votes for candidate in spec.candidates) == 22033
+    assert spec.rejected + spec.unmarked + spec.declined == 113
+    winner = max(spec.candidates, key=lambda candidate: candidate.votes)
+    assert winner.name == "SHABAN, FATIMA"
+
+
+def test_downloads_each_tabulation_to_its_stable_path(tmp_path):
+    _, spec = _tabulation(tmp_path)
+
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def raise_for_status(self):
+            return None
+
+        def iter_content(self, chunk_size):
+            yield b"official tabulation"
+
+    class Session:
+        def get(self, url, stream, timeout):
+            assert url == spec.tabulation_url
+            return Response()
+
+    (downloaded,) = download_ontario_tabulations(
+        tmp_path / "raw", tabulations=(spec,), session=Session()
+    )
+    assert downloaded == tabulation_path(tmp_path / "raw", spec)
+    assert parse_tabulation(downloaded, spec)["votes"].sum() == 400

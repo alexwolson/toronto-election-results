@@ -36,14 +36,7 @@ EXCLUDED_CALLS = [
     },
 ]
 
-UNACQUIRED_RESULTS = [
-    {
-        "label": "Scarborough Southwest provincial by-election",
-        "scheduled_date": "2026-09-03",
-        "reason": "not yet present in Elections Ontario's official result CSV export",
-        "source_url": "https://www.elections.on.ca/en/election-results/098.html",
-    }
-]
+UNACQUIRED_RESULTS: list[dict[str, str]] = []
 
 PENDING_EVENTS = [
     {

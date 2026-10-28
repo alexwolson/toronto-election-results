@@ -70,7 +70,7 @@ def test_manifest_separates_cancelled_calls_from_in_scope_acquisition_gaps(tmp_p
     assert "Don Valley West federal by-election" in labels
     assert "Beaches—East York federal by-election" not in labels
     assert "Scarborough Southwest provincial by-election" not in labels
-    assert manifest["unacquired_results"][0]["scheduled_date"] == "2026-09-03"
+    assert manifest["unacquired_results"] == []
     assert "2026 Toronto municipal general election" not in labels
     assert manifest["pending_events"] == [
         {

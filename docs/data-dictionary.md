@@ -10,8 +10,8 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 5,872 Candidacies, 928 Contests, and 69 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 5,515 Candidacies in 875
+The release contains 5,879 Candidacies, 929 Contests, and 70 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 5,522 Candidacies in 876
 Contests are final. Two historical source-missing Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
@@ -275,9 +275,13 @@ by-election pages do not report incumbency, so that source field remains null.
 
 The August 31, 2026 Beaches–East York federal by-election uses the returning officer's validated
 totals, including valid votes, rejected ballots, total ballots, and electors. It does not report
-an incumbent indicator. The September 3, 2026 Scarborough Southwest provincial by-election is an
-in-scope acquisition gap: its results are absent from the Elections Ontario official CSV export
-used by this build. The manifest records it in `unacquired_results` until acquisition.
+an incumbent indicator. The September 3, 2026 Scarborough Southwest provincial by-election uses
+Elections Ontario's "Vote Totals From Official Tabulation" PDF, because the official CSV export
+adds a by-election only with the next general election. The package reads no PDFs, so the
+district totals are transcribed in `ontario.TABULATIONS` and the downloaded file is pinned by
+checksum. Affiliations come from Elections Ontario's results page for the district. The
+tabulation prints no elector count, so electors, ballots cast and turnout are null for that
+Contest.
 
 Trustee result sources do not report a structured incumbent flag, and a complete historical roster
 for all four boards has not been acquired. Trustee `incumbent` is therefore null rather than

@@ -7,6 +7,7 @@ is selected by polling date and official electoral-district number rather than b
 
 from __future__ import annotations
 
+import hashlib
 import re
 from dataclasses import dataclass
 from datetime import date
@@ -322,6 +323,69 @@ EVENTS = (
 )
 
 
+@dataclass(frozen=True)
+class TabulatedCandidate:
+    name: str  # as printed in the official tabulation
+    party: str  # the affiliation Elections Ontario reports for the candidacy
+    votes: int
+
+
+@dataclass(frozen=True)
+class TabulationSpec:
+    """A by-election carried by its official tabulation until a report group includes it.
+
+    Elections Ontario adds a by-election to its CSV report groups only with the next general
+    election.  Until then its "Vote Totals From Official Tabulation" PDF is the official result.
+    This package reads no PDFs, so the district totals are transcribed here and the downloaded
+    file is pinned by checksum: a different file fails the build instead of silently disagreeing
+    with the transcription.  The tabulation prints no affiliations or elector count; affiliations
+    come from Elections Ontario's results page for the district.  Turnout operands are reported
+    together or not at all, so ballots cast stay null with the elector count; the rejected,
+    unmarked and declined totals are kept with the transcription for audit.
+    """
+
+    event_id: str
+    election_date: date
+    boundary_regime: str
+    district_number: int
+    tabulation_url: str
+    tabulation_sha256: str
+    affiliations_url: str
+    candidates: tuple[TabulatedCandidate, ...]
+    rejected: int
+    unmarked: int
+    declined: int
+
+
+TABULATION_RESOURCE = "Vote Totals From Official Tabulation"
+
+TABULATIONS = (
+    TabulationSpec(
+        "on-2026-09-03-by-098",
+        date(2026, 9, 3),
+        "ontario-2018-124",
+        98,
+        "https://www.elections.on.ca/content/dam/NGW/sitecontent/2026/results/"
+        "Vote%20Totals%20Report%20from%20Official%20Tabulation%20-%20Scarborough%20Southwest"
+        "%20098.pdf",
+        "d109b594e64851d8d6b00f4bf335752dfc86c21cb70819b599181905be59f998",
+        "https://www.elections.on.ca/en/election-results/098.html",
+        (
+            TabulatedCandidate("BEKKERING, MARK", "Green Party of Ontario", 753),
+            TabulatedCandidate("ELLIOTT, GORD", "Ontario Party", 237),
+            TabulatedCandidate("HAFIZ, AHSANUL", "Ontario Liberal Party", 6674),
+            TabulatedCandidate("PERDELWITZ, MICHAEL", "Independent", 129),
+            TabulatedCandidate("REES, CHRIS", "New Blue Party of Ontario", 178),
+            TabulatedCandidate("SHABAN, FATIMA", "New Democratic Party of Ontario", 8914),
+            TabulatedCandidate("TARUN, NOOR", "Progressive Conservative Party of Ontario", 5148),
+        ),
+        rejected=34,
+        unmarked=63,
+        declined=16,
+    ),
+)
+
+
 def ontario_event_manifest() -> pd.DataFrame:
     """Return the deterministic, cutoff-bounded Elections Ontario event manifest."""
     district_lookup = {
@@ -467,6 +531,86 @@ def download_ontario_sources(
             )
         downloaded.append(files)
     return tuple(downloaded)
+
+
+def tabulation_path(source_dir: str | Path, spec: TabulationSpec) -> Path:
+    """Return the deterministic cache path for one official tabulation PDF."""
+    return Path(source_dir) / "tabulations" / f"{spec.event_id}.pdf"
+
+
+def download_ontario_tabulations(
+    source_dir: str | Path,
+    *,
+    tabulations: tuple[TabulationSpec, ...] = TABULATIONS,
+    session: requests.Session | None = None,
+    overwrite: bool = False,
+) -> tuple[Path, ...]:
+    """Download each pinned official tabulation PDF atomically to its stable path."""
+    return tuple(
+        download_official_csv(
+            spec.tabulation_url,
+            tabulation_path(source_dir, spec),
+            session=session,
+            overwrite=overwrite,
+        )
+        for spec in tabulations
+    )
+
+
+def parse_tabulation(path: str | Path, spec: TabulationSpec) -> pd.DataFrame:
+    """Normalize one pinned official tabulation into the adapter's result shape."""
+    digest = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    if digest != spec.tabulation_sha256:
+        raise ValueError(f"{spec.event_id}: official tabulation does not match its pinned checksum")
+    if any(event.event_id == spec.event_id for event in EVENTS):
+        raise ValueError(f"{spec.event_id}: a report group now carries this event")
+    district_lookup = {
+        (district.boundary_regime, district.source_number): district for district in DISTRICTS
+    }
+    district = district_lookup[(spec.boundary_regime, spec.district_number)]
+    names = [candidate.name for candidate in spec.candidates]
+    if len(set(names)) != len(names):
+        raise ValueError(f"{spec.event_id}: tabulated candidate names must be unique")
+    votes = [candidate.votes for candidate in spec.candidates]
+    if votes.count(max(votes)) != 1:
+        raise ValueError(f"{spec.event_id}: official tabulation must have one unique winner")
+    source_detail = f"{spec.tabulation_url}; affiliations: {spec.affiliations_url}"
+    rows = []
+    for candidate in spec.candidates:
+        independent = candidate.party in {"Independent", "No Affiliation"}
+        rows.append(
+            {
+                "event_id": spec.event_id,
+                "election_date": spec.election_date,
+                "election_type": "by_election",
+                "election_authority": "Elections Ontario",
+                "represented_body": "Legislative Assembly of Ontario",
+                "office_type": "mpp",
+                "boundary_regime": spec.boundary_regime,
+                "official_district_id": f"{district.source_number:03d}",
+                "district_name": district.district_name,
+                "candidate_name_raw": candidate.name,
+                "party_name_raw": candidate.party,
+                "affiliation_status": "independent" if independent else "party",
+                "votes": candidate.votes,
+                "elected": candidate.votes == max(votes),
+                "incumbent_reported": pd.NA,
+                "eligible_electors": pd.NA,
+                "ballots_cast": pd.NA,
+                "outcome_method": "vote",
+                "coverage_status": "complete",
+                "source_detail": source_detail,
+                "source_resource": TABULATION_RESOURCE,
+            }
+        )
+    result = pd.DataFrame(rows, columns=[*RESULT_COLUMNS, "source_resource"])
+    for column in ("votes", "eligible_electors", "ballots_cast"):
+        result[column] = pd.array(result[column], dtype="Int64")
+    for column in ("elected", "incumbent_reported"):
+        result[column] = pd.array(result[column], dtype="boolean")
+    return result.sort_values(
+        ["elected", "votes", "candidate_name_raw"], ascending=[False, False, True]
+    ).reset_index(drop=True)
 
 
 def _polling_date(value: object) -> date:
@@ -645,9 +789,10 @@ def load_ontario_results(
     source_dir: str | Path,
     *,
     reports: tuple[ReportSpec, ...] = REPORTS,
+    tabulations: tuple[TabulationSpec, ...] = (),
     validate: bool = True,
 ) -> pd.DataFrame:
-    """Load downloaded official report trios into one normalized Toronto result frame."""
+    """Load downloaded official report trios, then any pinned official tabulations."""
     frames = []
     for report in reports:
         files = ontario_source_files(source_dir, report)
@@ -675,4 +820,10 @@ def load_ontario_results(
     ).reset_index(drop=True)
     if validate:
         _validate_manifest_coverage(results, reports)
+    if tabulations:
+        results = pd.concat(
+            [results]
+            + [parse_tabulation(tabulation_path(source_dir, spec), spec) for spec in tabulations],
+            ignore_index=True,
+        )
     return results
