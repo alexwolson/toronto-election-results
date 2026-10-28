@@ -40,7 +40,12 @@ from .mayoral_career import (
     load_mayoral_career_backfills,
 )
 from .municipal import load_council_results
-from .ontario import download_ontario_sources, load_ontario_results
+from .ontario import (
+    TABULATIONS,
+    download_ontario_sources,
+    download_ontario_tabulations,
+    load_ontario_results,
+)
 from .pending_candidates import load_pending_council_candidates
 from .person_alias_curations import (
     PERSON_ALIAS_CURATIONS_FILENAME,
@@ -309,7 +314,8 @@ def _load_source_adapters(
     federal = load_federal_results(raw / "federal", download=download)
     if download:
         download_ontario_sources(raw / "ontario")
-    ontario = load_ontario_results(raw / "ontario")
+        download_ontario_tabulations(raw / "ontario")
+    ontario = load_ontario_results(raw / "ontario", tabulations=TABULATIONS)
     pending_council = load_pending_council_candidates(
         raw / "council" / "candidates_2026",
         download=download or refresh_candidates,
