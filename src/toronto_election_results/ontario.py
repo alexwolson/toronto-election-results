@@ -62,6 +62,8 @@ REPORTS = (
     ReportSpec(1, 932, 925, 930),
     ReportSpec(45, 1050, 1043, 1048),
     ReportSpec(48, 1096, 1089, 1094),
+    ReportSpec(6, 532, 525, 530),
+    ReportSpec(7, 876, 869, 874),
 )
 
 
@@ -71,6 +73,42 @@ def _districts(regime: str, entries: tuple[tuple[int, str], ...]) -> tuple[Distr
         for number, name in entries
     )
 
+
+_DISTRICTS_1987 = _districts(
+    "ontario-1987-130",
+    (
+        (3, "Beaches-Woodbine"),
+        (17, "Don Mills"),
+        (18, "Dovercourt"),
+        (19, "Downsview"),
+        (25, "Eglinton"),
+        (29, "Etobicoke-Humber"),
+        (30, "Etobicoke-Lakeshore"),
+        (31, "Etobicoke-Rexdale"),
+        (32, "Etobicoke West"),
+        (34, "Fort York"),
+        (45, "High Park-Swansea"),
+        (54, "Lawrence"),
+        (75, "Oakwood"),
+        (76, "Oriole"),
+        (84, "Parkdale"),
+        (94, "Riverdale"),
+        (95, "St. Andrew-St. Patrick"),
+        (98, "St. George-St. David"),
+        (101, "Scarborough-Agincourt"),
+        (102, "Scarborough Centre"),
+        (103, "Scarborough East"),
+        (104, "Scarborough-Ellesmere"),
+        (105, "Scarborough North"),
+        (106, "Scarborough West"),
+        (120, "Willowdale"),
+        (121, "Wilson Heights"),
+        (126, "York East"),
+        (127, "York Mills"),
+        (129, "York South"),
+        (130, "Yorkview"),
+    ),
+)
 
 _DISTRICTS_1999 = _districts(
     "ontario-1999-103",
@@ -159,7 +197,7 @@ _DISTRICTS_2018 = _districts(
     ),
 )
 
-DISTRICTS = _DISTRICTS_1999 + _DISTRICTS_2007 + _DISTRICTS_2018
+DISTRICTS = _DISTRICTS_1987 + _DISTRICTS_1999 + _DISTRICTS_2007 + _DISTRICTS_2018
 
 _NUMBERS_BY_REGIME = {
     regime: tuple(d.source_number for d in DISTRICTS if d.boundary_regime == regime)
@@ -167,6 +205,51 @@ _NUMBERS_BY_REGIME = {
 }
 
 EVENTS = (
+    EventSpec(
+        "on-1995-general",
+        date(1995, 6, 8),
+        "general",
+        "ontario-1987-130",
+        7,
+        _NUMBERS_BY_REGIME["ontario-1987-130"],
+        177,
+    ),
+    EventSpec(
+        "on-1996-05-23-by-129",
+        date(1996, 5, 23),
+        "by_election",
+        "ontario-1987-130",
+        6,
+        (129,),
+        6,
+    ),
+    EventSpec(
+        "on-1997-09-04-by-076",
+        date(1997, 9, 4),
+        "by_election",
+        "ontario-1987-130",
+        6,
+        (76,),
+        5,
+    ),
+    EventSpec(
+        "on-1999-general",
+        date(1999, 6, 3),
+        "general",
+        "ontario-1999-103",
+        6,
+        _NUMBERS_BY_REGIME["ontario-1999-103"],
+        149,
+    ),
+    EventSpec(
+        "on-2001-09-20-by-003",
+        date(2001, 9, 20),
+        "by_election",
+        "ontario-1999-103",
+        5,
+        (3,),
+        8,
+    ),
     EventSpec(
         "on-2003-general",
         date(2003, 10, 2),
@@ -617,8 +700,14 @@ def _polling_date(value: object) -> date:
     return pd.to_datetime(str(value).strip(), format="%Y-%b-%d").date()
 
 
-def _party_names(parties: pd.DataFrame) -> dict[tuple[int, str, str], str]:
-    names: dict[tuple[int, str, str], str] = {}
+def _party_names(parties: pd.DataFrame) -> dict[tuple[int, str, str], str | None]:
+    """Map (year, election type, code) to a party name.
+
+    Older report groups hold several same-year by-elections whose party lists can spell a code
+    differently.  Such a key maps to ``None`` and fails only if an in-scope Contest uses it.
+    """
+    names: dict[tuple[int, str, str], str | None] = {}
+    conflicts: set[tuple[int, str, str]] = set()
     for row in parties.itertuples(index=False):
         event_name = str(row.EventNameEnglish).strip()
         year_match = re.search(r"\b(?:19|20)\d{2}\b", event_name)
@@ -630,9 +719,13 @@ def _party_names(parties: pd.DataFrame) -> dict[tuple[int, str, str], str]:
         if not code or not name:
             continue
         key = (int(year_match.group()), election_type, code)
+        if key in conflicts:
+            continue
         existing = names.get(key)
         if existing is not None and existing != name:
-            raise ValueError(f"political-interest code {code!r} has conflicting names for {key}")
+            conflicts.add(key)
+            names[key] = None
+            continue
         names[key] = name
     return names
 
@@ -701,14 +794,16 @@ def parse_official_results(
             party_name = pd.NA
         elif code in {"IND", "NA"}:
             affiliation_status = "independent"
-            party_name = party_names.get(
-                (event.election_date.year, event.election_type, code), code
+            party_name = (
+                party_names.get((event.election_date.year, event.election_type, code)) or code
             )
         else:
             affiliation_status = "party"
             party_key = (event.election_date.year, event.election_type, code)
             if party_key not in party_names:
                 raise ValueError(f"no party name reported for political-interest code {code!r}")
+            if party_names[party_key] is None:
+                raise ValueError(f"political-interest code {code!r} has conflicting names")
             party_name = party_names[party_key]
 
         incumbent_raw = str(row.IsMemberOfPreviousLegislature).strip()

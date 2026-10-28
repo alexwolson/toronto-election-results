@@ -2,7 +2,8 @@
 
 The release covers completed, single-seat election contests wholly within the City of Toronto from
 2003-01-01 through 2026-10-26 (the inclusive election-date scope, not a claim that
-future outcomes are known). It also includes the official candidate-list snapshot as of
+future outcomes are known). Provincial (MPP) coverage starts earlier, with the 1995-06-08 Ontario
+general election, and includes the 1996, 1997 and 2001 Toronto by-elections under ADR 0010. It also includes the official candidate-list snapshot as of
 2026-09-30 for the Toronto municipal general election scheduled for 2026-10-26. Contested
 Candidacies remain `pending` with no result values; four officially declared trustee Acclamations
 are final with null vote totals. The dataset includes Mayor, City
@@ -10,8 +11,8 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 5,879 Candidacies, 929 Contests, and 70 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 5,522 Candidacies in 876
+The release contains 6,221 Candidacies, 981 Contests, and 72 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 5,864 Candidacies in 928
 Contests are final. Two historical source-missing Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.

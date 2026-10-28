@@ -3674,7 +3674,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv",
             "https://results.elections.on.ca/api/report-groups/4/report-outputs/510/csv",
-            "https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv",
         ),
         rationale=(
             "Official Elections Ontario records enumerate the distinctive Freedom Party "
@@ -9618,5 +9617,43 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "https://freedomparty.on.ca/",
         ),
         "Elections Ontario and Freedom Party records preserve Simmons's distinctive Freedom Party candidacy identity across the ten selected provincial occurrences and existing anchor.",
+    ),
+)
+
+DEFAULT_IDENTITY_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="rina-morra-family-coalition-ontario-continuity",
+        preferred_name="Rina Morra",
+        occurrences=tuple(
+            _pinned_occurrence(
+                candidacy_id, event_id, "ontario_legislative_assembly", "mpp", candidate_name
+            )
+            for candidacy_id, event_id, candidate_name in (
+                ("can_b28b94f9830d5c5baedc99d538d20728", "on-1995-general", "Rina Morra"),
+                ("can_91ea83901d965da59f2d733caba474c6", "on-1999-general", "RINA MORRA"),
+                ("can_ad5ae4adb5e8505d8823741a38bcea47", "on-2003-general", "RINA MORRA"),
+                ("can_f5ed926441345be882d3c66030cdc29f", "on-2005-11-24-by-076", "RINA MORRA"),
+                ("can_6430a971f7135308812dd4354e598dcb", "on-2007-general", "RINA MORRA"),
+            )
+        ),
+        evidence_urls=(
+            "https://theinterim.com/politics/fcp-candidates-put-faith-family-on-the-agenda/",
+            "https://results.elections.on.ca/api/report-groups/7/report-outputs/876/csv",
+            "https://results.elections.on.ca/api/report-groups/6/report-outputs/532/csv",
+            "https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv",
+            "https://results.elections.on.ca/api/report-groups/4/report-outputs/510/csv",
+            "https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv",
+        ),
+        rationale=(
+            "The Interim's 2007 profile of Family Coalition Party candidate Rina Morra says she "
+            "has run for the party several times since its founding. Every Rina Morra ballot "
+            "from 1995 to 2007 is a Family Coalition candidacy in a Toronto riding, and no other "
+            "Rina Morra appears in the results."
+        ),
+        registry_person_ids=(
+            "per_87ce1c960f915a0cac91d688c6a52eaa",
+            "per_346838d84822509795bf2169db503a78",
+        ),
+        canonical_person_id="per_87ce1c960f915a0cac91d688c6a52eaa",
     ),
 )

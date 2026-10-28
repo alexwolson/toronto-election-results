@@ -155,16 +155,6 @@ _BACKFILL_METADATA = {
         "east-york-1994-citywide",
         "city",
     ),
-    "mcb_37e25614fdc95e7791c39c3debf7dbf7": (
-        "on-1995-general",
-        "ontario-1987-130",
-        "york-south",
-    ),
-    "mcb_7c623313af1b56c4a37bcc5e554a7472": (
-        "on-1996-05-23-by-york-south",
-        "ontario-1987-130",
-        "york-south",
-    ),
     "mcb_f2c19ef41cbe59fbb23e7dbf1f81cb7e": (
         "ec-ge-36",
         "federal-1996-representation-order",
@@ -174,11 +164,6 @@ _BACKFILL_METADATA = {
         "toronto-2000-general",
         "toronto-2000-citywide",
         "city",
-    ),
-    "mcb_547a8362a0225badb1bcdd82276851d0": (
-        "on-2001-09-20-by-003",
-        "ontario-1999-103",
-        "003",
     ),
     "mcb_0995465250bb5713ab61c235d7286bff": (
         "on-2012-09-06-by-039",
