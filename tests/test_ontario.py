@@ -13,6 +13,7 @@ from toronto_election_results.ontario import (
     TABULATIONS,
     TabulatedCandidate,
     TabulationSpec,
+    _party_names,
     download_official_csv,
     download_ontario_sources,
     download_ontario_tabulations,
@@ -33,6 +34,8 @@ def test_manifest_covers_every_in_scope_ontario_event():
     by_elections = [event for event in EVENTS if event.election_type == "by_election"]
 
     assert [event.election_date.isoformat() for event in general] == [
+        "1995-06-08",
+        "1999-06-03",
         "2003-10-02",
         "2007-10-10",
         "2011-10-06",
@@ -41,14 +44,15 @@ def test_manifest_covers_every_in_scope_ontario_event():
         "2022-06-02",
         "2025-02-27",
     ]
-    assert len(by_elections) == 10
-    assert sum(event.expected_candidate_rows for event in EVENTS) == 1172
-    assert len(REPORTS) == 7
+    assert len(by_elections) == 13
+    assert sum(event.expected_candidate_rows for event in EVENTS) == 1517
+    assert len(REPORTS) == 9
 
     districts_per_regime = {}
     for district in DISTRICTS:
         districts_per_regime.setdefault(district.boundary_regime, set()).add(district.district_id)
     assert {regime: len(ids) for regime, ids in districts_per_regime.items()} == {
+        "ontario-1987-130": 30,
         "ontario-1999-103": 22,
         "ontario-2007-107": 22,
         "ontario-2018-124": 25,
@@ -57,7 +61,7 @@ def test_manifest_covers_every_in_scope_ontario_event():
     event_manifest = ontario_event_manifest()
     district_manifest = ontario_district_manifest()
     assert event_manifest["event_id"].is_unique
-    assert len(event_manifest) == 17
+    assert len(event_manifest) == 22
     assert list(event_manifest["event_id"]) == [event.event_id for event in EVENTS]
     assert list(district_manifest["district_id"]) == [
         district.district_id for district in DISTRICTS
@@ -319,3 +323,15 @@ def test_downloads_each_tabulation_to_its_stable_path(tmp_path):
     )
     assert downloaded == tabulation_path(tmp_path / "raw", spec)
     assert parse_tabulation(downloaded, spec)["votes"].sum() == 400
+
+
+def test_same_year_by_election_party_spellings_fail_only_when_used():
+    parties = pd.DataFrame(
+        {
+            "EventNameEnglish": ["1993 By Election (ED017)", "1993 By Election (ED028)"],
+            "PoliticalInterestCode": ["FR", "FR"],
+            "PartyFullNameEnglish": ["FREEDOM PARTY", "FREEDOM PARTY OF ONTARIO"],
+        }
+    )
+
+    assert _party_names(parties) == {(1993, "by_election", "FR"): None}
