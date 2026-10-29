@@ -37,7 +37,7 @@ Endorsements are positive, open-world facts: an absent fact never means that an 
 declined to endorse a Candidacy. Separate Endorser-by-Contest coverage records say how completely
 each approved Endorser was searched.
 
-The release contains **8,074 Candidacies in 1,388 Contests across 80 Election events**: 7,717 final
+The release contains **8,070 Candidacies in 1,388 Contests across 80 Election events**: 7,713 final
 Candidacies in 1,335 Contests, plus 357 pending Candidacies in 51 Contests scheduled for
 2026-10-26. Two void historical Contests have no Candidacy rows. The endorsement companion dataset contains **9 Endorsers, 161 audited source
 assertions, 160 confirmed positive Endorsement facts, and 3,051 Endorser-by-Contest coverage

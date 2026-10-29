@@ -14,7 +14,9 @@ school-board sections lack seat counts, ward labels and some whole Contests, and
 1994 council Contests (North York council wards 3–5 and five Metro wards, all but two acclaimed),
 so those rows come from the Toronto Star's printed final results (16 November 1994 and 14 November
 1997, read from ProQuest Historical Newspapers) and carry `source_authority = Toronto Star`; the
-reconciliation is described in `docs/research/school-boards-1994-1997-2026-10-29.md`. Twenty
+reconciliation is described in `docs/research/school-boards-1994-1997-2026-10-29.md`. The archive
+also lists four 1994 North York trustee candidates under council Wards 1 and 2; those council rows
+are not published. Twenty
 1994 and 1997 French-language trustee Candidacies are `partial`, because the Star's figures and the
 archive's municipal subtotals disagree. East York's 1994 council and school wards, five 1994
 Toronto Board of Education wards and every 1997 council ward elected two members
@@ -35,8 +37,8 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 8,074 Candidacies, 1,388 Contests, and 80 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 7,717 Candidacies in 1,335
+The release contains 8,070 Candidacies, 1,388 Contests, and 80 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 7,713 Candidacies in 1,335
 Contests are final. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.

@@ -10638,6 +10638,31 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         registry_person_ids=("per_e1baa72d43c95abba5db0f3235581d4c",),
         canonical_person_id="per_e1baa72d43c95abba5db0f3235581d4c",
     ),
+    CuratedIdentityAssertion(
+        assertion_id="david-kendall-1994-north-york-trustee-record",
+        preferred_name="David Kendall",
+        occurrences=(
+            _pinned_occurrence(
+                "can_e2d4010f22d2520189f8ad295cc1b7ef",
+                "evt_55417977ab9752b792eeda64734a2280",
+                "north_york_board_of_education",
+                "trustee",
+                "David Kendall",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1355150144",
+            "https://en.wikipedia.org/wiki/1994_Toronto_municipal_election",
+        ),
+        rationale=(
+            "The City archive listed the 1994 North York Board of Education Ward 1 result (David Kendall 1,872, Sheila Lambrinos 1,116) inside council Ward 1, so an earlier release published a council candidacy for \"Dave Kendall\". The Toronto Star's 16 November 1994 tables and Wikipedia's council results place the race on the school board; the misfiled council row was retired, and the Person created for it is this trustee."
+        ),
+        registry_person_ids=(
+            "per_3f06bedbe8dd5e9c88458c78d6eed7e3",
+            "per_4e171fd725dc5558ba61132449391fec",
+        ),
+        canonical_person_id="per_3f06bedbe8dd5e9c88458c78d6eed7e3",
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS

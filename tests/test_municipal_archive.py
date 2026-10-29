@@ -47,7 +47,7 @@ def test_archive_contests_elect_their_seat_counts():
         .sum()
         == 4
     )
-    assert len(results) == 1_339
+    assert len(results) == 1_335
 
 
 def test_1994_and_1997_trustee_contests_elect_their_seat_counts():

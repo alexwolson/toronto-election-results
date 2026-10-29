@@ -30,7 +30,7 @@ _RESOURCES = {
     "1997-11-10": "Previous election results — 1997 General Municipal Election (archived)",
     "2000-11-13": "Vote 2000 — final results (archived)",
 }
-_EXPECTED_ROWS = {"1994-11-14": 688, "1997-11-10": 366, "2000-11-13": 285}
+_EXPECTED_ROWS = {"1994-11-14": 684, "1997-11-10": 366, "2000-11-13": 285}
 _STAR_RESOURCES = {
     "1994-11-14": "Toronto Star, 16 November 1994, final results (ProQuest Historical Newspapers)",
     "1997-11-10": "Toronto Star, 14 November 1997, School Board Results (ProQuest Historical Newspapers)",

@@ -322,12 +322,25 @@ def _ward(label: str) -> int:
     return int(re.search(r"(\d+)\s*$", label).group(1))
 
 
+# The archive lists four North York Board of Education candidates (trustee Wards 1 and 2) inside
+# council Wards 1 and 2. The Toronto Star's council and school-board tables (16 November 1994,
+# page A8) and Wikipedia's council results place them in the trustee races, with the same votes.
+MISFILED_TRUSTEES_1994 = {
+    ("north_york", "Kendall, Dave"),
+    ("north_york", "Lambrinos, Sheila"),
+    ("north_york", "Churchill, Bob"),
+    ("north_york", "Stella, Connie"),
+}
+
+
 def _rows_1994() -> list[dict]:
     out = []
     names = {v[0]: v[1] for v in MUNICIPALITIES_1994.values()}
     seats = {v[0]: v[2] for v in MUNICIPALITIES_1994.values()}
     for row in _parse_pdf(REFERENCE / "municipal_archive" / "results_1994.pdf", 1994):
         muni = row["muni"]
+        if row["office"] == "councillor" and (muni, row.get("name")) in MISFILED_TRUSTEES_1994:
+            continue
         base = {
             "election_date": "1994-11-14",
             "election_authority": AUTHORITY_1994[muni],
