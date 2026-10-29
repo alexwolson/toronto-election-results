@@ -119,7 +119,8 @@ _Avoid_: poll, precinct.
 **Contest**:
 A single race for one Office type and Represented body, in one electoral geography, at one Election
 event. The electoral geography may be the whole city, a Ward, a Trustee ward, or an Electoral
-district. Every in-scope Contest is single-seat plurality: it elects at most one Person.
+district. A Contest elects `seats_available` Persons by plurality. Every Contest from 2003 onward
+is single-seat; some pre-amalgamation wards elected two or more members (ADR 0011).
 _Avoid_: race, seat.
 
 **Candidacy**:

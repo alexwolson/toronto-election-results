@@ -299,3 +299,22 @@ def test_district_identity_is_scoped_to_body_and_boundary_regime():
     assert len(districts) == 2
     assert districts["district_id"].nunique() == 2
     assert set(districts["geometry_status"]) == {"not_acquired"}
+
+
+def test_top_vote_totals_fill_the_seats_and_leave_a_last_seat_tie_null():
+    from toronto_election_results.schema import elect_top_vote_totals
+
+    votes = pd.Series([900, 700, 700, 650, 10])
+    assert elect_top_vote_totals(votes, 1).tolist() == [True, False, False, False, False]
+    assert elect_top_vote_totals(votes, 3).tolist() == [True, True, True, False, False]
+    tied = elect_top_vote_totals(votes, 2)
+    assert tied.iloc[0] is True or bool(tied.iloc[0])
+    assert tied.iloc[1:3].isna().all()
+    assert tied.iloc[3:].eq(False).all()
+
+
+def test_seats_available_must_be_a_positive_integer():
+    from toronto_election_results.schema import elect_top_vote_totals
+
+    with pytest.raises(ValueError, match="positive integer"):
+        elect_top_vote_totals(pd.Series([1, 2]), 0)

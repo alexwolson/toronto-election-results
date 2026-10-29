@@ -1,6 +1,6 @@
 # Data dictionary — Toronto Election Results v2.1
 
-The release covers completed, single-seat election contests wholly within the City of Toronto from
+The release covers completed election contests wholly within the City of Toronto from
 2003-01-01 through 2026-10-26 (the inclusive election-date scope, not a claim that
 future outcomes are known). Under ADR 0010, provincial (MPP) coverage starts with the 1995-06-08
 Ontario general election, including the 1996, 1997 and 2001 Toronto by-elections, and federal (MP)
@@ -58,11 +58,12 @@ modelling. The authoritative normalized entities remain available as companion t
 | `vote_share` | float | pending/no poll/incomplete/zero denominator | `votes / total_contest_votes`. |
 | `vote_rank` | integer | pending/no poll/incomplete | Competition rank; tied vote totals share a rank. |
 | `n_candidates` | integer | never on Candidacy rows | Number of known Candidacies in the Contest. |
+| `seats_available` | integer | never | Members the Contest elects, from the source or governing statute (ADR 0011). `1` for every Contest from 2003 onward. In a multi-seat Contest voters may cast several votes, so `vote_share` is a share of votes, not voters. |
 | `eligible_electors` | integer | pending/unavailable/inapplicable | Authority count at the stated `turnout_scope`. |
 | `ballots_cast` | integer | pending/unavailable/inapplicable | Electors voting at the same scope as `eligible_electors`. |
 | `turnout` | float | pending/either operand unavailable | `ballots_cast / eligible_electors`. |
 | `turnout_scope` | string | turnout unavailable | Qualification/geography shared by both turnout operands. |
-| `elected` | boolean | pending or unresolved official outcome | Authority-certified result; not blindly rederived from vote maximum. |
+| `elected` | boolean | pending or unresolved official outcome | Authority-certified result; not blindly rederived from vote maximum. Where a source lists votes without marking winners, the top `seats_available` totals are elected and candidacies tied across the last seat stay null. |
 | `acclaimed` | boolean | never | True only for an official Acclamation. |
 | `outcome_method` | enum | never | `pending`, `vote`, `acclamation`, `void`, or another authority disposition. |
 | `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for the 2026 candidate snapshot. |
@@ -70,6 +71,8 @@ modelling. The authoritative normalized entities remain available as companion t
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_reported` | boolean | authority does not report it | Unmodified source flag; the modelled `incumbent` field uses project semantics. |
+| `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies; null until predecessor rosters are acquired. |
+| `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
 | `source_authority` | string | never | Organization responsible for the row's official record. |
 | `source_resource` | string | never | Official dataset/report family. |
 | `source_detail` | string | never | Concrete official URL/file detail. |
@@ -104,7 +107,7 @@ Toronto municipal general election is present because its official candidate ros
 ### `contests`
 
 One row per Contest, including event/body/office/district keys, Outcome method, Result status,
-Coverage status, single-seat cardinality, vote total, turnout operands/scope, and source fields.
+Coverage status, `seats_available`, vote total, turnout operands/scope, and source fields.
 This table also contains pending Contests with null result metrics and void/source-missing Contests
 that correctly have no Candidacy row.
 
@@ -305,7 +308,8 @@ and no Acclamation. The build also rejects broken foreign keys, duplicate stable
 missing persistent `source_candidacy_id` values, or disagreement between repeated
 Event/Contest/Electoral district labels and their keyed dimensions. It rejects invalid Party
 relationships, negative votes, non-reconciling totals/shares, invalid Acclamation nulls, resolved
-single-seat Contests without exactly one elected Candidacy, mismatched turnout operands, ballots
+Contests without exactly `seats_available` elected Candidacies (null `elected` is allowed only for
+candidacies tied across the last seat), Acclamations with more candidates than seats, mismatched turnout operands, ballots
 exceeding eligible electors, unsupported published Person/incumbency links, or invalid/materially
 out-of-bounds available geometry.
 

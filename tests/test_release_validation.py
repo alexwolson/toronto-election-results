@@ -17,27 +17,31 @@ from toronto_election_results.schema import (
 )
 
 
-def _release():
-    rows = pd.DataFrame(
-        {
-            "event_id": ["event-a", "event-a"],
-            "election_date": ["2025-04-28", "2025-04-28"],
-            "election_type": ["general", "general"],
-            "election_authority": ["elections_canada", "elections_canada"],
-            "represented_body": ["canada_house_of_commons", "canada_house_of_commons"],
-            "office_type": ["mp", "mp"],
-            "boundary_regime": ["federal_2023_order", "federal_2023_order"],
-            "official_district_id": ["35099", "35099"],
-            "district_name": ["Example", "Example"],
-            "candidate_name_raw": ["Alex", "Bailey"],
-            "source_candidacy_id": ["candidate-1", "candidate-2"],
-            "party_name_raw": ["Example Party", "Independent"],
-            "votes": [60, 40],
-            "elected": [True, False],
-            "outcome_method": ["vote", "vote"],
-            "coverage_status": ["complete", "complete"],
-            "source_detail": ["official", "official"],
-        }
+def _release(rows=None):
+    rows = (
+        rows
+        if rows is not None
+        else pd.DataFrame(
+            {
+                "event_id": ["event-a", "event-a"],
+                "election_date": ["2025-04-28", "2025-04-28"],
+                "election_type": ["general", "general"],
+                "election_authority": ["elections_canada", "elections_canada"],
+                "represented_body": ["canada_house_of_commons", "canada_house_of_commons"],
+                "office_type": ["mp", "mp"],
+                "boundary_regime": ["federal_2023_order", "federal_2023_order"],
+                "official_district_id": ["35099", "35099"],
+                "district_name": ["Example", "Example"],
+                "candidate_name_raw": ["Alex", "Bailey"],
+                "source_candidacy_id": ["candidate-1", "candidate-2"],
+                "party_name_raw": ["Example Party", "Independent"],
+                "votes": [60, 40],
+                "elected": [True, False],
+                "outcome_method": ["vote", "vote"],
+                "coverage_status": ["complete", "complete"],
+                "source_detail": ["official", "official"],
+            }
+        )
     )
     candidacies = derive_result_metrics(attach_parties(normalize_adapter_frame(rows)))
     candidacies["person_id"] = pd.Series(pd.NA, index=candidacies.index, dtype="string")
@@ -281,7 +285,60 @@ def test_flags_complete_resolved_contest_without_one_elected_candidate():
 
     issues = validate_release(*release)
 
-    assert any("must have exactly one elected" in issue for issue in issues)
+    assert any("must have exactly 1 elected" in issue for issue in issues)
+
+
+def _two_seat_rows(votes, elected, seats=2):
+    n = len(votes)
+    return pd.DataFrame(
+        {
+            "event_id": ["event-b"] * n,
+            "election_date": ["1997-11-10"] * n,
+            "election_type": ["general"] * n,
+            "election_authority": ["toronto_city_clerk"] * n,
+            "represented_body": ["toronto_city_council"] * n,
+            "office_type": ["councillor"] * n,
+            "boundary_regime": ["toronto-1997-wards"] * n,
+            "official_district_id": ["1"] * n,
+            "district_name": ["Ward 1"] * n,
+            "candidate_name_raw": [f"Candidate {i}" for i in range(n)],
+            "source_candidacy_id": [f"candidate-{i}" for i in range(n)],
+            "party_name_raw": [pd.NA] * n,
+            "votes": votes,
+            "elected": pd.array(elected, dtype="boolean"),
+            "seats_available": [seats] * n,
+            "outcome_method": ["vote"] * n,
+            "coverage_status": ["complete"] * n,
+            "source_detail": ["official"] * n,
+        }
+    )
+
+
+def test_two_seat_contest_with_two_winners_is_valid():
+    release = _release(_two_seat_rows([500, 400, 100], [True, True, False]))
+
+    assert validate_release(*release) == []
+    assert release[2]["seats_available"].tolist() == [2]
+
+
+def test_two_seat_contest_needs_exactly_two_winners():
+    issues = validate_release(*_release(_two_seat_rows([500, 400, 100], [True, False, False])))
+
+    assert any("must have exactly 2 elected candidacies" in issue for issue in issues)
+
+
+def test_tie_for_the_last_seat_may_leave_the_tied_candidacies_null():
+    rows = _two_seat_rows([500, 300, 300, 100], [True, None, None, False])
+
+    assert validate_release(*_release(rows)) == []
+
+
+def test_null_elected_outside_a_last_seat_tie_is_flagged():
+    rows = _two_seat_rows([500, 400, 100], [True, True, None])
+
+    issues = validate_release(*_release(rows))
+
+    assert any("outside a tie for the last seat" in issue for issue in issues)
 
 
 def test_flags_vote_share_or_total_that_does_not_reconcile():
@@ -453,3 +510,15 @@ def test_final_results_after_election_day_remain_out_of_scope():
     release[1] = build_events(release[0])
     issues = validate_release(*release, as_of=date(2026, 10, 28))
     assert any("after the 2026-10-26 coverage horizon" in issue for issue in issues)
+
+
+def test_flags_predecessor_incumbency_outside_a_first_amalgamated_election():
+    release = list(_release())
+    candidacies = release[0].copy()
+    candidacies["predecessor_incumbent"] = pd.array([False, pd.NA], dtype="boolean")
+    candidacies["predecessor_office_tenure_id"] = pd.array([pd.NA, pd.NA], dtype="string")
+    release[0] = candidacies
+
+    issues = validate_release(*release)
+
+    assert any("outside a first amalgamated election" in issue for issue in issues)

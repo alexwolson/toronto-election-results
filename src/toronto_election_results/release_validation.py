@@ -18,6 +18,78 @@ _TORONTO_2026_ACCLAMATION_DECLARATION = (
 )
 
 
+def _predecessor_incumbency_issues(
+    candidacies: pd.DataFrame, office_tenures: pd.DataFrame | None
+) -> list[str]:
+    """ADR 0012 gates: first amalgamated elections only, backed by a predecessor tenure."""
+
+    from .predecessor_incumbency import SUCCESSOR_OFFICES
+
+    issues: list[str] = []
+    successor = {
+        (office.represented_body, office.office_type, office.first_election): office
+        for office in SUCCESSOR_OFFICES
+    }
+    keys = [
+        (body, office, pd.Timestamp(day).date())
+        for body, office, day in zip(
+            candidacies["represented_body"],
+            candidacies["office_type"],
+            candidacies["election_date"],
+            strict=True,
+        )
+    ]
+    in_scope = pd.Series([key in successor for key in keys], index=candidacies.index)
+    flagged = candidacies["predecessor_incumbent"].notna()
+    if (flagged & ~in_scope).any():
+        issues.append("predecessor_incumbent is set outside a first amalgamated election")
+    true = candidacies["predecessor_incumbent"].eq(True).fillna(False)
+    if (
+        true
+        & (candidacies["person_id"].isna() | candidacies["predecessor_office_tenure_id"].isna())
+    ).any():
+        issues.append("predecessor_incumbent=true requires a Person and supporting Office tenure")
+    if (~true & candidacies["predecessor_office_tenure_id"].notna()).any():
+        issues.append("only predecessor_incumbent=true may reference an Office tenure")
+    if true.any():
+        tenures = (
+            pd.DataFrame(columns=["office_tenure_id"])
+            if office_tenures is None
+            else office_tenures.set_index("office_tenure_id")
+        )
+        for index in candidacies.index[true]:
+            tenure_id = candidacies.at[index, "predecessor_office_tenure_id"]
+            office = successor[keys[candidacies.index.get_loc(index)]]
+            if tenure_id not in tenures.index:
+                issues.append(f"predecessor tenure {tenure_id!r} is not published")
+                continue
+            tenure = tenures.loc[tenure_id]
+            if (
+                tenure["person_id"] != candidacies.at[index, "person_id"]
+                or (
+                    tenure["represented_body"],
+                    tenure["office_type"],
+                )
+                not in office.predecessors
+            ):
+                issues.append(
+                    f"predecessor tenure {tenure_id!r} must belong to the Person and a "
+                    "designated predecessor body for the same Office type"
+                )
+    return issues
+
+
+def _seats_available(group: pd.DataFrame) -> int | None:
+    """Return the Contest's single seat count, defaulting to one for legacy frames."""
+
+    if "seats_available" not in group:
+        return 1
+    values = group["seats_available"].dropna().unique()
+    if len(values) != 1 or int(values[0]) < 1:
+        return None
+    return int(values[0])
+
+
 def _duplicate_issue(frame: pd.DataFrame, key: str, table: str, issues: list[str]) -> None:
     if key not in frame:
         issues.append(f"{table} is missing {key}")
@@ -365,11 +437,21 @@ def validate_release(
             issues.append(f"contest {contest_id!r} has unknown result_status {result_status!r}")
             continue
 
+        seats = _seats_available(group)
+        if seats is None:
+            issues.append(f"contest {contest_id!r} has inconsistent seats_available")
+            continue
+
         if method == "acclamation":
             numeric = group[["votes", "total_contest_votes", "vote_share", "vote_rank"]]
-            if len(group) != 1 or not numeric.isna().all().all() or group["elected"].ne(True).any():
+            if (
+                len(group) > seats
+                or not numeric.isna().all().all()
+                or group["elected"].ne(True).any()
+            ):
                 issues.append(
-                    f"contest {contest_id!r} acclamation must have one elected row and null votes"
+                    f"contest {contest_id!r} acclamation must have at most seats_available "
+                    "elected rows and null votes"
                 )
             continue
 
@@ -417,8 +499,16 @@ def validate_release(
 
         if method not in {"void", "required_by_election", "tie_no_election", "source_missing"}:
             elected_count = int(group["elected"].fillna(False).sum())
-            if elected_count != 1:
-                issues.append(f"contest {contest_id!r} must have exactly one elected candidacy")
+            unresolved = int(group["elected"].isna().sum())
+            if unresolved == 0 and elected_count != seats:
+                issues.append(
+                    f"contest {contest_id!r} must have exactly {seats} elected "
+                    f"candidac{'y' if seats == 1 else 'ies'}"
+                )
+            elif unresolved and not (elected_count < seats < elected_count + unresolved):
+                issues.append(
+                    f"contest {contest_id!r} leaves elected null outside a tie for the last seat"
+                )
 
         if group["votes"].isna().any():
             issues.append(f"complete vote contest {contest_id!r} has null candidate votes")
@@ -526,6 +616,9 @@ def validate_release(
                 issues.append(
                     "incumbency tenure must match the Candidacy Person, represented body, and office"
                 )
+
+    if {"predecessor_incumbent", "predecessor_office_tenure_id"}.issubset(candidacies.columns):
+        issues.extend(_predecessor_incumbency_issues(candidacies, office_tenures))
 
     if candidacy_person_links is not None and "person_id" in candidacies:
         active_confirmed = candidacy_person_links.loc[

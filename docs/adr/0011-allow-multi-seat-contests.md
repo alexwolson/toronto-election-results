@@ -1,6 +1,6 @@
 # Allow multi-seat Contests
 
-Status: proposed (2026-10-29). Amends ADR 0006 and the Contest definition in CONTEXT.md.
+Status: accepted (2026-10-29). Amends ADR 0006 and the Contest definition in CONTEXT.md.
 
 ## Context
 
