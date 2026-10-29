@@ -12,16 +12,18 @@ Both reviewers found four packets aimed at the wrong existing Person. For Bruce 
 
 The reviewers agreed on 40 of the other 41. The one split, Rose Andrachuk (TCDSB Ward 2 in 2000 to the 2003 Progressive Conservative candidate in Etobicoke Centre), was confirmed by the primary reviewer: a 2011 federal appointments notice describes Rose Andrachuk of Toronto as a lawyer who was Chair and Trustee of the TCDSB, and NOW's 2003 coverage describes the candidate as a lawyer. Ann Andrachuk, first elected for TCDSB Ward 2 in 2003, is a different person and stays separate.
 
-Result: 25 confirmed (18 person-specific, 7 structural), 20 unresolved, none rejected.
+Result: 25 confirmed (18 person-specific, 7 structural), 20 unresolved, none rejected. One unresolved decision (Scott Harrison) was confirmed later, in `identity-followups-2026-10-29.md`.
 
 ## Notes for later passes
 
-- Probable splits across levels, without a source that joins them yet: Irene Atkinson (trustee record and the 1999 NDP Parkdale—High Park candidate), Stephnie Payne (trustee record and the 1999 NDP York West candidate, same rare spelling), Bruce Davis (trustee record and the 1995 Liberal Etobicoke—Lakeshore candidate).
+- Probable splits across levels: Irene Atkinson (trustee record and the 1999 NDP Parkdale—High Park candidate), Stephnie Payne (trustee record and the 1999 NDP York West candidate, same rare spelling), Bruce Davis (trustee record and the 1995 Liberal Etobicoke—Lakeshore candidate). Atkinson and Payne were joined to the trustee records on Election Prediction Project riding pages; Davis stays split because no source names his 1995 contest. See `trustee-provincial-splits-2026-10-29.md`.
 - Joseph Cohen's trustee record also carries unresolved 2006 TDSB Ward 11, 2010 council Ward 10 and 2018 TDSB Ward 5 links; the name is common, so those need person-specific evidence.
 - Walter Melnyk: Wikipedia's 1997 candidate note says the 1997 Ward 19 council candidate ran for the Catholic board in 2000, which joins those two runs, but neither is tied to the 2006 and 2014 Etobicoke-Lakeshore record they are compared against.
 - Elizabeth Hill's Communist Party candidate biography (a York and Toronto trustee from 1988 for 18 years) may support her unresolved 2006 TDSB and 2015 federal runs.
 - The 2010 TCDSB results list eight candidates in two wards on the same day (for example Jo-Ann Davis with 6,294 votes in Ward 9 and 960 in Ward 6), which suggests the 2010 poll-by-poll file assigned some polls to the wrong trustee ward. This predates the 2000 work and needs a check against the Clerk's 2010 declaration. Resolved in [the 2010 TCDSB ward assignment correction](tcdsb-2010-ward-assignment-2026-10-29.md).
-- Three 2003 French-board names are stored surname-first or with a stray space ("Masson Alain", "Guerin Francois", "Leblanc- Miller").
+- Three 2003 trustee names (two French-board, one Catholic) are stored surname-first or with a stray space ("Masson Alain", "Guerin Francois", "Leblanc- Miller").
+
+The Joseph Cohen, Walter Melnyk and Elizabeth Hill notes and the 2003 display names are followed up in `identity-followups-2026-10-29.md`.
 
 ## Decisions
 
@@ -49,7 +51,7 @@ Result: 25 confirmed (18 person-specific, 7 structural), 20 unresolved, none rej
 | `can_b292424259aa52d58bea9470100be3ed` | TDSB | Ward 16 | Sheila Cary-Meagher | confirmed | person-specific |
 | `can_2275b55463c75a7791fe9ae1b717cdd7` | TDSB | Ward 17 | Doug Stephens | unresolved | none |
 | `can_dccb3689eeb15725b4a4f31859e1c012` | TDSB | Ward 17 | Shelley Carroll | confirmed | person-specific |
-| `can_adc17e058c1151e58a97e2f334a6c304` | TDSB | Ward 19 | Scott Harrison | unresolved | none |
+| `can_adc17e058c1151e58a97e2f334a6c304` | TDSB | Ward 19 | Scott Harrison | confirmed (follow-up) | person-specific |
 | `can_e9f0bae6b24a511c8a7e7ae6a8d816c7` | TDSB | Ward 20 | Ron Hartung | unresolved | none |
 | `can_49142cdd5fff580e902467ae86fe927e` | TDSB | Ward 20 | Ron Mcnaughton | unresolved | none |
 | `can_85b25125d9f35322af89f51111ef9b0a` | TDSB | Ward 22 | Patrick Rutledge | confirmed | structural |

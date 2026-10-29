@@ -507,8 +507,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1399
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 934,
-        "confirmed": 464,
+        "unresolved": 928,
+        "confirmed": 470,
         "rejected": 1,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -711,6 +711,17 @@ def test_person_record_merges_join_biography_backed_careers():
         "can_c9ad2fc1d2335e80a32646c199e4cba6": "per_eeea104c1cce54a382c006cdb50f38aa",
         "can_c09ca8c2088d5f9d8bef60319f713fcc": "per_5903ae015a9e52259eb7b89b21d09855",
         "can_14fc3bff7c6a52a491b57e1949ecfb91": "per_5903ae015a9e52259eb7b89b21d09855",
+        # Trustees who ran provincially in their own area: Irene Atkinson (1999 NDP
+        # Parkdale—High Park), Stephnie Payne (1999 NDP York West) and Christopher Caldwell
+        # (2018 Green Etobicoke—Lakeshore).
+        "can_bd38105deb035513b41a00bb71037116": "per_4fce2dffe8095bee8c68ca1d2c8ac324",
+        "can_d8da435540f6568e9e0d1f4673e56b22": "per_4fce2dffe8095bee8c68ca1d2c8ac324",
+        "can_aee8a5d409595b2e8bcf5e83b774b92e": "per_4fce2dffe8095bee8c68ca1d2c8ac324",
+        "can_d7b5d29839895ef09bfb228255c3bffc": "per_a7badd21391e5d63b1661d0519a7d7d2",
+        "can_75e01768c0335714ad84f6fdb52fdbef": "per_a7badd21391e5d63b1661d0519a7d7d2",
+        "can_530f3dc85c045cb2826dcc1146242e6b": "per_a7badd21391e5d63b1661d0519a7d7d2",
+        "can_cde8d0d89b3f5a58927f60085f219dfa": "per_e1baa72d43c95abba5db0f3235581d4c",
+        "can_3a05e85b5138523db95b7ccb0db75715": "per_e1baa72d43c95abba5db0f3235581d4c",
     }
     assert confirmed.loc[list(expected), "person_id"].to_dict() == expected
     redirects = people.set_index("person_id")
@@ -719,14 +730,36 @@ def test_person_record_merges_join_biography_backed_careers():
         redirects.loc["per_b04a5fd11b4951368dcd05cb899898f5", "redirect_to_person_id"]
         == "per_ad293f1387af572cad45897886519bb6"
     )
-    # Kalevar's 1994-2000 council runs and Mulhall's 2014 run stay unresolved.
+    for provincial_person_id, trustee_person_id in {
+        "per_e07eaecf868050639b1cbe712c83663a": "per_4fce2dffe8095bee8c68ca1d2c8ac324",
+        "per_6d724de5779557149c7eceadeff15e1b": "per_a7badd21391e5d63b1661d0519a7d7d2",
+    }.items():
+        assert redirects.loc[provincial_person_id, "identity_status"] == "deprecated"
+        assert redirects.loc[provincial_person_id, "redirect_to_person_id"] == trustee_person_id
+        assert redirects.loc[trustee_person_id, "identity_status"] == "active"
+    # Bruce Davis's 1995 provincial run stays on its own Person: no source names that contest.
+    assert redirects.loc["per_2550e04d307f56558ceba2a6c7f2df26", "identity_status"] == "active"
+    # Caldwell's 2010 Ward 29 council run keeps its own Person and his 2019 federal run
+    # stays an unresolved claim to it.
+    assert (
+        confirmed.loc["can_656ab05636855a8f856c3d8cde842334", "person_id"]
+        == "per_4cdca864f8055243963b86909ed39038"
+    )
+    assert redirects.loc["per_4cdca864f8055243963b86909ed39038", "identity_status"] == "active"
+    # Kalevar's 1994-2000 council runs, Mulhall's 2014 run and Caldwell's 2019 federal
+    # run stay unresolved.
     unresolved = active.loc[active["link_status"].eq("unresolved")].set_index("candidacy_id")
     assert {
         "can_69d13f11fbcc5d80889e72901424377e",
         "can_a8b8878648c65af2a75fe974865c078c",
         "can_524a3ab594925691a736de3baeb5e24d",
         "can_227eaae6d22652989e68a0314620f2e3",
+        "can_98f13c94ab1f560994954198b31935dd",
     } <= set(unresolved.index)
+    assert (
+        unresolved.loc["can_98f13c94ab1f560994954198b31935dd", "person_id"]
+        == "per_4cdca864f8055243963b86909ed39038"
+    )
     # Paul Sutherland's 1995 Oriole run is not covered by his biography.
     assert (
         confirmed.loc["can_f14b32f044585ca490d383a9295eddf9", "person_id"]

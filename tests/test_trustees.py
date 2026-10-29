@@ -328,6 +328,75 @@ def test_certified_acclamations_are_not_observed_zero_votes(results, year, body,
     assert row.iloc[0]["coverage_status"] == "complete"
 
 
+@pytest.mark.parametrize(
+    ("year", "body", "ward", "candidate", "display"),
+    [
+        # The Clerk's declarations print names given-name first. Declaration-only Candidacies
+        # keep that order instead of being read as surname-first.
+        (2003, "Conseil scolaire Viamonde", "2", "FRANCOIS GUERIN", "Francois Guerin"),
+        (2003, "Conseil scolaire Viamonde", "3", "DENYS BEGIN", "Denys Begin"),
+        (2003, "Conseil scolaire Viamonde", "4", "ALAIN MASSON", "Alain Masson"),
+        (2022, "Conseil scolaire Viamonde", "2", "Benoit Fortin", "Benoit Fortin"),
+        (2022, "Conseil scolaire Viamonde", "4", "Geneviève Oger", "Geneviève Oger"),
+        (
+            2022,
+            "Conseil scolaire catholique MonAvenir",
+            "3",
+            "Nathalie Dufour Séguin",
+            "Nathalie Dufour Séguin",
+        ),
+        # Workbook names, and declaration names transcribed surname-first, are read surname-first.
+        (2006, "Conseil scolaire Viamonde", "4", "MASSON ALAIN", "Alain Masson"),
+        (2006, "Conseil scolaire catholique MonAvenir", "4", "LEGERE CLAUDE", "Claude Legere"),
+        (2003, "Conseil scolaire catholique MonAvenir", "3", "D'Aigle, Claude", "Claude D'Aigle"),
+        (
+            2003,
+            "Toronto Catholic District School Board",
+            "9",
+            "LeBlanc- Miller, Catherine",
+            "Catherine Leblanc-Miller",
+        ),
+    ],
+)
+def test_display_names_follow_each_source_name_order(results, year, body, ward, candidate, display):
+    row = results[
+        (results["election_date"].map(lambda value: value.year) == year)
+        & (results["represented_body"] == body)
+        & (results["official_district_id"] == ward)
+        & (results["candidate_name_raw"] == candidate)
+    ]
+    assert row["candidate_name"].tolist() == [display]
+
+
+def test_published_display_name_fixes_keep_candidacy_ids_and_raw_names():
+    published = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    expected = {
+        "can_90f657c136335edeb00a8cc29149c879": ("FRANCOIS GUERIN", "Francois Guerin"),
+        "can_733d7aab27a05f26ac3f9f859c22e362": ("DENYS BEGIN", "Denys Begin"),
+        "can_7343d07b0cfd59c4bf15318716932095": ("ALAIN MASSON", "Alain Masson"),
+        "can_dced59fe77ad5682a90e4bffd42645b6": (
+            "LeBlanc- Miller, Catherine",
+            "Catherine Leblanc-Miller",
+        ),
+        "can_628f2c912c1c5b3481375b971c2d0965": ("Benoit Fortin", "Benoit Fortin"),
+        "can_b0d1c647178256309bb98544e892f006": ("Geneviève Oger", "Geneviève Oger"),
+        "can_11ede9c2b79853e9a17c4972d0f34f08": (
+            "Nathalie Dufour Séguin",
+            "Nathalie Dufour Séguin",
+        ),
+    }
+    actual = {
+        candidacy_id: (
+            published.loc[candidacy_id, "candidate_name_raw"],
+            published.loc[candidacy_id, "candidate_name"],
+        )
+        for candidacy_id in expected
+    }
+    assert actual == expected
+
+
 def test_unique_maximum_in_certified_vote_source_is_elected(results):
     contest = results[
         (results["election_date"] == date(2022, 10, 24))
