@@ -5,7 +5,8 @@ election-date coverage window runs through **2026-10-26** and begins with the la
 before amalgamation for each level of government (ADR 0010): the **1994-11-14 municipal elections**
 (the six former municipalities and Metropolitan Toronto), the **1995-06-08 Ontario general
 election** and the **1993-10-25 federal general election**. Municipal coverage before 2003 is
-Mayor, Councillor and Metro Councillor only; pre-2003 School Board trustees are not yet included.
+Mayor, Councillor and Metro Councillor, plus the 2000 School Board trustee elections; the 1994 and
+1997 school-board results are not yet included.
 Only validated or certified
 outcomes are published as final; future elections retain pending results. The scheduled
 **2026-10-26 Toronto municipal general election** is also represented by the City's certified

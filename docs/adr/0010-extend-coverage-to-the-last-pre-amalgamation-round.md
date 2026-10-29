@@ -47,8 +47,12 @@ hold, but they argue for null electorate columns, not for leaving the results ou
 - The municipal adapter covers 1994, 1997 and 2000 Mayor, Councillor and Metro Councillor
   Contests. Eight 1994 Contests ship as `source_missing` placeholders (North York council wards
   3–5 and five Metro wards). Where the archive lost a 1994 Metro ward label, the label comes from a
-  secondary source and the row cites it; vote counts are always the archive's. Pre-1998 school
-  board and 2000 trustee Contests follow in a later pass.
+  secondary source and the row cites it; vote counts are always the archive's.
+- The 2000 trustee Contests for all four School Boards are included, transcribed from the City's
+  archived "Vote 2000" pages. The 1994 and 1997 school-board sections of the archive are
+  incomplete (no seat counts, garbled or missing ward labels, missing contests, and French-language
+  results only as partial subtotals across municipalities), so those boards wait for a complete
+  published source such as the newspapers' printed results.
 - Federal results before 2004 come from three official sources: Elections Canada's 1993
   Recapitulation of Votes data files (released through the U of T Map & Data Library), Elections
   Canada's 1997/2000 poll-by-poll result files, and Elections Canada's official voting results

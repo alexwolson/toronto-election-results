@@ -266,3 +266,47 @@ def test_registry_rows_are_versioned_and_duplicate_candidacy_ids_are_rejected():
     duplicated = pd.concat([candidacies, candidacies], ignore_index=True)
     with pytest.raises(ValueError, match="duplicate candidacy_id"):
         bootstrap_identity_review(duplicated, release_id="v2")
+
+
+def test_extension_aims_a_name_only_proposal_at_the_same_office_holder():
+    from toronto_election_results.identity_review import extend_identity_review
+
+    provincial = _row("c_mpp", "1995-06-08", "Pat Doe", body="ontario_legislature", office="mpp")
+    trustee = _row("c_tr03", "2003-11-10", "Pat Doe", body="school_board", office="trustee")
+    new = _row("c_tr00", "2000-11-13", "Pat Doe", body="school_board", office="trustee")
+    people = pd.DataFrame(
+        [
+            {
+                "person_id": person_id,
+                "preferred_name": "Pat Doe",
+                "identity_status": "active",
+                "redirect_to_person_id": pd.NA,
+                "created_release": "v1",
+            }
+            for person_id in ("per_mpp", "per_trustee")
+        ]
+    )
+    links = pd.DataFrame(
+        [
+            {
+                "candidacy_id": candidacy_id,
+                "person_id": person_id,
+                "link_status": "confirmed",
+                "method": "official_candidacy_record",
+                "evidence": "{}",
+                "reviewer": "test",
+                "valid_from_release": "v1",
+                "valid_to_release": pd.NA,
+            }
+            for candidacy_id, person_id in (("c_mpp", "per_mpp"), ("c_tr03", "per_trustee"))
+        ]
+    )
+
+    review = extend_identity_review(
+        pd.DataFrame([provincial, trustee, new]), people, links, release_id="v2"
+    )
+
+    added = review.candidacy_person_links.set_index("candidacy_id").loc["c_tr00"]
+    assert added["link_status"] == "proposed"
+    assert added["person_id"] == "per_trustee"
+    assert json.loads(added["evidence"])["review_scope"] == "existing_registry_same_body_and_office"

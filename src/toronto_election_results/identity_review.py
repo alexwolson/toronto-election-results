@@ -729,6 +729,46 @@ def extend_identity_review(
     new_links["person_id"] = new_links["person_id"].map(
         lambda value: pd.NA if pd.isna(value) else person_mapping.get(str(value), str(value))
     )
+
+    # The cumulative bootstrap aims a name-only proposal at the earliest occurrence of the
+    # name. When the prior registry already holds several People with that exact display
+    # name, the earliest can be the least relevant one (a provincial candidate rather than
+    # the trustee re-elected in the same ward). Aim the proposal at the one prior Person who
+    # held the same office on the same body; otherwise keep the bootstrap target. Either way
+    # the link stays a non-authoritative proposal for adjudication.
+    body_office = dict(
+        zip(
+            candidacies["candidacy_id"].astype(str),
+            zip(
+                candidacies["represented_body"].astype(str),
+                candidacies["office_type"].astype(str),
+                strict=True,
+            ),
+            strict=True,
+        )
+    )
+    prior_offices: dict[str, set[tuple[str, str]]] = {}
+    for candidacy_id, person_id in prior_by_candidacy.items():
+        if candidacy_id in body_office:
+            prior_offices.setdefault(person_id, set()).add(body_office[candidacy_id])
+    proposals = new_links["link_status"].eq("proposed") & new_links["person_id"].notna()
+    for index in new_links.index[proposals]:
+        candidacy_id = str(new_links.at[index, "candidacy_id"])
+        same_name = prior_people_by_key.get(name_keys.get(candidacy_id, ""), set())
+        if len(same_name) < 2:
+            continue
+        office = body_office.get(candidacy_id)
+        preferred = sorted(
+            person_id for person_id in same_name if office in prior_offices.get(person_id, set())
+        )
+        if len(preferred) == 1 and preferred[0] != str(new_links.at[index, "person_id"]):
+            new_links.at[index, "person_id"] = preferred[0]
+            new_links.at[index, "evidence"] = _evidence(
+                "exact_name_only_not_identity_evidence",
+                prior_person_id=preferred[0],
+                review_scope="existing_registry_same_body_and_office",
+            )
+
     merged_links = pd.concat(
         [candidacy_person_links.copy(), new_links], ignore_index=True, sort=False
     )

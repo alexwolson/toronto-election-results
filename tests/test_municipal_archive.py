@@ -26,7 +26,19 @@ def test_archive_contests_elect_their_seat_counts():
     assert east_york.eq(2).all()
     council_2000 = _winners(results, "2000-11-13", "toronto_city_council", "councillor")
     assert len(council_2000) == 44 and council_2000.eq(1).all()
-    assert results.groupby(["election_date", "represented_body", "office_type"]).size().sum() == 705
+    trustee_wards = {
+        "toronto_district_school_board": 22,
+        "toronto_catholic_district_school_board": 12,
+        "conseil_scolaire_viamonde": 3,
+        "conseil_scolaire_catholique_monavenir": 2,
+    }
+    for body, wards in trustee_wards.items():
+        trustees_2000 = _winners(results, "2000-11-13", body, "trustee")
+        assert len(trustees_2000) == wards and trustees_2000.eq(1).all()
+    trustees = results[results["office_type"].eq("trustee")]
+    assert trustees["election_date"].eq("2000-11-13").all()
+    assert trustees["outcome_method"].eq("acclamation").sum() == 4
+    assert results.groupby(["election_date", "represented_body", "office_type"]).size().sum() == 823
 
 
 def test_archive_winners_match_known_results():
@@ -44,6 +56,10 @@ def test_archive_winners_match_known_results():
     assert names("1997-11-10", "mayor", "city") == ["Mel Lastman"]
     assert names("1997-11-10", "councillor", "ward-24") == ["Kyle Rae", "Olivia Chow"]
     assert names("2000-11-13", "mayor", "city") == ["MEL LASTMAN"]
+    trustees = elected[elected["represented_body"].eq("toronto_district_school_board")]
+    assert trustees.set_index("official_district_id").loc["8", "candidate_name_raw"] == (
+        "KATHLEEN WYNNE"
+    )
     metro = elected[elected["represented_body"].eq("metro_toronto_council")]
     assert metro.set_index("official_district_id").loc["downtown", "candidate_name_raw"] == (
         "Chow, Olivia"

@@ -5,8 +5,10 @@ The release covers completed election contests wholly within the City of Toronto
 ADR 0010, municipal coverage starts with the 1994-11-14 elections: the mayors and councils of East
 York, Etobicoke, North York, Scarborough, the former City of Toronto and York, and Metropolitan
 Toronto Council, followed by the amalgamated City's 1997 and 2000 Mayor and Councillor elections.
-Pre-2003 School Board trustee elections are not yet included. Those municipal results come from the
-City's archived results pages, which carry no elector or ballot counts, so turnout fields are null.
+The November 13, 2000 trustee elections for all four School Boards are included (39 single-member
+wards). The 1994 and 1997 school-board results are not yet included, because the archive omits
+their seat counts, several ward labels and some whole contests. Those municipal results come from
+the City's archived results pages, which carry no elector or ballot counts, so turnout fields are null.
 East York's 1994 wards and every 1997 ward elected two members (`seats_available = 2`). The 1994
 North York council wards 3–5 and five 1994 Metro wards (Kingsway Humber, Markland Centennial, North
 York Spadina, North York Centre South and North York Centre) are `source_missing` placeholders with
@@ -28,8 +30,8 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 7,448 Candidacies, 1,220 Contests, and 80 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 7,091 Candidacies in 1,159
+The release contains 7,566 Candidacies, 1,259 Contests, and 80 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 7,209 Candidacies in 1,198
 Contests are final. Two void historical Contests and eight `source_missing` 1994 Contests have no
 Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
@@ -278,6 +280,10 @@ back to name matching or blanket historical coverage claims.
 - The City of Toronto's archived results pages for the 1994, 1997 and 2000 municipal elections
   (Internet Archive captures of toronto.ca and city.toronto.on.ca), transcribed by
   `scripts/transcribe_municipal_archive.py` into `data/reference/municipal_archive_results.csv`.
+  The 2000 school trustee pages were transcribed by hand into
+  `data/reference/vote2000_trustee_pages.csv`, with each page's capture timestamp and heading as
+  shown. The 2000 trustee wards have no ward-to-council-ward crosswalk, so their districts carry
+  no geographic name.
 - Elections Canada official poll-result archives, official summary tables, and returning-officer
   validated contest totals when the poll-level export is not yet available.
 - Elections Ontario official candidate/statistics/party CSV reports.
