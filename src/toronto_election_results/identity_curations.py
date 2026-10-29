@@ -10528,6 +10528,116 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         registry_person_ids=("per_eeea104c1cce54a382c006cdb50f38aa",),
         canonical_person_id="per_eeea104c1cce54a382c006cdb50f38aa",
     ),
+    CuratedIdentityAssertion(
+        assertion_id="irene-atkinson-1999-provincial-candidacy",
+        preferred_name="Irene Atkinson",
+        occurrences=(
+            _pinned_occurrence(
+                "can_bd38105deb035513b41a00bb71037116",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "IRENE ATKINSON",
+            ),
+            _pinned_occurrence(
+                "can_d8da435540f6568e9e0d1f4673e56b22",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_district_school_board",
+                "trustee",
+                "Irene Atkinson",
+            ),
+            _pinned_occurrence(
+                "can_b4a79144fc965f29b316693a33e8f238",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_district_school_board",
+                "trustee",
+                "Irene Atkinson",
+            ),
+        ),
+        evidence_urls=(
+            "https://electionprediction.org/1999_ontario/toronto/parkdale-high-park.html",
+            "https://digitalarchive.tpl.ca/objects/240831/irene-atkinson-toronto-board-of-education-chairman-is-seen",
+            "https://www.ola.org/en/legislative-business/house-documents/parliament-41/session-1/2014-11-17/hansard",
+            "https://torontostar.pressreader.com/article/281784222133780",
+        ),
+        rationale=(
+            "The Election Prediction Project's 1999 Parkdale—High Park page quotes NOW Magazine of April 8, 1999 naming the NDP candidate as school trustee Irene Atkinson, a former Tory, and a contributor there calls her a trustee and former school board chair. That is the Ward 7 trustee: a 1980 Toronto Star caption names her chair of the Toronto Board of Education, and Cheri DiNovo told the Legislature in 2014 that she was a red Tory who left the Conservative Party over what Mike Harris did to education and crossed the floor to the NDP. This joins two Person records."
+        ),
+        registry_person_ids=(
+            "per_4fce2dffe8095bee8c68ca1d2c8ac324",
+            "per_e07eaecf868050639b1cbe712c83663a",
+        ),
+        canonical_person_id="per_4fce2dffe8095bee8c68ca1d2c8ac324",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="stephnie-payne-1999-provincial-candidacy",
+        preferred_name="Stephnie Payne",
+        occurrences=(
+            _pinned_occurrence(
+                "can_d7b5d29839895ef09bfb228255c3bffc",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "STEPHNIE PAYNE",
+            ),
+            _pinned_occurrence(
+                "can_75e01768c0335714ad84f6fdb52fdbef",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_district_school_board",
+                "trustee",
+                "Stephnie Payne",
+            ),
+            _pinned_occurrence(
+                "can_a85367ec5c7552089a5251b8e63ea276",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_district_school_board",
+                "trustee",
+                "Stephnie Payne",
+            ),
+        ),
+        evidence_urls=(
+            "https://electionprediction.org/2003_on/riding/york-west.htm",
+            "https://results.elections.on.ca/api/report-groups/6/report-outputs/532/csv",
+            "https://sites.google.com/site/blackcreeklocalhistory/transcripts/stephnie-payne",
+        ),
+        rationale=(
+            "A February 2003 comment on the Election Prediction Project's York West page says school trustee Stephnie Payne finished third there in 1999, which is the official result for the NDP candidate Stephnie Payne under the same uncommon spelling. A Black Creek oral history introduces the trustee as the TDSB's Ward 4 trustee, and she says there that she has served since winning in 1991. This joins two Person records."
+        ),
+        registry_person_ids=(
+            "per_a7badd21391e5d63b1661d0519a7d7d2",
+            "per_6d724de5779557149c7eceadeff15e1b",
+        ),
+        canonical_person_id="per_a7badd21391e5d63b1661d0519a7d7d2",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="christopher-caldwell-2018-provincial-candidacy",
+        preferred_name="Christopher Caldwell",
+        occurrences=(
+            _pinned_occurrence(
+                "can_cde8d0d89b3f5a58927f60085f219dfa",
+                "on-2018-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Chris Caldwell",
+            ),
+            _pinned_occurrence(
+                "can_3a05e85b5138523db95b7ccb0db75715",
+                "evt_e4fe1909276b5fbd91057022b350fff3",
+                "toronto_district_school_board",
+                "trustee",
+                "Christopher Caldwell",
+            ),
+        ),
+        evidence_urls=(
+            "https://skedline.com/?p=18464",
+            "https://results.elections.on.ca/api/report-groups/1/report-outputs/932/csv",
+        ),
+        rationale=(
+            "Skedline's profile of the 2018 TDSB Ward 3 Etobicoke-Lakeshore trustee candidates says Christopher Caldwell ran for the Green Party in that year's provincial election, and Elections Ontario's 2018 candidate list has one Green candidate named Caldwell, Chris Caldwell in Etobicoke—Lakeshore. The 2019 federal Green run in the same riding and the 2010 Ward 29 council run under the same name are not established and stay as they were."
+        ),
+        registry_person_ids=("per_e1baa72d43c95abba5db0f3235581d4c",),
+        canonical_person_id="per_e1baa72d43c95abba5db0f3235581d4c",
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS

@@ -16,7 +16,7 @@ Result: 25 confirmed (18 person-specific, 7 structural), 20 unresolved, none rej
 
 ## Notes for later passes
 
-- Probable splits across levels, without a source that joins them yet: Irene Atkinson (trustee record and the 1999 NDP Parkdale—High Park candidate), Stephnie Payne (trustee record and the 1999 NDP York West candidate, same rare spelling), Bruce Davis (trustee record and the 1995 Liberal Etobicoke—Lakeshore candidate).
+- Probable splits across levels: Irene Atkinson (trustee record and the 1999 NDP Parkdale—High Park candidate), Stephnie Payne (trustee record and the 1999 NDP York West candidate, same rare spelling), Bruce Davis (trustee record and the 1995 Liberal Etobicoke—Lakeshore candidate). Atkinson and Payne were joined to the trustee records on Election Prediction Project riding pages; Davis stays split because no source names his 1995 contest. See `trustee-provincial-splits-2026-10-29.md`.
 - Joseph Cohen's trustee record also carries unresolved 2006 TDSB Ward 11, 2010 council Ward 10 and 2018 TDSB Ward 5 links; the name is common, so those need person-specific evidence.
 - Walter Melnyk: Wikipedia's 1997 candidate note says the 1997 Ward 19 council candidate ran for the Catholic board in 2000, which joins those two runs, but neither is tied to the 2006 and 2014 Etobicoke-Lakeshore record they are compared against.
 - Elizabeth Hill's Communist Party candidate biography (a York and Toronto trustee from 1988 for 18 years) may support her unresolved 2006 TDSB and 2015 federal runs.
