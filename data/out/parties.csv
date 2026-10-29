@@ -1,7 +1,10 @@
 party_id,jurisdiction,canonical_name,party_name_raw
+pty_5305099bc0f3586f91176f5466b455b7,elections_canada,Abolitionist Party of Canada,Abolitionist Party of Canada
 pty_6d22cea2dad5596b9eaeeda7454f9a51,elections_canada,Animal Protection Party,Animal Protection Party
+pty_6b708fa05ca8569a9336c4270bd4d51b,elections_canada,C.H.P. of Canada,C.H.P. of Canada
 pty_fa125c3e5f53576dbfe705c4b0acd5bc,elections_canada,CFF - Canada's Fourth Front,CFF - Canada's Fourth Front
 pty_a2693b9e27dd5a23ac32aa7418faf7e1,elections_canada,Canadian Action Party,Canadian Action Party
+pty_0f5210622b2a562496ea677115d92e8a,elections_canada,Canadian Alliance,Canadian Alliance
 pty_c2f81abf68da53eeb5f3572f78f79ba9,elections_canada,Canadian Future Party,Canadian Future Party
 pty_ec2178b6041d5aaa9c3808e4df200ee7,elections_canada,Centrist,Centrist
 pty_16839c0f1f0955ec83d67d7259a751de,elections_canada,Christian Heritage Party of Canada,Christian Heritage Party
@@ -13,16 +16,26 @@ pty_f3cb781d63065a87a25726041d47923d,elections_canada,Liberal Party of Canada,Li
 pty_1db032951d705b37afb2ddf47ae87e2d,elections_canada,Libertarian Party of Canada,Libertarian
 pty_1594e93ee89a5a3a9f20e53ce8789f23,elections_canada,Marijuana Party,Marijuana Party
 pty_7fb56bac238d5dfe8c2644404a22f6e2,elections_canada,Marxist-Leninist,Marxist-Leninist
+pty_e55b5d44dac55e28a179ed53def1f9c2,elections_canada,Marxist-Leninist Party of Canada,Marxist-Leninist Party of Canada
 pty_2b3c3ae18616561a94f02bc10f8feaa3,elections_canada,National Citizens Alliance,National Citizens Alliance
+pty_853eff1ff22850aa95890f3b7403c853,elections_canada,National Party of Canada,National Party of Canada
 pty_1acc34bc35b95701adae300712d42ceb,elections_canada,Nationalist,Nationalist
+pty_7f4856eb1c0551d6bc8998b8beaa1ef0,elections_canada,Natural Law Party,Natural Law Party
+pty_69c271d2e6a756c5bb62910fe8ec818a,elections_canada,Natural Law Party of Canada,Natural Law Party of Canada
 pty_7923361c692b53d3b3244c465bb00c74,elections_canada,New Democratic Party,NDP-New Democratic Party
 pty_f45f96e0c8aa573a9745c8c479c0fdac,elections_canada,Online Party of Canada,Online Party of Canada
 pty_05ed6f141f195decbcc24c0bd8de8a15,elections_canada,PACT,PACT
 pty_c99a441c51b05e68a957c53d117e7e4d,elections_canada,Parti Rhinocéros Party,Parti Rhinocéros Party
+pty_f2c537eefcf85323a90a69dee34bf3ce,elections_canada,Party for the Commonwealth of Canada,Party for the Commonwealth of Canada
 pty_2aac317ef30a5dbf98ace1236a772c10,elections_canada,People's Party - PPC,People's Party - PPC
 pty_7af62f06eaca5e5a89537c0e56ef2f92,elections_canada,Progressive Canadian Party,PC Party
+pty_8f80bbb62e6350ac917134a6824b4845,elections_canada,Progressive Conservative,Progressive Conservative
+pty_db76b3280e185f25a9e58a69d6b53dcb,elections_canada,Progressive Conservative Party of Canada,Progressive Conservative Party of Canada
+pty_574f8d6160005ce6b20d40ac43364322,elections_canada,Reform,Reform
+pty_84589d84cfb85f1da0d188b08754a567,elections_canada,Reform Party of Canada,Reform Party of Canada
 pty_51e7f114abdb5aa1990c96e404f23b62,elections_canada,Stop Climate Change,Stop Climate Change
 pty_9c94bda67da55af9a1fed37934980de5,elections_canada,The Bridge,The Bridge
+pty_5b7d250bdeec54aebd96f34d629b9389,elections_canada,The Green Party of Canada,The Green Party of Canada
 pty_c6e67b4597be5824a517ed97fb6e9e13,elections_canada,United Party of Canada,UPC
 pty_a1563ad0408b568796dc80d3fb8fa914,elections_ontario,Canadian Economic Party,Canadian Economic Party
 pty_30bbd4471ace5f6f97109aa1770171a3,elections_ontario,Canadians' Choice Party,Canadians' Choice Party

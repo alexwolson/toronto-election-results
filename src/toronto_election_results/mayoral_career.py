@@ -155,11 +155,6 @@ _BACKFILL_METADATA = {
         "east-york-1994-citywide",
         "city",
     ),
-    "mcb_f2c19ef41cbe59fbb23e7dbf1f81cb7e": (
-        "ec-ge-36",
-        "federal-1996-representation-order",
-        "broadview-greenwood",
-    ),
     "mcb_e54d7615fb4c5014860831cc25a81d2c": (
         "toronto-2000-general",
         "toronto-2000-citywide",

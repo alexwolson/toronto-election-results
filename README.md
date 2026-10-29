@@ -1,9 +1,10 @@
 # Toronto Election Results
 
 A unified, analysis-ready history of elections within the City of Toronto. The inclusive
-election-date coverage window is **2003-01-01 through 2026-10-26**, except provincial results,
-which begin with the **1995-06-08 Ontario general election** (ADR 0010 extends the other offices
-to their last election before amalgamation; that work is in progress). Only validated or certified
+election-date coverage window is **2003-01-01 through 2026-10-26**, except provincial and federal
+results, which begin with the last general election before amalgamation: the **1995-06-08 Ontario
+general election** and the **1993-10-25 federal general election** (ADR 0010; municipal coverage
+before 2003 is in progress). Only validated or certified
 outcomes are published as final; future elections retain pending results. The scheduled
 **2026-10-26 Toronto municipal general election** is also represented by the City's certified
 candidate-list snapshot acquired on **2026-09-30**. Mayor,
@@ -31,9 +32,9 @@ Endorsements are positive, open-world facts: an absent fact never means that an 
 declined to endorse a Candidacy. Separate Endorser-by-Contest coverage records say how completely
 each approved Endorser was searched.
 
-The release contains **6,221 Candidacies in 981 Contests across 72 Election events**: 5,864 final
-Candidacies in 928 Contests, plus 357 pending Candidacies in 51 Contests scheduled for
-2026-10-26. Two historical source-missing Contests also remain in the inventory. The endorsement
+The release contains **6,748 Candidacies in 1,049 Contests across 76 Election events**: 6,391 final
+Candidacies in 996 Contests, plus 357 pending Candidacies in 51 Contests scheduled for
+2026-10-26. Two void historical Contests have no Candidacy rows. The endorsement
 companion dataset contains **9 Endorsers, 161 audited source
 assertions, 160 confirmed positive Endorsement facts, and 2,412 Endorser-by-Contest coverage
 records**.

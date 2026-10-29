@@ -35,10 +35,20 @@ class FederalGeneralRosterReference:
 
 
 FEDERAL_GENERAL_ROSTER_REFERENCES: dict[str, FederalGeneralRosterReference] = {
+    "ec-ge-35": FederalGeneralRosterReference(
+        "1993-09-08",
+        "1993-09-07",
+        "https://www.ourcommons.ca/documentviewer/en/35-1/house/sitting-1/journals",
+    ),
     "ec-ge-36": FederalGeneralRosterReference(
         "1997-04-27",
         "1997-04-26",
         "https://www.elections.ca/content.aspx?anchor=circonscription&dir=rep%2Foff%2Fdec3097&document=synopsis02&lang=e&section=res",
+    ),
+    "ec-ge-37": FederalGeneralRosterReference(
+        "2000-10-22",
+        "2000-10-21",
+        "https://www.elections.ca/content.aspx?section=res&dir=rep/off/37g&document=synopsis02&lang=e",
     ),
     "ec-ge-38": FederalGeneralRosterReference(
         "2004-05-23",
