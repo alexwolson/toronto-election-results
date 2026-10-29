@@ -1,0 +1,14 @@
+represented_body,official_district_id,candidate_name_raw,votes,acclaimed,marked_elected
+north_york_city_council,ward-3,Peter Li Preti,4662,false,true
+north_york_city_council,ward-3,Marcela Ramirez,655,false,false
+north_york_city_council,ward-3,Giacomo Del Prete,596,false,false
+north_york_city_council,ward-3,Robert Ragazzon,315,false,false
+north_york_city_council,ward-4,Frank Di Giorgio,,true,true
+north_york_city_council,ward-5,Maria Rizzo,5908,false,true
+north_york_city_council,ward-5,Linda Memmo,2978,false,false
+north_york_city_council,ward-5,Victoria Colby,741,false,false
+metro_toronto_council,kingsway-humber,Dennis Flynn,,true,true
+metro_toronto_council,markland-centennial,Dick O'Brien,,true,true
+metro_toronto_council,north-york-spadina,Howard Moscoe,,true,true
+metro_toronto_council,north-york-centre-south,Bev Salmon,,true,true
+metro_toronto_council,north-york-centre,Norm Gardner,,true,true
