@@ -31,6 +31,11 @@ from .endorsement_curations import (
 )
 from .endorsements import assemble_endorsement_tables
 from .federal import load_federal_results
+from .federal_historical import (
+    download_historical_federal_sources,
+    historical_federal_placeholder_manifest,
+    load_historical_federal_results,
+)
 from .identity import validate_identity_tables
 from .identity_curations import DEFAULT_IDENTITY_ASSERTIONS
 from .identity_dispositions import read_identity_review_decisions
@@ -313,6 +318,11 @@ def _load_source_adapters(
     )
     federal = load_federal_results(raw / "federal", download=download)
     if download:
+        download_historical_federal_sources(raw / "federal")
+    federal = pd.concat(
+        [federal, load_historical_federal_results(raw / "federal")], ignore_index=True
+    )
+    if download:
         download_ontario_sources(raw / "ontario")
         download_ontario_tabulations(raw / "ontario")
     ontario = load_ontario_results(raw / "ontario", tabulations=TABULATIONS)
@@ -323,9 +333,15 @@ def _load_source_adapters(
         trustee_crosswalk_path=reference / TRUSTEE_CROSSWALK_FILENAME,
     )
     mayoral_career = load_mayoral_career_backfills(reference)
-    contest_manifest = trustee_event_manifest(
-        results_root=interim / "results",
-        by_election_root=raw / "trustee_byelections",
+    contest_manifest = pd.concat(
+        [
+            trustee_event_manifest(
+                results_root=interim / "results",
+                by_election_root=raw / "trustee_byelections",
+            ),
+            historical_federal_placeholder_manifest(),
+        ],
+        ignore_index=True,
     )
     return [council, trustees, federal, ontario, pending_council, mayoral_career], contest_manifest
 

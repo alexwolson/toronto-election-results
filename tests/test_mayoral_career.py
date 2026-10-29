@@ -255,7 +255,7 @@ def test_all_confirmed_occurrences_have_canonical_mappings():
 def test_only_confirmed_backfills_enter_candidate_record_adapter():
     adapter = load_mayoral_career_backfills(ROOT / "data/reference")
 
-    assert len(adapter) == 14
+    assert len(adapter) == 13
     assert adapter["coverage_status"].eq("candidate_record").all()
     assert set(adapter["source_candidacy_id"]) == set(
         load_contract_table(ROOT / "data/reference/mayoral_career_backfill.csv", BACKFILL_COLUMNS)[

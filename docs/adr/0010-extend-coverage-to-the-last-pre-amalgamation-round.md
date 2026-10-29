@@ -41,5 +41,9 @@ hold, but they argue for null electorate columns, not for leaving the results ou
   archive for that period is checked, as it already is for trustee by-elections before 2012.
 - Mayoral career backfill rows inside the new window are removed once an official adapter
   carries the same Contest, and the career decision maps to the official Candidacy instead
-  (`reuse_existing`). The 1995, 1996 and 2001 provincial rows for Kevin Clarke are done; the
-  municipal and federal rows for Clarke and Olivia Chow follow as those adapters land.
+  (`reuse_existing`). Kevin Clarke's 1995, 1996 and 2001 provincial rows and his 1997 federal row
+  are done; the municipal rows for Clarke and Olivia Chow follow when that adapter lands.
+- Federal results before 2004 come from three official sources: Elections Canada's 1993
+  Recapitulation of Votes data files (released through the U of T Map & Data Library), Elections
+  Canada's 1997/2000 poll-by-poll result files, and Elections Canada's official voting results
+  reports for the 1996 Etobicoke North and 1999 York West by-elections.

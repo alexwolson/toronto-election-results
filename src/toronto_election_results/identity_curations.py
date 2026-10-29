@@ -9657,3 +9657,70 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         canonical_person_id="per_87ce1c960f915a0cac91d688c6a52eaa",
     ),
 )
+
+_MDL_1993_RESULTS = (
+    "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/"
+    "elections_canada/official_voting_results/1993results.zip"
+)
+_CPCML_2006_CANDIDATES = (
+    "https://en.wikipedia.org/wiki/"
+    "Communist_Party_of_Canada_(Marxist%E2%80%93Leninist)_candidates_in_the_2006_Canadian_federal_election"
+)
+
+DEFAULT_IDENTITY_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="roger-carter-1993-2000-house-continuity",
+        preferred_name="Roger Carter",
+        occurrences=tuple(
+            _pinned_occurrence(candidacy_id, event_id, "canada_house_of_commons", "mp", name)
+            for candidacy_id, event_id, name in (
+                ("can_58eb2694869755fbab29dcc5ad933bfd", "ec-ge-35", "Roger Carter"),
+                ("can_973951f41b375a249961e7d69c761cc7", "ec-ge-37", "Roger Carter"),
+            )
+        ),
+        evidence_urls=(
+            _CPCML_2006_CANDIDATES,
+            _MDL_1993_RESULTS,
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+        ),
+        rationale=(
+            "The CPC-ML 2006 candidate biography of Roger Carter, postal worker and CUPW steward, "
+            "gives his electoral record as Don Valley East 1993 (90 votes), Willowdale 2000 "
+            "(145 votes) and Beaches—East York 2004 and 2006, matching the official results and "
+            "joining the 1993 and 2000 runs to his existing Beaches—East York record."
+        ),
+        registry_person_ids=(
+            "per_bd699c148fd850939f7f512754a50ae0",
+            "per_6d92d16b99ca5f789ab4d0d4279ed97b",
+        ),
+        canonical_person_id="per_bd699c148fd850939f7f512754a50ae0",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="steve-rutchinski-1993-2000-house-continuity",
+        preferred_name="Steve Rutchinski",
+        occurrences=tuple(
+            _pinned_occurrence(candidacy_id, event_id, "canada_house_of_commons", "mp", name)
+            for candidacy_id, event_id, name in (
+                ("can_9fb127c709fd5c0cbb8893ce94845216", "ec-ge-35", "Steve Rutchinski"),
+                ("can_a76720be9d14542c8481fddd788c3dbf", "ec-ge-36", "Stephen Rutchinski"),
+                ("can_a9a283885c6e57169318052634fda346", "ec-ge-37", "Steve Rutchinski"),
+            )
+        ),
+        evidence_urls=(
+            _CPCML_2006_CANDIDATES,
+            _MDL_1993_RESULTS,
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+        ),
+        rationale=(
+            "The CPC-ML 2006 candidate biography of Rutchinski gives his electoral record as "
+            "Rosedale 1993 (61 votes), Toronto Centre—Rosedale 1997 (166 votes) and "
+            "Beaches—East York 2000 (53 votes), matching the official results. His 2015 and 2019 "
+            "University—Rosedale runs are not covered by that record and stay on their own Person."
+        ),
+        registry_person_ids=(
+            "per_83ce91414bb25e0dad0b85534118d73e",
+            "per_93e5956608865f32ac1d599f3d23c325",
+        ),
+        canonical_person_id="per_83ce91414bb25e0dad0b85534118d73e",
+    ),
+)
