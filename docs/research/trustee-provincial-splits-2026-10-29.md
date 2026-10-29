@@ -19,7 +19,7 @@ bridges below come from pages on the same site.
 |---|---|---|---|---|
 | Irene Atkinson | `can_bd38105deb035513b41a00bb71037116`, 1999 NDP, Parkdale—High Park | `per_4fce2dffe8095bee8c68ca1d2c8ac324` | `per_e07eaecf868050639b1cbe712c83663a` | `irene-atkinson-1999-provincial-candidacy` |
 | Stephnie Payne | `can_d7b5d29839895ef09bfb228255c3bffc`, 1999 NDP, York West | `per_a7badd21391e5d63b1661d0519a7d7d2` | `per_6d724de5779557149c7eceadeff15e1b` | `stephnie-payne-1999-provincial-candidacy` |
-| Bruce Davis | `can_c903092b715b524580e9ffb4ddeef813`, 1995 Liberal, Etobicoke-Lakeshore | `per_ae47e3a37afe5307bc5363e16d53189a` | not merged | none (primary reviewer) |
+| Bruce Davis | `can_c903092b715b524580e9ffb4ddeef813`, 1995 Liberal, Etobicoke-Lakeshore | `per_ae47e3a37afe5307bc5363e16d53189a` | not merged | none (not accepted on review) |
 | Christopher Caldwell (from the scan) | `can_cde8d0d89b3f5a58927f60085f219dfa`, 2018 Green, Etobicoke—Lakeshore | `per_e1baa72d43c95abba5db0f3235581d4c` | none | `christopher-caldwell-2018-provincial-candidacy` |
 
 The assertions are at the end of `PERSON_RECORD_MERGE_ASSERTIONS`. The Atkinson and Payne assertions pin
@@ -186,17 +186,19 @@ different first names are omitted.
 
 ## Counts
 
+"Before" is the release after the name and identity follow-ups (`identity-followups-2026-10-29.md`).
+
 | Measure | Before | After |
 |---|---|---|
 | People rows | 4,963 | 4,963 |
-| Active People | 4,862 | 4,859 |
-| Deprecated People | 101 | 104 |
-| `election_results` rows with a Person | 6,608 | 6,609 |
-| Distinct Persons on `election_results` | 4,844 | 4,841 |
-| Active unresolved links | 956 | 955 |
-| Link history rows | 10,698 | 10,709 |
-| Pinned occurrences in `DEFAULT_IDENTITY_ASSERTIONS` | 884 | 895 |
+| Active People | 4,861 | 4,859 |
+| Deprecated People | 102 | 104 |
+| `election_results` rows with a Person | 6,612 | 6,613 |
+| Distinct Persons on `election_results` | 4,843 | 4,841 |
+| Active unresolved links | 949 | 948 |
+| Link history rows | 10,693 | 10,701 |
+| Pinned occurrences in `DEFAULT_IDENTITY_ASSERTIONS` | 884 | 892 |
 
-Four `election_results` rows change: the three provincial candidacies move to the trustee Persons,
-and the 2018 Caldwell provincial candidacy gains its Person, with `incumbent` now false. The
-disposition counts are unchanged (1,406 rows: 937 unresolved, 463 confirmed, 6 rejected).
+Three `election_results` rows change: the two 1999 provincial candidacies move to the trustee
+Persons, and the 2018 Caldwell provincial candidacy gains its Person, with `incumbent` now false.
+The disposition counts are unchanged (1,399 rows: 930 unresolved, 468 confirmed, 1 rejected).

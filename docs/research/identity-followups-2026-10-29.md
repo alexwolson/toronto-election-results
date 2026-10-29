@@ -36,7 +36,7 @@ Raw names, the Candidacy ledger and all Candidacy IDs are unchanged. Only `candi
 
 ### Identity effect
 
-The change has no identity effect. All seven Candidacies already held confirmed links through curated assertions that locate them by Candidacy ID, and the registry adds rows only for Candidacies it has not seen. The rebuilt `people.csv` and `candidacy_person_links.csv` were byte-identical to the previous release, the bootstrap raised the same 71 review flags, and no proposal was added or changed (the 59 active proposals are all 2026 pending Candidacies, as before). The difference would show only in a registry bootstrapped from nothing, where five rows would become exact-name proposals to an earlier record of the same person (for example 2003 Alain Masson to the 2000 Alain Masson record, and 2006 Denys Begin to the 2003 one). In the persisted registry those rows are already confirmed to that Person.
+The change has no identity effect. All seven Candidacies already held confirmed links through curated assertions that locate them by Candidacy ID, and the registry adds rows only for Candidacies it has not seen. The rebuilt `people.csv` and `candidacy_person_links.csv` were byte-identical to the previous release, the bootstrap raised the same review flags, and no proposal was added or changed (the 59 active proposals are all 2026 pending Candidacies, as before). The difference would show only in a registry bootstrapped from nothing, where five rows would become exact-name proposals to an earlier record of the same person (for example 2003 Alain Masson to the 2000 Alain Masson record, and 2006 Denys Begin to the 2003 one). In the persisted registry those rows are already confirmed to that Person.
 
 ### Left open
 
@@ -92,7 +92,7 @@ Sources:
 
 The 2012 article names the by-election, its date and ward, and identifies the candidate as the Ward 19 trustee whom David Smith unseated in 2010, which is the target. That is person-specific news coverage, so the 2012 row is confirmed.
 
-For 2000, no source I could read gives his first election. The existing curated assertion `scott-harrison-tdsb-2003-2010-continuity` cites TDSB board minutes (https://www.tdsb.on.ca/Leadership/Agendas%2CMinutesDecisions.aspx?Filename=101110.pdf&Type=M&Year=2010) as saying he served as a trustee for ten years. Ten years of service ending in November 2010 would begin with the term won in 2000. The fetch tool refused that URL and the TDSB site is not one I may download from directly, so I could not check the wording and left the 2000 row unresolved. The primary reviewer should read those minutes. If they say ten years, the 2000 win can be confirmed on that basis.
+For 2000, no source I could read gives his first election. The existing curated assertion `scott-harrison-tdsb-2003-2010-continuity` cites TDSB board minutes (https://www.tdsb.on.ca/Leadership/Agendas%2CMinutesDecisions.aspx?Filename=101110.pdf&Type=M&Year=2010) as saying he served as a trustee for ten years. Ten years of service ending in November 2010 would begin with the term won in 2000. The fetch tool refused that URL and the TDSB site is not one this review may download from directly, so the wording was not checked and the 2000 row stays unresolved. If the minutes say ten years, the 2000 win can be confirmed on that basis.
 
 For 2018, the TDSB Ward 17 (Scarborough Centre) contest was a rematch with David Smith, who had beaten him in 2010 and 2014. That is suggestive, but Scott Harrison is a common name and no source describes the 2018 candidate, so the row stays unresolved.
 
@@ -106,15 +106,17 @@ The runs are all in north-central Toronto (Eglinton-Lawrence, St. Paul's and Yor
 
 ## Counts
 
+"Before" is the release after the 2010 TCDSB ward fix (`tcdsb-2010-ward-assignment-2026-10-29.md`).
+
 | Measure | Before | After |
 |---|---|---|
-| `identity_review_dispositions.csv` rows | 1,406 | 1,406 |
-| confirmed / unresolved / rejected | 463 / 937 / 6 | 467 / 933 / 6 |
+| `identity_review_dispositions.csv` rows | 1,399 | 1,399 |
+| confirmed / unresolved / rejected | 464 / 934 / 1 | 468 / 930 / 1 |
 | Candidacies with a published `person_id` | 6,608 | 6,612 |
-| Candidacies with a null `person_id` | 958 | 954 |
-| `candidacy_person_links.csv` rows | 10,698 | 10,702 |
+| Candidacies with a null `person_id` | 950 | 946 |
+| `candidacy_person_links.csv` rows | 10,689 | 10,693 |
 | active proposed links | 59 | 59 |
-| People (active / deprecated) | 4,963 (4,862 / 101) | 4,963 (4,862 / 101) |
+| People (active / deprecated) | 4,963 (4,861 / 102) | 4,963 (4,861 / 102) |
 
 The four new decisions replace their earlier rows in place under reviewer `identity-followups-2026-10-29`.
 
