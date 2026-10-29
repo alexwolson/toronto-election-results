@@ -207,7 +207,9 @@ def _pdf_lines(path: Path) -> list[tuple[int, str]]:
     ).stdout
     lines = []
     for number, line in enumerate(text.splitlines(), start=1):
-        if "web.archive.org" in line or re.search(r"Page \d+ of \d+", line):
+        if line.lstrip().startswith("https://web.archive.org/") or re.search(
+            r"Page \d+ of \d+", line
+        ):
             continue
         if "Toronto maps" in line:
             break
