@@ -507,8 +507,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1551
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 1009,
-        "confirmed": 541,
+        "unresolved": 999,
+        "confirmed": 551,
         "rejected": 1,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -884,3 +884,74 @@ def test_variant_name_merges_join_split_careers():
     assert confirmed.loc["can_e60111ecd5f45c6e80d7d39e39d3ebf6", "person_id"] == (
         "per_6ae741fa1fc65281a8b7aea106352cb1"
     )
+
+
+def test_star_profiles_link_interior_trustee_runs():
+    """Toronto Star candidate profiles join runs that sat unlinked between linked ones."""
+
+    links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    results = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
+    confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
+    careers = {
+        # Ron McNaughton: 1994 Scarborough, 1997 and 2000 TDSB wins, 2006 TDSB Ward 20.
+        "per_efb9299062b15bd2abb7245d2003637e": [
+            "can_4bd1365d2e785bfab4295318c016127a",
+            "can_97ee1b95680954a38de953dcce46dc95",
+            "can_49142cdd5fff580e902467ae86fe927e",
+            "can_dd5358979159513cba2c1ebff7de6229",
+        ],
+        # Ron Gillis, insurance broker: 1994 Separate School Board, TCDSB Ward 2 1997-2006.
+        "per_57886ab346255d2fb7f769a5ae8f03f0": [
+            "can_7642af517dae5fefa2288d6176fa07f8",
+            "can_1c2184b57e725b80b49df391e782d00e",
+            "can_318e767db7f75756b34a029808e3cdd8",
+            "can_adf9754e21ef560ab39632234c38c2ec",
+            "can_127d1719b4ab58e0a5c111c6c16a1232",
+        ],
+        # Nellie Pedro: 1994 trustee, 2000 TDSB Ward 9, 2003 Liberal MPP run, 2006 Ward 9.
+        "per_03b6008242f554e59fa8bb05090a7262": [
+            "can_7fbd53056d95515c88def2bd03e84a48",
+            "can_f3163d9a8aeb569199f5905c4d3fd0ef",
+            "can_15ddab4ce6965febad2feb8e87938d9c",
+            "can_8bb9b57903825e7cbd6728c3739e5e1c",
+        ],
+        # Joseph Martino: 2000 council run and the 2003 "Joe Martino" trustee win.
+        "per_09a4cbae05385a73bdd309e7d767549f": [
+            "can_9ce067e1505b5b86bdaf6edf19ffe7ae",
+            "can_25d1c914e203511d95369912e2f5b604",
+            "can_ced36ce6c10e5418aa4bd089cf31b71f",
+            "can_c5ea382fa99158c5bb8f1784c7ef5a00",
+            "can_14606696456d5af7a865205fcd7b7e68",
+        ],
+        # Doug Stephens's North York trustee terms, 1994-2000, as a new Person.
+        "per_0941986dbdc45b0293aacf7cc9eaeb3a": [
+            "can_c53dbd91c1df5ac68b84e5ef94e0758c",
+            "can_d7525997644c53e3ba6f7786451c7ba2",
+            "can_2275b55463c75a7791fe9ae1b717cdd7",
+        ],
+    }
+    for person_id, candidacy_ids in careers.items():
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
+        assert results.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
+        assert people.loc[person_id, "identity_status"] == "active"
+    assert people.loc["per_66464a384b635f5c8f99de40022bb7f6", "identity_status"] == "deprecated"
+    assert people.loc["per_66464a384b635f5c8f99de40022bb7f6", "redirect_to_person_id"] == (
+        "per_09a4cbae05385a73bdd309e7d767549f"
+    )
+    # No source covers these, so they stay as they were: the 2006 Willowdale Doug
+    # Stephens keeps his own Person, and McNaughton's 2016 by-election run is unresolved.
+    assert people.loc["per_1418d2b1662d56c6a097199de2deb696", "identity_status"] == "active"
+    assert confirmed.loc["can_3601f1f04d685a6388912dd4809cd435", "person_id"] == (
+        "per_1418d2b1662d56c6a097199de2deb696"
+    )
+    unresolved = active.loc[active["link_status"].eq("unresolved")].set_index("candidacy_id")
+    assert unresolved.loc["can_3c9323a2d4f45193bd554ec993be451a", "person_id"] == (
+        "per_efb9299062b15bd2abb7245d2003637e"
+    )
+    assert pd.isna(results.loc["can_3c9323a2d4f45193bd554ec993be451a", "person_id"])
