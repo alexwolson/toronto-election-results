@@ -23,6 +23,8 @@ Result: 25 confirmed (18 person-specific, 7 structural), 20 unresolved, none rej
 - The 2010 TCDSB results list eight candidates in two wards on the same day (for example Jo-Ann Davis with 6,294 votes in Ward 9 and 960 in Ward 6), which suggests the 2010 poll-by-poll file assigned some polls to the wrong trustee ward. This predates the 2000 work and needs a check against the Clerk's 2010 declaration. Resolved in [the 2010 TCDSB ward assignment correction](tcdsb-2010-ward-assignment-2026-10-29.md).
 - Three 2003 French-board names are stored surname-first or with a stray space ("Masson Alain", "Guerin Francois", "Leblanc- Miller").
 
+The Joseph Cohen, Walter Melnyk and Elizabeth Hill notes and the 2003 display names are followed up in `identity-followups-2026-10-29.md`.
+
 ## Decisions
 
 | Candidacy | Board | Ward | Name | Decision | Basis |

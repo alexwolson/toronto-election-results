@@ -48,7 +48,7 @@ import pandas as pd
 import requests
 from openpyxl.utils.exceptions import InvalidFileException
 
-from .candidates import known_multiword_surnames, normalize_name
+from .candidates import known_multiword_surnames, normalize_given_name_first, normalize_name
 from .coverage import ELECTION_DAY
 from .schema import stable_id
 
@@ -139,29 +139,33 @@ TRUSTEE_EVENT_COLUMNS = (
 class _Acclamation:
     candidate_name_raw: str
     source_url: str
+    # The Clerk's declarations print names given-name first, unlike the surname-first workbooks.
+    # A declaration-only Candidacy transcribed in that order keeps it for display.
+    given_name_first: bool = False
 
 
 # Each entry was checked against the City Clerk's official declaration, rather than inferred from
 # a zero-vote/single-candidate worksheet.  Names use the exact source representation from the
-# workbook where one exists; declaration-only Candidacies use the declaration's representation.
+# workbook where one exists; declaration-only Candidacies use the declaration's representation,
+# and those printed given-name first are flagged so the display keeps that order.
 _ACCLAMATIONS: dict[tuple[int, str, int], _Acclamation] = {
     (2003, TDSB, 6): _Acclamation("Hill, Elizabeth", _DECLARATION_URLS[2003]),
     (2003, TDSB, 7): _Acclamation("Atkinson, Irene", _DECLARATION_URLS[2003]),
     (2003, TDSB, 11): _Acclamation("Matlow, Josh", _DECLARATION_URLS[2003]),
     (2003, TDSB, 14): _Acclamation("Ward, Sheila", _DECLARATION_URLS[2003]),
     (2003, TCDSB, 12): _Acclamation("Crawford, Paul", _DECLARATION_URLS[2003]),
-    (2003, VIAMONDE, 2): _Acclamation("FRANCOIS GUERIN", _DECLARATION_URLS[2003]),
-    (2003, VIAMONDE, 3): _Acclamation("DENYS BEGIN", _DECLARATION_URLS[2003]),
-    (2003, VIAMONDE, 4): _Acclamation("ALAIN MASSON", _DECLARATION_URLS[2003]),
+    (2003, VIAMONDE, 2): _Acclamation("FRANCOIS GUERIN", _DECLARATION_URLS[2003], True),
+    (2003, VIAMONDE, 3): _Acclamation("DENYS BEGIN", _DECLARATION_URLS[2003], True),
+    (2003, VIAMONDE, 4): _Acclamation("ALAIN MASSON", _DECLARATION_URLS[2003], True),
     (2003, MONAVENIR, 3): _Acclamation("D'Aigle, Claude", _DECLARATION_URLS[2003]),
     (2006, VIAMONDE, 4): _Acclamation("MASSON ALAIN", _DECLARATION_URLS[2006]),
     (2006, MONAVENIR, 4): _Acclamation("LEGERE CLAUDE", _DECLARATION_URLS[2006]),
     (2010, MONAVENIR, 3): _Acclamation("DUFOUR SÉGUIN NATHALIE", _DECLARATION_URLS[2010]),
     (2010, MONAVENIR, 4): _Acclamation("D'AIGLE CLAUDE-RENO", _DECLARATION_URLS[2010]),
     (2014, VIAMONDE, 4): _Acclamation("L'HEUREUX JEAN-FRANÇOIS", _DECLARATION_URLS[2014]),
-    (2022, VIAMONDE, 2): _Acclamation("Benoit Fortin", _DECLARATION_URLS[2022]),
-    (2022, VIAMONDE, 4): _Acclamation("Geneviève Oger", _DECLARATION_URLS[2022]),
-    (2022, MONAVENIR, 3): _Acclamation("Nathalie Dufour Séguin", _DECLARATION_URLS[2022]),
+    (2022, VIAMONDE, 2): _Acclamation("Benoit Fortin", _DECLARATION_URLS[2022], True),
+    (2022, VIAMONDE, 4): _Acclamation("Geneviève Oger", _DECLARATION_URLS[2022], True),
+    (2022, MONAVENIR, 3): _Acclamation("Nathalie Dufour Séguin", _DECLARATION_URLS[2022], True),
 }
 
 _VOID_CONTESTS = {(2022, VIAMONDE, 3), (2022, MONAVENIR, 4)}
@@ -616,6 +620,20 @@ def _with_certified_vote_outcomes(
     return rows
 
 
+def _declared_given_name_first(
+    election_type: object, election_date: object, body: object, ward: object, raw: object
+) -> bool:
+    """Whether a row carries a declaration's given-name-first transcription of its name."""
+    if election_type != "general":
+        return False
+    declaration = _ACCLAMATIONS.get((pd.Timestamp(election_date).year, str(body), int(str(ward))))
+    return (
+        declaration is not None
+        and declaration.given_name_first
+        and declaration.candidate_name_raw == str(raw)
+    )
+
+
 def _result_frame(rows: list[dict[str, object]]) -> pd.DataFrame:
     frame = pd.DataFrame(rows, columns=TRUSTEE_RESULT_COLUMNS)
     frame["party_name_raw"] = frame["party_name_raw"].astype("string")
@@ -625,8 +643,17 @@ def _result_frame(rows: list[dict[str, object]]) -> pd.DataFrame:
         return frame
     known_surnames = known_multiword_surnames(frame["candidate_name_raw"])
     frame["candidate_name"] = [
-        normalize_name(str(name), known_surnames=known_surnames)[0]
-        for name in frame["candidate_name_raw"]
+        normalize_given_name_first(str(raw))
+        if _declared_given_name_first(election_type, election_date, body, ward, raw)
+        else normalize_name(str(raw), known_surnames=known_surnames)[0]
+        for election_type, election_date, body, ward, raw in zip(
+            frame["election_type"],
+            frame["election_date"],
+            frame["represented_body"],
+            frame["official_district_id"],
+            frame["candidate_name_raw"],
+            strict=True,
+        )
     ]
     frame["_body_order"] = frame["represented_body"].map(_BOARD_ORDER)
     frame["_ward_order"] = pd.to_numeric(frame["official_district_id"])

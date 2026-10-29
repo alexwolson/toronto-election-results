@@ -5,6 +5,7 @@ import pandas as pd
 from toronto_election_results.candidates import (
     assign_candidate_ids,
     known_multiword_surnames,
+    normalize_given_name_first,
     normalize_name,
 )
 
@@ -60,6 +61,32 @@ class TestNormalizeName:
             "Li Preti",
         )
 
+    def test_space_typed_beside_a_hyphen_is_dropped(self):
+        # The 2003 TCDSB workbook prints "LeBlanc- Miller, Catherine"
+        assert normalize_name("LeBlanc- Miller, Catherine") == (
+            "Catherine Leblanc-Miller",
+            "Catherine",
+            "Leblanc-Miller",
+        )
+        assert normalize_name("PANAIT -RODGERS ANDA") == (
+            "Anda Panait-Rodgers",
+            "Anda",
+            "Panait-Rodgers",
+        )
+
+
+class TestNormalizeGivenNameFirst:
+    def test_keeps_printed_order(self):
+        # The 2003 Clerk's declaration prints French-board names given-name first
+        assert normalize_given_name_first("ALAIN MASSON") == "Alain Masson"
+        assert normalize_given_name_first("Nathalie Dufour Séguin") == "Nathalie Dufour Séguin"
+
+    def test_normalizes_spacing_and_case_only(self):
+        assert normalize_given_name_first("  CLAUDE   D'AIGLE ") == "Claude D'Aigle"
+        assert normalize_given_name_first("CATHERINE LEBLANC - MILLER") == (
+            "Catherine Leblanc-Miller"
+        )
+
 
 def test_known_multiword_surnames_extracted_from_comma_form():
     raws = ["Di Giorgio, Frank", "Lindsay Luby, Gloria", "Miller, David", "Crisanti Vincent"]
@@ -67,6 +94,10 @@ def test_known_multiword_surnames_extracted_from_comma_form():
     assert "di giorgio" in known
     assert "lindsay luby" in known
     assert "miller" not in known  # single-word surnames are not tracked
+
+
+def test_hyphenated_surname_with_a_stray_space_is_not_multiword():
+    assert known_multiword_surnames(["LeBlanc- Miller, Catherine"]) == set()
 
 
 class TestAssignCandidateIds:

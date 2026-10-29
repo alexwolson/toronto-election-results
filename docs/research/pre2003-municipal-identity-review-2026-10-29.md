@@ -45,7 +45,7 @@ A second pass took the nine cases the first pass could not settle: possible spli
 
 ## Decisions
 
-Decisions marked "second pass" were changed from unresolved by the second pass above.
+Decisions marked "second pass" were changed from unresolved by the second pass above. The one marked "follow-up" was changed later, in `identity-followups-2026-10-29.md`.
 
 | Candidacy | Election | Contest | Name | Decision | Basis |
 |---|---|---|---|---|---|
@@ -258,7 +258,7 @@ Decisions marked "second pass" were changed from unresolved by the second pass a
 | `can_9ebd4c40feb55e54b27210ae3edbdf62` | 1997 | Ward 26 | Steve Ellis | confirmed | person-specific |
 | `can_fafab7add15a5513af1cdd960c3ce44f` | 1997 | Ward 25 | Terry Brackett | unresolved | none |
 | `can_d8ce4ed462ee5028b39f68de64543576` | 1997 | Ward 26 | Tom Jakobek | confirmed | person-specific |
-| `can_345785ba33dd545397a7a15ec83f710b` | 1997 | Ward 21 | Tony Letra | unresolved | none |
+| `can_345785ba33dd545397a7a15ec83f710b` | 1997 | Ward 21 | Tony Letra | confirmed (follow-up) | person-specific |
 | `can_aea8289d312c5a9c87e602f8ae614a01` | 1997 | Ward 28 | Tony Rizzo | confirmed | person-specific |
 | `can_0a9c43752c0a59ac9313767f711c511a` | 1997 | Ward 5 | Vincent Crisanti | confirmed | person-specific |
 | `can_7579ade3e49d5dc581572fce2b8fba6b` | 1997 | Ward 19 | Walter Melnyk | unresolved | none |

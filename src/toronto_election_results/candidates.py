@@ -7,6 +7,10 @@ learned from the comma-form years (ground truth), and a **particle rule** (a lea
 particles like ``Di``/``De``/``Van`` plus the next token is the surname) that only fires with 3+
 tokens, so a two-token name whose surname happens to be a particle word (``Le Nha``) is left alone.
 
+A few sources print names given-name first instead (the Clerk's declarations of results, the
+archived 1997 and 2000 pages). Their adapters keep the printed word order
+(:func:`normalize_given_name_first`) rather than reading the name as surname-first.
+
 Identity is resolved with a **token-sorted, accent-stripped, case-folded key** so that ordering
 and split differences collapse (``Frank Di Giorgio`` and ``Giorgio Frank Di`` share a key), then a
 fuzzy pass (rapidfuzz ``token_set_ratio``) merges near-duplicate keys. Each row carries a
@@ -16,12 +20,17 @@ linking similarity for fuzzy merges. It is a derived, uncertain link, not ground
 
 from __future__ import annotations
 
+import re
 import unicodedata
 
 import pandas as pd
 from rapidfuzz import fuzz, process
 
 DEFAULT_THRESHOLD = 88
+
+# A hyphen joins the parts of one name, so spaces beside it are source typos
+# (``LeBlanc- Miller``), never separators.
+_HYPHEN_SPACING = re.compile(r"\s*-\s*")
 
 # Surname prefixes that attach to the following token (e.g. "Di Giorgio", "De La Rose").
 PARTICLES = frozenset(
@@ -54,13 +63,18 @@ def _strip_accents(text: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
 
 
+def _collapse_spacing(text: str) -> str:
+    """Collapse whitespace runs and drop the spaces a source typed beside a hyphen."""
+    return _HYPHEN_SPACING.sub("-", " ".join(text.split()))
+
+
 def known_multiword_surnames(raw_names) -> set[str]:
     """Collect multi-word surnames from comma-form (``Last, First``) names — the ground truth."""
     surnames = set()
     for raw in raw_names:
         text = str(raw)
         if "," in text:
-            surname = " ".join(text.split(",")[0].split())
+            surname = _collapse_spacing(text.split(",")[0])
             if " " in surname:
                 surnames.add(surname.lower())
     return surnames
@@ -89,9 +103,10 @@ def normalize_name(raw: str, *, known_surnames=frozenset()) -> tuple[str, str | 
 
     Comma-less names are surname-first (``Crisanti Vincent``); a comma means ``Last, First``.
     ``known_surnames`` (multi-word surnames learned from the comma-form years) improves the split
-    of comma-less multi-word surnames.
+    of comma-less multi-word surnames. Spaces typed beside a hyphen are dropped
+    (``LeBlanc- Miller``), since a hyphen joins the parts of a single name.
     """
-    collapsed = " ".join(raw.split())
+    collapsed = _collapse_spacing(raw)
     if "," in collapsed:
         last, _, first = collapsed.partition(",")
     else:
@@ -100,6 +115,16 @@ def normalize_name(raw: str, *, known_surnames=frozenset()) -> tuple[str, str | 
     first, last = first.strip().title(), last.strip().title()
     display = f"{first} {last}".strip()
     return display, (first or None), (last or None)
+
+
+def normalize_given_name_first(raw: str) -> str:
+    """Return the display form of a name a source printed given-name first (``ALAIN MASSON``).
+
+    The word order is kept as printed; only spacing and capitalisation are normalised. Use it only
+    for a source known to print given names first, because a comma-less Clerk ballot name is
+    otherwise surname-first (see :func:`normalize_name`).
+    """
+    return _collapse_spacing(raw).title()
 
 
 def match_key(name: str) -> str:
