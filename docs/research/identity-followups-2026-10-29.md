@@ -1,6 +1,6 @@
 # Name display fixes and identity follow-ups — 2026-10-29
 
-Scope: three 2003 trustee names that were published in the wrong form, and five identity leads left open by the pre-2003 municipal and 2000 trustee reviews (Walter Melnyk, Tony Letra, Elizabeth Hill, Scott Harrison and Joseph Cohen). The evidence standard is the one used in those reviews. A confirmed link needs a person-specific source, or strong structural continuity for the same office type with an uncommon name. A link across office types needs a person-specific source, and exact name alone is never enough.
+Scope: three 2003 trustee names that were published in the wrong form, five identity leads left open by the pre-2003 municipal and 2000 trustee reviews (Walter Melnyk, Tony Letra, Elizabeth Hill, Scott Harrison and Joseph Cohen), and one pair from the trustee and provincial scan (Mary Hynes). The evidence standard is the one used in those reviews. A confirmed link needs a person-specific source, or strong structural continuity for the same office type with an uncommon name. A link across office types needs a person-specific source, and exact name alone is never enough.
 
 ## Part A: name display
 
@@ -80,9 +80,9 @@ Sources:
 
 The Wikipedia row gives the official 2015 result (84 votes, sixth of seven), so the party biography belongs to the 2015 Candidacy. It describes a trustee career from 1988 to 2006 that covers the target's 2000 and 2003 Ward 6 terms, which is the person-specific source a link from MP to trustee needs. The 2000 trustee review had already used this biography to confirm the 2000 run. For 2006, a career ending in 2006 means she was still the Ward 6 trustee, acclaimed there in 2003, when the 2006 Ward 6 Candidacy lost to Chris Tonks. The source and the same-ward continuity together place her in that contest.
 
-### 4. Scott Harrison: 2012 by-election confirmed, 2000 and 2018 unchanged
+### 4. Scott Harrison: 2000 win and 2012 by-election confirmed, 2018 unchanged
 
-Decision: `can_8eb0b96fd86159348a661a484ec38be0` (2012-02-27 TDSB Ward 20 by-election) confirmed to `per_cf67e953cc5d5813be347c92214ea37d`, which holds the TDSB Ward 19 runs of 2003 to 2014. The 2000 Ward 19 win (`can_adc17e058c1151e58a97e2f334a6c304`) and the 2018 Ward 17 run (`can_0c98702a96eb5c87bf47fb6ab98873f4`) stay unresolved.
+Decision: `can_8eb0b96fd86159348a661a484ec38be0` (2012-02-27 TDSB Ward 20 by-election) and the 2000 Ward 19 win (`can_adc17e058c1151e58a97e2f334a6c304`) confirmed to `per_cf67e953cc5d5813be347c92214ea37d`, which holds the TDSB Ward 19 runs of 2003 to 2014. The 2018 Ward 17 run (`can_0c98702a96eb5c87bf47fb6ab98873f4`) stays unresolved.
 
 Sources:
 
@@ -92,7 +92,7 @@ Sources:
 
 The 2012 article names the by-election, its date and ward, and identifies the candidate as the Ward 19 trustee whom David Smith unseated in 2010, which is the target. That is person-specific news coverage, so the 2012 row is confirmed.
 
-For 2000, no source I could read gives his first election. The existing curated assertion `scott-harrison-tdsb-2003-2010-continuity` cites TDSB board minutes (https://www.tdsb.on.ca/Leadership/Agendas%2CMinutesDecisions.aspx?Filename=101110.pdf&Type=M&Year=2010) as saying he served as a trustee for ten years. Ten years of service ending in November 2010 would begin with the term won in 2000. The fetch tool refused that URL and the TDSB site is not one this review may download from directly, so the wording was not checked and the 2000 row stays unresolved. If the minutes say ten years, the 2000 win can be confirmed on that basis.
+For 2000, no source I could read gives his first election. The existing curated assertion `scott-harrison-tdsb-2003-2010-continuity` cites TDSB board minutes (https://www.tdsb.on.ca/Leadership/Agendas%2CMinutesDecisions.aspx?Filename=101110.pdf&Type=M&Year=2010) as saying he served as a trustee for ten years. Ten years of service ending in November 2010 would begin with the term won in 2000. The fetch tool refused that URL, so the project owner read the minutes. They record his "Farewell Remarks by Trustee Scott Harrison, as presented to the Board on November 10, 2010": "I would like to speak about all of the wonderful things that we have accomplished in the 10 years that I've been a trustee for this Board." Ten years as a trustee ending in November 2010 begins with the term won in 2000, and the 2000 win was in Ward 19, the ward he held until 2010, so the 2000 row is confirmed.
 
 For 2018, the TDSB Ward 17 (Scarborough Centre) contest was a rematch with David Smith, who had beaten him in 2010 and 2014. That is suggestive, but Scott Harrison is a common name and no source describes the 2018 candidate, so the row stays unresolved.
 
@@ -104,6 +104,14 @@ Sources checked: the CJN's 2010 Ward 10 article (https://www.cjnews.com/news/war
 
 The runs are all in north-central Toronto (Eglinton-Lawrence, St. Paul's and York Centre), which fits one man, but the name is common and no source describes any of these candidates, so none of the runs is linked.
 
+### 6. Mary Hynes: 2014 council run confirmed
+
+Decision: `can_6220c52e6fbf51e2add4b59cf059b30c` (2014 council Ward 34) confirmed to `per_dd476c76412b55188c381498b666836f`, which holds the 2012-02-27 TDSB Ward 17 by-election run. This pair came from the scan in `trustee-provincial-splits-2026-10-29.md`.
+
+Source: https://afuitbs.com/2014/07/30/challengers-to-watch-viii/, a 2014 blog profile of council challengers, places Mary Hynes in "Ward 34 Don Valley East" and says she is "no stranger to political campaigns, having run previously at both the provincial and federal levels as well as in a 2012 school board by-election."
+
+The profile describes the 2014 Ward 34 candidate and names a 2012 school board by-election. The only Mary Hynes in a 2012 by-election is the TDSB Ward 17 candidate, and that ward lies in Don Valley East. The project owner accepted a blog profile as a person-specific source here, on the same footing as the Election Prediction Project comments used for Agnes Potts and Stephnie Payne. The profile names neither the provincial and federal contests nor the name Trapani, so the Mary Trapani Hynes provincial and federal records stay separate.
+
 ## Counts
 
 "Before" is the release after the 2010 TCDSB ward fix (`tcdsb-2010-ward-assignment-2026-10-29.md`).
@@ -111,14 +119,14 @@ The runs are all in north-central Toronto (Eglinton-Lawrence, St. Paul's and Yor
 | Measure | Before | After |
 |---|---|---|
 | `identity_review_dispositions.csv` rows | 1,399 | 1,399 |
-| confirmed / unresolved / rejected | 464 / 934 / 1 | 468 / 930 / 1 |
-| Candidacies with a published `person_id` | 6,608 | 6,612 |
-| Candidacies with a null `person_id` | 950 | 946 |
-| `candidacy_person_links.csv` rows | 10,689 | 10,693 |
+| confirmed / unresolved / rejected | 464 / 934 / 1 | 470 / 928 / 1 |
+| Candidacies with a published `person_id` | 6,608 | 6,614 |
+| Candidacies with a null `person_id` | 950 | 944 |
+| `candidacy_person_links.csv` rows | 10,689 | 10,695 |
 | active proposed links | 59 | 59 |
 | People (active / deprecated) | 4,963 (4,861 / 102) | 4,963 (4,861 / 102) |
 
-The four new decisions replace their earlier rows in place under reviewer `identity-followups-2026-10-29`.
+The six new decisions replace their earlier rows in place under reviewer `identity-followups-2026-10-29`.
 
 ## Decisions
 
@@ -131,10 +139,11 @@ The four new decisions replace their earlier rows in place under reviewer `ident
 | `can_f0f6068771fa57d89f002ae177e9de18` | 2000 | TCDSB Ward 10 | Tony Letra | unresolved (unchanged) | none |
 | `can_8e6c404ce2545b19b3d5413a881d754b` | 2006 | TDSB Ward 6 | Elizabeth Hill | confirmed | person-specific |
 | `can_72c3041be0cd59bba264c3eaf28436a3` | 2015 | Don Valley West (federal) | Elizabeth Hill | confirmed | person-specific |
-| `can_adc17e058c1151e58a97e2f334a6c304` | 2000 | TDSB Ward 19 | Scott Harrison | unresolved (unchanged) | none |
+| `can_adc17e058c1151e58a97e2f334a6c304` | 2000 | TDSB Ward 19 | Scott Harrison | confirmed | person-specific |
 | `can_8eb0b96fd86159348a661a484ec38be0` | 2012 | TDSB Ward 20 (by-election) | Scott Harrison | confirmed | person-specific |
 | `can_0c98702a96eb5c87bf47fb6ab98873f4` | 2018 | TDSB Ward 17 | Scott Harrison | unresolved (unchanged) | none |
 | `can_4385b18ccdb95d6fab3f75c18fd593fb` | 2000 | TDSB Ward 8 | Joseph Cohen | unresolved (unchanged) | none |
 | `can_715cf905cc095072bfc5b460cb9e0f34` | 2006 | TDSB Ward 11 | Joseph Cohen | unresolved (unchanged) | none |
 | `can_fb59368b8b845261839d4fd98997b496` | 2010 | Council Ward 10 | Joseph Cohen | unresolved (unchanged) | none |
 | `can_bca16b1c85215b4f8a6fc766fb6188c8` | 2018 | TDSB Ward 5 | Joseph Cohen | unresolved (unchanged) | none |
+| `can_6220c52e6fbf51e2add4b59cf059b30c` | 2014 | Council Ward 34 | Mary Hynes | confirmed | person-specific |

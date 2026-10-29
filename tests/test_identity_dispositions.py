@@ -507,8 +507,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1399
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 930,
-        "confirmed": 468,
+        "unresolved": 928,
+        "confirmed": 470,
         "rejected": 1,
     }
     decisions = exclude_superseded_identity_decisions(

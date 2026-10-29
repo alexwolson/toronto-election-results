@@ -166,7 +166,7 @@ that candidacy to the trustee Person. It does not join:
   council run under the name, but the article does not say which council race he ran in. It stays
   on its own Person.
 
-## Other pairs with the same pattern (not acted on)
+## Other pairs with the same pattern
 
 The scan compared active Person links for a trustee Person and a separate provincial or federal
 Person with the same surname and first initial, and the results were read by hand. Pairs with plainly
@@ -174,7 +174,7 @@ different first names are omitted.
 
 | Pair | Records | Finding |
 |---|---|---|
-| Mary Hynes and Mary Trapani Hynes | `per_dd476c76412b55188c381498b666836f`: 2012 TDSB Ward 17 by-election, with the 2014 council Ward 34 run unresolved against it. `per_f582eba5e7c25cb3acb26b03708cbfef`: 2007 NDP Don Valley East, with the 2008 and 2011 federal NDP Don Valley East runs unresolved against it. | All runs are in Don Valley East. A blog profile of 2014 council challengers (https://afuitbs.com/2014/07/30/challengers-to-watch-viii/) says the Ward 34 candidate Mary Hynes had "run previously at both the provincial and federal levels as well as in a 2012 school board by-election" and links a Facebook account named MaryT.Hynes. It names neither the contests nor the name Trapani. Her 2012 campaign release (https://www.globenewswire.com/news-release/2012/02/20/1365217/0/en/Ward-17-School-Board-Trustee-Candidate-Mary-Hynes-on-the-Drummond-Report.html) lists no earlier runs. Left as is. If blogs are acceptable, the blog does join the 2014 council run to the 2012 trustee run. |
+| Mary Hynes and Mary Trapani Hynes | `per_dd476c76412b55188c381498b666836f`: 2012 TDSB Ward 17 by-election, with the 2014 council Ward 34 run unresolved against it. `per_f582eba5e7c25cb3acb26b03708cbfef`: 2007 NDP Don Valley East, with the 2008 and 2011 federal NDP Don Valley East runs unresolved against it. | All runs are in Don Valley East. A blog profile of 2014 council challengers (https://afuitbs.com/2014/07/30/challengers-to-watch-viii/) says the Ward 34 candidate Mary Hynes had "run previously at both the provincial and federal levels as well as in a 2012 school board by-election" and links a Facebook account named MaryT.Hynes. It names neither the contests nor the name Trapani. Her 2012 campaign release (https://www.globenewswire.com/news-release/2012/02/20/1365217/0/en/Ward-17-School-Board-Trustee-Candidate-Mary-Hynes-on-the-Drummond-Report.html) lists no earlier runs. The 2014 council run was later confirmed to the 2012 trustee record on the blog profile (see `identity-followups-2026-10-29.md`); the provincial and federal records stay separate. |
 | Michael Sullivan and Mike Sullivan | `per_7c2010326383532baee13f9622637d64`: 2003 TDSB Ward 18, with 2006 and 2010 TDSB Ward 4 runs unresolved against it (runner-up to Payne by 136 and 56 votes). `per_5c16add0f57c57ffb6108decd999bb64`: NDP, York South—Weston, 2008, 2011 and 2015. | Ward 4 adjoins York South—Weston. The MP's Wikipedia biography (https://en.wikipedia.org/wiki/Mike_Sullivan_(Canadian_politician)) mentions no trustee run, and the 2010 labour council slate lists Payne for Ward 4. Nothing found. |
 | P. C. Choo and Pak-Cheong Choo | `per_628e0ca495585a479f4a5faaa676dc20`: NDP, Etobicoke—Lakeshore, 2013 by-election and 2014. `per_1df11471e3ed58bbb609f771ca4a2ff3`: 2016 TDSB Ward 1 by-election, 203 votes. | CP24's 2013 candidate page (https://www.cp24.com/features/ontario-byelections-2013/riding-profile-etobicoke-lakeshore/why-i-m-the-best-candidate-p-c-choo) quotes him: "As a school trustee and a Governor at the University of Toronto, I have worked hard to make government accountable." Nothing joins him to the 2016 by-election, and the Star's report on it does not mention him. |
 | Ellery Hollingsworth | `per_56fa15411d0c529e91c04120f954edf1`: 2006 TDSB Ward 18. `per_678a6c155c045a00b7c635042c911899`: 2000 Progressive Conservative, Scarborough Southwest. | Same area and an uncommon name. Elections Canada's 2000 candidate file gives occupation Retired and residence Scarborough, which does not distinguish him. No other source found. |
@@ -193,12 +193,12 @@ different first names are omitted.
 | People rows | 4,963 | 4,963 |
 | Active People | 4,861 | 4,859 |
 | Deprecated People | 102 | 104 |
-| `election_results` rows with a Person | 6,612 | 6,613 |
+| `election_results` rows with a Person | 6,614 | 6,615 |
 | Distinct Persons on `election_results` | 4,843 | 4,841 |
-| Active unresolved links | 949 | 948 |
-| Link history rows | 10,693 | 10,701 |
+| Active unresolved links | 947 | 946 |
+| Link history rows | 10,695 | 10,703 |
 | Pinned occurrences in `DEFAULT_IDENTITY_ASSERTIONS` | 884 | 892 |
 
 Three `election_results` rows change: the two 1999 provincial candidacies move to the trustee
 Persons, and the 2018 Caldwell provincial candidacy gains its Person, with `incumbent` now false.
-The disposition counts are unchanged (1,399 rows: 930 unresolved, 468 confirmed, 1 rejected).
+The disposition counts are unchanged (1,399 rows: 928 unresolved, 470 confirmed, 1 rejected).
