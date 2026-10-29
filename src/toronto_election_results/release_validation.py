@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import unicodedata
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
@@ -192,6 +193,36 @@ def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[st
         issues.append(f"{table_label}.election_year must equal the year of election_date")
 
 
+def _name_key(value: object) -> str:
+    return " ".join(unicodedata.normalize("NFKC", str(value)).split()).casefold()
+
+
+def trustee_ward_collision_issues(candidacies: pd.DataFrame) -> list[str]:
+    """Flag a candidate name that appears in two trustee wards of one board at one event.
+
+    Nobody can stand in two wards of one School Board in the same election, so such a pair means
+    that votes from one Contest were filed under another, as the 2010 TCDSB workbook did before
+    its blocks were assigned by candidate roster. The release has no pair of distinct namesakes
+    that would be a genuine exception. If one is ever verified, exempt that pair here explicitly.
+    """
+
+    columns = {"event_id", "represented_body", "office_type", "district_id"}
+    name_column = "candidate_name" if "candidate_name" in candidacies else "candidate_name_raw"
+    if not columns.issubset(candidacies.columns) or name_column not in candidacies:
+        return []
+    trustees = candidacies.loc[candidacies["office_type"].eq("trustee")]
+    if trustees.empty:
+        return []
+    keyed = trustees[["event_id", "represented_body", "district_id"]].assign(
+        name_key=trustees[name_column].map(_name_key)
+    )
+    wards = keyed.groupby(["event_id", "represented_body", "name_key"])["district_id"].nunique()
+    return [
+        f"candidate {name!r} appears in {count} {body} wards in event {event_id!r}"
+        for (event_id, body, name), count in wards[wards.gt(1)].items()
+    ]
+
+
 def _materially_outside(city, district) -> bool:
     """Distinguish a real containment failure from GEOS floating-point slivers."""
 
@@ -298,6 +329,7 @@ def validate_release(
         parent_label="Electoral district",
         issues=issues,
     )
+    issues.extend(trustee_ward_collision_issues(candidacies))
 
     if office_tenures is not None:
         _duplicate_issue(office_tenures, "office_tenure_id", "office_tenures", issues)

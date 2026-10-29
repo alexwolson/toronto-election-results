@@ -1,12 +1,16 @@
 """Cross-table quality gates for the expanded relational release."""
 
 from datetime import date
+from pathlib import Path
 
 import pandas as pd
 import pytest
 from shapely.geometry import box
 
-from toronto_election_results.release_validation import validate_release
+from toronto_election_results.release_validation import (
+    trustee_ward_collision_issues,
+    validate_release,
+)
 from toronto_election_results.schema import (
     attach_parties,
     build_contests,
@@ -522,3 +526,97 @@ def test_flags_predecessor_incumbency_outside_a_first_amalgamated_election():
     issues = validate_release(*release)
 
     assert any("outside a first amalgamated election" in issue for issue in issues)
+
+
+def _trustee_rows(entries):
+    """Rows for (event, date, board, ward, candidate, votes, elected) trustee Candidacies."""
+
+    keys = (
+        "event_id",
+        "election_date",
+        "represented_body",
+        "ward",
+        "candidate",
+        "votes",
+        "elected",
+    )
+    records = [dict(zip(keys, entry, strict=True)) for entry in entries]
+    board_code = {
+        "toronto_catholic_district_school_board": "tcdsb",
+        "toronto_district_school_board": "tdsb",
+    }
+    return pd.DataFrame(
+        {
+            "event_id": [record["event_id"] for record in records],
+            "election_date": [record["election_date"] for record in records],
+            "election_type": "general",
+            "election_authority": "toronto_city_clerk",
+            "represented_body": [record["represented_body"] for record in records],
+            "office_type": "trustee",
+            "boundary_regime": [
+                f"{board_code[record['represented_body']]}-trustee-wards-"
+                f"{record['election_date'][:4]}"
+                for record in records
+            ],
+            "official_district_id": [str(record["ward"]) for record in records],
+            "district_name": [f"Ward {record['ward']}" for record in records],
+            "candidate_name_raw": [record["candidate"] for record in records],
+            "candidate_name": [record["candidate"] for record in records],
+            "source_candidacy_id": [f"occurrence-{number}" for number in range(len(records))],
+            "party_name_raw": pd.NA,
+            "affiliation_status": "non_partisan",
+            "votes": [record["votes"] for record in records],
+            "elected": [record["elected"] for record in records],
+            "outcome_method": "vote",
+            "coverage_status": "complete",
+            "source_detail": "official",
+        }
+    )
+
+
+def test_flags_one_candidate_in_two_wards_of_one_school_board():
+    tcdsb = "toronto_catholic_district_school_board"
+    rows = _trustee_rows(
+        [
+            ("toronto-2010", "2010-10-25", tcdsb, 5, "Maria Rizzo", 3716, True),
+            ("toronto-2010", "2010-10-25", tcdsb, 5, "John Del Grande", 1471, False),
+            ("toronto-2010", "2010-10-25", tcdsb, 7, "John Del Grande", 8183, True),
+            ("toronto-2010", "2010-10-25", tcdsb, 7, "Michael Issa", 3298, False),
+        ]
+    )
+
+    issues = validate_release(*_release(rows))
+
+    assert issues == [
+        (
+            "candidate 'john del grande' appears in 2 toronto_catholic_district_school_board "
+            "wards in event 'toronto-2010'"
+        )
+    ]
+
+
+def test_same_trustee_name_on_another_board_or_at_another_event_is_allowed():
+    tcdsb = "toronto_catholic_district_school_board"
+    tdsb = "toronto_district_school_board"
+    rows = _trustee_rows(
+        [
+            ("toronto-2010", "2010-10-25", tcdsb, 5, "Alex Example", 60, True),
+            ("toronto-2010", "2010-10-25", tcdsb, 5, "Bailey Example", 40, False),
+            ("toronto-2010", "2010-10-25", tdsb, 7, "Alex Example", 70, True),
+            ("toronto-2010", "2010-10-25", tdsb, 7, "Casey Example", 30, False),
+            ("toronto-2014", "2014-10-27", tcdsb, 9, "Alex Example", 55, True),
+            ("toronto-2014", "2014-10-27", tcdsb, 9, "Bailey Example", 45, False),
+        ]
+    )
+
+    assert validate_release(*_release(rows)) == []
+
+
+def test_published_release_has_no_trustee_in_two_wards_of_one_board():
+    results_path = Path(__file__).parents[1] / "data" / "out" / "election_results.csv"
+    if not results_path.exists():
+        pytest.skip("requires the published release")
+    results = pd.read_csv(results_path, dtype="string")
+
+    assert results["office_type"].eq("trustee").any()
+    assert trustee_ward_collision_issues(results) == []

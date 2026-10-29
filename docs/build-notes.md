@@ -108,6 +108,14 @@ Two unchanged cached builds produced byte-identical Candidacy-ledger and public 
 artifacts. The build manifest checksums the disposition table alongside the official and curated
 source inputs.
 
+The City's 2010 TCDSB poll-by-poll workbook prints three City-ward blocks on another trustee
+ward's sheet, which once produced eight spurious Candidacies and short vote totals in Wards 7, 9
+and 11. The trustee adapter now assigns each general-election block to the ward whose candidate
+roster it lists, the eight Candidacies are retired, and every general-election trustee Contest
+from 2003 to 2022 matches the Clerk's declaration. A release gate rejects a candidate name that
+appears in two trustee wards of one board at one event. See
+`docs/research/tcdsb-2010-ward-assignment-2026-10-29.md`.
+
 Toronto's trustee by-election archive begins in 2012, so event enumeration for 2003–2011 is marked
 uncertain. No result rows are invented for that gap. Trustee incumbency remains null until a
 complete, evidence-backed historical roster is acquired. Geometry is never treated as required for
