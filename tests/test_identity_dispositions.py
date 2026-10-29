@@ -6,6 +6,7 @@ import pandas as pd
 import pytest
 
 from toronto_election_results.identity import attach_confirmed_people
+from toronto_election_results.identity_curations import exclude_person_record_merge_decisions
 from toronto_election_results.identity_dispositions import (
     apply_identity_review_decisions,
     read_identity_review_decisions,
@@ -504,11 +505,11 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1039
+    assert len(original_decisions) == 1361
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 829,
-        "confirmed": 205,
-        "rejected": 5,
+        "unresolved": 917,
+        "confirmed": 438,
+        "rejected": 6,
     }
     decisions = exclude_superseded_identity_decisions(
         original_decisions, REPO_ROOT / "data" / "reference"
@@ -520,6 +521,7 @@ def test_all_published_proposals_have_an_audited_final_disposition():
         REPO_ROOT / "data" / "reference",
         build_trustee_career_identity_assertions(REPO_ROOT / "data" / "reference", result_rows),
     )
+    decisions = exclude_person_record_merge_decisions(decisions)
     results = result_rows.set_index("candidacy_id")
     links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
     active = links.loc[links["valid_to_release"].isna()]
@@ -676,3 +678,57 @@ def test_current_council_cross_office_careers_are_linked_in_the_public_release()
         assert active.iloc[0]["person_id"] == person_id
         assert active.iloc[0]["link_status"] == "confirmed"
         assert {"proposed", "unresolved", "confirmed"} <= set(history["link_status"])
+
+
+def test_person_record_merges_join_biography_backed_careers():
+    links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string")
+    active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
+    confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
+    expected = {
+        # David Miller: 1993 federal, 1996 provincial, 2003 mayor.
+        "can_a648abaafa76540fbcdd0c7b8260d82d": "per_ad293f1387af572cad45897886519bb6",
+        "can_07dca60e733959a19d4da077883f5ce6": "per_ad293f1387af572cad45897886519bb6",
+        "can_63e1ea224f9a5132ae24d181a6bd7ca2": "per_ad293f1387af572cad45897886519bb6",
+        # Denzil Minnan-Wong, listed in 1997 as Denzil Wong-Minnan.
+        "can_4c067bdd1cb656eda20a29c8e32f880a": "per_cacdaf09421e5b0e98d0138141449f29",
+        # Elizabeth Rowley's 2019 federal run, previously unresolved.
+        "can_2e8a945cf8ef5a6fa674861ebd1c6391": "per_aa1078f5c83b568188c98224c0b71f58",
+        # Mike Feldman, 1997 and 2006.
+        "can_f74895fe25385bccbaf2316f6b2146a0": "per_a91b6e0f34fc5ad894ceeecfe6f286ca",
+        "can_21292996478554dd9696fe813d2bee9c": "per_a91b6e0f34fc5ad894ceeecfe6f286ca",
+        # Maria Augimeri's and Adam Giambrone's later provincial/federal runs.
+        "can_3969a285f02754068d6aeb8ab44662cb": "per_a39385ec8fc65555a86f30b50d338a33",
+        "can_fb1e7879c831534288610a41f5f91115": "per_2058e961126e5e8499b3ea8046068164",
+        # Second pass on the hard cases: Verdecchia's 1997 federal run, Papadakis's 1993
+        # federal run, Kalevar's 1993 federal and 2019 Davenport runs, Yaqoob Khan's 2006
+        # Ward 28 run, Van Schouwen's 1997 council run and Mulhall's 1997 and 2006 runs.
+        "can_56f5a6a9fd6a57d6806904de02528459": "per_3997000aca965ed98716d39d8bf36311",
+        "can_0375c057e7595add855af804ab66e056": "per_ea45e9b94d525274a5445c574fd8e1f1",
+        "can_45feeeb8acb552f6816da3ce7e48846b": "per_7a6c09e82feb52cdbcd1fa757f7c708d",
+        "can_3a2322c5bf575c04ae6b9578cdd36be1": "per_7a6c09e82feb52cdbcd1fa757f7c708d",
+        "can_6321ff70309a5eee9e7fdf6502173a9c": "per_8e9d36e1b43653b6a469e5c9b87e95e7",
+        "can_c9ad2fc1d2335e80a32646c199e4cba6": "per_eeea104c1cce54a382c006cdb50f38aa",
+        "can_c09ca8c2088d5f9d8bef60319f713fcc": "per_5903ae015a9e52259eb7b89b21d09855",
+        "can_14fc3bff7c6a52a491b57e1949ecfb91": "per_5903ae015a9e52259eb7b89b21d09855",
+    }
+    assert confirmed.loc[list(expected), "person_id"].to_dict() == expected
+    redirects = people.set_index("person_id")
+    assert redirects.loc["per_b04a5fd11b4951368dcd05cb899898f5", "identity_status"] == "deprecated"
+    assert (
+        redirects.loc["per_b04a5fd11b4951368dcd05cb899898f5", "redirect_to_person_id"]
+        == "per_ad293f1387af572cad45897886519bb6"
+    )
+    # Kalevar's 1994-2000 council runs and Mulhall's 2014 run stay unresolved.
+    unresolved = active.loc[active["link_status"].eq("unresolved")].set_index("candidacy_id")
+    assert {
+        "can_69d13f11fbcc5d80889e72901424377e",
+        "can_a8b8878648c65af2a75fe974865c078c",
+        "can_524a3ab594925691a736de3baeb5e24d",
+        "can_227eaae6d22652989e68a0314620f2e3",
+    } <= set(unresolved.index)
+    # Paul Sutherland's 1995 Oriole run is not covered by his biography.
+    assert (
+        confirmed.loc["can_f14b32f044585ca490d383a9295eddf9", "person_id"]
+        == "per_81a4729b82615321ab2157051003edf5"
+    )

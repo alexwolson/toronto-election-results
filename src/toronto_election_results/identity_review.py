@@ -669,6 +669,39 @@ def extend_identity_review(
         for source, target in person_mapping.items()
         if source == target and target not in existing_person_ids
     }
+
+    # A new bootstrap Person can only absorb prior occurrences through official
+    # continuity. When the cumulative set gains earlier occurrences of a name whose
+    # prior Person has no such continuity (for example City results before Open
+    # Data), the earliest new occurrence would otherwise anchor a duplicate Person.
+    # Route those occurrences to the unique prior Person as review proposals instead.
+    display = (
+        candidacies["candidate_name"].fillna(candidacies["candidate_name_raw"])
+        if "candidate_name" in candidacies
+        else candidacies["candidate_name_raw"]
+    )
+    name_keys = dict(
+        zip(
+            candidacies["candidacy_id"].astype(str),
+            [_exact_name_key(value) for value in display],
+            strict=True,
+        )
+    )
+    prior_people_by_key: dict[str, set[str]] = {}
+    for candidacy_id, person_id in prior_by_candidacy.items():
+        if candidacy_id in name_keys:
+            prior_people_by_key.setdefault(name_keys[candidacy_id], set()).add(person_id)
+    redirect_to_prior: dict[str, str] = {}
+    for bootstrap_person_id in sorted(new_person_ids):
+        members = bootstrap_confirmed.loc[
+            bootstrap_confirmed["person_id"].eq(bootstrap_person_id), "candidacy_id"
+        ]
+        targets: set[str] = set()
+        for candidacy_id in members:
+            targets |= prior_people_by_key.get(name_keys.get(str(candidacy_id), ""), set())
+        if len(targets) == 1:
+            redirect_to_prior[bootstrap_person_id] = next(iter(targets))
+    new_person_ids -= set(redirect_to_prior)
     new_people = bootstrap.people.loc[
         bootstrap.people["person_id"].astype(str).isin(new_person_ids)
     ].copy()
@@ -678,6 +711,21 @@ def extend_identity_review(
     new_links = bootstrap.candidacy_person_links.loc[
         ~bootstrap.candidacy_person_links["candidacy_id"].astype(str).isin(active_prior_candidacies)
     ].copy()
+    redirected = new_links["person_id"].astype("string").isin(list(redirect_to_prior))
+    if redirected.any():
+        new_links.loc[redirected, "evidence"] = [
+            _evidence(
+                "exact_name_only_not_identity_evidence",
+                prior_person_id=redirect_to_prior[str(person_id)],
+                review_scope="existing_registry_exact_display_name",
+            )
+            for person_id in new_links.loc[redirected, "person_id"]
+        ]
+        new_links.loc[redirected, "link_status"] = "proposed"
+        new_links.loc[redirected, "method"] = "exact_normalized_name_review"
+        new_links.loc[redirected, "person_id"] = new_links.loc[redirected, "person_id"].map(
+            lambda value: redirect_to_prior[str(value)]
+        )
     new_links["person_id"] = new_links["person_id"].map(
         lambda value: pd.NA if pd.isna(value) else person_mapping.get(str(value), str(value))
     )

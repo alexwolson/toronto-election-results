@@ -12,7 +12,12 @@ from .coverage import ELECTION_DAY
 from .pending_candidates import pending_candidate_paths
 
 COVERAGE = {
-    "from": "2003-01-01",
+    "from": "1993-10-25",
+    "from_by_level": {
+        "federal": "1993-10-25",
+        "municipal": "1994-11-14",
+        "provincial": "1995-06-08",
+    },
     "through": ELECTION_DAY.isoformat(),
     "pending_candidate_snapshot_through": None,
     "pending_event_through": ELECTION_DAY.isoformat(),
@@ -22,10 +27,16 @@ COVERAGE = {
 EVENT_ARCHIVE_CAVEATS = [
     {
         "authority": "toronto_city_clerk",
+        "period": "1995-01-01/2002-12-31",
+        "scope": "municipal_by_elections",
+        "status": "uncertain",
+    },
+    {
+        "authority": "toronto_city_clerk",
         "period": "2003-01-01/2011-12-31",
         "scope": "trustee_by_elections",
         "status": "uncertain",
-    }
+    },
 ]
 
 EXCLUDED_CALLS = [

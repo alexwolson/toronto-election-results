@@ -1,10 +1,12 @@
 # Toronto Election Results
 
 A unified, analysis-ready history of elections within the City of Toronto. The inclusive
-election-date coverage window is **2003-01-01 through 2026-10-26**, except provincial and federal
-results, which begin with the last general election before amalgamation: the **1995-06-08 Ontario
-general election** and the **1993-10-25 federal general election** (ADR 0010; municipal coverage
-before 2003 is in progress). Only validated or certified
+election-date coverage window runs through **2026-10-26** and begins with the last general election
+before amalgamation for each level of government (ADR 0010): the **1994-11-14 municipal elections**
+(the six former municipalities and Metropolitan Toronto), the **1995-06-08 Ontario general
+election** and the **1993-10-25 federal general election**. Municipal coverage before 2003 is
+Mayor, Councillor and Metro Councillor only; pre-2003 School Board trustees are not yet included.
+Only validated or certified
 outcomes are published as final; future elections retain pending results. The scheduled
 **2026-10-26 Toronto municipal general election** is also represented by the City's certified
 candidate-list snapshot acquired on **2026-09-30**. Mayor,

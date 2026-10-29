@@ -37,7 +37,10 @@ from .federal_historical import (
     load_historical_federal_results,
 )
 from .identity import validate_identity_tables
-from .identity_curations import DEFAULT_IDENTITY_ASSERTIONS
+from .identity_curations import (
+    DEFAULT_IDENTITY_ASSERTIONS,
+    exclude_person_record_merge_decisions,
+)
 from .identity_dispositions import read_identity_review_decisions
 from .mayoral_career import (
     build_mayoral_career_identity_assertions,
@@ -45,6 +48,7 @@ from .mayoral_career import (
     load_mayoral_career_backfills,
 )
 from .municipal import load_council_results
+from .municipal_archive import archive_placeholder_manifest, load_archive_results
 from .ontario import (
     TABULATIONS,
     download_ontario_sources,
@@ -333,6 +337,7 @@ def _load_source_adapters(
         trustee_crosswalk_path=reference / TRUSTEE_CROSSWALK_FILENAME,
     )
     mayoral_career = load_mayoral_career_backfills(reference)
+    municipal_archive = load_archive_results(reference)
     contest_manifest = pd.concat(
         [
             trustee_event_manifest(
@@ -340,10 +345,19 @@ def _load_source_adapters(
                 by_election_root=raw / "trustee_byelections",
             ),
             historical_federal_placeholder_manifest(),
+            archive_placeholder_manifest(reference),
         ],
         ignore_index=True,
     )
-    return [council, trustees, federal, ontario, pending_council, mayoral_career], contest_manifest
+    return [
+        council,
+        trustees,
+        federal,
+        ontario,
+        pending_council,
+        mayoral_career,
+        municipal_archive,
+    ], contest_manifest
 
 
 def run_all(
@@ -423,6 +437,7 @@ def run_all(
         reference,
         trustee_identity_assertions,
     )
+    identity_review_decisions = exclude_person_record_merge_decisions(identity_review_decisions)
     built = assemble_bootstrapped_release(
         resolved.adapter_frames,
         release_id=RELEASE_ID,

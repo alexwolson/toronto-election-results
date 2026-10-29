@@ -1,182 +1,193 @@
 {
   "artifacts": [
     {
-      "bytes": 9299319,
+      "bytes": 10654235,
       "local_path": "data/out/candidacy_person_links.csv",
-      "rows": 9383,
-      "sha256": "e4364c1c5c621da05ec3f17bc95d12cf5b8e312f672af82fee18d48d7ce345c1",
-      "written_at": "2026-10-29T00:49:19.907006Z"
+      "rows": 10535,
+      "sha256": "aedbccc098251d13d6c6469c4f943eea959364a71a852576c490b92b29dfb380",
+      "written_at": "2026-10-29T03:04:41.783010Z"
     },
     {
-      "bytes": 2024645,
+      "bytes": 2335836,
       "local_path": "data/out/candidacy_person_links.parquet",
-      "rows": 9383,
-      "sha256": "9a61a7f62fa83ffb8f0f1d084fa6f8710856736216ba2cbe9f0594a9a60beeb7",
-      "written_at": "2026-10-29T00:49:19.921006Z"
+      "rows": 10535,
+      "sha256": "ac732d5f8353aaad5e7f233fd4ad90bc2c99ba1d9ecc25d3cb772c585d1e0067",
+      "written_at": "2026-10-29T03:04:41.797009Z"
     },
     {
-      "bytes": 483395,
+      "bytes": 557144,
       "local_path": "data/out/contests.csv",
-      "rows": 1049,
-      "sha256": "33b5e96a93c56a9aa25fd7936c043a1e0b6a5a0c561d364457557a28461cd46e",
-      "written_at": "2026-10-29T00:49:19.803006Z"
+      "rows": 1220,
+      "sha256": "28f1e755c876aaa1e2128bb18692e2de1ff1f793f80d6b079cf9ac56b9e4a302",
+      "written_at": "2026-10-29T03:04:41.666010Z"
     },
     {
-      "bytes": 103773,
+      "bytes": 117520,
       "local_path": "data/out/contests.parquet",
-      "rows": 1049,
-      "sha256": "b2abd167a897ef7fd6cacace27b46590275194615584b786f2a845bf088a055e",
-      "written_at": "2026-10-29T00:49:19.805006Z"
+      "rows": 1220,
+      "sha256": "1975f90fd2407c5f2c7247715b2ca740218da166b3299e139f15718d4de9e3c2",
+      "written_at": "2026-10-29T03:04:41.668010Z"
     },
     {
-      "bytes": 5201,
+      "bytes": 5599,
       "local_path": "data/out/election_events.csv",
-      "rows": 76,
-      "sha256": "7df352d5aaa76ae22fe9d777421b0f3c1dc74f77686d41dc8cd39b7267ecdfc6",
-      "written_at": "2026-10-29T00:49:19.794006Z"
+      "rows": 80,
+      "sha256": "d08ee2b8e387580f8b549bf65f6b9700d57bed974d6dbb791c9a911f2f72f7bd",
+      "written_at": "2026-10-29T03:04:41.656010Z"
     },
     {
-      "bytes": 5770,
+      "bytes": 6083,
       "local_path": "data/out/election_events.parquet",
-      "rows": 76,
-      "sha256": "d1426fe5e1dfe7c7b87fd2894aa48b4658b50c0aaaa1c6f6fd8d407515f3be83",
-      "written_at": "2026-10-29T00:49:19.794006Z"
+      "rows": 80,
+      "sha256": "ceaeff62e14ec0e1090ab602cec2601a733ad6cf9d93dcef0954015125badb7b",
+      "written_at": "2026-10-29T03:04:41.657010Z"
     },
     {
-      "bytes": 5147873,
+      "bytes": 5637066,
       "local_path": "data/out/election_results.csv",
-      "rows": 6748,
-      "sha256": "ae9064f7014897b9de702a8afd7216ae3e4e7a25bf5f0289399c73cd65650148",
-      "written_at": "2026-10-29T00:49:19.772006Z"
+      "rows": 7448,
+      "sha256": "363f12f32aabe3cd3bc88fd4f8db53099ab0902687f82b85f93f9f5dc93ae537",
+      "written_at": "2026-10-29T03:04:41.636009Z"
     },
     {
-      "bytes": 1048113,
+      "bytes": 1150299,
       "local_path": "data/out/election_results.parquet",
-      "rows": 6748,
-      "sha256": "0add5076f41c43fefdb10b76c20402d5b403e5d4f5e0f7133aa54b33b71e1b6c",
-      "written_at": "2026-10-29T00:49:19.793006Z"
+      "rows": 7448,
+      "sha256": "796690829f345171d053ea8a3f2b6944532764aac639d087b21c066c597bfd8a",
+      "written_at": "2026-10-29T03:04:41.655010Z"
     },
     {
-      "bytes": 5811289,
+      "bytes": 5834807,
       "local_path": "data/out/electoral_districts.csv",
-      "rows": 562,
-      "sha256": "1cbe10449d74e7369859ccb8063be123b1db8761e7ab31fca1fb4e0bd06b4019",
-      "written_at": "2026-10-29T00:49:20.012006Z"
+      "rows": 688,
+      "sha256": "c427962afb6467e518af2eb91a3f246cf915622e4a3995f9da0d98479a74ed61",
+      "written_at": "2026-10-29T03:04:41.890010Z"
     },
     {
-      "bytes": 2324378,
+      "bytes": 2329550,
       "local_path": "data/out/electoral_districts.parquet",
-      "rows": 562,
-      "sha256": "d677196ee7cd8e42d2b49c85c23c2cedb50bd04c5a2cece7a3fda73e397b65c3",
-      "written_at": "2026-10-29T00:49:20.022006Z"
+      "rows": 688,
+      "sha256": "5554239b80333a895a600b70af7c53b1405219505f39c1527cae6b1fc8406b63",
+      "written_at": "2026-10-29T03:04:41.899009Z"
     },
     {
       "bytes": 70085,
       "local_path": "data/out/endorsement_assertions.csv",
       "rows": 161,
       "sha256": "88d1c158f04384914b16e40ae13dd965a9d4dd02461d326d46b50a3338a72ca9",
-      "written_at": "2026-10-29T00:49:20.025006Z"
+      "written_at": "2026-10-29T03:04:41.902009Z"
     },
     {
       "bytes": 37252,
       "local_path": "data/out/endorsement_assertions.parquet",
       "rows": 161,
       "sha256": "d6d85ac14e6f505a5c9a6082abb227109ed4caa62f0a04a68bb3798bcb47f56f",
-      "written_at": "2026-10-29T00:49:20.026006Z"
+      "written_at": "2026-10-29T03:04:41.903010Z"
     },
     {
-      "bytes": 395592,
+      "bytes": 490803,
       "local_path": "data/out/endorsement_coverage.csv",
-      "rows": 2412,
-      "sha256": "ebcd34d71cb1bcd9a17241ee498ae3fb88d6f9e02eba0020a0a33af3ec74ba84",
-      "written_at": "2026-10-29T00:49:20.032006Z"
+      "rows": 3051,
+      "sha256": "a843b570afd4cbf6a9d62763c030a585ef9ee34c51ebbb1d771e8e8047c7531a",
+      "written_at": "2026-10-29T03:04:41.910010Z"
     },
     {
-      "bytes": 17908,
+      "bytes": 23501,
       "local_path": "data/out/endorsement_coverage.parquet",
-      "rows": 2412,
-      "sha256": "3a11f26863520043ae3eaf2963fa0be66a32d29961a15ebb16a2e62bf0636691",
-      "written_at": "2026-10-29T00:49:20.034006Z"
+      "rows": 3051,
+      "sha256": "0e83ab09cd85bc75fbc34bb9a9f243ee8634da22eb6244820d51ff5228d8e63b",
+      "written_at": "2026-10-29T03:04:41.911010Z"
     },
     {
       "bytes": 23731,
       "local_path": "data/out/endorsements.csv",
       "rows": 160,
       "sha256": "dedac2711227506dae8c166cb7a5be9a44bce82aec1878edabb7793c46734e36",
-      "written_at": "2026-10-29T00:49:20.026006Z"
+      "written_at": "2026-10-29T03:04:41.903010Z"
     },
     {
       "bytes": 17166,
       "local_path": "data/out/endorsements.parquet",
       "rows": 160,
       "sha256": "4b638e3893cce5759ca0b8b23a694a058ba6ecc7be979adbdbc8eafa161f55dc",
-      "written_at": "2026-10-29T00:49:20.027006Z"
+      "written_at": "2026-10-29T03:04:41.904010Z"
     },
     {
       "bytes": 2537,
       "local_path": "data/out/endorsers.csv",
       "rows": 9,
       "sha256": "9bfdb461ff5f4279be215031a4a9ca996c2235b3ea967e7b169d781480a2b7d1",
-      "written_at": "2026-10-29T00:49:20.023006Z"
+      "written_at": "2026-10-29T03:04:41.899009Z"
     },
     {
       "bytes": 8618,
       "local_path": "data/out/endorsers.parquet",
       "rows": 9,
       "sha256": "e10fb740979dfda5df2de1ce891ace8795295a35c465b62644a0a1dbd3705b36",
-      "written_at": "2026-10-29T00:49:20.023006Z"
+      "written_at": "2026-10-29T03:04:41.900010Z"
     },
     {
       "bytes": 587706,
       "local_path": "data/out/office_tenures.csv",
       "rows": 853,
-      "sha256": "a1bd987db5be01a2527045ccf0b0fc97e25bb250ccabd66a20d2b9a4dbbde1a2",
-      "written_at": "2026-10-29T00:49:19.930006Z"
+      "sha256": "79d6c3476ebe1aa070900b4be8c34672c9cc99a2e0f51022c63c3c3b2d05da81",
+      "written_at": "2026-10-29T03:04:41.806010Z"
     },
     {
-      "bytes": 126054,
+      "bytes": 125999,
       "local_path": "data/out/office_tenures.parquet",
       "rows": 853,
-      "sha256": "057294dccf821944e5d53ccb64c479299b5c761476ee2d6e3244be91e182d8a7",
-      "written_at": "2026-10-29T00:49:19.932006Z"
+      "sha256": "c25c4462f92181e0fdc506ec757ec895c4255fe8b29f6c2b3c675053136fb64c",
+      "written_at": "2026-10-29T03:04:41.808010Z"
     },
     {
       "bytes": 8468,
       "local_path": "data/out/parties.csv",
       "rows": 83,
       "sha256": "4f39dc5350494ef8b64f311ffc4ef1ac077770a09a900f02c172cd7ca362853d",
-      "written_at": "2026-10-29T00:49:19.922006Z"
+      "written_at": "2026-10-29T03:04:41.798010Z"
     },
     {
       "bytes": 8740,
       "local_path": "data/out/parties.parquet",
       "rows": 83,
       "sha256": "ee617ce4824fe703fc40754073379cf318f09b1525eda86365b19cb95adc3dea",
-      "written_at": "2026-10-29T00:49:19.923006Z"
+      "written_at": "2026-10-29T03:04:41.799010Z"
     },
     {
-      "bytes": 321394,
+      "bytes": 348737,
       "local_path": "data/out/people.csv",
-      "rows": 4511,
-      "sha256": "c7737e81ae360358ee6b3a09a6e29ba474a72f1991f14363a6f032a25480a3c4",
-      "written_at": "2026-10-29T00:49:19.811006Z"
+      "rows": 4890,
+      "sha256": "e1d07c70243bd55911ad70d068d41d8e79ee333504a33e57f0729b2da8864dea",
+      "written_at": "2026-10-29T03:04:41.674010Z"
     },
     {
-      "bytes": 222010,
+      "bytes": 239973,
       "local_path": "data/out/people.parquet",
-      "rows": 4511,
-      "sha256": "ae2f88169168b4ff451e7bc5c26a5e75560a3092779ce7a749480663fc6efda2",
-      "written_at": "2026-10-29T00:49:19.814006Z"
+      "rows": 4890,
+      "sha256": "66b9d2c4f41253db4afa0f85b2f5a64426ed938c60f645ba4c0ca1186e153c3f",
+      "written_at": "2026-10-29T03:04:41.676010Z"
     }
   ],
   "coverage": {
-    "from": "2003-01-01",
+    "from": "1993-10-25",
+    "from_by_level": {
+      "federal": "1993-10-25",
+      "municipal": "1994-11-14",
+      "provincial": "1995-06-08"
+    },
     "pending_candidate_snapshot_through": "2026-10-21",
     "pending_event_through": "2026-10-26",
     "through": "2026-10-26",
     "timezone": "America/Toronto"
   },
   "event_archive_caveats": [
+    {
+      "authority": "toronto_city_clerk",
+      "period": "1995-01-01/2002-12-31",
+      "scope": "municipal_by_elections",
+      "status": "uncertain"
+    },
     {
       "authority": "toronto_city_clerk",
       "period": "2003-01-01/2011-12-31",
@@ -191,7 +202,7 @@
       "scheduled_date": "2008-09-22"
     }
   ],
-  "generated_at": "2026-10-29T00:49:20.043050Z",
+  "generated_at": "2026-10-29T03:04:41.921507Z",
   "pending_events": [
     {
       "candidate_snapshot_through": "2026-10-21",
@@ -941,10 +952,10 @@
       "sha256": "6d578ef360c1d6a955b398c841cb5b0b60dd5f9a0aa84eb4df2b774f6ae1dab7"
     },
     {
-      "bytes": 3295719,
+      "bytes": 3653437,
       "local_path": "data/reference/candidacy_identity_ledger.csv",
-      "retrieved_at": "2026-10-29T00:49:18.565006Z",
-      "sha256": "5353c55c64cf346c08cd257d6c266b9692690ba15ae3a8868b4d3cad984afddb"
+      "retrieved_at": "2026-10-29T03:04:40.280010Z",
+      "sha256": "79c5379aa4edf54f64827d41fc558d98a6c0a0f0225e87d1af209cfb76d0410b"
     },
     {
       "bytes": 10201,
@@ -971,16 +982,16 @@
       "sha256": "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231"
     },
     {
-      "bytes": 469401,
+      "bytes": 614788,
       "local_path": "data/reference/identity_review_dispositions.csv",
-      "retrieved_at": "2026-10-29T00:08:05.566005Z",
-      "sha256": "9728f8ae0ab1bfbc9da0fe779d0f907f65e67664f0954aa56625b5ab46e0742f"
+      "retrieved_at": "2026-10-29T03:02:51.553010Z",
+      "sha256": "c09f569a027557c5bf99526df531103c4fc9c2d7dafbd173921dd3a43c72f759"
     },
     {
-      "bytes": 5782,
+      "bytes": 3798,
       "local_path": "data/reference/mayoral_career_backfill.csv",
-      "retrieved_at": "2026-10-28T23:36:10.032004Z",
-      "sha256": "920d35dfe6f026d2ef060cfdd4e801cd510d7d37e81b1dbd66e1e7e74b265c0a"
+      "retrieved_at": "2026-10-29T01:16:32.233006Z",
+      "sha256": "51d90ee1410e7cefb664abebd5e25b1e2718d4ccb46ce4a8f0fe875b0950249f"
     },
     {
       "bytes": 13148,
@@ -989,16 +1000,16 @@
       "sha256": "78119e69b21bcaa1dc05e75cc1a5846d52c7b58b8eb2e7a77650c448db6af8b7"
     },
     {
-      "bytes": 63952,
+      "bytes": 64220,
       "local_path": "data/reference/mayoral_career_decisions.csv",
-      "retrieved_at": "2026-10-28T23:36:28.101004Z",
-      "sha256": "ade25155e75b1d3ed9ecf8a2a25bb2de923b4d89e015e71f1a7e50c17c008aa7"
+      "retrieved_at": "2026-10-29T01:16:46.094007Z",
+      "sha256": "9d12aa3d377c94212eb3c8dcfd85427565e585c819dfad7ec8816d81d3eb5656"
     },
     {
       "bytes": 12286,
       "local_path": "data/reference/mayoral_career_occurrence_mapping.csv",
-      "retrieved_at": "2026-10-28T23:37:01.592004Z",
-      "sha256": "4579b6f0407f81ab0f60a74d4e8f589d4fb6241a34687463fa28715c1621ac59"
+      "retrieved_at": "2026-10-29T01:17:31.712007Z",
+      "sha256": "1bdcc0f4f1aef9e5142f181ae948c6892596095fb0f5d07dd6d981c62332cae8"
     },
     {
       "bytes": 27705,
