@@ -10,6 +10,11 @@ This module hides those layouts behind :func:`parse_trustee_workbooks`.  It read
 official ``Total`` column, then sums the repeated City-ward blocks to one row per Candidacy in one
 trustee Contest.  Subdivision-level rows are never exposed.
 
+A worksheet's heading names its trustee ward, but a block on that sheet can belong to another
+ward's Contest.  The 2010 TCDSB workbook prints the City Ward 24, 21 and 26 blocks of the Ward 7,
+9 and 11 Contests on the Ward 5, 6 and 9 sheets.  General-election blocks are therefore assigned
+by the candidate roster they list (:func:`_assign_trustee_wards`), not by the sheet they are on.
+
 Normalized result contract
 --------------------------
 ``TRUSTEE_RESULT_COLUMNS`` is intentionally close to the shared Candidacy schema.  District,
@@ -281,10 +286,13 @@ def _open_workbook(path: Path) -> pd.ExcelFile:
 
 
 def _year_for(path: Path) -> int:
-    match = _YEAR_RE.search(path.as_posix())
-    if match is None:
-        raise ValueError(f"cannot identify trustee election year from {path}")
-    return int(match.group(1))
+    # The nearest path component wins, so a year-like name higher up an absolute path (such as a
+    # checkout directory) cannot override the file's own year directory.
+    for part in (path.name, *(parent.name for parent in path.parents)):
+        match = _YEAR_RE.search(part)
+        if match is not None:
+            return int(match.group(1))
+    raise ValueError(f"cannot identify trustee election year from {path}")
 
 
 def _body_for(path: Path) -> str:
@@ -345,68 +353,124 @@ def _header_rows(raw: pd.DataFrame) -> list[int]:
     ]
 
 
+@dataclass(frozen=True)
+class _Block:
+    """One City-ward block of a worksheet: each listed candidate's official Total cell."""
+
+    sheet_name: str
+    label: str
+    totals: dict[str, int]
+
+    @property
+    def roster(self) -> frozenset[str]:
+        return frozenset(self.totals)
+
+
+def _sheet_blocks(raw: pd.DataFrame, sheet_name: str, *, source: str) -> list[_Block]:
+    """Read each block that starts at a ``Subdivision`` header row on one worksheet."""
+    headers = _header_rows(raw)
+    blocks: list[_Block] = []
+    for position, header_idx in enumerate(headers):
+        total_columns = [
+            column
+            for column, value in raw.iloc[header_idx].items()
+            if _cell_text(value).casefold() == "total"
+        ]
+        if not total_columns:
+            raise ValueError(f"no Total column in {source}, worksheet {sheet_name!r}")
+        total_column = total_columns[-1]
+        end = headers[position + 1] if position + 1 < len(headers) else len(raw)
+        totals: dict[str, int] = {}
+        label = ""
+        for row_idx in range(header_idx + 1, end):
+            candidate = _cell_text(raw.iat[row_idx, 0])
+            if not candidate:
+                continue
+            if candidate.casefold() in _HEADER_LABELS:
+                continue
+            if "total" in candidate.casefold():
+                label = label or candidate
+                continue
+            votes = pd.to_numeric(raw.iat[row_idx, total_column], errors="coerce")
+            if pd.isna(votes):
+                continue
+            totals[candidate] = totals.get(candidate, 0) + int(votes)
+        blocks.append(_Block(sheet_name, label, totals))
+    return blocks
+
+
 def _candidate_totals(workbook: pd.ExcelFile, sheet_names: Iterable[str]) -> dict[str, int]:
     """Sum candidate Total cells across every physical City-ward block supplied."""
     totals: dict[str, int] = {}
     for sheet_name in sheet_names:
         raw = workbook.parse(sheet_name, header=None)
-        headers = _header_rows(raw)
-        for position, header_idx in enumerate(headers):
-            total_columns = [
-                column
-                for column, value in raw.iloc[header_idx].items()
-                if _cell_text(value).casefold() == "total"
-            ]
-            if not total_columns:
-                raise ValueError(f"no Total column in worksheet {sheet_name!r}")
-            total_column = total_columns[-1]
-            end = headers[position + 1] if position + 1 < len(headers) else len(raw)
-            for row_idx in range(header_idx + 1, end):
-                candidate = _cell_text(raw.iat[row_idx, 0])
-                if not candidate:
-                    continue
-                if candidate.casefold() in _HEADER_LABELS or "total" in candidate.casefold():
-                    continue
-                votes = pd.to_numeric(raw.iat[row_idx, total_column], errors="coerce")
-                if pd.isna(votes):
-                    continue
-                totals[candidate] = totals.get(candidate, 0) + int(votes)
+        for block in _sheet_blocks(raw, sheet_name, source="trustee workbook"):
+            for candidate, votes in block.totals.items():
+                totals[candidate] = totals.get(candidate, 0) + votes
     return totals
+
+
+def _assign_trustee_wards(
+    sheets: list[tuple[int, list[_Block]]], *, source: str
+) -> list[tuple[int, _Block]]:
+    """Assign every block to the trustee ward whose Contest lists the same candidates.
+
+    A sheet's heading names one trustee ward and governs the sheet's first block.  Later blocks
+    on the sheet usually belong to the same Contest, but not always (see the module docstring).
+    Each block lists its Contest's complete roster, so a block goes to the ward whose heading
+    block lists the same candidates.  The workbook fails closed if one ward's heading blocks list
+    different rosters, two wards list the same roster, or a block matches no ward.
+    """
+    ward_rosters: dict[int, frozenset[str]] = {}
+    for ward, blocks in sheets:
+        roster = blocks[0].roster
+        if ward_rosters.setdefault(ward, roster) != roster:
+            raise ValueError(
+                f"trustee Ward {ward} heads two different candidate rosters in {source}"
+            )
+    ward_by_roster: dict[frozenset[str], int] = {}
+    for ward, roster in ward_rosters.items():
+        other = ward_by_roster.setdefault(roster, ward)
+        if other != ward:
+            raise ValueError(
+                f"trustee Wards {other} and {ward} list the same candidates in {source}"
+            )
+
+    assigned: list[tuple[int, _Block]] = []
+    for _, blocks in sheets:
+        for block in blocks:
+            ward = ward_by_roster.get(block.roster)
+            if ward is None:
+                raise ValueError(
+                    f"block {block.label or '(unlabelled)'!r} on worksheet {block.sheet_name!r} "
+                    f"in {source} lists candidates that match no trustee ward heading"
+                )
+            assigned.append((ward, block))
+    return assigned
 
 
 def _parse_workbook(path: Path) -> list[dict[str, object]]:
     year = _year_for(path)
     body = _body_for(path)
     workbook = pd.ExcelFile(path, engine=_engine_for(path))
-    totals: dict[tuple[int, str], int] = {}
-
+    sheets: list[tuple[int, list[_Block]]] = []
     for sheet_name in workbook.sheet_names:
         raw = workbook.parse(sheet_name, header=None)
-        headers = _header_rows(raw)
-        if not headers:  # Notice sheets and explicit-acclamation sheets have no vote table.
+        # Notice sheets and explicit-acclamation sheets have no vote table.
+        if not _header_rows(raw):
             continue
         ward = _trustee_ward(raw, sheet_name)
-        for position, header_idx in enumerate(headers):
-            total_columns = [
-                column
-                for column, value in raw.iloc[header_idx].items()
-                if _cell_text(value).casefold() == "total"
-            ]
-            if not total_columns:
-                raise ValueError(f"no Total column in {path}, worksheet {sheet_name!r}")
-            total_column = total_columns[-1]
-            end = headers[position + 1] if position + 1 < len(headers) else len(raw)
-            for row_idx in range(header_idx + 1, end):
-                candidate = _cell_text(raw.iat[row_idx, 0])
-                if not candidate:
-                    continue
-                if candidate.casefold() in _HEADER_LABELS or "total" in candidate.casefold():
-                    continue
-                votes = pd.to_numeric(raw.iat[row_idx, total_column], errors="coerce")
-                if pd.isna(votes):
-                    continue
-                key = (ward, candidate)
-                totals[key] = totals.get(key, 0) + int(votes)
+        blocks = [
+            block for block in _sheet_blocks(raw, sheet_name, source=str(path)) if block.totals
+        ]
+        if blocks:
+            sheets.append((ward, blocks))
+
+    totals: dict[tuple[int, str], int] = {}
+    for ward, block in _assign_trustee_wards(sheets, source=str(path)):
+        for candidate, votes in block.totals.items():
+            key = (ward, candidate)
+            totals[key] = totals.get(key, 0) + votes
 
     source = f"{_GENERAL_RESULT_URLS[year]} :: {path.name}"
     return [

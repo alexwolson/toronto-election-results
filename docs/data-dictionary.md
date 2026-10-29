@@ -30,8 +30,8 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 7,566 Candidacies, 1,259 Contests, and 80 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 7,209 Candidacies in 1,198
+The release contains 7,558 Candidacies, 1,259 Contests, and 80 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 7,201 Candidacies in 1,198
 Contests are final. Two void historical Contests and eight `source_missing` 1994 Contests have no
 Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
@@ -334,7 +334,9 @@ relationships, negative votes, non-reconciling totals/shares, invalid Acclamatio
 Contests without exactly `seats_available` elected Candidacies (null `elected` is allowed only for
 candidacies tied across the last seat), Acclamations with more candidates than seats, mismatched turnout operands, ballots
 exceeding eligible electors, unsupported published Person/incumbency links, or invalid/materially
-out-of-bounds available geometry.
+out-of-bounds available geometry. It rejects a candidate name that appears in two trustee wards of
+one School Board at one Election event, because nobody can stand in two wards of one board and such
+a pair means votes were filed under the wrong Contest.
 
 Endorsement gates enforce exact Endorser, Contest, Candidacy, and optional Person foreign keys;
 Mayor/City Councillor targets only; stable, unique fact edges; facts derived exactly from confirmed

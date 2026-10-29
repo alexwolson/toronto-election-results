@@ -20,7 +20,7 @@ Result: 25 confirmed (18 person-specific, 7 structural), 20 unresolved, none rej
 - Joseph Cohen's trustee record also carries unresolved 2006 TDSB Ward 11, 2010 council Ward 10 and 2018 TDSB Ward 5 links; the name is common, so those need person-specific evidence.
 - Walter Melnyk: Wikipedia's 1997 candidate note says the 1997 Ward 19 council candidate ran for the Catholic board in 2000, which joins those two runs, but neither is tied to the 2006 and 2014 Etobicoke-Lakeshore record they are compared against.
 - Elizabeth Hill's Communist Party candidate biography (a York and Toronto trustee from 1988 for 18 years) may support her unresolved 2006 TDSB and 2015 federal runs.
-- The 2010 TCDSB results list eight candidates in two wards on the same day (for example Jo-Ann Davis with 6,294 votes in Ward 9 and 960 in Ward 6), which suggests the 2010 poll-by-poll file assigned some polls to the wrong trustee ward. This predates the 2000 work and needs a check against the Clerk's 2010 declaration.
+- The 2010 TCDSB results list eight candidates in two wards on the same day (for example Jo-Ann Davis with 6,294 votes in Ward 9 and 960 in Ward 6), which suggests the 2010 poll-by-poll file assigned some polls to the wrong trustee ward. This predates the 2000 work and needs a check against the Clerk's 2010 declaration. Resolved in [the 2010 TCDSB ward assignment correction](tcdsb-2010-ward-assignment-2026-10-29.md).
 - Three 2003 French-board names are stored surname-first or with a stray space ("Masson Alain", "Guerin Francois", "Leblanc- Miller").
 
 ## Decisions

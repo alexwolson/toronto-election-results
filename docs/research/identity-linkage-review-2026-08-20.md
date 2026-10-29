@@ -146,6 +146,11 @@ Angela Kennedy, Brad McCabe, Catherine LeBlanc-Miller, Jo-Ann Davis, John Del Gr
 Michael Issa, and Ryan Ward. Exact-name similarity remains a suggestion, not proof; affected rows
 now carry explicit unresolved or rejected review states rather than active proposals.
 
+Correction (2026-10-29): these eight 2010 TCDSB pairs came from a workbook parsing error that filed
+three City-ward blocks under the wrong trustee ward. The eight spurious rows have been retired and
+their votes restored to the Ward 7, 9 and 11 Contests, matching the Clerk's declaration; see
+[the 2010 TCDSB ward assignment correction](tcdsb-2010-ward-assignment-2026-10-29.md).
+
 Seven elected reviewed holds remain null: Claude-Reno D'Aigle (2010 and 2014), Elizabeth Moyer
 (2010), Kevin Vuong (2021), Dennis Hastings (2022), Mohamed Firin (2025), and Maggie Chi (2025).
 Their null Person IDs do not indicate missing election results. Claude Legere's 2006 elected

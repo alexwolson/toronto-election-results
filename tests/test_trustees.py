@@ -46,6 +46,23 @@ def _workbook_bytes(wards: tuple[int, ...] = (1,)) -> bytes:
     return stream.getvalue()
 
 
+def _tcdsb_2010_workbook(path: Path, sheets: dict[int, list[dict[str, int]]]) -> Path:
+    """Write ``{trustee ward: [City-ward block {candidate: total}]}`` in the 2010 layout."""
+    with pd.ExcelWriter(path, engine="openpyxl") as writer:
+        for ward, blocks in sheets.items():
+            rows: list[list[object]] = [
+                [f"Poll By Poll report for: TORONTO CATHOLIC DISTRICT SCHOOL BOARD  Ward: {ward}"]
+            ]
+            for city_ward, block in enumerate(blocks, start=1):
+                rows.append(["Subdivision", 1, "Total"])
+                rows.extend([candidate, votes, votes] for candidate, votes in block.items())
+                total = sum(block.values())
+                rows.append([f"Ward {ward * 10 + city_ward} Totals", total, total])
+                rows.append([pd.NA, pd.NA, pd.NA])
+            pd.DataFrame(rows).to_excel(writer, sheet_name=f"Ward{ward}", header=False, index=False)
+    return path
+
+
 def _french_zip_bytes() -> bytes:
     stream = BytesIO()
     with ZipFile(stream, "w") as archive:
@@ -104,6 +121,20 @@ def test_discovers_each_nonduplicated_local_board_workbook(sources):
     """2022's combined workbook duplicates English rows and has no French result rows."""
     assert len(sources) == 21
     assert not any("All_Offices" in path.name for path in sources)
+
+
+def test_workbook_year_comes_from_its_nearest_path_component(tmp_path):
+    results_root = tmp_path / "checkout-2010" / "results"
+    for relative in (
+        "2003/2003 Results/2003_Toronto_Poll_by_Poll_Toronto_District_School_Board.xls",
+        "2014/TORONTO DISTRICT SCHOOL BOARD.xls",
+    ):
+        (results_root / relative).parent.mkdir(parents=True, exist_ok=True)
+        (results_root / relative).touch()
+
+    discovered = discover_trustee_workbooks(results_root)
+
+    assert [path.relative_to(results_root).parts[0] for path in discovered] == ["2003", "2014"]
 
 
 def test_one_call_loader_returns_every_local_general_event(results, tmp_path):
@@ -183,6 +214,91 @@ def test_sums_repeated_city_ward_blocks_to_trustee_contests(
     ]
     assert len(row) == 1
     assert row.iloc[0]["votes"] == votes
+
+
+def test_city_ward_block_follows_its_candidate_roster_not_its_worksheet(tmp_path):
+    # The 2010 TCDSB Ward 5 sheet ends with the City Ward 24 block of the Ward 7 Contest.
+    source = _tcdsb_2010_workbook(
+        tmp_path / "2010_Toronto_Poll_by_Poll_Toronto_Catholic_District_School_Board.xlsx",
+        {
+            5: [
+                {"RIZZO MARIA": 2226, "OULAHEN PAUL": 471},
+                {"DEL GRANDE JOHN": 1471, "ISSA MICHAEL": 935},
+                {"RIZZO MARIA": 343, "OULAHEN PAUL": 665},
+            ],
+            7: [{"DEL GRANDE JOHN": 1532, "ISSA MICHAEL": 808}],
+        },
+    )
+
+    results = parse_trustee_workbooks([source])
+    tcdsb = results[results["represented_body"] == "Toronto Catholic District School Board"]
+
+    votes = {
+        (ward, candidate): int(votes)
+        for ward, candidate, votes in tcdsb[
+            ["official_district_id", "candidate_name_raw", "votes"]
+        ].itertuples(index=False, name=None)
+    }
+    assert votes == {
+        ("5", "OULAHEN PAUL"): 1136,
+        ("5", "RIZZO MARIA"): 2569,
+        ("7", "DEL GRANDE JOHN"): 3003,
+        ("7", "ISSA MICHAEL"): 1743,
+    }
+
+
+def test_block_whose_roster_heads_no_trustee_ward_fails_closed(tmp_path):
+    source = _tcdsb_2010_workbook(
+        tmp_path / "2010_Toronto_Poll_by_Poll_Toronto_Catholic_District_School_Board.xlsx",
+        {
+            5: [{"RIZZO MARIA": 2226, "OULAHEN PAUL": 471}, {"STRAY SAM": 10, "STRAY ROBIN": 5}],
+            7: [{"DEL GRANDE JOHN": 1532, "ISSA MICHAEL": 808}],
+        },
+    )
+
+    with pytest.raises(ValueError, match="match no trustee ward heading"):
+        parse_trustee_workbooks([source])
+
+
+# City Clerk's official declaration of the 2010 results, TCDSB pages:
+# https://www.toronto.ca/wp-content/uploads/2017/08/9783-election-2010-clerksofficialdeclaration.pdf
+_TCDSB_2010_DECLARED = {
+    "5": {
+        "RIZZO MARIA": 3716,
+        "OULAHEN PAUL": 3126,
+        "BONAVOTA ROSINA": 1359,
+        "MCDONALD CHRIS": 1242,
+        "DEOCAMPO ANGELA": 1078,
+        "CORCORAN ROBERT": 831,
+        "PATON ANN": 597,
+        "REID BARRINGTON": 370,
+        "GRECO MYCHEAL": 366,
+    },
+    "6": {
+        "D'AMICO FRANK": 3759,
+        "OLINSKI JON": 2606,
+        "CIARROCCHI MARLENE": 1697,
+        "LEPONE CHRISTINA": 1398,
+        "MAIDA RINA": 549,
+    },
+    "7": {"DEL GRANDE JOHN": 9654, "ISSA MICHAEL": 4233},
+    "9": {"DAVIS JO-ANN": 7254, "LEBLANC-MILLER CATHERINE": 5636},
+    "11": {"KENNEDY ANGELA": 5904, "MORRISON KEVIN": 4104, "MCCABE BRAD": 1424, "WARD RYAN": 1023},
+}
+
+
+@pytest.mark.parametrize("ward", sorted(_TCDSB_2010_DECLARED, key=int))
+def test_2010_tcdsb_wards_match_the_clerks_declaration(results, ward):
+    contest = results[
+        (results["election_date"] == date(2010, 10, 25))
+        & (results["represented_body"] == "Toronto Catholic District School Board")
+        & (results["official_district_id"] == ward)
+    ]
+
+    assert (
+        contest.set_index("candidate_name_raw")["votes"].astype(int).to_dict()
+        == (_TCDSB_2010_DECLARED[ward])
+    )
 
 
 @pytest.mark.parametrize(

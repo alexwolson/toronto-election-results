@@ -505,11 +505,11 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1406
+    assert len(original_decisions) == 1399
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 937,
-        "confirmed": 463,
-        "rejected": 6,
+        "unresolved": 934,
+        "confirmed": 464,
+        "rejected": 1,
     }
     decisions = exclude_superseded_identity_decisions(
         original_decisions, REPO_ROOT / "data" / "reference"
@@ -731,4 +731,29 @@ def test_person_record_merges_join_biography_backed_careers():
     assert (
         confirmed.loc["can_f14b32f044585ca490d383a9295eddf9", "person_id"]
         == "per_81a4729b82615321ab2157051003edf5"
+    )
+
+
+def test_2010_tcdsb_ward_9_runner_up_is_the_sitting_ward_9_trustee():
+    """The 2010 rejection rested on a Ward 6 row that a parser error created and that is retired."""
+
+    results = pd.read_csv(REPO_ROOT / "data/out/election_results.csv", dtype="string").set_index(
+        "candidacy_id"
+    )
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data/reference/identity_review_dispositions.csv"
+    ).set_index("candidacy_id")
+    current = "can_bfb4251aac145441b5ec9fd4ac7c75ac"
+    earlier_wins = ["can_dced59fe77ad5682a90e4bffd42645b6", "can_d1005a8210675119a0356ed070ee51a7"]
+
+    assert "can_708733b1951f5dfea952d00789d95e74" not in results.index
+    assert results.loc[current, "votes"] == "5636"
+    assert results.loc[[current, *earlier_wins], "person_id"].unique().tolist() == [
+        "per_1532e26a4057567c93e20e166067edcc"
+    ]
+    assert results.loc[earlier_wins, "official_district_id"].tolist() == ["9", "9"]
+    assert decisions.loc[current, "decision"] == "confirmed"
+    assert decisions.loc[current, "confidence"] == "high"
+    assert (
+        "voters-choose-at-least-12-new-school-trustees" in decisions.loc[current, "evidence_urls"]
     )

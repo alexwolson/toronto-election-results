@@ -607,10 +607,20 @@ def test_published_release_applies_elected_and_collision_review_wave():
     assert deprecated_lulka["identity_status"] == "deprecated"
     assert deprecated_lulka["redirect_to_person_id"] == "per_41f18773bdf258f1b2bda351d34274e3"
 
+    # The 2010 TCDSB Ward 9 Kennedy and Morrison rows once excluded here were votes from Ward 11
+    # filed under Ward 9 by a parser error. They are retired, and the registry record that was
+    # created for the Morrison row now redirects to his canonical Person.
+    assert "can_bdebbc1bc209571bb822180ba1c83abe" not in results.index
+    assert "can_27eeec08461051ba9207daf09935b243" not in results.index
+    phantom_morrison = people.loc["per_0f6b3c990ec85336a61dcdf54c43dfd6"]
+    assert phantom_morrison["identity_status"] == "deprecated"
+    assert (
+        phantom_morrison["redirect_to_person_id"]
+        == (canonical_by_assertion["kevin-morrison-tcdsb-ward11-to-ward9-continuity"])
+    )
+
     excluded_collisions = {
-        "can_bdebbc1bc209571bb822180ba1c83abe": ("angela-kennedy-tcdsb-and-ontario-continuity"),
         "can_db651bb0672758849cf4f97fb3576823": ("frank-damico-tcdsb-2010-2022-continuity"),
-        "can_27eeec08461051ba9207daf09935b243": ("kevin-morrison-tcdsb-ward11-to-ward9-continuity"),
         "can_ef847ab8da2f566c94ec44c581418c22": ("sam-sotiropoulos-tdsb-ward20-continuity"),
         "can_c337f53956485bffbea1f08812a3ca14": ("alexander-brown-tdsb-ward12-continuity"),
     }

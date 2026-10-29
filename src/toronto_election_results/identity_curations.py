@@ -7546,7 +7546,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "https://www.tcdsb.org/board/trusteesoftheboard/ward11trustee/Pages/default.aspx",
             "https://www.ola.org/sites/default/files/node-files/hansard/document/pdf/2003/2003-05/house-document-hansard-transcript-4-en-2003-05-29_pdfL017.pdf",
         ),
-        "TCDSB documents Angela Kennedy's Ward 11 service from 2000 onward, while Ontario Hansard explicitly identifies that trustee in Beaches-East York, bridging the 2003 provincial candidacy to the six elected trustee occurrences. The separate 2010 Ward 9 namesake is excluded.",
+        "TCDSB documents Angela Kennedy's Ward 11 service from 2000 onward, while Ontario Hansard explicitly identifies that trustee in Beaches-East York, bridging the 2003 provincial candidacy to the six elected trustee occurrences.",
     ),
     CuratedIdentityAssertion(
         assertion_id="frank-damico-tcdsb-2010-2022-continuity",
@@ -7690,10 +7690,16 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "https://elections.ontarioschooltrustees.org/ResourceToolKit/2018Election/Query.aspx?board=Toronto+Catholic+District+School+Board&lang=en",
             "https://elections.ontarioschooltrustees.org/2022Election/Query.aspx?board=Toronto+Catholic+District+School+Board&lang=en",
             "https://thelocal.to/ward-12-toronto-st-pauls/",
+            "https://www.toronto.ca/wp-content/uploads/2017/08/9783-election-2010-clerksofficialdeclaration.pdf",
         ),
         rationale=(
-            "Successive candidate biographies repeat Kevin Morrison's CPIC and school-council history, and The Local explicitly enumerates his 2010, 2012, 2014, 2018, and 2022 runs. These occurrences form one Person. The simultaneous 2010 Ward 9 candidate is excluded as a distinct unresolved namesake."
+            "Successive candidate biographies repeat Kevin Morrison's CPIC and school-council history, and The Local explicitly enumerates his 2010, 2012, 2014, 2018, and 2022 runs. These occurrences form one Person. A second registry record was created for a 2010 Ward 9 row that held 558 of his Ward 11 votes after a workbook parsing error; the Clerk's declaration lists him only in Ward 11, so that record redirects here."
         ),
+        registry_person_ids=(
+            "per_5f4f8c32ad01536bb991d193fb1b4b9e",
+            "per_0f6b3c990ec85336a61dcdf54c43dfd6",
+        ),
+        canonical_person_id="per_5f4f8c32ad01536bb991d193fb1b4b9e",
     ),
 )
 
