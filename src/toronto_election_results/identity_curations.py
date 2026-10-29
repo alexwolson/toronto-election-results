@@ -11008,6 +11008,68 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         ),
         canonical_person_id="per_19437117d92857d9ac07198a36e10a37",
     ),
+    CuratedIdentityAssertion(
+        assertion_id="joseph-martino-2003-return-to-tcdsb",
+        preferred_name="Joseph Martino",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c5ea382fa99158c5bb8f1784c7ef5a00",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_catholic_district_school_board",
+                "trustee",
+                "Martino, Joe",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1348973161",
+            "https://www.proquest.com/docview/1349208375",
+            "https://www.proquest.com/docview/1349496842",
+        ),
+        rationale=(
+            "The Toronto Star's 2003 Catholic trustee profiles say Ward 1 candidate Joe Martino 'was trustee for 15 years prior to the last election'. That is the target's Separate School Board and TCDSB service in Etobicoke (Ward 9 in 1994, Ward 1 in 1997), which stopped in 2000, when he ran for council instead and the Star's council profiles called him 'a five-term Catholic school trustee'. The Star's 2006 profile of the re-elected Ward 1 trustee Joseph Martino says he had been a trustee for 18 years. The 2003 'Joe Martino' record is joined."
+        ),
+        registry_person_ids=(
+            "per_09a4cbae05385a73bdd309e7d767549f",
+            "per_66464a384b635f5c8f99de40022bb7f6",
+        ),
+        canonical_person_id="per_09a4cbae05385a73bdd309e7d767549f",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="doug-stephens-1994-2000-north-york-trustee",
+        preferred_name="Doug Stephens",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c53dbd91c1df5ac68b84e5ef94e0758c",
+                "evt_55417977ab9752b792eeda64734a2280",
+                "north_york_board_of_education",
+                "trustee",
+                "Doug Stephens",
+            ),
+            _pinned_occurrence(
+                "can_d7525997644c53e3ba6f7786451c7ba2",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Doug Stephens",
+            ),
+            _pinned_occurrence(
+                "can_2275b55463c75a7791fe9ae1b717cdd7",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_district_school_board",
+                "trustee",
+                "DOUG STEPHENS",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1346619395",
+            "https://www.proquest.com/docview/1349496787",
+            "https://en.wikipedia.org/wiki/Shelley_Carroll",
+            "https://www.proquest.com/docview/1348386270",
+        ),
+        rationale=(
+            "Doug Stephens won North York Board of Education Ward 13 in 1994 and Ward 13 (Seneca Heights) of the successor TDSB in 1997, when the Toronto Star's candidate profiles describe him as a trustee. The Star's 2000 profiles list him as the Ward 17 (Don Valley East) incumbent 'seeking a third term', and Shelley Carroll's biography says she unseated the incumbent there and succeeded Doug Stephens. These three runs become one new Person. The 2006 Ward 12 (Willowdale) candidate, Person per_1418d2b1662d56c6a097199de2deb696, is not joined: the Star's 2006 profile called him the incumbent, corrected the next day, and no source names him as the former trustee."
+        ),
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
