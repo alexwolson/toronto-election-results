@@ -55,6 +55,7 @@ _OPTIONAL_DEFAULTS: dict[str, object] = {
     "reported_vote_share": pd.NA,
     "reported_vote_rank": pd.NA,
     "reported_n_candidates": pd.NA,
+    "seats_available": 1,
 }
 
 _INDEPENDENT_LABELS = {
@@ -345,6 +346,9 @@ def normalize_adapter_frame(
         "Float64"
     )
     out["elected"] = _as_nullable_boolean(out["elected"], "elected")
+    out["seats_available"] = _as_nullable_integer(out["seats_available"], "seats_available")
+    if out["seats_available"].isna().any() or out["seats_available"].lt(1).any():
+        raise ValueError("seats_available must be a positive integer")
     out["incumbent_reported"] = _as_nullable_boolean(
         out["incumbent_reported"], "incumbent_reported"
     )
@@ -400,6 +404,28 @@ def normalize_adapter_frame(
     ]
 
     return out.reset_index(drop=True)
+
+
+def elect_top_vote_totals(votes: pd.Series, seats_available: int) -> pd.Series:
+    """Mark the top ``seats_available`` vote totals elected, for sources with no winner markers.
+
+    Candidates strictly inside the seat count are elected and those strictly outside are not.
+    Candidates tied across the last seat stay null: the outcome was decided by a rule the vote
+    totals do not record, so it is left for an official source (ADR 0011).
+    """
+
+    seats = int(seats_available)
+    if seats < 1:
+        raise ValueError("seats_available must be a positive integer")
+    numeric = pd.to_numeric(votes, errors="raise")
+    if numeric.isna().any():
+        raise ValueError("cannot derive winners from null vote totals")
+    best = numeric.rank(method="min", ascending=False)
+    worst = numeric.rank(method="max", ascending=False)
+    elected = pd.Series(pd.NA, index=votes.index, dtype="boolean")
+    elected[worst.le(seats)] = True
+    elected[best.gt(seats)] = False
+    return elected
 
 
 def derive_result_metrics(frame: pd.DataFrame) -> pd.DataFrame:
@@ -614,10 +640,10 @@ def build_contests(frame: pd.DataFrame) -> pd.DataFrame:
         "source_authority",
         "source_resource",
         "source_detail",
+        "seats_available",
     ]
     _assert_constant_within(frame, "contest_id", identity_columns)
     contests = frame[["contest_id", *identity_columns]].drop_duplicates("contest_id").copy()
-    contests["seats_available"] = 1
     contests["turnout"] = pd.Series(pd.NA, index=contests.index, dtype="Float64")
     usable_turnout = (
         contests["eligible_electors"].notna()

@@ -10,8 +10,9 @@ outcomes are published as final; future elections retain pending results. The sc
 candidate-list snapshot acquired on **2026-09-30**. Mayor,
 Councillor, and contested Trustee Candidacies remain pending. Four Trustees declared elected by
 acclamation on August 24 are final results with null vote totals. The primary table has one row per
-Candidacy in a single-seat Contest and is designed for election modelling, with `vote_share` as the
-main target.
+Candidacy and is designed for election modelling, with `vote_share` as the main target. Every
+Contest from 2003 onward elects one member; `seats_available` records the seat count so that
+multi-member wards from before amalgamation (ADR 0011) can be filtered or modelled separately.
 
 Coverage includes:
 

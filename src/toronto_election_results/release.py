@@ -25,6 +25,7 @@ from .identity_review import (
     extend_identity_review,
 )
 from .municipal_rosters import build_municipal_roster_evidence
+from .predecessor_incumbency import derive_predecessor_incumbency
 from .release_validation import validate_release
 from .reported_incumbency import ReportedIncumbency, build_reported_incumbency
 from .schema import (
@@ -66,6 +67,7 @@ ELECTION_RESULT_COLUMNS = [
     "vote_share",
     "vote_rank",
     "n_candidates",
+    "seats_available",
     "eligible_electors",
     "ballots_cast",
     "turnout",
@@ -78,6 +80,8 @@ ELECTION_RESULT_COLUMNS = [
     "incumbent",
     "incumbent_office_tenure_id",
     "incumbent_reported",
+    "predecessor_incumbent",
+    "predecessor_office_tenure_id",
     "source_authority",
     "source_resource",
     "source_detail",
@@ -189,6 +193,8 @@ def _manifest_rows(manifest: pd.DataFrame | None) -> pd.DataFrame:
     for column in ["incumbent_reported", "eligible_electors", "ballots_cast", "turnout_scope"]:
         if column not in synthetic:
             synthetic[column] = pd.NA
+    if "seats_available" not in synthetic:
+        synthetic["seats_available"] = 1
     return normalize_adapter_frame(synthetic)
 
 
@@ -213,12 +219,12 @@ def _placeholder_contests(normalized_manifest: pd.DataFrame) -> pd.DataFrame:
         "source_authority",
         "source_resource",
         "source_detail",
+        "seats_available",
     ]
     contests = normalized_manifest[columns].drop_duplicates("contest_id").copy()
     contests["acclaimed"] = contests["outcome_method"].eq("acclamation").astype("boolean")
     contests["n_candidates"] = pd.Series(pd.NA, index=contests.index, dtype="Int64")
     contests["total_contest_votes"] = pd.Series(pd.NA, index=contests.index, dtype="Int64")
-    contests["seats_available"] = 1
     contests["turnout"] = pd.Series(pd.NA, index=contests.index, dtype="Float64")
     usable = (
         contests["eligible_electors"].notna()
@@ -299,6 +305,7 @@ def assemble_release(
     tenures = _normalize_tenure_dates(
         _empty_tenures() if office_tenures is None else office_tenures
     )
+    candidacies = derive_predecessor_incumbency(candidacies, tenures)
     candidacies = candidacies.merge(
         parties[["party_id", "canonical_name"]].rename(columns={"canonical_name": "party_name"}),
         on="party_id",
