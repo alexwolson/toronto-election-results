@@ -790,3 +790,97 @@ def test_2010_tcdsb_ward_9_runner_up_is_the_sitting_ward_9_trustee():
     assert (
         "voters-choose-at-least-12-new-school-trustees" in decisions.loc[current, "evidence_urls"]
     )
+
+
+def test_variant_name_merges_join_split_careers():
+    links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
+    confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
+    careers = {
+        # Michael/Mike Del Grande: 1994 MSSB, 1997 and 2000 TCDSB.
+        "per_5d4ed9a602615789a5ed8bde2ae82e62": [
+            "can_0b7cd890417859f6808a807cbefacfe3",
+            "can_a425763a34f75800969f26270367a518",
+            "can_b3019b205d9550edbdf45f01e0612ebb",
+        ],
+        # Elizebeth/Elizabeth Moyer: 1994, 1997, 2000, 2010 and 2014 trustee races.
+        "per_526d2746efd55198a90b1e6c06dbc83c": [
+            "can_e6aaeb1031a95c3a934afed707e890a0",
+            "can_8f3ccc57c513570193163230d6023fd0",
+            "can_e1574306d9a85c9f851c54051ec04ab8",
+            "can_0ab8f6a4ce795dd9818519bca08626d8",
+            "can_e9be77407e6b54fbb418a114a27290ab",
+        ],
+        # Iqbal (S.) Dhanju: 1994, 1997, 2000.
+        "per_6f6434dc6b37567890cd76d347d1c7b2": [
+            "can_1b7a8da0e9ce5231ac8f6996c313769c",
+            "can_f96b4b4d8dd65a428ae5026b49450810",
+            "can_8d2f68d7d2da56f8a59d74747e32ab42",
+        ],
+        # Luis A. Lopes Silva / Luis Silva: 1994, 1997, 2000 trustee and 2003 mayor.
+        "per_620960c232f85db6b87db233834b5a4b": [
+            "can_4b17f6cb00d052c0b540fde5b9551f9c",
+            "can_12d8aaf9450056aab6e423772fb5a3da",
+            "can_dd1dc5a5be9b5a1bbbaaf1f1b597ef75",
+            "can_c542909642f754f0878c8d17b56350e4",
+        ],
+        # Norm/Norman Gardner: 1994 Metro, 1997 federal, 1997 and 2018 council.
+        "per_940597ecad835bb39f145cd085e3f791": [
+            "can_60fad535ce8e5a059439e2cf040b38f7",
+            "can_1bcbb73f4c7e5f57b5a22ab4a90a7c78",
+            "can_2bb5543b9fe6513caef7dde2ad618828",
+            "can_97cccfc87fce5dac8f2fc2916ae439ee",
+        ],
+        # Constantine Kritsonis: 1995 Oakwood and the York Centre federal runs.
+        "per_7bc0075b9dc654e0bc0cd0f8ba293879": [
+            "can_69b9b9adc1cc5504884c0d93b0549f6c",
+            "can_9d041f0580fd58d1a27fe5f6413a9cc3",
+            "can_40187923ba7b5efd9873ea2964c7d311",
+            "can_cd970a3b3c0e5ee881be85d7a62aa280",
+            "can_3d6529e8861f5d7b947e46b79ae816d6",
+            "can_44fc83800bf55475b694fea79eb3e0d1",
+        ],
+        # Claude-Reno D'Aigle: French Catholic trustee races 1994-2018.
+        "per_19437117d92857d9ac07198a36e10a37": [
+            "can_32c54b77892c57619c78fc57f3b6a075",
+            "can_72e11b63044d504482c836963351cd14",
+            "can_d494a4a555835cb6823270b2d3941411",
+            "can_54f6046303d25e5d96b4cd2fc06a07de",
+            "can_34ac365b41fe538e882fa0a2500c27fd",
+            "can_613e10c620db55a09d05aaf1d8b45902",
+            "can_064774a3fa9755b69ee37c1eeac543f3",
+            "can_f434f54386fe5069b5ce83058d2c1b3b",
+        ],
+    }
+    for person_id, candidacy_ids in careers.items():
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
+        assert people.loc[person_id, "identity_status"] == "active"
+    merged_away = {
+        "per_a279ecb0a6d25718832d86201659833f": "per_5d4ed9a602615789a5ed8bde2ae82e62",
+        "per_ee6719ea2e2750fa812eace9e3ae5f45": "per_6f6434dc6b37567890cd76d347d1c7b2",
+        "per_a0343b9bd41e5487828af187ca743698": "per_620960c232f85db6b87db233834b5a4b",
+        "per_2a6a1579a6b95b6fb0a4011fa5f01f24": "per_940597ecad835bb39f145cd085e3f791",
+        "per_c51eea41d6dc504185534c80c1545791": "per_19437117d92857d9ac07198a36e10a37",
+        "per_0d4cf29bc1c4569ab45bbd86b3c12bb4": "per_19437117d92857d9ac07198a36e10a37",
+    }
+    for person_id, canonical in merged_away.items():
+        assert people.loc[person_id, "identity_status"] == "deprecated"
+        assert people.loc[person_id, "redirect_to_person_id"] == canonical
+    # Not established, so left as they were: Elizabeth Moyer's 2006 council run, Kritsonis's
+    # 2003 provincial run, and the 2000 and 2003 Andre/André Duclos records.
+    for person_id in (
+        "per_f285f0621dbe566cadb4c7cee0d4a752",
+        "per_6ae741fa1fc65281a8b7aea106352cb1",
+        "per_26f0cdfdce3b5437b5c0ba6d680019c4",
+        "per_01d27f754bc75218aa848e00887a9d36",
+    ):
+        assert people.loc[person_id, "identity_status"] == "active"
+    assert confirmed.loc["can_2293417524625b80b2790e8b10c7ee9b", "person_id"] == (
+        "per_f285f0621dbe566cadb4c7cee0d4a752"
+    )
+    assert confirmed.loc["can_e60111ecd5f45c6e80d7d39e39d3ebf6", "person_id"] == (
+        "per_6ae741fa1fc65281a8b7aea106352cb1"
+    )

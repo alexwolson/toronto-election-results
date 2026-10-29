@@ -61,7 +61,7 @@ def test_default_pinned_candidacies_are_active_checked_ledger_entries():
 
     # These pins distinguish otherwise ambiguous same-name occurrences.  They must
     # be persistent ledger IDs, never IDs copied from a pre-ledger draft build.
-    assert len(pinned) == 893
+    assert len(pinned) == 926
     assert len({occurrence.candidacy_id for _, occurrence in pinned}) == len(pinned)
     for assertion_id, occurrence in pinned:
         assert occurrence.candidacy_id in active.index, assertion_id
