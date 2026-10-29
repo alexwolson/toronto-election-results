@@ -195,6 +195,7 @@ def _manifest_rows(manifest: pd.DataFrame | None) -> pd.DataFrame:
             synthetic[column] = pd.NA
     if "seats_available" not in synthetic:
         synthetic["seats_available"] = 1
+    synthetic["seats_available"] = synthetic["seats_available"].fillna(1)
     return normalize_adapter_frame(synthetic)
 
 

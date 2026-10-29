@@ -9724,3 +9724,821 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         canonical_person_id="per_83ce91414bb25e0dad0b85534118d73e",
     ),
 )
+
+
+# Person records split across the pre-amalgamation backfill, joined on biographies
+# found during the 1994-2000 municipal identity review. These supersede older
+# occurrence-level review decisions for the candidacies they enumerate.
+PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
+    CuratedIdentityAssertion(
+        assertion_id="david-miller-1993-2006-continuity",
+        preferred_name="David Miller",
+        occurrences=(
+            _pinned_occurrence(
+                "can_a648abaafa76540fbcdd0c7b8260d82d",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "David Miller",
+            ),
+            _pinned_occurrence(
+                "can_3dead446747b55b78c5f553203f55a3d",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "metro_toronto_council",
+                "councillor",
+                "David Miller",
+            ),
+            _pinned_occurrence(
+                "can_07dca60e733959a19d4da077883f5ce6",
+                "on-1996-05-23-by-129",
+                "ontario_legislative_assembly",
+                "mpp",
+                "DAVID MILLER",
+            ),
+            _pinned_occurrence(
+                "can_3f52f67f1fa35e92852b62909733e070",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "David Miller",
+            ),
+            _pinned_occurrence(
+                "can_b432908424db519ab073d89753390ec1",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "David Miller",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/David_Miller_(Canadian_politician)",),
+        rationale=(
+            "David Miller's Wikipedia biography gives his runs as the NDP candidate in Parkdale—High Park in 1993, Metro councillor for High Park from 1994, the NDP candidate in York South in 1996, councillor for Ward 19 High Park in 1997 and Ward 13 Parkdale-High Park in 2000, and Mayor in 2003 and 2006, joining three Person records."
+        ),
+        registry_person_ids=(
+            "per_ad293f1387af572cad45897886519bb6",
+            "per_b04a5fd11b4951368dcd05cb899898f5",
+            "per_e925f7a5f62a5d618c5b31e2ddbea83f",
+        ),
+        canonical_person_id="per_ad293f1387af572cad45897886519bb6",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="denzil-minnan-wong-1994-2018-continuity",
+        preferred_name="Denzil Minnan-Wong",
+        occurrences=(
+            _pinned_occurrence(
+                "can_df12e1c683785e65abff7241c0b244a6",
+                "evt_55417977ab9752b792eeda64734a2280",
+                "north_york_city_council",
+                "councillor",
+                "Denzil Minnan-Wong",
+            ),
+            _pinned_occurrence(
+                "can_5388f695c71f51cc93c161102fa109f8",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Denzil Minnan-Wong",
+            ),
+            _pinned_occurrence(
+                "can_4c067bdd1cb656eda20a29c8e32f880a",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Denzil Wong-Minnan",
+            ),
+            _pinned_occurrence(
+                "can_25e58ddba5bf5efb8224c6063a47430b",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Denzil Minnan-Wong",
+            ),
+            _pinned_occurrence(
+                "can_41fa067ba91954a38f2a63ed1a601a23",
+                "on-2018-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Denzil Minnan-Wong",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Denzil_Minnan-Wong",),
+        rationale=(
+            "Denzil Minnan-Wong's Wikipedia biography gives his election to North York Ward 12 in 1994, his 1997 Progressive Conservative run in Don Valley East, his election in 1997 Ward 11 Don Parkway (listed by the City's archive as Denzil Wong-Minnan), Ward 34 from 2000, his 2018 provincial run in Don Valley East and his 2018 Ward 16 re-election, joining four Person records."
+        ),
+        registry_person_ids=(
+            "per_cacdaf09421e5b0e98d0138141449f29",
+            "per_bd5ac08ea87152aaaa243d61919f2d5d",
+            "per_c63f97c0d609539d89db1c94bf646152",
+            "per_ee2f92c07cbb5ae68743184af4c68441",
+        ),
+        canonical_person_id="per_cacdaf09421e5b0e98d0138141449f29",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="elizabeth-rowley-1993-2025-continuity",
+        preferred_name="Elizabeth Rowley",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c4ae1da5ebe65906aa8d1a675dbae46d",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_9604293625e35c2f9d6986c35068f026",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_4ca0732ec39654ecb7ddcc1c4dd56519",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ELIZABETH ROWLEY",
+            ),
+            _pinned_occurrence(
+                "can_4cc7d1a8704859b390a59fd51733b4fe",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_e6d34f29eedd56fa8a97a2508cc32679",
+                "ec-ge-38",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_192d37d417e25fa899b46b45db9ed82a",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_a303fa88b7715a6bb1692aaa827de067",
+                "on-2014-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ELIZABETH ROWLEY",
+            ),
+            _pinned_occurrence(
+                "can_2e8a945cf8ef5a6fa674861ebd1c6391",
+                "ec-ge-43",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_60b89b0fb02f5e4fb35ec11d8ebdbd5f",
+                "ec-ge-44",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+            _pinned_occurrence(
+                "can_bac671e7117d534987554054f80d0dfa",
+                "ec-ge-45",
+                "canada_house_of_commons",
+                "mp",
+                "Elizabeth Rowley",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Elizabeth_Rowley",),
+        rationale=(
+            "Elizabeth Rowley's Wikipedia electoral record lists Broadview—Greenwood 1993, East York Ward 1 council 1997, Don Valley East 1999, Etobicoke North 2000, Scarborough Centre 2003, Scarborough Southwest 2004 and 2006, Toronto—Danforth 2014 and 2021, Davenport 2019 and Beaches—East York 2025, with vote totals matching the official results, joining three Person records."
+        ),
+        registry_person_ids=(
+            "per_aa1078f5c83b568188c98224c0b71f58",
+            "per_bdd754b560a850038f516caa45cdd496",
+            "per_783e7bef07e35d43b1c8aa080da867db",
+        ),
+        canonical_person_id="per_aa1078f5c83b568188c98224c0b71f58",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="rob-davis-1994-2023-continuity",
+        preferred_name="Rob Davis",
+        occurrences=(
+            _pinned_occurrence(
+                "can_2b63e163bdb7547381b5fc86813ad865",
+                "evt_d19472431b815f9db936c0b9a82e683b",
+                "york_city_council",
+                "councillor",
+                "Rob Davis",
+            ),
+            _pinned_occurrence(
+                "can_491e0f4529bb5d6db43845cd1c69da1e",
+                "on-1996-05-23-by-129",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ROB DAVIS",
+            ),
+            _pinned_occurrence(
+                "can_1275a91a3acd5474b8a4988c18aaeedd",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Rob Davis",
+            ),
+            _pinned_occurrence(
+                "can_46f2069357015fb6875d58fa066deabf",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Rob Davis",
+            ),
+            _pinned_occurrence(
+                "can_1bc1e748f4c85796bf9b51a0947e79db",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Rob Davis",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Rob_Davis_(politician)",),
+        rationale=(
+            "Rob Davis's Wikipedia biography gives his re-election to York Ward 3 in 1994, the 1996 York South by-election as the Progressive Conservative candidate, Ward 28 York Eglinton in 1997, Ward 21 in 2000, Ward 33 in 2003, Ward 15 in 2010 and the 2023 mayoral by-election, joining three Person records."
+        ),
+        registry_person_ids=(
+            "per_2a0809ffec18563292e0e1363aff66f6",
+            "per_fb948a9694d85e1eb85b36a17435b7c5",
+            "per_3e3031a1daa65b39a59e2770e7cd1064",
+        ),
+        canonical_person_id="per_2a0809ffec18563292e0e1363aff66f6",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="mike-feldman-1994-2006-continuity",
+        preferred_name="Mike Feldman",
+        occurrences=(
+            _pinned_occurrence(
+                "can_bfc4f8a3f382577f814ac31e2e0d85bb",
+                "evt_55417977ab9752b792eeda64734a2280",
+                "north_york_city_council",
+                "councillor",
+                "Michael Feldman",
+            ),
+            _pinned_occurrence(
+                "can_f74895fe25385bccbaf2316f6b2146a0",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Mike Feldman",
+            ),
+            _pinned_occurrence(
+                "can_de203ab7422953e88a7790e00fa19c26",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Mike Feldman",
+            ),
+            _pinned_occurrence(
+                "can_302514955e6a54268d565e4dcb76f228",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Michael Feldman",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Mike_Feldman",),
+        rationale=(
+            "Mike Feldman's Wikipedia biography gives his North York Ward 7 seat from 1992, his election in 1997 Ward 8 with 14,737 votes, and Ward 10 in 2000, 2003 and 2006 with vote totals matching the official results; the 1994 North York Ward 7 win falls within that continuous tenure. The records for Michael Feldman and Mike Feldman are joined."
+        ),
+        registry_person_ids=(
+            "per_a91b6e0f34fc5ad894ceeecfe6f286ca",
+            "per_183a76b124095ed28e18acefa4468660",
+        ),
+        canonical_person_id="per_a91b6e0f34fc5ad894ceeecfe6f286ca",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="peter-li-preti-1993-2010-continuity",
+        preferred_name="Peter Li Preti",
+        occurrences=(
+            _pinned_occurrence(
+                "can_956a7d4f0981589bb8e41a2108a3def9",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Peter Li Preti",
+            ),
+            _pinned_occurrence(
+                "can_7a2c4a4e82d25328b255fcaa6506d789",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Peter Li Preti",
+            ),
+            _pinned_occurrence(
+                "can_49d0326d70595408910be2b4b6727d2b",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Peter Li Preti",
+            ),
+            _pinned_occurrence(
+                "can_f52faa8a26185c6aaeda8cc1253e3177",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Peter Li Preti",
+            ),
+            _pinned_occurrence(
+                "can_a89c2d7b02fb59c6bff9806306e7d07b",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "toronto_city_council",
+                "councillor",
+                "Peter Li Preti",
+            ),
+            _pinned_occurrence(
+                "can_d6e5c8d3b7f251a1a94a5c40c6b4387e",
+                "evt_5a786c1da7ec5e758036205f04351fc5",
+                "toronto_city_council",
+                "councillor",
+                "Peter Li Preti",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Peter_Li_Preti",),
+        rationale=(
+            "Peter Li Preti's Wikipedia biography gives his 1993 independent run in York Centre, his 1997 election to the new council (Ward 7 Black Creek), Ward 8 wins in 2000 and 2003, and his losses to Anthony Perruzza in Ward 8 in 2006 and 2010, joining two Person records."
+        ),
+        registry_person_ids=(
+            "per_2a40024702fe5eff894a5f894cec0f0d",
+            "per_ec16fdedf2c65a0eb70e306c60f6003a",
+        ),
+        canonical_person_id="per_2a40024702fe5eff894a5f894cec0f0d",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="anthony-perruzza-1995-2026-continuity",
+        preferred_name="Anthony Perruzza",
+        occurrences=(
+            _pinned_occurrence(
+                "can_09c5f5a400df59ac910ef4809c30d3d8",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Anthony Perruzza",
+            ),
+            _pinned_occurrence(
+                "can_3ecbd948a9e752a186e1d9f1a148f424",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Anthony Perruzza",
+            ),
+            _pinned_occurrence(
+                "can_0bb2e89311625e8bbebc712289e2002f",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Anthony Perruzza",
+            ),
+            _pinned_occurrence(
+                "can_6c048d9a2df75ff2843ff90e8a3e916a",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Anthony Perruzza",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Anthony_Perruzza",),
+        rationale=(
+            "Anthony Perruzza's Wikipedia biography gives his 1995 loss in Downsview as MPP, his fourth place in 1997 Ward 7, his losses to Peter Li Preti in Ward 8 in 2000 and 2003, and his Ward 8 win in 2006 and later terms, joining two Person records."
+        ),
+        registry_person_ids=(
+            "per_18786ecd2dc7506794ac10340a5f68f6",
+            "per_db8515e07e0854a292de4385b62d7eaf",
+        ),
+        canonical_person_id="per_18786ecd2dc7506794ac10340a5f68f6",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="john-parker-1995-2014-continuity",
+        preferred_name="John Parker",
+        occurrences=(
+            _pinned_occurrence(
+                "can_5f35263cbb355c7fa60d06517c9b6259",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "John Parker",
+            ),
+            _pinned_occurrence(
+                "can_4c1c5335978f551a84a62f8c9f13fc45",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "JOHN PARKER",
+            ),
+            _pinned_occurrence(
+                "can_33649099b36a554c8759a4a009f3eb66",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "toronto_city_council",
+                "councillor",
+                "John Parker",
+            ),
+            _pinned_occurrence(
+                "can_146540fb579f5ea7a40431a40dc1ddea",
+                "evt_5a786c1da7ec5e758036205f04351fc5",
+                "toronto_city_council",
+                "councillor",
+                "John Parker",
+            ),
+            _pinned_occurrence(
+                "can_282e3a4d380159dab2d4ffe59392e854",
+                "evt_54673fd104ab5ef08eb865e162ac040c",
+                "toronto_city_council",
+                "councillor",
+                "John Parker",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/John_Parker_(Ontario_politician)",),
+        rationale=(
+            "John Parker's Wikipedia biography gives his 1995 win in York East and 1999 loss in Eglinton—Lawrence as the Progressive Conservative candidate, and his Ward 26 Don Valley West wins in 2006 and 2010 and loss in 2014, joining two Person records. His 1994 East York candidacy remains unresolved."
+        ),
+        registry_person_ids=(
+            "per_89c892f4852f57deae6f2c4bf5a1e39f",
+            "per_54206bff64a9555d8c672febdd31d538",
+        ),
+        canonical_person_id="per_89c892f4852f57deae6f2c4bf5a1e39f",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="john-hastings-1994-2016-continuity",
+        preferred_name="John Hastings",
+        occurrences=(
+            _pinned_occurrence(
+                "can_6a48ef70523e5a4287bca4aa0a5c96bd",
+                "evt_f3d5134ef9b25e0a9179ede437def849",
+                "etobicoke_city_council",
+                "councillor",
+                "John Hastings",
+            ),
+            _pinned_occurrence(
+                "can_7957317a4ca45498804874c9d10344c9",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "John Hastings",
+            ),
+            _pinned_occurrence(
+                "can_26b3676381b857aebc58e5f6b1623735",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "JOHN HASTINGS",
+            ),
+            _pinned_occurrence(
+                "can_1d5f22cb31545b39bbea76569bbdc3bb",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "toronto_district_school_board",
+                "trustee",
+                "John Hastings",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/John_Hastings_(Ontario_politician)",),
+        rationale=(
+            "John Hastings's Wikipedia biography gives his Etobicoke council seat from 1988 to 1995, his MPP wins in Etobicoke—Rexdale in 1995 and Etobicoke North in 1999, his TDSB Ward 1 wins in 2006 and 2010, his 2014 loss and his 2016 by-election loss, joining two Person records."
+        ),
+        registry_person_ids=(
+            "per_13c35326e35f5616b2b579c7af89ed3c",
+            "per_1a2367699c6c584d879bffc61e9daa3c",
+        ),
+        canonical_person_id="per_13c35326e35f5616b2b579c7af89ed3c",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="paul-sutherland-2003-provincial-candidacy",
+        preferred_name="Paul Sutherland",
+        occurrences=(
+            _pinned_occurrence(
+                "can_77c5c528b7995218b2d7caa98b420c60",
+                "evt_55417977ab9752b792eeda64734a2280",
+                "north_york_city_council",
+                "councillor",
+                "Paul Sutherland",
+            ),
+            _pinned_occurrence(
+                "can_40b34a6f20365906ac611542d361859b",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Paul Sutherland",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Paul_Sutherland_(politician)",),
+        rationale=(
+            "Paul Sutherland's Wikipedia biography gives him as a North York Ward 14 councillor to 1997 and Ward 33 councillor from 2000 to 2003, and as the Progressive Conservative candidate in Don Valley East in 2003. The 1995 Oriole candidacy is not covered and stays on its own Person."
+        ),
+        registry_person_ids=(
+            "per_5c71d0d296235cfe946e4ce549424af0",
+            "per_a9ff8ac2ec0c5c298812055f3581c5be",
+        ),
+        canonical_person_id="per_5c71d0d296235cfe946e4ce549424af0",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="maria-augimeri-2019-federal-candidacy",
+        preferred_name="Maria Augimeri",
+        occurrences=(
+            _pinned_occurrence(
+                "can_af30bf25d666511ca841ec1e4ec7a87d",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Maria Augimeri",
+            ),
+            _pinned_occurrence(
+                "can_3969a285f02754068d6aeb8ab44662cb",
+                "ec-ge-43",
+                "canada_house_of_commons",
+                "mp",
+                "Maria Augimeri",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Maria_Augimeri",),
+        rationale=(
+            "Maria Augimeri's Wikipedia biography gives her 1997 Ward 7 council win and says she stood as the New Democratic candidate in Humber River—Black Creek in 2019."
+        ),
+        registry_person_ids=("per_a39385ec8fc65555a86f30b50d338a33",),
+        canonical_person_id="per_a39385ec8fc65555a86f30b50d338a33",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="adam-giambrone-2013-provincial-candidacy",
+        preferred_name="Adam Giambrone",
+        occurrences=(
+            _pinned_occurrence(
+                "can_82808b3e4f6e57b893db83438007ba68",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Adam Giambrone",
+            ),
+            _pinned_occurrence(
+                "can_fb1e7879c831534288610a41f5f91115",
+                "on-2013-08-01-by-082",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ADAM GIAMBRONE",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Adam_Giambrone",),
+        rationale=(
+            "Adam Giambrone's Wikipedia biography gives his Ward 18 council win in 2003 and his third-place finish as the New Democratic candidate in the August 1, 2013 Scarborough—Guildwood by-election."
+        ),
+        registry_person_ids=("per_2058e961126e5e8499b3ea8046068164",),
+        canonical_person_id="per_2058e961126e5e8499b3ea8046068164",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="roberto-verdecchia-1997-2003-continuity",
+        preferred_name="Roberto Verdecchia",
+        occurrences=(
+            _pinned_occurrence(
+                "can_56f5a6a9fd6a57d6806904de02528459",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Roberto Verdecchia",
+            ),
+            _pinned_occurrence(
+                "can_cf12a342b37958a29ab5cb8e093940ff",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Roberto Verdecchia",
+            ),
+            _pinned_occurrence(
+                "can_8b2c655c30d4533eb5d20a7e5fd5422b",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ROBERTO VERDECCHIA",
+            ),
+            _pinned_occurrence(
+                "can_d3d14e1e1f9b5c588310bcb79290e5c3",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Roberto Verdecchia",
+            ),
+            _pinned_occurrence(
+                "can_f5bff385f29a5c48988225dd4e86dcea",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Roberto Verdecchia",
+            ),
+        ),
+        evidence_urls=(
+            "https://en.wikipedia.org/wiki/Humanist_Party_of_Ontario",
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+        ),
+        rationale=(
+            "Wikipedia's Humanist Party of Ontario article has a section on Roberto Verdecchia, co-founder of an Annex newspaper (citing the Toronto Star of 1997 and 2003), whose electoral record lists the 1997 federal and 1999 provincial Trinity—Spadina runs, 1997 Ward 24 and 2000 and 2003 Ward 20 with vote totals matching the official results, joining three Person records."
+        ),
+        registry_person_ids=(
+            "per_3997000aca965ed98716d39d8bf36311",
+            "per_81447c123ab753a5968bd69a225e12bc",
+            "per_77402961573e5ba3a4465c1ef523205e",
+        ),
+        canonical_person_id="per_3997000aca965ed98716d39d8bf36311",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="john-papadakis-1993-2014-continuity",
+        preferred_name="John Papadakis",
+        occurrences=(
+            _pinned_occurrence(
+                "can_0375c057e7595add855af804ab66e056",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "John Papadakis",
+            ),
+            _pinned_occurrence(
+                "can_4ac0ff34d73658e8b64f8100ad8e83ed",
+                "evt_e50f564e276a5aa7922c448b28492658",
+                "metro_toronto_council",
+                "councillor",
+                "John Papadakis",
+            ),
+            _pinned_occurrence(
+                "can_406faacc49355e109334dea81137f054",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "John Papadakis",
+            ),
+        ),
+        evidence_urls=(
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+            "https://en.wikipedia.org/wiki/1991_Toronto_municipal_election",
+            "https://en.wikipedia.org/wiki/1994_Toronto_municipal_election",
+            "https://torontoobserver.ca/2014/10/27/papadakis-comeback-bid-fizzles/",
+        ),
+        rationale=(
+            "Elections Canada's 1993 candidate record gives the Progressive Conservative candidate in Broadview—Greenwood as a municipal councillor living in East York, and John Papadakis won an East York Ward 3 seat in 1991. The Toronto Observer describes the 2014 Ward 29 candidate as the former East York councillor who served one term about twenty years earlier. His 1994 run for East York's Metro seat followed that term in the same borough, and his 2003 and 2014 Ward 29 runs were already one record."
+        ),
+        registry_person_ids=(
+            "per_ea45e9b94d525274a5445c574fd8e1f1",
+            "per_a550fd9cd4635743aa2564d276ba0c23",
+        ),
+        canonical_person_id="per_ea45e9b94d525274a5445c574fd8e1f1",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="chai-kalevar-federal-and-mayoral-continuity",
+        preferred_name="Chai Kalevar",
+        occurrences=(
+            _pinned_occurrence(
+                "can_45feeeb8acb552f6816da3ce7e48846b",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Chai Kalevar",
+            ),
+            _pinned_occurrence(
+                "can_e426b2838a9a584ebf1ed80b2798eff5",
+                "evt_54673fd104ab5ef08eb865e162ac040c",
+                "toronto_city_council",
+                "mayor",
+                "Chai Kalevar",
+            ),
+            _pinned_occurrence(
+                "can_956d94f496725e4d9c7cb02f9243af3c",
+                "evt_e4fe1909276b5fbd91057022b350fff3",
+                "toronto_city_council",
+                "mayor",
+                "Chai Kalevar",
+            ),
+            _pinned_occurrence(
+                "can_71ff30a95963587d805ab33da63ceb16",
+                "ec-ge-42",
+                "canada_house_of_commons",
+                "mp",
+                "Chai Kalevar",
+            ),
+            _pinned_occurrence(
+                "can_3a2322c5bf575c04ae6b9578cdd36be1",
+                "ec-ge-43",
+                "canada_house_of_commons",
+                "mp",
+                "Chai Kalevar",
+            ),
+            _pinned_occurrence(
+                "can_ff790fdddb9e5b49b0e34691a1d9c27f",
+                "ec-ge-44",
+                "canada_house_of_commons",
+                "mp",
+                "Chai Kalevar",
+            ),
+        ),
+        evidence_urls=(
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+            "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/e869d365-2c15-4893-ad2a-744ca867be3b/resource/5f54ab3d-44d7-4e5c-9c74-91e1edecd2a1/download/campaign-contributions-2018-data.zip",
+            "https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv",
+            "https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv",
+            "https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/table_tableau12.csv",
+            "https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/table_tableau12.csv",
+        ),
+        rationale=(
+            "Elections Canada's 1993 candidate record and the City's 2018 campaign-contribution record, where he contributed to his own mayoral campaign, give the same home postal code, joining the 1993 federal run to the 2014 and 2018 mayoral runs. Elections Canada gives his occupation as engineer in 1993, 2008, 2019 and 2021, joining the Davenport runs, and the 2015 Davenport run is the same independent in the same riding. His 1994-2000 York-area council runs, the 2016 and 2017 council by-elections and the 2018 provincial run are not established and stay unresolved."
+        ),
+        registry_person_ids=(
+            "per_7a6c09e82feb52cdbcd1fa757f7c708d",
+            "per_5ec455c57d6859a8adea2467b830d61e",
+        ),
+        canonical_person_id="per_7a6c09e82feb52cdbcd1fa757f7c708d",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="yaqoob-khan-1994-2006-continuity",
+        preferred_name="Yaqoob Khan",
+        occurrences=(
+            _pinned_occurrence(
+                "can_23eb2878f32c53a7a8ee7b3295108c90",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "metro_toronto_council",
+                "councillor",
+                "Yaqoob Khan",
+            ),
+            _pinned_occurrence(
+                "can_029c6190ce5e505eafdd187ad60c3782",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_district_school_board",
+                "trustee",
+                "Yaqoob Khan",
+            ),
+            _pinned_occurrence(
+                "can_f428def5ec1655b685d5ed7e9c63d24f",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Yaqoob Khan",
+            ),
+            _pinned_occurrence(
+                "can_6321ff70309a5eee9e7fdf6502173a9c",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "toronto_city_council",
+                "councillor",
+                "Yaqoob Khan",
+            ),
+        ),
+        evidence_urls=(
+            "https://en.wikipedia.org/wiki/Independent_candidates_in_the_2006_Canadian_federal_election",
+            "https://www.elections.ca/Scripts/OVR2006/25/data_donnees/table_tableau12.csv",
+        ),
+        rationale=(
+            "Wikipedia's entry for Yaqoob Khan among the independent candidates of the 2006 federal election, a retired teacher and president of the Canadian Institute of Islamic Studies, has an electoral record listing the 1994 Metro Scarborough-Malvern, 2003 TDSB Ward 21, 2006 Ward 28 council and 2006 Scarborough—Rouge River contests with the official vote totals."
+        ),
+        registry_person_ids=("per_8e9d36e1b43653b6a469e5c9b87e95e7",),
+        canonical_person_id="per_8e9d36e1b43653b6a469e5c9b87e95e7",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="jorge-van-schouwen-1997-2000-continuity",
+        preferred_name="Jorge Van Schouwen",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c9ad2fc1d2335e80a32646c199e4cba6",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Jorge Van Schouwen",
+            ),
+            _pinned_occurrence(
+                "can_ee7a9df47ebc538ea0063bb967306a65",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "JORGE VAN SCHOUWEN",
+            ),
+            _pinned_occurrence(
+                "can_03fdae31a6ef546597eb060ea5894dc6",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "Jorge Van Schouwen",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Humanist_Party_of_Ontario",),
+        rationale=(
+            "Wikipedia's Humanist Party of Ontario article describes Jorge Van Schouwen as a perennial candidate who received 99 votes in Parkdale—High Park in the 1999 Ontario election, and lists his 1997 Ward 19 (599 votes) and 2000 Ward 14 (416 votes) council runs, matching the official results."
+        ),
+        registry_person_ids=("per_eeea104c1cce54a382c006cdb50f38aa",),
+        canonical_person_id="per_eeea104c1cce54a382c006cdb50f38aa",
+    ),
+)
+
+DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
+
+
+def exclude_person_record_merge_decisions(
+    identity_decisions: pd.DataFrame,
+    assertions: tuple[CuratedIdentityAssertion, ...] = PERSON_RECORD_MERGE_ASSERTIONS,
+) -> pd.DataFrame:
+    """Let a biography-backed person-record merge supersede occurrence reviews."""
+
+    asserted = {
+        occurrence.candidacy_id
+        for assertion in assertions
+        for occurrence in assertion.occurrences
+        if occurrence.candidacy_id is not None
+    }
+    return identity_decisions.loc[~identity_decisions["candidacy_id"].isin(asserted)].reset_index(
+        drop=True
+    )

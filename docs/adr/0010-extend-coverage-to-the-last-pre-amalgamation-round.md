@@ -42,7 +42,13 @@ hold, but they argue for null electorate columns, not for leaving the results ou
 - Mayoral career backfill rows inside the new window are removed once an official adapter
   carries the same Contest, and the career decision maps to the official Candidacy instead
   (`reuse_existing`). Kevin Clarke's 1995, 1996 and 2001 provincial rows and his 1997 federal row
-  are done; the municipal rows for Clarke and Olivia Chow follow when that adapter lands.
+  are done, as are the municipal rows for Clarke (1994 East York mayor, 2000 mayor) and Olivia
+  Chow (1994 Metro Downtown, 1997 Ward 24, 2000 Ward 20).
+- The municipal adapter covers 1994, 1997 and 2000 Mayor, Councillor and Metro Councillor
+  Contests. Eight 1994 Contests ship as `source_missing` placeholders (North York council wards
+  3–5 and five Metro wards). Where the archive lost a 1994 Metro ward label, the label comes from a
+  secondary source and the row cites it; vote counts are always the archive's. Pre-1998 school
+  board and 2000 trustee Contests follow in a later pass.
 - Federal results before 2004 come from three official sources: Elections Canada's 1993
   Recapitulation of Votes data files (released through the U of T Map & Data Library), Elections
   Canada's 1997/2000 poll-by-poll result files, and Elections Canada's official voting results

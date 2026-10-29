@@ -1,8 +1,19 @@
 # Data dictionary — Toronto Election Results v2.1
 
-The release covers completed election contests wholly within the City of Toronto from
-2003-01-01 through 2026-10-26 (the inclusive election-date scope, not a claim that
-future outcomes are known). Under ADR 0010, provincial (MPP) coverage starts with the 1995-06-08
+The release covers completed election contests wholly within the City of Toronto through
+2026-10-26 (the inclusive election-date scope, not a claim that future outcomes are known). Under
+ADR 0010, municipal coverage starts with the 1994-11-14 elections: the mayors and councils of East
+York, Etobicoke, North York, Scarborough, the former City of Toronto and York, and Metropolitan
+Toronto Council, followed by the amalgamated City's 1997 and 2000 Mayor and Councillor elections.
+Pre-2003 School Board trustee elections are not yet included. Those municipal results come from the
+City's archived results pages, which carry no elector or ballot counts, so turnout fields are null.
+East York's 1994 wards and every 1997 ward elected two members (`seats_available = 2`). The 1994
+North York council wards 3–5 and five 1994 Metro wards (Kingsway Humber, Markland Centennial, North
+York Spadina, North York Centre South and North York Centre) are `source_missing` placeholders with
+no Candidacy rows, because the archive does not carry their results. Where the archive lost a 1994
+Metro ward label, the label is taken from a secondary source and recorded in
+`data/reference/municipal_archive_results.csv` (`district_label_source`); the vote counts are always
+the archive's. Under ADR 0010, provincial (MPP) coverage starts with the 1995-06-08
 Ontario general election, including the 1996, 1997 and 2001 Toronto by-elections, and federal (MP)
 coverage starts with the 1993-10-25 general election, including the 1996 Etobicoke North and
 1999 York West by-elections.
@@ -17,9 +28,10 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 6,748 Candidacies, 1,049 Contests, and 76 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 6,391 Candidacies in 996
-Contests are final. Two void historical Contests have no Candidacy rows.
+The release contains 7,448 Candidacies, 1,220 Contests, and 80 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 7,091 Candidacies in 1,159
+Contests are final. Two void historical Contests and eight `source_missing` 1994 Contests have no
+Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
 
@@ -263,6 +275,9 @@ back to name matching or blanket historical coverage claims.
 
 - City of Toronto Open Data official general/by-election results and Clerk declarations for Mayor,
   Councillor, and all four trustee systems.
+- The City of Toronto's archived results pages for the 1994, 1997 and 2000 municipal elections
+  (Internet Archive captures of toronto.ca and city.toronto.on.ca), transcribed by
+  `scripts/transcribe_municipal_archive.py` into `data/reference/municipal_archive_results.csv`.
 - Elections Canada official poll-result archives, official summary tables, and returning-officer
   validated contest totals when the poll-level export is not yet available.
 - Elections Ontario official candidate/statistics/party CSV reports.
@@ -277,6 +292,8 @@ back to name matching or blanket historical coverage claims.
 
 The City trustee by-election index begins in 2012. Event enumeration for 2003–2011 is therefore
 marked `uncertain`; this is an archive-level limitation, not a license to invent event placeholders.
+Municipal by-elections between 1995 and 2002 have not yet been enumerated from the City's
+archive, so that period is also marked `uncertain` in the build manifest.
 Federal legacy wide files that do not provide a structured party/incumbency field retain
 `not_reported`/null unless an official structured summary is joined and strictly reconciled. In
 this release, 2004 party/incumbent fields are joined to Elections Canada Table 12, and 2008–2014

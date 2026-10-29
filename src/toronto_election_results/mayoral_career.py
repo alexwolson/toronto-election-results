@@ -135,31 +135,6 @@ _BACKFILL_METADATA = {
         "metro-toronto-1991",
         "downtown",
     ),
-    "mcb_a0d89937c2e2598ea6bebe4303fa39df": (
-        "toronto-1994-general",
-        "metro-toronto-1994",
-        "downtown",
-    ),
-    "mcb_9df884ee157a57d887f9b7e165384eaf": (
-        "toronto-1997-general",
-        "toronto-1997-wards",
-        "24",
-    ),
-    "mcb_a63809d41357505c95f345cf0e63acf9": (
-        "toronto-2000-general",
-        "toronto-2000-wards",
-        "20",
-    ),
-    "mcb_8c58d53e645d5f06a946a88bb13b258a": (
-        "east-york-1994-general",
-        "east-york-1994-citywide",
-        "city",
-    ),
-    "mcb_e54d7615fb4c5014860831cc25a81d2c": (
-        "toronto-2000-general",
-        "toronto-2000-citywide",
-        "city",
-    ),
     "mcb_0995465250bb5713ab61c235d7286bff": (
         "on-2012-09-06-by-039",
         "ontario-2007-107",
