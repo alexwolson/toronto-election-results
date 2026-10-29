@@ -10663,6 +10663,351 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         ),
         canonical_person_id="per_3f06bedbe8dd5e9c88458c78d6eed7e3",
     ),
+    CuratedIdentityAssertion(
+        assertion_id="mike-del-grande-1994-2000-trustee-terms",
+        preferred_name="Mike Del Grande",
+        occurrences=(
+            _pinned_occurrence(
+                "can_0b7cd890417859f6808a807cbefacfe3",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "metropolitan_separate_school_board",
+                "trustee",
+                "Del Grande, Michael",
+            ),
+            _pinned_occurrence(
+                "can_a425763a34f75800969f26270367a518",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_catholic_district_school_board",
+                "trustee",
+                "Mike Del Grande",
+            ),
+            _pinned_occurrence(
+                "can_b3019b205d9550edbdf45f01e0612ebb",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_catholic_district_school_board",
+                "trustee",
+                "MICHAEL DEL GRANDE",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Mike_Del_Grande",),
+        rationale=(
+            "Michael Anthony (Mike) Del Grande's Wikipedia biography says he was first elected a separate school trustee in 1994 (Metropolitan Separate School Board Ward 18, 1994-98) and re-elected in 1997 and 2000, before representing Ward 39 on City Council from 2003 and TCDSB Ward 7 from 2014. The 1994 and 2000 terms were held as a separate 'Michael Del Grande' Person and join his council and trustee record. John Del Grande, his son and a later Ward 7 trustee, is a different person."
+        ),
+        registry_person_ids=(
+            "per_5d4ed9a602615789a5ed8bde2ae82e62",
+            "per_a279ecb0a6d25718832d86201659833f",
+        ),
+        canonical_person_id="per_5d4ed9a602615789a5ed8bde2ae82e62",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="elizabeth-moyer-1994-2014-trustee-career",
+        preferred_name="Elizabeth Moyer",
+        occurrences=(
+            _pinned_occurrence(
+                "can_e6aaeb1031a95c3a934afed707e890a0",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "scarborough_board_of_education",
+                "trustee",
+                "Moyer, Elizebeth",
+            ),
+            _pinned_occurrence(
+                "can_8f3ccc57c513570193163230d6023fd0",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Elizabeth Moyer",
+            ),
+            _pinned_occurrence(
+                "can_e1574306d9a85c9f851c54051ec04ab8",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_district_school_board",
+                "trustee",
+                "ELIZEBETH MOYER",
+            ),
+            _pinned_occurrence(
+                "can_0ab8f6a4ce795dd9818519bca08626d8",
+                "evt_5a786c1da7ec5e758036205f04351fc5",
+                "toronto_district_school_board",
+                "trustee",
+                "MOYER ELIZABETH",
+            ),
+            _pinned_occurrence(
+                "can_e9be77407e6b54fbb418a114a27290ab",
+                "evt_54673fd104ab5ef08eb865e162ac040c",
+                "toronto_district_school_board",
+                "trustee",
+                "MOYER ELIZABETH",
+            ),
+        ),
+        evidence_urls=(
+            "https://birchcliffnews.com/?p=7741",
+            "https://www.pressreader.com/canada/national-post-latest-edition/20130629/281732677065805",
+            "https://www.proquest.com/docview/437130998",
+            "https://www.proquest.com/docview/1355150144",
+        ),
+        rationale=(
+            "The Toronto Star's 1994 election report names SNAP candidate Elizabeth Moyer, who took on trustee Pat Collie in Scarborough Ward 2, the race the City archive and the Star's table print as 'Elizebeth Moyer'. She was re-elected for the successor TDSB in 1997 (Ward 12, Scarborough) and 2000 (Ward 18, under the archive's 'Elizebeth' spelling), and won Ward 18 again in 2010; the National Post (2013) calls her the trustee for Scarborough Southwest, and Birch Cliff News (2014) describes the Ward 18 incumbent's 13-year record, which matches 1994-2003 plus 2010-2014. The 2006 Ward 35 council run is not established and stays on its own Person."
+        ),
+        registry_person_ids=("per_526d2746efd55198a90b1e6c06dbc83c",),
+        canonical_person_id="per_526d2746efd55198a90b1e6c06dbc83c",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="iqbal-dhanju-1994-2000-trustee-runs",
+        preferred_name="Iqbal Dhanju",
+        occurrences=(
+            _pinned_occurrence(
+                "can_1b7a8da0e9ce5231ac8f6996c313769c",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "scarborough_board_of_education",
+                "trustee",
+                "Dhanju, Iqbal",
+            ),
+            _pinned_occurrence(
+                "can_f96b4b4d8dd65a428ae5026b49450810",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Iqbal S. Dhanju",
+            ),
+            _pinned_occurrence(
+                "can_8d2f68d7d2da56f8a59d74747e32ab42",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_district_school_board",
+                "trustee",
+                "IQBAL DHANJU",
+            ),
+        ),
+        evidence_urls=(
+            "https://web.archive.org/web/20040205224919/http://www.toronto.ca/elections/results/results_1994.htm",
+            "https://www.proquest.com/docview/1347261804",
+            "https://web.archive.org/web/20011217235019/http://www.city.toronto.on.ca/vote2000/live_final/121.htm",
+        ),
+        rationale=(
+            "Structural continuity: Iqbal Dhanju ran for the Scarborough Board of Education (Ward 14) in 1994 and for the successor TDSB in north-east Scarborough in 1997 (Ward 9, printed 'Iqbal S. Dhanju') and 2000 (Ward 21), three consecutive elections in overlapping areas under a rare name with no namesake in any Toronto record. The 1997 run was held as a separate Person because of the middle initial."
+        ),
+        registry_person_ids=(
+            "per_6f6434dc6b37567890cd76d347d1c7b2",
+            "per_ee6719ea2e2750fa812eace9e3ae5f45",
+        ),
+        canonical_person_id="per_6f6434dc6b37567890cd76d347d1c7b2",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="luis-silva-1994-2003-continuity",
+        preferred_name="Luis Silva",
+        occurrences=(
+            _pinned_occurrence(
+                "can_4b17f6cb00d052c0b540fde5b9551f9c",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "metropolitan_separate_school_board",
+                "trustee",
+                "Silva, Luis A. Lopes",
+            ),
+            _pinned_occurrence(
+                "can_12d8aaf9450056aab6e423772fb5a3da",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_catholic_district_school_board",
+                "trustee",
+                "Luis A. Lopes Silva",
+            ),
+            _pinned_occurrence(
+                "can_dd1dc5a5be9b5a1bbbaaf1f1b597ef75",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_catholic_district_school_board",
+                "trustee",
+                "LUIS SILVA",
+            ),
+            _pinned_occurrence(
+                "can_c542909642f754f0878c8d17b56350e4",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "mayor",
+                "Silva, Luis",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/2003_Toronto_municipal_election",),
+        rationale=(
+            "Wikipedia's note on the 2003 mayoral candidate Luis A. da Silva says he was elected to the Metro Toronto Separate School Board in 1994 in the old City of Toronto's fourth division, lost his bid for re-election in 1997 and was defeated again in 2000. That joins the 1994 and 1997 'Luis A. Lopes Silva' record to the 2000 and 2003 'Luis Silva' record."
+        ),
+        registry_person_ids=(
+            "per_620960c232f85db6b87db233834b5a4b",
+            "per_a0343b9bd41e5487828af187ca743698",
+        ),
+        canonical_person_id="per_620960c232f85db6b87db233834b5a4b",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="norm-gardner-1994-2018-continuity",
+        preferred_name="Norman Gardner",
+        occurrences=(
+            _pinned_occurrence(
+                "can_60fad535ce8e5a059439e2cf040b38f7",
+                "evt_55417977ab9752b792eeda64734a2280",
+                "metro_toronto_council",
+                "councillor",
+                "Norm Gardner",
+            ),
+            _pinned_occurrence(
+                "can_1bcbb73f4c7e5f57b5a22ab4a90a7c78",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Norm Gardner",
+            ),
+            _pinned_occurrence(
+                "can_2bb5543b9fe6513caef7dde2ad618828",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Norman Gardner",
+            ),
+            _pinned_occurrence(
+                "can_97cccfc87fce5dac8f2fc2916ae439ee",
+                "evt_e4fe1909276b5fbd91057022b350fff3",
+                "toronto_city_council",
+                "councillor",
+                "Gardner Norman",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Norm_Gardner",),
+        rationale=(
+            "Norman 'Norm' Gardner's Wikipedia biography gives his Metro Council seat for North York Centre (1988-1997, acclaimed in 1994), the 1997 federal Progressive Conservative run in Willowdale, the 1997 Ward 10 North York Centre council race and the 2018 Ward 18 Willowdale race, joining the 'Norm Gardner' and 'Norman Gardner' records."
+        ),
+        registry_person_ids=(
+            "per_940597ecad835bb39f145cd085e3f791",
+            "per_2a6a1579a6b95b6fb0a4011fa5f01f24",
+        ),
+        canonical_person_id="per_940597ecad835bb39f145cd085e3f791",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="constantine-kritsonis-green-candidacies",
+        preferred_name="Constantine Kritsonis",
+        occurrences=(
+            _pinned_occurrence(
+                "can_69b9b9adc1cc5504884c0d93b0549f6c",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Constantine Kritsonis",
+            ),
+            _pinned_occurrence(
+                "can_9d041f0580fd58d1a27fe5f6413a9cc3",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Constantine Kritsonis",
+            ),
+            _pinned_occurrence(
+                "can_40187923ba7b5efd9873ea2964c7d311",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Constantine Kritsonis",
+            ),
+            _pinned_occurrence(
+                "can_cd970a3b3c0e5ee881be85d7a62aa280",
+                "ec-ge-38",
+                "canada_house_of_commons",
+                "mp",
+                "Constantine Kritsonis",
+            ),
+            _pinned_occurrence(
+                "can_3d6529e8861f5d7b947e46b79ae816d6",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Constantine Kritsonis",
+            ),
+            _pinned_occurrence(
+                "can_44fc83800bf55475b694fea79eb3e0d1",
+                "ec-ge-42",
+                "canada_house_of_commons",
+                "mp",
+                "Constantine Kritsonis",
+            ),
+        ),
+        evidence_urls=("https://danforthgreens.ca/?p=10857",),
+        rationale=(
+            "The Danforth Greens nomination profile of Constantine Kritsonis lists his first Green candidacy in Oakwood in 1995 and his federal Green runs in York Centre in 1997, 2000, 2004, 2006 and 2015. The 2004, 2006 and 2015 runs had been held against the 2003 provincial York Centre record, which the profile does not mention and which stays on its own Person, as do his 1997 TDSB run and other unlisted races."
+        ),
+        registry_person_ids=("per_7bc0075b9dc654e0bc0cd0f8ba293879",),
+        canonical_person_id="per_7bc0075b9dc654e0bc0cd0f8ba293879",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="claude-reno-daigle-monavenir-career",
+        preferred_name="Claude-Reno D'Aigle",
+        occurrences=(
+            _pinned_occurrence(
+                "can_32c54b77892c57619c78fc57f3b6a075",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "mssb_french_language_section",
+                "trustee",
+                "Claude-Reno D'Aigle",
+            ),
+            _pinned_occurrence(
+                "can_72e11b63044d504482c836963351cd14",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "Claude Reno D'Aigle",
+            ),
+            _pinned_occurrence(
+                "can_d494a4a555835cb6823270b2d3941411",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "CLAUDE-RENO D'AIGLE",
+            ),
+            _pinned_occurrence(
+                "can_54f6046303d25e5d96b4cd2fc06a07de",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "D'Aigle, Claude",
+            ),
+            _pinned_occurrence(
+                "can_34ac365b41fe538e882fa0a2500c27fd",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "D'AIGLE CLAUDE-RENO",
+            ),
+            _pinned_occurrence(
+                "can_613e10c620db55a09d05aaf1d8b45902",
+                "evt_5a786c1da7ec5e758036205f04351fc5",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "D'AIGLE CLAUDE-RENO",
+            ),
+            _pinned_occurrence(
+                "can_064774a3fa9755b69ee37c1eeac543f3",
+                "evt_54673fd104ab5ef08eb865e162ac040c",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "D'AIGLE CLAUDE-RENO",
+            ),
+            _pinned_occurrence(
+                "can_f434f54386fe5069b5ce83058d2c1b3b",
+                "evt_e4fe1909276b5fbd91057022b350fff3",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "D'Aigle Claude-Reno",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.cscmonavenir.ca/publications/rapports-annuel/rapport0001.pdf",
+            "https://cscmonavenir.ca/wp-content/uploads/2017/06/2017-06-01_message-conseillers-scolaires_8.5x11.pdf",
+            "https://cscmonavenir.ca/wp-content/uploads/2018/10/2018-10-01_message-conseillers-scolaires_8.5x11.pdf",
+            "https://www.proquest.com/docview/1347261804",
+        ),
+        rationale=(
+            "Claude-Reno D'Aigle is the only person of that name in any Toronto record. MonAvenir's 2000-01 annual report lists him as the trustee for the Toronto North region (the 2000 Ward 4 seat), and its 2017 and 2018 trustee newsletters list him as the Toronto East trustee (the 2014 Ward 4 seat). His other French Catholic trustee races continue the same career on the same board and its predecessor: the 1994 Separate School Board French-section loss in Toronto and York, the 1997 Metro 2 win (printed without the hyphen), the 2003 Ward 3 acclamation (declared as 'Claude D'Aigle') followed by his 2006 loss in the same ward, the 2010 Ward 4 acclamation and the 2018 loss. Three records are joined."
+        ),
+        registry_person_ids=(
+            "per_19437117d92857d9ac07198a36e10a37",
+            "per_c51eea41d6dc504185534c80c1545791",
+            "per_0d4cf29bc1c4569ab45bbd86b3c12bb4",
+        ),
+        canonical_person_id="per_19437117d92857d9ac07198a36e10a37",
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
