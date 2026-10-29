@@ -8,15 +8,20 @@ Inputs (committed under ``data/reference``):
   council wards), cached from the Wayback Machine when the 2000 parser was first built;
 - ``vote2000_trustee_pages.csv``: the 2000 school trustee pages (``101``-``122`` TDSB,
   ``201``-``212`` TCDSB, ``302``-``304`` and ``403``-``404`` the two French boards), transcribed
-  by hand from the Wayback Machine with each page's capture timestamp.
+  by hand from the Wayback Machine with each page's capture timestamp;
+- ``school_trustees_1994_1997.csv``: the 1994 and 1997 school trustee Contests, one row per
+  Candidacy, each citing the source its votes come from (the City archive where it reports the
+  Contest completely, otherwise the Toronto Star's final results pages);
+- ``star_1994_council_supplement.csv``: the eight 1994 council Contests the archive does not
+  report, from the Toronto Star's 16 November 1994 final results (page A8).
 
 Output: ``data/reference/municipal_archive_results.csv``, one row per Candidacy, plus one
 ``source_missing`` row per in-scope Contest the archive does not report. Requires ``pdftotext``.
 Mayor, Councillor and Metro Councillor contests are transcribed for all three years, and school
-trustee contests for 2000. The 1994 and 1997 school-board sections are skipped: their ward
-labels, seat counts and several whole contests are missing from the archive, so they wait for a
-complete published source. Hydro and utility commissions and plebiscites are out of scope
-(ADR 0010).
+trustee contests for 2000. The 1994 and 1997 school-board sections of the archive lack ward
+labels, seat counts and several whole contests, so those Contests come from
+``school_trustees_1994_1997.csv`` instead. Hydro and utility commissions and plebiscites are out
+of scope (ADR 0010).
 
 The archive omits seat counts and, in a few places, ward labels. Seat counts come from the
 council composition recorded on Wikipedia's 1994 and 1997 election pages: two councillors per
@@ -115,6 +120,7 @@ COLUMNS = [
     "source_detail",
     "source_locator",
     "district_label_source",
+    "source_authority",
 ]
 
 MUNICIPALITIES_1994 = {
@@ -316,12 +322,25 @@ def _ward(label: str) -> int:
     return int(re.search(r"(\d+)\s*$", label).group(1))
 
 
+# The archive lists four North York Board of Education candidates (trustee Wards 1 and 2) inside
+# council Wards 1 and 2. The Toronto Star's council and school-board tables (16 November 1994,
+# page A8) and Wikipedia's council results place them in the trustee races, with the same votes.
+MISFILED_TRUSTEES_1994 = {
+    ("north_york", "Kendall, Dave"),
+    ("north_york", "Lambrinos, Sheila"),
+    ("north_york", "Churchill, Bob"),
+    ("north_york", "Stella, Connie"),
+}
+
+
 def _rows_1994() -> list[dict]:
     out = []
     names = {v[0]: v[1] for v in MUNICIPALITIES_1994.values()}
     seats = {v[0]: v[2] for v in MUNICIPALITIES_1994.values()}
     for row in _parse_pdf(REFERENCE / "municipal_archive" / "results_1994.pdf", 1994):
         muni = row["muni"]
+        if row["office"] == "councillor" and (muni, row.get("name")) in MISFILED_TRUSTEES_1994:
+            continue
         base = {
             "election_date": "1994-11-14",
             "election_authority": AUTHORITY_1994[muni],
@@ -560,8 +579,65 @@ def _rows_2000_trustees() -> list[dict]:
     return out
 
 
+STAR_1994_A8 = "https://www.proquest.com/docview/1355150144"
+
+
+def _with_1994_council_supplement(rows: list[dict]) -> list[dict]:
+    """Replace the 1994 ``source_missing`` council rows the Toronto Star's final results report.
+
+    The Star's 16 November 1994 page A8 ("Municipal Council – Final results") prints the five
+    Metro wards the archive omits, all acclaimed, and North York council wards 3 to 5.
+    """
+
+    with (REFERENCE / "star_1994_council_supplement.csv").open(encoding="utf-8", newline="") as f:
+        supplement: dict[tuple[str, str], list[dict]] = {}
+        for row in csv.DictReader(f):
+            key = (row["represented_body"], row["official_district_id"])
+            supplement.setdefault(key, []).append(row)
+    out = []
+    for row in rows:
+        key = (row["represented_body"], row["official_district_id"])
+        if (
+            row["election_date"] != "1994-11-14"
+            or row["coverage_status"] != "source_missing"
+            or key not in supplement
+        ):
+            out.append(row)
+            continue
+        for found in supplement.pop(key):
+            out.append(
+                {
+                    **row,
+                    "candidate_name_raw": found["candidate_name_raw"],
+                    "votes": found["votes"],
+                    "acclaimed": found["acclaimed"],
+                    "marked_elected": found["marked_elected"],
+                    "coverage_status": "complete",
+                    "source_detail": STAR_1994_A8,
+                    "source_locator": "Toronto Star 1994-11-16 page A8",
+                    "source_authority": "Toronto Star",
+                }
+            )
+    if supplement:
+        raise ValueError(f"unused 1994 council supplement rows: {sorted(supplement)}")
+    return out
+
+
+def _rows_1994_1997_trustees() -> list[dict]:
+    """School trustee rows for 1994 and 1997, curated in ``school_trustees_1994_1997.csv``."""
+
+    with (REFERENCE / "school_trustees_1994_1997.csv").open(encoding="utf-8", newline="") as f:
+        return [{column: row.get(column, "") for column in COLUMNS} for row in csv.DictReader(f)]
+
+
 def main() -> None:
-    rows = _rows_1994() + _rows_1997() + _rows_2000() + _rows_2000_trustees()
+    rows = (
+        _with_1994_council_supplement(_rows_1994())
+        + _rows_1994_1997_trustees()
+        + _rows_1997()
+        + _rows_2000()
+        + _rows_2000_trustees()
+    )
     with OUTPUT.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, COLUMNS, lineterminator="\n")
         writer.writeheader()

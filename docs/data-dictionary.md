@@ -5,17 +5,24 @@ The release covers completed election contests wholly within the City of Toronto
 ADR 0010, municipal coverage starts with the 1994-11-14 elections: the mayors and councils of East
 York, Etobicoke, North York, Scarborough, the former City of Toronto and York, and Metropolitan
 Toronto Council, followed by the amalgamated City's 1997 and 2000 Mayor and Councillor elections.
-The November 13, 2000 trustee elections for all four School Boards are included (39 single-member
-wards). The 1994 and 1997 school-board results are not yet included, because the archive omits
-their seat counts, several ward labels and some whole contests. Those municipal results come from
-the City's archived results pages, which carry no elector or ballot counts, so turnout fields are null.
-East York's 1994 wards and every 1997 ward elected two members (`seats_available = 2`). The 1994
-North York council wards 3–5 and five 1994 Metro wards (Kingsway Humber, Markland Centennial, North
-York Spadina, North York Centre South and North York Centre) are `source_missing` placeholders with
-no Candidacy rows, because the archive does not carry their results. Where the archive lost a 1994
+School trustee elections are included for 1994 (the six boards of education, the Metropolitan
+Separate School Board, the Metro Toronto French Language School Council and the French-Language
+Section of the Separate School Board), 1997 (the four new District School Boards) and 2000 (39
+single-member wards). Those municipal results come from the City's archived results pages, which
+carry no elector or ballot counts, so turnout fields are null. The archive's 1994 and 1997
+school-board sections lack seat counts, ward labels and some whole Contests, and it omits eight
+1994 council Contests (North York council wards 3–5 and five Metro wards, all but two acclaimed),
+so those rows come from the Toronto Star's printed final results (16 November 1994 and 14 November
+1997, read from ProQuest Historical Newspapers) and carry `source_authority = Toronto Star`; the
+reconciliation is described in `docs/research/school-boards-1994-1997-2026-10-29.md`. The archive
+also lists four 1994 North York trustee candidates under council Wards 1 and 2; those council rows
+are not published. Twenty
+1994 and 1997 French-language trustee Candidacies are `partial`, because the Star's figures and the
+archive's municipal subtotals disagree. East York's 1994 council and school wards, five 1994
+Toronto Board of Education wards and every 1997 council ward elected two members
+(`seats_available = 2`), as did several 1994 French-language areas. Where the archive lost a 1994
 Metro ward label, the label is taken from a secondary source and recorded in
-`data/reference/municipal_archive_results.csv` (`district_label_source`); the vote counts are always
-the archive's. Under ADR 0010, provincial (MPP) coverage starts with the 1995-06-08
+`data/reference/municipal_archive_results.csv` (`district_label_source`). Under ADR 0010, provincial (MPP) coverage starts with the 1995-06-08
 Ontario general election, including the 1996, 1997 and 2001 Toronto by-elections, and federal (MP)
 coverage starts with the 1993-10-25 general election, including the 1996 Etobicoke North and
 1999 York West by-elections.
@@ -30,10 +37,9 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 7,558 Candidacies, 1,259 Contests, and 80 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 7,201 Candidacies in 1,198
-Contests are final. Two void historical Contests and eight `source_missing` 1994 Contests have no
-Candidacy rows.
+The release contains 8,070 Candidacies, 1,388 Contests, and 80 Election events. Of those, 357
+Candidacies in 51 Contests are pending for the 2026 municipal event; 7,713 Candidacies in 1,335
+Contests are final. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
 
@@ -87,7 +93,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `incumbent_reported` | boolean | authority does not report it | Unmodified source flag; the modelled `incumbent` field uses project semantics. |
 | `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies; null until predecessor rosters are acquired. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
-| `source_authority` | string | never | Organization responsible for the row's official record. |
+| `source_authority` | string | never | Organization responsible for the row's record: the official authority, or `Toronto Star` where only the newspaper's printed results survive (most 1994 and 1997 trustee Contests, eight 1994 council Contests). |
 | `source_resource` | string | never | Official dataset/report family. |
 | `source_detail` | string | never | Concrete official URL/file detail. |
 | `source_candidacy_id` | string | never | Authority candidate key where one exists; otherwise the opaque occurrence key persisted in the project Candidacy ledger. |

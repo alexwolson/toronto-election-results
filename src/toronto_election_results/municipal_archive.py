@@ -1,9 +1,11 @@
-"""Mayor, Councillor and Metro Councillor results for 1994, 1997 and 2000, and 2000 school
-trustee results (ADR 0010).
+"""Mayor, Councillor and Metro Councillor results for 1994, 1997 and 2000, and school trustee
+results for 1994, 1997 and 2000 (ADR 0010).
 
 These elections predate the City's Open Data results. The authoritative surviving source is the
 City's own archived results pages, transcribed by ``scripts/transcribe_municipal_archive.py`` into
-``data/reference/municipal_archive_results.csv``. The archive reports vote totals but rarely
+``data/reference/municipal_archive_results.csv``. Where the archive omits a Contest or reports it
+incompletely (most 1994 and 1997 school-board races, and eight 1994 council races), the row comes
+from the Toronto Star's printed final results and says so in ``source_authority``. The archive reports vote totals but rarely
 marks winners and never states seat counts, so each Contest carries ``seats_available`` from the
 council composition record and ``elected`` is derived from the top vote totals (ADR 0011). York's
 1994 page marks its winners; those markers must agree with the derivation. Contests the archive
@@ -21,13 +23,18 @@ from .schema import elect_top_vote_totals, stable_id
 
 ARCHIVE_RESULTS_FILENAME = "municipal_archive_results.csv"
 SOURCE_AUTHORITY = "City of Toronto"
+STAR_AUTHORITY = "Toronto Star"
 _CONTEST_KEY = ["election_date", "represented_body", "office_type", "official_district_id"]
 _RESOURCES = {
     "1994-11-14": "Previous election results — 1994 General Municipal Election (archived)",
     "1997-11-10": "Previous election results — 1997 General Municipal Election (archived)",
     "2000-11-13": "Vote 2000 — final results (archived)",
 }
-_EXPECTED_ROWS = {"1994-11-14": 333, "1997-11-10": 213, "2000-11-13": 285}
+_EXPECTED_ROWS = {"1994-11-14": 684, "1997-11-10": 366, "2000-11-13": 285}
+_STAR_RESOURCES = {
+    "1994-11-14": "Toronto Star, 16 November 1994, final results (ProQuest Historical Newspapers)",
+    "1997-11-10": "Toronto Star, 14 November 1997, School Board Results (ProQuest Historical Newspapers)",
+}
 
 
 def read_archive_results(reference_dir: str | Path) -> pd.DataFrame:
@@ -64,11 +71,26 @@ def _outcomes(contest: pd.DataFrame) -> tuple[pd.Series, str]:
     return elected, "vote"
 
 
+def _apply_source_fields(rows: pd.DataFrame, star: pd.Series) -> None:
+    """Set source authority, resource and detail; Star rows cite the ProQuest page record."""
+
+    rows["source_resource"] = rows["election_date"].map(_RESOURCES)
+    rows.loc[star, "source_resource"] = rows.loc[star, "election_date"].map(_STAR_RESOURCES)
+    archive_detail = (
+        rows["source_detail"]
+        + "#"
+        + rows["source_locator"].str.replace(r" line \d+$", "", regex=True)
+    )
+    rows["source_detail"] = archive_detail.where(~star, rows["source_detail"])
+    rows["source_authority"] = SOURCE_AUTHORITY
+    rows.loc[star, "source_authority"] = STAR_AUTHORITY
+
+
 def load_archive_results(reference_dir: str | Path) -> pd.DataFrame:
     """Return the archived Candidacy rows as an adapter frame."""
 
     table = read_archive_results(reference_dir)
-    rows = table.loc[table["coverage_status"].eq("complete")].copy()
+    rows = table.loc[table["coverage_status"].isin(["complete", "partial"])].copy()
     rows["seats_available"] = rows["seats_available"].astype(int)
     elected = pd.Series(pd.NA, index=rows.index, dtype="boolean")
     methods = pd.Series(pd.NA, index=rows.index, dtype="string")
@@ -89,21 +111,19 @@ def load_archive_results(reference_dir: str | Path) -> pd.DataFrame:
     rows["eligible_electors"] = pd.NA
     rows["ballots_cast"] = pd.NA
     rows["turnout_scope"] = pd.NA
-    rows["source_authority"] = SOURCE_AUTHORITY
-    rows["source_resource"] = rows["election_date"].map(_RESOURCES)
-    rows["source_detail"] = (
-        rows["source_detail"]
-        + "#"
-        + rows["source_locator"].str.replace(r" line \d+$", "", regex=True)
-    )
+    star = rows["source_authority"].eq(STAR_AUTHORITY).fillna(False)
+    _apply_source_fields(rows, star)
     # 1994 names are "Last, First"; the 1997 and 2000 pages write names given-name first, which
     # the Open Data normaliser would misread as surname-first, so those keep their word order.
+    # The Star prints names given-name first in mixed case, so its rows keep the printed form.
     known = known_multiword_surnames(rows["candidate_name_raw"])
     rows["candidate_name"] = [
         normalize_name(name, known_surnames=known)[0]
         if "," in name
+        else " ".join(name.split())
+        if from_star
         else " ".join(name.split()).title()
-        for name in rows["candidate_name_raw"]
+        for name, from_star in zip(rows["candidate_name_raw"], star, strict=True)
     ]
     columns = [
         "event_id",
@@ -144,13 +164,7 @@ def archive_placeholder_manifest(reference_dir: str | Path) -> pd.DataFrame:
     missing["election_type"] = "general"
     missing["outcome_method"] = "source_missing"
     missing["seats_available"] = missing["seats_available"].astype(int)
-    missing["source_authority"] = SOURCE_AUTHORITY
-    missing["source_resource"] = missing["election_date"].map(_RESOURCES)
-    missing["source_detail"] = (
-        missing["source_detail"]
-        + "#"
-        + missing["source_locator"].str.replace(r" line \d+$", "", regex=True)
-    )
+    _apply_source_fields(missing, missing["source_authority"].eq(STAR_AUTHORITY).fillna(False))
     columns = [
         "event_id",
         "election_date",
