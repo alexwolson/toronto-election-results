@@ -25,7 +25,9 @@ across office types needs a person-specific source.
 - Andre/André Duclos: the 1994 MSSB French-section win, the 2000 MonAvenir Ward 3 acclamation and
   the 2003 Ward 4 loss stay separate. MonAvenir's 2000–01 report names André Duclos as board
   president and Toronto South trustee, which settles the 2000 record only; nothing places him in
-  1994 or 2003, and the 2003 race was in a different ward.
+  1994 or 2003, and the 2003 race was in a different ward. (Superseded for 2000 and 2003: the
+  Star's 2003 profile says he had served before, and the two records were joined in
+  `star-profiles-backlog-2026-10-30.md`.)
 - Elizabeth Moyer's 2006 Ward 35 council run, Constantine Kritsonis's 2003 provincial York Centre
   run and his 1997 TDSB run: none is named by a source, so the council and provincial runs keep
   their own records and the trustee run stays unresolved.

@@ -11072,6 +11072,276 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
     ),
 )
 
+# Joins and new People from the Toronto Star's printed candidate profiles for 1994-2006,
+# applied to the unresolved backlog (docs/research/star-profiles-backlog-2026-10-30.md).
+_STAR_1994 = {
+    "E1": "https://www.proquest.com/docview/1355146755",
+    "E5": "https://www.proquest.com/docview/1355146282",
+    "E6": "https://www.proquest.com/docview/1355146762",
+    "E8": "https://www.proquest.com/docview/1355146718",
+}
+_STAR_1997 = {
+    "K2": "https://www.proquest.com/docview/1346619352",
+    "K3": "https://www.proquest.com/docview/1346619482",
+    "K12": "https://www.proquest.com/docview/1346619395",
+    "K13": "https://www.proquest.com/docview/1346619727",
+}
+_STAR_2000 = {
+    "G2": "https://www.proquest.com/docview/1349496842",
+    "G3": "https://www.proquest.com/docview/1349496723",
+    "G13": "https://www.proquest.com/docview/1349496702",
+}
+_STAR_2003 = {
+    "G5": "https://www.proquest.com/docview/1348973050",
+    "G16": "https://www.proquest.com/docview/1348973161",
+}
+
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="worrick-russell-scarborough-council-runs",
+        preferred_name="Worrick Russell",
+        occurrences=(
+            _pinned_occurrence(
+                "can_20de29c63af5510d8ed59d31951e0465",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "metro_toronto_council",
+                "councillor",
+                "Russell, Worrick",
+            ),
+            _pinned_occurrence(
+                "can_dde07065effc503088169b9e836c72e9",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Russell Worrick",
+            ),
+        ),
+        evidence_urls=(_STAR_1997["K3"], _STAR_2003["G5"]),
+        rationale=(
+            "The City's 1997 results list the Ward 15 (Scarborough) council candidate as 'Russell Worrick'; the Toronto Star's 1997 profiles print him as Worrick Russell, a paralegal and mediator, and its 2003 profile of the Ward 35 candidate Worrick Russell calls him 'the mediator'. The reversed 1997 record is joined to the 2000-2006 Ward 35 record, together with his 1994 Metro Council race in Scarborough City Centre, the previous race in an unbroken run of Scarborough council campaigns under a rare name."
+        ),
+        registry_person_ids=(
+            "per_879ab85d24c6595f849d3aed56623719",
+            "per_f94551f7f5d15eb591afa5ecdef01b89",
+        ),
+        canonical_person_id="per_879ab85d24c6595f849d3aed56623719",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="andre-duclos-monavenir-2000-2003",
+        preferred_name="André Duclos",
+        occurrences=(
+            _pinned_occurrence(
+                "can_42a0198bb1bb5b53aa91b7b6e032fd23",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "ANDRÉ DUCLOS",
+            ),
+            _pinned_occurrence(
+                "can_e3dd5923bfce53868bd76e2e25ce6aac",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "Duclos, Andre",
+            ),
+        ),
+        evidence_urls=(
+            _STAR_2000["G13"],
+            _STAR_2003["G16"],
+            "https://www.cscmonavenir.ca/publications/rapports-annuel/rapport0001.pdf",
+        ),
+        rationale=(
+            "The Toronto Star's 2000 profiles list André Duclos as the acclaimed incumbent in the French Catholic board's Ward 3, and MonAvenir's 2000-01 annual report names him board president. The Star's 2003 profile of the Ward 4 candidate André Duclos says he looks forward to serving his constituents 'as he has in the past'. The 2000 and 2003 records are joined; his 1994 French-section race stays unresolved."
+        ),
+        registry_person_ids=(
+            "per_01d27f754bc75218aa848e00887a9d36",
+            "per_26f0cdfdce3b5437b5c0ba6d680019c4",
+        ),
+        canonical_person_id="per_01d27f754bc75218aa848e00887a9d36",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="nicolo-fortunato-former-york-councillor",
+        preferred_name="Nicolò Fortunato",
+        occurrences=(
+            _pinned_occurrence(
+                "can_76010df7f8295873b55faf7ea227d689",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Nicolo Fortunato",
+            ),
+            _pinned_occurrence(
+                "can_5437dbccafbc53d4b7fe9d6f5bce38bd",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "NICOLÒ FORTUNATO",
+            ),
+        ),
+        evidence_urls=(_STAR_1997["K2"], _STAR_2000["G2"]),
+        rationale=(
+            "The Toronto Star's 1997 profile calls Ward 5 council candidate Nicolo Fortunato a former York councillor, and its 2000 profile calls the Ward 2 candidate a TV producer and journalist and a three-term York councillor. The 1997 run, held as a claim on the 2003 'Nicolo Fortunato' record, joins the 2000 record; the 2003 and 2006 runs are not covered and stay as they were."
+        ),
+        registry_person_ids=("per_2fe800d296a3557586d010943ea11673",),
+        canonical_person_id="per_2fe800d296a3557586d010943ea11673",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="mike-armstrong-insurance-agent-1994-2000",
+        preferred_name="Mike Armstrong",
+        occurrences=(
+            _pinned_occurrence(
+                "can_9b9e42045cfd56e89b805a66b034ad5d",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "former_toronto_city_council",
+                "councillor",
+                "Armstrong, Mike",
+            ),
+            _pinned_occurrence(
+                "can_0dadd286dd4b5b159266f2aded94a91a",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Mike Armstrong",
+            ),
+            _pinned_occurrence(
+                "can_bd54c82af91a515f8e7e7fb1d8cb53cb",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "MIKE ARMSTRONG",
+            ),
+        ),
+        evidence_urls=(_STAR_1994["E1"], _STAR_1997["K3"], _STAR_2000["G3"]),
+        rationale=(
+            "The Toronto Star's profiles describe Mike Armstrong as an insurance agent and former mayoral and council candidate (1994, Ward 7), an insurance agent who has run here before (1997, Ward 25) and an insurance broker (2000, Ward 28), in overlapping downtown east wards. These three runs become one new Person. The 2003 Ward 28 candidate, whom the Star describes only as a tenant advocate, keeps his own record."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="michael-yorke-north-toronto-trustee-runs",
+        preferred_name="Michael Yorke",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c546f369813d5ec1b86563222cbd9fa8",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "toronto_board_of_education",
+                "trustee",
+                "Yorke, Michael",
+            ),
+            _pinned_occurrence(
+                "can_8eaab9d5d7895a13aa9091d45f41b028",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Michael Yorke",
+            ),
+        ),
+        evidence_urls=(_STAR_1994["E6"], _STAR_1997["K12"]),
+        rationale=(
+            "The Toronto Star's profiles describe the North Toronto trustee candidate Michael Yorke as a travel agent in 1994 (Toronto Board of Education, city ward 16) and 1997 (TDSB Ward 14). These two runs become one new Person. The 1994 council candidate of the same name in Ward 9 (East Danforth) is a carpenter and union business representative in the Star's 1994 profile, so he is not joined to them, and neither is the 1999 NDP candidate in Scarborough Southwest."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="david-hutcheon-toronto-councillor-1994-1997",
+        preferred_name="David Hutcheon",
+        occurrences=(
+            _pinned_occurrence(
+                "can_949ba4bf657d53d7bbdc21bbaa22c210",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "former_toronto_city_council",
+                "councillor",
+                "Hutcheon, David",
+            ),
+            _pinned_occurrence(
+                "can_2e40d7cc27755b22b2abd6d4db99e979",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "David Hutcheon",
+            ),
+        ),
+        evidence_urls=(_STAR_1994["E1"], _STAR_1997["K3"]),
+        rationale=(
+            "David Hutcheon won Toronto Ward 1 (Swansea and High Park) in 1994, and the Toronto Star's 1997 profile of the Ward 19 (High Park) candidate calls him a council veteran. These two runs become one new Person. The 2006 and 2007 Progressive Conservative candidacies in Parkdale—High Park are not joined: no source names the candidate as the former councillor."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="paul-fernandes-east-york-separate-trustee",
+        preferred_name="Paul Fernandes",
+        occurrences=(
+            _pinned_occurrence(
+                "can_ba3c1a3ecac659de9a342a5209ca6f6c",
+                "evt_e50f564e276a5aa7922c448b28492658",
+                "metropolitan_separate_school_board",
+                "trustee",
+                "Fernandes, Paul",
+            ),
+            _pinned_occurrence(
+                "can_29de57954f1e5cd4aed9fd73c42dfaf8",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "PAUL FERNANDES",
+            ),
+        ),
+        evidence_urls=(
+            _STAR_1994["E8"],
+            _STAR_2000["G3"],
+            "https://en.wikipedia.org/wiki/Toronto_Catholic_District_School_Board",
+        ),
+        rationale=(
+            "Paul Fernandes was the incumbent Separate School Board trustee for East York in 1994 (Wikipedia's list of chairs gives a Paul B.R. Fernandes as chair from 1994 to 1996). The Toronto Star's 2000 profile calls the Ward 31 (Beaches-East York) council candidate Paul Fernandes a former school trustee. These two runs become one new Person. The 1997 East York council candidate, described by the Star only as a financial services consultant, keeps his own record."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="marlene-ciarrocchi-etobicoke-separate-trustee-runs",
+        preferred_name="Marlene Ciarrocchi",
+        occurrences=(
+            _pinned_occurrence(
+                "can_5cc1dffeac385a53a52eca54685139e2",
+                "evt_f3d5134ef9b25e0a9179ede437def849",
+                "metropolitan_separate_school_board",
+                "trustee",
+                "Marlene Ciarrocchi",
+            ),
+            _pinned_occurrence(
+                "can_becc096f64af5413abd8a76a1f4709c3",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_catholic_district_school_board",
+                "trustee",
+                "Marlene Ciarrocchi",
+            ),
+        ),
+        evidence_urls=(_STAR_1994["E8"], _STAR_1997["K13"]),
+        rationale=(
+            "The Toronto Star's profiles describe Marlene Ciarrocchi as a civil servant in the 1994 Separate School Board race for north Etobicoke (Ward 9) and as a worker advisor for the Ministry of Labour in the 1997 TCDSB Ward 1 (Etobicoke North) race. These two runs become one new Person. Her 2003 and 2010 TCDSB races were in other parts of the city with no source tying them to these, so they keep their own record."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="mike-thomas-scarborough-trustee-1997-2000",
+        preferred_name="Mike Thomas",
+        occurrences=(
+            _pinned_occurrence(
+                "can_04ed6458b6405ea5b0a6ded8be0d5ce6",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Mike Thomas",
+            ),
+            _pinned_occurrence(
+                "can_e8daf8b5b96050b48617f989a2a46a36",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "MIKE THOMAS",
+            ),
+        ),
+        evidence_urls=(_STAR_1997["K12"], _STAR_2000["G3"]),
+        rationale=(
+            "Mike Thomas, described by the Toronto Star as a student, won TDSB Ward 9 (north-east Scarborough) in 1997, and the Star's 2000 profile of the Ward 41 (Scarborough-Rouge River) council candidate calls him a school trustee. These two runs become one new Person. The 1995 Progressive Conservative candidacy in Scarborough North is not joined: no source names the candidate."
+        ),
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 

@@ -12,6 +12,7 @@ from toronto_election_results.identity_dispositions import (
     read_identity_review_decisions,
 )
 from toronto_election_results.mayoral_career import exclude_superseded_identity_decisions
+from toronto_election_results.schema import stable_id
 from toronto_election_results.trustee_career import (
     build_trustee_career_identity_assertions,
     reconcile_trustee_identity_decisions,
@@ -507,8 +508,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1551
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 999,
-        "confirmed": 551,
+        "unresolved": 948,
+        "confirmed": 602,
         "rejected": 1,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -869,12 +870,12 @@ def test_variant_name_merges_join_split_careers():
     for person_id, canonical in merged_away.items():
         assert people.loc[person_id, "identity_status"] == "deprecated"
         assert people.loc[person_id, "redirect_to_person_id"] == canonical
-    # Not established, so left as they were: Elizabeth Moyer's 2006 council run, Kritsonis's
-    # 2003 provincial run, and the 2000 and 2003 Andre/André Duclos records.
+    # Not established, so left as they were: Elizabeth Moyer's 2006 council run and
+    # Kritsonis's 2003 provincial run. (The 2000 and 2003 André Duclos records were joined
+    # later from the Star's 2003 profile; see test_star_profiles_settle_backlog_runs.)
     for person_id in (
         "per_f285f0621dbe566cadb4c7cee0d4a752",
         "per_6ae741fa1fc65281a8b7aea106352cb1",
-        "per_26f0cdfdce3b5437b5c0ba6d680019c4",
         "per_01d27f754bc75218aa848e00887a9d36",
     ):
         assert people.loc[person_id, "identity_status"] == "active"
@@ -955,3 +956,101 @@ def test_star_profiles_link_interior_trustee_runs():
         "per_efb9299062b15bd2abb7245d2003637e"
     )
     assert pd.isna(results.loc["can_3c9323a2d4f45193bd554ec993be451a", "person_id"])
+
+
+def test_star_profiles_settle_backlog_runs():
+    """The Star's 1994-2006 candidate profiles confirm, join or regroup backlog runs."""
+
+    links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    results = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
+    )
+    revised = decisions.loc[decisions["reviewer"].eq("star-candidate-profiles-backlog-2026-10-30")]
+    assert len(revised) == 51
+    assert revised["decision"].eq("confirmed").all()
+    assert revised["confidence"].eq("high").all()
+    assert (
+        results.loc[revised["candidacy_id"], "person_id"].tolist()
+        == revised["target_person_id"].tolist()
+    )
+
+    active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
+    confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
+    careers = {
+        # Worrick Russell, including the 1997 run printed "Russell Worrick".
+        "per_879ab85d24c6595f849d3aed56623719": [
+            "can_20de29c63af5510d8ed59d31951e0465",
+            "can_dde07065effc503088169b9e836c72e9",
+            "can_79891fe7920d5d88be3970857fb99226",
+        ],
+        # André Duclos, MonAvenir 2000 and 2003.
+        "per_01d27f754bc75218aa848e00887a9d36": [
+            "can_42a0198bb1bb5b53aa91b7b6e032fd23",
+            "can_e3dd5923bfce53868bd76e2e25ce6aac",
+        ],
+        # Nicolò Fortunato, former York councillor, 1997 and 2000.
+        "per_2fe800d296a3557586d010943ea11673": [
+            "can_76010df7f8295873b55faf7ea227d689",
+            "can_5437dbccafbc53d4b7fe9d6f5bce38bd",
+        ],
+    }
+    for person_id, candidacy_ids in careers.items():
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
+        assert people.loc[person_id, "identity_status"] == "active"
+    for person_id, canonical in {
+        "per_f94551f7f5d15eb591afa5ecdef01b89": "per_879ab85d24c6595f849d3aed56623719",
+        "per_26f0cdfdce3b5437b5c0ba6d680019c4": "per_01d27f754bc75218aa848e00887a9d36",
+    }.items():
+        assert people.loc[person_id, "identity_status"] == "deprecated"
+        assert people.loc[person_id, "redirect_to_person_id"] == canonical
+
+    new_people = {
+        "mike-armstrong-insurance-agent-1994-2000": [
+            "can_9b9e42045cfd56e89b805a66b034ad5d",
+            "can_0dadd286dd4b5b159266f2aded94a91a",
+            "can_bd54c82af91a515f8e7e7fb1d8cb53cb",
+        ],
+        "michael-yorke-north-toronto-trustee-runs": [
+            "can_c546f369813d5ec1b86563222cbd9fa8",
+            "can_8eaab9d5d7895a13aa9091d45f41b028",
+        ],
+        "david-hutcheon-toronto-councillor-1994-1997": [
+            "can_949ba4bf657d53d7bbdc21bbaa22c210",
+            "can_2e40d7cc27755b22b2abd6d4db99e979",
+        ],
+        "paul-fernandes-east-york-separate-trustee": [
+            "can_ba3c1a3ecac659de9a342a5209ca6f6c",
+            "can_29de57954f1e5cd4aed9fd73c42dfaf8",
+        ],
+        "marlene-ciarrocchi-etobicoke-separate-trustee-runs": [
+            "can_5cc1dffeac385a53a52eca54685139e2",
+            "can_becc096f64af5413abd8a76a1f4709c3",
+        ],
+        "mike-thomas-scarborough-trustee-1997-2000": [
+            "can_04ed6458b6405ea5b0a6ded8be0d5ce6",
+            "can_e8daf8b5b96050b48617f989a2a46a36",
+        ],
+    }
+    for assertion_id, candidacy_ids in new_people.items():
+        person_id = stable_id("per", "curated_identity_assertion", assertion_id)
+        assert people.loc[person_id, "identity_status"] == "active", assertion_id
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), assertion_id
+
+    # Runs a profile separates or does not cover keep their own records: the East Danforth
+    # council candidate Michael Yorke (a carpenter, not the travel agent), Mike Armstrong's
+    # 2003 run, Paul Fernandes's 1997 run, and the 2003 Marlene Ciarrocchi race.
+    unresolved = active.loc[active["link_status"].eq("unresolved")].set_index("candidacy_id")
+    assert "can_c1b2ebeb7d0a58bfbd93f5d3b78353d6" in unresolved.index
+    for candidacy_id, person_id in {
+        "can_75df7fdf41715b34a8e9359c4c08e3ad": "per_ad2c9444d6df5c9c9097a61b9e0419e4",
+        "can_3b90de3ccd095104bfc0b3cb04503178": "per_50f496d43c915062a9f5ef7cf9174952",
+        "can_3709dce81620517b9df33de6cd941dae": "per_38f3be6e70dd5d27bd78f8eca7820a02",
+    }.items():
+        assert confirmed.loc[candidacy_id, "person_id"] == person_id
+        assert people.loc[person_id, "identity_status"] == "active"
