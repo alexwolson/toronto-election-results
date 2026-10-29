@@ -5,12 +5,18 @@ Inputs (committed under ``data/reference``):
 - ``municipal_archive/results_1994.pdf`` and ``results_1997.pdf``: print-outs of the City's
   archived "Previous election results" pages, captured by the Wayback Machine on 2004-02-05;
 - ``vote2000_html/000.htm``-``044.htm``: the City's 2000 final results pages (mayor and the 44
-  council wards), cached from the Wayback Machine when the 2000 parser was first built.
+  council wards), cached from the Wayback Machine when the 2000 parser was first built;
+- ``vote2000_trustee_pages.csv``: the 2000 school trustee pages (``101``-``122`` TDSB,
+  ``201``-``212`` TCDSB, ``302``-``304`` and ``403``-``404`` the two French boards), transcribed
+  by hand from the Wayback Machine with each page's capture timestamp.
 
 Output: ``data/reference/municipal_archive_results.csv``, one row per Candidacy, plus one
 ``source_missing`` row per in-scope Contest the archive does not report. Requires ``pdftotext``.
-Only Mayor, Councillor and Metro Councillor contests are transcribed; school boards, hydro and
-utility commissions and plebiscites are skipped (ADR 0010).
+Mayor, Councillor and Metro Councillor contests are transcribed for all three years, and school
+trustee contests for 2000. The 1994 and 1997 school-board sections are skipped: their ward
+labels, seat counts and several whole contests are missing from the archive, so they wait for a
+complete published source. Hydro and utility commissions and plebiscites are out of scope
+(ADR 0010).
 
 The archive omits seat counts and, in a few places, ward labels. Seat counts come from the
 council composition recorded on Wikipedia's 1994 and 1997 election pages: two councillors per
@@ -507,8 +513,55 @@ def _rows_2000() -> list[dict]:
     return out
 
 
+_TRUSTEE_REGIME_CODES = {
+    "toronto_district_school_board": "tdsb",
+    "toronto_catholic_district_school_board": "tcdsb",
+    "conseil_scolaire_viamonde": "viamonde",
+    "conseil_scolaire_catholique_monavenir": "monavenir",
+}
+
+
+def _rows_2000_trustees() -> list[dict]:
+    """School trustee rows from the archived 2000 pages (101-122, 201-212, 302-304, 403-404).
+
+    The pages were transcribed by hand into ``vote2000_trustee_pages.csv`` with each page's
+    capture timestamp and its heading as shown. Pages 210 and 211 show only "BOARD"; their page
+    numbers place them with the Toronto Catholic District School Board. Every 2000 trustee ward
+    elected one trustee.
+    """
+
+    out = []
+    with (REFERENCE / "vote2000_trustee_pages.csv").open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            body = row["represented_body"]
+            acclaimed = row["result"] == "Acclamation"
+            out.append(
+                {
+                    "election_date": "2000-11-13",
+                    "election_authority": "toronto_city_clerk",
+                    "represented_body": body,
+                    "office_type": "trustee",
+                    "boundary_regime": f"{_TRUSTEE_REGIME_CODES[body]}-trustee-wards-2000",
+                    "official_district_id": row["ward"],
+                    "district_name": f"Ward {row['ward']}",
+                    "seats_available": 1,
+                    "candidate_name_raw": row["candidate_name_raw"],
+                    "votes": "" if acclaimed else int(row["result"]),
+                    "acclaimed": str(acclaimed).lower(),
+                    "marked_elected": "",
+                    "coverage_status": "complete",
+                    "source_detail": URL_2000.format(
+                        ts=row["capture_timestamp"], page=int(row["page"])
+                    ),
+                    "source_locator": f"vote2000_trustee_pages.csv page {row['page']}",
+                    "district_label_source": "archive",
+                }
+            )
+    return out
+
+
 def main() -> None:
-    rows = _rows_1994() + _rows_1997() + _rows_2000()
+    rows = _rows_1994() + _rows_1997() + _rows_2000() + _rows_2000_trustees()
     with OUTPUT.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, COLUMNS, lineterminator="\n")
         writer.writeheader()

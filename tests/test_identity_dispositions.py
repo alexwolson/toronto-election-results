@@ -505,10 +505,10 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1361
+    assert len(original_decisions) == 1406
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 917,
-        "confirmed": 438,
+        "unresolved": 937,
+        "confirmed": 463,
         "rejected": 6,
     }
     decisions = exclude_superseded_identity_decisions(

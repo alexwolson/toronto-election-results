@@ -1,4 +1,5 @@
-"""Mayor, Councillor and Metro Councillor results for 1994, 1997 and 2000 (ADR 0010).
+"""Mayor, Councillor and Metro Councillor results for 1994, 1997 and 2000, and 2000 school
+trustee results (ADR 0010).
 
 These elections predate the City's Open Data results. The authoritative surviving source is the
 City's own archived results pages, transcribed by ``scripts/transcribe_municipal_archive.py`` into
@@ -26,7 +27,7 @@ _RESOURCES = {
     "1997-11-10": "Previous election results — 1997 General Municipal Election (archived)",
     "2000-11-13": "Vote 2000 — final results (archived)",
 }
-_EXPECTED_ROWS = {"1994-11-14": 333, "1997-11-10": 213, "2000-11-13": 167}
+_EXPECTED_ROWS = {"1994-11-14": 333, "1997-11-10": 213, "2000-11-13": 285}
 
 
 def read_archive_results(reference_dir: str | Path) -> pd.DataFrame:

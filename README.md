@@ -5,7 +5,8 @@ election-date coverage window runs through **2026-10-26** and begins with the la
 before amalgamation for each level of government (ADR 0010): the **1994-11-14 municipal elections**
 (the six former municipalities and Metropolitan Toronto), the **1995-06-08 Ontario general
 election** and the **1993-10-25 federal general election**. Municipal coverage before 2003 is
-Mayor, Councillor and Metro Councillor only; pre-2003 School Board trustees are not yet included.
+Mayor, Councillor and Metro Councillor, plus the 2000 School Board trustee elections; the 1994 and
+1997 school-board results are not yet included.
 Only validated or certified
 outcomes are published as final; future elections retain pending results. The scheduled
 **2026-10-26 Toronto municipal general election** is also represented by the City's certified
@@ -35,11 +36,11 @@ Endorsements are positive, open-world facts: an absent fact never means that an 
 declined to endorse a Candidacy. Separate Endorser-by-Contest coverage records say how completely
 each approved Endorser was searched.
 
-The release contains **6,748 Candidacies in 1,049 Contests across 76 Election events**: 6,391 final
-Candidacies in 996 Contests, plus 357 pending Candidacies in 51 Contests scheduled for
-2026-10-26. Two void historical Contests have no Candidacy rows. The endorsement
-companion dataset contains **9 Endorsers, 161 audited source
-assertions, 160 confirmed positive Endorsement facts, and 2,412 Endorser-by-Contest coverage
+The release contains **7,566 Candidacies in 1,259 Contests across 80 Election events**: 7,209 final
+Candidacies in 1,198 Contests, plus 357 pending Candidacies in 51 Contests scheduled for
+2026-10-26. Two void historical Contests and eight `source_missing` 1994 Contests have no
+Candidacy rows. The endorsement companion dataset contains **9 Endorsers, 161 audited source
+assertions, 160 confirmed positive Endorsement facts, and 3,051 Endorser-by-Contest coverage
 records**.
 
 ## Documentation
