@@ -36,15 +36,19 @@ Toronto Star, read on ProQuest (University of Toronto access):
 
 Elections Canada's candidate occupations:
 [1993](https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip)
-(University of Toronto Map and Data Library copy),
-[1997](https://www.elections.ca/res/rep/off/dec3097/print_table1206_e.html),
-[2004](https://www.elections.ca/scripts/OVR2004/23/data/table12.csv) and
-[2006](https://www.elections.ca/Scripts/OVR2006/25/data_donnees/table_tableau12.csv).
+(University of Toronto Map and Data Library copy) and
+[1997](https://www.elections.ca/res/rep/off/dec3097/print_table1206_e.html).
 
 Other sources: The Militant on the Communist League's
 [2000](https://themilitant.com/2000/6432/643257.html) and
 [2006](https://themilitant.com/2006/7034/703452.html) Toronto campaigns; the Canadian Elections
-Database on [John Steele](https://beta.canadianelectionsdatabase.ca/candidates/john-brian-steele);
+Database on [John Steele](https://beta.canadianelectionsdatabase.ca/candidates/john-brian-steele)
+and [Beverly Bernardo](https://beta.canadianelectionsdatabase.ca/candidates/beverly-bernardo);
+Dan Harris's [House of Commons statement](https://openparliament.ca/debates/2011/12/15/dan-harris-1/only)
+on David Robertson (15 December 2011); Wikipedia's lists of
+[2006 Libertarian](https://en.wikipedia.org/wiki/Libertarian_Party_of_Canada_candidates_in_the_2006_Canadian_federal_election)
+and [2006 NDP](https://en.wikipedia.org/wiki/New_Democratic_Party_candidates_in_the_2006_Canadian_federal_election)
+federal candidates;
 The Catholic Register's
 [2010 trustee candidate platforms](https://catholicregister.org/features/catholic-education/item/11773-toronto-school-board-candidates-explain-their-platforms);
 the Downsview Advocate on the
@@ -78,7 +82,7 @@ Gael Hepworth's 1994 trustee run were added.
 | `can_a46c48bdfbee52f482288533701136bb` | 1997 | TDSB 15 | Michael Green | registered practical nurse (1997), the newer title for the same job |
 | `can_69d13f11fbcc5d80889e72901424377e` | 1994 | York council 2 | Chai Kalevar | engineer (1994); "active in federal politics", an unsuccessful municipal candidate in 1994, an engineer (1997); engineer, consultant and businessman (1993) |
 | `can_a8b8878648c65af2a75fe974865c078c` | 1997 | Council 28 | Chai Kalevar | as above |
-| `can_524a3ab594925691a736de3baeb5e24d` | 2000 | Council 21 | Chai Kalevar | consultant (2000; Elections Canada 1993 and 2006) |
+| `can_524a3ab594925691a736de3baeb5e24d` | 2000 | Council 21 | Chai Kalevar | consultant (2000; Elections Canada 1993) |
 | `can_4ebf6ee1dd3a5950914f54fb5074ade3` | 1997 | Council 5 | Carmela Sasso | executive assistant to an MPP (1997); legislative assistant, NDP, Etobicoke North (1993, 1997) |
 | `can_489afb6c392c543e8b17a9d8f5406b57` | 1997 | Council 17 | Doug Hum | social worker (Nov 1997 profile); "a long-time community activist" (Star endorsements, Nov 1997); community worker, NDP, Scarborough—Agincourt (June 1997) |
 | `can_e3e7df7ba8565fc697ef159718c4622c` | 1997 | TDSB 7 | Rick Perkins | banking executive (Nov 1997); banking, PC, Scarborough—Agincourt (June 1997); CIBC and Newcourt after 1993 (Wikipedia) |
@@ -88,13 +92,13 @@ Gael Hepworth's 1994 trustee run were added.
 | `can_16473b5096ec5f5497520951ba27b314` | 2000 | TCDSB 10 | Walter Melnyk | Wikipedia's note on the 1997 Ward 19 candidate says he lost this race; that run is on the target |
 | `can_bd305cd075c9575e8712a875b83681f5` | 1994 | Toronto mayor | John Steele | Communist League member (1994); Communist League mayoral candidate and meat packer (The Militant, Star, 2000); retired meat packer (2003 provincial candidate) |
 | `can_2fe5215fa60e5a369a3fea55f59955bc` | 2000 | Mayor | John Steele | as above |
-| `can_060c8be206475ee8904f5af1368add5a` | 2006 | Mayor | Soumen Deb | logistics co-ordinator on individual freedom and liberty (Nov 2006); Libertarian, transportation broker (Jan 2006) |
+| `can_060c8be206475ee8904f5af1368add5a` | 2006 | Mayor | Soumen Deb | logistics co-ordinator on individual freedom and liberty (Nov 2006); Wikipedia's 2006 Libertarian list says the Don Valley West candidate ran for mayor that year with 517 votes |
 | `can_483da73256965f16a45bb0798aa967d7` | 2006 | Council 35 | Axcel Cocon | private consultant (2006 and 2003 mayoral profile) |
-| `can_983c2912237e54c890a1a50813638d73` | 2006 | Council 41 | David Robertson | ESL instructor (Nov 2006; NDP candidate in Scarborough—Agincourt, Jan 2006) |
-| `can_a17620e74b8958f0a1042057a7d12b6c` | 2006 | Council 14 | Beverly Bernardo | Communist League (Star); Ward 14 candidate and garment worker (The Militant); garment worker, Parkdale—High Park (Jan 2006) |
+| `can_983c2912237e54c890a1a50813638d73` | 2006 | Council 41 | David Robertson | ESL instructor (Nov 2006); Dan Harris in the Commons (2011): an ESL teacher and his Scarborough running mate in the 2006 federal and municipal campaigns; teacher, NDP, Scarborough—Agincourt (Wikipedia, Jan 2006) |
+| `can_a17620e74b8958f0a1042057a7d12b6c` | 2006 | Council 14 | Beverly Bernardo | Communist League (Star); Ward 14 candidate and garment worker (The Militant); garment worker, Parkdale—High Park (Canadian Elections Database, Jan 2006) |
 | `can_271502d6684958e3a8c8216768cb7828` | 2006 | Council 11 | Paul Ferreira | Wikipedia |
-| `can_89b7defefff958269ec338774bb2c680` | 2004 | MP, York South—Weston | Paul Ferreira | Wikipedia |
-| `can_86da1c90cd6751a9ab45ba6015b295f3` | 2006 | MP, York South—Weston | Paul Ferreira | Wikipedia |
+| `can_89b7defefff958269ec338774bb2c680` | 2004 | MP, York South—Weston | Paul Ferreira | Wikipedia biography and 2006 NDP candidate list |
+| `can_86da1c90cd6751a9ab45ba6015b295f3` | 2006 | MP, York South—Weston | Paul Ferreira | Wikipedia biography and 2006 NDP candidate list |
 | `can_53a18daa84f85782be96417e7c874c3a` | 1994 | MSSB 3 | Oliver Carroll | civil servant (1994); public sector executive (1997); "a long history as a public servant" (2010, of the removed trustee) |
 | `can_039065e8ce6c5544852c513d886fdac6` | 1997 | TCDSB 11 | Oliver Carroll | as above |
 | `can_755fd362d0c254109fa5ffa7d670718b` | 2000 | TCDSB 12 | Oliver Carroll | a mediator (2000); "Oliver Carroll, mediator with the Ministry of Labor" (Star, 1981), which fits the civil servant and public servant above; the run before his first win, in the neighbouring Scarborough ward |
