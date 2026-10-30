@@ -39,9 +39,8 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 8,070 Candidacies, 1,388 Contests, and 80 Election events. Of those, 357
-Candidacies in 51 Contests are pending for the 2026 municipal event; 7,713 Candidacies in 1,335
-Contests are final. Two void historical Contests have no Candidacy rows.
+The release contains 8,070 Candidacies, 1,388 Contests, and 80 Election events. All Candidacies
+have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
 

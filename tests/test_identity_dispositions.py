@@ -506,10 +506,10 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1551
+    assert len(original_decisions) == 1610
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 892,
-        "confirmed": 656,
+        "unresolved": 899,
+        "confirmed": 708,
         "rejected": 3,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -526,15 +526,10 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     results = result_rows.set_index("candidacy_id")
     links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
     active = links.loc[links["valid_to_release"].isna()]
+    # With the 2026 results declared, no Candidacy is pending, so no proposal may stay open.
     proposed = active.loc[active["link_status"].eq("proposed")]
-    assert len(proposed) == 59
-    assert proposed["candidacy_id"].is_unique
-    proposed_results = results.loc[proposed["candidacy_id"]]
-    assert proposed_results["result_status"].eq("pending").all()
-    assert proposed_results["election_date"].eq("2026-10-26").all()
-    assert proposed_results["person_id"].isna().all()
-    completed_ids = set(results.index[results["result_status"].eq("final")])
-    assert not proposed["candidacy_id"].isin(completed_ids).any()
+    assert proposed.empty
+    assert not results["result_status"].eq("pending").any()
 
     active_claims = active.loc[active["person_id"].notna()].set_index("candidacy_id")
     expected_status = decisions.set_index("candidacy_id")["decision"]
@@ -1110,6 +1105,38 @@ def test_star_profiles_settle_backlog_runs():
     }.items():
         assert unresolved.loc[candidacy_id, "person_id"] == person_id
         assert pd.isna(results.loc[candidacy_id, "person_id"])
+
+
+def test_2026_proposals_are_settled_from_candidate_guides_and_election_pages():
+    """The 59 proposals on 2026 Candidacies were reviewed once the results were declared."""
+
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
+    )
+    results = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    reviewed = decisions.loc[decisions["reviewer"].eq("results-2026-proposals-2026-10-30")]
+    assert len(reviewed) == 59
+    assert results.loc[reviewed["candidacy_id"], "election_date"].eq("2026-10-26").all()
+    assert reviewed["decision"].value_counts().to_dict() == {"confirmed": 52, "unresolved": 7}
+    accepted = reviewed.loc[reviewed["decision"].eq("confirmed")]
+    assert accepted["confidence"].eq("high").all()
+    assert (
+        results.loc[accepted["candidacy_id"], "person_id"].tolist()
+        == accepted["target_person_id"].tolist()
+    )
+    held = reviewed.loc[reviewed["decision"].eq("unresolved"), "candidacy_id"]
+    assert results.loc[held, "person_id"].isna().all()
+    assert set(results.loc[held, "candidate_name"]) == {
+        "Peter De Marco",
+        "Joseph Osuji",
+        "Bob Murphy",
+        "Michael Mitchell",
+        "Adam Pham",
+        "Michael Connor",
+        "John Kladitis",
+    }
 
 
 def test_star_ward_previews_link_backlog_runs():
