@@ -34,6 +34,7 @@ _EXPECTED_GENERAL_ROSTER_SIZE = {
     2014: 45,
     2018: 45,
     2022: 26,
+    2026: 26,
 }
 
 # The attendance/voting union deliberately catches late appointees, but a few

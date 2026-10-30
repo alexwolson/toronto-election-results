@@ -61,7 +61,7 @@ def test_default_pinned_candidacies_are_active_checked_ledger_entries():
 
     # These pins distinguish otherwise ambiguous same-name occurrences.  They must
     # be persistent ledger IDs, never IDs copied from a pre-ledger draft build.
-    assert len(pinned) == 952
+    assert len(pinned) == 957
     assert len({occurrence.candidacy_id for _, occurrence in pinned}) == len(pinned)
     for assertion_id, occurrence in pinned:
         assert occurrence.candidacy_id in active.index, assertion_id
@@ -293,7 +293,10 @@ def test_pending_2026_curations_leave_chris_alexander_identity_untouched():
     assertions = tuple(
         assertion
         for assertion in DEFAULT_IDENTITY_ASSERTIONS
-        if any(occurrence.event_id == PENDING_2026_EVENT_ID for occurrence in assertion.occurrences)
+        if "pending" in assertion.assertion_id
+        and any(
+            occurrence.event_id == PENDING_2026_EVENT_ID for occurrence in assertion.occurrences
+        )
     )
     candidacies = pd.DataFrame(
         [

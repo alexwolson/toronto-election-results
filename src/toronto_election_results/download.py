@@ -131,13 +131,15 @@ _MANIFEST = [
         "members-of-toronto-city-council-meeting-attendance",
         "council/attendance",
         {
-            "name_regex": r"councillors-meeting-attendance-(2006-2010|2010-2014|2014-2018|2018-2022)\.csv"
+            "name_regex": r"councillors-meeting-attendance-(2006-2010|2010-2014|2014-2018|2018-2022|2022-2026)\.csv"
         },
     ),
     (
         "members-of-toronto-city-council-voting-record",
         "council/voting",
-        {"name_regex": r"member-voting-record-(2006-2010|2010-2014|2014-2018|2018-2022)\.csv"},
+        {
+            "name_regex": r"member-voting-record-(2006-2010|2010-2014|2014-2018|2018-2022|2022-2026)\.csv"
+        },
     ),
     (
         "elected-officials-contact-information",

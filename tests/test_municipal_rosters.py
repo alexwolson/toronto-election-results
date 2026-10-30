@@ -346,7 +346,12 @@ def test_real_composition_reconciles_to_one_last_holder_per_council_office():
         2014: 45,
         2018: 45,
         2022: 26,
+        2026: 26,
     }
+    # The 2022-2026 council includes the by-election winners and the 2023 mayor.
+    final_2026 = set(reconciled.query("election_year == 2026")["member_name"])
+    assert {"Olivia Chow", "Parthi Kandavel", "Rachel Chernos Lin", "Neethan Shan"} <= final_2026
+    assert not {"John Tory", "Gary Crawford", "Jaye Robinson", "Jennifer McKelvie"} & final_2026
     final_2022 = set(reconciled.query("election_year == 2022")["member_name"])
     assert {"Joe Mihevc", "Robin Buxton Potts", "Rose Milczyn"} <= final_2022
     assert not {"Joe Cressy", "Kristyn Wong-Tam", "Michael Ford"} & final_2022
