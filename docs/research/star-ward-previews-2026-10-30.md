@@ -18,22 +18,28 @@ Toronto Star, read on ProQuest (University of Toronto access):
 
 | Date and page | Story | ProQuest document |
 |---|---|---|
+| 27 Apr 1981, A13 | York Region Catholic board settles with its clerical staff | [1403453819](https://www.proquest.com/docview/1403453819) |
+| 26 Sep 1994, A6 | Toronto ward races | [1443243757](https://www.proquest.com/docview/1443243757) |
+| 15 Oct 1994, A21 | Metro races, including the City of York | [1356545337](https://www.proquest.com/docview/1356545337) |
 | 10 Nov 1994, E1, E5, E6, E7, E8 | Candidate profiles | [1355146755](https://www.proquest.com/docview/1355146755), [1355146282](https://www.proquest.com/docview/1355146282), [1355146762](https://www.proquest.com/docview/1355146762), [1355146775](https://www.proquest.com/docview/1355146775), [1355146718](https://www.proquest.com/docview/1355146718) |
 | 20 Oct 1997, B4 | Toronto and East York wards | [1347239887](https://www.proquest.com/docview/1347239887) |
+| 2 Nov 1997, F2 | Endorsements for the Scarborough, North York and Etobicoke wards | [1347251900](https://www.proquest.com/docview/1347251900) |
 | 6 Nov 1997, K2, K3, K12, K13 | Candidate profiles | [1346619352](https://www.proquest.com/docview/1346619352), [1346619482](https://www.proquest.com/docview/1346619482), [1346619395](https://www.proquest.com/docview/1346619395), [1346619727](https://www.proquest.com/docview/1346619727) |
 | 9 Nov 2000, G1, G2, G12, G13 | Mayoral and other profiles | [1349496868](https://www.proquest.com/docview/1349496868), [1349496842](https://www.proquest.com/docview/1349496842), [1349496787](https://www.proquest.com/docview/1349496787), [1349496702](https://www.proquest.com/docview/1349496702) |
+| 30 Nov 2001, B4 | Catholic board names its chair and vice-chair | [1330996552](https://www.proquest.com/docview/1330996552) |
 | 6 Mar 2002, B4 | Catholic board fills the Ward 9 seat | [1440867690](https://www.proquest.com/docview/1440867690) |
-| 6 Nov 2003, G3, G15, G16 | Mayoral and trustee profiles | [1348976047](https://www.proquest.com/docview/1348976047), [1348973215](https://www.proquest.com/docview/1348973215), [1348973161](https://www.proquest.com/docview/1348973161) |
+| 6 Nov 2003, G3, G5, G15, G16 | Mayoral, council and trustee profiles | [1348976047](https://www.proquest.com/docview/1348976047), [1348973050](https://www.proquest.com/docview/1348973050), [1348973215](https://www.proquest.com/docview/1348973215), [1348973161](https://www.proquest.com/docview/1348973161) |
+| 11 Nov 2003, B11 | Trustee results | [1441444103](https://www.proquest.com/docview/1441444103) |
 | 9 Nov 2006, G1, G2, G4, G5 | Mayoral, council and trustee profiles | [1349194436](https://www.proquest.com/docview/1349194436), [1349194322](https://www.proquest.com/docview/1349194322), [1349211459](https://www.proquest.com/docview/1349211459), [1349194412](https://www.proquest.com/docview/1349194412) |
+| 9 Oct 2008, M10 | Scarborough-Agincourt riding profile | [1348681723](https://www.proquest.com/docview/1348681723) |
 | 11 Sep 2010, GT5 | Former Catholic trustee hired as a teacher | [2030467267](https://www.proquest.com/docview/2030467267) |
 
 Elections Canada's candidate occupations:
 [1993](https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip)
 (University of Toronto Map and Data Library copy),
 [1997](https://www.elections.ca/res/rep/off/dec3097/print_table1206_e.html),
-[2004](https://www.elections.ca/scripts/OVR2004/23/data/table12.csv),
-[2006](https://www.elections.ca/Scripts/OVR2006/25/data_donnees/table_tableau12.csv) and
-[2008](https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv).
+[2004](https://www.elections.ca/scripts/OVR2004/23/data/table12.csv) and
+[2006](https://www.elections.ca/Scripts/OVR2006/25/data_donnees/table_tableau12.csv).
 
 Other sources: The Militant on the Communist League's
 [2000](https://themilitant.com/2000/6432/643257.html) and
@@ -46,13 +52,20 @@ the Downsview Advocate on the
 [oral history of Errol Young](https://sites.google.com/site/blackcreeklocalhistory/transcripts/errol-young)
 for the Black Creek local history project; and Wikipedia on
 [Paul Ferreira](https://en.wikipedia.org/wiki/Paul_Ferreira),
-[Rick Perkins](https://en.wikipedia.org/wiki/Rick_Perkins) and the
-[1997 Toronto election](https://en.wikipedia.org/wiki/1997_Toronto_municipal_election).
+[Rick Perkins](https://en.wikipedia.org/wiki/Rick_Perkins), the
+[1997 Toronto election](https://en.wikipedia.org/wiki/1997_Toronto_municipal_election), the
+[Nationalist Party of Canada](https://en.wikipedia.org/wiki/Nationalist_Party_of_Canada) and the
+[NDP's 1993 federal candidates](https://en.wikipedia.org/wiki/New_Democratic_Party_candidates_in_the_1993_Canadian_federal_election).
 
 ## Confirmed to the proposed Person
 
-Thirty-five rows in `identity_review_dispositions.csv`, revised in place under reviewer
-`star-ward-previews-2026-10-30`. Each row's rationale quotes its bridge.
+Thirty-seven rows in `identity_review_dispositions.csv`, revised in place under reviewer
+`star-ward-previews-2026-10-30`. Each row's rationale quotes its bridge. A thirty-eighth row under
+the same reviewer, Paul Crawford's 2000 Catholic board win, stays unresolved (see below).
+
+After review, the calls for Sil Salvaterra, Doug Hum, Benson Lau and Oliver Carroll's 2000 run were
+checked again and each now has a source beyond the first match. Bob Smith's 2006 mayoral run and
+Gael Hepworth's 1994 trustee run were added.
 
 | Candidacy | Election | Contest | Name | Bridge |
 |---|---|---|---|---|
@@ -67,11 +80,11 @@ Thirty-five rows in `identity_review_dispositions.csv`, revised in place under r
 | `can_a8b8878648c65af2a75fe974865c078c` | 1997 | Council 28 | Chai Kalevar | as above |
 | `can_524a3ab594925691a736de3baeb5e24d` | 2000 | Council 21 | Chai Kalevar | consultant (2000; Elections Canada 1993 and 2006) |
 | `can_4ebf6ee1dd3a5950914f54fb5074ade3` | 1997 | Council 5 | Carmela Sasso | executive assistant to an MPP (1997); legislative assistant, NDP, Etobicoke North (1993, 1997) |
-| `can_489afb6c392c543e8b17a9d8f5406b57` | 1997 | Council 17 | Doug Hum | social worker (Nov 1997); community worker, NDP, Scarborough—Agincourt (June 1997) |
+| `can_489afb6c392c543e8b17a9d8f5406b57` | 1997 | Council 17 | Doug Hum | social worker (Nov 1997 profile); "a long-time community activist" (Star endorsements, Nov 1997); community worker, NDP, Scarborough—Agincourt (June 1997) |
 | `can_e3e7df7ba8565fc697ef159718c4622c` | 1997 | TDSB 7 | Rick Perkins | banking executive (Nov 1997); banking, PC, Scarborough—Agincourt (June 1997); CIBC and Newcourt after 1993 (Wikipedia) |
 | `can_e8a63f209aaa52bd8058fdf62d626d90` | 1997 | TDSB 18 | Constantine Kritsonis | head of his own courier company (Nov 1997); courier proprietor, Green, York Centre (June 1997) |
-| `can_a5c16b3fe67e5ed0a81a9ed740307f9a` | 1994 | Toronto council 5 | Benson Lau | family doctor (1994); physician, Conservative, Scarborough—Agincourt (2008) |
-| `can_d5155fd8d5f05e888f701b54b04b107e` | 1994 | York council 7 | Sil Salvaterra | lawyer and former prosecutor (1994); articling student, NDP, York South—Weston (1993) |
+| `can_a5c16b3fe67e5ed0a81a9ed740307f9a` | 1994 | Toronto council 5 | Benson Lau | downtown family doctor and community activist who came a close second in 1991 (1994); the Star's profile of the 2008 Conservative candidate in Scarborough—Agincourt, a family physician: "In 1991 and 1994, he ran for city councillor" |
+| `can_d5155fd8d5f05e888f701b54b04b107e` | 1994 | York council 7 | Sil Salvaterra | administrative lawyer who "ran unsuccessfully for the NDP last year" (Star, 15 Oct 1994); lawyer and former prosecutor (1994 profile); articling student, NDP, York South—Weston (1993) |
 | `can_16473b5096ec5f5497520951ba27b314` | 2000 | TCDSB 10 | Walter Melnyk | Wikipedia's note on the 1997 Ward 19 candidate says he lost this race; that run is on the target |
 | `can_bd305cd075c9575e8712a875b83681f5` | 1994 | Toronto mayor | John Steele | Communist League member (1994); Communist League mayoral candidate and meat packer (The Militant, Star, 2000); retired meat packer (2003 provincial candidate) |
 | `can_2fe5215fa60e5a369a3fea55f59955bc` | 2000 | Mayor | John Steele | as above |
@@ -84,13 +97,15 @@ Thirty-five rows in `identity_review_dispositions.csv`, revised in place under r
 | `can_86da1c90cd6751a9ab45ba6015b295f3` | 2006 | MP, York South—Weston | Paul Ferreira | Wikipedia |
 | `can_53a18daa84f85782be96417e7c874c3a` | 1994 | MSSB 3 | Oliver Carroll | civil servant (1994); public sector executive (1997); "a long history as a public servant" (2010, of the removed trustee) |
 | `can_039065e8ce6c5544852c513d886fdac6` | 1997 | TCDSB 11 | Oliver Carroll | as above |
-| `can_755fd362d0c254109fa5ffa7d670718b` | 2000 | TCDSB 12 | Oliver Carroll | a different ward each time on the same board; the run before his first win, in the neighbouring Scarborough ward |
+| `can_755fd362d0c254109fa5ffa7d670718b` | 2000 | TCDSB 12 | Oliver Carroll | a mediator (2000); "Oliver Carroll, mediator with the Ministry of Labor" (Star, 1981), which fits the civil servant and public servant above; the run before his first win, in the neighbouring Scarborough ward |
 | `can_e61b551998225845a6ada5b320321c4e` | 2000 | TCDSB 11 | Catherine LeBlanc-Miller | executive assistant (2000); executive assistant in television and film for 21 years (2010) |
 | `can_71c3c84a31c45c109d3c45ef77110819` | 1994 | Scarborough BoE 7 | Joe Trentadue | incumbent (1994); "a former Scarborough trustee" and tax consultant (1997); tax and business consultant and former Scarborough trustee (2010) |
 | `can_dfa1622c8f0455cb818471718009aaf1` | 1997 | TCDSB 12 | Joe Trentadue | as above |
 | `can_c6bd1fcb8c035810836db6a2bb54f9a0` | 1994 | North York BoE 5 | Errol Young | acclaimed incumbent (1994); trustee for 15 years until 1997, photographer and designer (oral history); photographer and graphic artist (2003) |
 | `can_770ddc0cfd7256b6a7ab0ecc4ddf375c` | 1994 | Toronto BoE 6 | Spiros Papathanasakis | director of a youth centre (1994); runs a youth centre in Cabbagetown, one term on the old Toronto board, ran against Layton and McConnell (2014) |
 | `can_0ca0fa31cc6c5546b3622f42ce541de1` | 1997 | Council 25 | Spiros Papathanasakis | "a school trustee and youth worker" (1997); as above |
+| `can_98e4815b33ec543795f6d28ed05ad4a1` | 2006 | Mayor | Bob Smith | Wikipedia's article on the Nationalist Party of Canada gives the electoral record of party member Robert "Bob" Wayne Smith, including the 2003 Ward 31 run (414 votes, the target's) and this run (1,105 votes); "White Nationalist perspective" (2006 profile); a proposed European Heritage Week (2003 profile) |
+| `can_68527bb2d940554ea9bdac1fbf58a256` | 1994 | York BoE 2 | Gael Hepworth | Wikipedia's list of 1993 NDP candidates: the Eglinton—Lawrence candidate later ran for a York school trustee seat, 508 votes, third of five, in 1994 |
 
 ## Records joined
 
@@ -119,29 +134,33 @@ city. No source says so, so they keep their own records.
 
 - Mayoral candidates whose later profiles give nothing to match: Douglas Campbell (2006), Mitch
   Gold (2006), Scott Yee (2006), Mehmet Ali Yagiz (2006, against his provincial runs), Kevin
-  Richardson, David Predovich, Steven Lam. The Star's 2006 profile of mayoral candidate Bob Smith
-  mentions a "White Nationalist perspective" and its 2003 profile of the Ward 31 candidate a
-  European Heritage Week, but the name is common and neither profile names the other run.
-- Runs with occupations that do not match: Gael Hepworth (financial director in 1993, economic
-  consultant in 1994), Hugh Prendergast, Paul Calandra (real estate agent in 1994, executive
-  assistant in 2000), Anthony Figliano (real estate appraiser, and sales and research for Elections
-  Canada, both in 1997), Marco Luciani (a publishing company owner, and small business for
-  Elections Canada).
+  Richardson, David Predovich, Steven Lam.
+- Runs with occupations that do not match: Hugh Prendergast, Paul Calandra (real estate agent in
+  1994, executive assistant in 2000), Anthony Figliano (real estate appraiser, and sales and
+  research for Elections Canada, both in 1997), Marco Luciani (a publishing company owner, and
+  small business for Elections Canada).
 - Runs whose later profile gives no occupation: Max Royz, Alamgir Muhammad, Anwarul Kabir, Maya
   Tarom, Michael Brausewetter (2006 Ward 35, against his mayoral runs), Greg Crompton, Ron Singer,
-  Suzanne McCormick, Paul Crawford (2000 TCDSB Ward 12 winner and the 2003 acclaimed trustee; the
-  name is common and no source calls him the incumbent).
+  Suzanne McCormick.
+- Paul Crawford's 2000 TCDSB Ward 12 win, revised under this reviewer and still unresolved. In
+  November 2001 the Star names Ward 12 trustee Paul Crawford as the board's vice-chair, so the 2000
+  winner held the seat. The target was acclaimed in Ward 12 in 2003 and re-elected in 2006, but no
+  source found calls the 2003 candidate the incumbent, and the Star's 2003 results story names a
+  second incumbent trustee called Paul Crawford on the Durham public board. His 1994 Scarborough
+  council run (a sales account manager) also stays open.
 - Hortencia Fotopoulos: a retired restaurateur in East York in 1997 and a columnist for a
   Portuguese newspaper in Davenport in 2003. The name is very rare, but nothing ties the two runs.
 - Ron Robins's 1995 and 1999 Natural Law Party runs for the legislature sit on a second Person,
   apart from his 1993 federal record that the 1994 council run now joins. Both are probably the
-  same man; that join needs its own source.
+  same man, but the only tie is the party. The Star's coverage of the 1995 and 1999 races names
+  him only by party. Wikipedia's lists of Natural Law candidates in those Ontario elections could
+  not be fetched for this review, and its 1993 federal list has no entry for him.
 
 ## Counts
 
-Against `star-profiles-backlog-2026-10-30.md`: Candidacies without a Person fall from 926 to 886.
+Against `star-profiles-backlog-2026-10-30.md`: Candidacies without a Person fall from 926 to 884.
 People rise from 5,333 to 5,335 (two new); two records become redirects (the 1997 "Janaki
 Bala-Krishan" and "Alex Chumak" records), so deprecated People go from 117 to 119. Dispositions:
-1,551 rows, 654 confirmed, 894 unresolved and 3 rejected. Pinned occurrences rise from 944 to
-952. Five 2006 council and mayoral Candidacies (Beverly Bernardo, Axcel Cocon, Soumen Deb, Paul
-Ferreira, David Robertson) now carry `incumbent=false`, since they have a Person.
+1,551 rows, 656 confirmed, 892 unresolved and 3 rejected. Pinned occurrences rise from 944 to
+952. Six 2006 council and mayoral Candidacies (Beverly Bernardo, Axcel Cocon, Soumen Deb, Paul
+Ferreira, David Robertson, Bob Smith) now carry `incumbent=false`, since they have a Person.

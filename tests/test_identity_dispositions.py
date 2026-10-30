@@ -508,8 +508,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1551
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 894,
-        "confirmed": 654,
+        "unresolved": 892,
+        "confirmed": 656,
         "rejected": 3,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -1126,13 +1126,21 @@ def test_star_ward_previews_link_backlog_runs():
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
     revised = decisions.loc[decisions["reviewer"].eq("star-ward-previews-2026-10-30")]
-    assert len(revised) == 35
-    assert revised["decision"].eq("confirmed").all()
-    assert revised["confidence"].eq("high").all()
+    assert len(revised) == 38
+    assert revised.groupby(["decision", "confidence"]).size().to_dict() == {
+        ("confirmed", "high"): 37,
+        ("unresolved", "medium"): 1,
+    }
+    accepted = revised.loc[revised["decision"].eq("confirmed")]
     assert (
-        results.loc[revised["candidacy_id"], "person_id"].tolist()
-        == revised["target_person_id"].tolist()
+        results.loc[accepted["candidacy_id"], "person_id"].tolist()
+        == accepted["target_person_id"].tolist()
     )
+    # Paul Crawford's 2000 TCDSB win stays apart: a second trustee of that name sat on the
+    # Durham public board, and no source calls the 2003 candidate the incumbent.
+    held = revised.loc[revised["decision"].eq("unresolved"), "candidacy_id"].tolist()
+    assert held == ["can_5fbf667080165d6da7d8df6a05ae986e"]
+    assert pd.isna(results.loc[held[0], "person_id"])
 
     active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
     confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
@@ -1172,6 +1180,22 @@ def test_star_ward_previews_link_backlog_runs():
         "per_956cde49edc25791b2761b3156d46707": [
             "can_6361e989519b56789271681c61fc3cd3",
             "can_dfb362d413b75e4a8cd18b60d0d2d9be",
+        ],
+        # Bob Smith: 2003 Ward 31, 2006 mayor and 2014 Ward 31.
+        "per_17e2dabe": [
+            "can_bb6e6f84d844518fa414d8de1a034460",
+            "can_98e4815b33ec543795f6d28ed05ad4a1",
+            "can_48932970021a5fc68e44c30c115d9899",
+        ],
+        # Gael Hepworth: 1993 NDP Eglinton-Lawrence and the 1994 York trustee run.
+        "per_d2b0366a": [
+            "can_b240556453c45d34ac7bd0e1a1d5caf7",
+            "can_68527bb2d940554ea9bdac1fbf58a256",
+        ],
+        # Benson Lau: 1994 council run and 2008 Conservative run.
+        "per_8da86474": [
+            "can_a5c16b3fe67e5ed0a81a9ed740307f9a",
+            "can_5e81472e3c12582cba2343b9a0e8b9c3",
         ],
     }
     for person_prefix, candidacy_ids in careers.items():
