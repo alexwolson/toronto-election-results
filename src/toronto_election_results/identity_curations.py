@@ -11517,6 +11517,33 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
             "is common and no source names that run, although it was in the same part of the city."
         ),
     ),
+    CuratedIdentityAssertion(
+        assertion_id="senai-iman-tdsb-runs-2018-2022",
+        preferred_name="Senai Iman",
+        occurrences=(
+            _pinned_occurrence(
+                "can_9355c34b54da5d24b991b05bec531182",
+                _EVENT_2018,
+                "toronto_district_school_board",
+                "trustee",
+                "Senai Iman",
+            ),
+            _pinned_occurrence(
+                "can_759cd6ed050f5dec9f84413ba2404977",
+                _EVENT_2022,
+                "toronto_district_school_board",
+                "trustee",
+                "Senai Iman",
+            ),
+        ),
+        evidence_urls=("https://thelocal.to/?p=2385",),
+        rationale=(
+            "The Local's 2022 guide profiles TDSB candidate Senai Iman and says he ran for TDSB "
+            "Ward 19 trustee in 2018 and placed last with 500 votes, which matches the 2018 "
+            "record. These two runs become one new Person. The 2006 TCDSB Ward 5 candidate is "
+            "not joined because no source names that run."
+        ),
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
