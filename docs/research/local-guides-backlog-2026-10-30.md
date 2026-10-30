@@ -11,8 +11,6 @@ Three rows the guides supported (Sandeep Srivastava 2022 mayor, Sonny Yeung 2022
 These had a source, but it did not meet the evidence standard:
 
 - Serge Korovitsyn 2023: the source gives only his Ontario Libertarian Party role.
-- Lekan Olawoye 2018: the link to 2014 comes from an article's context, and no sentence states it.
-- Deanna Sgro 2018: the source matches only the riding and year of a provincial run.
 - Kiri Vadivelu 2023: the source covers only the 2022 run.
 - Peter De Marco 2026 and Thomas Hall 2023: The Local says only "same name".
 - Walter Alvarez-Bardales 2025: the two guides describe Liberal runs in different ridings.
@@ -30,6 +28,10 @@ The same guides name earlier runs that were also unlinked, and five more disposi
 
 Senai Iman's 2018 and 2022 TDSB runs become one new Person (`senai-iman-tdsb-runs-2018-2022`). The Local's 2022 guide says the 2022 candidate placed last in Ward 19 in 2018 with 500 votes, which matches the 2018 record. Neither run is joined to the 2006 TCDSB candidate.
 
-With these, candidacies without a Person fell from 818 to 764.
+## Third pass: 2018 coverage and other sources
 
-About 120 rows still have no source. Most are 2018 trustee and council candidacies, which no guide by The Local covers unless the candidate ran again later.
+A further pass over the 132 rows that were still unlinked used The Local's 2026 guides, Sean Marshall's 2018 ward-by-ward analyses, the Toronto Star's 2018 ward profiles, Leaside Life, Wikipedia biographies and candidates' own campaign pages. Sixteen more dispositions were confirmed: Itohan Evbagharu, James Sears, Shawn Rizvi, Amara Possian, Michael Julihen, Gus Stefanis, Lekan Olawoye, David Mousavi, Evan Tummillo, Brenda Macdonald, Felicia Samuel, Deanna Sgro, Erica Kelly, Christopher Noor, Carol Royer and David Del Grande. Each source names the earlier run, and the riding, party or vote total was checked against the target's record. The Star quotes came back from the fetch tool as paraphrase.
+
+Still weak after this pass: Troy Young, Edward Zaretsky, Angelo Carnevale, Dean Maher, Joyce Rowlands, Josh Rachlis and Maria De Angelis-Pater match on name and place, but no source names both runs. A 2018 Ryersonian piece says Jordan Stone had no prior political experience, which may tell against the 2014 pairing. Mark Balack's 2011 and 2018 runs were in different parts of the city.
+
+With these, candidacies without a Person fell from 818 to 748. About 115 rows still have no source.
