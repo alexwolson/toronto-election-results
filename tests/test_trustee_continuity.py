@@ -63,12 +63,12 @@ def test_continuity_rejects_a_cross_board_prior_contest():
         validate_trustee_continuity(continuity, results, crosswalk)
 
 
-def test_continuity_rejects_a_pending_current_contest_as_prior():
+def test_continuity_rejects_the_current_contest_as_prior():
     continuity, results, crosswalk = _inputs()
     row = continuity["board_id"].eq("tcdsb") & continuity["ward_id"].eq(1)
     continuity.loc[row, "prior_contest_id"] = "con_73b70ffb6b6f58899e27e95e50a0d118"
 
-    with pytest.raises(ValueError, match="must be final"):
+    with pytest.raises(ValueError, match="must predate 2026"):
         validate_trustee_continuity(continuity, results, crosswalk)
 
 

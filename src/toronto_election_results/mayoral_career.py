@@ -606,7 +606,7 @@ def validate_mayoral_career_contracts(
 def validate_mayoral_career_cohort(
     rows: list[MayoralCareerCohortRow], results: pd.DataFrame
 ) -> None:
-    """Require the frozen cohort to match one complete pending mayoral contest."""
+    """Require the frozen cohort to match one complete mayoral contest, pending or declared."""
 
     if len(rows) != EXPECTED_COHORT_SIZE:
         raise ValueError(
@@ -643,7 +643,7 @@ def validate_mayoral_career_cohort(
     current = results.loc[
         results["contest_id"].eq(contest_id)
         & results["office_type"].eq("mayor")
-        & results["result_status"].eq("pending")
+        & results["result_status"].isin({"pending", "final"})
     ].copy()
     if current["candidacy_id"].duplicated().any():
         duplicate = current.loc[

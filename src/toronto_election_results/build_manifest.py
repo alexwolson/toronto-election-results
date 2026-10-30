@@ -9,7 +9,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .coverage import ELECTION_DAY
-from .pending_candidates import pending_candidate_paths
+from .pending_candidates import DECLARATION_FILENAME, pending_candidate_paths
 
 COVERAGE = {
     "from": "1993-10-25",
@@ -104,10 +104,19 @@ def build_manifest(
             datetime.fromtimestamp(path.stat().st_mtime, ZoneInfo("America/Toronto")).date()
             for path in roster_paths
         ).isoformat()
+    # Once the Clerk's Declaration of Results is a source, the 2026 election is no longer pending.
+    declared = any(path.name == DECLARATION_FILENAME for path in source_paths)
+    coverage = {**COVERAGE, "pending_candidate_snapshot_through": snapshot_through}
+    pending_events = [
+        {**event, "candidate_snapshot_through": snapshot_through} for event in PENDING_EVENTS
+    ]
+    if declared:
+        coverage["pending_event_through"] = None
+        pending_events = []
     return {
         "schema_version": "2.2.0",
         "generated_at": generated_at,
-        "coverage": {**COVERAGE, "pending_candidate_snapshot_through": snapshot_through},
+        "coverage": coverage,
         "sources": [_file_record(path, timestamp_field="retrieved_at") for path in source_paths],
         "artifacts": [
             _file_record(path, rows=row_counts.get(path.name), timestamp_field="written_at")
@@ -116,9 +125,7 @@ def build_manifest(
         "event_archive_caveats": EVENT_ARCHIVE_CAVEATS,
         "excluded_calls": EXCLUDED_CALLS,
         "unacquired_results": UNACQUIRED_RESULTS,
-        "pending_events": [
-            {**event, "candidate_snapshot_through": snapshot_through} for event in PENDING_EVENTS
-        ],
+        "pending_events": pending_events,
     }
 
 
