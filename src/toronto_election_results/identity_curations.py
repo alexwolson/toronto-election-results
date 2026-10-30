@@ -11546,6 +11546,81 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# 2010-2017 municipal backlog (docs/research/backlog-2010-2017-2026-10-31.md).
+_EVENT_2006 = "evt_159f073fa6f15c23a840651723d3c3af"
+_EVENT_2014 = "evt_54673fd104ab5ef08eb865e162ac040c"
+_EVENT_2017_WARD_42 = "evt_b8284a5341635f79babdf7ddc512c2f6"
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="himy-syed-ward-19-and-mayoral-runs",
+        preferred_name="Himy Syed",
+        occurrences=(
+            _pinned_occurrence(
+                "can_aa9d5716cfec5fd9a41c9078983c7e0a",
+                _EVENT_2006,
+                "toronto_city_council",
+                "councillor",
+                "Himy Syed",
+            ),
+            _pinned_occurrence(
+                "can_c4d0cb7c0e0454578dc22b1e76b5729d",
+                _EVENT_2014,
+                "toronto_city_council",
+                "mayor",
+                "Hïmy Syed",
+            ),
+        ),
+        evidence_urls=(
+            "https://en.wikipedia.org/wiki/2010_Toronto_mayoral_election",
+            "https://en.wikipedia.org/wiki/2014_Toronto_mayoral_election",
+            "https://en.wikipedia.org/wiki/2006_Toronto_municipal_election",
+            "https://www.proquest.com/docview/439102538",
+        ),
+        rationale=(
+            "Wikipedia's 2014 mayoral election page says the 2014 candidate Himy Syed 'was also "
+            "a mayoral candidate in 2010', and its 2010 page says the 2010 mayoral candidate was "
+            "a candidate for councillor in Ward 19 before switching races. The Toronto Star's "
+            "2006 profiles list Himy Syed, an activist, artist and photoblogger, as a Ward 19 "
+            "council candidate, and Wikipedia's 2006 Ward 19 table gives the same unusual "
+            "spelling, Hïmy, as the 2014 record. The 2014 mayoral record, which carried its own "
+            "Person, joins the Person holding the 2006 run; the 2010 mayoral run is confirmed to "
+            "the same Person in the review dispositions."
+        ),
+        registry_person_ids=(
+            "per_7bdbea9203935ec1b28ef50ada4073c8",
+            "per_ee2c9d9b1fde5d0f96c594163ce98ba7",
+        ),
+        canonical_person_id="per_7bdbea9203935ec1b28ef50ada4073c8",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="virginia-jones-runs-2017-2022",
+        preferred_name="Virginia Jones",
+        occurrences=(
+            _pinned_occurrence(
+                "can_8baeff0912d8533ba6929a0fcabefc51",
+                _EVENT_2017_WARD_42,
+                "toronto_city_council",
+                "councillor",
+                "Virginia Jones",
+            ),
+            _pinned_occurrence(
+                "can_3c7e28a7b3435fe19b4ba1066ee1ec6a",
+                _EVENT_2022,
+                "toronto_city_council",
+                "councillor",
+                "Virginia Jones",
+            ),
+        ),
+        evidence_urls=("https://thelocal.to/ward-23-scarborough-north/",),
+        rationale=(
+            "The Local's 2022 Ward 23 guide says the candidate Virginia Jones ran in the 2017 "
+            "by-election for the former Ward 42, Scarborough-Rouge River. These two runs become "
+            "one new Person. The 2003 Ward 38 candidate is not joined because no source names "
+            "that run."
+        ),
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
