@@ -2451,7 +2451,7 @@ per_74c91288fb995ebc92893dfa312e6c76,Sean Keir,active,,2026-09-30
 per_74e662c41a455d49be5f3e2c263ac965,Roman Polochansky,active,,2026-08-20
 per_74f7e61454b85173a59fcf291400df0d,Nancy Miller,active,,2026-09-30
 per_750a694f782057c49e6dd22286fae572,Diem Marchand-Lafortune,active,,2026-08-20
-per_750a7d8da88459489fa9127a283d9481,Alex Chumak,active,,2026-09-30
+per_750a7d8da88459489fa9127a283d9481,Alex Chumak,deprecated,per_956cde49edc25791b2761b3156d46707,2026-09-30
 per_750d53e1877b5e4d998d490962e09c56,Simryn Fenby,active,,2026-08-20
 per_751d738d4cbc547596623cb49f83e52a,Nick Nobile,active,,2026-08-20
 per_751e8bfb1df156019ce19a9991744f80,Wendy Forrest,active,,2026-08-20
@@ -2472,6 +2472,7 @@ per_758199a183235ac99105bd103064fa8c,Maria De Angelis-Pater,active,,2026-08-20
 per_758a4b12ea145c53b18244f934fe278b,Joe Cadeau,active,,2026-08-21
 per_75991b20ccde5f928d11279edb3c2460,Ricardo Francis,active,,2026-08-20
 per_759a761a85865103afdc40f29422a634,Amani Oakley,active,,2026-09-30
+per_75a7e967ac0e573e88cc6e098b973a5a,Gaye Dale,active,,2026-09-30
 per_75a82a5ddd195da2bccc289f8513f8d2,PHILIP FERNANDEZ,active,,2026-08-20
 per_75acdc8e18f1542e9b84c1738d3909a9,Michael Alexander,active,,2026-08-20
 per_75b258215c26544d9e0a8f7f60f911c0,Julie Northrup,active,,2026-09-30
@@ -2712,7 +2713,7 @@ per_808f2ac22dbd5bacb0fe2c759c45c54f,Bruce Hare,active,,2026-08-20
 per_809975b4526459f393ca8313be822a44,Lewis Reford,active,,2026-08-20
 per_809bee600be25e75a05e5f2a8574591e,Sameer Rabbani,active,,2026-08-20
 per_80a5c78f17005d24a2a652d608e440c9,Gregory Wayne Roberts,active,,2026-09-30
-per_80acd45c49e95f828a087d11e1e96179,Janaki Bala-Krishan,active,,2026-09-30
+per_80acd45c49e95f828a087d11e1e96179,Janaki Bala-Krishan,deprecated,per_a95f21e1f60a599d88049ca9742753f0,2026-09-30
 per_80b09772b7f45a7fa7226fd8ecbd6148,SHANE O'TOOLE,active,,2026-08-20
 per_80b9627dbaf15fb18e0bbe5ee140d2fe,Ala'a Adib,active,,2026-08-21
 per_80c013f4b65e52c186121a3dcb7b49e8,Mary Floro,active,,2026-09-30
@@ -3952,6 +3953,7 @@ per_b9fa3518510b533a83ae52cb43114e1b,QADIRA JACKSON,active,,2026-08-20
 per_b9fdfe3b659c533585e7ae92c3f8626f,Michael Mazerolle,active,,2026-09-30
 per_ba02ae8a21845a909019f9602334e504,ALVIN CURLING,active,,2026-08-20
 per_ba077dff26cd56e6b7f7375c937f217d,Tim Murphy,active,,2026-09-30
+per_ba21a50377495f3fb615df25f5965f8c,Jeffery Zajac,active,,2026-09-30
 per_ba3fbf31a9fe5c73b9c487c8c1868c7e,Timothy Ellis,active,,2026-08-21
 per_ba591bc43f625721b802b9e7462ee68f,Zbigniew Koprowski,active,,2026-08-20
 per_ba62baf857e1579d8064dd3798011fb2,James Robinson,active,,2026-08-20
