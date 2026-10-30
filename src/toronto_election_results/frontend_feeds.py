@@ -33,6 +33,9 @@ TRUSTEE_RACES_SCHEMA_VERSION = 3
 PERSON_ALIASES_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
 _CERTIFIED_CANDIDATES_RESOURCE = "2026 Municipal Election — Certified Candidates"
+_DECLARED_RESULTS_RESOURCE = "2026 Municipal Election — Declaration of Results"
+# The 2026 field is the certified roster until the Clerk's declaration supplies its results.
+_CURRENT_FIELD_RESOURCES = {_CERTIFIED_CANDIDATES_RESOURCE, _DECLARED_RESULTS_RESOURCE}
 
 
 def _present(value: object) -> bool:
@@ -227,7 +230,7 @@ def build_mayoral_candidates_feed(
 ) -> dict[str, object]:
     """Build the certified current mayoral field with canonical identity history.
 
-    The current field comes directly from the canonical pending Candidacies. Past
+    The current field comes directly from the canonical 2026 Candidacies. Past
     elections join only through ``person_id``; this module performs no name match.
     ``campaign_suspended_on`` must already carry the reviewed Suspended Campaign
     curation, so an unapplied curation fails instead of publishing every date as null.
@@ -278,10 +281,10 @@ def build_mayoral_candidates_feed(
         election_year.eq(2026)
         & results["represented_body"].eq(_TORONTO_COUNCIL)
         & results["office_type"].eq("mayor")
-        & results["result_status"].eq("pending")
+        & results["result_status"].isin({"pending", "final"})
     ].copy()
     if current.empty:
-        raise ValueError("canonical results contain no pending 2026 Toronto mayoral field")
+        raise ValueError("canonical results contain no 2026 Toronto mayoral field")
     if current["candidacy_id"].isna().any() or current["candidacy_id"].duplicated().any():
         raise ValueError("current mayoral candidacy_id values must be non-null and unique")
     for column in ("event_id", "contest_id", "election_date"):
@@ -289,7 +292,8 @@ def build_mayoral_candidates_feed(
             raise ValueError(f"current mayoral field must have exactly one {column}")
     certified = (
         current["coverage_status"].eq("complete").all()
-        and current["source_resource"].eq(_CERTIFIED_CANDIDATES_RESOURCE).all()
+        and current["source_resource"].isin(_CURRENT_FIELD_RESOURCES).all()
+        and current["source_resource"].nunique() == 1
     )
     if not certified:
         raise ValueError("current mayoral field is not a complete certified roster")
@@ -379,7 +383,7 @@ def build_trustee_races_feed(
 ) -> dict[str, object]:
     """Build the certified trustee field and only its occurrence-verified history.
 
-    Current candidates come from the canonical pending Candidacies. Historical
+    Current candidates come from the canonical 2026 Candidacies. Historical
     rows are admitted only when the completed Luna/Terra review records an
     occurrence-level ``confirm`` decision. No name matching happens here.
     """
@@ -474,7 +478,8 @@ def build_trustee_races_feed(
         raise ValueError(f"unexpected trustee board contest coverage: {actual_contests}")
     certified = (
         current["coverage_status"].eq("complete").all()
-        and current["source_resource"].eq(_CERTIFIED_CANDIDATES_RESOURCE).all()
+        and current["source_resource"].isin(_CURRENT_FIELD_RESOURCES).all()
+        and current["source_resource"].nunique() == 1
     )
     if not certified:
         raise ValueError("current trustee field is not a complete certified roster")

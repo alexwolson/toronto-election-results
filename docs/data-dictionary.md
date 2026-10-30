@@ -29,10 +29,12 @@ coverage starts with the 1993-10-25 general election, including the 1996 Etobico
 The 1996 Etobicoke North and 1999 York West federal by-elections are pinned from Elections
 Canada's official voting results reports. A District keeps one name within its Boundary regime, so federal district 35008
 is Broadview—Greenwood in both 1997 and 2000, although Elections Canada ran the 2000 election
-under its new name, Toronto—Danforth. It also includes the official candidate-list snapshot as of
-2026-09-30 for the Toronto municipal general election scheduled for 2026-10-26. Contested
-Candidacies remain `pending` with no result values; four officially declared trustee Acclamations
-are final with null vote totals. The dataset includes Mayor, City
+under its new name, Toronto—Danforth. It also includes the 2026-10-26 Toronto municipal general election: Candidacies come from the
+City's official candidate list and vote totals from the City Clerk's Declaration of Results dated
+2026-10-29 (`data/reference/results_2026_declaration.csv`, transcribed from the pinned PDF by
+`scripts/transcribe_2026_declaration.py`). The declaration gives no electorate or ballots cast, so
+those fields are null for 2026 until the City publishes its final voter statistics. Four officially
+declared trustee Acclamations are final with null vote totals. The dataset includes Mayor, City
 Councillor, all four School Board Trustee systems, MP, and MPP elections. General elections,
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
@@ -86,7 +88,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `elected` | boolean | pending or unresolved official outcome | Authority-certified result; not blindly rederived from vote maximum. Where a source lists votes without marking winners, the top `seats_available` totals are elected and candidacies tied across the last seat stay null. |
 | `acclaimed` | boolean | never | True only for an official Acclamation. |
 | `outcome_method` | enum | never | `pending`, `vote`, `acclamation`, `void`, or another authority disposition. |
-| `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for the 2026 candidate snapshot. |
+| `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for a candidate snapshot without declared results. |
 | `coverage_status` | enum | never | `complete`, `partial`, or `source_missing`; independent of legal outcome. |
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
@@ -296,7 +298,10 @@ back to name matching or blanket historical coverage claims.
 - City voter-statistics files for explicitly scoped municipal turnout.
 - City Council attendance/voting records and reconciled historical rosters for municipal
   incumbency evidence.
-- City Clerk candidate-list JSON snapshots for pending 2026 Mayor and City Councillor Candidacies.
+- City Clerk candidate-list JSON snapshots for the 2026 Mayor and City Councillor Candidacies.
+- The City Clerk's 2026 Declaration of Results (PDF), pinned with its transcription. It omits the
+  winner's mark for Conseil scolaire Viamonde Ward 3; there, as the declaration itself states, the
+  candidate with the most votes is elected.
 - The same City roster acquisition includes all four trustee boards. The candidate snapshot date
   is the oldest of the three roster retrieval dates in Toronto time, not a fixed nomination date.
 - Endorsement evidence retained with each audited assertion, using original Endorser publications

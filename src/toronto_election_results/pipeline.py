@@ -55,7 +55,7 @@ from .ontario import (
     download_ontario_tabulations,
     load_ontario_results,
 )
-from .pending_candidates import load_pending_council_candidates
+from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
 from .person_alias_curations import (
     PERSON_ALIAS_CURATIONS_FILENAME,
     apply_person_alias_curations,
@@ -139,6 +139,8 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         CAMPAIGN_SUSPENSION_CURATIONS_FILENAME,
         PERSON_ALIAS_CURATIONS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
+        DECLARATION_FILENAME,
+        "results_2026/declaration_of_results_2026.pdf",
     ):
         endorsement_path = reference / filename
         if endorsement_path.is_file():
@@ -335,6 +337,11 @@ def _load_source_adapters(
         download=download or refresh_candidates,
         overwrite=download or refresh_candidates,
         trustee_crosswalk_path=reference / TRUSTEE_CROSSWALK_FILENAME,
+        declaration_path=(
+            reference / DECLARATION_FILENAME
+            if (reference / DECLARATION_FILENAME).is_file()
+            else None
+        ),
     )
     mayoral_career = load_mayoral_career_backfills(reference)
     municipal_archive = load_archive_results(reference)

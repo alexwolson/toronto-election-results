@@ -25,6 +25,17 @@ def test_candidate_snapshot_uses_the_oldest_roster_retrieval_in_toronto_time(tmp
     assert manifest["pending_events"][0]["candidate_snapshot_through"] == "2026-09-29"
 
 
+def test_a_pinned_declaration_closes_the_pending_2026_event(tmp_path):
+    declaration = tmp_path / "results_2026_declaration.csv"
+    declaration.write_text("board_id\n", encoding="utf-8")
+    manifest = build_manifest(
+        sources=[declaration], artifacts=[], row_counts={}, generated_at="fixed"
+    )
+    assert manifest["pending_events"] == []
+    assert manifest["coverage"]["pending_event_through"] is None
+    assert manifest["coverage"]["through"] == "2026-10-26"
+
+
 def test_partial_roster_inventory_cannot_claim_a_complete_snapshot(tmp_path):
     path = pending_candidate_paths(tmp_path)[0]
     path.write_text("{}")

@@ -9,11 +9,12 @@ Mayor, Councillor and Metro Councillor, plus the 1994, 1997 and 2000 School Boar
 elections. Where the City's archived results pages are incomplete (most 1994 and 1997 school-board
 races and eight 1994 council races), results come from the Toronto Star's printed final results.
 Only validated or certified
-outcomes are published as final; future elections retain pending results. The scheduled
-**2026-10-26 Toronto municipal general election** is also represented by the City's certified
-candidate-list snapshot acquired on **2026-09-30**. Mayor,
-Councillor, and contested Trustee Candidacies remain pending. Four Trustees declared elected by
-acclamation on August 24 are final results with null vote totals. The primary table has one row per
+outcomes are published as final; future elections retain pending results. The
+**2026-10-26 Toronto municipal general election** comes from the City's certified candidate list
+and the City Clerk's Declaration of Results of **2026-10-29**, which gives each candidate's vote
+total. Its electorate and ballots cast stay null until the City publishes the final voter
+statistics. Four Trustees declared elected by acclamation on August 24 are final results with null
+vote totals. The primary table has one row per
 Candidacy and is designed for election modelling, with `vote_share` as the main target. Every
 Contest from 2003 onward elects one member; `seats_available` records the seat count so that
 multi-member wards from before amalgamation (ADR 0011) can be filtered or modelled separately.

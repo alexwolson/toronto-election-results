@@ -2,8 +2,10 @@
 
 The City publishes the certified candidate roster separately from completed election
 results.  This adapter keeps that lifecycle distinction explicit: it emits the same
-source-adapter contract as the completed-result adapters, but every result field is
-unknown and ``result_status`` is ``pending``.
+source-adapter contract as the completed-result adapters, with every result field unknown
+and ``result_status`` ``pending``, until the City Clerk's Declaration of Results is pinned
+under ``data/reference``.  The declaration's vote totals are then applied to the roster's
+Candidacies and their results become ``final``.
 
 The source also publishes contact details and social links. Only the candidate's
 primary campaign link is retained as a Candidacy fact; private contact fields and
@@ -48,6 +50,16 @@ TRUSTEE_ACCLAMATION_URL = (
 MAYOR_CANDIDATES_FILENAME = "mayorCandidates_2026.json"
 COUNCILLOR_CANDIDATES_FILENAME = "councilorCandidates_2026.json"
 TRUSTEE_CANDIDATES_FILENAME = "trusteeCandidates_2026.json"
+
+DECLARATION_FILENAME = "results_2026_declaration.csv"
+DECLARATION_URL = (
+    "https://www.toronto.ca/wp-content/uploads/2026/10/"
+    "8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf"
+)
+_DECLARATION_RESOURCE = "2026 Municipal Election — Declaration of Results"
+# Contests where the declaration prints no "X" beside the winner. Conseil scolaire Viamonde
+# Ward 3's top vote-getter is set in bold like every other winner, but the mark is missing.
+_UNMARKED_DECLARED_WINNERS = {("conseil_scolaire_viamonde", "3")}
 
 _EVENT_ID = stable_id("evt", "toronto_city_clerk", ELECTION_DATE, "general")
 _SOURCE_RESOURCE = "2026 Municipal Election — Certified Candidates"
@@ -543,6 +555,113 @@ def parse_pending_candidate_rosters(
     return _pending_frame(rows)
 
 
+_DECLARATION_BODIES = {
+    "city": "toronto_city_council",
+    **{
+        board_id: str(metadata["represented_body"]) for board_id, metadata in BOARD_METADATA.items()
+    },
+}
+
+
+def _name_key(value: object) -> str:
+    return _WHITESPACE.sub(" ", unicodedata.normalize("NFKC", str(value))).strip().casefold()
+
+
+def _boolean_text(value: object, *, field: str) -> bool:
+    text = str(value).strip().casefold()
+    if text not in {"true", "false"}:
+        raise ValueError(f"declaration {field} must be true or false, not {value!r}")
+    return text == "true"
+
+
+def load_declaration_results(path: str | Path) -> pd.DataFrame:
+    """Load the pinned Declaration of Results and derive each Contest's winner."""
+
+    frame = pd.read_csv(path, dtype="string", keep_default_na=False)
+    required = {
+        "board_id",
+        "office_type",
+        "official_district_id",
+        "candidate_name",
+        "votes",
+        "marked_elected",
+        "acclaimed",
+        "source_url",
+    }
+    missing = sorted(required - set(frame.columns))
+    if missing:
+        raise ValueError(f"declaration results are missing: {', '.join(missing)}")
+    if not frame["source_url"].eq(DECLARATION_URL).all():
+        raise ValueError("declaration results must cite the City Clerk's 2026 declaration")
+    unknown = sorted(set(frame["board_id"]) - set(_DECLARATION_BODIES))
+    if unknown:
+        raise ValueError(f"declaration results name unknown boards: {unknown}")
+
+    frame = frame.assign(
+        represented_body=frame["board_id"].map(_DECLARATION_BODIES),
+        acclaimed=[_boolean_text(v, field="acclaimed") for v in frame["acclaimed"]],
+        marked_elected=[_boolean_text(v, field="marked_elected") for v in frame["marked_elected"]],
+        votes=pd.to_numeric(frame["votes"].replace("", pd.NA), errors="raise").astype("Int64"),
+        name_key=[_name_key(value) for value in frame["candidate_name"]],
+    )
+    contest = ["represented_body", "office_type", "official_district_id"]
+    if frame.duplicated([*contest, "name_key"]).any():
+        raise ValueError("declaration results repeat a candidate within a Contest")
+    if frame["votes"].isna().ne(frame["acclaimed"]).any():
+        raise ValueError("declaration results must give votes for every non-acclaimed candidate")
+
+    declared_winners: set[int] = set()
+    for key, group in frame.groupby(contest, sort=False):
+        if group["acclaimed"].any():
+            if len(group) != 1:
+                raise ValueError(f"declared acclamation {key!r} must have one candidate")
+            winners = group.index.tolist()
+        else:
+            top = group["votes"].max()
+            winners = group.index[group["votes"].eq(top)].tolist()
+            if len(winners) != 1:
+                raise ValueError(f"declaration Contest {key!r} has a tie for first place")
+        marked = group.index[group["marked_elected"]].tolist()
+        unmarked = (key[0], key[2]) in _UNMARKED_DECLARED_WINNERS
+        if marked != ([] if unmarked else winners):
+            raise ValueError(f"declaration Contest {key!r} marks {marked}, expected {winners}")
+        declared_winners.update(winners)
+    frame["elected"] = frame.index.isin(declared_winners)
+    return frame
+
+
+def apply_declaration_results(roster: pd.DataFrame, declaration: pd.DataFrame) -> pd.DataFrame:
+    """Return the roster with the declaration's final results applied one-to-one."""
+
+    keys = ["represented_body", "office_type", "official_district_id", "name_key"]
+    frame = roster.assign(name_key=[_name_key(value) for value in roster["candidate_name"]])
+    merged = frame.merge(
+        declaration[[*keys, "votes", "elected", "acclaimed"]],
+        on=keys,
+        how="outer",
+        suffixes=("", "_declared"),
+        indicator=True,
+        validate="one_to_one",
+    )
+    unmatched = merged.loc[merged["_merge"].ne("both")]
+    if not unmatched.empty:
+        sample = unmatched[[*keys, "_merge"]].head(10).to_dict("records")
+        raise ValueError(f"declaration and candidate roster disagree: {sample}")
+    acclaimed = merged["acclaimed"].astype(bool)
+    if acclaimed.ne(merged["outcome_method"].eq("acclamation")).any():
+        raise ValueError("declaration acclamations do not match the declared roster acclamations")
+
+    merged["votes"] = merged["votes_declared"].astype("Int64")
+    merged["elected"] = merged["elected_declared"].astype("boolean")
+    merged.loc[~acclaimed, "outcome_method"] = "vote"
+    merged["result_status"] = "final"
+    merged["source_resource"] = _DECLARATION_RESOURCE
+    merged["source_detail"] = [
+        f"{detail};{DECLARATION_URL}" for detail in merged["source_detail"].astype(str)
+    ]
+    return _pending_frame(merged[PENDING_ADAPTER_COLUMNS].to_dict("records"))
+
+
 def load_pending_council_candidates(
     source_dir: str | Path = Path("data/raw/pending_candidates"),
     *,
@@ -550,8 +669,9 @@ def load_pending_council_candidates(
     session: requests.Session | None = None,
     overwrite: bool = False,
     trustee_crosswalk_path: str | Path = Path("data/reference") / TRUSTEE_CROSSWALK_FILENAME,
+    declaration_path: str | Path | None = None,
 ) -> pd.DataFrame:
-    """Load all certified 2026 Toronto municipal candidate rosters."""
+    """Load the certified 2026 rosters, with the declared results when they are pinned."""
 
     paths = pending_candidate_paths(source_dir)
     if download:
@@ -565,7 +685,10 @@ def load_pending_council_candidates(
         raise FileNotFoundError(
             "missing official 2026 candidate roster file(s): " + ", ".join(missing)
         )
-    return parse_pending_candidate_rosters(
+    roster = parse_pending_candidate_rosters(
         *paths,
         trustee_crosswalk_path=trustee_crosswalk_path,
     )
+    if declaration_path is None:
+        return roster
+    return apply_declaration_results(roster, load_declaration_results(declaration_path))
