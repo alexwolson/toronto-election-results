@@ -508,8 +508,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1551
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 929,
-        "confirmed": 619,
+        "unresolved": 892,
+        "confirmed": 656,
         "rejected": 3,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -747,13 +747,10 @@ def test_person_record_merges_join_biography_backed_careers():
         == "per_4cdca864f8055243963b86909ed39038"
     )
     assert redirects.loc["per_4cdca864f8055243963b86909ed39038", "identity_status"] == "active"
-    # Kalevar's 1994-2000 council runs, Mulhall's 2014 run and Caldwell's 2019 federal
-    # run stay unresolved.
+    # Mulhall's 2014 run and Caldwell's 2019 federal run stay unresolved. (Kalevar's
+    # 1994-2000 council runs were later confirmed from the Toronto Star's profiles.)
     unresolved = active.loc[active["link_status"].eq("unresolved")].set_index("candidacy_id")
     assert {
-        "can_69d13f11fbcc5d80889e72901424377e",
-        "can_a8b8878648c65af2a75fe974865c078c",
-        "can_524a3ab594925691a736de3baeb5e24d",
         "can_227eaae6d22652989e68a0314620f2e3",
         "can_98f13c94ab1f560994954198b31935dd",
     } <= set(unresolved.index)
@@ -1113,3 +1110,124 @@ def test_star_profiles_settle_backlog_runs():
     }.items():
         assert unresolved.loc[candidacy_id, "person_id"] == person_id
         assert pd.isna(results.loc[candidacy_id, "person_id"])
+
+
+def test_star_ward_previews_link_backlog_runs():
+    """The Star's ward previews, race stories and riding stories bridge more backlog runs."""
+
+    links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    results = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
+    )
+    revised = decisions.loc[decisions["reviewer"].eq("star-ward-previews-2026-10-30")]
+    assert len(revised) == 38
+    assert revised.groupby(["decision", "confidence"]).size().to_dict() == {
+        ("confirmed", "high"): 37,
+        ("unresolved", "medium"): 1,
+    }
+    accepted = revised.loc[revised["decision"].eq("confirmed")]
+    assert (
+        results.loc[accepted["candidacy_id"], "person_id"].tolist()
+        == accepted["target_person_id"].tolist()
+    )
+    # Paul Crawford's 2000 TCDSB win stays apart: a second trustee of that name sat on the
+    # Durham public board, and no source calls the 2003 candidate the incumbent.
+    held = revised.loc[revised["decision"].eq("unresolved"), "candidacy_id"].tolist()
+    assert held == ["can_5fbf667080165d6da7d8df6a05ae986e"]
+    assert pd.isna(results.loc[held[0], "person_id"])
+
+    active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
+    confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
+    careers = {
+        # Chai Kalevar: 1993 National Party, 1994-2000 council runs, later mayoral runs.
+        "per_7a6c09e82feb52cdbcd1fa757f7c708d": [
+            "can_45feeeb8acb552f6816da3ce7e48846b",
+            "can_69d13f11fbcc5d80889e72901424377e",
+            "can_a8b8878648c65af2a75fe974865c078c",
+            "can_524a3ab594925691a736de3baeb5e24d",
+        ],
+        # John Doherty: 1993 NDP Davenport, Toronto trustee, 1997 council.
+        "per_ed96a950": [
+            "can_204ac98a9b6f5b7780b8426d6bcbd7c0",
+            "can_f275f1db0b365b798ddf1b8928b8272f",
+        ],
+        # John Steele: Communist League mayoral runs and the 2003 provincial run.
+        "per_d0086333": [
+            "can_bd305cd075c9575e8712a875b83681f5",
+            "can_2fe5215fa60e5a369a3fea55f59955bc",
+            "can_45191a44a24353f682ec876f44cf2a27",
+        ],
+        # Paul Ferreira: federal, council and provincial runs.
+        "per_3ec6d8e6": [
+            "can_89b7defefff958269ec338774bb2c680",
+            "can_86da1c90cd6751a9ab45ba6015b295f3",
+            "can_271502d6684958e3a8c8216768cb7828",
+            "can_397c1de19421507db009c27ec598c96a",
+        ],
+        # Janaki Bala-Krishnan, including the 1997 run printed "Bala-Krishan".
+        "per_a95f21e1f60a599d88049ca9742753f0": [
+            "can_3488b2de8de75306bc7a9913fb06f440",
+            "can_de5e1ee3416c5e6dbcb32903e8ecacbf",
+            "can_1b7310a50d0652e4a4f4f95706086bbd",
+        ],
+        # Al Chumak, printed "Alex Chumak" in 1997.
+        "per_956cde49edc25791b2761b3156d46707": [
+            "can_6361e989519b56789271681c61fc3cd3",
+            "can_dfb362d413b75e4a8cd18b60d0d2d9be",
+        ],
+        # Bob Smith: 2003 Ward 31, 2006 mayor and 2014 Ward 31.
+        "per_17e2dabe": [
+            "can_bb6e6f84d844518fa414d8de1a034460",
+            "can_98e4815b33ec543795f6d28ed05ad4a1",
+            "can_48932970021a5fc68e44c30c115d9899",
+        ],
+        # Gael Hepworth: 1993 NDP Eglinton-Lawrence and the 1994 York trustee run.
+        "per_d2b0366a": [
+            "can_b240556453c45d34ac7bd0e1a1d5caf7",
+            "can_68527bb2d940554ea9bdac1fbf58a256",
+        ],
+        # Benson Lau: 1994 council run and 2008 Conservative run.
+        "per_8da86474": [
+            "can_a5c16b3fe67e5ed0a81a9ed740307f9a",
+            "can_5e81472e3c12582cba2343b9a0e8b9c3",
+        ],
+    }
+    for person_prefix, candidacy_ids in careers.items():
+        person_ids = confirmed.loc[candidacy_ids, "person_id"]
+        assert person_ids.nunique() == 1, person_prefix
+        assert person_ids.iloc[0].startswith(person_prefix), person_prefix
+        assert people.loc[person_ids.iloc[0], "identity_status"] == "active"
+    for person_id, canonical in {
+        "per_80acd45c49e95f828a087d11e1e96179": "per_a95f21e1f60a599d88049ca9742753f0",
+        "per_750a7d8da88459489fa9127a283d9481": "per_956cde49edc25791b2761b3156d46707",
+    }.items():
+        assert people.loc[person_id, "identity_status"] == "deprecated"
+        assert people.loc[person_id, "redirect_to_person_id"] == canonical
+
+    new_people = {
+        "jeffery-zajac-public-board-runs-1994-2000": [
+            "can_f15795fa3dd5572e949fd5a550e211e7",
+            "can_fd8a391d667755bdaf88693bd5271be8",
+            "can_d35ad89d16c25f50a73d14117e343ba3",
+        ],
+        "gaye-dale-scarborough-trustee-1994-1997": [
+            "can_ee92471c86c45b65b2e88eb242a09330",
+            "can_e3437f1214255505b5976870e9284535",
+        ],
+    }
+    for assertion_id, candidacy_ids in new_people.items():
+        person_id = stable_id("per", "curated_identity_assertion", assertion_id)
+        assert people.loc[person_id, "identity_status"] == "active", assertion_id
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), assertion_id
+    # Their 2014 namesakes keep their own records.
+    for candidacy_id, person_prefix in {
+        "can_750bcde5393e5d779e35ca070b47e339": "per_5d02c5ba",
+        "can_6649b3f9eb045bf28d1528ccede19d62": "per_336293d6",
+    }.items():
+        assert confirmed.loc[candidacy_id, "person_id"].startswith(person_prefix)

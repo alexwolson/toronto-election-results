@@ -11324,6 +11324,127 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Joins and new People from the Toronto Star's ward previews and race stories for
+# 1994-2006 (docs/research/star-ward-previews-2026-10-30.md).
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="janaki-bala-krishnan-1997-council-run",
+        preferred_name="Janaki Bala-Krishnan",
+        occurrences=(
+            _pinned_occurrence(
+                "can_de5e1ee3416c5e6dbcb32903e8ecacbf",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Janaki Bala-Krishan",
+            ),
+        ),
+        evidence_urls=("https://www.proquest.com/docview/1346619352",),
+        rationale=(
+            "The City's 1997 results print the Ward 11 (Don Parkway) council candidate as 'Janaki Bala-Krishan', held as a separate Person. The Toronto Star's 1997 profile prints her as Janaki Bala-Krishnan, a hydro engineer and community activist 'who ran provincially in the 1995 election'. That is the NDP candidate in Don Mills in 1995, who ran again in Don Valley East in 1999. The 1997 record joins that record; the candidacy keeps the name as the City printed it."
+        ),
+        registry_person_ids=(
+            "per_a95f21e1f60a599d88049ca9742753f0",
+            "per_80acd45c49e95f828a087d11e1e96179",
+        ),
+        canonical_person_id="per_a95f21e1f60a599d88049ca9742753f0",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="al-chumak-1994-1997-council-runs",
+        preferred_name="Al Chumak",
+        occurrences=(
+            _pinned_occurrence(
+                "can_6361e989519b56789271681c61fc3cd3",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "former_toronto_city_council",
+                "councillor",
+                "Chumak, Al",
+            ),
+            _pinned_occurrence(
+                "can_dfb362d413b75e4a8cd18b60d0d2d9be",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Alex Chumak",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1347239887",
+            "https://www.proquest.com/docview/1346619482",
+        ),
+        rationale=(
+            "Al Chumak finished second to David Hutcheon in Toronto Ward 1 in 1994. The Toronto Star's 1997 story on the Toronto wards describes the Ward 19 (High Park) candidate as 'former Toronto public school board trustee Al Chumak, who ran a respectable second to Hutcheon in 1994', and its 1997 profile prints him as Alex Chumak, a criminologist and long-time school trustee. The two records are joined."
+        ),
+        registry_person_ids=(
+            "per_956cde49edc25791b2761b3156d46707",
+            "per_750a7d8da88459489fa9127a283d9481",
+        ),
+        canonical_person_id="per_956cde49edc25791b2761b3156d46707",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="jeffery-zajac-public-board-runs-1994-2000",
+        preferred_name="Jeffery Zajac",
+        occurrences=(
+            _pinned_occurrence(
+                "can_f15795fa3dd5572e949fd5a550e211e7",
+                "evt_f3d5134ef9b25e0a9179ede437def849",
+                "etobicoke_board_of_education",
+                "trustee",
+                "Jeffery Zajac",
+            ),
+            _pinned_occurrence(
+                "can_fd8a391d667755bdaf88693bd5271be8",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Jeffery Zajac",
+            ),
+            _pinned_occurrence(
+                "can_d35ad89d16c25f50a73d14117e343ba3",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_district_school_board",
+                "trustee",
+                "JEFFERY ZAJAC",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1355146775",
+            "https://www.proquest.com/docview/1346619727",
+            "https://www.proquest.com/docview/1349496787",
+        ),
+        rationale=(
+            "The Toronto Star's profiles describe Jeffery Zajac as an accountant in the 1994 Etobicoke Board of Education race (Ward 9), the 1997 TDSB Ward 19 race and the 2000 TDSB Ward 1 race, where he was 'taking his third run at the job'. These three runs become one new Person. The 2014 TCDSB Ward 1 candidate is not joined: it is a different board, 14 years on, and no source describes him."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="gaye-dale-scarborough-trustee-1994-1997",
+        preferred_name="Gaye Dale",
+        occurrences=(
+            _pinned_occurrence(
+                "can_ee92471c86c45b65b2e88eb242a09330",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "scarborough_board_of_education",
+                "trustee",
+                "Dale, Gaye",
+            ),
+            _pinned_occurrence(
+                "can_e3437f1214255505b5976870e9284535",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Gaye Dale",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1355146762",
+            "https://www.proquest.com/docview/1346619482",
+        ),
+        rationale=(
+            "Gaye Dale won Scarborough Board of Education Ward 1 in 1994, when the Toronto Star's profile called her a nurse and homemaker, and the Star's 1997 profile of the Ward 13 (Scarborough Bluffs) council candidate calls her a school board veteran. These two runs become one new Person. The 2014 TDSB Ward 18 candidate is not joined: no source describes her, and the gap is 17 years."
+        ),
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
