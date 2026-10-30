@@ -169,5 +169,4 @@ def test_runs_named_in_the_2026_guides_join_their_candidates():
     assert sorted(murphy.values()) == [["2014"], ["2018", "2022", "2023", "2026"]]
     assert people("Nadia Guerrera").popitem()[1] == ["2018", "2022", "2025", "2026"]
     assert people("Mary Fragedakis").popitem()[1] == ["2010", "2014", "2018", "2022", "2026"]
-    marshall = people("Cleveland Marshall")
-    assert sorted(marshall.values(), key=len) == [["2024"], ["2022", "2023", "2025", "2026"]]
+    assert list(people("Cleveland Marshall").values()) == [["2022", "2023", "2024", "2025", "2026"]]
