@@ -508,8 +508,8 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1610
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 899,
-        "confirmed": 708,
+        "unresolved": 890,
+        "confirmed": 717,
         "rejected": 3,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -1117,9 +1117,10 @@ def test_2026_proposals_are_settled_from_candidate_guides_and_election_pages():
         REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
     ).set_index("candidacy_id")
     reviewed = decisions.loc[decisions["reviewer"].eq("results-2026-proposals-2026-10-30")]
-    assert len(reviewed) == 59
+    # John Kladitis's 2026 row was settled later, with his other runs.
+    assert len(reviewed) == 58
     assert results.loc[reviewed["candidacy_id"], "election_date"].eq("2026-10-26").all()
-    assert reviewed["decision"].value_counts().to_dict() == {"confirmed": 52, "unresolved": 7}
+    assert reviewed["decision"].value_counts().to_dict() == {"confirmed": 52, "unresolved": 6}
     accepted = reviewed.loc[reviewed["decision"].eq("confirmed")]
     assert accepted["confidence"].eq("high").all()
     assert (
@@ -1127,7 +1128,6 @@ def test_2026_proposals_are_settled_from_candidate_guides_and_election_pages():
         == accepted["target_person_id"].tolist()
     )
     held = reviewed.loc[reviewed["decision"].eq("unresolved"), "candidacy_id"]
-    assert results.loc[held, "person_id"].isna().all()
     assert set(results.loc[held, "candidate_name"]) == {
         "Peter De Marco",
         "Joseph Osuji",
@@ -1135,8 +1135,10 @@ def test_2026_proposals_are_settled_from_candidate_guides_and_election_pages():
         "Michael Mitchell",
         "Adam Pham",
         "Michael Connor",
-        "John Kladitis",
     }
+    # Bob Murphy's 2026 run joins his 2018-2023 runs on a new Person instead of the 2014 one.
+    held_names = results.loc[held, "candidate_name"]
+    assert results.loc[held[held_names.ne("Bob Murphy").to_numpy()], "person_id"].isna().all()
 
 
 def test_star_ward_previews_link_backlog_runs():

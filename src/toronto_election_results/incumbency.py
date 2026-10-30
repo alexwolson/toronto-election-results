@@ -35,7 +35,21 @@ TERM_BEFORE_ELECTION = {
     2014: "2010-2014",
     2018: "2014-2018",
     2022: "2018-2022",
+    2026: "2022-2026",
 }
+
+# The 2022-2026 attendance export spells its columns with spaces.
+_ATTENDANCE_COLUMNS = {
+    "First Name": "FirstName",
+    "Last Name": "LastName",
+    "Session Date": "SessionDate",
+}
+
+
+def read_attendance(path: Path) -> pd.DataFrame:
+    """Read one City Council attendance export under the column names of the older terms."""
+    return pd.read_csv(path).rename(columns=_ATTENDANCE_COLUMNS)
+
 
 ATTENDANCE_CONFIDENCE = 0.95
 VOTING_CONFIDENCE = 0.90
@@ -85,7 +99,7 @@ def council_members_before(year: int, *, raw: Path = RAW, window_days: int = 183
     """Sitting members immediately before ``year``'s election, from attendance + voting."""
     term = TERM_BEFORE_ELECTION[year]
 
-    attendance = pd.read_csv(raw / "attendance" / f"councillors-meeting-attendance-{term}.csv")
+    attendance = read_attendance(raw / "attendance" / f"councillors-meeting-attendance-{term}.csv")
     council = attendance[attendance["Committee"] == "City Council"].copy()
     council["date"] = pd.to_datetime(council["SessionDate"], errors="coerce")
     final_window = council[
@@ -142,7 +156,7 @@ def council_members_before(year: int, *, raw: Path = RAW, window_days: int = 183
 
 
 def build_city_composition(*, raw: Path = RAW, years=tuple(TERM_BEFORE_ELECTION)) -> pd.DataFrame:
-    """Council composition before each City-data election year (2010–2022)."""
+    """Council composition before each City-data election year (2010–2026)."""
     return pd.concat([council_members_before(y, raw=raw) for y in years], ignore_index=True)
 
 
@@ -154,7 +168,7 @@ def council_surnames(*, raw: Path = RAW) -> set[str]:
     """
     surnames: set[str] = set()
     for path in sorted((raw / "attendance").glob("*.csv")):
-        for last in pd.read_csv(path)["LastName"].dropna().astype(str):
+        for last in read_attendance(path)["LastName"].dropna().astype(str):
             cleaned = " ".join(last.split())
             if " " in cleaned:
                 surnames.add(cleaned.lower())
@@ -260,6 +274,7 @@ ROSTER_CONFIDENCE = {
     2018: CITY_ROSTER_CONFIDENCE,
     2022: CITY_ROSTER_CONFIDENCE,
     2023: 0.90,
+    2026: CITY_ROSTER_CONFIDENCE,
 }
 
 

@@ -11445,6 +11445,80 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Runs named in the 2026 ward guides (docs/research/results-2026-2026-10-30.md).
+_EVENT_2018 = "evt_e4fe1909276b5fbd91057022b350fff3"
+_EVENT_2022 = "evt_a52ef78967f05336bdb5d591fd50f122"
+_EVENT_2023_MAYOR = "evt_eabc9f0a14165449acd2f9a1e7d557ce"
+_EVENT_2026 = "evt_27c3a2e636a457f1b1f922774525b74a"
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="han-dong-2026-council-run",
+        preferred_name="Han Dong",
+        occurrences=(
+            _pinned_occurrence(
+                "can_4ae18d5f140d5601bcef68562caa0f77",
+                _EVENT_2026,
+                "toronto_city_council",
+                "councillor",
+                "Han Dong",
+            ),
+        ),
+        evidence_urls=("https://thelocal.to/ward-23-scarborough-north-2026/",),
+        rationale=(
+            "The Local's 2026 Ward 23 guide describes council candidate Han Dong as the former "
+            "Liberal MPP for Trinity-Spadina (2014-2018) who lost the redrawn seat in 2018 and "
+            "won Don Valley North federally in 2019 and 2021. Those are the target's runs."
+        ),
+        registry_person_ids=("per_1e050548381953f7b04a0284a97ac566",),
+        canonical_person_id="per_1e050548381953f7b04a0284a97ac566",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="bob-murphy-ward-12-runs-2018-2026",
+        preferred_name="Bob Murphy",
+        occurrences=(
+            _pinned_occurrence(
+                "can_ebf2b32e08f056f887ed30386ef031b5",
+                _EVENT_2018,
+                "toronto_city_council",
+                "councillor",
+                "Bob Murphy",
+            ),
+            _pinned_occurrence(
+                "can_46caccb6917d5d3e9e94349284e3993b",
+                _EVENT_2022,
+                "toronto_city_council",
+                "councillor",
+                "Bob Murphy",
+            ),
+            _pinned_occurrence(
+                "can_15006fa79b5d59eebfc3c3fa525a4989",
+                _EVENT_2023_MAYOR,
+                "toronto_city_council",
+                "mayor",
+                "Bob Murphy",
+            ),
+            _pinned_occurrence(
+                "can_5efcb26d1a7d5b03ae5d938f5f43fb33",
+                _EVENT_2026,
+                "toronto_city_council",
+                "councillor",
+                "Bob Murphy",
+            ),
+        ),
+        evidence_urls=(
+            "https://thelocal.to/ward-12-toronto-st-pauls-2026/",
+            "https://thelocal.to/ward-12-toronto-st-pauls/",
+        ),
+        rationale=(
+            "The Local's 2026 Ward 12 guide says council candidate Bob Murphy, a legal writer, "
+            "came third in Toronto-St. Paul's in 2022 and ran for mayor in 2023, and its 2022 "
+            "guide says that candidate was running again after taking 342 votes in 2018. These "
+            "four runs become one new Person. The 2014 Ward 22 candidate is not joined: the name "
+            "is common and no source names that run, although it was in the same part of the city."
+        ),
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 

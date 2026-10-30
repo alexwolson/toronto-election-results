@@ -126,3 +126,48 @@ def test_published_2026_results_are_final_and_match_the_declaration():
     )
     expected = declared.groupby("represented_body")["votes"].sum().astype(int).to_dict()
     assert published == expected
+
+
+def test_2026_council_incumbency_uses_the_2022_2026_council_roster():
+    results = pd.read_csv(REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string")
+    current = results.loc[
+        results["election_date"].eq("2026-10-26")
+        & results["represented_body"].eq("toronto_city_council")
+    ]
+    incumbents = current.loc[current["incumbent"].eq("True")]
+    assert incumbents.groupby("office_type").size().to_dict() == {"councillor": 22, "mayor": 1}
+    assert incumbents.loc[incumbents["office_type"].eq("mayor"), "candidate_name"].tolist() == [
+        "Olivia Chow"
+    ]
+    # A councillor running for mayor is not a mayoral incumbent.
+    bradford = current.loc[current["candidate_name"].eq("Brad Bradford")]
+    assert bradford["incumbent"].tolist() == ["False"]
+    # Every Candidacy with a Person has a known incumbency; the rest stay null.
+    assert current.loc[current["person_id"].notna(), "incumbent"].notna().all()
+    assert current.loc[current["person_id"].isna(), "incumbent"].isna().all()
+
+
+def test_runs_named_in_the_2026_guides_join_their_candidates():
+    results = pd.read_csv(REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string")
+
+    def people(name):
+        rows = results.loc[results["candidate_name"].str.casefold().eq(name.casefold())]
+        return (
+            rows.sort_values("election_date")
+            .groupby("person_id", dropna=False)["election_date"]
+            .apply(lambda dates: [date[:4] for date in dates])
+            .to_dict()
+        )
+
+    assert people("Han Dong") == {
+        "per_1e050548381953f7b04a0284a97ac566": ["2003", "2014", "2018", "2019", "2021", "2026"]
+    }
+    assert list(people("John Kladitis").values()) == [
+        ["2014", "2017", "2018", "2019", "2022", "2026"]
+    ]
+    murphy = people("Bob Murphy")
+    assert sorted(murphy.values()) == [["2014"], ["2018", "2022", "2023", "2026"]]
+    assert people("Nadia Guerrera").popitem()[1] == ["2018", "2022", "2025", "2026"]
+    assert people("Mary Fragedakis").popitem()[1] == ["2010", "2014", "2018", "2022", "2026"]
+    marshall = people("Cleveland Marshall")
+    assert sorted(marshall.values(), key=len) == [["2024"], ["2022", "2023", "2025", "2026"]]
