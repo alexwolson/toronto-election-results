@@ -11072,6 +11072,258 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
     ),
 )
 
+# Joins and new People from the Toronto Star's printed candidate profiles and election
+# coverage for 1994-2006, applied to the unresolved backlog
+# (docs/research/star-profiles-backlog-2026-10-30.md).
+_STAR_1994 = {
+    "E1": "https://www.proquest.com/docview/1355146755",
+    "E3": "https://www.proquest.com/docview/1355147848",
+    "E6": "https://www.proquest.com/docview/1355146762",
+}
+_STAR_1997 = {
+    "K2": "https://www.proquest.com/docview/1346619352",
+    "K3": "https://www.proquest.com/docview/1346619482",
+    "K12": "https://www.proquest.com/docview/1346619395",
+}
+_STAR_2000 = {
+    "G2": "https://www.proquest.com/docview/1349496842",
+    "G3": "https://www.proquest.com/docview/1349496723",
+    "G13": "https://www.proquest.com/docview/1349496702",
+}
+_STAR_2003 = {
+    "G5": "https://www.proquest.com/docview/1348973050",
+    "G16": "https://www.proquest.com/docview/1348973161",
+}
+
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="worrick-russell-scarborough-council-runs",
+        preferred_name="Worrick Russell",
+        occurrences=(
+            _pinned_occurrence(
+                "can_20de29c63af5510d8ed59d31951e0465",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "metro_toronto_council",
+                "councillor",
+                "Russell, Worrick",
+            ),
+            _pinned_occurrence(
+                "can_dde07065effc503088169b9e836c72e9",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Russell Worrick",
+            ),
+        ),
+        evidence_urls=(_STAR_1997["K3"], _STAR_2003["G5"]),
+        rationale=(
+            "The City's 1997 results list the Ward 15 (Scarborough) council candidate as 'Russell Worrick'; the Toronto Star's 1997 profiles print him as Worrick Russell, a paralegal and mediator, and its 2003 profile of the Ward 35 candidate Worrick Russell calls him 'the mediator'. The reversed 1997 record is joined to the 2000-2006 Ward 35 record, together with his 1994 Metro Council race in Scarborough City Centre, the previous race in an unbroken run of Scarborough council campaigns under a rare name."
+        ),
+        registry_person_ids=(
+            "per_879ab85d24c6595f849d3aed56623719",
+            "per_f94551f7f5d15eb591afa5ecdef01b89",
+        ),
+        canonical_person_id="per_879ab85d24c6595f849d3aed56623719",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="andre-duclos-monavenir-2000-2003",
+        preferred_name="André Duclos",
+        occurrences=(
+            _pinned_occurrence(
+                "can_42a0198bb1bb5b53aa91b7b6e032fd23",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "ANDRÉ DUCLOS",
+            ),
+            _pinned_occurrence(
+                "can_e3dd5923bfce53868bd76e2e25ce6aac",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "conseil_scolaire_catholique_monavenir",
+                "trustee",
+                "Duclos, Andre",
+            ),
+        ),
+        evidence_urls=(
+            _STAR_2000["G13"],
+            _STAR_2003["G16"],
+            "https://www.cscmonavenir.ca/publications/rapports-annuel/rapport0001.pdf",
+        ),
+        rationale=(
+            "The Toronto Star's 2000 profiles list André Duclos as the acclaimed incumbent in the French Catholic board's Ward 3, and MonAvenir's 2000-01 annual report names him board president. The Star's 2003 profile of the Ward 4 candidate André Duclos says he looks forward to serving his constituents 'as he has in the past'. The 2000 and 2003 records are joined; his 1994 French-section race stays unresolved."
+        ),
+        registry_person_ids=(
+            "per_01d27f754bc75218aa848e00887a9d36",
+            "per_26f0cdfdce3b5437b5c0ba6d680019c4",
+        ),
+        canonical_person_id="per_01d27f754bc75218aa848e00887a9d36",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="nicolo-fortunato-former-york-councillor",
+        preferred_name="Nicolò Fortunato",
+        occurrences=(
+            _pinned_occurrence(
+                "can_76010df7f8295873b55faf7ea227d689",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "Nicolo Fortunato",
+            ),
+            _pinned_occurrence(
+                "can_5437dbccafbc53d4b7fe9d6f5bce38bd",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "NICOLÒ FORTUNATO",
+            ),
+        ),
+        evidence_urls=(_STAR_1997["K2"], _STAR_2000["G2"]),
+        rationale=(
+            "The Toronto Star's 1997 profile calls Ward 5 council candidate Nicolo Fortunato a former York councillor, and its 2000 profile calls the Ward 2 candidate a TV producer and journalist and a three-term York councillor. The 1997 run, held as a claim on the 2003 'Nicolo Fortunato' record, joins the 2000 record; the 2003 and 2006 runs are not covered and stay as they were."
+        ),
+        registry_person_ids=("per_2fe800d296a3557586d010943ea11673",),
+        canonical_person_id="per_2fe800d296a3557586d010943ea11673",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="michael-yorke-north-toronto-trustee-runs",
+        preferred_name="Michael Yorke",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c546f369813d5ec1b86563222cbd9fa8",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "toronto_board_of_education",
+                "trustee",
+                "Yorke, Michael",
+            ),
+            _pinned_occurrence(
+                "can_8eaab9d5d7895a13aa9091d45f41b028",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Michael Yorke",
+            ),
+        ),
+        evidence_urls=(
+            _STAR_1994["E6"],
+            _STAR_1997["K12"],
+            _STAR_1994["E1"],
+            "https://www.proquest.com/docview/1348398675",
+        ),
+        rationale=(
+            "The Toronto Star's profiles describe the North Toronto trustee candidate Michael Yorke as a travel agent in 1994 (Toronto Board of Education, city ward 16) and 1997 (TDSB Ward 14). These two runs become one new Person. The 1994 council candidate of the same name in Ward 9 (East Danforth) is a carpenter and union business representative in the Star's 1994 profile, and the Star's 1999 Scarborough Southwest riding story describes the NDP candidate Michael Yorke as a carpenter of 20 years and a Carpenters' Union organizer. Those two runs belong to the carpenter and are not joined to these."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="mike-thomas-scarborough-trustee-1997-2000",
+        preferred_name="Mike Thomas",
+        occurrences=(
+            _pinned_occurrence(
+                "can_04ed6458b6405ea5b0a6ded8be0d5ce6",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_district_school_board",
+                "trustee",
+                "Mike Thomas",
+            ),
+            _pinned_occurrence(
+                "can_e8daf8b5b96050b48617f989a2a46a36",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "MIKE THOMAS",
+            ),
+        ),
+        evidence_urls=(
+            _STAR_1997["K12"],
+            _STAR_2000["G3"],
+            "https://www.proquest.com/docview/1348270087",
+        ),
+        rationale=(
+            "Mike Thomas, described by the Toronto Star as a student, won TDSB Ward 9 (north-east Scarborough) in 1997. The Star's 2000 profile of the Ward 41 (Scarborough-Rouge River) council candidate calls him a school trustee, and its 2000 council preview calls him a public school trustee and former executive assistant to Councillor Mike Tzekas. These two runs become one new Person. The 1994 Scarborough council and 1995 Progressive Conservative runs of a York University student of the same name are a separate record (mike-thomas-1994-scarborough-council-1995-pc): no source says the trustee is that candidate."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="mike-thomas-1994-scarborough-council-1995-pc",
+        preferred_name="Mike Thomas",
+        occurrences=(
+            _pinned_occurrence(
+                "can_9997e03f04b35d24b8e33d665936d868",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "scarborough_city_council",
+                "councillor",
+                "Thomas, Michael",
+            ),
+            _pinned_occurrence(
+                "can_1fa4ade626445c5ca88c85f0d12f912a",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Mike Thomas",
+            ),
+        ),
+        evidence_urls=(
+            _STAR_1994["E3"],
+            "https://www.proquest.com/docview/1443234106",
+            "https://www.proquest.com/docview/1355567663",
+        ),
+        rationale=(
+            "Michael Thomas finished second to Bas Balkissoon in Scarborough Ward 13 in 1994; the Toronto Star's profile calls him a student and its 7 November 1994 story on young candidates a 21-year-old York University political science student. The Star's 1995 Scarborough North riding story says the Progressive Conservative candidate Mike Thomas, a York political science student of 21, finished second to Balkissoon in the previous November's municipal election. The 1994 council record joins the 1995 provincial record."
+        ),
+        registry_person_ids=(
+            "per_d9d8cf88891157b6bdc0fcbe54546451",
+            "per_ca41cb415bd95ffdaf07d6f8b35892a8",
+        ),
+        canonical_person_id="per_d9d8cf88891157b6bdc0fcbe54546451",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="adrian-heaps-1999-liberal-candidate",
+        preferred_name="Adrian Heaps",
+        occurrences=(
+            _pinned_occurrence(
+                "can_5823017f88725df9915e7ac7046606bc",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ADRIAN HEAPS",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/1442461020",
+            "https://www.proquest.com/docview/1348398675",
+            "https://en.wikipedia.org/wiki/Adrian_Heaps",
+        ),
+        rationale=(
+            "The Toronto Star's 2003 ward-by-ward preview calls the Ward 35 (Scarborough Southwest) council candidate Adrian Heaps 'a former provincial Liberal candidate', and its 1999 riding story names him as the Liberal candidate in Scarborough Southwest. His Wikipedia biography gives the 1999 provincial run and the 2003, 2006 and 2010 council runs. The 1999 record joins the council record."
+        ),
+        registry_person_ids=(
+            "per_9074ce6d34475a738c239ee5c8847102",
+            "per_6dc8ecc8a94955c98e70758653a50e44",
+        ),
+        canonical_person_id="per_9074ce6d34475a738c239ee5c8847102",
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="paulette-senior-2003-council-run",
+        preferred_name="Paulette Senior",
+        occurrences=(
+            _pinned_occurrence(
+                "can_b8bbec7dce94558da4d68ce3e5179885",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Senior, Paulette",
+            ),
+        ),
+        evidence_urls=("https://www.proquest.com/docview/1442461020",),
+        rationale=(
+            "The Toronto Star's 2003 ward-by-ward preview says the Ward 42 (Scarborough-Rouge River) council candidate, NDP activist Paulette Senior, 'ran federally in 2000 and provincially in 1999'. Those are her NDP runs in Scarborough—Rouge River, already one record; the 2003 council record joins it."
+        ),
+        registry_person_ids=(
+            "per_64c4d8aafccc58afab7b7c9f395b5918",
+            "per_37004acfd3bb522f85fbcc6aba56a0c4",
+        ),
+        canonical_person_id="per_64c4d8aafccc58afab7b7c9f395b5918",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 

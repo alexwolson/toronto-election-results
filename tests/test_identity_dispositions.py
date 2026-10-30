@@ -12,6 +12,7 @@ from toronto_election_results.identity_dispositions import (
     read_identity_review_decisions,
 )
 from toronto_election_results.mayoral_career import exclude_superseded_identity_decisions
+from toronto_election_results.schema import stable_id
 from toronto_election_results.trustee_career import (
     build_trustee_career_identity_assertions,
     reconcile_trustee_identity_decisions,
@@ -507,9 +508,9 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     )
     assert len(original_decisions) == 1551
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 999,
-        "confirmed": 551,
-        "rejected": 1,
+        "unresolved": 929,
+        "confirmed": 619,
+        "rejected": 3,
     }
     decisions = exclude_superseded_identity_decisions(
         original_decisions, REPO_ROOT / "data" / "reference"
@@ -869,12 +870,12 @@ def test_variant_name_merges_join_split_careers():
     for person_id, canonical in merged_away.items():
         assert people.loc[person_id, "identity_status"] == "deprecated"
         assert people.loc[person_id, "redirect_to_person_id"] == canonical
-    # Not established, so left as they were: Elizabeth Moyer's 2006 council run, Kritsonis's
-    # 2003 provincial run, and the 2000 and 2003 Andre/André Duclos records.
+    # Not established, so left as they were: Elizabeth Moyer's 2006 council run and
+    # Kritsonis's 2003 provincial run. (The 2000 and 2003 André Duclos records were joined
+    # later from the Star's 2003 profile; see test_star_profiles_settle_backlog_runs.)
     for person_id in (
         "per_f285f0621dbe566cadb4c7cee0d4a752",
         "per_6ae741fa1fc65281a8b7aea106352cb1",
-        "per_26f0cdfdce3b5437b5c0ba6d680019c4",
         "per_01d27f754bc75218aa848e00887a9d36",
     ):
         assert people.loc[person_id, "identity_status"] == "active"
@@ -955,3 +956,160 @@ def test_star_profiles_link_interior_trustee_runs():
         "per_efb9299062b15bd2abb7245d2003637e"
     )
     assert pd.isna(results.loc["can_3c9323a2d4f45193bd554ec993be451a", "person_id"])
+
+
+def test_star_profiles_settle_backlog_runs():
+    """The Star's 1994-2006 profiles and election coverage confirm, join or regroup backlog runs."""
+
+    links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    results = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
+    )
+    revised = decisions.loc[decisions["reviewer"].eq("star-candidate-profiles-backlog-2026-10-30")]
+    assert revised["decision"].value_counts().to_dict() == {
+        "confirmed": 68,
+        "unresolved": 4,
+        "rejected": 2,
+    }
+    revised_confirmed = revised.loc[revised["decision"].eq("confirmed")]
+    assert revised_confirmed["confidence"].eq("high").all()
+    assert (
+        results.loc[revised_confirmed["candidacy_id"], "person_id"].tolist()
+        == revised_confirmed["target_person_id"].tolist()
+    )
+
+    active = links.loc[links["valid_to_release"].isna() & links["person_id"].notna()]
+    confirmed = active.loc[active["link_status"].eq("confirmed")].set_index("candidacy_id")
+    careers = {
+        # Mike Armstrong, the insurance agent, 1994-2003; the 2003 ward preview says the 2003
+        # candidate ran against McConnell in 2000.
+        "per_ad2c9444d6df5c9c9097a61b9e0419e4": [
+            "can_9b9e42045cfd56e89b805a66b034ad5d",
+            "can_0dadd286dd4b5b159266f2aded94a91a",
+            "can_bd54c82af91a515f8e7e7fb1d8cb53cb",
+            "can_75df7fdf41715b34a8e9359c4c08e3ad",
+        ],
+        # Michael Yorke, the carpenter: 1994 East Danforth council and 1999 NDP.
+        "per_2fa2c5b28feb5461bf34c6a202f437ec": [
+            "can_c1b2ebeb7d0a58bfbd93f5d3b78353d6",
+            "can_0e4e3f5711765d8385541f70bb5607ee",
+        ],
+        # David Hutcheon, Ward 1 councillor and Progressive Conservative candidate.
+        "per_e63900f9e4325c71a9f2a5bebc34a2b0": [
+            "can_949ba4bf657d53d7bbdc21bbaa22c210",
+            "can_2e40d7cc27755b22b2abd6d4db99e979",
+            "can_34a0052c6db158f9ba973b841b887a15",
+            "can_5c71ca76050c5064ad28b932a633b112",
+        ],
+        # Paul Fernandes, the East York separate school trustee who ran for council.
+        "per_50f496d43c915062a9f5ef7cf9174952": [
+            "can_ba3c1a3ecac659de9a342a5209ca6f6c",
+            "can_3b90de3ccd095104bfc0b3cb04503178",
+            "can_29de57954f1e5cd4aed9fd73c42dfaf8",
+        ],
+        # Marlene Ciarrocchi, Catholic board runs from 1994 to 2010.
+        "per_38f3be6e70dd5d27bd78f8eca7820a02": [
+            "can_5cc1dffeac385a53a52eca54685139e2",
+            "can_becc096f64af5413abd8a76a1f4709c3",
+            "can_3709dce81620517b9df33de6cd941dae",
+            "can_7685c3cc373b5d0ba7ec032229e61f04",
+        ],
+        # Stephen Thiele, the Etobicoke lawyer, 1997-2014.
+        "per_4426f79f0e8d5e639aa007a3e6712197": [
+            "can_97da5b13caed58e78b8134e62eb263a2",
+            "can_b7aa7a34550e57a4a2dd79c265951f7a",
+            "can_615768da2daf5074b4732694ea28a8c5",
+            "can_4b4d13ab93a95ddeb7ff12670bc0b962",
+        ],
+        # Mike Thomas, the 1994 Scarborough council candidate and 1995 PC candidate.
+        "per_d9d8cf88891157b6bdc0fcbe54546451": [
+            "can_9997e03f04b35d24b8e33d665936d868",
+            "can_1fa4ade626445c5ca88c85f0d12f912a",
+        ],
+        # Adrian Heaps, 1999 Liberal candidate and Ward 35 councillor (2003 preview).
+        "per_9074ce6d34475a738c239ee5c8847102": [
+            "can_5823017f88725df9915e7ac7046606bc",
+            "can_db3e3fd34eef531aa040aee8d5257d34",
+            "can_85e98fc56eac54c39d4b9cc70b1017ae",
+            "can_e9906b69c72d5566b85bddc4bb613e4a",
+        ],
+        # Paulette Senior, NDP candidate in 1999 and 2000 and council candidate in 2003.
+        "per_64c4d8aafccc58afab7b7c9f395b5918": [
+            "can_231cd8720910586ab75623d319dc7525",
+            "can_ce7de351c7d9593c9ee23189f7c489b6",
+            "can_b8bbec7dce94558da4d68ce3e5179885",
+        ],
+        # Worrick Russell, including the 1997 run printed "Russell Worrick".
+        "per_879ab85d24c6595f849d3aed56623719": [
+            "can_20de29c63af5510d8ed59d31951e0465",
+            "can_dde07065effc503088169b9e836c72e9",
+            "can_79891fe7920d5d88be3970857fb99226",
+        ],
+        # André Duclos, MonAvenir 2000 and 2003.
+        "per_01d27f754bc75218aa848e00887a9d36": [
+            "can_42a0198bb1bb5b53aa91b7b6e032fd23",
+            "can_e3dd5923bfce53868bd76e2e25ce6aac",
+        ],
+        # Nicolò Fortunato, former York councillor, 1997 and 2000.
+        "per_2fe800d296a3557586d010943ea11673": [
+            "can_76010df7f8295873b55faf7ea227d689",
+            "can_5437dbccafbc53d4b7fe9d6f5bce38bd",
+        ],
+    }
+    for person_id, candidacy_ids in careers.items():
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
+        assert people.loc[person_id, "identity_status"] == "active"
+    for person_id, canonical in {
+        "per_f94551f7f5d15eb591afa5ecdef01b89": "per_879ab85d24c6595f849d3aed56623719",
+        "per_26f0cdfdce3b5437b5c0ba6d680019c4": "per_01d27f754bc75218aa848e00887a9d36",
+        "per_ca41cb415bd95ffdaf07d6f8b35892a8": "per_d9d8cf88891157b6bdc0fcbe54546451",
+        "per_6dc8ecc8a94955c98e70758653a50e44": "per_9074ce6d34475a738c239ee5c8847102",
+        "per_37004acfd3bb522f85fbcc6aba56a0c4": "per_64c4d8aafccc58afab7b7c9f395b5918",
+    }.items():
+        assert people.loc[person_id, "identity_status"] == "deprecated"
+        assert people.loc[person_id, "redirect_to_person_id"] == canonical
+
+    # Runs that tie to each other but not to the proposed Person: the travel agent Michael
+    # Yorke, who is not the carpenter, and the trustee Mike Thomas.
+    new_people = {
+        "michael-yorke-north-toronto-trustee-runs": [
+            "can_c546f369813d5ec1b86563222cbd9fa8",
+            "can_8eaab9d5d7895a13aa9091d45f41b028",
+        ],
+        "mike-thomas-scarborough-trustee-1997-2000": [
+            "can_04ed6458b6405ea5b0a6ded8be0d5ce6",
+            "can_e8daf8b5b96050b48617f989a2a46a36",
+        ],
+    }
+    for assertion_id, candidacy_ids in new_people.items():
+        person_id = stable_id("per", "curated_identity_assertion", assertion_id)
+        assert people.loc[person_id, "identity_status"] == "active", assertion_id
+        assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), assertion_id
+    rejected = revised.loc[revised["decision"].eq("rejected")]
+    assert sorted(rejected["candidacy_id"]) == sorted(
+        new_people["michael-yorke-north-toronto-trustee-runs"]
+    )
+    assert rejected["target_person_id"].eq("per_2fa2c5b28feb5461bf34c6a202f437ec").all()
+    for assertion_id in (
+        "mike-armstrong-insurance-agent-1994-2000",
+        "david-hutcheon-toronto-councillor-1994-1997",
+        "paul-fernandes-east-york-separate-trustee",
+        "marlene-ciarrocchi-etobicoke-separate-trustee-runs",
+    ):
+        assert stable_id("per", "curated_identity_assertion", assertion_id) not in people.index
+
+    # Runs the sources leave open keep their unresolved review: Stephen Thiele's 1994 race in
+    # the old City of Toronto and Bert Dandy's 1997 Catholic board race.
+    unresolved = active.loc[active["link_status"].eq("unresolved")].set_index("candidacy_id")
+    for candidacy_id, person_id in {
+        "can_5006059932405a11981de93be680bf82": "per_4426f79f0e8d5e639aa007a3e6712197",
+        "can_9e60d7fb88a450128e5ea99a7c030c28": "per_53d7005a342155888e0e566d7245b877",
+    }.items():
+        assert unresolved.loc[candidacy_id, "person_id"] == person_id
+        assert pd.isna(results.loc[candidacy_id, "person_id"])

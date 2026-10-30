@@ -42,7 +42,7 @@ per_01a29db2a2f75427bb22f6a8349c9037,Mahmood Elahi,active,,2026-09-30
 per_01bb7118c6c25fb0b73232bc17fc01db,Colleen Mills,active,,2026-08-20
 per_01c25113fe1858c1934a1070c3238b71,Stefano Tesoro,active,,2026-08-20
 per_01cb9cf02dc6551cbfbbc98756af4fd0,Josiane Aboungono,active,,2026-08-21
-per_01d27f754bc75218aa848e00887a9d36,Andre Duclos,active,,2026-08-20
+per_01d27f754bc75218aa848e00887a9d36,André Duclos,active,,2026-08-20
 per_01e39e590eac54de9492371f2e6a7adc,Tom Hollinshead,active,,2026-09-30
 per_01e55c64208d564aad668a9cbe1847a7,Aasia Khatoon,active,,2026-08-20
 per_01e70b86cebc5251a675fd6b550aa007,Bill Saunderson,active,,2026-09-30
@@ -805,7 +805,7 @@ per_26dc09f2465654b58a93152017a58c42,GENADIJ ZAITSEV,active,,2026-08-20
 per_26dc4784530a5ec8a7fe85d5a5c2ff89,OMAR FARHAT,active,,2026-08-20
 per_26e8e554ca475b0c9e8285c391f220d3,Martha Marini,active,,2026-08-20
 per_26ec5917db60566384e37ecad621eae0,Laura-Marie Nikolareizi,active,,2026-09-30
-per_26f0cdfdce3b5437b5c0ba6d680019c4,André Duclos,active,,2026-09-30
+per_26f0cdfdce3b5437b5c0ba6d680019c4,André Duclos,deprecated,per_01d27f754bc75218aa848e00887a9d36,2026-09-30
 per_2710f532ca8951179c0fd04304432213,Alexander T. Bussmann,active,,2026-08-20
 per_27318096ace05327ae840d96b273f20a,Paul Hogan,active,,2026-09-30
 per_2737d9378bd851f2ae2a3079ff728e84,YVETTE BLACKBURN,active,,2026-08-20
@@ -1144,7 +1144,7 @@ per_36dcd5922e7d55b0a0a2d0f95bf42899,Sunny Eren,active,,2026-08-20
 per_36e4ae8248a45f3ab01a2e4dc3ccc91a,Colin Magee,active,,2026-08-20
 per_36f6ac9eac7850daaaec301268dc3a59,Sylvia Watson,active,,2026-08-20
 per_36fcd7fdf6dd587da7acd52b0ef8ab1e,MARISA STERLING,active,,2026-08-20
-per_37004acfd3bb522f85fbcc6aba56a0c4,Paulette Senior,active,,2026-08-20
+per_37004acfd3bb522f85fbcc6aba56a0c4,Paulette Senior,deprecated,per_64c4d8aafccc58afab7b7c9f395b5918,2026-08-20
 per_371884387c5b596990eebba06fd67075,Christian Tobin,active,,2026-08-20
 per_371b5bc9eb45536589fb1d6d13928109,ANDY D'ANDREA,active,,2026-08-20
 per_372430d969095a93a84526f87c589631,Katarina Zoricic,active,,2026-08-20
@@ -2122,7 +2122,7 @@ per_649dc6c63dc553c0bd708bbf7c40c51c,Maria Dias,active,,2026-08-21
 per_64a372469d9d52a194288b73cafffc6c,JUNYEE WANG,active,,2026-08-20
 per_64b06f11a0945a0db79b070d7197b4fe,Shahid Uddin,active,,2026-08-20
 per_64b4963bd07c52f68aa4ed27565d2e10,John Kittredge,active,,2026-08-20
-per_64c4d8aafccc58afab7b7c9f395b5918,PAULETTE SENIOR,active,,2026-09-30
+per_64c4d8aafccc58afab7b7c9f395b5918,Paulette Senior,active,,2026-09-30
 per_64d84afd1da4512c8260bd4eb4ef4af1,Derek Rosario,active,,2026-08-20
 per_64dad2d6694e5f7f9bc1ccc303285797,Donovan Searchwell,active,,2026-08-20
 per_64fc452958e758909ab756ebba731391,Faith Goldy,active,,2026-08-20
@@ -2310,7 +2310,7 @@ per_6d92e3ef8e415937a76617c304f31be8,Georgenia Tackor,active,,2026-09-30
 per_6d9344feddb4533cb5c8682319eb9f65,Linda Dale Gibbons,active,,2026-09-30
 per_6d9c0430feb150138c58adf6dad8280f,Bernadette Michael,active,,2026-08-20
 per_6dbd346ddaba5349b1188f1bbd6e5478,Cory Deville,active,,2026-08-20
-per_6dc8ecc8a94955c98e70758653a50e44,ADRIAN HEAPS,active,,2026-09-30
+per_6dc8ecc8a94955c98e70758653a50e44,ADRIAN HEAPS,deprecated,per_9074ce6d34475a738c239ee5c8847102,2026-09-30
 per_6dd7c18fdac0558ba21b9e31817e8c62,Michael Erickson,active,,2026-08-20
 per_6de746264d9b52c8a149a0f98bf48f33,Adam Tanel,active,,2026-08-20
 per_6df1a502d1b450369a2cc47794639812,Mark Saunders,active,,2026-08-20
@@ -2332,6 +2332,7 @@ per_6e69f959e7b6537bb4bb95220d6f82d9,Joe Oliver,active,,2026-08-20
 per_6e728f8ff01a5e7aadf9127161534cf7,Lynda Buffett,active,,2026-09-30
 per_6e739af9413853b69f70660fcf6e50c3,Trevor Chisholm,active,,2026-09-30
 per_6e7a36b80aaa5abcbcbb405b7c98c4cb,Max Royz,active,,2026-08-20
+per_6e89b3f604d35ec78c656d69790f8619,Michael Yorke,active,,2026-09-30
 per_6e8a4ebe10b85011b75198b0a9b6e2ee,Leslie Hunter,active,,2026-09-30
 per_6e95cfb384af567f8c525362bd6ecc01,ANDREA BARRACK,active,,2026-08-20
 per_6e97d57abda656ea99dae7f85dbd060f,Sarabjit Kaur,active,,2026-08-20
@@ -3130,6 +3131,7 @@ per_940597ecad835bb39f145cd085e3f791,Norman Gardner,active,,2026-08-20
 per_940a974a6c875eb583dd1231698cdf69,TONY MILONE,active,,2026-08-20
 per_940f8fc439e1566a92a881fde9889739,Kenn Barnet,active,,2026-09-30
 per_9415d7ab72065c37b77238135e5cc659,Wali Abro,active,,2026-08-20
+per_942e57c745ef5d95913cc11c32ba6bcb,Mike Thomas,active,,2026-09-30
 per_943173ee76ff5f50a0003c11ff82cb03,Suzanne Mccormick,active,,2026-08-20
 per_943354ddf7b558f1ad41a646024d48d1,Heather Shon,active,,2026-08-20
 per_9455112738ad5463a8e1894382c4ea35,Matthew Crack,active,,2026-08-20
@@ -4268,7 +4270,7 @@ per_ca0dcce13b955ba1a0ef8755272c0800,Joanne Dickins,active,,2026-08-20
 per_ca0fe5f61ae756099e8ff4887aa78474,Bobby Beckett,active,,2026-08-20
 per_ca14b99bbdb25d8dba454551549f6823,Andre Musters,active,,2026-08-20
 per_ca22da7432ad5f1687a85af4892bfc12,Maya Worsoff,active,,2026-08-20
-per_ca41cb415bd95ffdaf07d6f8b35892a8,Michael Thomas,active,,2026-09-30
+per_ca41cb415bd95ffdaf07d6f8b35892a8,Michael Thomas,deprecated,per_d9d8cf88891157b6bdc0fcbe54546451,2026-09-30
 per_ca43561c0ce35ee782e9bf47d18907c9,Aanchal Vashistha,active,,2026-08-21
 per_ca5fedfaeb4b5ee5a312d095a6252b3b,Jody Macdonald,active,,2026-08-20
 per_ca6323b24f335b7390703356457a6d9b,SONALI CHAKRABORTI,active,,2026-08-20
@@ -5187,7 +5189,7 @@ per_f9222b75cf2859e5881c8372c08a43d3,Ari Goldkind,active,,2026-08-20
 per_f927c616f3bf522ea53fd2f2b0a88eec,Geraldine Jackson,active,,2026-09-30
 per_f93977fa91575cc7b68feaddd8e43095,Amer Karaman,active,,2026-08-20
 per_f93f54bc11995f8eb1040be5ff2cea30,KRISTIN MONSTER,active,,2026-08-20
-per_f94551f7f5d15eb591afa5ecdef01b89,Russell Worrick,active,,2026-09-30
+per_f94551f7f5d15eb591afa5ecdef01b89,Russell Worrick,deprecated,per_879ab85d24c6595f849d3aed56623719,2026-09-30
 per_f94eb702449c56fa89e9313ad758e6f7,Chris Braney,active,,2026-09-30
 per_f95acf6132795644bbd1dfaf81f38323,Don Stuart,active,,2026-08-20
 per_f95cfd719a6b5af181c1fbf637080c8c,Iola Altobello,active,,2026-09-30

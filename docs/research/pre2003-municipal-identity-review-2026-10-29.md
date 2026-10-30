@@ -45,7 +45,7 @@ A second pass took the nine cases the first pass could not settle: possible spli
 
 ## Decisions
 
-Decisions marked "second pass" were changed from unresolved by the second pass above. The one marked "follow-up" was changed later, in `identity-followups-2026-10-29.md`.
+Decisions marked "second pass" were changed from unresolved by the second pass above. The one marked "follow-up" was changed later, in `identity-followups-2026-10-29.md`. Many rows still marked unresolved here were later revised from the Toronto Star's candidate profiles and election coverage; `star-profiles-backlog-2026-10-30.md` lists them.
 
 | Candidacy | Election | Contest | Name | Decision | Basis |
 |---|---|---|---|---|---|
