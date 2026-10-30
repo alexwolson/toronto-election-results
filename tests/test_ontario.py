@@ -335,3 +335,96 @@ def test_same_year_by_election_party_spellings_fail_only_when_used():
     )
 
     assert _party_names(parties) == {(1993, "by_election", "FR"): None}
+
+
+_CANDIDATE_HEADER = (
+    "EventNameEnglish,EventNameFrench,IsGeneralElection,ElectoralDistrictNumber,"
+    "ElectoralDistrictNameEnglish,ElectoralDistrictNameFrench,ReturningOfficerName,"
+    "ReturningOfficeCity,PollingDate,ResignedMPPName,NameOfCandidates,PoliticalInterestCode,"
+    "TotalValidBallotsCast,PercentOfTotalValidBallotsCast,Plurality,IsMemberOfPreviousLegislature"
+)
+_STATISTICS_HEADER = (
+    "EventNameEnglish,EventNameFrench,PollingDate,ElectoralDistrictNumber,"
+    "ElectoralDistrictNameEnglish,ElectoralDistrictNameFrench,NumberOfCandidates,"
+    "NumberOfNamesRegistered,NumberOfNamesRevised,TotalNumberOfNames,RuralPollingPlaces,"
+    "UrbanPollingPlaces,AdvancePollingPlaces,ValidBallotsFromBoxes,RejectedBallotsFromBoxes,"
+    "UnmarkedBallotsFromBoxes,DeclinedBallots,VoterTurnoutTotal,VoterTurnoutPercentageOfList"
+)
+_PARTIES_HEADER = (
+    "EventNameFrench,EventNameEnglish,PoliticalInterestCode,PartyFullNameEnglish,"
+    "PartyFullNameFrench,IsRegistered"
+)
+
+
+def _willowdale_2011(tmp_path, *, amy_brown_votes=5556, with_alexander_brown=True):
+    """Willowdale's rows in Elections Ontario's 2011 report group, as the CSVs print them."""
+    published = [
+        ("AMY BROWN", "FP", amy_brown_votes, 0, 0),
+        ("DAVID ZIMMER", "L", 21984, 7456, 1),
+        ("ALEXANDER BROWN", "ND", 297, 0, 0),
+        ("VINCE AGOVINO", "PC", 14528, 0, 0),
+        ("MICHAEL VETTESE", "GP", 874, 0, 0),
+    ]
+    if not with_alexander_brown:
+        published = [row for row in published if row[0] != "ALEXANDER BROWN"]
+    event = "2011 General Election,élection générale de 2011"
+    candidates = [_CANDIDATE_HEADER] + [
+        f"{event},1,101,WILLOWDALE,WILLOWDALE,,Toronto,2011-Oct-06,,"
+        f"{name},{code},{votes},,{plurality},{incumbent}"
+        for name, code, votes, plurality, incumbent in published
+    ]
+    statistics = [
+        _STATISTICS_HEADER,
+        (
+            f"{event},2011-Oct-06,101,WILLOWDALE,WILLOWDALE,5,93529,2165,95694,0,285,6,"
+            "43239,99,77,27,43442,0.45"
+        ),
+    ]
+    parties = [_PARTIES_HEADER] + [
+        f"élection générale de 2011,2011 General Election,{code},{name},{name},1"
+        for code, name in (
+            ("FP", "FREEDOM PARTY OF ONTARIO"),
+            ("GP", "GREEN PARTY OF ONTARIO"),
+            ("L", "ONTARIO LIBERAL PARTY"),
+            ("ND", "NEW DEMOCRATIC PARTY OF ONTARIO"),
+            ("PC", "PROGRESSIVE CONSERVATIVE PARTY OF ONTARIO"),
+        )
+    ]
+    paths = []
+    for stem, lines in (
+        ("candidates", candidates),
+        ("statistics", statistics),
+        ("parties", parties),
+    ):
+        path = tmp_path / f"{stem}.csv"
+        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        paths.append(path)
+    report = next(report for report in REPORTS if report.report_group_id == 3)
+    return paths, report
+
+
+def test_willowdale_2011_browns_get_back_their_own_totals(tmp_path):
+    paths, report = _willowdale_2011(tmp_path)
+
+    results = parse_official_results(*paths, report=report).set_index("candidate_name_raw")
+
+    assert results.loc["ALEXANDER BROWN", "votes"] == 5556
+    assert results.loc["ALEXANDER BROWN", "party_name_raw"] == "NEW DEMOCRATIC PARTY OF ONTARIO"
+    assert results.loc["AMY BROWN", "votes"] == 297
+    assert results.loc["AMY BROWN", "party_name_raw"] == "FREEDOM PARTY OF ONTARIO"
+    assert results.loc["DAVID ZIMMER", "votes"] == 21984
+    assert results["votes"].sum() == 21984 + 14528 + 5556 + 874 + 297
+
+
+def test_vote_correction_fails_when_the_published_total_changes(tmp_path):
+    paths, report = _willowdale_2011(tmp_path, amy_brown_votes=297)
+
+    with pytest.raises(ValueError, match="review the pinned vote correction"):
+        parse_official_results(*paths, report=report)
+
+
+def test_vote_correction_fails_when_its_row_is_missing(tmp_path):
+    paths, report = _willowdale_2011(tmp_path, with_alexander_brown=False)
+
+    with pytest.raises(ValueError, match="matched no Elections Ontario row"):
+        parse_official_results(*paths, report=report)

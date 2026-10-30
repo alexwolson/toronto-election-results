@@ -39,7 +39,7 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 8,070 Candidacies, 1,388 Contests, and 80 Election events. All Candidacies
+The release contains 8,067 Candidacies, 1,388 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
@@ -325,6 +325,13 @@ district totals are transcribed in `ontario.TABULATIONS` and the downloaded file
 checksum. Affiliations come from Elections Ontario's results page for the district. The
 tabulation prints no elector count, so electors, ballots cast and turnout are null for that
 Contest.
+
+Elections Ontario's 2011 candidate CSV gives Willowdale's two Brown candidates each other's totals.
+`ontario.VOTE_CORRECTIONS` restores 5,556 votes to Alexander Brown (NDP) and 297 to Amy Brown
+(Freedom Party), following the Toronto Star's election-night table and Wikipedia's riding page.
+The load fails if Elections Ontario changes either published figure. The City's 2017 Ward 42
+by-election workbook prints declined, rejected and under-vote lines below the candidates; the
+parser skips them. See `docs/research/result-corrections-2026-10-31.md`.
 
 Trustee result sources do not report a structured incumbent flag, and a complete historical roster
 for all four boards has not been acquired. Trustee `incumbent` is therefore null rather than

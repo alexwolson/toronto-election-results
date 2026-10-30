@@ -136,10 +136,12 @@ COUNCIL_BATCH_2_EXPECTED = {
         "286",
         "0.009626712444040526",
     ),
+    # 2017 Ward 42: the share is of the 29 candidates' 10,418 votes, without the workbook's
+    # ballot-accounting lines.
     "can_aa014c1fb1a855059c9784b9e8e42061": (
         "per_a9fa93f9d3fa5bd7aa6054726c7faeeb",
         "69",
-        "0.006614263803680982",
+        "0.006623152236513726",
     ),
     "can_ba76a75e1163519b9ab885118308a83d": (
         "per_a9fa93f9d3fa5bd7aa6054726c7faeeb",

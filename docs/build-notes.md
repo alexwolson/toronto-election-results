@@ -116,6 +116,13 @@ from 2003 to 2022 matches the Clerk's declaration. A release gate rejects a cand
 appears in two trustee wards of one board at one event. See
 `docs/research/tcdsb-2010-ward-assignment-2026-10-29.md`.
 
+The City's 2017 Ward 42 by-election workbook prints declined, rejected and under-vote lines below
+the candidates, which once produced three Candidacies, each with its own Person. The council parser
+now skips those lines, the three Candidacies are retired, and their three Person IDs are withdrawn.
+Elections Ontario's 2011 candidate CSV swaps the totals of Willowdale's two Brown candidates; a
+pinned correction in the Ontario adapter restores them and fails if the source figures change. See
+`docs/research/result-corrections-2026-10-31.md`.
+
 Toronto's trustee by-election archive begins in 2012, so event enumeration for 2003–2011 is marked
 uncertain. No result rows are invented for that gap. Trustee incumbency remains null until a
 complete, evidence-backed historical roster is acquired. Geometry is never treated as required for

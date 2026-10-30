@@ -77,7 +77,7 @@ def test_fixed_council_manifest_covers_every_event_and_native_contest():
     contests = council_contest_manifest()
 
     assert len(events) == 13
-    assert events["expected_candidacies"].sum() == 2001
+    assert events["expected_candidacies"].sum() == 1998
     assert len(contests) == 239
     assert contests["event_id"].nunique() == 13
     general_events = set(events.loc[events["election_type"].eq("general"), "event_id"])
