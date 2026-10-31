@@ -9,7 +9,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from toronto_election_results.parse_results import parse_open_data_file
+from toronto_election_results.parse_results import _parse_ward_sheet, parse_open_data_file
 
 FIXTURES = Path(__file__).parent / "fixtures" / "open_data"
 COUNCILLOR_2022 = FIXTURES / "2022_Toronto_Poll_By_Poll_Councillor.xlsx"
@@ -110,3 +110,54 @@ def test_legacy_known_candidate_votes(councillor_2003):
 
 def test_legacy_excludes_totals_row(councillor_2003):
     assert not councillor_2003["candidate_name_raw"].str.lower().str.contains("total").any()
+
+
+# --- Ballot-accounting lines: the 2017 Ward 42 by-election workbook ---
+
+BY_ELECTION_2017 = FIXTURES / "2017-councillor-ward-42.xlsx"
+
+
+def test_by_election_ballot_accounting_lines_are_not_candidates():
+    """The sheet prints declined, rejected and under-vote lines between the candidates and Totals.
+
+    The City's declaration lists 29 candidates. The sheet's Totals cell (10,432) is the 29
+    candidate totals (10,418) plus the three accounting lines (4 + 3 + 7).
+    """
+    parsed = parse_open_data_file(BY_ELECTION_2017, office="councillor")
+
+    assert len(parsed) == 29
+    assert parsed["ward_number"].eq(42).all()
+    assert not parsed["candidate_name_raw"].str.contains("ballot|votes", case=False).any()
+    assert parsed["votes"].sum() == 10_418
+    assert parsed.set_index("candidate_name_raw").loc["Shan, Neethan", "votes"] == 4_765
+
+    raw = pd.read_excel(BY_ELECTION_2017, engine="openpyxl", header=None)
+    lines = raw.set_index(0)[raw.columns[-1]]
+    accounting = ["Declined Ballots", "Rejected Ballots (Over Votes)", "Under Votes"]
+    assert list(lines[accounting]) == [4, 3, 7]
+    assert lines["Totals"] == parsed["votes"].sum() + lines[accounting].sum()
+
+
+def test_ballot_accounting_filter_keeps_names_that_only_contain_the_words():
+    sheet = pd.DataFrame(
+        [
+            ["Councillor Ward 42", None, None, None],
+            ["Subdivision", 1, 2, "Total"],
+            ["Underhill, Jane", 3, 4, 7],
+            ["Ballotta, Maria", 1, 1, 2],
+            ["Overvold, Ken", 2, 0, 2],
+            ["Declined Ballots", 1, 0, 1],
+            ["Rejected Ballots (Over Votes)", 0, 1, 1],
+            ["Under Votes", 1, 1, 2],
+            ["Totals", 8, 7, 15],
+        ]
+    )
+
+    parsed = _parse_ward_sheet(sheet, sheet_name="Sheet1", office="councillor")
+
+    assert list(parsed["candidate_name_raw"]) == [
+        "Underhill, Jane",
+        "Ballotta, Maria",
+        "Overvold, Ken",
+    ]
+    assert list(parsed["votes"]) == [7, 2, 2]

@@ -29,6 +29,11 @@ _WARD_NUM_RE = re.compile(r"Ward:?\s*(\d+)", re.IGNORECASE)
 # Col-0 labels that mark the header row above the candidate rows.
 _HEADER_LABELS = {"subdivision", "name"}
 
+# Ballot-accounting lines that the 2017 Ward 42 by-election workbook prints below the
+# candidates: "Declined Ballots", "Rejected Ballots (Over Votes)" and "Under Votes". The 2024
+# and 2025 by-election workbooks give these counts on a Read Me sheet with no candidate table.
+_BALLOT_ACCOUNTING_RE = re.compile(r"\bballots?\b|\b(?:under|over)[\s-]*votes?\b", re.IGNORECASE)
+
 COLUMNS = ["ward_number", "ward_name", "office", "candidate_name_raw", "votes"]
 
 
@@ -93,7 +98,12 @@ def _parse_ward_sheet(raw: pd.DataFrame, *, sheet_name: str, office: str) -> pd.
     for idx in range(header_idx + 1, len(raw)):
         name = _cell_text(raw.iat[idx, 0])
         low = name.lower()
-        if not name or low == office.lower() or "total" in low:
+        if (
+            not name
+            or low == office.lower()
+            or "total" in low
+            or _BALLOT_ACCOUNTING_RE.search(name)
+        ):
             continue
         votes = int(pd.to_numeric(raw.loc[idx, subdiv_cols], errors="coerce").fillna(0).sum())
         records.append((ward_number, ward_name, office, name, votes))

@@ -54,6 +54,32 @@ class EventSpec:
     expected_candidate_rows: int
 
 
+@dataclass(frozen=True)
+class VoteCorrection:
+    """A pinned fix for a candidate total that the official CSV prints wrongly.
+
+    ``source_votes`` is what the CSV says; a different value fails the load, so a corrected
+    upstream file is noticed instead of being overwritten.
+    """
+
+    polling_date: date
+    district_number: int
+    candidate_name: str
+    source_votes: int
+    corrected_votes: int
+
+
+# Elections Ontario's 2011 candidates CSV gives Willowdale's two Browns each other's totals
+# (Amy Brown, Freedom Party, 5,556; Alexander Brown, NDP, 297).  The Toronto Star's
+# election-night table of 7 Oct 2011 (page R2, 269 of 288 polls: Alexander Brown NDP 4,743,
+# Amy Brown FP 269) and Wikipedia's riding page (Alexander Brown 5,556, 12.85%; Amy Brown
+# 297, 0.69%) put the larger total with the NDP candidate.
+VOTE_CORRECTIONS = (
+    VoteCorrection(date(2011, 10, 6), 101, "ALEXANDER BROWN", 297, 5556),
+    VoteCorrection(date(2011, 10, 6), 101, "AMY BROWN", 5556, 297),
+)
+
+
 REPORTS = (
     ReportSpec(5, 521, 514, 519),
     ReportSpec(4, 510, 503, 508),
@@ -766,6 +792,12 @@ def parse_official_results(
         stats_lookup[key] = (int(row.TotalNumberOfNames), int(row.VoterTurnoutTotal))
 
     party_names = _party_names(parties)
+    corrections = {
+        (correction.polling_date, correction.district_number, correction.candidate_name): correction
+        for correction in VOTE_CORRECTIONS
+        if (correction.polling_date, correction.district_number) in event_lookup
+    }
+    applied: set[tuple[date, int, str]] = set()
     source_detail = ";".join(
         (
             report_csv_url(report.report_group_id, report.candidates_output_id),
@@ -808,6 +840,17 @@ def parse_official_results(
 
         incumbent_raw = str(row.IsMemberOfPreviousLegislature).strip()
         incumbent = pd.NA if not incumbent_raw else bool(int(incumbent_raw))
+        candidate_name = str(row.NameOfCandidates).strip()
+        votes = int(row.TotalValidBallotsCast)
+        correction = corrections.get((key[0], key[1], candidate_name))
+        if correction is not None:
+            if votes != correction.source_votes:
+                raise ValueError(
+                    f"Elections Ontario now reports {votes} votes for {candidate_name} "
+                    f"({key[0]}, district {key[1]}); review the pinned vote correction"
+                )
+            votes = correction.corrected_votes
+            applied.add((key[0], key[1], candidate_name))
         rows.append(
             {
                 "event_id": event.event_id,
@@ -819,10 +862,10 @@ def parse_official_results(
                 "boundary_regime": event.boundary_regime,
                 "official_district_id": f"{district.source_number:03d}",
                 "district_name": district.district_name,
-                "candidate_name_raw": str(row.NameOfCandidates).strip(),
+                "candidate_name_raw": candidate_name,
                 "party_name_raw": party_name,
                 "affiliation_status": affiliation_status,
-                "votes": int(row.TotalValidBallotsCast),
+                "votes": votes,
                 "elected": int(row.Plurality) > 0,
                 "incumbent_reported": incumbent,
                 "eligible_electors": stats[0],
@@ -832,6 +875,10 @@ def parse_official_results(
                 "source_detail": source_detail,
             }
         )
+
+    unapplied = sorted(set(corrections) - applied)
+    if unapplied:
+        raise ValueError(f"pinned vote correction matched no Elections Ontario row: {unapplied[0]}")
 
     result = pd.DataFrame(rows, columns=RESULT_COLUMNS)
     if result.empty:

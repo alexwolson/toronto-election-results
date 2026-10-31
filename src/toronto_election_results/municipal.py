@@ -19,7 +19,7 @@ COUNCIL_EVENT_MANIFEST = (
     ("2022-10-24", "general", "toronto_council_25_wards", 194),
     # Completed mayor/councillor by-elections in the City archive.
     ("2016-07-25", "by_election", "toronto_council_44_wards", 12),
-    ("2017-02-13", "by_election", "toronto_council_44_wards", 32),
+    ("2017-02-13", "by_election", "toronto_council_44_wards", 29),
     ("2021-01-15", "by_election", "toronto_council_25_wards", 27),
     ("2023-06-26", "by_election", "toronto_council_25_wards", 102),
     ("2023-11-30", "by_election", "toronto_council_25_wards", 23),
