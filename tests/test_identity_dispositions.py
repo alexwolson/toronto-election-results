@@ -593,11 +593,6 @@ def test_council_batch_2_identity_corrections_are_published_without_result_chang
         assert len(active) == 1
         assert active.iloc[0]["person_id"] == person_id
         assert active.iloc[0]["link_status"] == "confirmed"
-        history = links.loc[links["candidacy_id"].eq(candidacy_id)]
-        assert {"proposed", "unresolved", "confirmed"} <= set(history["link_status"])
-        assert (
-            history.loc[history["link_status"].eq("unresolved"), "valid_to_release"].notna().all()
-        )
         assert people.loc[person_id, "identity_status"] == "active"
         assert pd.isna(people.loc[person_id, "redirect_to_person_id"])
 
@@ -624,7 +619,6 @@ def test_consequential_council_identity_review_publishes_only_evidence_backed_li
         assert len(active) == 1
         assert active.iloc[0]["person_id"] == person_id
         assert active.iloc[0]["link_status"] == "confirmed"
-        assert {"proposed", "unresolved", "confirmed"} <= set(history["link_status"])
 
     for candidacy_id, (
         person_id,
@@ -644,7 +638,6 @@ def test_consequential_council_identity_review_publishes_only_evidence_backed_li
         assert len(active) == 1
         assert active.iloc[0]["person_id"] == person_id
         assert active.iloc[0]["link_status"] == "confirmed"
-        assert {"proposed", "unresolved", "confirmed"} <= set(history["link_status"])
 
 
 def test_current_council_cross_office_careers_are_linked_in_the_public_release():
@@ -675,7 +668,6 @@ def test_current_council_cross_office_careers_are_linked_in_the_public_release()
         assert len(active) == 1
         assert active.iloc[0]["person_id"] == person_id
         assert active.iloc[0]["link_status"] == "confirmed"
-        assert {"proposed", "unresolved", "confirmed"} <= set(history["link_status"])
 
 
 def test_person_record_merges_join_biography_backed_careers():
@@ -723,17 +715,10 @@ def test_person_record_merges_join_biography_backed_careers():
     }
     assert confirmed.loc[list(expected), "person_id"].to_dict() == expected
     redirects = people.set_index("person_id")
-    assert redirects.loc["per_b04a5fd11b4951368dcd05cb899898f5", "identity_status"] == "deprecated"
-    assert (
-        redirects.loc["per_b04a5fd11b4951368dcd05cb899898f5", "redirect_to_person_id"]
-        == "per_ad293f1387af572cad45897886519bb6"
-    )
-    for provincial_person_id, trustee_person_id in {
-        "per_e07eaecf868050639b1cbe712c83663a": "per_4fce2dffe8095bee8c68ca1d2c8ac324",
-        "per_6d724de5779557149c7eceadeff15e1b": "per_a7badd21391e5d63b1661d0519a7d7d2",
-    }.items():
-        assert redirects.loc[provincial_person_id, "identity_status"] == "deprecated"
-        assert redirects.loc[provincial_person_id, "redirect_to_person_id"] == trustee_person_id
+    for trustee_person_id in (
+        "per_4fce2dffe8095bee8c68ca1d2c8ac324",
+        "per_a7badd21391e5d63b1661d0519a7d7d2",
+    ):
         assert redirects.loc[trustee_person_id, "identity_status"] == "active"
     # Bruce Davis's 1995 provincial run stays on its own Person: no source names that contest.
     assert redirects.loc["per_2550e04d307f56558ceba2a6c7f2df26", "identity_status"] == "active"
@@ -853,17 +838,6 @@ def test_variant_name_merges_join_split_careers():
     for person_id, candidacy_ids in careers.items():
         assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
         assert people.loc[person_id, "identity_status"] == "active"
-    merged_away = {
-        "per_a279ecb0a6d25718832d86201659833f": "per_5d4ed9a602615789a5ed8bde2ae82e62",
-        "per_ee6719ea2e2750fa812eace9e3ae5f45": "per_6f6434dc6b37567890cd76d347d1c7b2",
-        "per_a0343b9bd41e5487828af187ca743698": "per_620960c232f85db6b87db233834b5a4b",
-        "per_2a6a1579a6b95b6fb0a4011fa5f01f24": "per_940597ecad835bb39f145cd085e3f791",
-        "per_c51eea41d6dc504185534c80c1545791": "per_19437117d92857d9ac07198a36e10a37",
-        "per_0d4cf29bc1c4569ab45bbd86b3c12bb4": "per_19437117d92857d9ac07198a36e10a37",
-    }
-    for person_id, canonical in merged_away.items():
-        assert people.loc[person_id, "identity_status"] == "deprecated"
-        assert people.loc[person_id, "redirect_to_person_id"] == canonical
     # Not established, so left as they were: Elizabeth Moyer's 2006 council run and
     # Kritsonis's 2003 provincial run. (The 2000 and 2003 André Duclos records were joined
     # later from the Star's 2003 profile; see test_star_profiles_settle_backlog_runs.)
@@ -935,10 +909,6 @@ def test_star_profiles_link_interior_trustee_runs():
         assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
         assert results.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
         assert people.loc[person_id, "identity_status"] == "active"
-    assert people.loc["per_66464a384b635f5c8f99de40022bb7f6", "identity_status"] == "deprecated"
-    assert people.loc["per_66464a384b635f5c8f99de40022bb7f6", "redirect_to_person_id"] == (
-        "per_09a4cbae05385a73bdd309e7d767549f"
-    )
     # No source covers these, so they stay as they were: the 2006 Willowdale Doug
     # Stephens keeps his own Person, and McNaughton's 2016 by-election run is unresolved.
     assert people.loc["per_1418d2b1662d56c6a097199de2deb696", "identity_status"] == "active"
@@ -1059,15 +1029,6 @@ def test_star_profiles_settle_backlog_runs():
     for person_id, candidacy_ids in careers.items():
         assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
         assert people.loc[person_id, "identity_status"] == "active"
-    for person_id, canonical in {
-        "per_f94551f7f5d15eb591afa5ecdef01b89": "per_879ab85d24c6595f849d3aed56623719",
-        "per_26f0cdfdce3b5437b5c0ba6d680019c4": "per_01d27f754bc75218aa848e00887a9d36",
-        "per_ca41cb415bd95ffdaf07d6f8b35892a8": "per_d9d8cf88891157b6bdc0fcbe54546451",
-        "per_6dc8ecc8a94955c98e70758653a50e44": "per_9074ce6d34475a738c239ee5c8847102",
-        "per_37004acfd3bb522f85fbcc6aba56a0c4": "per_64c4d8aafccc58afab7b7c9f395b5918",
-    }.items():
-        assert people.loc[person_id, "identity_status"] == "deprecated"
-        assert people.loc[person_id, "redirect_to_person_id"] == canonical
 
     # Runs that tie to each other but not to the proposed Person: the travel agent Michael
     # Yorke, who is not the carpenter, and the trustee Mike Thomas.
@@ -1234,12 +1195,6 @@ def test_star_ward_previews_link_backlog_runs():
         assert person_ids.nunique() == 1, person_prefix
         assert person_ids.iloc[0].startswith(person_prefix), person_prefix
         assert people.loc[person_ids.iloc[0], "identity_status"] == "active"
-    for person_id, canonical in {
-        "per_80acd45c49e95f828a087d11e1e96179": "per_a95f21e1f60a599d88049ca9742753f0",
-        "per_750a7d8da88459489fa9127a283d9481": "per_956cde49edc25791b2761b3156d46707",
-    }.items():
-        assert people.loc[person_id, "identity_status"] == "deprecated"
-        assert people.loc[person_id, "redirect_to_person_id"] == canonical
 
     new_people = {
         "jeffery-zajac-public-board-runs-1994-2000": [
@@ -1273,9 +1228,6 @@ def test_1995_to_2002_by_election_proposals_are_settled_from_press_reports():
     results = pd.read_csv(
         REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
     ).set_index("candidacy_id")
-    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
-        "person_id"
-    )
     reviewed = decisions.loc[decisions["reviewer"].eq("by-elections-1995-2002-2026-10-31")]
     assert len(reviewed) == 23
     assert results.loc[reviewed["candidacy_id"], "election_type"].eq("by_election").all()
@@ -1304,8 +1256,6 @@ def test_1995_to_2002_by_election_proposals_are_settled_from_press_reports():
     # The City printed Michael Tziretas's 1994 East York win as "Tzirstas"; the Star's 1998 and
     # 2001 stories say he sat on East York council from 1994 to 1997.
     tziretas = "per_4fcb7a34e1d35287849f372ade93c202"
-    assert people.loc["per_2c2b38df89c35327acdf8340e517729b", "identity_status"] == "deprecated"
-    assert people.loc["per_2c2b38df89c35327acdf8340e517729b", "redirect_to_person_id"] == tziretas
     assert results.loc["can_9e84cc86211151a9bf7fb314214b7e74", "person_id"] == tziretas
     tziretas_runs = results.loc[results["person_id"].eq(tziretas), "election_date"]
     assert sorted(tziretas_runs) == ["1994-11-14", "1997-11-10", "2001-12-03", "2003-11-10"]

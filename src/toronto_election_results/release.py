@@ -17,6 +17,7 @@ from .identity_curations import (
     CuratedIdentityAssertion,
     apply_curated_identity_assertions,
     canonicalize_person_evidence,
+    curated_roster_resolutions,
 )
 from .identity_dispositions import apply_identity_review_decisions
 from .identity_review import (
@@ -394,6 +395,7 @@ def assemble_bootstrapped_release(
         bootstrap.people,
         bootstrap.candidacy_person_links,
         release_id=release_id,
+        roster_resolutions=curated_roster_resolutions(identity_assertions),
         **municipal_kwargs,
     )
     review_flags = pd.concat(

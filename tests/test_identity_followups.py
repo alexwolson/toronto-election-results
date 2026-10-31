@@ -65,6 +65,3 @@ def test_followup_confirmations_publish_the_reviewed_person(published, candidacy
     assert active[["person_id", "link_status", "reviewer"]].values.tolist() == [
         [person_id, "confirmed", REVIEWER]
     ]
-    # The earlier unresolved review of the same target stays visible as closed history.
-    closed = history.loc[history["valid_to_release"].notna()]
-    assert ((closed["link_status"] == "unresolved") & (closed["person_id"] == person_id)).any()

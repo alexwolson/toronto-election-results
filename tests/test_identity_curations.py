@@ -4,14 +4,17 @@ import json
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
 from toronto_election_results.identity import attach_confirmed_people
 from toronto_election_results.identity_curations import (
     DEFAULT_IDENTITY_ASSERTIONS,
     CandidacyLocator,
     CuratedIdentityAssertion,
+    RosterMemberLocator,
     apply_curated_identity_assertions,
     canonicalize_person_evidence,
+    curated_roster_resolutions,
 )
 
 REPO_ROOT = Path(__file__).parents[1]
@@ -130,10 +133,7 @@ def test_chloe_brown_cross_name_and_cross_office_identity_is_pinned_and_publishe
 
     assert assertion.preferred_name == "Chloe Brown"
     assert assertion.canonical_person_id == "per_3d3501723d055766800769f77751b3bf"
-    assert assertion.registry_person_ids == (
-        "per_3d3501723d055766800769f77751b3bf",
-        "per_abd4663f08cb5b11bbe72c502697a809",
-    )
+    assert assertion.registry_person_ids == ("per_3d3501723d055766800769f77751b3bf",)
     assert {occurrence.candidacy_id for occurrence in assertion.occurrences} == candidacy_ids
 
     results = pd.read_csv(
@@ -155,11 +155,6 @@ def test_chloe_brown_cross_name_and_cross_office_identity_is_pinned_and_publishe
         "person_id"
     )
     assert people.loc["per_3d3501723d055766800769f77751b3bf", "preferred_name"] == ("Chloe Brown")
-    assert people.loc["per_abd4663f08cb5b11bbe72c502697a809", "identity_status"] == ("deprecated")
-    assert (
-        people.loc["per_abd4663f08cb5b11bbe72c502697a809", "redirect_to_person_id"]
-        == "per_3d3501723d055766800769f77751b3bf"
-    )
 
 
 def test_edward_gong_cross_name_and_cross_office_identity_is_pinned_and_published():
@@ -176,11 +171,7 @@ def test_edward_gong_cross_name_and_cross_office_identity_is_pinned_and_publishe
 
     assert assertion.preferred_name == "Edward Gong"
     assert assertion.canonical_person_id == "per_424fd6af33ed5e0bae4177a42cde6c21"
-    assert assertion.registry_person_ids == (
-        "per_424fd6af33ed5e0bae4177a42cde6c21",
-        "per_5067314c5e465bfb95ca0798e4854ea7",
-        "per_c54d3412c98b57bbabd296e5fbb4dceb",
-    )
+    assert assertion.registry_person_ids == ("per_424fd6af33ed5e0bae4177a42cde6c21",)
     assert {occurrence.candidacy_id for occurrence in assertion.occurrences} == candidacy_ids
 
     results = pd.read_csv(
@@ -199,15 +190,6 @@ def test_edward_gong_cross_name_and_cross_office_identity_is_pinned_and_publishe
         "person_id"
     )
     assert people.loc["per_424fd6af33ed5e0bae4177a42cde6c21", "preferred_name"] == ("Edward Gong")
-    for duplicate_person_id in (
-        "per_5067314c5e465bfb95ca0798e4854ea7",
-        "per_c54d3412c98b57bbabd296e5fbb4dceb",
-    ):
-        assert people.loc[duplicate_person_id, "identity_status"] == "deprecated"
-        assert (
-            people.loc[duplicate_person_id, "redirect_to_person_id"]
-            == "per_424fd6af33ed5e0bae4177a42cde6c21"
-        )
 
 
 def test_explicit_canonical_person_restores_a_published_registry_anchor():
@@ -583,9 +565,6 @@ def test_published_release_applies_elected_and_collision_review_wave():
         REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
     ).set_index("candidacy_id")
     links = pd.read_csv(REPO_ROOT / "data" / "out" / "candidacy_person_links.csv", dtype="string")
-    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
-        "person_id"
-    )
     active_confirmed = links.loc[
         links["valid_to_release"].isna() & links["link_status"].eq("confirmed")
     ]
@@ -606,21 +585,10 @@ def test_published_release_applies_elected_and_collision_review_wave():
                 {"candidacy_id": candidacy_id, "person_id": person_id}
             ]
 
-    deprecated_lulka = people.loc["per_8d7b15e532d653528a8ec8cededad6fe"]
-    assert deprecated_lulka["identity_status"] == "deprecated"
-    assert deprecated_lulka["redirect_to_person_id"] == "per_41f18773bdf258f1b2bda351d34274e3"
-
-    # The 2010 TCDSB Ward 9 Kennedy and Morrison rows once excluded here were votes from Ward 11
-    # filed under Ward 9 by a parser error. They are retired, and the registry record that was
-    # created for the Morrison row now redirects to his canonical Person.
+    # The 2010 TCDSB workbook files some Ward 11 votes on the Ward 9 sheet; the adapter assigns
+    # them by candidate roster, so no Ward 9 Kennedy or Morrison row exists.
     assert "can_bdebbc1bc209571bb822180ba1c83abe" not in results.index
     assert "can_27eeec08461051ba9207daf09935b243" not in results.index
-    phantom_morrison = people.loc["per_0f6b3c990ec85336a61dcdf54c43dfd6"]
-    assert phantom_morrison["identity_status"] == "deprecated"
-    assert (
-        phantom_morrison["redirect_to_person_id"]
-        == (canonical_by_assertion["kevin-morrison-tcdsb-ward11-to-ward9-continuity"])
-    )
 
     excluded_collisions = {
         "can_db651bb0672758849cf4f97fb3576823": ("frank-damico-tcdsb-2010-2022-continuity"),
@@ -1075,3 +1043,31 @@ def test_curated_assertion_is_idempotent_when_reusing_the_prior_registry():
 
     pd.testing.assert_frame_equal(second.people, first.people)
     pd.testing.assert_frame_equal(second.candidacy_person_links, first.candidacy_person_links)
+
+
+def test_curated_roster_members_name_one_person_each():
+    resolutions = curated_roster_resolutions(DEFAULT_IDENTITY_ASSERTIONS)
+
+    # Three appointees and seven members whose 2000 council names the roster does not match.
+    assert len(resolutions) == 10
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    assert people.loc[list(resolutions.values()), "identity_status"].eq("active").all()
+    assert resolutions[("evt_54673fd104ab5ef08eb865e162ac040c", "James Maloney")] == (
+        "per_5a7ce90ce04b51bda92cea74556efcd7"
+    )
+
+    ambiguous = CuratedIdentityAssertion(
+        assertion_id="two-people",
+        preferred_name="Pat Example",
+        occurrences=(
+            CandidacyLocator("evt_a", "toronto_city_council", "councillor", "Pat Example"),
+        ),
+        evidence_urls=("https://example.test/roster",),
+        rationale="Synthetic.",
+        registry_person_ids=("per_one", "per_two"),
+        roster_members=(RosterMemberLocator("evt_b", "Pat Example"),),
+    )
+    with pytest.raises(ValueError, match="exactly one registry Person"):
+        curated_roster_resolutions((ambiguous,))

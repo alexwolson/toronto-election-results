@@ -1,29 +1,32 @@
 # Build notes
 
-Record of how the v2 relational release is built. See `docs/data-dictionary.md` for the public
-schema, `CONTEXT.md` for domain language, and `docs/adr/` for load-bearing decisions.
+How the release is built. See `docs/data-dictionary.md` for the public schema, `CONTEXT.md` for
+domain language, and `docs/adr/` for load-bearing decisions.
 
-## Status: complete through 2026-08-20
+## Status
 
-The release covers completed in-scope Toronto election events from 2003-01-01 through 2026-08-20,
-plus registered candidates for the pending 2026 municipal election: Mayor, City Councillor,
-trustees for all four publicly funded School Boards, MPs, and MPPs. It contains 5,731 Candidacies
-in 881 Contests across 55 Election events. General elections, by-elections, acclamations, and
-legally void results are retained; pending registrations are distinguished from final results.
+The release covers completed in-scope election events within today's City of Toronto, from each
+level's last general election before amalgamation (federal 1993-10-25, municipal 1994-11-14,
+Ontario 1995-06-08) through the 2026-10-26 municipal general election. It covers Mayor, City
+Councillor and the councils before amalgamation, trustees of the School Boards serving the area,
+MPs and MPPs. It contains 8,099 Candidacies in 1,385 Contests across 80 Election events. General
+elections, by-elections, acclamations and legally void results are included.
 
 ## Public artifacts
 
-The pipeline publishes eight tables to `data/out/`, each as CSV and Parquet:
+The pipeline publishes twelve tables to `data/out/`, each as CSV and Parquet:
 
-- `election_results.*` — modelling-ready Candidacy rows;
-- `election_events.*` and `contests.*` — event and Contest dimensions;
-- `electoral_districts.*` — as-run Contest geographies, with explicit missing-geometry status;
-- `parties.*` — jurisdiction-scoped Party identities;
-- `people.*` and `candidacy_person_links.*` — persistent, audited identity records; and
-- `office_tenures.*` — evidence used to derive same-office incumbency.
+- `election_results.*`: modelling-ready Candidacy rows;
+- `election_events.*` and `contests.*`: event and Contest dimensions;
+- `electoral_districts.*`: as-run Contest geographies, with explicit missing-geometry status;
+- `parties.*`: jurisdiction-scoped Party identities;
+- `people.*` and `candidacy_person_links.*`: persistent, audited identity records;
+- `office_tenures.*`: evidence used to derive same-office incumbency; and
+- `endorsers.*`, `endorsement_assertions.*`, `endorsements.*` and `endorsement_coverage.*`: the
+  endorsement companion tables.
 
-`build_manifest.json` records the fixed cutoff, source and artifact checksums, row counts, known
-archive uncertainty, and deliberately excluded calls. Release files are fully serialized in a
+`build_manifest.json` records the coverage window, source and artifact checksums, row counts,
+known archive uncertainty and deliberately excluded calls. Release files are fully serialized in a
 temporary sibling directory before per-file atomic promotion; a promotion error restores the
 previous artifact set.
 
@@ -39,10 +42,6 @@ the new manifest is published is deliberately not auto-recovered: restore the pr
 ledger, or explicitly reconcile and rebuild the interrupted release before running the pipeline
 again.
 
-The deleted v1 files `toronto_election_results.*`, `subdivision_boundaries.parquet`, and
-`council_composition.csv` are not release artifacts. Their old command-line publishers and checks
-are retired and direct maintainers to the v2 pipeline.
-
 ## Build and validation
 
 Run:
@@ -55,16 +54,43 @@ uv run python -m toronto_election_results.pipeline --skip-download
 The second command reuses the local official-source cache. The pipeline normalizes each authority
 adapter, assigns persistent Candidacy occurrences, builds the relational dimensions, attaches
 confirmed Person links, derives incumbency, adds available Contest-level geometry, and applies the
-release-wide quality gates before publication.
+release-wide quality gates before publication. Two cached builds in a row produce identical
+artifacts apart from the manifest's timestamps.
 
-The quality gates cover primary/foreign keys; fixed election-date cutoff; agreement of denormalized
-Event, Contest, and Electoral district labels; Party links; outcome and vote reconciliation;
-turnout; evidence-backed incumbency; active confirmed Person links; and geometry validity and City
-containment.
+The quality gates cover primary and foreign keys; the coverage window; agreement of denormalized
+Event, Contest and Electoral district labels; Party links; coverage status; outcome and vote
+reconciliation; turnout; evidence-backed incumbency; active confirmed Person links; and geometry
+validity and City containment.
 
-Core v2 modules are `municipal`, `trustees`, `federal`, `ontario`, `schema`, `candidacy_ledger`,
-`identity_review`, `identity_dispositions`, `reported_incumbency`, `district_geometry`, `release`,
-`release_validation`, `build_manifest`, and `pipeline`.
+The main modules are the source adapters (`municipal`, `municipal_archive`, `trustees`, `federal`,
+`federal_historical`, `ontario` and `pending_candidates`), `schema`, `candidacy_ledger`,
+`identity_review`, `identity_curations`, `identity_dispositions`, `municipal_rosters`,
+`reported_incumbency`, `predecessor_incumbency`, `district_geometry`, `release`,
+`release_validation`, `build_manifest` and `pipeline`.
+
+## Identity
+
+The release has 5,226 People. 5,210 hold at least one Candidacy, and 16 hold only an Office
+tenure from a Council roster. 7,441 Candidacies have a confirmed Person and 658 have none: 657
+were reviewed and left unresolved for insufficient evidence, and one was rejected. Seven of the
+658 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+nulls are review outcomes, not missing results.
+
+Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
+continuity, Council rosters and adjudicated curations. The curations are 450 identity assertions
+over 1,003 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
+confirmed earlier races in the release) and 1,633 occurrence-level dispositions in
+`data/reference/identity_review_dispositions.csv` (892 confirmed, 738 unresolved and 3 rejected).
+A disposition is not applied where a career review or a person-record merge covers the same
+Candidacy. No blanket name merges are made, and a hold does not claim that two occurrences are
+different people.
+
+The Council roster step matches each roster member to a Candidacy by exact name. Ten roster
+entries match none: three appointees, and seven members whose earlier council races are in the
+1997–2002 archive, whose names the roster step does not read in the same form. The identity
+assertion for each of these people names the roster entry, so the tenure belongs to their Person.
+Several of the 16 People who hold only a roster tenure share a name with a candidate under another
+Person ID and may be the same people; they have not been merged.
 
 ## Provenance and known uncertainty
 
@@ -72,65 +98,29 @@ Official authority files remain under `data/raw/` and normalized cache inputs un
 `data/interim/`. The project-owned `data/reference/` files retain audited identity and roster
 evidence; the build manifest includes those inputs where they affect the release.
 
-The pre-batch current-code baseline had 198 identity-curation assertions, 589 occurrence pins, and
-1,111 unresolved Candidacies. An initial downstream complaint led to priority evidence curation;
-the workflow used lightweight evidence agents, independent adjudicators, and a collision/complement
-audit before accepting links. The exact-scope batch independently accepted 179 occurrence links
-across 173 existing People (62 federal MP, 54 Ontario/trustee, and 63 municipal). This produced 371
-curation assertions and 768 unique occurrence pins, with 932 proposals left for explicit review.
-
-Every one of those 932 proposals then received an occurrence-level independent disposition stored
-in `data/reference/identity_review_dispositions.csv`. Later evidence-backed curations can supersede
-and remove a now-stale disposition while retaining the durable curation evidence. A later
-downstream council-history audit supplied explicit candidate-history evidence for 34 previously
-held occurrences; those holds were re-reviewed independently and revised without deleting their
-earlier review history. A second, outcome-consequential council audit then reviewed 12
-former-officeholder cases: nine additional links were confirmed immediately. A targeted follow-up
-subsequently found explicit bridges for David Caplan, Avtar Minhas, and Christopher Mammoliti,
-completing all 12. A separate candidate-controlled biography and official-record audit linked
-Chloe Brown's 2016 and 2026 council Candidacies to her 2022 and 2023 mayoral Candidacies while
-preserving the exact `Chloe-Marie Brown` ballot names. The current dispositions are 143 confirmed,
-783 reviewed but left unresolved for insufficient identity
-evidence, and five rejected because same-event candidate collisions contradicted the proposed
-Person. The completed-event review has no active `proposed` links; 77 proposed links belong only to
-pending 2026 Candidacies and remain null until adjudicated. Across final and pending rows, 866
-Candidacies have null Person IDs. Those nulls are review outcomes or pending proposals, not missing
-election results. No blanket name merges were made, and the workflow does not claim that a hold
-proves two occurrences are different people. Seven elected Candidacies remain null because their
-proposed identities did not meet the evidence threshold.
-
-The link-history table also retains 33 older null-Person bootstrap review flags for reported
-incumbents that lacked a safe prior elected match. Those flags coexist with a confirmed Person link
-and do not create additional nulls in `election_results`; this is why the active `unresolved` link
-row count is 817 rather than 783.
-
-Two unchanged cached builds produced byte-identical Candidacy-ledger and public CSV/Parquet
-artifacts. The build manifest checksums the disposition table alongside the official and curated
-source inputs.
-
-The City's 2010 TCDSB poll-by-poll workbook prints three City-ward blocks on another trustee
-ward's sheet, which once produced eight spurious Candidacies and short vote totals in Wards 7, 9
-and 11. The trustee adapter now assigns each general-election block to the ward whose candidate
-roster it lists, the eight Candidacies are retired, and every general-election trustee Contest
-from 2003 to 2022 matches the Clerk's declaration. A release gate rejects a candidate name that
-appears in two trustee wards of one board at one event. See
-`docs/research/tcdsb-2010-ward-assignment-2026-10-29.md`.
+The City's 2010 TCDSB poll-by-poll workbook prints three City-ward blocks on another trustee ward's
+sheet. The trustee adapter assigns each general-election block to the ward whose candidate roster
+it lists, and every general-election trustee Contest from 2003 to 2022 matches the Clerk's
+declaration. A release gate rejects a candidate name that appears in two trustee wards of one
+board at one event. See `docs/research/tcdsb-2010-ward-assignment-2026-10-29.md`.
 
 The City's 2017 Ward 42 by-election workbook prints declined, rejected and under-vote lines below
-the candidates, which once produced three Candidacies, each with its own Person. The council parser
-now skips those lines, the three Candidacies are retired, and their three Person IDs are withdrawn.
-Elections Ontario's 2011 candidate CSV swaps the totals of Willowdale's two Brown candidates; a
-pinned correction in the Ontario adapter restores them and fails if the source figures change. See
-`docs/research/result-corrections-2026-10-31.md`.
+the candidates, and the council parser skips them. Elections Ontario's 2011 candidate CSV swaps the
+totals of Willowdale's two Brown candidates; a pinned correction in the Ontario adapter restores
+them and fails if the source figures change. See `docs/research/result-corrections-2026-10-31.md`.
 
-Toronto's trustee by-election archive begins in 2012, so event enumeration for 2003–2011 is marked
-uncertain. No result rows are invented for that gap. Trustee incumbency remains null until a
-complete, evidence-backed historical roster is acquired. Geometry is never treated as required for
-district identity, and poll/subdivision-level results and boundaries are outside the release scope.
+The City's archived index of past results lists every election it ran from 1998, so event
+enumeration is complete from 1998. The former municipalities left no comparable index, so their
+by-elections from 1995 to 1997 are marked uncertain; a search of the Toronto Star found one, North
+York Ward 1 in 1995, which is included. No result rows are invented for a gap. Geometry is never
+treated as required for district identity, and poll/subdivision-level results and boundaries are
+outside the release scope.
+
+Trustee incumbency is recorded only for the 20 sitting trustees who ran in 2026. Every other
+trustee `incumbent` stays null until a complete historical roster is acquired.
 
 Elections Canada's raw incumbent marker is preserved as `incumbent_reported`, but it is not treated
 as final-sitting-roster evidence: the source marks some former MPs who no longer held office.
 Modelled federal incumbency is therefore true only when a confirmed Person's prior election win has
-not been superseded within that parliamentary cycle. Federal non-members remain null because those
-event rosters are intentionally incomplete, and the 2004 general election has no modelled true
-incumbents until an independently evidenced pre-dissolution roster is added.
+not been superseded within that parliamentary cycle. Federal non-incumbents stay null because those
+event rosters are intentionally incomplete.

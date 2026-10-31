@@ -404,6 +404,7 @@ def build_municipal_roster_evidence(
     composition: pd.DataFrame | None = None,
     reference: Path = REFERENCE,
     raw: Path = RAW,
+    roster_resolutions: dict[tuple[str, str], str] | None = None,
 ) -> MunicipalRosterEvidence:
     """Build auditable Council roster snapshots and confirm roster-backed identities.
 
@@ -416,11 +417,22 @@ def build_municipal_roster_evidence(
     Exact normalized name by itself never changes a link.  Confirmation occurs only
     while processing a named member of an event-scoped roster, and the evidence JSON
     retains both the roster record and official Candidacy source.
+
+    ``roster_resolutions`` maps a curated ``(event_id, member_name)`` roster entry to the
+    Person a curated identity assertion names.  It applies only where no Candidacy or
+    earlier roster resolves the member, and every entry for a processed event must be
+    used, so a stale resolution fails the build.
     """
 
     release = _clean_text(release_id)
     if release is None:
         raise ValueError("release_id cannot be null or blank")
+    curated_members = {
+        (event_id, _exact_key(member_name)): person_id
+        for (event_id, member_name), person_id in (roster_resolutions or {}).items()
+    }
+    used_members: set[tuple[str, str]] = set()
+    processed_events: set[str] = set()
     people_out, links_out = _prepare_registry(people, candidacy_person_links)
     work = _prepare_candidacies(candidacies, raw=raw)
     if work.empty:
@@ -845,6 +857,15 @@ def build_municipal_roster_evidence(
         prior_roster_people = roster_people_by_name.get(name_key, set())
         if len(prior_roster_people) == 1:
             return next(iter(prior_roster_people)), None
+        curated_person = curated_members.get((event_id, name_key))
+        if curated_person is not None:
+            used_members.add((event_id, name_key))
+            person_id = canonical_map().get(curated_person, curated_person)
+            if not people_out["person_id"].eq(person_id).any():
+                raise ValueError(
+                    f"curated roster member resolves to an unknown Person {person_id!r}"
+                )
+            return person_id, None
         person_id = create_person(
             anchor=f"roster:{event_id}:{name_key}", preferred_name=member_name
         )
@@ -877,6 +898,7 @@ def build_municipal_roster_evidence(
 
             members_before = len(roster_rows)
             ambiguous_member = False
+            processed_events.add(str(event_id))
             for _, member in year_composition.iterrows():
                 member_name = _clean_text(member["member_name"])
                 if member_name is None:
@@ -1216,6 +1238,12 @@ def build_municipal_roster_evidence(
         flags = flags.drop_duplicates("review_flag_id").sort_values(
             ["severity", "flag_type", "candidacy_id"], kind="stable", na_position="last"
         )
+
+    unused = sorted(
+        key for key in curated_members if key[0] in processed_events and key not in used_members
+    )
+    if unused:
+        raise ValueError(f"curated roster member was not needed: {unused[0]!r}")
 
     people_out["person_id"] = people_out["person_id"].astype("string")
     people_out["redirect_to_person_id"] = people_out["redirect_to_person_id"].astype("string")
