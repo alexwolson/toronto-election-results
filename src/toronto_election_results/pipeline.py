@@ -45,7 +45,6 @@ from .identity_dispositions import read_identity_review_decisions
 from .mayoral_career import (
     build_mayoral_career_identity_assertions,
     exclude_superseded_identity_decisions,
-    load_mayoral_career_backfills,
 )
 from .municipal import load_council_results
 from .municipal_archive import archive_placeholder_manifest, load_archive_results
@@ -126,7 +125,6 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "mayoral_career_cohort_2026.csv",
         "mayoral_career_reviews.csv",
         "mayoral_career_decisions.csv",
-        "mayoral_career_backfill.csv",
         "mayoral_career_occurrence_mapping.csv",
         "trustee_career_cohort_2026.csv",
         "trustee_career_reviews.csv",
@@ -343,7 +341,6 @@ def _load_source_adapters(
             else None
         ),
     )
-    mayoral_career = load_mayoral_career_backfills(reference)
     municipal_archive = load_archive_results(reference)
     contest_manifest = pd.concat(
         [
@@ -362,7 +359,6 @@ def _load_source_adapters(
         federal,
         ontario,
         pending_council,
-        mayoral_career,
         municipal_archive,
     ], contest_manifest
 

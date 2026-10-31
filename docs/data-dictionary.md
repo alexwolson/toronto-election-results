@@ -46,7 +46,7 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 8,107 Candidacies, 1,393 Contests, and 85 Election events. All Candidacies
+The release contains 8,099 Candidacies, 1,385 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
@@ -95,7 +95,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `acclaimed` | boolean | never | True only for an official Acclamation. |
 | `outcome_method` | enum | never | `pending`, `vote`, `acclamation`, `void`, or another authority disposition. |
 | `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for a candidate snapshot without declared results. |
-| `coverage_status` | enum | never | `complete`, `partial`, `source_missing`, or `candidate_record`; independent of legal outcome. `candidate_record` marks a single out-of-scope Candidacy kept for a mayoral candidate's career record (for example Olivia Chow's 1991 Metro Council race), with the authority's reported contest metrics. A `partial` Contest may carry null `votes` where its only source omits them. |
+| `coverage_status` | enum | never | `complete`, `partial`, or `source_missing`; independent of legal outcome. A `partial` Contest may carry null `votes` where its only source omits them. |
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_reported` | boolean | authority does not report it | Unmodified source flag; the modelled `incumbent` field uses project semantics. |
@@ -155,11 +155,22 @@ active Person; collisions remain published as ambiguous with a null `person_id`.
 
 ### `mayoral_candidates.json`
 
-The release feed of the certified 2026 Toronto mayoral field, at `schema_version` 6. Each
+The release feed of the certified 2026 Toronto mayoral field, at `schema_version` 7. Each
 candidate has `candidacy_id`, `person_id`, `display_name`, `campaign_url`,
 `campaign_suspended_on`, `is_incumbent`, career-review status, and `past_elections`, which are
 joined only through confirmed Person IDs. The release manifest's
 `feed_versions.mayoral_candidates` matches `schema_version`.
+
+`past_elections` lists only Candidacies in this release, so a mayoral history has the release's
+coverage: districts within the City of Toronto, inside the coverage window. The `coverage` block
+says so with `policy` `verified_toronto_electoral_history`, `jurisdiction` `Toronto` and a null
+`year_cutoff`, because the feed applies no date limit of its own. The career review behind the feed
+researched each candidate's full Canadian electoral career. Races it confirmed outside the
+release's coverage, such as Olivia Chow's 1991 Metro Council race, stay in
+`data/reference/mayoral_career_decisions.csv` with `ingestion_action` `out_of_scope` and are not
+published. The release bundle carries the review's public columns as `mayoral_career_coverage.csv`
+and `mayoral_career_occurrence_mapping.csv`, which maps each published confirmation to its
+Candidacy. `confirmed_count` counts every confirmed race, including those outside the coverage.
 
 | Field | Type | Null rule | Meaning |
 |---|---|---|---|
@@ -353,16 +364,17 @@ inferred from repeated names or prior winners.
 
 ## Quality gates
 
-The build rejects election dates after October 26, 2026. Future dated Candidacies must remain
-pending relative to the validation date, except for officially declared trustee Acclamations.
-Validated or certified results dated on or before election day are in scope, including elections
-after August 20. Historical career records retain their documented lack of a lower date bound. Pending
-rows must have `result_status=pending`, a complete official candidate roster, null result metrics,
-and no Acclamation. The build also rejects broken foreign keys, duplicate stable identities,
+The build rejects election dates outside the coverage window: before each level's first general
+election in scope (federal 1993-10-25, municipal 1994-11-14, Ontario 1995-06-08) or after October
+26, 2026. Future dated Candidacies must remain pending relative to the validation date, except for
+officially declared trustee Acclamations. Validated or certified results dated on or before
+election day are in scope, including elections after August 20. Pending rows must have
+`result_status=pending`, a complete official candidate roster, null result metrics, and no
+Acclamation. The build also rejects broken foreign keys, duplicate stable identities,
 missing persistent `source_candidacy_id` values, or disagreement between repeated
-Event/Contest/Electoral district labels and their keyed dimensions. It rejects invalid Party
-relationships, negative votes, non-reconciling totals/shares, invalid Acclamation nulls, resolved
-Contests without exactly `seats_available` elected Candidacies (null `elected` is allowed only for
+Event/Contest/Electoral district labels and their keyed dimensions. It rejects an unknown
+`coverage_status`, invalid Party relationships, negative votes, non-reconciling totals/shares,
+invalid Acclamation nulls, resolved Contests without exactly `seats_available` elected Candidacies (null `elected` is allowed only for
 candidacies tied across the last seat), Acclamations with more candidates than seats, mismatched turnout operands, ballots
 exceeding eligible electors, unsupported published Person/incumbency links, or invalid/materially
 out-of-bounds available geometry. It rejects a candidate name that appears in two trustee wards of

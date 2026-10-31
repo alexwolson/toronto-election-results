@@ -62,7 +62,6 @@ def test_candidates_only_refresh_overwrites_all_rosters_without_downloading_hist
     monkeypatch.setattr(pipeline, "load_federal_results", historical_adapter)
     monkeypatch.setattr(pipeline, "load_historical_federal_results", historical_adapter)
     monkeypatch.setattr(pipeline, "load_ontario_results", historical_adapter)
-    monkeypatch.setattr(pipeline, "load_mayoral_career_backfills", historical_adapter)
     monkeypatch.setattr(pipeline, "trustee_event_manifest", historical_adapter)
     monkeypatch.setattr(
         pipeline.city_download, "download_all", lambda **_: pytest.fail("historical download")

@@ -1,7 +1,8 @@
 # Canada-wide mayoral candidate career coverage
 
 **Date:** 2026-08-26  
-**Status:** Approved 2026-08-26
+**Status:** Approved 2026-08-26. The release publishes only the confirmed races inside its own
+coverage; see ADR 0010 and the `mayoral_candidates.json` section of `docs/data-dictionary.md`.
 
 ## Purpose
 

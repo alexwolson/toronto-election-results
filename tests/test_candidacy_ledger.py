@@ -51,9 +51,9 @@ def _published_id(frame: pd.DataFrame) -> str:
 def test_checked_in_ledger_covers_every_cutoff_candidacy():
     ledger = read_candidacy_ledger(REFERENCE_LEDGER)
 
-    assert len(ledger) == 8_107
-    assert ledger["candidacy_id"].nunique() == 8_107
-    assert ledger["source_occurrence_id"].nunique() == 8_107
+    assert len(ledger) == 8_099
+    assert ledger["candidacy_id"].nunique() == 8_099
+    assert ledger["source_occurrence_id"].nunique() == 8_099
     assert ledger["valid_to_release"].isna().all()
 
 

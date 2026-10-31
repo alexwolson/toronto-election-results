@@ -8,15 +8,13 @@ from datetime import UTC, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from .coverage import ELECTION_DAY
+from .coverage import COVERAGE_START_BY_LEVEL, ELECTION_DAY
 from .pending_candidates import DECLARATION_FILENAME, pending_candidate_paths
 
 COVERAGE = {
-    "from": "1993-10-25",
+    "from": min(COVERAGE_START_BY_LEVEL.values()).isoformat(),
     "from_by_level": {
-        "federal": "1993-10-25",
-        "municipal": "1994-11-14",
-        "provincial": "1995-06-08",
+        level: start.isoformat() for level, start in sorted(COVERAGE_START_BY_LEVEL.items())
     },
     "through": ELECTION_DAY.isoformat(),
     "pending_candidate_snapshot_through": None,

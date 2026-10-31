@@ -244,7 +244,7 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     manifest = json.loads((output / "release_manifest.json").read_text())
     assert manifest["source_commit"] == "abc123"
     assert manifest["source_dirty"] is False
-    assert manifest["feed_versions"]["mayoral_candidates"] == 6
+    assert manifest["feed_versions"]["mayoral_candidates"] == 7
     assert manifest["feed_versions"]["trustee_races"] == 3
     assert manifest["feeds"] == {
         "mayoral_candidates": "mayoral_candidates.json",
@@ -269,7 +269,7 @@ def test_bundle_records_commit_checksums_and_factual_feed(tmp_path):
     for filename, record in assets.items():
         assert record["sha256"] == hashlib.sha256((output / filename).read_bytes()).hexdigest()
     candidates_feed = json.loads((output / "mayoral_candidates.json").read_text())
-    assert candidates_feed["schema_version"] == 6
+    assert candidates_feed["schema_version"] == 7
     assert [candidate["campaign_suspended_on"] for candidate in candidates_feed["candidates"]] == [
         "2026-10-06"
     ]

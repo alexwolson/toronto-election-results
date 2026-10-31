@@ -28,7 +28,7 @@ from .trustee_career import (
 )
 from .trustee_continuity import load_trustee_continuity, validate_trustee_continuity
 
-MAYORAL_CANDIDATES_SCHEMA_VERSION = 6
+MAYORAL_CANDIDATES_SCHEMA_VERSION = 7
 TRUSTEE_RACES_SCHEMA_VERSION = 3
 PERSON_ALIASES_SCHEMA_VERSION = 1
 _TORONTO_COUNCIL = "toronto_city_council"
@@ -357,16 +357,18 @@ def build_mayoral_candidates_feed(
         "election_date": current_date,
         "ballot_certified": True,
         "coverage": {
-            "policy": "full_verified_canadian_electoral_career",
-            "jurisdiction": "Canada",
+            "policy": "verified_toronto_electoral_history",
+            "jurisdiction": "Toronto",
             "year_cutoff": None,
             "cohort_id": cohort_ids[0],
             "source_release": source_releases[0],
             "review_date": review_dates[0],
             "methodology_note": (
-                "Mayoral histories cover verified Canadian public-election candidacies "
-                "nationwide with no year cutoff. Councillor histories retain the ordinary "
-                "Toronto-centred Results coverage. Identity evidence standards are the same."
+                "Mayoral histories list the earlier candidacies in this release that belong "
+                "to the same confirmed Person. The release covers districts within today's "
+                "City of Toronto, with federal elections from 1993, municipal elections from "
+                "1994 and Ontario elections from 1995. Candidacies elsewhere or before those "
+                "elections are not included."
             ),
         },
         "candidates": candidates,

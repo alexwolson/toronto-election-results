@@ -7,7 +7,6 @@ import pandas as pd
 import pytest
 
 from toronto_election_results.mayoral_career import (
-    BACKFILL_COLUMNS,
     DECISION_COLUMNS,
     EXPECTED_COHORT_SIZE,
     MAPPING_COLUMNS,
@@ -15,16 +14,11 @@ from toronto_election_results.mayoral_career import (
     _assertion_identity_target,
     exclude_superseded_identity_decisions,
     load_contract_table,
-    load_mayoral_career_backfills,
     load_mayoral_career_cohort,
     validate_mayoral_career_cohort,
     validate_mayoral_career_contracts,
 )
-from toronto_election_results.schema import (
-    derive_result_metrics,
-    normalize_adapter_frame,
-    stable_id,
-)
+from toronto_election_results.schema import stable_id
 
 ROOT = Path(__file__).resolve().parents[1]
 COHORT_PATH = ROOT / "data/reference/mayoral_career_cohort_2026.csv"
@@ -132,7 +126,7 @@ def _contract_inputs(tmp_path: Path):
                 "office": "mayor",
                 "district": "Example",
                 "decision": "confirm",
-                "ingestion_action": "add_backfill",
+                "ingestion_action": "out_of_scope",
                 "identity_bridge": "Candidate-controlled biography identifies the contest.",
                 "result_source_authority": "Example Clerk",
                 "result_source_resource": "Official results",
@@ -143,38 +137,8 @@ def _contract_inputs(tmp_path: Path):
         columns=DECISION_COLUMNS,
         dtype="string",
     )
-    backfill = pd.DataFrame(
-        [
-            {
-                "backfill_id": "mcb_test",
-                "decision_id": "mcd_test",
-                "subject_candidacy_id": subject.subject_candidacy_id,
-                "election_date": "2022-10-24",
-                "election_type": "general",
-                "election_authority": "Example Clerk",
-                "represented_body": "example_council",
-                "office_type": "mayor",
-                "district_name": "Example",
-                "candidate_name_raw": subject.certified_name,
-                "party_name_raw": "",
-                "votes": "100",
-                "total_contest_votes": "1000",
-                "vote_share": "0.1",
-                "vote_rank": "2",
-                "n_candidates": "3",
-                "elected": "false",
-                "acclaimed": "false",
-                "result_status": "official",
-                "source_authority": "Example Clerk",
-                "source_resource": "Official results",
-                "source_locator": "https://example.ca/results",
-            }
-        ],
-        columns=BACKFILL_COLUMNS,
-        dtype="string",
-    )
     mappings = pd.DataFrame(columns=MAPPING_COLUMNS, dtype="string")
-    return cohort, reviews, decisions, backfill, mappings
+    return cohort, reviews, decisions, mappings
 
 
 def _validate_contract_inputs(tmp_path: Path, inputs, **kwargs):
@@ -194,7 +158,6 @@ def test_valid_partial_review_contract_is_accepted(tmp_path: Path):
     [
         ("mayoral_career_reviews.csv", REVIEW_COLUMNS),
         ("mayoral_career_decisions.csv", DECISION_COLUMNS),
-        ("mayoral_career_backfill.csv", BACKFILL_COLUMNS),
         ("mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
     ],
 )
@@ -204,7 +167,7 @@ def test_repository_contract_tables_have_exact_schema(filename: str, columns: li
     assert table.columns.tolist() == columns
 
 
-def test_reconciled_registry_is_valid_before_backfill_ingestion():
+def test_reconciled_registry_is_valid_before_ingestion():
     cohort = load_mayoral_career_cohort(COHORT_PATH)
     reference = ROOT / "data/reference"
 
@@ -212,7 +175,6 @@ def test_reconciled_registry_is_valid_before_backfill_ingestion():
         cohort,
         load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS),
         load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS),
-        load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS),
         load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
         repository_root=ROOT,
         require_complete=False,
@@ -228,7 +190,6 @@ def test_complete_reconciled_registry_covers_the_entire_cohort():
         cohort,
         load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS),
         load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS),
-        load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS),
         load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
         repository_root=ROOT,
         require_complete=True,
@@ -244,7 +205,6 @@ def test_all_confirmed_occurrences_have_canonical_mappings():
         cohort,
         load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS),
         load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS),
-        load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS),
         load_contract_table(reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS),
         repository_root=ROOT,
         require_complete=True,
@@ -252,16 +212,30 @@ def test_all_confirmed_occurrences_have_canonical_mappings():
     )
 
 
-def test_only_confirmed_backfills_enter_candidate_record_adapter():
-    adapter = load_mayoral_career_backfills(ROOT / "data/reference")
+def test_out_of_scope_confirmations_stay_research_records():
+    """Confirmed races outside the release keep their decisions but map to no Candidacy."""
 
-    assert len(adapter) == 8
-    assert adapter["coverage_status"].eq("candidate_record").all()
-    assert set(adapter["source_candidacy_id"]) == set(
-        load_contract_table(ROOT / "data/reference/mayoral_career_backfill.csv", BACKFILL_COLUMNS)[
-            "backfill_id"
-        ]
+    reference = ROOT / "data/reference"
+    decisions = load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS)
+    mappings = load_contract_table(
+        reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS
     )
+    out_of_scope = decisions.loc[decisions["ingestion_action"].eq("out_of_scope")]
+
+    assert out_of_scope["decision"].eq("confirm").all()
+    assert sorted(out_of_scope["observed_ballot_name"]) == [
+        "Chris Alexander",
+        "Chris Alexander",
+        "Kevin Clarke",
+        "Kevin Clarke",
+        "Kevin Clarke",
+        "Olivia Chow",
+        "SAYERS, NAOMI",
+        "Xiaohua Gong",
+    ]
+    assert not set(out_of_scope["decision_id"]) & set(mappings["decision_id"])
+    results = pd.read_csv(RESULTS_PATH, usecols=["candidacy_id"], dtype="string")
+    assert set(mappings["canonical_candidacy_id"]) <= set(results["candidacy_id"])
 
 
 def test_planned_assertion_person_is_created_instead_of_pinned():
@@ -273,21 +247,6 @@ def test_planned_assertion_person_is_created_instead_of_pinned():
         ("per_existing",),
         "per_existing",
     )
-
-
-def test_candidate_record_preserves_authority_reported_metrics():
-    adapter = load_mayoral_career_backfills(ROOT / "data/reference")
-    results = derive_result_metrics(
-        normalize_adapter_frame(adapter, require_persistent_candidacy_id=True)
-    )
-    alexander = results.loc[results["candidate_name_raw"].eq("Chris Alexander")].sort_values(
-        "election_date"
-    )
-
-    assert alexander["total_contest_votes"].tolist() == [56268, 56307]
-    assert alexander["n_candidates"].tolist() == [5, 5]
-    assert alexander["vote_rank"].tolist() == [1, 2]
-    assert alexander.iloc[1]["vote_share"] == pytest.approx(19374 / 56307)
 
 
 def test_complete_career_review_supersedes_older_occurrence_dispositions():
@@ -348,7 +307,7 @@ def test_confirmed_decision_requires_identity_and_result_evidence(
         _validate_contract_inputs(tmp_path, inputs)
 
 
-def test_nonconfirmed_decision_cannot_enter_backfill(tmp_path: Path):
+def test_nonconfirmed_decision_cannot_be_ingested(tmp_path: Path):
     inputs = list(_contract_inputs(tmp_path))
     inputs[2].loc[0, "decision"] = "hold"
 
@@ -380,13 +339,12 @@ def test_no_verified_prior_candidacy_cannot_count_confirmation(tmp_path: Path):
         _validate_contract_inputs(tmp_path, inputs)
 
 
-def test_mapping_subject_must_match_confirmed_decision(tmp_path: Path):
-    inputs = list(_contract_inputs(tmp_path))
-    inputs[4] = pd.DataFrame(
+def _mapping(subject_candidacy_id: str) -> pd.DataFrame:
+    return pd.DataFrame(
         [
             {
                 "cohort_id": "toronto-mayor-2026",
-                "subject_candidacy_id": inputs[0][1].subject_candidacy_id,
+                "subject_candidacy_id": subject_candidacy_id,
                 "decision_id": "mcd_test",
                 "canonical_candidacy_id": "can_existing",
             }
@@ -394,6 +352,38 @@ def test_mapping_subject_must_match_confirmed_decision(tmp_path: Path):
         columns=MAPPING_COLUMNS,
         dtype="string",
     )
+
+
+def test_unknown_ingestion_action_is_rejected(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[2].loc[0, "ingestion_action"] = "publish_elsewhere"
+
+    with pytest.raises(ValueError, match="invalid ingestion_action: publish_elsewhere"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_out_of_scope_decision_cannot_be_mapped(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[3] = _mapping(inputs[0][0].subject_candidacy_id)
+
+    with pytest.raises(ValueError, match="out-of-scope decision"):
+        _validate_contract_inputs(tmp_path, inputs)
+
+
+def test_in_scope_decision_must_be_mapped_once_ingested(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[2].loc[0, "ingestion_action"] = "reuse_existing"
+
+    with pytest.raises(ValueError, match="not fully mapped"):
+        _validate_contract_inputs(tmp_path, inputs, require_ingested=True)
+    inputs[3] = _mapping(inputs[0][0].subject_candidacy_id)
+    _validate_contract_inputs(tmp_path, inputs, require_ingested=True)
+
+
+def test_mapping_subject_must_match_confirmed_decision(tmp_path: Path):
+    inputs = list(_contract_inputs(tmp_path))
+    inputs[2].loc[0, "ingestion_action"] = "reuse_existing"
+    inputs[3] = _mapping(inputs[0][1].subject_candidacy_id)
 
     with pytest.raises(ValueError, match="mapping subject does not match"):
         _validate_contract_inputs(tmp_path, inputs)

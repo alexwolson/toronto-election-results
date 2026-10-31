@@ -9,11 +9,12 @@ from zoneinfo import ZoneInfo
 
 import pandas as pd
 
-from .coverage import ELECTION_DAY
+from .coverage import COVERAGE_START_BY_LEVEL, ELECTION_DAY, coverage_level
 
 _GEOMETRY_CONTAINMENT_RELATIVE_TOLERANCE = 1e-12
 _GEOMETRY_CONTAINMENT_ABSOLUTE_TOLERANCE = 1e-18
 _ELECTION_HORIZON = pd.Timestamp(ELECTION_DAY)
+_COVERAGE_STATUSES = {"complete", "partial", "source_missing"}
 _TORONTO_2026_ACCLAMATION_DECLARATION = (
     "https://www.toronto.ca/wp-content/uploads/2026/08/8ed9-2026-Declaration-of-Acclamation.pdf"
 )
@@ -166,10 +167,7 @@ def _agreement_issues(
 
 
 def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[str]) -> None:
-    """Enforce the public upper bound and date/year consistency.
-
-    Historical career records intentionally have no lower date bound.
-    """
+    """Enforce the coverage window and date/year consistency."""
 
     if "election_date" not in frame:
         issues.append(f"{table_label} is missing election_date")
@@ -184,6 +182,19 @@ def _election_date_issues(frame: pd.DataFrame, table_label: str, issues: list[st
         issues.append(
             f"{table_label}.election_date {value!r} is after the {ELECTION_DAY} coverage horizon"
         )
+    if "election_authority" not in frame:
+        issues.append(f"{table_label} is missing election_authority")
+    else:
+        levels = frame["election_authority"].map(coverage_level)
+        starts = levels.map(lambda level: pd.Timestamp(COVERAGE_START_BY_LEVEL[level]))
+        early = parsed.lt(starts)
+        if early.any():
+            value = frame.loc[early, "election_date"].iloc[0]
+            level = levels.loc[early].iloc[0]
+            issues.append(
+                f"{table_label}.election_date {value!r} is before the {level} coverage window, "
+                f"which opens {COVERAGE_START_BY_LEVEL[level]}"
+            )
     if "election_year" not in frame:
         issues.append(f"{table_label} is missing election_year")
         return
@@ -449,6 +460,9 @@ def validate_release(
         method = methods[0]
         result_status = result_statuses[0]
         coverage = coverages[0]
+        if coverage not in _COVERAGE_STATUSES:
+            issues.append(f"contest {contest_id!r} has unknown coverage_status {coverage!r}")
+            continue
 
         if result_status == "pending":
             numeric = group[["votes", "total_contest_votes", "vote_share", "vote_rank"]]
@@ -484,37 +498,6 @@ def validate_release(
                 issues.append(
                     f"contest {contest_id!r} acclamation must have at most seats_available "
                     "elected rows and null votes"
-                )
-            continue
-
-        if coverage == "candidate_record":
-            numeric = group[
-                ["votes", "total_contest_votes", "vote_share", "vote_rank", "n_candidates"]
-            ]
-            if numeric.isna().any().any():
-                issues.append(
-                    f"candidate-record contest {contest_id!r} requires exact reported metrics"
-                )
-                continue
-            invalid = (
-                group["total_contest_votes"].le(0)
-                | group["votes"].gt(group["total_contest_votes"])
-                | group["vote_share"].lt(0)
-                | group["vote_share"].gt(1)
-                | group["vote_rank"].lt(1)
-                | group["vote_rank"].gt(group["n_candidates"])
-                | group["n_candidates"].lt(len(group))
-            )
-            expected_share = group["votes"].astype(float) / group["total_contest_votes"].astype(
-                float
-            )
-            inconsistent_share = [
-                not math.isclose(float(actual), float(expected), abs_tol=1e-12)
-                for actual, expected in zip(group["vote_share"], expected_share, strict=True)
-            ]
-            if invalid.any() or any(inconsistent_share):
-                issues.append(
-                    f"candidate-record contest {contest_id!r} has inconsistent reported metrics"
                 )
             continue
 
