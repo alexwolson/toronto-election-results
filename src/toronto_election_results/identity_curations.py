@@ -11621,6 +11621,39 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Third pass on the same backlog.
+_EVENT_2010 = "evt_5a786c1da7ec5e758036205f04351fc5"
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="michael-sullivan-tdsb-ward-4-runs-2006-2010",
+        preferred_name="Michael Sullivan",
+        occurrences=(
+            _pinned_occurrence(
+                "can_d3b3653ed93d5319959b2ecdbf1fa12d",
+                _EVENT_2006,
+                "toronto_district_school_board",
+                "trustee",
+                "Michael Sullivan",
+            ),
+            _pinned_occurrence(
+                "can_61faf7c693655416995cc8241f0d4b54",
+                _EVENT_2010,
+                "toronto_district_school_board",
+                "trustee",
+                "Michael Sullivan",
+            ),
+        ),
+        evidence_urls=("https://www.proquest.com/docview/848408009",),
+        rationale=(
+            "The Toronto Star's 31 January 2011 story on Michael Sullivan's court challenge to the "
+            "TDSB Ward 4 result says he lost to Stephnie Payne by 56 votes in October 2010 and "
+            "that 'In the 2006 election he lost by 136 votes.' Payne's margins over Sullivan in "
+            "the 2010 and 2006 Ward 4 records are 56 and 136 votes. These two runs become one new "
+            "Person. The 2003 Ward 18 candidate is not joined because no source names that run."
+        ),
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
