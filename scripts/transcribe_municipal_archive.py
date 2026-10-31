@@ -13,7 +13,9 @@ Inputs (committed under ``data/reference``):
   Candidacy, each citing the source its votes come from (the City archive where it reports the
   Contest completely, otherwise the Toronto Star's final results pages);
 - ``star_1994_council_supplement.csv``: the eight 1994 council Contests the archive does not
-  report, from the Toronto Star's 16 November 1994 final results (page A8).
+  report, from the Toronto Star's 16 November 1994 final results (page A8);
+- ``municipal_archive_amendments.csv``: archive vote totals that a later recount changed, with
+  the report that gives the final figures (the 1994 Toronto Ward 3 race).
 
 Output: ``data/reference/municipal_archive_results.csv``, one row per Candidacy, plus one
 ``source_missing`` row per in-scope Contest the archive does not report. Requires ``pdftotext``.
@@ -623,6 +625,51 @@ def _with_1994_council_supplement(rows: list[dict]) -> list[dict]:
     return out
 
 
+def _with_amendments(rows: list[dict]) -> list[dict]:
+    """Replace archive vote totals that a later recount changed with the final figures.
+
+    The City's 1994 page gives the election-night count for Toronto Ward 3. Two recounts and an
+    appeal followed, and the final judicial recount, upheld by the Court of Appeal in December
+    1995, gave Mario Silva 2,979 votes to Tony O'Donohue's 2,969 (Globe and Mail, 16 December
+    1995). The other two candidates keep their election-night figures, which no report updates.
+    """
+
+    with (REFERENCE / "municipal_archive_amendments.csv").open(encoding="utf-8", newline="") as f:
+        amendments = {
+            (
+                row["election_date"],
+                row["represented_body"],
+                row["official_district_id"],
+                row["candidate_name_raw"],
+            ): row
+            for row in csv.DictReader(f)
+        }
+    out = []
+    for row in rows:
+        key = (
+            row["election_date"],
+            row["represented_body"],
+            row["official_district_id"],
+            row["candidate_name_raw"],
+        )
+        found = amendments.pop(key, None)
+        if found is None:
+            out.append(row)
+            continue
+        out.append(
+            {
+                **row,
+                "votes": found["votes"],
+                "source_detail": found["source_detail"],
+                "source_locator": found["source_locator"],
+                "source_authority": found["source_authority"],
+            }
+        )
+    if amendments:
+        raise ValueError(f"unused archive amendments: {sorted(amendments)}")
+    return out
+
+
 def _rows_1994_1997_trustees() -> list[dict]:
     """School trustee rows for 1994 and 1997, curated in ``school_trustees_1994_1997.csv``."""
 
@@ -631,7 +678,7 @@ def _rows_1994_1997_trustees() -> list[dict]:
 
 
 def main() -> None:
-    rows = (
+    rows = _with_amendments(
         _with_1994_council_supplement(_rows_1994())
         + _rows_1994_1997_trustees()
         + _rows_1997()
