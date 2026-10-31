@@ -142,42 +142,8 @@ that correctly have no Candidacy row.
 ### `people`
 
 The persistent identity registry: opaque `person_id`, preferred name, active/deprecated status,
-visible redirect target, and creation release. A Person may be retained for exact downstream
-identity resolution even when withdrawal leaves no certified Candidacy row; that does not add the
-Person to an election field. A Person name never rewrites a historical ballot name.
-
-### `person_aliases.json`
-
-The release-owned exact-name crosswalk for downstream datasets. Names come from confirmed
-Candidacies, active Person preferred names, or `data/reference/person_alias_curations.csv` with
-retained evidence and rationale. A normalized name resolves only when all occurrences identify one
-active Person; collisions remain published as ambiguous with a null `person_id`.
-
-### `mayoral_candidates.json`
-
-The release feed of the certified 2026 Toronto mayoral field, at `schema_version` 7. Each
-candidate has `candidacy_id`, `person_id`, `display_name`, `campaign_url`,
-`campaign_suspended_on`, `is_incumbent`, career-review status, and `past_elections`, which are
-joined only through confirmed Person IDs. The release manifest's
-`feed_versions.mayoral_candidates` matches `schema_version`.
-
-`past_elections` lists only Candidacies in this release, so a mayoral history has the release's
-coverage: districts within the City of Toronto, inside the coverage window. The `coverage` block
-says so with `policy` `verified_toronto_electoral_history`, `jurisdiction` `Toronto` and a null
-`year_cutoff`, because the feed applies no date limit of its own. The career review behind the feed
-researched each candidate's full Canadian electoral career. Races it confirmed outside the
-release's coverage, such as Olivia Chow's 1991 Metro Council race, stay in
-`data/reference/mayoral_career_decisions.csv` with `ingestion_action` `out_of_scope` and are not
-published. The release bundle carries the review's public columns as `mayoral_career_coverage.csv`
-and `mayoral_career_occurrence_mapping.csv`, which maps each published confirmation to its
-Candidacy. `confirmed_count` counts every confirmed race, including those outside the coverage.
-
-| Field | Type | Null rule | Meaning |
-|---|---|---|---|
-| `campaign_suspended_on` | date (`YYYY-MM-DD`) | no Suspended Campaign recorded | The day the candidate publicly ended the campaign after the withdrawal deadline. Required on every candidate; never later than `election_date`. The Candidacy stays on the certified ballot and can still receive votes. |
-
-A null date means no Suspended Campaign is recorded. It is not a reviewed claim that the campaign
-is still running.
+visible redirect target, and creation release. An active Person without a Candidacy holds an
+Office tenure needed to classify Incumbency. A Person name never rewrites a historical ballot name.
 
 ### `candidacy_person_links`
 
@@ -277,15 +243,24 @@ closes the proposal but keeps `election_results.person_id` null because evidence
 `rejected` closes a contradicted proposal and likewise remains null. The table is a checksummed
 build input and is replayed idempotently against the append-only link history.
 
-### `data/reference/campaign_suspension_curations.csv`
+### Career review inputs
 
-One row per Suspended Campaign: `candidacy_id`, `candidate_name`, `campaign_suspended_on`,
-`evidence_url`, `verified_on`, and `rationale`. The evidence is a first-party statement or major
-news coverage. A row must name exactly one 2026 Toronto mayoral Candidacy, under its exact
-`candidate_name`. Both dates are strict `YYYY-MM-DD`, and the suspension date is no later than its
-verification or election day. Any other row fails the release instead of being skipped. The file
-is a checksummed build-manifest source and a required release input; it sets only
-`mayoral_candidates.json` `campaign_suspended_on`.
+Two cohort reviews researched the earlier candidacies of everyone on the certified 2026 Toronto
+mayoral ballot and in the 2026 trustee field. `data/reference/mayoral_career_cohort_2026.csv` and
+`data/reference/trustee_career_cohort_2026.csv` freeze the two fields. The review tables record
+each candidate's review status and limitations, and the decision tables hold one adjudication per
+earlier race found (`confirm`, `hold`, `split` or `reject`) with its identity bridge and result
+source. Confirmed races inside the release become curated identity assertions in
+`candidacy_person_links`. Each candidate has an independent discovery report and verification
+report under `docs/research/mayoral-career/2026/` or `docs/research/trustee-career/2026/`.
+
+The trustee review considered Toronto candidacies from 2003 onward. The mayoral review researched
+each candidate's full Canadian electoral career, so some of the races it confirmed lie outside the
+release's coverage, such as Olivia Chow's 1991 Metro Council race. Those decisions have
+`ingestion_action` `out_of_scope` and are not published.
+`data/reference/mayoral_career_occurrence_mapping.csv` maps every confirmed race inside the
+coverage (`reuse_existing`) to its Candidacy. A review's `confirmed_count` counts all of its
+confirmed races, including those outside the coverage.
 
 ### Endorsement curation inputs
 

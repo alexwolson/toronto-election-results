@@ -1,18 +1,21 @@
 # Toronto Election Results
 
-A unified, analysis-ready dataset of election results from January 1, 2003 onward for contests
-within the City of Toronto, plus evidence-backed endorsements in Toronto Mayor and City Councillor
-contests. It is intended to feed an election model maintained elsewhere.
+A unified, analysis-ready dataset of election results for contests within the City of Toronto,
+from each level's last general election before amalgamation through October 26, 2026, plus
+evidence-backed endorsements in Toronto Mayor and City Councillor contests.
 
 ## Language
 
 **Coverage window**:
-Every completed in-scope election whose scheduled polling date is from January 1, 2003 through
-October 26, 2026, inclusive. Results are added as they are validated or certified by the
-Election authority. The October 26 Toronto municipal general Election event enters as pending
-Candidacies and later receives its certified results. An in-scope election whose authoritative
-results have not been acquired is a coverage gap, not a date-based exclusion. Elections after
-October 26 are out of scope; a cancelled call that produces no result is excluded.
+Every completed in-scope election whose scheduled polling date falls from the window's opening
+through October 26, 2026, inclusive. The window opens with each level's last general election
+before amalgamation: October 25, 1993 for federal elections, November 14, 1994 for municipal
+elections and June 8, 1995 for Ontario elections (ADR 0010). Results are added as they are
+validated or certified by the Election authority. The October 26 Toronto municipal general
+Election event enters as pending Candidacies and later receives its certified results. An in-scope
+election whose authoritative results have not been acquired is a coverage gap, not a date-based
+exclusion. Elections after October 26 are out of scope; a cancelled call that produces no result is
+excluded.
 
 **Endorsement collection window**:
 Public Endorsements for in-scope Toronto Mayor and City Councillor Contests are collected through
@@ -134,21 +137,9 @@ Whether a Candidacy's election outcome is `pending` or `final`. A pending Candid
 votes or outcome; the same persistent Candidacy becomes final when the Election authority certifies
 the result.
 
-**Suspended Campaign**:
-A certified Candidacy's campaign that the candidate publicly ended after the withdrawal deadline.
-The Candidacy stays on the certified candidate list and the ballot, and can still receive votes.
-The City's roster still lists it as Active, so the date is an evidence-backed curated fact. A
-withdrawal is the legal act before the deadline; it leaves no Candidacy.
-_Avoid_: Withdrawn candidate, dropped out.
-
 **Person**:
-An individual represented by a Candidacy, Office tenure, or an evidence-backed electoral source
-needed by a dependent dataset. Existence as a Person does not imply inclusion in a certified field.
-
-**Person alias**:
-An evidence-backed source name that identifies exactly one Person. An alias supports exact
-cross-dataset resolution but never creates or rewrites a Candidacy.
-_Avoid_: Candidate alias, fuzzy name match.
+An individual represented by a Candidacy or an Office tenure. Existence as a Person does not imply
+inclusion in a certified field.
 
 **Person ID**:
 An opaque, persistent identifier for one Person across every in-scope election and Office type. It

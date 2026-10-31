@@ -51,26 +51,22 @@ records**.
 - [`docs/adr/`](./docs/adr/) — the load-bearing design decisions:
   - `0001` — record wards as-run; no reprojection across the 2018 boundary change.
   - `0002` — historical municipal roster sources (superseded for identity semantics).
-  - `0003` — drop 2000; add electorate/turnout from the Voter Statistics datasets.
+  - `0003` — add electorate/turnout from the Voter Statistics datasets (its 2003 floor is
+    superseded by `0010`).
   - `0004` — by-election scope and (office-dependent) incumbency.
   - `0005` — incumbency means holding the same office category; cross-office history is downstream.
   - `0006` — one cross-office results table, preserving every electoral geography as run.
   - `0007` — persistent Person identities, linked separately from individual Candidacies.
   - `0008` — model Endorsements as open-world, evidence-backed positive facts.
-  - `0009` — record Suspended Campaigns as evidence-backed candidate facts.
+  - `0010` — start coverage with each level's last general election before amalgamation.
+  - `0011` — allow multi-seat Contests from before amalgamation.
+  - `0012` — carry incumbency across amalgamation through predecessor bodies.
 
 Candidate-submitted campaign websites supplement the official roster through
 `data/reference/campaign_url_curations.csv`. Each reviewed link targets an exact Candidacy
 and records first-party evidence, verification date, and rationale. The pipeline applies
 these links to `election_results.campaign_url` and tracks the curation file in the build manifest;
 refreshing the official roster preserves the reviewed additions.
-
-Suspended Campaigns are recorded in `data/reference/campaign_suspension_curations.csv`. Each row
-dates the day a 2026 mayoral candidate publicly ended the campaign after the withdrawal deadline,
-with evidence, verification date, and rationale. The City's roster still lists such a Candidacy as
-Active, so the release publishes the date only as `campaign_suspended_on` in
-`mayoral_candidates.json`; the canonical tables are unchanged. The build manifest tracks the
-curation file, and the release refuses to build without it.
 
 ## Outputs
 

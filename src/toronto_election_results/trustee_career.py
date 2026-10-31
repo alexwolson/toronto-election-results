@@ -1,8 +1,8 @@
 """Cohort-complete identity review for certified 2026 Toronto trustee candidates.
 
-The public history policy is deliberately narrower than the mayoral policy: only
-Toronto public-election occurrences from 2003 onward are eligible.  Candidate names
-are research leads; only occurrence-level ``confirm`` decisions become Person links.
+The review considers only Toronto public-election occurrences from 2003 onward.
+Candidate names are research leads; only occurrence-level ``confirm`` decisions become
+Person links.
 """
 
 from __future__ import annotations
