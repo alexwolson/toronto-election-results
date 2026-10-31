@@ -70,27 +70,28 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,226 People. 5,210 hold at least one Candidacy, and 16 hold only an Office
-tenure from a Council roster. 7,441 Candidacies have a confirmed Person and 658 have none: 657
+The release has 5,213 People. 5,208 hold at least one Candidacy, and five hold only an Office
+tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
+candidacy in the release. 7,441 Candidacies have a confirmed Person and 658 have none: 657
 were reviewed and left unresolved for insufficient evidence, and one was rejected. Seven of the
 658 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 450 identity assertions
-over 1,003 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
+continuity, Council rosters and adjudicated curations. The curations are 457 identity assertions
+over 1,012 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
 confirmed earlier races in the release) and 1,633 occurrence-level dispositions in
 `data/reference/identity_review_dispositions.csv` (892 confirmed, 738 unresolved and 3 rejected).
 A disposition is not applied where a career review or a person-record merge covers the same
 Candidacy. No blanket name merges are made, and a hold does not claim that two occurrences are
 different people.
 
-The Council roster step matches each roster member to a Candidacy by exact name. Ten roster
-entries match none: three appointees, and seven members whose earlier council races are in the
-1997–2002 archive, whose names the roster step does not read in the same form. The identity
-assertion for each of these people names the roster entry, so the tenure belongs to their Person.
-Several of the 16 People who hold only a roster tenure share a name with a candidate under another
-Person ID and may be the same people; they have not been merged.
+The Council roster step matches each roster member to a Candidacy by exact name. It reads the
+1997–2002 archive names given name first, as the archive printed them. A roster entry that no
+Candidacy matches is a councillor appointed to fill a vacancy whose other races are in the
+release, or a member whom the City's attendance and voting records list under another form of
+their name, such as A.A. Heaps for Adrian Heaps. The identity assertion for each of these people
+names the roster entry, so the tenure belongs to their Person.
 
 ## Provenance and known uncertainty
 

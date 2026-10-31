@@ -773,9 +773,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             )
         ),
         registry_person_ids=("per_d45bd0a80a1f534789b44389acf113d4",),
-        roster_members=(
-            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Brad Duguid"),
-        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/1999/agendas/council/cc/cc991123/pof10rpt/cl006.pdf",
             "https://results.elections.on.ca/",
@@ -877,9 +874,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             ),
         ),
         registry_person_ids=("per_f832b6d6a71955bcbeba52b37d43f228",),
-        roster_members=(
-            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Irene Jones"),
-        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2003/minutes/council/cc030722.pdf",
             "https://results.elections.on.ca/",
@@ -1062,9 +1056,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             ),
         ),
         registry_person_ids=("per_59e8fc21d73350fa9478b0f8dbb2c7cb",),
-        roster_members=(
-            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Lorenzo Berardinetti"),
-        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2001/minutes/council/cc010530.pdf",
             "https://results.elections.on.ca/",
@@ -1088,9 +1079,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             )
         ),
         registry_person_ids=("per_7739034f2088547fb930e5baf7f0cac7",),
-        roster_members=(
-            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Mario Silva"),
-        ),
         evidence_urls=(
             "https://www.ourcommons.ca/Content/Committee/381/CHPC/Evidence/EV1928325/CHPCEV45-E.PDF",
             "https://www.ourcommons.ca/members/en/mario-silva%2825455%29/roles",
@@ -1134,7 +1122,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             )
         ),
         registry_person_ids=("per_1595883add5a5e7abb1bcdde1e768611",),
-        roster_members=(RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Norm Kelly"),),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/mmis/2010/zb/bgrd/backgroundfile-26580.pdf",
             "https://open.toronto.ca/dataset/election-results/",
@@ -1189,9 +1176,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             ),
         ),
         registry_person_ids=("per_5c71d0d296235cfe946e4ce549424af0",),
-        roster_members=(
-            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Paul Sutherland"),
-        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2001/minutes/committees/bud/bud010209.pdf",
             "https://results.elections.on.ca/",
@@ -1235,7 +1219,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             ),
         ),
         registry_person_ids=("per_77139d6966a253d4aa08b6ac8c31c3c4",),
-        roster_members=(RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Ron Moeser"),),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/mmis/2007/sc/minutes/2007-11-27-sc11-mn.pdf",
             "https://open.toronto.ca/dataset/election-results/",
@@ -9776,6 +9759,189 @@ DEFAULT_IDENTITY_ASSERTIONS += (
     ),
 )
 
+_COUNCIL_ATTENDANCE_DATASET = (
+    "https://open.toronto.ca/dataset/members-of-toronto-city-council-meeting-attendance/"
+)
+_COUNCIL_VOTING_DATASET = (
+    "https://open.toronto.ca/dataset/members-of-toronto-city-council-voting-record/"
+)
+
+# Council roster members that no exact-name Candidacy explains: interim councillors whose
+# earlier races are in the release, and members the City's attendance and voting records list
+# under another form of their name. Each assertion names the roster entry, so the member's
+# tenure belongs to the Person that holds their candidacies.
+DEFAULT_IDENTITY_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="laura-jones-1994-trustee-and-2003-council-appointment",
+        preferred_name="Laura Jones",
+        occurrences=(
+            _pinned_occurrence(
+                "can_90cd8a84e308529ba0194202367db3d3",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "toronto_board_of_education",
+                "trustee",
+                "Laura Jones",
+            ),
+        ),
+        registry_person_ids=("per_ceb32ed38fd25245aba3f8c6210b2a6d",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Laura Jones"),
+        ),
+        evidence_urls=(
+            "https://en.wikipedia.org/wiki/Tom_Clifford_(politician)",
+            "https://en.wikipedia.org/wiki/Peter_Tabuns",
+        ),
+        rationale=(
+            "Wikipedia's account of the 2003 appointment to Jack Layton's Ward 30 seat says "
+            "Layton 'had endorsed former area school trustee Laura Jones' and that Council "
+            "appointed her as the interim councillor. The only Laura Jones in the release is the "
+            "Toronto Board of Education trustee elected in 1994 for City Ward 8, the former "
+            "City's Riverdale ward according to Peter Tabuns's biography, and Riverdale lies in "
+            "Ward 30. The appointed Ward 30 member of the 2000-2003 Council roster joins that "
+            "Person."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="harvey-barron-scarborough-council-and-2006-appointment",
+        preferred_name="Harvey Barron",
+        occurrences=(
+            _pinned_occurrence(
+                "can_60abe3d759fd53c2ade305ae3ff3db9c",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "scarborough_city_council",
+                "councillor",
+                "Harvey Barron",
+            ),
+        ),
+        registry_person_ids=("per_a5862e0aa7af5aa6a1585ca3f18c84ae",),
+        roster_members=(
+            RosterMemberLocator("evt_159f073fa6f15c23a840651723d3c3af", "Harvey Barron"),
+        ),
+        evidence_urls=(
+            "https://www.toronto.ca/city-government/awards-tributes/tributes/city-of-toronto-online-condolences/",
+        ),
+        rationale=(
+            "The City of Toronto's tribute to Harvey Paul Barron says he sat on Scarborough City "
+            "Council as an alderman from 1985 to 1988 and as a councillor from 1988 to 1997, and "
+            "that Toronto City Council appointed him from June 25 to November 30, 2006 to fill "
+            "the Scarborough Southwest vacancy. The 1994 Scarborough Ward 1 councillor and the "
+            "appointed Ward 35 member of the 2003-2006 Council roster are that Person."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="martin-silva-council-candidacies-and-2006-appointment",
+        preferred_name="Martin Silva",
+        occurrences=(
+            _pinned_occurrence(
+                "can_aba04f4fc18054fba1ef1ca2e7bb9e1f",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Martin Silva",
+            ),
+        ),
+        registry_person_ids=("per_5e85e364f5be51348665613891a5843e",),
+        roster_members=(
+            RosterMemberLocator("evt_159f073fa6f15c23a840651723d3c3af", "Martin Silva"),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Martin_Silva",),
+        rationale=(
+            "Martin Silva's Wikipedia biography gives his 1994 re-election in Ward 4 of the "
+            "former City of Toronto, his 1995 NDP run in Parkdale and his 1997 defeat in the new "
+            "Ward 20, and says Council appointed him on February 1, 2006 to the Ward 20 seat "
+            "Olivia Chow left, until that November's election. The appointed Ward 20 member of "
+            "the 2003-2006 Council roster joins the Person that holds those candidacies."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="adrian-heaps-council-roster-initials",
+        preferred_name="Adrian Heaps",
+        occurrences=(
+            _pinned_occurrence(
+                "can_db3e3fd34eef531aa040aee8d5257d34",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Adrian Heaps",
+            ),
+        ),
+        registry_person_ids=("per_9074ce6d34475a738c239ee5c8847102",),
+        roster_members=(RosterMemberLocator("evt_5a786c1da7ec5e758036205f04351fc5", "A.A. Heaps"),),
+        evidence_urls=(
+            _COUNCIL_ATTENDANCE_DATASET,
+            _COUNCIL_VOTING_DATASET,
+            "https://en.wikipedia.org/wiki/Adrian_Heaps",
+        ),
+        rationale=(
+            "The City's 2006-2010 attendance and voting records list a councillor A.A. Heaps "
+            "who sat on Scarborough Community Council. Adrian Heaps's Wikipedia biography gives "
+            "his name as Adrian A. Heaps, cites the City for 'A.A. (Adrian) Heaps', and gives "
+            "his 2003 Ward 35 run and his Ward 35 term from 2006 to 2010. The roster's A.A. "
+            "Heaps joins the Person that holds the Adrian Heaps candidacies."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="justin-di-ciano-council-roster-initial",
+        preferred_name="Justin Di Ciano",
+        occurrences=(
+            _pinned_occurrence(
+                "can_2845aa673c2057748b97224c2e967be7",
+                "evt_54673fd104ab5ef08eb865e162ac040c",
+                "toronto_city_council",
+                "councillor",
+                "Justin Di Ciano",
+            ),
+        ),
+        registry_person_ids=("per_902d7a89688e5b8f9356bd43809a315d",),
+        roster_members=(
+            RosterMemberLocator("evt_e4fe1909276b5fbd91057022b350fff3", "Justin J. Di Ciano"),
+        ),
+        evidence_urls=(
+            _COUNCIL_ATTENDANCE_DATASET,
+            _COUNCIL_VOTING_DATASET,
+            "https://en.wikipedia.org/wiki/Justin_Di_Ciano",
+        ),
+        rationale=(
+            "The City's 2014-2018 attendance and voting records list a councillor Justin J. Di "
+            "Ciano. Justin Di Ciano's Wikipedia biography gives his narrow 2010 loss and his "
+            "2014 win in Ward 5, his term to December 2018 and his decision not to run again. "
+            "The roster's Justin J. Di Ciano joins the Person that holds both candidacies."
+        ),
+    ),
+    CuratedIdentityAssertion(
+        assertion_id="michelle-holland-berardinetti-council-records",
+        preferred_name="Michelle Holland",
+        occurrences=(
+            _pinned_occurrence(
+                "can_156a9ea4f7dc57baa65c20af16ff5205",
+                "evt_e4fe1909276b5fbd91057022b350fff3",
+                "toronto_city_council",
+                "councillor",
+                "Michelle Holland-Berardinetti",
+            ),
+        ),
+        registry_person_ids=("per_f4346776635a55ef8013b7338ab1d898",),
+        canonical_person_id="per_f4346776635a55ef8013b7338ab1d898",
+        roster_members=(
+            RosterMemberLocator("evt_e4fe1909276b5fbd91057022b350fff3", "Michelle Holland"),
+        ),
+        evidence_urls=(
+            _COUNCIL_ATTENDANCE_DATASET,
+            _COUNCIL_VOTING_DATASET,
+            "https://en.wikipedia.org/wiki/Michelle_Holland",
+        ),
+        rationale=(
+            "The City's 2014-2018 attendance record lists the same councillor, attending "
+            "Scarborough Community Council, as Michelle Berardinetti until February 9, 2016 and "
+            "as Michelle Holland from February 17, 2016. Michelle Holland's Wikipedia biography "
+            "gives her Ward 35 runs as Michelle Berardinetti in 2006, 2010 and 2014, her return "
+            "to her maiden name, and her 2018 Ward 20 run as Michelle Holland-Berardinetti. The "
+            "2018 candidacy and the roster's Michelle Holland join the Person that holds the "
+            "Michelle Berardinetti candidacies."
+        ),
+    ),
+)
+
 
 # Person records split across the pre-amalgamation backfill, joined on biographies
 # found during the 1994-2000 municipal identity review. These supersede older
@@ -11666,6 +11832,48 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         ),
         registry_person_ids=("per_4fcb7a34e1d35287849f372ade93c202",),
         canonical_person_id="per_4fcb7a34e1d35287849f372ade93c202",
+    ),
+)
+
+# A join found by the Council roster check: the 2000-2003 and 2003-2006 rosters name the
+# Ward 7 councillor George Mammoliti, whose 2003 and later candidacies are Giorgio Mammoliti.
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="giorgio-mammoliti-george-mammoliti-records",
+        preferred_name="Giorgio Mammoliti",
+        occurrences=(
+            _pinned_occurrence(
+                "can_0072cc00791a590dae18e86c251c33fe",
+                "evt_f32220a6446a5e4295505ee67f1b09a4",
+                "north_york_city_council",
+                "councillor",
+                "George Mammoliti",
+            ),
+            _pinned_occurrence(
+                "can_3669163b201458b2b66da5f402e0b2d7",
+                "evt_a2f03c39b6b851a8ab4dac603cb41521",
+                "toronto_city_council",
+                "councillor",
+                "George Mammoliti",
+            ),
+            _pinned_occurrence(
+                "can_3efb7ea7b29259c7a5c050f69413b08f",
+                "evt_b4a8433485f551878400c616c3d023b2",
+                "toronto_city_council",
+                "councillor",
+                "George Mammoliti",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Giorgio_Mammoliti",),
+        rationale=(
+            "Giorgio Mammoliti's Wikipedia biography says he was born George and changed his name "
+            "to Giorgio in 2003. It gives his Yorkview seat until his 1995 defeat, his 1995 North "
+            "York Ward 1 by-election win, Ward 6 from 1998 and Ward 7 from December 2000 until "
+            "2018. The George Mammoliti records, which also hold the 1995 Yorkview run, join the "
+            "Person that holds the Giorgio Mammoliti candidacies from 2003 on."
+        ),
+        registry_person_ids=("per_3ec4e3ff861d57519f52e15b4a9449a7",),
+        canonical_person_id="per_3ec4e3ff861d57519f52e15b4a9449a7",
     ),
 )
 

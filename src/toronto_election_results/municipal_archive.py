@@ -65,6 +65,12 @@ _EXPECTED_BY_ELECTION_ROWS = {
     "2001-12-03": 11,
     "2002-03-18": 8,
 }
+
+# Election dates whose rows this adapter supplies. Their ``candidate_name`` keeps the word order
+# the archive or newspaper printed, so a consumer must use it rather than re-parse
+# ``candidate_name_raw`` as a surname-first Clerk ballot name.
+ELECTION_DATES = frozenset(_RESOURCES) | frozenset(_EXPECTED_BY_ELECTION_ROWS)
+
 _PRESS_RESOURCES = {
     (STAR_AUTHORITY, "1994-11-14"): (
         "Toronto Star, 16 November 1994, final results (ProQuest Historical Newspapers)"

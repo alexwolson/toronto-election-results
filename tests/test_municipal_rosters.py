@@ -596,3 +596,67 @@ def test_unneeded_curated_roster_member_fails_the_build():
             composition=composition,
             roster_resolutions={("evt_2003-11-10", "Someone Else"): "per_pat"},
         )
+
+
+def _archive_case():
+    # The 2000 archive prints names given name first; the City's 2003 file is surname-first.
+    archive = _candidate("can_lee_2000", "2000-11-13", "PAT LEE", "councillor", elected=True)
+    archive["candidate_name"] = "Pat Lee"
+    later = _candidate("can_other_2003", "2003-11-10", "Other, Candidate", "councillor")
+    later["candidate_name"] = "Candidate Other"
+    candidacies = pd.DataFrame([archive, later])
+    people = pd.DataFrame(
+        {
+            "person_id": ["per_lee", "per_other"],
+            "preferred_name": ["Pat Lee", "Candidate Other"],
+            "identity_status": ["active", "active"],
+            "redirect_to_person_id": [pd.NA, pd.NA],
+            "created_release": ["v2", "v2"],
+        }
+    )
+    links = pd.DataFrame(
+        [
+            _link("can_lee_2000", "per_lee", "confirmed"),
+            _link("can_other_2003", "per_other", "confirmed"),
+        ]
+    )
+    composition = pd.DataFrame(
+        {
+            "election_year": [2003],
+            "member_name": ["Pat Lee"],
+            "office": ["councillor"],
+            "incumbent_source": ["wikipedia"],
+            "confidence": [0.85],
+            "arrival": ["elected"],
+            "roster_complete": [True],
+        }
+    )
+    return candidacies, people, links, composition
+
+
+def test_archive_names_are_read_in_the_order_the_archive_printed():
+    candidacies, people, links, composition = _archive_case()
+
+    evidence = build_municipal_roster_evidence(
+        candidacies, people, links, release_id="2026-08-20", composition=composition
+    )
+
+    # The roster member resolves to the 2000 winner instead of a new roster Person.
+    assert evidence.people["person_id"].tolist() == ["per_lee", "per_other"]
+    tenure = evidence.office_tenures.iloc[0]
+    assert tenure["person_id"] == "per_lee"
+    assert str(tenure["started_on"]) == "2000-11-13"
+    assert tenure["district_id"] == "dst_ward_1"
+
+
+def test_archive_candidacy_without_a_display_name_fails():
+    candidacies, people, links, composition = _archive_case()
+
+    with pytest.raises(ValueError, match="archive candidacies need candidate_name"):
+        build_municipal_roster_evidence(
+            candidacies.drop(columns="candidate_name"),
+            people,
+            links,
+            release_id="2026-08-20",
+            composition=composition,
+        )
