@@ -2,7 +2,7 @@
 
 After the 2010–2017 backlog, 12 elected Candidacies had no Person. A winner without a Person cannot carry an office or a career forward, so these rows weigh more than other unresolved ones. This pass looked for a person-specific source for each, on the standard used throughout: the source has to name the other run or match it on a distinctive fact, or the runs have to show strong continuity in the same office under an uncommon name. Sources were Wikipedia biographies, the Legislative Assembly's member pages and the Toronto Star on ProQuest (University of Toronto access), including pages ProQuest holds only as scans. Dispositions are under reviewer `unlinked-winners-2026-10-31`.
 
-Five of the 12 are now linked. Seven remain without a Person.
+Five of the 12 are now linked and seven remain without a Person.
 
 ## Linked
 
@@ -24,7 +24,7 @@ The Duclos link rests on continuity. The name is uncommon, the seat is a French 
 - Mark Stefanini, 2000 TCDSB Ward 1. The Star's 2000 profile (page image, [1349496702](https://www.proquest.com/docview/1349496702)) calls him "a businessman". The target is the 1999 Family Coalition candidate in Etobicoke North, whom the Star's 1999 riding story ([437944894](https://www.proquest.com/docview/437944894)) names as "Frank Stefanini", although the official results and the Star's own results list give Mark Stefanini.
 - Tony Marzilli, 1994 separate school board, North York. The Star's 1994 profile ([437132307](https://www.proquest.com/docview/437132307)) calls him an incumbent trustee. The target is the 1997 council candidate in North York Humber, and the Star's 1997 coverage names him in candidate lists and an arts group's report card without describing him.
 - Carol McDonald, 1994 Scarborough Board of Education Ward 11. The Star's 1994 profile ([437146019](https://www.proquest.com/docview/437146019)) calls her "a systems analyst". The Star has no coverage of the 2012 TDSB Ward 20 by-election candidate.
-- Pak-Cheong Choo, 1994 Etobicoke Board of Education Ward 12. The Star's 1994 profile calls him "a research assistant". The target is the 2016 TDSB Ward 1 by-election candidate of the same full name, and no source found covers that run.
+- Pak-Cheong Choo, 1994 Etobicoke Board of Education Ward 12. The Star's 1994 profile ([437139591](https://www.proquest.com/docview/437139591)) calls him "a research assistant". The target is the 2016 TDSB Ward 1 by-election candidate of the same full name, and no source found covers that run.
 - Mohamed Firin, 2025 York South–Weston (PC MPP). The target is the 2016 TDSB Ward 1 by-election candidate. His Wikipedia biography and Legislative Assembly page mention no earlier run, and the Star's 2025 coverage calls him "a former member of the premier's Council on Equality of Opportunity".
 
 ## Leads
