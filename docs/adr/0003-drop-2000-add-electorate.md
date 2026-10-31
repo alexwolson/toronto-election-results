@@ -1,6 +1,6 @@
 # Drop the 2000 election; add electorate & turnout
 
-Status: accepted
+Status: accepted; the 2003 floor, and with it the exclusion of 2000, superseded by ADR 0010
 
 ## Context
 

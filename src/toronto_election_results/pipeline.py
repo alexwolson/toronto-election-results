@@ -12,7 +12,6 @@ import pandas as pd
 
 from . import download as city_download
 from .build_manifest import build_manifest, sha256_file, write_manifest
-from .campaign_suspension_curations import CAMPAIGN_SUSPENSION_CURATIONS_FILENAME
 from .campaign_url_curations import (
     CAMPAIGN_URL_CURATIONS_FILENAME,
     apply_campaign_url_curations,
@@ -55,11 +54,6 @@ from .ontario import (
     load_ontario_results,
 )
 from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
-from .person_alias_curations import (
-    PERSON_ALIAS_CURATIONS_FILENAME,
-    apply_person_alias_curations,
-    load_person_alias_curations,
-)
 from .release import assemble_bootstrapped_release, validate_tables, write_release
 from .schema import normalize_adapter_frame
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
@@ -130,12 +124,9 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "trustee_career_reviews.csv",
         "trustee_career_decisions.csv",
         "trustee_career_sol_reviews.csv",
-        "trustee_contest_continuity_2026.csv",
         "trustee_incumbents_2026.csv",
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
-        CAMPAIGN_SUSPENSION_CURATIONS_FILENAME,
-        PERSON_ALIAS_CURATIONS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
         DECLARATION_FILENAME,
         "results_2026/declaration_of_results_2026.pdf",
@@ -468,11 +459,6 @@ def run_all(
         built.tables,
         election_results=apply_campaign_url_curations(
             built.tables.election_results, reference / CAMPAIGN_URL_CURATIONS_FILENAME
-        ),
-        people=apply_person_alias_curations(
-            built.tables.people,
-            load_person_alias_curations(reference / PERSON_ALIAS_CURATIONS_FILENAME),
-            release_id=RELEASE_ID,
         ),
         electoral_districts=enrich_district_geometries(
             named_districts, trustee_crosswalks=trustee_crosswalks

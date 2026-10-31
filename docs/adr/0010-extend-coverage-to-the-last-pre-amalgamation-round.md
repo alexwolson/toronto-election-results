@@ -1,6 +1,6 @@
 # Extend coverage to the last election round before amalgamation
 
-Status: proposed (2026-10-29). Supersedes ADR 0003's 2003 floor.
+Status: accepted (2026-10-29). Supersedes ADR 0003's 2003 floor.
 
 ## Context
 
@@ -43,11 +43,11 @@ hold, but they argue for null electorate columns, not for leaving the results ou
   2001 council by-elections and the 2002 TDSB Ward 1 by-election, and no by-election between
   2003 and 2011. Those four and North York's 1995 Ward 1 by-election, found in the Toronto Star,
   are now in the release; only 1995–1997 stays `uncertain`.
-- Mayoral candidate histories use only the release's own Contests. A race the mayoral career
-  review confirmed inside the window maps to its official Candidacy (`reuse_existing`). A race
-  outside the City or before the window, such as Olivia Chow's 1991 Metro Council race, stays in
-  the review's decision table as `out_of_scope` and is not published. The release gate rejects
-  any election date before its level's window opens.
+- The mayoral career review links only Candidacies in the release. A race it confirmed inside
+  the window maps to its official Candidacy (`reuse_existing`). A race outside the City or before
+  the window, such as Olivia Chow's 1991 Metro Council race, stays in the review's decision table
+  as `out_of_scope` and is not published. The release gate rejects any election date before its
+  level's window opens.
 - The municipal adapter covers 1994, 1997 and 2000 Mayor, Councillor and Metro Councillor
   Contests. The archive omits eight 1994 Contests (North York council wards 3–5 and five Metro
   wards); they come from the Toronto Star's 16 November 1994 final results. Where the archive lost
