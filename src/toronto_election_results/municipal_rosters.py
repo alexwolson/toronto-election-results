@@ -20,6 +20,7 @@ import pandas as pd
 from .candidates import known_multiword_surnames, normalize_name
 from .identity import validate_identity_tables
 from .incumbency import RAW, REFERENCE, TERM_BEFORE_ELECTION, build_composition, council_surnames
+from .municipal_archive import ELECTION_DATES as ARCHIVE_ELECTION_DATES
 from .schema import stable_id
 
 _BODY = "toronto_city_council"
@@ -388,9 +389,20 @@ def _prepare_candidacies(candidacies: pd.DataFrame, *, raw: Path) -> pd.DataFram
             # A fixture may intentionally contain only the files needed by
             # build_composition; comma-form ballot names still provide safe parsing.
             pass
-    work["_display_name"] = work["candidate_name_raw"].map(
-        lambda value: _candidate_display(value, surnames)
-    )
+    # The 1997-2002 archive pages print names given name first, and the archive adapter
+    # keeps that order in candidate_name. Re-parsing them as ballot names reverses them,
+    # and no roster member could then match an archive Candidacy.
+    archive = work["_date"].dt.strftime("%Y-%m-%d").isin(ARCHIVE_ELECTION_DATES)
+    if archive.any() and "candidate_name" not in work:
+        raise ValueError("archive candidacies need candidate_name for roster matching")
+    work["_display_name"] = [
+        _clean_text(row["candidate_name"])
+        if from_archive
+        else _candidate_display(row["candidate_name_raw"], surnames)
+        for from_archive, (_, row) in zip(archive, work.iterrows(), strict=True)
+    ]
+    if work["_display_name"].isna().any():
+        raise ValueError("an archive candidacy has a blank candidate_name")
     work["_name_key"] = work["_display_name"].map(_exact_key)
     return work.sort_values(["_date", "candidacy_id"], kind="stable").reset_index(drop=True)
 

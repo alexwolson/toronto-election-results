@@ -64,7 +64,7 @@ def test_default_pinned_candidacies_are_active_checked_ledger_entries():
 
     # These pins distinguish otherwise ambiguous same-name occurrences.  They must
     # be persistent ledger IDs, never IDs copied from a pre-ledger draft build.
-    assert len(pinned) == 968
+    assert len(pinned) == 977
     assert len({occurrence.candidacy_id for _, occurrence in pinned}) == len(pinned)
     for assertion_id, occurrence in pinned:
         assert occurrence.candidacy_id in active.index, assertion_id
@@ -1048,8 +1048,9 @@ def test_curated_assertion_is_idempotent_when_reusing_the_prior_registry():
 def test_curated_roster_members_name_one_person_each():
     resolutions = curated_roster_resolutions(DEFAULT_IDENTITY_ASSERTIONS)
 
-    # Three appointees and seven members whose 2000 council names the roster does not match.
-    assert len(resolutions) == 10
+    # Six councillors appointed to fill a vacancy and three members the City's attendance and
+    # voting records list under another form of their name.
+    assert len(resolutions) == 9
     people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
         "person_id"
     )
@@ -1071,3 +1072,40 @@ def test_curated_roster_members_name_one_person_each():
     )
     with pytest.raises(ValueError, match="exactly one registry Person"):
         curated_roster_resolutions((ambiguous,))
+
+
+def test_council_roster_members_join_their_candidate_people():
+    data = REPO_ROOT / "data" / "out"
+    people = pd.read_csv(data / "people.csv", dtype="string").set_index("person_id")
+    results = pd.read_csv(data / "election_results.csv", dtype="string").set_index("candidacy_id")
+    tenures = pd.read_csv(data / "office_tenures.csv", dtype="string")
+    tenure_only = people.loc[~people.index.isin(results["person_id"].dropna())]
+
+    # Councillors appointed to fill a vacancy who have no candidacy in the release.
+    assert sorted(tenure_only["preferred_name"]) == [
+        "Ceta Ramkhalawansingh",
+        "Jim Hart",
+        "Miganoush Megardichian",
+        "Peter Leon",
+        "Rose Milczyn",
+    ]
+    assert set(tenure_only.index) <= set(tenures["person_id"])
+
+    giorgio = "per_3ec4e3ff861d57519f52e15b4a9449a7"
+    assert set(results.loc[results["person_id"].eq(giorgio), "candidate_name"]) == {
+        "George Mammoliti",
+        "Giorgio Mammoliti",
+    }
+    assert results.loc["can_156a9ea4f7dc57baa65c20af16ff5205", "person_id"] == (
+        "per_f4346776635a55ef8013b7338ab1d898"
+    )
+    # Sitting councillors whom a roster lists under another form of their name.
+    for candidacy_id in (
+        "can_bb09da89d0f25a9f879153e25a3db3f5",  # Giorgio Mammoliti, 2003
+        "can_13290a8036da5f6f804c44c9e6cb7c09",  # Giorgio Mammoliti, 2006
+        "can_302514955e6a54268d565e4dcb76f228",  # Michael Feldman, 2003
+        "can_21292996478554dd9696fe813d2bee9c",  # Michael Feldman, 2006
+        "can_e9906b69c72d5566b85bddc4bb613e4a",  # Adrian Heaps, 2010
+        "can_156a9ea4f7dc57baa65c20af16ff5205",  # Michelle Holland-Berardinetti, 2018
+    ):
+        assert results.loc[candidacy_id, "incumbent"] == "True", candidacy_id
