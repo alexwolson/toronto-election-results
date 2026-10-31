@@ -16,9 +16,16 @@ so those rows come from the Toronto Star's printed final results (16 November 19
 1997, read from ProQuest Historical Newspapers) and carry `source_authority = Toronto Star`; the
 reconciliation is described in `docs/research/school-boards-1994-1997-2026-10-29.md`. The archive
 also lists four 1994 North York trustee candidates under council Wards 1 and 2; those council rows
-are not published. Twenty
-1994 and 1997 French-language trustee Candidacies are `partial`, because the Star's figures and the
-archive's municipal subtotals disagree. East York's 1994 council and school wards, five 1994
+are not published. For the 1994 French-language areas shared by two municipalities, the archive
+page of the municipality that ran the area gives the area's totals and the other page gives its own
+share; the Star printed only the first municipality's polls. Those Contests use the archive's
+totals and are `complete`, except the Metro French council's Etobicoke-City of York seat: the
+archive has no Etobicoke figures, adding York's polls to the Star's figures reverses the order, and
+the winner is left null (`partial`). The 1997 MonAvenir Metro 2 Contest is `partial` because the
+Star and the archive disagree. The 1994 Toronto Ward 3 race carries the final judicial recount
+(Mario Silva 2,979, Tony O'Donohue 2,969, Globe and Mail of 16 December 1995) in place of the
+archive's election-night count; see `docs/research/partial-results-second-pass-2026-11-01.md`.
+East York's 1994 council and school wards, five 1994
 Toronto Board of Education wards and every 1997 council ward elected two members
 (`seats_available = 2`), as did several 1994 French-language areas. Where the archive lost a 1994
 Metro ward label, the label is taken from a secondary source and recorded in
@@ -84,7 +91,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `ballots_cast` | integer | pending/unavailable/inapplicable | Electors voting at the same scope as `eligible_electors`. |
 | `turnout` | float | pending/either operand unavailable | `ballots_cast / eligible_electors`. |
 | `turnout_scope` | string | turnout unavailable | Qualification/geography shared by both turnout operands. |
-| `elected` | boolean | pending or unresolved official outcome | Authority-certified result; not blindly rederived from vote maximum. Where a source lists votes without marking winners, the top `seats_available` totals are elected and candidacies tied across the last seat stay null. |
+| `elected` | boolean | pending or unresolved official outcome | Authority-certified result; not blindly rederived from vote maximum. Where a source lists votes without marking winners, the top `seats_available` totals are elected and candidacies tied across the last seat stay null. A `partial` Contest whose sources cannot establish the winner leaves every Candidacy null. |
 | `acclaimed` | boolean | never | True only for an official Acclamation. |
 | `outcome_method` | enum | never | `pending`, `vote`, `acclamation`, `void`, or another authority disposition. |
 | `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for a candidate snapshot without declared results. |

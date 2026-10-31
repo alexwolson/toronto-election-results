@@ -80,14 +80,13 @@ def test_1994_and_1997_trustee_contests_elect_their_seat_counts():
         assert len(winners) == wards and winners.eq(1).all(), body
     partial = results[results["coverage_status"].eq("partial")]
     assert sorted(partial.groupby(["election_date", "represented_body"]).size().items()) == [
-        (("1994-11-14", "metro_toronto_french_language_school_council"), 14),
-        (("1994-11-14", "mssb_french_language_section"), 4),
+        (("1994-11-14", "metro_toronto_french_language_school_council"), 3),
         (("1995-09-21", "north_york_city_council"), 6),
         (("1997-11-10", "conseil_scolaire_catholique_monavenir"), 2),
     ]
     star = results[results["source_authority"].eq("Toronto Star")]
     assert star.groupby("election_date").size().to_dict() == {
-        "1994-11-14": 113,
+        "1994-11-14": 98,
         "1995-09-21": 6,
         "1997-11-10": 143,
     }
@@ -208,3 +207,67 @@ def test_star_supplement_fills_every_unreported_1994_contest():
         "north-york-centre",
     }
     assert supplemented["outcome_method"].eq("acclamation").sum() == 6
+
+
+def test_1994_french_language_areas_use_the_returning_clerks_totals():
+    """The Star printed only the returning municipality's polls for the shared areas."""
+
+    results = load_archive_results(REFERENCE)
+    french = results[
+        results["election_date"].eq("1994-11-14")
+        & results["represented_body"].isin(
+            ["metro_toronto_french_language_school_council", "mssb_french_language_section"]
+        )
+    ]
+    votes = french.set_index(["represented_body", "official_district_id", "candidate_name"])[
+        "votes"
+    ]
+    # The City's Scarborough page gives the Scarborough-East York totals; the Star's figures are
+    # those totals less the East York page's, candidate for candidate.
+    assert votes.loc[
+        "metro_toronto_french_language_school_council", "scarborough-east-york"
+    ].to_dict() == {
+        "Mohammed Brihmi": 291,
+        "Jean-Marc Couffin": 201,
+        "Veronique Perez-McCall": 122,
+        "Najib Redouane": 86,
+    }
+    assert votes.loc["mssb_french_language_section", "scarborough-east-york"].to_dict() == {
+        "Andre Duclos": 376,
+        "Jean Malavoy": 214,
+    }
+    assert votes.loc["mssb_french_language_section", "toronto-york"].to_dict() == {
+        "Charles Arsenault": 659,
+        "Claude-Reno D'Aigle": 347,
+    }
+    # The Star's North York figures are almost exactly double the City's.
+    assert int(votes.loc["metro_toronto_french_language_school_council", "north-york"].sum()) == 882
+    # Etobicoke-York: the City has no Etobicoke figures, and York's polls reverse the Star's
+    # order, so the winner stays unknown.
+    etobicoke_york = french[french["official_district_id"].eq("etobicoke-york")]
+    assert etobicoke_york["coverage_status"].eq("partial").all()
+    assert etobicoke_york["elected"].isna().all()
+    complete = french[~french["official_district_id"].eq("etobicoke-york")]
+    assert complete["coverage_status"].eq("complete").all()
+
+
+def test_1994_toronto_ward_3_carries_the_final_recount():
+    results = load_archive_results(REFERENCE)
+    ward_3 = results[
+        results["election_date"].eq("1994-11-14")
+        & results["represented_body"].eq("former_toronto_city_council")
+        & results["official_district_id"].eq("ward-3")
+    ].set_index("candidate_name")
+    assert ward_3["votes"].to_dict() == {
+        "Mario Silva": 2979,
+        "Tony O'Donohue": 2969,
+        "Fernando Dias Costa": 344,
+        "Bob Allisat": 247,
+    }
+    assert ward_3.loc["Mario Silva", "elected"]
+    # The Contest keeps one source: the archive, amended by the Globe's report of the recount.
+    assert ward_3["source_authority"].eq("City of Toronto").all()
+    assert ward_3["source_detail"].nunique() == 1
+    detail = ward_3["source_detail"].iloc[0]
+    assert "results_1994.htm" in detail
+    assert detail.endswith("amended: https://www.proquest.com/docview/384862991")

@@ -17,6 +17,12 @@ the four the City's archived "Previous elections results" index lists (1998, 199
 whose pages mark their winners, and North York's Ward 1 by-election of 1995, which only the
 Toronto Star reports. The Star gives two of that Contest's six vote totals, so it is ``partial``:
 the other candidates keep null votes and the Star's named winner is ``marked_elected``.
+
+Some archive figures were later changed by a recount. In the reference table those rows carry
+the final figures and cite the report that gives them (``source_authority`` ``The Globe and
+Mail``); the published Contest keeps the archive as its authority and adds that report to its
+resource and detail. A ``partial`` Contest whose sources cannot establish the winner marks every
+row ``marked_elected=unknown`` and publishes ``elected`` as null.
 """
 
 from __future__ import annotations
@@ -32,6 +38,8 @@ ARCHIVE_RESULTS_FILENAME = "municipal_archive_results.csv"
 BY_ELECTION_RESULTS_FILENAME = "municipal_by_elections_1995_2002.csv"
 SOURCE_AUTHORITY = "City of Toronto"
 STAR_AUTHORITY = "Toronto Star"
+GLOBE_AUTHORITY = "The Globe and Mail"
+_PRESS_AUTHORITIES = (STAR_AUTHORITY, GLOBE_AUTHORITY)
 _CONTEST_KEY = ["election_date", "represented_body", "office_type", "official_district_id"]
 _RESOURCES = {
     "1994-11-14": "Previous election results — 1994 General Municipal Election (archived)",
@@ -57,12 +65,20 @@ _EXPECTED_BY_ELECTION_ROWS = {
     "2001-12-03": 11,
     "2002-03-18": 8,
 }
-_STAR_RESOURCES = {
-    "1994-11-14": "Toronto Star, 16 November 1994, final results (ProQuest Historical Newspapers)",
-    "1997-11-10": "Toronto Star, 14 November 1997, School Board Results (ProQuest Historical Newspapers)",
-    "1995-09-21": (
+_PRESS_RESOURCES = {
+    (STAR_AUTHORITY, "1994-11-14"): (
+        "Toronto Star, 16 November 1994, final results (ProQuest Historical Newspapers)"
+    ),
+    (STAR_AUTHORITY, "1997-11-10"): (
+        "Toronto Star, 14 November 1997, School Board Results (ProQuest Historical Newspapers)"
+    ),
+    (STAR_AUTHORITY, "1995-09-21"): (
         "Toronto Star, 22 September 1995, North York Ward 1 by-election report "
         "(ProQuest Historical Newspapers)"
+    ),
+    (GLOBE_AUTHORITY, "1994-11-14"): (
+        "The Globe and Mail, 16 December 1995, final judicial recount upheld by the Court of "
+        "Appeal (ProQuest Historical Newspapers)"
     ),
 }
 
@@ -111,6 +127,12 @@ def _outcomes(contest: pd.DataFrame) -> tuple[pd.Series, str]:
         if not acclaimed.all() or len(contest) > seats:
             raise ValueError(f"mixed or oversized acclamation in {key}")
         return pd.Series(True, index=contest.index, dtype="boolean"), "acclamation"
+    unknown = contest["marked_elected"].eq("unknown")
+    if unknown.any():
+        # The sources disagree on, or cannot establish, who won: the outcome stays null.
+        if not unknown.all() or not contest["coverage_status"].eq("partial").all():
+            raise ValueError(f"an unknown outcome needs every row of a partial Contest in {key}")
+        return pd.Series(pd.NA, index=contest.index, dtype="boolean"), "vote"
     marked = contest["marked_elected"].eq("true")
     if contest["votes"].isna().any():
         # Only a partial Contest may lack vote totals, and then its source must name the winners.
@@ -127,19 +149,74 @@ def _outcomes(contest: pd.DataFrame) -> tuple[pd.Series, str]:
     return elected, "vote"
 
 
-def _apply_source_fields(rows: pd.DataFrame, star: pd.Series) -> None:
-    """Set source authority, resource and detail; Star rows cite the ProQuest page record."""
+def _title_case(name: str) -> str:
+    """Title-case an archive name without lowering capitals it already has (McCall, DiGiovanni).
 
+    The 2000 pages print names in capitals and the 1997 pages in mixed case. A word in capitals is
+    title-cased; any other word takes title case only where that adds capitals (O'brien).
+    """
+
+    words = []
+    for word in name.split(" "):
+        titled = word.title()
+        lowered = any(a.isupper() and b.islower() for a, b in zip(word, titled, strict=True))
+        words.append(titled if word.isupper() or not lowered else word)
+    return " ".join(words)
+
+
+def _press_rows(rows: pd.DataFrame) -> pd.Series:
+    unknown = rows["source_authority"].notna() & ~rows["source_authority"].isin(
+        [SOURCE_AUTHORITY, *_PRESS_AUTHORITIES]
+    )
+    if unknown.any():
+        raise ValueError(
+            f"unknown archive source authorities: {sorted(set(rows.loc[unknown, 'source_authority']))}"
+        )
+    return rows["source_authority"].isin(_PRESS_AUTHORITIES).fillna(False)
+
+
+def _apply_source_fields(rows: pd.DataFrame, press: pd.Series) -> None:
+    """Set source authority, resource and detail; press rows cite the ProQuest record."""
+
+    authority = rows["source_authority"].where(press, SOURCE_AUTHORITY)
     rows["source_resource"] = rows["election_date"].map(_RESOURCES)
-    rows.loc[star, "source_resource"] = rows.loc[star, "election_date"].map(_STAR_RESOURCES)
+    rows.loc[press, "source_resource"] = [
+        _PRESS_RESOURCES[(name, date)]
+        for name, date in zip(authority[press], rows.loc[press, "election_date"], strict=True)
+    ]
     archive_detail = (
         rows["source_detail"]
         + "#"
         + rows["source_locator"].str.replace(r" line \d+$", "", regex=True)
     )
-    rows["source_detail"] = archive_detail.where(~star, rows["source_detail"])
-    rows["source_authority"] = SOURCE_AUTHORITY
-    rows.loc[star, "source_authority"] = STAR_AUTHORITY
+    rows["source_detail"] = archive_detail.where(~press, rows["source_detail"])
+    rows["source_authority"] = authority
+
+
+def _merge_amended_sources(rows: pd.DataFrame, press: pd.Series) -> None:
+    """Give a Contest whose archive figures a press report amends one combined source.
+
+    A Contest carries one source, so the archive stays the authority and the report that gives
+    the amended figures is added to the resource and the detail.
+    """
+
+    for _, contest in rows.groupby(_CONTEST_KEY, sort=False):
+        amended = press.loc[contest.index]
+        if not amended.any() or amended.all():
+            continue
+        base = contest.loc[~amended]
+        notes = contest.loc[amended]
+        columns = ["source_authority", "source_resource", "source_detail"]
+        if base[columns].nunique().gt(1).any() or notes[columns].nunique().gt(1).any():
+            key = contest.iloc[0][_CONTEST_KEY].tolist()
+            raise ValueError(f"an amended Contest needs one archive and one amending source: {key}")
+        rows.loc[contest.index, "source_authority"] = base["source_authority"].iloc[0]
+        rows.loc[contest.index, "source_resource"] = (
+            f"{base['source_resource'].iloc[0]}; amended from {notes['source_resource'].iloc[0]}"
+        )
+        rows.loc[contest.index, "source_detail"] = (
+            f"{base['source_detail'].iloc[0]} | amended: {notes['source_detail'].iloc[0]}"
+        )
 
 
 def load_archive_results(reference_dir: str | Path) -> pd.DataFrame:
@@ -166,8 +243,9 @@ def load_archive_results(reference_dir: str | Path) -> pd.DataFrame:
     rows["eligible_electors"] = pd.NA
     rows["ballots_cast"] = pd.NA
     rows["turnout_scope"] = pd.NA
-    star = rows["source_authority"].eq(STAR_AUTHORITY).fillna(False)
-    _apply_source_fields(rows, star)
+    press = _press_rows(rows)
+    _apply_source_fields(rows, press)
+    _merge_amended_sources(rows, press)
     # 1994 names are "Last, First"; the 1997 and 2000 pages write names given-name first, which
     # the Open Data normaliser would misread as surname-first, so those keep their word order.
     # The Star prints names given-name first in mixed case, so its rows keep the printed form.
@@ -177,9 +255,9 @@ def load_archive_results(reference_dir: str | Path) -> pd.DataFrame:
         normalize_name(name, known_surnames=known)[0]
         if "," in name
         else " ".join(name.split()).replace("- ", "-")
-        if from_star
-        else " ".join(name.split()).replace("- ", "-").title()
-        for name, from_star in zip(rows["candidate_name_raw"], star, strict=True)
+        if from_press
+        else _title_case(" ".join(name.split()).replace("- ", "-"))
+        for name, from_press in zip(rows["candidate_name_raw"], press, strict=True)
     ]
     columns = [
         "event_id",
@@ -219,7 +297,7 @@ def archive_placeholder_manifest(reference_dir: str | Path) -> pd.DataFrame:
     missing["event_id"] = _event_ids(missing)
     missing["outcome_method"] = "source_missing"
     missing["seats_available"] = missing["seats_available"].astype(int)
-    _apply_source_fields(missing, missing["source_authority"].eq(STAR_AUTHORITY).fillna(False))
+    _apply_source_fields(missing, _press_rows(missing))
     columns = [
         "event_id",
         "election_date",
