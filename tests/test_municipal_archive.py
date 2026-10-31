@@ -40,6 +40,7 @@ def test_archive_contests_elect_their_seat_counts():
         "1994-11-14": 350,
         "1997-11-10": 153,
         "2000-11-13": 118,
+        "2002-03-18": 8,
     }
     assert (
         trustees.loc[trustees["election_date"].eq("2000-11-13"), "outcome_method"]
@@ -47,7 +48,7 @@ def test_archive_contests_elect_their_seat_counts():
         .sum()
         == 4
     )
-    assert len(results) == 1_335
+    assert len(results) == 1_375
 
 
 def test_1994_and_1997_trustee_contests_elect_their_seat_counts():
@@ -81,10 +82,50 @@ def test_1994_and_1997_trustee_contests_elect_their_seat_counts():
     assert sorted(partial.groupby(["election_date", "represented_body"]).size().items()) == [
         (("1994-11-14", "metro_toronto_french_language_school_council"), 14),
         (("1994-11-14", "mssb_french_language_section"), 4),
+        (("1995-09-21", "north_york_city_council"), 6),
         (("1997-11-10", "conseil_scolaire_catholique_monavenir"), 2),
     ]
     star = results[results["source_authority"].eq("Toronto Star")]
-    assert star.groupby("election_date").size().to_dict() == {"1994-11-14": 113, "1997-11-10": 143}
+    assert star.groupby("election_date").size().to_dict() == {
+        "1994-11-14": 113,
+        "1995-09-21": 6,
+        "1997-11-10": 143,
+    }
+
+
+def test_1995_to_2002_by_elections_load_with_their_winners():
+    results = load_archive_results(REFERENCE)
+    by_elections = results[results["election_type"].eq("by_election")]
+
+    assert by_elections.groupby("election_date").size().to_dict() == {
+        "1995-09-21": 6,
+        "1998-09-24": 8,
+        "1999-09-23": 7,
+        "2001-12-03": 11,
+        "2002-03-18": 8,
+    }
+    assert by_elections.groupby("election_date")["event_id"].nunique().eq(1).all()
+    assert not set(by_elections["event_id"]) & set(
+        results.loc[results["election_type"].eq("general"), "event_id"]
+    )
+    winners = by_elections[by_elections["elected"].fillna(False)]
+    assert winners.set_index("election_date")["candidate_name"].to_dict() == {
+        "1995-09-21": "George Mammoliti",
+        "1998-09-24": "Jane Pitfield",
+        "1999-09-23": "David Soknacki",
+        "2001-12-03": "Michael Tziretas",
+        "2002-03-18": "Stan Nemiroff",
+    }
+    # The Star reports two of North York's six 1995 vote totals; the rest stay null.
+    north_york = by_elections[by_elections["election_date"].eq("1995-09-21")]
+    assert north_york["coverage_status"].eq("partial").all()
+    assert int(north_york["votes"].isna().sum()) == 4
+    assert (
+        by_elections.loc[by_elections["election_date"].ne("1995-09-21"), "coverage_status"]
+        .eq("complete")
+        .all()
+    )
+    assert "Sophie Tsolakopoulos-Nunziata" in set(by_elections["candidate_name"])
 
 
 def test_archive_winners_match_known_results():

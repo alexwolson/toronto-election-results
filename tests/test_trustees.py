@@ -566,14 +566,12 @@ def test_loader_downloads_and_parses_all_ten_by_election_contests(tmp_path):
     assert results["election_type"].eq("by_election").all()
 
 
-def test_manifest_cutoff_and_uncertain_early_by_election_coverage():
+def test_manifest_cutoff_and_complete_by_election_coverage_from_2003():
     manifest = trustee_event_manifest(results_root=RESULTS, through=date(2022, 12, 31))
     assert manifest["election_date"].max() == date(2022, 10, 24)
 
     coverage = trustee_event_coverage_manifest()
-    uncertain = coverage[coverage["event_coverage"] == "uncertain"].iloc[0]
-    assert uncertain["start_date"] == date(2003, 1, 1)
-    assert uncertain["end_date"] == date(2011, 12, 31)
-    assert uncertain["election_type"] == "by_election"
-    complete = coverage[coverage["event_coverage"] == "complete"].iloc[0]
-    assert complete["end_date"] == date(2026, 10, 26)
+    assert coverage["event_coverage"].eq("complete").all()
+    assert coverage["election_type"].eq("by_election").all()
+    assert coverage["start_date"].min() == date(2003, 1, 1)
+    assert coverage["end_date"].max() == date(2026, 10, 26)

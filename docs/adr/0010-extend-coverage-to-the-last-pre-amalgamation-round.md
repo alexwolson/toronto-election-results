@@ -39,6 +39,10 @@ hold, but they argue for null electorate columns, not for leaving the results ou
 - The 2000 parser removed by ADR 0003 can be recovered from git history and adapted.
 - Event coverage for the municipal by-elections of 1995–2002 is `uncertain` until the City's
   archive for that period is checked, as it already is for trustee by-elections before 2012.
+  Update (2026-10-31): the archive's "Previous elections results" index lists the 1998, 1999 and
+  2001 council by-elections and the 2002 TDSB Ward 1 by-election, and no by-election between
+  2003 and 2011. Those four and North York's 1995 Ward 1 by-election, found in the Toronto Star,
+  are now in the release; only 1995–1997 stays `uncertain`.
 - Mayoral career backfill rows inside the new window are removed once an official adapter
   carries the same Contest, and the career decision maps to the official Candidacy instead
   (`reuse_existing`). Kevin Clarke's 1995, 1996 and 2001 provincial rows and his 1997 federal row

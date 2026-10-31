@@ -39,7 +39,7 @@ Councillor, all four School Board Trustee systems, MP, and MPP elections. Genera
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
 used only to produce Contest totals and are not published.
 
-The release contains 8,067 Candidacies, 1,388 Contests, and 80 Election events. All Candidacies
+The release contains 8,107 Candidacies, 1,393 Contests, and 85 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
 Councillor Contests only.
@@ -88,7 +88,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `acclaimed` | boolean | never | True only for an official Acclamation. |
 | `outcome_method` | enum | never | `pending`, `vote`, `acclamation`, `void`, or another authority disposition. |
 | `result_status` | enum | never | `final` for certified/historical outcomes; `pending` for a candidate snapshot without declared results. |
-| `coverage_status` | enum | never | `complete`, `partial`, or `source_missing`; independent of legal outcome. |
+| `coverage_status` | enum | never | `complete`, `partial`, `source_missing`, or `candidate_record`; independent of legal outcome. `candidate_record` marks a single out-of-scope Candidacy kept for a mayoral candidate's career record (for example Olivia Chow's 1991 Metro Council race), with the authority's reported contest metrics. A `partial` Contest may carry null `votes` where its only source omits them. |
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_reported` | boolean | authority does not report it | Unmodified source flag; the modelled `incumbent` field uses project semantics. |
@@ -306,10 +306,17 @@ back to name matching or blanket historical coverage claims.
 - Endorsement evidence retained with each audited assertion, using original Endorser publications
   where available and attributable contemporaneous sources where archival recovery requires them.
 
-The City trustee by-election index begins in 2012. Event enumeration for 2003–2011 is therefore
-marked `uncertain`; this is an archive-level limitation, not a license to invent event placeholders.
-Municipal by-elections between 1995 and 2002 have not yet been enumerated from the City's
-archive, so that period is also marked `uncertain` in the build manifest.
+The City's archived "Previous elections results" index (Wayback Machine capture of 4 January 2012)
+lists every election the City ran from 1998. Its by-elections are the 1998 East York Ward 1, 1999
+Ward 16 Scarborough Highland Creek and 2001 Ward 31 Beaches-East York council by-elections and the
+2002 TDSB Ward 1 (Etobicoke North) trustee by-election, and it lists none between 2003 and 2011.
+Those four are transcribed from the City's archived pages into
+`data/reference/municipal_by_elections_1995_2002.csv`, so municipal and trustee by-election
+enumeration is complete from 1998. The former municipalities left no comparable index for 1995–1997.
+A search of the Toronto Star found one by-election in that period, North York's Ward 1 on
+21 September 1995, which is included from the Star's report. The Star gives only two of its six vote
+totals, so that Contest is `partial` and four of its Candidacies have null `votes`. The period
+1995–1997 stays `uncertain` in the build manifest.
 Federal legacy wide files that do not provide a structured party/incumbency field retain
 `not_reported`/null unless an official structured summary is joined and strictly reconciled. In
 this release, 2004 party/incumbent fields are joined to Elections Canada Table 12, and 2008–2014

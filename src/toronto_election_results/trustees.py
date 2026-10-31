@@ -1013,15 +1013,19 @@ def select_trustee_events(
 
 
 def trustee_event_coverage_manifest() -> pd.DataFrame:
-    """Document archive-level coverage, including the accepted 2003--2011 uncertainty."""
+    """Document archive-level coverage of trustee by-elections from 2003."""
     return pd.DataFrame(
         [
             {
                 "start_date": date(2003, 1, 1),
                 "end_date": date(2011, 12, 31),
                 "election_type": "by_election",
-                "event_coverage": "uncertain",
-                "source_detail": "The City's official trustee by-election index begins in 2012.",
+                "event_coverage": "complete",
+                "source_detail": (
+                    "The City's archived Previous elections results index (Wayback Machine, "
+                    "4 January 2012) lists no by-election between the 2002 TDSB Ward 1 "
+                    "by-election and 2012."
+                ),
             },
             {
                 "start_date": date(2012, 1, 1),

@@ -508,10 +508,10 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1610
+    assert len(original_decisions) == 1633
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "unresolved": 730,
-        "confirmed": 877,
+        "confirmed": 892,
+        "unresolved": 738,
         "rejected": 3,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -1262,3 +1262,50 @@ def test_star_ward_previews_link_backlog_runs():
         "can_6649b3f9eb045bf28d1528ccede19d62": "per_336293d6",
     }.items():
         assert confirmed.loc[candidacy_id, "person_id"].startswith(person_prefix)
+
+
+def test_1995_to_2002_by_election_proposals_are_settled_from_press_reports():
+    """The 23 proposals on the 1995-2002 by-election Candidacies were reviewed against the press."""
+
+    decisions = read_identity_review_decisions(
+        REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
+    )
+    results = pd.read_csv(
+        REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
+    ).set_index("candidacy_id")
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
+        "person_id"
+    )
+    reviewed = decisions.loc[decisions["reviewer"].eq("by-elections-1995-2002-2026-10-31")]
+    assert len(reviewed) == 23
+    assert results.loc[reviewed["candidacy_id"], "election_type"].eq("by_election").all()
+    assert reviewed.groupby(["decision", "confidence"]).size().to_dict() == {
+        ("confirmed", "high"): 15,
+        ("unresolved", "low"): 2,
+        ("unresolved", "medium"): 6,
+    }
+    accepted = reviewed.loc[reviewed["decision"].eq("confirmed")]
+    assert (
+        results.loc[accepted["candidacy_id"], "person_id"].tolist()
+        == accepted["target_person_id"].tolist()
+    )
+    held = reviewed.loc[reviewed["decision"].eq("unresolved"), "candidacy_id"]
+    assert results.loc[held, "person_id"].isna().all()
+    assert set(results.loc[held, "candidate_name"]) == {
+        "Vince Corriero",
+        "Barbara Carter",
+        "Bert Dandy",
+        "Benjamin Mbaegbu",
+        "Chai Kalevar",
+        "Diana-De Maxted",
+        "Leslie Soobrian",
+    }
+
+    # The City printed Michael Tziretas's 1994 East York win as "Tzirstas"; the Star's 1998 and
+    # 2001 stories say he sat on East York council from 1994 to 1997.
+    tziretas = "per_4fcb7a34e1d35287849f372ade93c202"
+    assert people.loc["per_2c2b38df89c35327acdf8340e517729b", "identity_status"] == "deprecated"
+    assert people.loc["per_2c2b38df89c35327acdf8340e517729b", "redirect_to_person_id"] == tziretas
+    assert results.loc["can_9e84cc86211151a9bf7fb314214b7e74", "person_id"] == tziretas
+    tziretas_runs = results.loc[results["person_id"].eq(tziretas), "election_date"]
+    assert sorted(tziretas_runs) == ["1994-11-14", "1997-11-10", "2001-12-03", "2003-11-10"]

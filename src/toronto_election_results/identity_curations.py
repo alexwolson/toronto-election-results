@@ -11688,6 +11688,42 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Joins from the coverage of the 1995-2002 by-elections
+# (docs/research/by-elections-1995-2011-2026-10-31.md).
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="michael-tziretas-1994-east-york-council-run",
+        preferred_name="Michael Tziretas",
+        occurrences=(
+            _pinned_occurrence(
+                "can_9e84cc86211151a9bf7fb314214b7e74",
+                "evt_e50f564e276a5aa7922c448b28492658",
+                "east_york_borough_council",
+                "councillor",
+                "Tzirstas, Michael",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/437803783",
+            "https://www.proquest.com/docview/438383387",
+        ),
+        rationale=(
+            "The City's archive prints the 1994 East York Ward 1 winner as 'Tzirstas, Michael', "
+            "held as a separate Person. The Toronto Star's preview of the 1998 East York "
+            "by-election says 'Michael Tziretas, who served on the former East York council from "
+            "1994 to 1997, came fourth in the last election', which is the target's 1997 Ward 1 "
+            "run, and its report on the 2001 Ward 31 by-election says Tziretas 'was a councillor "
+            "on the former East York council from 1994 to 1997'. The 1994 record joins that "
+            "record; the candidacy keeps the name as the City printed it."
+        ),
+        registry_person_ids=(
+            "per_4fcb7a34e1d35287849f372ade93c202",
+            "per_2c2b38df89c35327acdf8340e517729b",
+        ),
+        canonical_person_id="per_4fcb7a34e1d35287849f372ade93c202",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
