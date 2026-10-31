@@ -30,6 +30,18 @@ class CandidacyLocator:
 
 
 @dataclass(frozen=True)
+class RosterMemberLocator:
+    """A Council roster entry for the asserted Person that no Candidacy explains.
+
+    The municipal roster step resolves this entry to the asserted Person instead of
+    creating a separate roster Person, for example when the member was appointed.
+    """
+
+    event_id: str
+    member_name: str
+
+
+@dataclass(frozen=True)
 class CuratedIdentityAssertion:
     """Officially evidenced claim that enumerated candidacies are one Person."""
 
@@ -40,6 +52,7 @@ class CuratedIdentityAssertion:
     rationale: str
     registry_person_ids: tuple[str, ...] = ()
     canonical_person_id: str | None = None
+    roster_members: tuple[RosterMemberLocator, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -133,6 +146,34 @@ def _assert_valid(assertion: CuratedIdentityAssertion) -> None:
         raise ValueError(
             f"assertion {assertion.assertion_id!r} requires HTTPS official evidence URLs"
         )
+
+
+def curated_roster_resolutions(
+    assertions: tuple[CuratedIdentityAssertion, ...],
+) -> dict[tuple[str, str], str]:
+    """Map each curated Council roster entry to the one registry Person its assertion names."""
+
+    resolutions: dict[tuple[str, str], str] = {}
+    for assertion in assertions:
+        if not assertion.roster_members:
+            continue
+        person_ids = (
+            {assertion.canonical_person_id}
+            if assertion.canonical_person_id is not None
+            else set(assertion.registry_person_ids)
+        )
+        if len(person_ids) != 1:
+            raise ValueError(
+                f"assertion {assertion.assertion_id!r} must name exactly one registry Person "
+                "for its roster members"
+            )
+        person_id = next(iter(person_ids))
+        for member in assertion.roster_members:
+            key = (member.event_id, member.member_name)
+            if resolutions.get(key, person_id) != person_id:
+                raise ValueError(f"roster member {key!r} is asserted for two People")
+            resolutions[key] = person_id
+    return resolutions
 
 
 def _new_person_row(
@@ -731,7 +772,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 ("can_864171b9868d51449e6a69c8e32d9189", "on-2014-general"),
             )
         ),
-        registry_person_ids=("per_e58710f18fe45bc89242f5432144686b",),
+        registry_person_ids=("per_d45bd0a80a1f534789b44389acf113d4",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Brad Duguid"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/1999/agendas/council/cc/cc991123/pof10rpt/cl006.pdf",
             "https://results.elections.on.ca/",
@@ -807,7 +851,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 "Fred Dominelli",
             ),
         ),
-        registry_person_ids=("per_41b5394fedeb573da516d637125cd66f",),
+        registry_person_ids=("per_cb2a4df836305b1aac1b32d4e7144ef6",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Fred Dominelli"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2003/agendas/council/cc030521/cofa.pdf",
             "https://open.toronto.ca/dataset/election-results/",
@@ -829,7 +876,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 "Irene Jones",
             ),
         ),
-        registry_person_ids=("per_bf5a65098e415b36ae204453a00c714a",),
+        registry_person_ids=("per_f832b6d6a71955bcbeba52b37d43f228",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Irene Jones"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2003/minutes/council/cc030722.pdf",
             "https://results.elections.on.ca/",
@@ -853,7 +903,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 ("can_b346aab66a0b5993a2beaef37907feb3", "ec-ge-45"),
             )
         ),
-        registry_person_ids=("per_b8324f45adf156c09aba26338117cad3",),
+        registry_person_ids=("per_5a7ce90ce04b51bda92cea74556efcd7",),
+        roster_members=(
+            RosterMemberLocator("evt_54673fd104ab5ef08eb865e162ac040c", "James Maloney"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/mmis/2015/ex/bgrd/backgroundfile-78750.pdf",
             "https://www.ourcommons.ca/members/en/james-maloney%2888748%29/roles",
@@ -967,7 +1020,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 "Jonathan Tsao",
             ),
         ),
-        registry_person_ids=("per_c675142f1bab5e1db315a295f34a3dec",),
+        registry_person_ids=("per_0afc100cce0552f3ab72875cb6474788",),
+        roster_members=(
+            RosterMemberLocator("evt_e4fe1909276b5fbd91057022b350fff3", "Jonathan Tsao"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/mmis/2019/ex/bgrd/backgroundfile-131208.pdf",
             "https://results.elections.on.ca/",
@@ -1005,7 +1061,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 "Lorenzo Berardinetti",
             ),
         ),
-        registry_person_ids=("per_dc7ee9fafb425c22819e7363edf5a27b",),
+        registry_person_ids=("per_59e8fc21d73350fa9478b0f8dbb2c7cb",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Lorenzo Berardinetti"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2001/minutes/council/cc010530.pdf",
             "https://results.elections.on.ca/",
@@ -1028,7 +1087,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 ("can_f6905f96b7af50eb820c17fb25068d35", "ec-ge-41"),
             )
         ),
-        registry_person_ids=("per_0d095ab7d4b5554eb2322f446d56cf2a",),
+        registry_person_ids=("per_7739034f2088547fb930e5baf7f0cac7",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Mario Silva"),
+        ),
         evidence_urls=(
             "https://www.ourcommons.ca/Content/Committee/381/CHPC/Evidence/EV1928325/CHPCEV45-E.PDF",
             "https://www.ourcommons.ca/members/en/mario-silva%2825455%29/roles",
@@ -1071,7 +1133,8 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 ),
             )
         ),
-        registry_person_ids=("per_631b41eec6f25d43828651db6312cd99",),
+        registry_person_ids=("per_1595883add5a5e7abb1bcdde1e768611",),
+        roster_members=(RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Norm Kelly"),),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/mmis/2010/zb/bgrd/backgroundfile-26580.pdf",
             "https://open.toronto.ca/dataset/election-results/",
@@ -1125,7 +1188,10 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 "Paul Sutherland",
             ),
         ),
-        registry_person_ids=("per_55e5ba9aff9750899ff1db70e5bc84ba",),
+        registry_person_ids=("per_5c71d0d296235cfe946e4ce549424af0",),
+        roster_members=(
+            RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Paul Sutherland"),
+        ),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2001/minutes/committees/bud/bud010209.pdf",
             "https://results.elections.on.ca/",
@@ -1168,7 +1234,8 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 "Ron Moeser",
             ),
         ),
-        registry_person_ids=("per_6943978961ef52d8bdedde8802fc8e04",),
+        registry_person_ids=("per_77139d6966a253d4aa08b6ac8c31c3c4",),
+        roster_members=(RosterMemberLocator("evt_d89f777f34365c37b114ca39fb376591", "Ron Moeser"),),
         evidence_urls=(
             "https://www.toronto.ca/legdocs/mmis/2007/sc/minutes/2007-11-27-sc11-mn.pdf",
             "https://open.toronto.ca/dataset/election-results/",
@@ -4930,11 +4997,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "Gong's Edward Gong alias. The exact three occurrences are enumerated and no "
             "name-only fallback is authorized."
         ),
-        registry_person_ids=(
-            "per_424fd6af33ed5e0bae4177a42cde6c21",
-            "per_5067314c5e465bfb95ca0798e4854ea7",
-            "per_c54d3412c98b57bbabd296e5fbb4dceb",
-        ),
+        registry_person_ids=("per_424fd6af33ed5e0bae4177a42cde6c21",),
         canonical_person_id="per_424fd6af33ed5e0bae4177a42cde6c21",
     ),
 )
@@ -4993,10 +5056,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "candidate. The exact four occurrences are enumerated and no name-only fallback "
             "is authorized."
         ),
-        registry_person_ids=(
-            "per_3d3501723d055766800769f77751b3bf",
-            "per_abd4663f08cb5b11bbe72c502697a809",
-        ),
+        registry_person_ids=("per_3d3501723d055766800769f77751b3bf",),
         canonical_person_id="per_3d3501723d055766800769f77751b3bf",
     ),
 )
@@ -7343,10 +7403,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         rationale=(
             "TDSB records cover Alexandra Lulka's 2016 and 2018 Ward 5 service and later identify the serving trustee as Alexandra Lulka Rotman, proving the 2022 surname-expanded record is the same Person."
         ),
-        registry_person_ids=(
-            "per_41f18773bdf258f1b2bda351d34274e3",
-            "per_8d7b15e532d653528a8ec8cededad6fe",
-        ),
+        registry_person_ids=("per_41f18773bdf258f1b2bda351d34274e3",),
     ),
     _anchored_continuity_assertion(
         "anu-sriskandarajah-tdsb-continuity",
@@ -7695,10 +7752,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         rationale=(
             "Successive candidate biographies repeat Kevin Morrison's CPIC and school-council history, and The Local explicitly enumerates his 2010, 2012, 2014, 2018, and 2022 runs. These occurrences form one Person. A second registry record was created for a 2010 Ward 9 row that held 558 of his Ward 11 votes after a workbook parsing error; the Clerk's declaration lists him only in Ward 11, so that record redirects here."
         ),
-        registry_person_ids=(
-            "per_5f4f8c32ad01536bb991d193fb1b4b9e",
-            "per_0f6b3c990ec85336a61dcdf54c43dfd6",
-        ),
+        registry_person_ids=("per_5f4f8c32ad01536bb991d193fb1b4b9e",),
         canonical_person_id="per_5f4f8c32ad01536bb991d193fb1b4b9e",
     ),
 )
@@ -9656,10 +9710,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "from 1995 to 2007 is a Family Coalition candidacy in a Toronto riding, and no other "
             "Rina Morra appears in the results."
         ),
-        registry_person_ids=(
-            "per_87ce1c960f915a0cac91d688c6a52eaa",
-            "per_346838d84822509795bf2169db503a78",
-        ),
+        registry_person_ids=("per_87ce1c960f915a0cac91d688c6a52eaa",),
         canonical_person_id="per_87ce1c960f915a0cac91d688c6a52eaa",
     ),
 )
@@ -9695,10 +9746,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "(145 votes) and Beaches—East York 2004 and 2006, matching the official results and "
             "joining the 1993 and 2000 runs to his existing Beaches—East York record."
         ),
-        registry_person_ids=(
-            "per_bd699c148fd850939f7f512754a50ae0",
-            "per_6d92d16b99ca5f789ab4d0d4279ed97b",
-        ),
+        registry_person_ids=("per_bd699c148fd850939f7f512754a50ae0",),
         canonical_person_id="per_bd699c148fd850939f7f512754a50ae0",
     ),
     CuratedIdentityAssertion(
@@ -9723,10 +9771,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "Beaches—East York 2000 (53 votes), matching the official results. His 2015 and 2019 "
             "University—Rosedale runs are not covered by that record and stay on their own Person."
         ),
-        registry_person_ids=(
-            "per_83ce91414bb25e0dad0b85534118d73e",
-            "per_93e5956608865f32ac1d599f3d23c325",
-        ),
+        registry_person_ids=("per_83ce91414bb25e0dad0b85534118d73e",),
         canonical_person_id="per_83ce91414bb25e0dad0b85534118d73e",
     ),
 )
@@ -9780,11 +9825,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "David Miller's Wikipedia biography gives his runs as the NDP candidate in Parkdale—High Park in 1993, Metro councillor for High Park from 1994, the NDP candidate in York South in 1996, councillor for Ward 19 High Park in 1997 and Ward 13 Parkdale-High Park in 2000, and Mayor in 2003 and 2006, joining three Person records."
         ),
-        registry_person_ids=(
-            "per_ad293f1387af572cad45897886519bb6",
-            "per_b04a5fd11b4951368dcd05cb899898f5",
-            "per_e925f7a5f62a5d618c5b31e2ddbea83f",
-        ),
+        registry_person_ids=("per_ad293f1387af572cad45897886519bb6",),
         canonical_person_id="per_ad293f1387af572cad45897886519bb6",
     ),
     CuratedIdentityAssertion(
@@ -9831,12 +9872,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Denzil Minnan-Wong's Wikipedia biography gives his election to North York Ward 12 in 1994, his 1997 Progressive Conservative run in Don Valley East, his election in 1997 Ward 11 Don Parkway (listed by the City's archive as Denzil Wong-Minnan), Ward 34 from 2000, his 2018 provincial run in Don Valley East and his 2018 Ward 16 re-election, joining four Person records."
         ),
-        registry_person_ids=(
-            "per_cacdaf09421e5b0e98d0138141449f29",
-            "per_bd5ac08ea87152aaaa243d61919f2d5d",
-            "per_c63f97c0d609539d89db1c94bf646152",
-            "per_ee2f92c07cbb5ae68743184af4c68441",
-        ),
+        registry_person_ids=("per_cacdaf09421e5b0e98d0138141449f29",),
         canonical_person_id="per_cacdaf09421e5b0e98d0138141449f29",
     ),
     CuratedIdentityAssertion(
@@ -9918,11 +9954,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Elizabeth Rowley's Wikipedia electoral record lists Broadview—Greenwood 1993, East York Ward 1 council 1997, Don Valley East 1999, Etobicoke North 2000, Scarborough Centre 2003, Scarborough Southwest 2004 and 2006, Toronto—Danforth 2014 and 2021, Davenport 2019 and Beaches—East York 2025, with vote totals matching the official results, joining three Person records."
         ),
-        registry_person_ids=(
-            "per_aa1078f5c83b568188c98224c0b71f58",
-            "per_bdd754b560a850038f516caa45cdd496",
-            "per_783e7bef07e35d43b1c8aa080da867db",
-        ),
+        registry_person_ids=("per_aa1078f5c83b568188c98224c0b71f58",),
         canonical_person_id="per_aa1078f5c83b568188c98224c0b71f58",
     ),
     CuratedIdentityAssertion(
@@ -9969,11 +10001,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Rob Davis's Wikipedia biography gives his re-election to York Ward 3 in 1994, the 1996 York South by-election as the Progressive Conservative candidate, Ward 28 York Eglinton in 1997, Ward 21 in 2000, Ward 33 in 2003, Ward 15 in 2010 and the 2023 mayoral by-election, joining three Person records."
         ),
-        registry_person_ids=(
-            "per_2a0809ffec18563292e0e1363aff66f6",
-            "per_fb948a9694d85e1eb85b36a17435b7c5",
-            "per_3e3031a1daa65b39a59e2770e7cd1064",
-        ),
+        registry_person_ids=("per_2a0809ffec18563292e0e1363aff66f6",),
         canonical_person_id="per_2a0809ffec18563292e0e1363aff66f6",
     ),
     CuratedIdentityAssertion(
@@ -10013,10 +10041,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Mike Feldman's Wikipedia biography gives his North York Ward 7 seat from 1992, his election in 1997 Ward 8 with 14,737 votes, and Ward 10 in 2000, 2003 and 2006 with vote totals matching the official results; the 1994 North York Ward 7 win falls within that continuous tenure. The records for Michael Feldman and Mike Feldman are joined."
         ),
-        registry_person_ids=(
-            "per_a91b6e0f34fc5ad894ceeecfe6f286ca",
-            "per_183a76b124095ed28e18acefa4468660",
-        ),
+        registry_person_ids=("per_a91b6e0f34fc5ad894ceeecfe6f286ca",),
         canonical_person_id="per_a91b6e0f34fc5ad894ceeecfe6f286ca",
     ),
     CuratedIdentityAssertion(
@@ -10070,10 +10095,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Peter Li Preti's Wikipedia biography gives his 1993 independent run in York Centre, his 1997 election to the new council (Ward 7 Black Creek), Ward 8 wins in 2000 and 2003, and his losses to Anthony Perruzza in Ward 8 in 2006 and 2010, joining two Person records."
         ),
-        registry_person_ids=(
-            "per_2a40024702fe5eff894a5f894cec0f0d",
-            "per_ec16fdedf2c65a0eb70e306c60f6003a",
-        ),
+        registry_person_ids=("per_2a40024702fe5eff894a5f894cec0f0d",),
         canonical_person_id="per_2a40024702fe5eff894a5f894cec0f0d",
     ),
     CuratedIdentityAssertion(
@@ -10113,10 +10135,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Anthony Perruzza's Wikipedia biography gives his 1995 loss in Downsview as MPP, his fourth place in 1997 Ward 7, his losses to Peter Li Preti in Ward 8 in 2000 and 2003, and his Ward 8 win in 2006 and later terms, joining two Person records."
         ),
-        registry_person_ids=(
-            "per_18786ecd2dc7506794ac10340a5f68f6",
-            "per_db8515e07e0854a292de4385b62d7eaf",
-        ),
+        registry_person_ids=("per_18786ecd2dc7506794ac10340a5f68f6",),
         canonical_person_id="per_18786ecd2dc7506794ac10340a5f68f6",
     ),
     CuratedIdentityAssertion(
@@ -10163,10 +10182,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "John Parker's Wikipedia biography gives his 1995 win in York East and 1999 loss in Eglinton—Lawrence as the Progressive Conservative candidate, and his Ward 26 Don Valley West wins in 2006 and 2010 and loss in 2014, joining two Person records. His 1994 East York candidacy remains unresolved."
         ),
-        registry_person_ids=(
-            "per_89c892f4852f57deae6f2c4bf5a1e39f",
-            "per_54206bff64a9555d8c672febdd31d538",
-        ),
+        registry_person_ids=("per_89c892f4852f57deae6f2c4bf5a1e39f",),
         canonical_person_id="per_89c892f4852f57deae6f2c4bf5a1e39f",
     ),
     CuratedIdentityAssertion(
@@ -10206,10 +10222,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "John Hastings's Wikipedia biography gives his Etobicoke council seat from 1988 to 1995, his MPP wins in Etobicoke—Rexdale in 1995 and Etobicoke North in 1999, his TDSB Ward 1 wins in 2006 and 2010, his 2014 loss and his 2016 by-election loss, joining two Person records."
         ),
-        registry_person_ids=(
-            "per_13c35326e35f5616b2b579c7af89ed3c",
-            "per_1a2367699c6c584d879bffc61e9daa3c",
-        ),
+        registry_person_ids=("per_13c35326e35f5616b2b579c7af89ed3c",),
         canonical_person_id="per_13c35326e35f5616b2b579c7af89ed3c",
     ),
     CuratedIdentityAssertion(
@@ -10235,10 +10248,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Paul Sutherland's Wikipedia biography gives him as a North York Ward 14 councillor to 1997 and Ward 33 councillor from 2000 to 2003, and as the Progressive Conservative candidate in Don Valley East in 2003. The 1995 Oriole candidacy is not covered and stays on its own Person."
         ),
-        registry_person_ids=(
-            "per_5c71d0d296235cfe946e4ce549424af0",
-            "per_a9ff8ac2ec0c5c298812055f3581c5be",
-        ),
+        registry_person_ids=("per_5c71d0d296235cfe946e4ce549424af0",),
         canonical_person_id="per_5c71d0d296235cfe946e4ce549424af0",
     ),
     CuratedIdentityAssertion(
@@ -10340,11 +10350,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Wikipedia's Humanist Party of Ontario article has a section on Roberto Verdecchia, co-founder of an Annex newspaper (citing the Toronto Star of 1997 and 2003), whose electoral record lists the 1997 federal and 1999 provincial Trinity—Spadina runs, 1997 Ward 24 and 2000 and 2003 Ward 20 with vote totals matching the official results, joining three Person records."
         ),
-        registry_person_ids=(
-            "per_3997000aca965ed98716d39d8bf36311",
-            "per_81447c123ab753a5968bd69a225e12bc",
-            "per_77402961573e5ba3a4465c1ef523205e",
-        ),
+        registry_person_ids=("per_3997000aca965ed98716d39d8bf36311",),
         canonical_person_id="per_3997000aca965ed98716d39d8bf36311",
     ),
     CuratedIdentityAssertion(
@@ -10382,10 +10388,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Elections Canada's 1993 candidate record gives the Progressive Conservative candidate in Broadview—Greenwood as a municipal councillor living in East York, and John Papadakis won an East York Ward 3 seat in 1991. The Toronto Observer describes the 2014 Ward 29 candidate as the former East York councillor who served one term about twenty years earlier. His 1994 run for East York's Metro seat followed that term in the same borough, and his 2003 and 2014 Ward 29 runs were already one record."
         ),
-        registry_person_ids=(
-            "per_ea45e9b94d525274a5445c574fd8e1f1",
-            "per_a550fd9cd4635743aa2564d276ba0c23",
-        ),
+        registry_person_ids=("per_ea45e9b94d525274a5445c574fd8e1f1",),
         canonical_person_id="per_ea45e9b94d525274a5445c574fd8e1f1",
     ),
     CuratedIdentityAssertion(
@@ -10446,10 +10449,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Elections Canada's 1993 candidate record and the City's 2018 campaign-contribution record, where he contributed to his own mayoral campaign, give the same home postal code, joining the 1993 federal run to the 2014 and 2018 mayoral runs. Elections Canada gives his occupation as engineer in 1993, 2008, 2019 and 2021, joining the Davenport runs, and the 2015 Davenport run is the same independent in the same riding. His 1994-2000 York-area council runs, the 2016 and 2017 council by-elections and the 2018 provincial run are not established and stay unresolved."
         ),
-        registry_person_ids=(
-            "per_7a6c09e82feb52cdbcd1fa757f7c708d",
-            "per_5ec455c57d6859a8adea2467b830d61e",
-        ),
+        registry_person_ids=("per_7a6c09e82feb52cdbcd1fa757f7c708d",),
         canonical_person_id="per_7a6c09e82feb52cdbcd1fa757f7c708d",
     ),
     CuratedIdentityAssertion(
@@ -10563,10 +10563,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "The Election Prediction Project's 1999 Parkdale—High Park page quotes NOW Magazine of April 8, 1999 naming the NDP candidate as school trustee Irene Atkinson, a former Tory, and a contributor there calls her a trustee and former school board chair. That is the Ward 7 trustee: a 1980 Toronto Star caption names her chair of the Toronto Board of Education, and Cheri DiNovo told the Legislature in 2014 that she was a red Tory who left the Conservative Party over what Mike Harris did to education and crossed the floor to the NDP. This joins two Person records."
         ),
-        registry_person_ids=(
-            "per_4fce2dffe8095bee8c68ca1d2c8ac324",
-            "per_e07eaecf868050639b1cbe712c83663a",
-        ),
+        registry_person_ids=("per_4fce2dffe8095bee8c68ca1d2c8ac324",),
         canonical_person_id="per_4fce2dffe8095bee8c68ca1d2c8ac324",
     ),
     CuratedIdentityAssertion(
@@ -10603,10 +10600,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "A February 2003 comment on the Election Prediction Project's York West page says school trustee Stephnie Payne finished third there in 1999, which is the official result for the NDP candidate Stephnie Payne under the same uncommon spelling. A Black Creek oral history introduces the trustee as the TDSB's Ward 4 trustee, and she says there that she has served since winning in 1991. This joins two Person records."
         ),
-        registry_person_ids=(
-            "per_a7badd21391e5d63b1661d0519a7d7d2",
-            "per_6d724de5779557149c7eceadeff15e1b",
-        ),
+        registry_person_ids=("per_a7badd21391e5d63b1661d0519a7d7d2",),
         canonical_person_id="per_a7badd21391e5d63b1661d0519a7d7d2",
     ),
     CuratedIdentityAssertion(
@@ -10657,10 +10651,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "The City archive listed the 1994 North York Board of Education Ward 1 result (David Kendall 1,872, Sheila Lambrinos 1,116) inside council Ward 1, so an earlier release published a council candidacy for \"Dave Kendall\". The Toronto Star's 16 November 1994 tables and Wikipedia's council results place the race on the school board; the misfiled council row was retired, and the Person created for it is this trustee."
         ),
-        registry_person_ids=(
-            "per_3f06bedbe8dd5e9c88458c78d6eed7e3",
-            "per_4e171fd725dc5558ba61132449391fec",
-        ),
+        registry_person_ids=("per_3f06bedbe8dd5e9c88458c78d6eed7e3",),
         canonical_person_id="per_3f06bedbe8dd5e9c88458c78d6eed7e3",
     ),
     CuratedIdentityAssertion(
@@ -10693,10 +10684,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Michael Anthony (Mike) Del Grande's Wikipedia biography says he was first elected a separate school trustee in 1994 (Metropolitan Separate School Board Ward 18, 1994-98) and re-elected in 1997 and 2000, before representing Ward 39 on City Council from 2003 and TCDSB Ward 7 from 2014. The 1994 and 2000 terms were held as a separate 'Michael Del Grande' Person and join his council and trustee record. John Del Grande, his son and a later Ward 7 trustee, is a different person."
         ),
-        registry_person_ids=(
-            "per_5d4ed9a602615789a5ed8bde2ae82e62",
-            "per_a279ecb0a6d25718832d86201659833f",
-        ),
+        registry_person_ids=("per_5d4ed9a602615789a5ed8bde2ae82e62",),
         canonical_person_id="per_5d4ed9a602615789a5ed8bde2ae82e62",
     ),
     CuratedIdentityAssertion(
@@ -10785,10 +10773,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Structural continuity: Iqbal Dhanju ran for the Scarborough Board of Education (Ward 14) in 1994 and for the successor TDSB in north-east Scarborough in 1997 (Ward 9, printed 'Iqbal S. Dhanju') and 2000 (Ward 21), three consecutive elections in overlapping areas under a rare name with no namesake in any Toronto record. The 1997 run was held as a separate Person because of the middle initial."
         ),
-        registry_person_ids=(
-            "per_6f6434dc6b37567890cd76d347d1c7b2",
-            "per_ee6719ea2e2750fa812eace9e3ae5f45",
-        ),
+        registry_person_ids=("per_6f6434dc6b37567890cd76d347d1c7b2",),
         canonical_person_id="per_6f6434dc6b37567890cd76d347d1c7b2",
     ),
     CuratedIdentityAssertion(
@@ -10828,10 +10813,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Wikipedia's note on the 2003 mayoral candidate Luis A. da Silva says he was elected to the Metro Toronto Separate School Board in 1994 in the old City of Toronto's fourth division, lost his bid for re-election in 1997 and was defeated again in 2000. That joins the 1994 and 1997 'Luis A. Lopes Silva' record to the 2000 and 2003 'Luis Silva' record."
         ),
-        registry_person_ids=(
-            "per_620960c232f85db6b87db233834b5a4b",
-            "per_a0343b9bd41e5487828af187ca743698",
-        ),
+        registry_person_ids=("per_620960c232f85db6b87db233834b5a4b",),
         canonical_person_id="per_620960c232f85db6b87db233834b5a4b",
     ),
     CuratedIdentityAssertion(
@@ -10871,10 +10853,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Norman 'Norm' Gardner's Wikipedia biography gives his Metro Council seat for North York Centre (1988-1997, acclaimed in 1994), the 1997 federal Progressive Conservative run in Willowdale, the 1997 Ward 10 North York Centre council race and the 2018 Ward 18 Willowdale race, joining the 'Norm Gardner' and 'Norman Gardner' records."
         ),
-        registry_person_ids=(
-            "per_940597ecad835bb39f145cd085e3f791",
-            "per_2a6a1579a6b95b6fb0a4011fa5f01f24",
-        ),
+        registry_person_ids=("per_940597ecad835bb39f145cd085e3f791",),
         canonical_person_id="per_940597ecad835bb39f145cd085e3f791",
     ),
     CuratedIdentityAssertion(
@@ -11001,11 +10980,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "Claude-Reno D'Aigle is the only person of that name in any Toronto record. MonAvenir's 2000-01 annual report lists him as the trustee for the Toronto North region (the 2000 Ward 4 seat), and its 2017 and 2018 trustee newsletters list him as the Toronto East trustee (the 2014 Ward 4 seat). His other French Catholic trustee races continue the same career on the same board and its predecessor: the 1994 Separate School Board French-section loss in Toronto and York, the 1997 Metro 2 win (printed without the hyphen), the 2003 Ward 3 acclamation (declared as 'Claude D'Aigle') followed by his 2006 loss in the same ward, the 2010 Ward 4 acclamation and the 2018 loss. Three records are joined."
         ),
-        registry_person_ids=(
-            "per_19437117d92857d9ac07198a36e10a37",
-            "per_c51eea41d6dc504185534c80c1545791",
-            "per_0d4cf29bc1c4569ab45bbd86b3c12bb4",
-        ),
+        registry_person_ids=("per_19437117d92857d9ac07198a36e10a37",),
         canonical_person_id="per_19437117d92857d9ac07198a36e10a37",
     ),
     CuratedIdentityAssertion(
@@ -11028,10 +11003,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         rationale=(
             "The Toronto Star's 2003 Catholic trustee profiles say Ward 1 candidate Joe Martino 'was trustee for 15 years prior to the last election'. That is the target's Separate School Board and TCDSB service in Etobicoke (Ward 9 in 1994, Ward 1 in 1997), which stopped in 2000, when he ran for council instead and the Star's council profiles called him 'a five-term Catholic school trustee'. The Star's 2006 profile of the re-elected Ward 1 trustee Joseph Martino says he had been a trustee for 18 years. The 2003 'Joe Martino' record is joined."
         ),
-        registry_person_ids=(
-            "per_09a4cbae05385a73bdd309e7d767549f",
-            "per_66464a384b635f5c8f99de40022bb7f6",
-        ),
+        registry_person_ids=("per_09a4cbae05385a73bdd309e7d767549f",),
         canonical_person_id="per_09a4cbae05385a73bdd309e7d767549f",
     ),
     CuratedIdentityAssertion(
@@ -11119,10 +11091,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "The City's 1997 results list the Ward 15 (Scarborough) council candidate as 'Russell Worrick'; the Toronto Star's 1997 profiles print him as Worrick Russell, a paralegal and mediator, and its 2003 profile of the Ward 35 candidate Worrick Russell calls him 'the mediator'. The reversed 1997 record is joined to the 2000-2006 Ward 35 record, together with his 1994 Metro Council race in Scarborough City Centre, the previous race in an unbroken run of Scarborough council campaigns under a rare name."
         ),
-        registry_person_ids=(
-            "per_879ab85d24c6595f849d3aed56623719",
-            "per_f94551f7f5d15eb591afa5ecdef01b89",
-        ),
+        registry_person_ids=("per_879ab85d24c6595f849d3aed56623719",),
         canonical_person_id="per_879ab85d24c6595f849d3aed56623719",
     ),
     CuratedIdentityAssertion(
@@ -11152,10 +11121,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "The Toronto Star's 2000 profiles list André Duclos as the acclaimed incumbent in the French Catholic board's Ward 3, and MonAvenir's 2000-01 annual report names him board president. The Star's 2003 profile of the Ward 4 candidate André Duclos says he looks forward to serving his constituents 'as he has in the past'. The 2000 and 2003 records are joined; his 1994 French-section race stays unresolved."
         ),
-        registry_person_ids=(
-            "per_01d27f754bc75218aa848e00887a9d36",
-            "per_26f0cdfdce3b5437b5c0ba6d680019c4",
-        ),
+        registry_person_ids=("per_01d27f754bc75218aa848e00887a9d36",),
         canonical_person_id="per_01d27f754bc75218aa848e00887a9d36",
     ),
     CuratedIdentityAssertion(
@@ -11268,10 +11234,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "Michael Thomas finished second to Bas Balkissoon in Scarborough Ward 13 in 1994; the Toronto Star's profile calls him a student and its 7 November 1994 story on young candidates a 21-year-old York University political science student. The Star's 1995 Scarborough North riding story says the Progressive Conservative candidate Mike Thomas, a York political science student of 21, finished second to Balkissoon in the previous November's municipal election. The 1994 council record joins the 1995 provincial record."
         ),
-        registry_person_ids=(
-            "per_d9d8cf88891157b6bdc0fcbe54546451",
-            "per_ca41cb415bd95ffdaf07d6f8b35892a8",
-        ),
+        registry_person_ids=("per_d9d8cf88891157b6bdc0fcbe54546451",),
         canonical_person_id="per_d9d8cf88891157b6bdc0fcbe54546451",
     ),
     CuratedIdentityAssertion(
@@ -11294,10 +11257,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "The Toronto Star's 2003 ward-by-ward preview calls the Ward 35 (Scarborough Southwest) council candidate Adrian Heaps 'a former provincial Liberal candidate', and its 1999 riding story names him as the Liberal candidate in Scarborough Southwest. His Wikipedia biography gives the 1999 provincial run and the 2003, 2006 and 2010 council runs. The 1999 record joins the council record."
         ),
-        registry_person_ids=(
-            "per_9074ce6d34475a738c239ee5c8847102",
-            "per_6dc8ecc8a94955c98e70758653a50e44",
-        ),
+        registry_person_ids=("per_9074ce6d34475a738c239ee5c8847102",),
         canonical_person_id="per_9074ce6d34475a738c239ee5c8847102",
     ),
     CuratedIdentityAssertion(
@@ -11316,10 +11276,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "The Toronto Star's 2003 ward-by-ward preview says the Ward 42 (Scarborough-Rouge River) council candidate, NDP activist Paulette Senior, 'ran federally in 2000 and provincially in 1999'. Those are her NDP runs in Scarborough—Rouge River, already one record; the 2003 council record joins it."
         ),
-        registry_person_ids=(
-            "per_64c4d8aafccc58afab7b7c9f395b5918",
-            "per_37004acfd3bb522f85fbcc6aba56a0c4",
-        ),
+        registry_person_ids=("per_64c4d8aafccc58afab7b7c9f395b5918",),
         canonical_person_id="per_64c4d8aafccc58afab7b7c9f395b5918",
     ),
 )
@@ -11343,10 +11300,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "The City's 1997 results print the Ward 11 (Don Parkway) council candidate as 'Janaki Bala-Krishan', held as a separate Person. The Toronto Star's 1997 profile prints her as Janaki Bala-Krishnan, a hydro engineer and community activist 'who ran provincially in the 1995 election'. That is the NDP candidate in Don Mills in 1995, who ran again in Don Valley East in 1999. The 1997 record joins that record; the candidacy keeps the name as the City printed it."
         ),
-        registry_person_ids=(
-            "per_a95f21e1f60a599d88049ca9742753f0",
-            "per_80acd45c49e95f828a087d11e1e96179",
-        ),
+        registry_person_ids=("per_a95f21e1f60a599d88049ca9742753f0",),
         canonical_person_id="per_a95f21e1f60a599d88049ca9742753f0",
     ),
     CuratedIdentityAssertion(
@@ -11375,10 +11329,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         rationale=(
             "Al Chumak finished second to David Hutcheon in Toronto Ward 1 in 1994. The Toronto Star's 1997 story on the Toronto wards describes the Ward 19 (High Park) candidate as 'former Toronto public school board trustee Al Chumak, who ran a respectable second to Hutcheon in 1994', and its 1997 profile prints him as Alex Chumak, a criminologist and long-time school trustee. The two records are joined."
         ),
-        registry_person_ids=(
-            "per_956cde49edc25791b2761b3156d46707",
-            "per_750a7d8da88459489fa9127a283d9481",
-        ),
+        registry_person_ids=("per_956cde49edc25791b2761b3156d46707",),
         canonical_person_id="per_956cde49edc25791b2761b3156d46707",
     ),
     CuratedIdentityAssertion(
@@ -11586,10 +11537,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
             "Person, joins the Person holding the 2006 run; the 2010 mayoral run is confirmed to "
             "the same Person in the review dispositions."
         ),
-        registry_person_ids=(
-            "per_7bdbea9203935ec1b28ef50ada4073c8",
-            "per_ee2c9d9b1fde5d0f96c594163ce98ba7",
-        ),
+        registry_person_ids=("per_7bdbea9203935ec1b28ef50ada4073c8",),
         canonical_person_id="per_7bdbea9203935ec1b28ef50ada4073c8",
     ),
     CuratedIdentityAssertion(
@@ -11716,10 +11664,7 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
             "on the former East York council from 1994 to 1997'. The 1994 record joins that "
             "record; the candidacy keeps the name as the City printed it."
         ),
-        registry_person_ids=(
-            "per_4fcb7a34e1d35287849f372ade93c202",
-            "per_2c2b38df89c35327acdf8340e517729b",
-        ),
+        registry_person_ids=("per_4fcb7a34e1d35287849f372ade93c202",),
         canonical_person_id="per_4fcb7a34e1d35287849f372ade93c202",
     ),
 )

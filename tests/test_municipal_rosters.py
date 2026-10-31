@@ -533,3 +533,66 @@ def test_councillor_by_election_known_holder_proves_true_but_absence_is_unknown(
     out = derive_incumbency(attached, evidence.rosters).set_index("candidacy_id")
     assert out.loc["can_holder_2023", "incumbent"]
     assert pd.isna(out.loc["can_new_2023", "incumbent"])
+
+
+def _appointee_case():
+    candidacies = pd.DataFrame(
+        [_candidate("can_other_2003", "2003-11-10", "Candidate Other", "councillor")]
+    )
+    people = pd.DataFrame(
+        {
+            "person_id": ["per_other", "per_pat"],
+            "preferred_name": ["Other Candidate", "Pat Appointee"],
+            "identity_status": ["active", "active"],
+            "redirect_to_person_id": [pd.NA, pd.NA],
+            "created_release": ["v2", "v2"],
+        }
+    )
+    links = pd.DataFrame([_link("can_other_2003", "per_other", "confirmed")])
+    composition = pd.DataFrame(
+        {
+            "election_year": [2003],
+            "member_name": ["Pat Appointee"],
+            "office": ["councillor"],
+            "incumbent_source": ["curated_roster"],
+            "confidence": [0.95],
+            "arrival": ["appointed"],
+            "roster_complete": [True],
+        }
+    )
+    return candidacies, people, links, composition
+
+
+def test_curated_roster_member_resolves_to_the_asserted_person():
+    candidacies, people, links, composition = _appointee_case()
+
+    plain = build_municipal_roster_evidence(
+        candidacies, people, links, release_id="2026-08-20", composition=composition
+    )
+    curated = build_municipal_roster_evidence(
+        candidacies,
+        people,
+        links,
+        release_id="2026-08-20",
+        composition=composition,
+        roster_resolutions={("evt_2003-11-10", "Pat Appointee"): "per_pat"},
+    )
+
+    # Without a resolution the roster member gets a Person of their own.
+    assert len(plain.people) == 3
+    assert curated.people["person_id"].tolist() == ["per_other", "per_pat"]
+    assert curated.office_tenures["person_id"].tolist() == ["per_pat"]
+
+
+def test_unneeded_curated_roster_member_fails_the_build():
+    candidacies, people, links, composition = _appointee_case()
+
+    with pytest.raises(ValueError, match="curated roster member was not needed"):
+        build_municipal_roster_evidence(
+            candidacies,
+            people,
+            links,
+            release_id="2026-08-20",
+            composition=composition,
+            roster_resolutions={("evt_2003-11-10", "Someone Else"): "per_pat"},
+        )

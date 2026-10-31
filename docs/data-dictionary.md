@@ -1,4 +1,4 @@
-# Data dictionary — Toronto Election Results v2.1
+# Data dictionary — Toronto Election Results
 
 The release covers completed election contests wholly within the City of Toronto through
 2026-10-26 (the inclusive election-date scope, not a claim that future outcomes are known). Under
@@ -141,17 +141,27 @@ that correctly have no Candidacy row.
 
 ### `people`
 
-The persistent identity registry: opaque `person_id`, preferred name, active/deprecated status,
-visible redirect target, and creation release. An active Person without a Candidacy holds an
-Office tenure needed to classify Incumbency. A Person name never rewrites a historical ballot name.
+The persistent identity registry: opaque `person_id`, preferred name, `identity_status`, redirect
+target and creation release. Every Person in this release is `active` with no redirect. A later
+release that merges two Persons keeps the losing ID as `deprecated`, with a redirect to the Person
+that replaced it. An active Person without a Candidacy holds an Office tenure needed to classify
+Incumbency. A Person name never rewrites a historical ballot name.
 
 ### `candidacy_person_links`
 
-Audited occurrence-to-Person history. `link_status` is `confirmed`, `proposed`, `rejected`, or
-`unresolved`; method, evidence, reviewer, and release-validity fields make merges and later
-corrections visible. `proposed` means not yet adjudicated; `unresolved` may retain the reviewed
-candidate Person when evidence is insufficient; `rejected` records a disproved candidate Person.
-Only active confirmed links populate `election_results.person_id`.
+Audited occurrence-to-Person links. `link_status` is `confirmed`, `proposed`, `rejected`, or
+`unresolved`, with the method, evidence and reviewer behind each link. `proposed` means not yet
+adjudicated; `unresolved` may retain the reviewed candidate Person when evidence is insufficient;
+`rejected` records a disproved candidate Person. Only active confirmed links populate
+`election_results.person_id`.
+
+Every row in this release is current: `valid_from_release` is the release ID and
+`valid_to_release` is null. A later release closes a superseded row instead of deleting it, so
+merges and corrections stay visible. A Candidacy has one current link, except that 63 Candidacies
+also carry an `unresolved` row without a Person, with method `incumbent_without_prior_elected_match`:
+the authority marked the Candidacy as an incumbent and the release has no earlier elected
+exact-name match in the same body and office. That row does not change
+`election_results.person_id`.
 
 ### `parties`
 
@@ -229,8 +239,8 @@ separately enumerated pending event.
 
 Project-owned source-occurrence registry used as a build input. It records the immutable public
 `candidacy_id`, its authority or project occurrence key, Contest identity, the active source-name
-locator, and release-validity history. The initial project occurrence key is derived from source
-position, never from a candidate name. Later name-only corrections close the old locator and append
+locator, and release validity. Every row in this release is an initial registration. The project
+occurrence key is derived from source position, never from a candidate name. Later name-only corrections close the old locator and append
 a new one with a reason; an existing Contest cannot silently gain, lose, or rename a Candidacy. The
 ledger is included among the checksummed build-manifest sources.
 
@@ -333,8 +343,10 @@ The load fails if Elections Ontario changes either published figure. The City's 
 by-election workbook prints declined, rejected and under-vote lines below the candidates; the
 parser skips them. See `docs/research/result-corrections-2026-10-31.md`.
 
-Trustee result sources do not report a structured incumbent flag, and a complete historical roster
-for all four boards has not been acquired. Trustee `incumbent` is therefore null rather than
+Trustee result sources do not report a structured incumbent flag. For 2026,
+`data/reference/trustee_incumbents_2026.csv` records the 20 sitting trustees who ran, from official
+board material, and those Candidacies have `incumbent=true`. Every other trustee `incumbent` is
+null, because a complete historical roster for the four boards has not been acquired; it is never
 inferred from repeated names or prior winners.
 
 ## Quality gates
