@@ -11654,6 +11654,40 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Election winners without a Person (docs/research/unlinked-winners-2026-10-31.md).
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="gerard-kennedy-york-south-1996-and-parkdale-1999",
+        preferred_name="Gerard Kennedy",
+        occurrences=(
+            _pinned_occurrence(
+                "can_c6dcd10573f85f3e804c47f68aaaadc7",
+                "on-1996-05-23-by-129",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Gerard Kennedy",
+            ),
+            _pinned_occurrence(
+                "can_39d288616ef552afabb5cd729915610b",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Gerard Kennedy",
+            ),
+        ),
+        evidence_urls=("https://en.wikipedia.org/wiki/Gerard_Kennedy",),
+        rationale=(
+            "Gerard Kennedy's Wikipedia biography says he won the York South by-election of 23 "
+            "May 1996 with 7,774 votes, ahead of the NDP's David Miller, and that 'In the 1999 "
+            "and 2003 general elections, he was elected to represent the new Parkdale—High Park "
+            "constituency.' The 1996 and 1999 records join the Person that holds his 2003 "
+            "provincial run and his 2008 and 2011 federal runs."
+        ),
+        registry_person_ids=("per_5e97564405c75d6c8afd2d6f8166170f",),
+        canonical_person_id="per_5e97564405c75d6c8afd2d6f8166170f",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
