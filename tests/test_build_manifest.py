@@ -64,15 +64,9 @@ def test_manifest_records_source_and_artifact_checksums(tmp_path):
     assert manifest["coverage"]["from_by_level"]["municipal"] == "1994-11-14"
     assert manifest["event_archive_caveats"] == [
         {
-            "authority": "toronto_city_clerk",
-            "period": "1995-01-01/2002-12-31",
+            "authority": "former_municipal_clerks",
+            "period": "1995-01-01/1997-12-31",
             "scope": "municipal_by_elections",
-            "status": "uncertain",
-        },
-        {
-            "authority": "toronto_city_clerk",
-            "period": "2003-01-01/2011-12-31",
-            "scope": "trustee_by_elections",
             "status": "uncertain",
         },
     ]

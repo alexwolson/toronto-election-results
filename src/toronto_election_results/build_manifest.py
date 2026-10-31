@@ -24,17 +24,16 @@ COVERAGE = {
     "timezone": "America/Toronto",
 }
 
+# The City's archived "Previous elections results" index (captured 4 January 2012) lists every
+# election the City ran from 1998: the 1998, 1999 and 2001 council by-elections, the 2002 TDSB
+# by-election, and no by-elections between 2003 and 2011, so those periods are complete. The
+# former municipalities left no comparable index; a search of the Toronto Star found one
+# by-election (North York Ward 1, 1995), so 1995-1997 stays uncertain.
 EVENT_ARCHIVE_CAVEATS = [
     {
-        "authority": "toronto_city_clerk",
-        "period": "1995-01-01/2002-12-31",
+        "authority": "former_municipal_clerks",
+        "period": "1995-01-01/1997-12-31",
         "scope": "municipal_by_elections",
-        "status": "uncertain",
-    },
-    {
-        "authority": "toronto_city_clerk",
-        "period": "2003-01-01/2011-12-31",
-        "scope": "trustee_by_elections",
         "status": "uncertain",
     },
 ]

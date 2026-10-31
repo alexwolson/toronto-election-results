@@ -6,8 +6,9 @@ before amalgamation for each level of government (ADR 0010): the **1994-11-14 mu
 (the six former municipalities and Metropolitan Toronto), the **1995-06-08 Ontario general
 election** and the **1993-10-25 federal general election**. Municipal coverage before 2003 is
 Mayor, Councillor and Metro Councillor, plus the 1994, 1997 and 2000 School Board trustee
-elections. Where the City's archived results pages are incomplete (most 1994 and 1997 school-board
-races and eight 1994 council races), results come from the Toronto Star's printed final results.
+elections and the by-elections held between them. Where the City's archived results pages are
+incomplete (most 1994 and 1997 school-board races and eight 1994 council races), results come from
+the Toronto Star's printed final results.
 Only validated or certified
 outcomes are published as final; future elections retain pending results. The
 **2026-10-26 Toronto municipal general election** comes from the City's certified candidate list
@@ -38,7 +39,7 @@ Endorsements are positive, open-world facts: an absent fact never means that an 
 declined to endorse a Candidacy. Separate Endorser-by-Contest coverage records say how completely
 each approved Endorser was searched.
 
-The release contains **8,067 Candidacies in 1,388 Contests across 80 Election events**, all with
+The release contains **8,107 Candidacies in 1,393 Contests across 85 Election events**, all with
 final results, including the 361 Candidacies in 55 Contests of the 2026-10-26 municipal election. Two void historical Contests have no Candidacy rows. The endorsement companion dataset contains **9 Endorsers, 161 audited source
 assertions, 160 confirmed positive Endorsement facts, and 3,051 Endorser-by-Contest coverage
 records**.
@@ -90,8 +91,11 @@ Every table is written as CSV and Parquet unless noted otherwise:
   the pending candidate snapshot, known archive uncertainty, deliberately excluded election calls,
   and in-scope results awaiting acquisition.
 
-The City trustee by-election archive begins in 2012, so event enumeration for 2003–2011 is
-explicitly marked uncertain. No known result rows are fabricated to fill that archive gap.
+The City's archived index of past results lists every election it ran from 1998, so by-election
+enumeration is complete from 1998. The former municipalities left no such index, so event
+enumeration for 1995–1997 is marked uncertain; a search of the Toronto Star found one by-election
+in that period (North York Ward 1, 1995), which is included. No result rows are fabricated to fill
+an archive gap.
 Trustee incumbency remains null because the result sources do not report it and a complete,
 evidence-backed historical trustee roster has not been acquired.
 
