@@ -144,9 +144,10 @@ def test_candidate_feed_uses_canonical_people_for_history_and_incumbency():
     )
     feed = build_mayoral_candidates_feed(rows, reviews)
 
-    assert feed["schema_version"] == 6
+    assert feed["schema_version"] == 7
     assert feed["ballot_certified"] is True
-    assert feed["coverage"]["policy"] == "full_verified_canadian_electoral_career"
+    assert feed["coverage"]["policy"] == "verified_toronto_electoral_history"
+    assert feed["coverage"]["jurisdiction"] == "Toronto"
     assert feed["coverage"]["year_cutoff"] is None
     assert [candidate["display_name"] for candidate in feed["candidates"]] == [
         "Olivia Chow",
@@ -179,7 +180,7 @@ def test_candidate_feed_requires_the_campaign_suspension_column():
         build_mayoral_candidates_feed(rows, _reviews("can_current"))
 
 
-def test_repository_candidates_feed_dates_the_curated_suspended_campaigns(tmp_path):
+def _repository_candidates_feed(tmp_path):
     reference = ROOT / "data/reference"
     output = write_mayoral_candidates_feed(
         ROOT / "data/out/election_results.csv",
@@ -188,9 +189,12 @@ def test_repository_candidates_feed_dates_the_curated_suspended_campaigns(tmp_pa
         tmp_path / "mayoral_candidates.json",
         campaign_suspensions_path=reference / "campaign_suspension_curations.csv",
     )
+    return json.loads(output.read_text(encoding="utf-8"))
 
-    feed = json.loads(output.read_text(encoding="utf-8"))
-    assert feed["schema_version"] == 6
+
+def test_repository_candidates_feed_dates_the_curated_suspended_campaigns(tmp_path):
+    feed = _repository_candidates_feed(tmp_path)
+    assert feed["schema_version"] == 7
     assert len(feed["candidates"]) == 53
     assert all("campaign_suspended_on" in candidate for candidate in feed["candidates"])
     suspended = {
@@ -202,6 +206,19 @@ def test_repository_candidates_feed_dates_the_curated_suspended_campaigns(tmp_pa
         "can_b43d9b5795cf5aed9b587a956e49951b": ("Chris Alexander", "2026-10-06"),
         "can_4da98e5abddc51ceb2a0eca7fc79c228": ("Odessa Paloma Parker", "2026-10-21"),
     }
+
+
+def test_repository_mayoral_histories_hold_only_release_candidacies(tmp_path):
+    feed = _repository_candidates_feed(tmp_path)
+    candidates = {candidate["display_name"]: candidate for candidate in feed["candidates"]}
+
+    assert feed["coverage"]["jurisdiction"] == "Toronto"
+    # Their only earlier races were outside Toronto, so they have no history here.
+    assert candidates["Chris Alexander"]["past_elections"] == []
+    assert candidates["Naomi Sayers"]["past_elections"] == []
+    # The release's municipal coverage starts with the 1994 elections.
+    chow = candidates["Olivia Chow"]["past_elections"]
+    assert min(race["election_date"] for race in chow) == "1994-11-14"
 
 
 def test_candidate_feed_rejects_an_incomplete_current_field():

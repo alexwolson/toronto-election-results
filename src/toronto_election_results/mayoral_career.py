@@ -1,4 +1,11 @@
-"""Contracts for the complete 2026 Toronto mayoral career review."""
+"""Contracts for the complete 2026 Toronto mayoral career review.
+
+The review researched each candidate's full Canadian electoral career. The release
+publishes only the confirmed occurrences that are already Candidacies in its own
+coverage (``reuse_existing``). A confirmed occurrence outside that coverage, such as a
+race in another municipality or before the coverage window, stays in the decision
+table as a research record (``out_of_scope``) and is not published.
+"""
 
 from __future__ import annotations
 
@@ -20,7 +27,8 @@ REVIEW_STATUSES = {
     "reviewed_with_limitations",
 }
 OCCURRENCE_DECISIONS = {"confirm", "hold", "split", "reject"}
-INGESTION_ACTIONS = {"add_backfill", "reuse_existing", "none"}
+INGESTION_ACTIONS = {"reuse_existing", "out_of_scope", "none"}
+CONFIRMED_INGESTION_ACTIONS = {"reuse_existing", "out_of_scope"}
 
 _COHORT_COLUMNS = [
     "cohort_id",
@@ -72,80 +80,12 @@ DECISION_COLUMNS = [
     "rationale",
 ]
 
-BACKFILL_COLUMNS = [
-    "backfill_id",
-    "decision_id",
-    "subject_candidacy_id",
-    "election_date",
-    "election_type",
-    "election_authority",
-    "represented_body",
-    "office_type",
-    "district_name",
-    "candidate_name_raw",
-    "party_name_raw",
-    "votes",
-    "total_contest_votes",
-    "vote_share",
-    "vote_rank",
-    "n_candidates",
-    "elected",
-    "acclaimed",
-    "result_status",
-    "source_authority",
-    "source_resource",
-    "source_locator",
-]
-
 MAPPING_COLUMNS = [
     "cohort_id",
     "subject_candidacy_id",
     "decision_id",
     "canonical_candidacy_id",
 ]
-
-_BACKFILL_METADATA = {
-    "mcb_04e95c9a724c54999be8e7d630bca53e": (
-        "ec-ge-41",
-        "federal-2003-representation-order",
-        "35001",
-    ),
-    "mcb_318578ea26775989886cc960cd9d578e": (
-        "ec-ge-42",
-        "federal-2013-representation-order",
-        "35001",
-    ),
-    "mcb_9c7aef4fac8d5654b76124195615fb03": (
-        "mississauga-2024-06-10-mayoral-by-election",
-        "mississauga-2024-citywide",
-        "city",
-    ),
-    "mcb_a14d901d7faa5d15abbbbf553bfed1b5": (
-        "on-2015-09-03-by-091",
-        "ontario-2007-107",
-        "091",
-    ),
-    "mcb_f5f1e935bd9e57ff82a4507255752612": (
-        "on-2022-general",
-        "ontario-2018-124",
-        "092",
-    ),
-    "mcb_acb473030b2554299e80456052ab7773": (
-        "toronto-1991-general",
-        "metro-toronto-1991",
-        "downtown",
-    ),
-    "mcb_0995465250bb5713ab61c235d7286bff": (
-        "on-2012-09-06-by-039",
-        "ontario-2007-107",
-        "039",
-    ),
-    "mcb_9c1681da701258cba51b5f3272ea3241": (
-        "on-2014-02-13-by-089",
-        "ontario-2007-107",
-        "089",
-    ),
-}
 
 _HTTPS_URL = re.compile(r"https://[^\s<>]+")
 
@@ -239,67 +179,22 @@ def load_contract_table(path: str | Path, columns: list[str]) -> pd.DataFrame:
     return table
 
 
-def load_mayoral_career_backfills(reference_dir: str | Path) -> pd.DataFrame:
-    """Adapt only adjudicated career backfills to the normalized source boundary."""
-
-    reference = Path(reference_dir)
-    backfill = load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS)
-    decisions = load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS)
-    allowed = decisions.loc[
-        decisions["decision"].eq("confirm") & decisions["ingestion_action"].eq("add_backfill"),
-        "decision_id",
-    ]
-    if set(backfill["decision_id"]) != set(allowed):
-        raise ValueError("career backfills must exactly match confirmed add_backfill decisions")
-    unknown = sorted(set(backfill["backfill_id"]) - set(_BACKFILL_METADATA))
-    if unknown:
-        raise ValueError(f"missing canonical metadata for career backfill {unknown[0]}")
-
-    rows: list[dict[str, object]] = []
-    for row in backfill.itertuples(index=False):
-        event_id, boundary_regime, official_district_id = _BACKFILL_METADATA[row.backfill_id]
-        rows.append(
-            {
-                "event_id": event_id,
-                "election_date": row.election_date,
-                "election_type": row.election_type,
-                "election_authority": row.election_authority,
-                "represented_body": row.represented_body,
-                "office_type": row.office_type,
-                "boundary_regime": boundary_regime,
-                "official_district_id": official_district_id,
-                "district_name": row.district_name,
-                "candidate_name_raw": row.candidate_name_raw,
-                "source_candidacy_id": row.backfill_id,
-                "party_name_raw": row.party_name_raw or pd.NA,
-                "votes": row.votes,
-                "elected": row.elected.casefold() == "true",
-                "outcome_method": "vote",
-                "result_status": row.result_status,
-                "coverage_status": "candidate_record",
-                "reported_total_contest_votes": row.total_contest_votes,
-                "reported_vote_share": row.vote_share,
-                "reported_vote_rank": row.vote_rank,
-                "reported_n_candidates": row.n_candidates,
-                "source_authority": row.source_authority,
-                "source_resource": row.source_resource,
-                "source_detail": row.source_locator,
-            }
-        )
-    return pd.DataFrame(rows)
-
-
 def build_mayoral_career_identity_assertions(
     reference_dir: str | Path,
     adapter_frames: list[pd.DataFrame],
 ) -> tuple[CuratedIdentityAssertion, ...]:
-    """Build explicit identity assertions from the completed adjudication registry."""
+    """Build explicit identity assertions from the completed adjudication registry.
+
+    An assertion enumerates the subject and its confirmed ``reuse_existing``
+    occurrences. A subject whose confirmed occurrences are all ``out_of_scope`` has
+    nothing to assert. The evidence URLs still come from every confirmed decision,
+    because the review established the identity from the whole career.
+    """
 
     reference = Path(reference_dir)
     cohort = load_mayoral_career_cohort(reference / "mayoral_career_cohort_2026.csv")
     reviews = load_contract_table(reference / "mayoral_career_reviews.csv", REVIEW_COLUMNS)
     decisions = load_contract_table(reference / "mayoral_career_decisions.csv", DECISION_COLUMNS)
-    backfill = load_contract_table(reference / "mayoral_career_backfill.csv", BACKFILL_COLUMNS)
     mappings = load_contract_table(
         reference / "mayoral_career_occurrence_mapping.csv", MAPPING_COLUMNS
     )
@@ -307,7 +202,6 @@ def build_mayoral_career_identity_assertions(
         cohort,
         reviews,
         decisions,
-        backfill,
         mappings,
         repository_root=reference.parent.parent,
         require_complete=True,
@@ -324,17 +218,15 @@ def build_mayoral_career_identity_assertions(
         sort=False,
     )
     by_candidacy = normalized.drop_duplicates("candidacy_id").set_index("candidacy_id")
-    backfill_ids = normalized.loc[
-        normalized["source_candidacy_id"].isin(backfill["backfill_id"]),
-        ["source_candidacy_id", "candidacy_id"],
-    ].set_index("source_candidacy_id")["candidacy_id"]
     mapped = mappings.set_index("decision_id")["canonical_candidacy_id"].to_dict()
-    mapped.update(backfill.set_index("decision_id")["backfill_id"].map(backfill_ids).to_dict())
     reviews_by_subject = reviews.set_index("subject_candidacy_id")
     assertions: list[CuratedIdentityAssertion] = []
     confirmed = decisions.loc[decisions["decision"].eq("confirm")]
     for subject_id, subject_decisions in confirmed.groupby("subject_candidacy_id", sort=True):
-        candidacy_ids = [subject_id, *subject_decisions["decision_id"].map(mapped).tolist()]
+        in_scope = subject_decisions.loc[subject_decisions["ingestion_action"].eq("reuse_existing")]
+        if in_scope.empty:
+            continue
+        candidacy_ids = [subject_id, *in_scope["decision_id"].map(mapped).tolist()]
         candidacy_ids = list(dict.fromkeys(candidacy_ids))
         missing = [value for value in candidacy_ids if value not in by_candidacy.index]
         if missing:
@@ -409,7 +301,6 @@ def validate_mayoral_career_contracts(
     cohort: list[MayoralCareerCohortRow],
     reviews: pd.DataFrame,
     decisions: pd.DataFrame,
-    backfill: pd.DataFrame,
     mappings: pd.DataFrame,
     *,
     repository_root: str | Path,
@@ -421,7 +312,6 @@ def validate_mayoral_career_contracts(
     tables = [
         (reviews, REVIEW_COLUMNS, "reviews"),
         (decisions, DECISION_COLUMNS, "decisions"),
-        (backfill, BACKFILL_COLUMNS, "backfill"),
         (mappings, MAPPING_COLUMNS, "mappings"),
     ]
     for table, columns, label in tables:
@@ -437,8 +327,6 @@ def validate_mayoral_career_contracts(
         ["subject_candidacy_id", "proposed_occurrence_key"],
         "candidate occurrence decision",
     )
-    _require_unique(backfill, ["backfill_id"], "backfill_id")
-    _require_unique(backfill, ["decision_id"], "backfill decision_id")
     _require_unique(mappings, ["decision_id"], "mapping decision_id")
     _require_unique(mappings, ["canonical_candidacy_id"], "canonical candidacy mapping")
 
@@ -449,9 +337,6 @@ def validate_mayoral_career_contracts(
         wrong_cohort = table.loc[~table["cohort_id"].eq(COHORT_ID)]
         if not wrong_cohort.empty:
             raise ValueError(f"{label} cohort_id must be {COHORT_ID}")
-    unknown_backfill = sorted(set(backfill["subject_candidacy_id"]) - cohort_ids)
-    if unknown_backfill:
-        raise ValueError(f"backfill references candidate outside cohort: {unknown_backfill[0]}")
 
     invalid_statuses = sorted(set(reviews["review_status"]) - REVIEW_STATUSES)
     if invalid_statuses:
@@ -527,10 +412,10 @@ def validate_mayoral_career_contracts(
     confirmed = decisions.loc[decisions["decision"].eq("confirm")]
     _require_values(confirmed, confirmation_fields, "confirmed decision")
     invalid_confirm_action = confirmed.loc[
-        ~confirmed["ingestion_action"].isin({"add_backfill", "reuse_existing"})
+        ~confirmed["ingestion_action"].isin(CONFIRMED_INGESTION_ACTIONS)
     ]
     if not invalid_confirm_action.empty:
-        raise ValueError("confirmed decision requires add_backfill or reuse_existing")
+        raise ValueError("confirmed decision requires reuse_existing or out_of_scope")
     nonconfirmed_with_ingest = decisions.loc[
         ~decisions["decision"].eq("confirm") & ~decisions["ingestion_action"].eq("none")
     ]
@@ -538,33 +423,16 @@ def validate_mayoral_career_contracts(
         raise ValueError("held, split, or rejected decision cannot be ingested")
 
     decisions_by_id = decisions.set_index("decision_id", drop=False)
-    required_backfill = set(
-        decisions.loc[
-            decisions["decision"].eq("confirm") & decisions["ingestion_action"].eq("add_backfill"),
-            "decision_id",
-        ]
-    )
-    actual_backfill = set(backfill["decision_id"])
-    if actual_backfill != required_backfill:
-        raise ValueError(
-            "backfill decisions must exactly equal confirmed add_backfill decisions; "
-            f"required={sorted(required_backfill)}, actual={sorted(actual_backfill)}"
-        )
-    if not backfill.empty:
-        _require_values(
-            backfill,
-            [column for column in BACKFILL_COLUMNS if column != "party_name_raw"],
-            "backfill row",
-        )
-        for row in backfill.itertuples(index=False):
-            decision = decisions_by_id.loc[row.decision_id]
-            if row.subject_candidacy_id != decision.subject_candidacy_id:
-                raise ValueError(f"backfill subject does not match decision {row.decision_id}")
-
     confirmed_ids = set(confirmed["decision_id"])
     invalid_mapping = sorted(set(mappings["decision_id"]) - confirmed_ids)
     if invalid_mapping:
         raise ValueError(f"mapping references non-confirmed decision: {invalid_mapping[0]}")
+    in_scope_ids = set(
+        confirmed.loc[confirmed["ingestion_action"].eq("reuse_existing"), "decision_id"]
+    )
+    out_of_scope_mapping = sorted(set(mappings["decision_id"]) - in_scope_ids)
+    if out_of_scope_mapping:
+        raise ValueError(f"mapping references an out-of-scope decision: {out_of_scope_mapping[0]}")
     if not mappings.empty:
         _require_values(mappings, MAPPING_COLUMNS, "mapping row")
         for row in mappings.itertuples(index=False):
@@ -598,9 +466,9 @@ def validate_mayoral_career_contracts(
                     raise ValueError(
                         f"{row.subject_candidacy_id} {count_column} is {expected}; expected {actual}"
                     )
-    if require_ingested and set(mappings["decision_id"]) != confirmed_ids:
-        missing = sorted(confirmed_ids - set(mappings["decision_id"]))
-        raise ValueError(f"confirmed decisions are not fully mapped: {missing}")
+    if require_ingested and set(mappings["decision_id"]) != in_scope_ids:
+        missing = sorted(in_scope_ids - set(mappings["decision_id"]))
+        raise ValueError(f"in-scope confirmed decisions are not fully mapped: {missing}")
 
 
 def validate_mayoral_career_cohort(

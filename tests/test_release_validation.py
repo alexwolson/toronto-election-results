@@ -111,20 +111,33 @@ def test_flags_election_dates_after_release_cutoff():
     assert any("after the 2026-10-26 coverage horizon" in issue for issue in issues)
 
 
-def test_historical_career_date_has_no_lower_bound():
+@pytest.mark.parametrize(
+    ("authority", "election_date", "flagged"),
+    [
+        ("elections_canada", "1993-10-25", False),
+        ("elections_canada", "1993-10-24", True),
+        ("elections_ontario", "1993-10-25", True),
+        ("elections_ontario", "1995-06-08", False),
+        ("metro_toronto_clerk", "1991-11-12", True),
+        ("north_york_city_clerk", "1994-11-14", False),
+    ],
+)
+def test_flags_election_dates_before_their_levels_coverage_window(
+    authority, election_date, flagged
+):
     release = list(_release())
     events = release[1].copy()
     candidacies = release[0].copy()
-    events["election_date"] = "1991-11-12"
-    events["election_year"] = 1991
-    candidacies["election_date"] = "1991-11-12"
-    candidacies["election_year"] = 1991
+    for frame in (events, candidacies):
+        frame["election_authority"] = authority
+        frame["election_date"] = election_date
+        frame["election_year"] = int(election_date[:4])
     release[0] = candidacies
     release[1] = events
 
     issues = validate_release(*release)
 
-    assert not any("election_date" in issue for issue in issues)
+    assert any("coverage window" in issue for issue in issues) is flagged
 
 
 def test_future_election_candidacy_requires_pending_status():
