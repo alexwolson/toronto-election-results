@@ -11877,6 +11877,34 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Found in the 2026-11-01 review of federal and provincial holds: the 2004 run continues the
+# 2000 House of Commons run, while the earlier proposal named the Person holding the 2003
+# provincial run, a different office.
+DEFAULT_IDENTITY_ASSERTIONS += (
+    _anchored_continuity_assertion(
+        "neil-spiegel-2004-house-continuity",
+        "Neil Spiegel",
+        "per_ad1fc4b40b56510883e1d647963bd27f",
+        (
+            (
+                "can_24974cb016c95aad844177e657ef554e",
+                "ec-ge-38",
+                "canada_house_of_commons",
+                "mp",
+                "Neil Spiegel",
+            ),
+        ),
+        (
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+            "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv",
+        ),
+        "Elections Canada's results give Neil Spiegel as the Green candidate in Parkdale—High "
+        "Park in 2000 and 2004, one general election apart, and no other Neil Spiegel ran for "
+        "the House of Commons in Toronto. The 2004 record joins the Person that holds the 2000 "
+        "run.",
+    ),
+)
+
 
 def _record_merge(
     assertion_id: str,
@@ -12115,6 +12143,98 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "there in the 2000 federal election and the Ontario NDP candidate there in 2003. The 2003 "
         "list gives the Willowdale candidate, a civil servant, 3,084 votes. The 2003 record joins "
         "the Person that holds the 2000 run.",
+    ),
+    _record_merge(
+        "hal-berman-2022-willowdale",
+        "Hal Berman",
+        "per_ada3fe69f7fa5808978a59bd6fa42259",
+        (
+            (
+                "can_c92b73d1c8b65a368113d6d94e8aade6",
+                "on-2022-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "HAL DAVID BERMAN",
+            ),
+        ),
+        (
+            "https://www.ontariondp.ca/news/hal-david-berman-chosen-be-ndp-candidate-willowdale",
+            "https://downsviewadvocate.ca/news/2015/09/east-candidate-profile",
+        ),
+        "The Ontario NDP's April 2022 notice names Hal David Berman, a palliative care physician "
+        "at Mount Sinai Hospital's Temmy Latner Centre for Palliative Care, as its Willowdale "
+        "candidate. The Downsview Advocate's 2015 York Centre profile of the NDP's Dr. Hal Berman "
+        "says he provides home care through the same centre. The 2022 record joins the Person that "
+        "holds the 2015 run.",
+    ),
+    _record_merge(
+        "dimitris-kabitsis-2014-don-valley-west",
+        "Dimitris Kabitsis",
+        "per_ad7a54487232543985c6c8ddb8260cbe",
+        (
+            (
+                "can_56c89507d3c25ed4992741659c4fae35",
+                "on-2014-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "DIMITRIOS KABITSIS",
+            ),
+        ),
+        (
+            "https://leasidelife.com/?p=2319",
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election",
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2008_Canadian_federal_election",
+        ),
+        "Leaside Life's preview of the 2014 Don Valley West race describes the Communist "
+        "candidate Dimitrios (Jim) Kabitsis as retired and a member of Fair Vote Canada. "
+        "Wikipedia's list of Communist candidates in the 2011 federal election gives the Don "
+        'Valley West run to Dimitrios "Jim" Kabitsis, retired, and its 2008 list describes him as '
+        "a member of Fair Vote Canada. The 2014 record joins the Person that holds the 2011 "
+        "federal run.",
+    ),
+    _record_merge(
+        "reuben-deboer-2019-eglinton-lawrence",
+        "Reuben DeBoer",
+        "per_5ffe16692f0459339c5bef88242a57f7",
+        (
+            (
+                "can_ac120e5647395a4eb4e34ec032717d6d",
+                "ec-ge-43",
+                "canada_house_of_commons",
+                "mp",
+                "Reuben DeBoer",
+            ),
+        ),
+        (
+            "https://beachmetro.com/2021/09/10/federal-election-2021-beaches-east-york-candidate-reuben-deboer-green-party-answers-our-questions/",
+        ),
+        "In Beach Metro's 2021 questionnaire, Reuben DeBoer, the Green candidate in Beaches—East "
+        "York, says he previously ran provincially and federally in Eglinton—Lawrence. His only "
+        "runs there are the 2018 Green Party of Ontario candidacy and the 2019 Green Party of "
+        "Canada candidacy. The 2019 record joins the Person that holds the 2018 run.",
+    ),
+    _record_merge(
+        "ignacio-mongrell-2022-york-south-weston",
+        "Ignacio Mongrell",
+        "per_238c860d2f9a5736852e516ebcb16a70",
+        (
+            (
+                "can_86fe755b05af5c7c949efed375b2d3a6",
+                "on-2022-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "IGNACIO MONGRELL GONZALEZ",
+            ),
+        ),
+        (
+            "https://gpo.ca/2022/04/28/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-york-south-weston/",
+            "https://gpo.ca/2025/01/17/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-university-rosedale/",
+        ),
+        "The Ontario Greens' April 2022 release names Ignacio Mongrell as their York South—Weston "
+        "candidate and gives him as Assistant Director at ICUBE, a business accelerator at the "
+        "University of Toronto. The party's January 2025 University—Rosedale release gives the "
+        "same role. The 2022 record, printed as Ignacio Mongrell Gonzalez, joins the Person that "
+        "holds the 2025 run.",
     ),
 )
 
