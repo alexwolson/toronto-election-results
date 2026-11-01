@@ -11877,6 +11877,247 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+
+def _record_merge(
+    assertion_id: str,
+    preferred_name: str,
+    canonical_person_id: str,
+    occurrences: tuple[tuple[str, str, str, str, str], ...],
+    evidence_urls: tuple[str, ...],
+    rationale: str,
+) -> CuratedIdentityAssertion:
+    """Join the enumerated records to an existing Person on a source that names them."""
+
+    return CuratedIdentityAssertion(
+        assertion_id=assertion_id,
+        preferred_name=preferred_name,
+        occurrences=tuple(_pinned_occurrence(*occurrence) for occurrence in occurrences),
+        evidence_urls=evidence_urls,
+        rationale=rationale,
+        registry_person_ids=(canonical_person_id,),
+        canonical_person_id=canonical_person_id,
+    )
+
+
+# Joins found in the 2026-11-01 review of federal and provincial holds
+# (docs/research/federal-provincial-holds-2026-11-01.md).
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    _record_merge(
+        "miguel-figueroa-1993-2000-records",
+        "Miguel Figueroa",
+        "per_17a3a012347b5d07a5aba45414729366",
+        (
+            (
+                "can_2da00fc0a4f5547793ad3f3a2cbe21e6",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Miguel Figueroa",
+            ),
+            (
+                "can_6b4c9f20ccc75f1fb7aff731a22f066c",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Miguel Figueroa",
+            ),
+            (
+                "can_bb77cc680eef5ed28292ecee4e530f8f",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Miguel Figueroa",
+            ),
+            (
+                "can_95d1c33104c95085832a49349515e588",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Miguel Figueroa",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/Miguel_Figueroa",),
+        "The Wikipedia biography of Miguel Figueroa, former leader of the Communist Party of "
+        "Canada, gives his 1993 Parkdale—High Park run with 105 votes, his 1995 Beaches—Woodbine "
+        "provincial run with 169 votes, his 1997 Davenport run with 194 votes, his 2000 run in "
+        "the riding later named Toronto—Danforth with 129 votes and his 2004 Beaches—East York "
+        "run with 62 votes, matching the official results. The 1993 to 2000 records join the "
+        "Person that holds the 2004 run.",
+    ),
+    _record_merge(
+        "jim-harris-1993-1997-records",
+        "Jim Harris",
+        "per_6412bd6d3bce5a0b8d1a7c82085749fe",
+        (
+            (
+                "can_917c07a5ff4859a6975afb67ac259683",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Jim Harris",
+            ),
+            (
+                "can_6b378b36055c5d918b9dbe9da7f22a0b",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Jim Harris",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/Jim_Harris_(politician)",),
+        "The Wikipedia biography of Jim Harris, former leader of the Green Party of Canada, says "
+        "he stood in St. Paul's in 1993 and finished sixth, gives his 1997 Toronto Centre—Rosedale "
+        "result of 577 votes, and gives his 2004 Toronto—Danforth run against Jack Layton. The "
+        "1993 and 1997 records join the Person that holds the 2004 run.",
+    ),
+    _record_merge(
+        "frank-de-jong-1999-parkdale-high-park",
+        "Frank de Jong",
+        "per_4de6ed98e00f5891b666a99ff4fd9c15",
+        (
+            (
+                "can_067545612926552590bb709ed983ccb2",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "FRANK DE JONG",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/Frank_de_Jong",),
+        "The Wikipedia biography of Frank de Jong, former leader of the Green Party of Ontario, "
+        "gives his 1999 Parkdale—High Park run with 500 votes alongside his 2006 Parkdale—High "
+        "Park by-election run and his 2010 Ward 18 council run. The 1999 record joins the Person "
+        "that holds the later runs.",
+    ),
+    _record_merge(
+        "mark-obrien-2000-davenport",
+        "Mark O'Brien",
+        "per_9a076c70a0b756579d17fc8634bfba73",
+        (
+            (
+                "can_0d993a7f00485cd0b030dc97bb7a7775",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Mark O'Brien",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Green_Party_of_Canada_candidates_in_the_2004_Canadian_federal_election",
+        ),
+        "Wikipedia's note on Mark O'Brien, the Green candidate in Davenport in 2004, gives his "
+        "2000 federal Davenport run with 642 votes and his 2003 Green Party of Ontario run in "
+        "Davenport. The 2000 record joins the Person that holds the 2003 run.",
+    ),
+    _record_merge(
+        "nick-lin-2000-trinity-spadina",
+        "Nick Lin",
+        "per_67fc59512d505e36bf04935cd5245190",
+        (
+            (
+                "can_b9ca93d2a80e5db087aa2eef272b4e50",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Nick Lin",
+            ),
+        ),
+        (_CPCML_2006_CANDIDATES,),
+        "Wikipedia's note on Nick Lin in its list of Marxist-Leninist candidates in the 2006 "
+        "federal election gives his 2000 Trinity—Spadina run with 102 votes, seventh of nine, and "
+        "his 2003 provincial Trinity—Spadina run as an independent with 256 votes. The 2000 record "
+        "joins the Person that holds the 2003 run.",
+    ),
+    _record_merge(
+        "knia-singh-george-b-singh-records",
+        "Knia Singh",
+        "per_982a63e06b42518892b172d5fad100f4",
+        (
+            (
+                "can_cd09c4d3974b5492998a6300244f6ee7",
+                "ec-ge-41",
+                "canada_house_of_commons",
+                "mp",
+                "George B. Singh",
+            ),
+        ),
+        (
+            "https://amp.tvo.org/article/where-are-they-now-checking-in-with-2018-toronto-mayoral-candidate-knia-singh",
+            "https://www.osgoode.yorku.ca/osgoode_news/george-knia-singh-would-bring-substance-to-queens-park/",
+        ),
+        "TVO's November 2018 profile of Knia Singh, the tenth-place mayoral candidate that year, "
+        "says he ran for council in Malvern in 1997 and twice in Rouge River in 2011, for the "
+        "federal and then the provincial Greens. An Osgoode Hall news item calls him George Knia "
+        "Singh and says he had run municipally, provincially and federally for the Greens. The "
+        "2011 federal Green record, printed as George B. Singh, joins the Knia Singh Person.",
+    ),
+    _record_merge(
+        "cathy-holliday-2006-etobicoke-lakeshore",
+        "Cathy Holliday",
+        "per_e7c84473fc1759b49f35d74fbf26a6bd",
+        (
+            (
+                "can_b574cfc99d3956f7b0d593b8b73ead96",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Cathy Holliday",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election",
+            "https://www.elections.ca/Scripts/VIS/HistoricalResults/35017_e.html",
+        ),
+        "Wikipedia's list of Communist candidates in the 2011 federal election gives Cathy "
+        "Holliday, a nurse, in Toronto Centre and notes that she was the 2006 candidate in "
+        "Etobicoke—Lakeshore and the 2008 candidate in a Don Valley riding. Elections Canada gives "
+        "Catherine Holliday as the 2008 Communist candidate in Don Valley West. The 2006 record "
+        "joins the Person that holds the 2008 run.",
+    ),
+    _record_merge(
+        "steve-rutchinski-1999-beaches-east-york",
+        "Steve Rutchinski",
+        "per_83ce91414bb25e0dad0b85534118d73e",
+        (
+            (
+                "can_3e4f48eb820f51f5b8f926b2c2dd7bd2",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "STEVE RUTCHINSKI",
+            ),
+        ),
+        (_CPCML_2006_CANDIDATES,),
+        "The electoral record in Wikipedia's note on Rutchinski, in its list of Marxist-Leninist "
+        "candidates in the 2006 federal election, gives a 1999 provincial run in Beaches—East York "
+        "as an independent with 164 votes, seventh of seven, between his 1997 and 2000 federal "
+        "runs. The 1999 record joins the Person that holds the federal runs.",
+    ),
+    _record_merge(
+        "yvonne-bobb-2003-willowdale",
+        "Yvonne Bobb",
+        "per_089f3077775d54edabb151753d25cafd",
+        (
+            (
+                "can_84f9288a04e95fc2a5594eacd318cbc8",
+                "on-2003-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "YVONNE BOBB",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/New_Democratic_Party_candidates_in_the_2004_Canadian_federal_election",
+            "https://en.wikipedia.org/wiki/Ontario_New_Democratic_Party_candidates_in_the_2003_Ontario_provincial_election",
+        ),
+        "Wikipedia's list of NDP candidates in the 2004 federal election gives Yvonne Bobb, a "
+        "civil servant, as the candidate in Willowdale and notes that she was the NDP candidate "
+        "there in the 2000 federal election and the Ontario NDP candidate there in 2003. The 2003 "
+        "list gives the Willowdale candidate, a civil servant, 3,084 votes. The 2003 record joins "
+        "the Person that holds the 2000 run.",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
