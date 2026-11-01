@@ -11,8 +11,8 @@ papers. The standard is the one used throughout the dataset. A source has to nam
 describe the person with a distinctive fact (occupation, employer, organization, office held) that
 matches across them. Same-office continuity is enough only when the riding, party and a short gap
 line up under an uncommon name with no competing candidate, and a link across offices always needs
-a person-specific source. LinkedIn, ProQuest and pages behind a login were not used, and the
-Canadian Elections Database, which groups candidates by name, was treated as a lead only.
+a person-specific source. The agents did not use LinkedIn, ProQuest or pages behind a login, and
+the Canadian Elections Database, which groups candidates by name, was treated as a lead only.
 
 Every proposed confirmation and join then went to a second agent that had not done the research.
 It opened each cited page, checked each quote against the page and the record (riding, year, party, placing
@@ -20,9 +20,9 @@ and votes), and applied the same standard. Proposals that rested on the Canadian
 alone, or on structural continuity under a common name, were held before that check. Dispositions
 are under reviewer `federal-provincial-holds-2026-11-01`.
 
-Of the 343 rows, 105 are confirmed to their targets. The same sources confirm one run outside the
+Of the 343 rows, 107 are confirmed to their targets. The same sources confirm one run outside the
 scope, Knia Singh's 1997 Ward 18 council run (printed as George B. Singh), and join 17 runs held by
-14 other Person records to the Person they belong to. The other 238 rows remain unresolved.
+14 other Person records to the Person they belong to. The other 236 rows remain unresolved.
 
 Neil Spiegel's 2004 Parkdale—High Park run is the one structural confirmation. The earlier proposal
 named the Person holding his 2003 provincial run, a different office, so the curated assertion
@@ -169,15 +169,13 @@ authorities printed them.
 
 ## What stays unresolved
 
-For most of the 238 rows no public source describes the candidate beyond the results. Many are
+For most of the 236 rows no public source describes the candidate beyond the results. Many are
 minor-party and independent candidates, and some have common names whose runs cannot be told apart.
 These rows came close and are worth another look:
 
 - Johan Boyden's 2006, 2007 and 2008 Toronto Centre runs. The Eyeopener's October 2007 profile says
   he was already a veteran of two federal elections, but no source names the 2004 Davenport run
   that the target holds.
-- Heather Jewell's 2008 St. Paul's run. Her campaign mailer, as a blogger reproduced it, says she
-  was a Conservative candidate in 2004 without naming Scarborough Southwest.
 - Jordan Stone's 2015 Toronto Centre run. Only a user-edited LocalWiki page ties it to the 2014 Ward
   27 candidate, and it names no riding.
 - Sam Apelbaum's 2007 and 2011 Scarborough—Guildwood runs. Two Person records hold his earlier
@@ -187,12 +185,24 @@ These rows came close and are worth another look:
   says he ran provincially again after 2011 but gives no year or riding.
 - Runs whose other runs are documented but which no source describes: Cathy Holliday's 2011
   provincial Toronto Centre run, Ivan Byard's 2022 Toronto Centre run, Mir Kamal's 2007 York
-  South—Weston by-election, Danish Ahmed's 2009 St. Paul's by-election and Maureen Harquail's 2011
-  St. Paul's run.
+  South—Weston by-election and Danish Ahmed's 2009 St. Paul's by-election.
 - Runs that only the Canadian Elections Database groups with the target: Miguel Figueroa's 2011
   provincial Davenport run, Akil Sadikali's 2014, 2015 and 2018 runs, and Chai Kalevar's 2018
   provincial Davenport run.
 - Ali Naqvi's 2008 Etobicoke North run, which continues his 2006 run there for the same party, but
-  under a common name.
+  under a common name. The Toronto Star called him an immigration consultant in 2006 and an
+  immigration lawyer in 2008.
 
-The Toronto Star's riding coverage, read in ProQuest, may settle several of these.
+The Toronto Star's riding coverage, read in ProQuest, may settle several of these. A first look
+settled the two runs below.
+
+## Toronto Star
+
+These two rows were read in ProQuest (University of Toronto access) after the web pass, and their
+dispositions are under the same reviewer. The quotes come from the full text of each article. The
+second agent could not check them, because ProQuest needs a login.
+
+| Candidacy | Basis |
+|---|---|
+| Maureen Harquail, 2011 St. Paul's (federal) | The Star's report on the result ([864540106](https://www.proquest.com/docview/864540106), 3 May 2011) describes the Conservative candidate as "a relative political newcomer and lawyer who specializes in environmental law" and says she "was once a member of the Canadian Forces Naval Reserve". Stephen Taylor's 2007 post on the Willowdale candidate, the target's 2008 run, and the 2015 Don Valley East profile give the same environmental prosecution work and reserve service. |
+| Heather Jewell, 2008 St. Paul's (federal) | The Star's riding profile ([439495661](https://www.proquest.com/docview/439495661), 9 October 2008) gives the Conservative candidate as 45 and says she "is running for federal office for the second time". Its June 2004 Scarborough Southwest profile ([438719033](https://www.proquest.com/docview/438719033)) gives the Conservative candidate Heather Jewell as 41. That is the target's run, and the only earlier federal run by this name. |
