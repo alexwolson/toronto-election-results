@@ -11968,9 +11968,9 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "The Wikipedia biography of Miguel Figueroa, former leader of the Communist Party of "
         "Canada, gives his 1993 Parkdale—High Park run with 105 votes, his 1995 Beaches—Woodbine "
         "provincial run with 169 votes, his 1997 Davenport run with 194 votes, his 2000 run in "
-        "the riding later named Toronto—Danforth with 129 votes and his 2004 Beaches—East York "
-        "run with 62 votes, matching the official results. The 1993 to 2000 records join the "
-        "Person that holds the 2004 run.",
+        "Toronto—Danforth, which this release labels Broadview—Greenwood, with 129 votes and his "
+        "2004 Beaches—East York run with 62 votes, matching the official results. The 1993 to "
+        "2000 records join the Person that holds the 2004 run.",
     ),
     _record_merge(
         "jim-harris-1993-1997-records",
@@ -12094,13 +12094,14 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         ),
         (
             "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election",
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2008_Canadian_federal_election",
             "https://www.elections.ca/Scripts/VIS/HistoricalResults/35017_e.html",
         ),
         "Wikipedia's list of Communist candidates in the 2011 federal election gives Cathy "
-        "Holliday, a nurse, in Toronto Centre and notes that she was the 2006 candidate in "
-        "Etobicoke—Lakeshore and the 2008 candidate in a Don Valley riding. Elections Canada gives "
-        "Catherine Holliday as the 2008 Communist candidate in Don Valley West. The 2006 record "
-        "joins the Person that holds the 2008 run.",
+        "Holliday, a nurse, as the Toronto Centre candidate and notes that she was the 2006 "
+        "candidate in Etobicoke—Lakeshore. Its 2008 list gives Cathy Holliday in Don Valley West, "
+        "where Elections Canada gives Catherine Holliday as the Communist candidate. The 2006 "
+        "record joins the Person that holds the 2008 run.",
     ),
     _record_merge(
         "steve-rutchinski-1999-beaches-east-york",
