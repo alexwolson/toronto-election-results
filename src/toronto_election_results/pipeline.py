@@ -21,6 +21,10 @@ from .candidacy_ledger import (
     read_candidacy_ledger,
     write_candidacy_ledger,
 )
+from .candidate_name_curations import (
+    CANDIDATE_NAME_CURATIONS_FILENAME,
+    apply_candidate_name_curations,
+)
 from .district_geometry import enrich_district_geometries
 from .endorsement_curations import (
     ENDORSEMENT_ASSERTIONS_FILENAME,
@@ -127,6 +131,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "trustee_incumbents_2026.csv",
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
+        CANDIDATE_NAME_CURATIONS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
         DECLARATION_FILENAME,
         "results_2026/declaration_of_results_2026.pdf",
@@ -344,14 +349,11 @@ def _load_source_adapters(
         ],
         ignore_index=True,
     )
-    return [
-        council,
-        trustees,
-        federal,
-        ontario,
-        pending_council,
-        municipal_archive,
-    ], contest_manifest
+    frames = apply_candidate_name_curations(
+        [council, trustees, federal, ontario, pending_council, municipal_archive],
+        reference / CANDIDATE_NAME_CURATIONS_FILENAME,
+    )
+    return frames, contest_manifest
 
 
 def run_all(
