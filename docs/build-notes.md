@@ -105,6 +105,15 @@ it lists, and every general-election trustee Contest from 2003 to 2022 matches t
 declaration. A release gate rejects a candidate name that appears in two trustee wards of one
 board at one event. See `docs/research/tcdsb-2010-ward-assignment-2026-10-29.md`.
 
+The City's poll-by-poll files print names surname first with no comma, so the parser cannot split
+a multi-word surname by rule, and the 2016 TDSB Ward 14 by-election file prints its names given
+name first. `data/reference/candidate_name_curations.csv` sets the display order of 38 such
+Candidacies from the Clerk's declarations of results, which print every name given name first,
+and of one name the 1997 archive page printed in reverse. A
+curation may only reorder the words of `candidate_name_raw`, and the build fails if the parser
+already produces it. The other two-word surname-first rows agree with the alphabetical order of
+their source files, and the other names of three or more words agree with the declarations.
+
 The City's 2017 Ward 42 by-election workbook prints declined, rejected and under-vote lines below
 the candidates, and the council parser skips them. Elections Ontario's 2011 candidate CSV swaps the
 totals of Willowdale's two Brown candidates; a pinned correction in the Ontario adapter restores

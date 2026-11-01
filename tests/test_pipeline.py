@@ -57,6 +57,7 @@ def test_candidates_only_refresh_overwrites_all_rosters_without_downloading_hist
     monkeypatch.setattr(pending_candidates.requests, "get", get)
     # The fixture rosters are synthetic, so the pinned 2026 declaration cannot apply to them.
     monkeypatch.setattr(pipeline, "DECLARATION_FILENAME", "absent_declaration.csv")
+    monkeypatch.setattr(pipeline, "CANDIDATE_NAME_CURATIONS_FILENAME", "absent_name_curations.csv")
     monkeypatch.setattr(pipeline, "load_council_results", historical_adapter)
     monkeypatch.setattr(pipeline, "load_trustee_results", historical_adapter)
     monkeypatch.setattr(pipeline, "load_federal_results", historical_adapter)

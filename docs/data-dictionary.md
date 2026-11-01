@@ -74,7 +74,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `official_district_id` | string | never | Authority's key within the represented body and Boundary regime. |
 | `district_name` | string | never | Authority-reported or deterministic display label. |
 | `boundary_regime` | string | never | Identifies the non-comparable geography system used for the vote. |
-| `candidate_name` | string | never | Normalized display form where the source format can be interpreted safely. |
+| `candidate_name` | string | never | Display form, given name first. City poll-by-poll files print names surname first; where a multi-word surname or a given-name-first row defeats the split, the Clerk's declaration of results sets the order (`data/reference/candidate_name_curations.csv`). |
 | `candidate_name_raw` | string | never | Ballot/result-source representation, preserved independently. |
 | `party_id` | string | affiliation is `party` | Party foreign key. Null for independent/non-partisan/not-reported rows. |
 | `party_name` | string | no Party | Canonical Party display label repeated for modelling. |
