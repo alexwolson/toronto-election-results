@@ -20,16 +20,21 @@ and votes), and applied the same standard. Proposals that rested on the Canadian
 alone, or on structural continuity under a common name, were held before that check. Dispositions
 are under reviewer `federal-provincial-holds-2026-11-01`.
 
-Of the 343 rows, 107 are confirmed to their targets. The same sources confirm one run outside the
-scope, Knia Singh's 1997 Ward 18 council run (printed as George B. Singh), and join 17 runs held by
-14 other Person records to the Person they belong to. The other 236 rows remain unresolved.
+Of the 343 rows, 109 are confirmed to their targets. The same sources confirm one run outside the
+scope, Knia Singh's 1997 Ward 18 council run (printed as George B. Singh), and join 19 runs held by
+15 other Person records to the Person they belong to. The other 234 rows remain unresolved.
 
-Neil Spiegel's 2004 Parkdale—High Park run is the one structural confirmation. The earlier proposal
-named the Person holding his 2003 provincial run, a different office, so the curated assertion
-`neil-spiegel-2004-house-continuity` joins the 2004 run to the Person holding his 2000 federal run
-in the same riding. Elections Canada's 2000 candidate file and 2004 results table both give Neil
-Spiegel as the Green candidate in Parkdale—High Park. Two confirmations rest on archived 2017 copies of Wikipedia biographies that
-Wikipedia no longer carries, Sheila White's and Rob Newman's. Both copies give the runs with the
+Three confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
+run there. The earlier proposal named the Person holding his 2003 provincial run, a different
+office, so the curated assertion `neil-spiegel-2004-house-continuity` joins the 2004 run to the
+Person holding the 2000 run. Elections Canada's 2000 candidate file and 2004 results table both give
+Neil Spiegel as the Green candidate in Parkdale—High Park. Sam Apelbaum's 2007 and 2011
+Scarborough—Guildwood runs continue his Libertarian runs in Scarborough East, which
+Scarborough—Guildwood partly replaced. Two Person records held those earlier runs until his
+archived Wikipedia biography, which names all three, joined them.
+
+Two confirmations and one join rest on archived copies of Wikipedia biographies that Wikipedia no
+longer carries: Sheila White's, Rob Newman's and Sam Apelbaum's. Each copy gives the runs with the
 official vote counts. The second check of Rob Newman's run was told not to use the archived copy and
 found no other source, so the copy was read separately against the record.
 
@@ -42,6 +47,8 @@ In each basis, the target is the Person that the earlier review proposed for the
 | Danish Ahmed, 2011 Trinity—Spadina (Ontario) | The party's own blog post of 26 September 2011, titled "About the Leader Running in Trinity-Spadina", is a profile of Danish Ahmed, which matches this 2011 run. Wikipedia's article on the Party for People with Special Needs says the party's 2007 candidates were its leader Danish Ahmed in Toronto Centre, the target's run. ([specialneedsparty.blogspot.com](https://specialneedsparty.blogspot.com/2011/09/about-leader-running-in-trinity-spadina.html), [Wikipedia: Party for People with Special Needs](https://en.wikipedia.org/wiki/Party_for_People_with_Special_Needs)) |
 | Danish Ahmed, 2013-08-01 Scarborough—Guildwood by-election (Ontario) | The party's blog post of 24 July 2013 on its Ontario by-election candidates lists "Danish Ahmed, Leader of the Party" under Scarborough-Guildwood, this August 2013 by-election run. Wikipedia's article on the party says its leader Danish Ahmed ran in Toronto Centre in 2007, the target's run. ([specialneedsparty.blogspot.com](https://specialneedsparty.blogspot.com/2013/07/ontario-by-election-candidates.html), [Wikipedia: Party for People with Special Needs](https://en.wikipedia.org/wiki/Party_for_People_with_Special_Needs)) |
 | Khalid Ahmed, 2018 Don Valley East (Ontario) | Wikipedia's page on Ontario NDP candidates in 2018 lists Khalid Ahmed in Don Valley East with 9,937 votes and third place, this run, and its note says he was the party's Don Valley West candidate in 2014 and 2011, the target's two runs. ([Wikipedia: Ontario New Democratic Party candidates in the 2018 Ontario provincial election](https://en.wikipedia.org/wiki/Ontario_New_Democratic_Party_candidates_in_the_2018_Ontario_provincial_election), [Wikipedia: Ontario New Democratic Party candidates in the 2014 Ontario provincial election](https://en.wikipedia.org/wiki/Ontario_New_Democratic_Party_candidates_in_the_2014_Ontario_provincial_election)) |
+| Sam Apelbaum, 2007 Scarborough—Guildwood (Ontario) | Elections Ontario's results give Sam Apelbaum as the Libertarian candidate in Scarborough East in 2003, the target's run, and in Scarborough—Guildwood, which took in part of Scarborough East, in 2007. No source describes the 2007 candidate. The link rests on the same office and party one election later in a successor riding, under an uncommon name, and his archived Wikipedia biography says he led the Ontario Libertarian Party until 2011. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv), [results.elections.on.ca](https://results.elections.on.ca/api/report-groups/4/report-outputs/510/csv), [archived Wikipedia copy](https://ipfs.ssi.eecc.de/ipns/en.wikipedia-on-ipfs.org/wiki/Sam_Apelbaum)) |
+| Sam Apelbaum, 2011 Scarborough—Guildwood (Ontario) | Elections Ontario's results give Sam Apelbaum as the Libertarian candidate in Scarborough—Guildwood in 2007 and 2011, and the 2007 run continues the target's 2003 Scarborough East run. No source describes the 2011 candidate. The link rests on the same office, riding and party one election later, under an uncommon name, and his archived Wikipedia biography says he led the Ontario Libertarian Party until 2011. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/4/report-outputs/510/csv), [results.elections.on.ca](https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv), [archived Wikipedia copy](https://ipfs.ssi.eecc.de/ipns/en.wikipedia-on-ipfs.org/wiki/Sam_Apelbaum)) |
 | Andrew Armstrong, 2025 Don Valley North (federal) | The Green Party of Canada's Don Valley North candidate page (this federal run) and the Green Party of Ontario's Don Valley North candidate page (the target's February 2025 run) carry the same biography of Andrew Armstrong, a restaurant manager who has lived in Don Valley North since he was six. The federal page gives no election year, but this is his only federal run in the riding. ([greenparty.ca](https://greenparty.ca/en?p=10881), [gpo.ca](https://gpo.ca/candidate/andrew-armstrong)) |
 | Akhtar Ayub, 2015 Etobicoke North (federal) | Wikipedia's page on Green Party of Canada candidates in 2015 lists Akhtar Ayub in Etobicoke North with 524 votes, fourth, matching this run, and notes that he was a 2014 Toronto City Council candidate for Ward 1 (Etobicoke North), the target's run. ([Wikipedia: Green Party of Canada candidates in the 2015 Canadian federal election](https://en.wikipedia.org/wiki/Green_Party_of_Canada_candidates_in_the_2015_Canadian_federal_election)) |
 | Lilian Barrera, 2025 Davenport (federal) | VoteMate's profile of the Green Party of Canada candidate in Davenport in April 2025 says she is multilingual and has worked in government, marketing, childcare and film and television. VoteMate and the Ontario Greens' candidate page for the February 2025 York South—Weston candidate, the target's run, give the same multilingual background and the same mix of government, marketing, childcare and film work. ([embed-en.votemate.org](https://embed-en.votemate.org/canada2025/candidates/11426), [en.votemate.org](https://en.votemate.org/ontario2025/candidates/11137), [gpo.ca](https://gpo.ca/candidate/lilian-barrera), [greenparty.ca](https://greenparty.ca/en?p=10718)) |
@@ -166,10 +173,11 @@ authorities printed them.
 | Dimitris Kabitsis: 2014 Don Valley West (Ontario) | Leaside Life's preview of the 2014 Don Valley West race describes the Communist candidate Dimitrios (Jim) Kabitsis as retired and a member of Fair Vote Canada. Wikipedia's list of Communist candidates in the 2011 federal election gives the Don Valley West run to Dimitrios "Jim" Kabitsis, retired, and its 2008 list describes him as a member of Fair Vote Canada. The 2014 record joins the Person that holds the 2011 federal run. ([leasidelife.com](https://leasidelife.com/?p=2319), [Wikipedia: Communist Party of Canada candidates in the 2011 Canadian federal election](https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election), [Wikipedia: Communist Party of Canada candidates in the 2008 Canadian federal election](https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2008_Canadian_federal_election)) |
 | Reuben DeBoer: 2019 Eglinton—Lawrence (federal) | In Beach Metro's 2021 questionnaire, Reuben DeBoer, the Green candidate in Beaches—East York, says he previously ran provincially and federally in Eglinton—Lawrence. His only runs there are the 2018 Green Party of Ontario candidacy and the 2019 Green Party of Canada candidacy. The 2019 record joins the Person that holds the 2018 run. ([beachmetro.com](https://beachmetro.com/2021/09/10/federal-election-2021-beaches-east-york-candidate-reuben-deboer-green-party-answers-our-questions/)) |
 | Ignacio Mongrell: 2022 York South—Weston (Ontario) | The Ontario Greens' April 2022 release names Ignacio Mongrell as their York South—Weston candidate and gives him as Assistant Director at ICUBE, a business accelerator at the University of Toronto. The party's January 2025 University—Rosedale release gives the same role. The 2022 record, printed as Ignacio Mongrell Gonzalez, joins the Person that holds the 2025 run. ([gpo.ca](https://gpo.ca/2022/04/28/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-york-south-weston/), [gpo.ca](https://gpo.ca/2025/01/17/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-university-rosedale/)) |
+| Sam Apelbaum: 1995 Scarborough East (Ontario); 1999 Scarborough East (Ontario) | An archived copy of Sam Apelbaum's Wikipedia biography, which Wikipedia no longer carries, describes him as a lawyer and real estate agent who led the Ontario Libertarian Party from 1996 to 2011. It gives his Scarborough East runs in 1995 with 319 votes, 1999 with 368 votes and 2003 with 285 votes, matching the official results. The 1995 and 1999 records join the Person that holds the 2003 run. ([archived Wikipedia copy](https://ipfs.ssi.eecc.de/ipns/en.wikipedia-on-ipfs.org/wiki/Sam_Apelbaum)) |
 
 ## What stays unresolved
 
-For most of the 236 rows no public source describes the candidate beyond the results. Many are
+For most of the 234 rows no public source describes the candidate beyond the results. Many are
 minor-party and independent candidates, and some have common names whose runs cannot be told apart.
 These rows came close and are worth another look:
 
@@ -178,9 +186,6 @@ These rows came close and are worth another look:
   that the target holds.
 - Jordan Stone's 2015 Toronto Centre run. Only a user-edited LocalWiki page ties it to the 2014 Ward
   27 candidate, and it names no riding.
-- Sam Apelbaum's 2007 and 2011 Scarborough—Guildwood runs. Two Person records hold his earlier
-  Libertarian runs in Scarborough East, so continuity cannot pick between them until a source joins
-  the two records.
 - The 2014 Scarborough—Rouge River run printed as George B. Singh, now proposed to Knia Singh. TVO
   says he ran provincially again after 2011 but gives no year or riding.
 - Runs whose other runs are documented but which no source describes: Cathy Holliday's 2011

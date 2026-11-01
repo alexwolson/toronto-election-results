@@ -12237,6 +12237,33 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "same role. The 2022 record, printed as Ignacio Mongrell Gonzalez, joins the Person that "
         "holds the 2025 run.",
     ),
+    _record_merge(
+        "sam-apelbaum-1995-1999-scarborough-east",
+        "Sam Apelbaum",
+        "per_86d6edbb770f584f846f9cd03cef60f3",
+        (
+            (
+                "can_c4b771df1da35e6ea35139245c9bea91",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Sam Apelbaum",
+            ),
+            (
+                "can_edc50d7244da5637973079c1dbf497e6",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "SAM APELBAUM",
+            ),
+        ),
+        ("https://ipfs.ssi.eecc.de/ipns/en.wikipedia-on-ipfs.org/wiki/Sam_Apelbaum",),
+        "An archived copy of Sam Apelbaum's Wikipedia biography, which Wikipedia no longer "
+        "carries, describes him as a lawyer and real estate agent who led the Ontario Libertarian "
+        "Party from 1996 to 2011. It gives his Scarborough East runs in 1995 with 319 votes, 1999 "
+        "with 368 votes and 2003 with 285 votes, matching the official results. The 1995 and 1999 "
+        "records join the Person that holds the 2003 run.",
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
