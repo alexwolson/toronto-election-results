@@ -11877,6 +11877,395 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Found in the 2026-11-01 review of federal and provincial holds: the 2004 run continues the
+# 2000 House of Commons run, while the earlier proposal named the Person holding the 2003
+# provincial run, a different office.
+DEFAULT_IDENTITY_ASSERTIONS += (
+    _anchored_continuity_assertion(
+        "neil-spiegel-2004-house-continuity",
+        "Neil Spiegel",
+        "per_ad1fc4b40b56510883e1d647963bd27f",
+        (
+            (
+                "can_24974cb016c95aad844177e657ef554e",
+                "ec-ge-38",
+                "canada_house_of_commons",
+                "mp",
+                "Neil Spiegel",
+            ),
+        ),
+        (
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+            "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv",
+        ),
+        "Elections Canada's results give Neil Spiegel as the Green candidate in Parkdale—High "
+        "Park in 2000 and 2004, one general election apart, and no other Neil Spiegel ran for "
+        "the House of Commons in Toronto. The 2004 record joins the Person that holds the 2000 "
+        "run.",
+    ),
+)
+
+
+def _record_merge(
+    assertion_id: str,
+    preferred_name: str,
+    canonical_person_id: str,
+    occurrences: tuple[tuple[str, str, str, str, str], ...],
+    evidence_urls: tuple[str, ...],
+    rationale: str,
+) -> CuratedIdentityAssertion:
+    """Join the enumerated records to an existing Person on a source that names them."""
+
+    return CuratedIdentityAssertion(
+        assertion_id=assertion_id,
+        preferred_name=preferred_name,
+        occurrences=tuple(_pinned_occurrence(*occurrence) for occurrence in occurrences),
+        evidence_urls=evidence_urls,
+        rationale=rationale,
+        registry_person_ids=(canonical_person_id,),
+        canonical_person_id=canonical_person_id,
+    )
+
+
+# Joins found in the 2026-11-01 review of federal and provincial holds
+# (docs/research/federal-provincial-holds-2026-11-01.md).
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    _record_merge(
+        "miguel-figueroa-1993-2000-records",
+        "Miguel Figueroa",
+        "per_17a3a012347b5d07a5aba45414729366",
+        (
+            (
+                "can_2da00fc0a4f5547793ad3f3a2cbe21e6",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Miguel Figueroa",
+            ),
+            (
+                "can_6b4c9f20ccc75f1fb7aff731a22f066c",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Miguel Figueroa",
+            ),
+            (
+                "can_bb77cc680eef5ed28292ecee4e530f8f",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Miguel Figueroa",
+            ),
+            (
+                "can_95d1c33104c95085832a49349515e588",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Miguel Figueroa",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/Miguel_Figueroa",),
+        "The Wikipedia biography of Miguel Figueroa, former leader of the Communist Party of "
+        "Canada, gives his 1993 Parkdale—High Park run with 105 votes, his 1995 Beaches—Woodbine "
+        "provincial run with 169 votes, his 1997 Davenport run with 194 votes, his 2000 run in "
+        "Toronto—Danforth, which this release labels Broadview—Greenwood, with 129 votes and his "
+        "2004 Beaches—East York run with 62 votes, matching the official results. The 1993 to "
+        "2000 records join the Person that holds the 2004 run.",
+    ),
+    _record_merge(
+        "jim-harris-1993-1997-records",
+        "Jim Harris",
+        "per_6412bd6d3bce5a0b8d1a7c82085749fe",
+        (
+            (
+                "can_917c07a5ff4859a6975afb67ac259683",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Jim Harris",
+            ),
+            (
+                "can_6b378b36055c5d918b9dbe9da7f22a0b",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Jim Harris",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/Jim_Harris_(politician)",),
+        "The Wikipedia biography of Jim Harris, former leader of the Green Party of Canada, says "
+        "he stood in St. Paul's in 1993 and finished sixth, gives his 1997 Toronto Centre—Rosedale "
+        "result of 577 votes, and gives his 2004 Toronto—Danforth run against Jack Layton. The "
+        "1993 and 1997 records join the Person that holds the 2004 run.",
+    ),
+    _record_merge(
+        "frank-de-jong-1999-parkdale-high-park",
+        "Frank de Jong",
+        "per_4de6ed98e00f5891b666a99ff4fd9c15",
+        (
+            (
+                "can_067545612926552590bb709ed983ccb2",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "FRANK DE JONG",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/Frank_de_Jong",),
+        "The Wikipedia biography of Frank de Jong, former leader of the Green Party of Ontario, "
+        "gives his 1999 Parkdale—High Park run with 500 votes alongside his 2006 Parkdale—High "
+        "Park by-election run and his 2010 Ward 18 council run. The 1999 record joins the Person "
+        "that holds the later runs.",
+    ),
+    _record_merge(
+        "mark-obrien-2000-davenport",
+        "Mark O'Brien",
+        "per_9a076c70a0b756579d17fc8634bfba73",
+        (
+            (
+                "can_0d993a7f00485cd0b030dc97bb7a7775",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Mark O'Brien",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Green_Party_of_Canada_candidates_in_the_2004_Canadian_federal_election",
+        ),
+        "Wikipedia's note on Mark O'Brien, the Green candidate in Davenport in 2004, gives his "
+        "2000 federal Davenport run with 642 votes and his 2003 Green Party of Ontario run in "
+        "Davenport. The 2000 record joins the Person that holds the 2003 run.",
+    ),
+    _record_merge(
+        "nick-lin-2000-trinity-spadina",
+        "Nick Lin",
+        "per_67fc59512d505e36bf04935cd5245190",
+        (
+            (
+                "can_b9ca93d2a80e5db087aa2eef272b4e50",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Nick Lin",
+            ),
+        ),
+        (_CPCML_2006_CANDIDATES,),
+        "Wikipedia's note on Nick Lin in its list of Marxist-Leninist candidates in the 2006 "
+        "federal election gives his 2000 Trinity—Spadina run with 102 votes, seventh of nine, and "
+        "his 2003 provincial Trinity—Spadina run as an independent with 256 votes. The 2000 record "
+        "joins the Person that holds the 2003 run.",
+    ),
+    _record_merge(
+        "knia-singh-george-b-singh-records",
+        "Knia Singh",
+        "per_982a63e06b42518892b172d5fad100f4",
+        (
+            (
+                "can_cd09c4d3974b5492998a6300244f6ee7",
+                "ec-ge-41",
+                "canada_house_of_commons",
+                "mp",
+                "George B. Singh",
+            ),
+        ),
+        (
+            "https://amp.tvo.org/article/where-are-they-now-checking-in-with-2018-toronto-mayoral-candidate-knia-singh",
+            "https://www.osgoode.yorku.ca/osgoode_news/george-knia-singh-would-bring-substance-to-queens-park/",
+        ),
+        "TVO's November 2018 profile of Knia Singh, the tenth-place mayoral candidate that year, "
+        "says he ran for council in Malvern in 1997 and twice in Rouge River in 2011, for the "
+        "federal and then the provincial Greens. An Osgoode Hall news item calls him George Knia "
+        "Singh and says he had run municipally, provincially and federally for the Greens. The "
+        "2011 federal Green record, printed as George B. Singh, joins the Knia Singh Person.",
+    ),
+    _record_merge(
+        "cathy-holliday-2006-etobicoke-lakeshore",
+        "Cathy Holliday",
+        "per_e7c84473fc1759b49f35d74fbf26a6bd",
+        (
+            (
+                "can_b574cfc99d3956f7b0d593b8b73ead96",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Cathy Holliday",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election",
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2008_Canadian_federal_election",
+            "https://www.elections.ca/Scripts/VIS/HistoricalResults/35017_e.html",
+        ),
+        "Wikipedia's list of Communist candidates in the 2011 federal election gives Cathy "
+        "Holliday, a nurse, as the Toronto Centre candidate and notes that she was the 2006 "
+        "candidate in Etobicoke—Lakeshore. Its 2008 list gives Cathy Holliday in Don Valley West, "
+        "where Elections Canada gives Catherine Holliday as the Communist candidate. The 2006 "
+        "record joins the Person that holds the 2008 run.",
+    ),
+    _record_merge(
+        "steve-rutchinski-1999-beaches-east-york",
+        "Steve Rutchinski",
+        "per_83ce91414bb25e0dad0b85534118d73e",
+        (
+            (
+                "can_3e4f48eb820f51f5b8f926b2c2dd7bd2",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "STEVE RUTCHINSKI",
+            ),
+        ),
+        (_CPCML_2006_CANDIDATES,),
+        "The electoral record in Wikipedia's note on Rutchinski, in its list of Marxist-Leninist "
+        "candidates in the 2006 federal election, gives a 1999 provincial run in Beaches—East York "
+        "as an independent with 164 votes, seventh of seven, between his 1997 and 2000 federal "
+        "runs. The 1999 record joins the Person that holds the federal runs.",
+    ),
+    _record_merge(
+        "yvonne-bobb-2003-willowdale",
+        "Yvonne Bobb",
+        "per_089f3077775d54edabb151753d25cafd",
+        (
+            (
+                "can_84f9288a04e95fc2a5594eacd318cbc8",
+                "on-2003-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "YVONNE BOBB",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/New_Democratic_Party_candidates_in_the_2004_Canadian_federal_election",
+            "https://en.wikipedia.org/wiki/Ontario_New_Democratic_Party_candidates_in_the_2003_Ontario_provincial_election",
+        ),
+        "Wikipedia's list of NDP candidates in the 2004 federal election gives Yvonne Bobb, a "
+        "civil servant, as the candidate in Willowdale and notes that she was the NDP candidate "
+        "there in the 2000 federal election and the Ontario NDP candidate there in 2003. The 2003 "
+        "list gives the Willowdale candidate, a civil servant, 3,084 votes. The 2003 record joins "
+        "the Person that holds the 2000 run.",
+    ),
+    _record_merge(
+        "hal-berman-2022-willowdale",
+        "Hal Berman",
+        "per_ada3fe69f7fa5808978a59bd6fa42259",
+        (
+            (
+                "can_c92b73d1c8b65a368113d6d94e8aade6",
+                "on-2022-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "HAL DAVID BERMAN",
+            ),
+        ),
+        (
+            "https://www.ontariondp.ca/news/hal-david-berman-chosen-be-ndp-candidate-willowdale",
+            "https://downsviewadvocate.ca/news/2015/09/east-candidate-profile",
+        ),
+        "The Ontario NDP's April 2022 notice names Hal David Berman, a palliative care physician "
+        "at Mount Sinai Hospital's Temmy Latner Centre for Palliative Care, as its Willowdale "
+        "candidate. The Downsview Advocate's 2015 York Centre profile of the NDP's Dr. Hal Berman "
+        "says he provides home care through the same centre. The 2022 record joins the Person that "
+        "holds the 2015 run.",
+    ),
+    _record_merge(
+        "dimitris-kabitsis-2014-don-valley-west",
+        "Dimitris Kabitsis",
+        "per_ad7a54487232543985c6c8ddb8260cbe",
+        (
+            (
+                "can_56c89507d3c25ed4992741659c4fae35",
+                "on-2014-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "DIMITRIOS KABITSIS",
+            ),
+        ),
+        (
+            "https://leasidelife.com/?p=2319",
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election",
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2008_Canadian_federal_election",
+        ),
+        "Leaside Life's preview of the 2014 Don Valley West race describes the Communist "
+        "candidate Dimitrios (Jim) Kabitsis as retired and a member of Fair Vote Canada. "
+        "Wikipedia's list of Communist candidates in the 2011 federal election gives the Don "
+        'Valley West run to Dimitrios "Jim" Kabitsis, retired, and its 2008 list describes him as '
+        "a member of Fair Vote Canada. The 2014 record joins the Person that holds the 2011 "
+        "federal run.",
+    ),
+    _record_merge(
+        "reuben-deboer-2019-eglinton-lawrence",
+        "Reuben DeBoer",
+        "per_5ffe16692f0459339c5bef88242a57f7",
+        (
+            (
+                "can_ac120e5647395a4eb4e34ec032717d6d",
+                "ec-ge-43",
+                "canada_house_of_commons",
+                "mp",
+                "Reuben DeBoer",
+            ),
+        ),
+        (
+            "https://beachmetro.com/2021/09/10/federal-election-2021-beaches-east-york-candidate-reuben-deboer-green-party-answers-our-questions/",
+        ),
+        "In Beach Metro's 2021 questionnaire, Reuben DeBoer, the Green candidate in Beaches—East "
+        "York, says he previously ran provincially and federally in Eglinton—Lawrence. His only "
+        "runs there are the 2018 Green Party of Ontario candidacy and the 2019 Green Party of "
+        "Canada candidacy. The 2019 record joins the Person that holds the 2018 run.",
+    ),
+    _record_merge(
+        "ignacio-mongrell-2022-york-south-weston",
+        "Ignacio Mongrell",
+        "per_238c860d2f9a5736852e516ebcb16a70",
+        (
+            (
+                "can_86fe755b05af5c7c949efed375b2d3a6",
+                "on-2022-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "IGNACIO MONGRELL GONZALEZ",
+            ),
+        ),
+        (
+            "https://gpo.ca/2022/04/28/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-york-south-weston/",
+            "https://gpo.ca/2025/01/17/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-university-rosedale/",
+        ),
+        "The Ontario Greens' April 2022 release names Ignacio Mongrell as their York South—Weston "
+        "candidate and gives him as Assistant Director at ICUBE, a business accelerator at the "
+        "University of Toronto. The party's January 2025 University—Rosedale release gives the "
+        "same role. The 2022 record, printed as Ignacio Mongrell Gonzalez, joins the Person that "
+        "holds the 2025 run.",
+    ),
+    _record_merge(
+        "sam-apelbaum-1995-1999-scarborough-east",
+        "Sam Apelbaum",
+        "per_86d6edbb770f584f846f9cd03cef60f3",
+        (
+            (
+                "can_c4b771df1da35e6ea35139245c9bea91",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Sam Apelbaum",
+            ),
+            (
+                "can_edc50d7244da5637973079c1dbf497e6",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "SAM APELBAUM",
+            ),
+        ),
+        ("https://ipfs.ssi.eecc.de/ipns/en.wikipedia-on-ipfs.org/wiki/Sam_Apelbaum",),
+        "An archived copy of Sam Apelbaum's Wikipedia biography, which Wikipedia no longer "
+        "carries, describes him as a lawyer and real estate agent who led the Ontario Libertarian "
+        "Party from 1996 to 2011. It gives his Scarborough East runs in 1995 with 319 votes, 1999 "
+        "with 368 votes and 2003 with 285 votes, matching the official results. The 1995 and 1999 "
+        "records join the Person that holds the 2003 run.",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 
