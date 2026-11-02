@@ -20,9 +20,9 @@ and votes), and applied the same standard. Proposals that rested on the Canadian
 alone, or on structural continuity under a common name, were held before that check. Dispositions
 are under reviewer `federal-provincial-holds-2026-11-01`.
 
-Of the 343 rows, 109 are confirmed to their targets. The same sources confirm one run outside the
+Of the 343 rows, 110 are confirmed to their targets. The same sources confirm one run outside the
 scope, Knia Singh's 1997 Ward 18 council run (printed as George B. Singh), and join 19 runs held by
-15 other Person records to the Person they belong to. The other 234 rows remain unresolved.
+15 other Person records to the Person they belong to. The other 233 rows remain unresolved.
 
 Three confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
 run there. The earlier proposal named the Person holding his 2003 provincial run, a different
@@ -177,7 +177,7 @@ authorities printed them.
 
 ## What stays unresolved
 
-For most of the 234 rows no public source describes the candidate beyond the results. Many are
+For most of the 233 rows no public source describes the candidate beyond the results. Many are
 minor-party and independent candidates, and some have common names whose runs cannot be told apart.
 These rows came close and are worth another look:
 
@@ -199,7 +199,7 @@ These rows came close and are worth another look:
   immigration lawyer in 2008.
 
 The Toronto Star's riding coverage, read in ProQuest, may settle several of these. A first look
-settled two of the rows, and two 1997 federal runs from the earlier review, below.
+settled three of the rows, and two 1997 federal runs from the earlier review, below.
 
 ## Toronto Star
 
@@ -212,5 +212,6 @@ each article. The second agent could not check them, because ProQuest needs a lo
 |---|---|
 | Maureen Harquail, 2011 St. Paul's (federal) | The Star's report on the result ([864540106](https://www.proquest.com/docview/864540106), 3 May 2011) describes the Conservative candidate as "a relative political newcomer and lawyer who specializes in environmental law" and says she "was once a member of the Canadian Forces Naval Reserve". Stephen Taylor's 2007 post on the Willowdale candidate, the target's 2008 run, and the 2015 Don Valley East profile give the same environmental prosecution work and reserve service. |
 | Heather Jewell, 2008 St. Paul's (federal) | The Star's riding profile ([439495661](https://www.proquest.com/docview/439495661), 9 October 2008) gives the Conservative candidate as 45 and says she "is running for federal office for the second time". Its June 2004 Scarborough Southwest profile ([438719033](https://www.proquest.com/docview/438719033)) gives the Conservative candidate Heather Jewell as 41. That is the target's run, and the only earlier federal run by this name. |
+| Igor Toutchinski, 2007 York Centre (Ontario) | The Star's 2007 York Centre profile ([439330566](https://www.proquest.com/docview/439330566), 4 October 2007) describes the Conservative candidate as "a journalist" who "heads the Toronto-based Russian Canadian Broadcasting Corp." Its 2014 guide to council races ([1987193314](https://www.proquest.com/docview/1987193314)) calls the Ward 10 candidate, "who got 16 per cent" in 2010, a "Conservative journalist and Russian-language broadcasting executive". The target holds his 2006, 2010 and 2014 Ward 10 runs. |
 | Charles Donley, 1997 Etobicoke—Lakeshore (federal) | The Star's 1997 riding profiles ([437661258](https://www.proquest.com/docview/437661258), 30 May 1997) describe the Progressive Conservative candidate as "an expert in international trade". Its 1993 Etobicoke Centre profiles, the target's run, call the Conservative candidate "a banker" whose "experience in global trade" would help him promote Canadian trade ([436921016](https://www.proquest.com/docview/436921016)) and "senior manager of international trade" at his bank ([436913690](https://www.proquest.com/docview/436913690)). |
 | John Pope, 1997 Don Valley East (federal) | The Star's 1997 riding profiles ([437661222](https://www.proquest.com/docview/437661222), 30 May 1997) describe the Reform candidate as "a retired advertising executive and World War II vet". Its September 1993 Scarborough Centre story ([436907038](https://www.proquest.com/docview/436907038)), the target's run, gives Reform's John Pope as 70 and says he "spent most of his life in newspaper advertising". |
