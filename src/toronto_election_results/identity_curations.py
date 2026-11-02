@@ -12264,6 +12264,180 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "with 368 votes and 2003 with 285 votes, matching the official results. The 1995 and 1999 "
         "records join the Person that holds the 2003 run.",
     ),
+    _record_merge(
+        "debbie-weberg-1995-1999-records",
+        "Debbie Weberg",
+        "per_9e124ad1a9575a41b6b3c46d92ca076a",
+        (
+            (
+                "can_63a56ab740e7505fbdd48466bfce1205",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Debbie Weberg",
+            ),
+            (
+                "can_f86e5959ded15d71a029db48053b3343",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "DEBBIE WEBERG",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/n/a/t/Natural_Law_Party_candidates%2C_1999_Ontario_provincial_election_7f5c.html",
+        ),
+        "A 2007 copy of Wikipedia's list of Natural Law Party candidates in the 1999 Ontario "
+        "election, which Wikipedia no longer carries, describes Debbie Weberg as a four-time "
+        "Natural Law candidate. It gives her runs in Eglinton—Lawrence in 1993 with 384 votes, "
+        "York Mills in 1995 with 173, Don Valley West in 1997 with 173 and Don Valley West in "
+        "1999 with 224, matching the official results. The 1995 and 1999 records join the Person "
+        "that holds the 1993 run.",
+    ),
+    _record_merge(
+        "ron-robins-1993-1994-records",
+        "Ron Robins",
+        "per_c1e4890546d45caeb2501f726e27838c",
+        (
+            (
+                "can_692b2ca579545d8687ce125b66a2b6d8",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Ron Robins",
+            ),
+            (
+                "can_375d51302c2958eb840f63384b2254a4",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "former_toronto_city_council",
+                "councillor",
+                "Robins, Ron",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/n/a/t/Natural_Law_Party_candidates%2C_1999_Ontario_provincial_election_7f5c.html",
+        ),
+        "A 2007 copy of Wikipedia's list of Natural Law Party candidates in the 1999 Ontario "
+        "election, which Wikipedia no longer carries, describes Ron Robins as a former Bay Street "
+        "investment analyst. It gives his runs in Scarborough West in 1993 with 212 votes, Ward "
+        "14 of the former City of Toronto in 1994 with 200, St. George—St. David in 1995 with 151 "
+        "and Trinity—Spadina in 1999 with 274, matching the official results. The 1993 and 1994 "
+        "records join the Person that holds the 1995 run.",
+    ),
+    _record_merge(
+        "bob-hyman-1993-1997-records",
+        "Bob Hyman",
+        "per_03d22d6c01575491a95edb713496d61d",
+        (
+            (
+                "can_c0af6b5ff636586c8c7c819360bc5272",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Bob Hyman",
+            ),
+            (
+                "can_3e7bf1e32f325072a33926fa4a06fb0c",
+                "evt_fe83b23561165c27bc4fefb8d76cd3c9",
+                "former_toronto_city_council",
+                "mayor",
+                "Hyman, Bob",
+            ),
+            (
+                "can_c306cbd8e07a5d379b00c0b2b8935b65",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Bob Hyman",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/n/a/t/Natural_Law_Party_candidates%2C_1999_Ontario_provincial_election_7f5c.html",
+        ),
+        "A 2007 copy of Wikipedia's list of Natural Law Party candidates in the 1999 Ontario "
+        "election, which Wikipedia no longer carries, gives Bob Hyman's runs in "
+        "Broadview—Greenwood in 1993 with 389 votes, for mayor of the former City of Toronto in "
+        "1994 with 857, in York South in 1995 with 176, in Broadview—Greenwood in 1997 with 205 "
+        "and provincially in 1999 with 565, matching the official results. The 1993, 1994 and "
+        "1997 records join the Person that holds the 1995 run.",
+    ),
+    _record_merge(
+        "dan-king-1993-1995-records",
+        "Dan King",
+        "per_d66953f6761d568fbf6999bdf05c172d",
+        (
+            (
+                "can_bece3212d5cd5ba4b86e626663e4b5f3",
+                "ec-ge-35",
+                "canada_house_of_commons",
+                "mp",
+                "Dan King",
+            ),
+            (
+                "can_f5324ba4aa135ed38713ac617112ba47",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Dan King",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Green_Party_of_Canada_candidates_in_the_2004_Canadian_federal_election",
+            "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv",
+        ),
+        "Wikipedia's list of Green Party of Canada candidates in the 2004 federal election has an "
+        "entry for Dan King, the only candidate of that name in 2004, who ran in Don Valley East. "
+        "It describes him as an environmental and social policy consultant in Toronto and gives "
+        "his earlier runs in Don Valley West in 1993 with 302 votes (303 in the official "
+        "results), Eglinton in 1995 with 395 and Don Valley West in 1997 with 378. The 1993 and "
+        "1995 records join the Person that holds the 2004 run.",
+    ),
+    _record_merge(
+        "ryan-kidd-1999-don-valley-east",
+        "Ryan Kidd",
+        "per_956a8be294385cdd947b0e836f4184be",
+        (
+            (
+                "can_46c0ca7ed19f5d8e91715bd8945077f9",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "RYAN KIDD",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/en/f/a/m/Family_Coalition_Party_candidates%2C_2003_Ontario_provincial_election_bdd4.html",
+        ),
+        "A 2007 copy of Wikipedia's list of Family Coalition Party candidates in the 2003 Ontario "
+        "election, which Wikipedia no longer carries, says Ryan Kidd works in the computer "
+        "software industry in Toronto. It gives his Don Valley East runs in 1999 with 153 votes, "
+        "2000 with 212 (as an independent, the Christian Heritage Party having been "
+        "deregistered), 2003 with 460 and 2004 for the Christian Heritage Party with 351, "
+        "matching the official results. The 1999 record joins the Person that holds the 2003 run.",
+    ),
+    _record_merge(
+        "christopher-black-2000-york-centre",
+        "Christopher Black",
+        "per_8dfcb50da4ab5cf6bd8d97197c6bc37f",
+        (
+            (
+                "can_374565e69c30598d9b669e2f2cf195c2",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Christopher Black",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Communist_Party_of_Canada_(Ontario)_candidates_in_the_2003_Ontario_provincial_election",
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+        ),
+        "Wikipedia's list of Communist Party of Canada (Ontario) candidates in the 2003 election "
+        "describes Christopher Black, the York West candidate, as a criminal lawyer who has "
+        "represented accused war criminals from Rwanda and the former Yugoslavia. Elections "
+        "Canada gives the Communist candidate Christopher Black in York Centre in 2000 as a "
+        "lawyer. The 2000 record joins the Person that holds the 2003 run.",
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
