@@ -1,172 +1,172 @@
 {
   "artifacts": [
     {
-      "bytes": 7286968,
+      "bytes": 7298169,
       "local_path": "data/out/candidacy_person_links.csv",
       "rows": 8162,
-      "sha256": "6a3973208f50ceff1ee99a1a589c919d5354b6c4a6d37bcb7989009b3c25befd",
-      "written_at": "2026-11-02T10:40:33.513411Z"
+      "sha256": "2d1d7442cefd681ec0787e48d8a60c740918c895bcf7d68b8ca097b13c32b82a",
+      "written_at": "2026-11-02T23:20:50.920473Z"
     },
     {
-      "bytes": 2037199,
+      "bytes": 2045474,
       "local_path": "data/out/candidacy_person_links.parquet",
       "rows": 8162,
-      "sha256": "67cdcc9e2321b897ef45b76eb99dd3dcc33bab8c8f13eb251851ca7ebee73f2f",
-      "written_at": "2026-11-02T10:40:33.537411Z"
+      "sha256": "b19f796580504075aff19416c561b0ed44191c087bad8743cf1a217b3289042f",
+      "written_at": "2026-11-02T23:20:50.936473Z"
     },
     {
       "bytes": 632210,
       "local_path": "data/out/contests.csv",
       "rows": 1385,
       "sha256": "22c69419d323201f8c863d7b7ab7e67ca23ca2d625310222c655887a8b18f362",
-      "written_at": "2026-11-02T10:40:33.321411Z"
+      "written_at": "2026-11-02T23:20:50.804473Z"
     },
     {
       "bytes": 132725,
       "local_path": "data/out/contests.parquet",
       "rows": 1385,
       "sha256": "58e2329dc54ba1ff03653c8e7d15df532c88827ce87fd50db44c733f752d4313",
-      "written_at": "2026-11-02T10:40:33.327753Z"
+      "written_at": "2026-11-02T23:20:50.811308Z"
     },
     {
       "bytes": 5663,
       "local_path": "data/out/election_events.csv",
       "rows": 80,
       "sha256": "a136b4527adb80f6784281a1ea3064338cf4db6869e5404bcdc3f0805ad76d34",
-      "written_at": "2026-11-02T10:40:33.301411Z"
+      "written_at": "2026-11-02T23:20:50.795302Z"
     },
     {
       "bytes": 6118,
       "local_path": "data/out/election_events.parquet",
       "rows": 80,
       "sha256": "f2b21e599b230ce0da34c94001869edc5a0e23478f335763bfd9f6fde5a09721",
-      "written_at": "2026-11-02T10:40:33.305143Z"
+      "written_at": "2026-11-02T23:20:50.796042Z"
     },
     {
-      "bytes": 6163166,
+      "bytes": 6164996,
       "local_path": "data/out/election_results.csv",
       "rows": 8099,
-      "sha256": "388711e4ce7da0b1fed0e7f6dbc7f928d2e9b2bad457baf91d8a67a58659b206",
-      "written_at": "2026-11-02T10:40:33.261411Z"
+      "sha256": "f7365ab48a270c1908eb6cea4ffae26b823fa431df7122b6480ff983abb24c1b",
+      "written_at": "2026-11-02T23:20:50.760473Z"
     },
     {
-      "bytes": 1262428,
+      "bytes": 1262469,
       "local_path": "data/out/election_results.parquet",
       "rows": 8099,
-      "sha256": "f0fe3080a599122225a5572d461f2c08b958f439685dc52726ea5b71058fd440",
-      "written_at": "2026-11-02T10:40:33.297411Z"
+      "sha256": "9cc5d59945034246f7f3f18480bbf645481e179f499ac21672812c5e4cd19192",
+      "written_at": "2026-11-02T23:20:50.788473Z"
     },
     {
       "bytes": 5866157,
       "local_path": "data/out/electoral_districts.csv",
       "rows": 848,
       "sha256": "4d4822c947f5327b89e8231ab42d02a1f6e06cc04577634bdcde22e956a57fba",
-      "written_at": "2026-11-02T10:40:33.773411Z"
+      "written_at": "2026-11-02T23:20:51.068473Z"
     },
     {
       "bytes": 2336169,
       "local_path": "data/out/electoral_districts.parquet",
       "rows": 848,
       "sha256": "6284c45c32bc4d24bcfc7b03ae3e428cef19e3c5c3fe6732966ba863884485e9",
-      "written_at": "2026-11-02T10:40:33.801411Z"
+      "written_at": "2026-11-02T23:20:51.085390Z"
     },
     {
       "bytes": 70085,
       "local_path": "data/out/endorsement_assertions.csv",
       "rows": 161,
       "sha256": "88d1c158f04384914b16e40ae13dd965a9d4dd02461d326d46b50a3338a72ca9",
-      "written_at": "2026-11-02T10:40:33.813411Z"
+      "written_at": "2026-11-02T23:20:51.095682Z"
     },
     {
       "bytes": 37252,
       "local_path": "data/out/endorsement_assertions.parquet",
       "rows": 161,
       "sha256": "d6d85ac14e6f505a5c9a6082abb227109ed4caa62f0a04a68bb3798bcb47f56f",
-      "written_at": "2026-11-02T10:40:33.818118Z"
+      "written_at": "2026-11-02T23:20:51.096552Z"
     },
     {
       "bytes": 494826,
       "local_path": "data/out/endorsement_coverage.csv",
       "rows": 3078,
       "sha256": "c9e76939e51d05b3f8579981cae89f97afa6c0e0497cc458995191cf898482b5",
-      "written_at": "2026-11-02T10:40:33.837411Z"
+      "written_at": "2026-11-02T23:20:51.104473Z"
     },
     {
       "bytes": 22292,
       "local_path": "data/out/endorsement_coverage.parquet",
       "rows": 3078,
       "sha256": "cd7f0462d7128b7b99653a417512fc5ed7cda31a822e544ff6f7ca509998c9e5",
-      "written_at": "2026-11-02T10:40:33.844580Z"
+      "written_at": "2026-11-02T23:20:51.110320Z"
     },
     {
       "bytes": 23731,
       "local_path": "data/out/endorsements.csv",
       "rows": 160,
       "sha256": "dedac2711227506dae8c166cb7a5be9a44bce82aec1878edabb7793c46734e36",
-      "written_at": "2026-11-02T10:40:33.821099Z"
+      "written_at": "2026-11-02T23:20:51.098260Z"
     },
     {
       "bytes": 17166,
       "local_path": "data/out/endorsements.parquet",
       "rows": 160,
       "sha256": "4b638e3893cce5759ca0b8b23a694a058ba6ecc7be979adbdbc8eafa161f55dc",
-      "written_at": "2026-11-02T10:40:33.822018Z"
+      "written_at": "2026-11-02T23:20:51.098783Z"
     },
     {
       "bytes": 2537,
       "local_path": "data/out/endorsers.csv",
       "rows": 9,
       "sha256": "9bfdb461ff5f4279be215031a4a9ca996c2235b3ea967e7b169d781480a2b7d1",
-      "written_at": "2026-11-02T10:40:33.809066Z"
+      "written_at": "2026-11-02T23:20:51.088473Z"
     },
     {
       "bytes": 8618,
       "local_path": "data/out/endorsers.parquet",
       "rows": 9,
       "sha256": "e10fb740979dfda5df2de1ce891ace8795295a35c465b62644a0a1dbd3705b36",
-      "written_at": "2026-11-02T10:40:33.810531Z"
+      "written_at": "2026-11-02T23:20:51.092872Z"
     },
     {
       "bytes": 713606,
       "local_path": "data/out/office_tenures.csv",
       "rows": 1034,
       "sha256": "fd416782fb84cb6ac8747e001bdda0ef3a43921be2f361cae6cc77208774a4f6",
-      "written_at": "2026-11-02T10:40:33.561411Z"
+      "written_at": "2026-11-02T23:20:50.952473Z"
     },
     {
       "bytes": 150980,
       "local_path": "data/out/office_tenures.parquet",
       "rows": 1034,
       "sha256": "8a68e8ad984920798d86e732fa9a6007baed2050d6bead729a0e9b9c83bc9996",
-      "written_at": "2026-11-02T10:40:33.565439Z"
+      "written_at": "2026-11-02T23:20:50.958758Z"
     },
     {
       "bytes": 8383,
       "local_path": "data/out/parties.csv",
       "rows": 82,
       "sha256": "a0359370749bd302b02f542ae193878aa5131643c8d489b4af321149089b4d8d",
-      "written_at": "2026-11-02T10:40:33.541989Z"
+      "written_at": "2026-11-02T23:20:50.940473Z"
     },
     {
       "bytes": 8692,
       "local_path": "data/out/parties.parquet",
       "rows": 82,
       "sha256": "e8abc0d11c57649bc8252ff7c8d04a41608a9cba6d045f5bc173f3b7e9a59a68",
-      "written_at": "2026-11-02T10:40:33.542887Z"
+      "written_at": "2026-11-02T23:20:50.944707Z"
     },
     {
-      "bytes": 365871,
+      "bytes": 365866,
       "local_path": "data/out/people.csv",
       "rows": 5191,
-      "sha256": "6efc155682cf3e3113e9e2da04fe2de4aa5fe26c5d0d821aad6da0eae1cb71ce",
-      "written_at": "2026-11-02T10:40:33.337411Z"
+      "sha256": "be53c0957ec9e11ba7b661f4eca591915d86ee8430da442cd21d47a893c53cf4",
+      "written_at": "2026-11-02T23:20:50.816473Z"
     },
     {
-      "bytes": 250069,
+      "bytes": 250039,
       "local_path": "data/out/people.parquet",
       "rows": 5191,
-      "sha256": "4c3087e0f2c7225854aef159240bb1a83fad69a828d77795c792027c001fa802",
-      "written_at": "2026-11-02T10:40:33.343672Z"
+      "sha256": "3b3f320cd8378468fed4d998d3867c224065d21617018cf6348a15459b75fa17",
+      "written_at": "2026-11-02T23:20:50.822893Z"
     }
   ],
   "coverage": {
@@ -196,7 +196,7 @@
       "scheduled_date": "2008-09-22"
     }
   ],
-  "generated_at": "2026-11-02T10:40:33.902501Z",
+  "generated_at": "2026-11-02T23:20:51.141852Z",
   "pending_events": [],
   "schema_version": "2.2.0",
   "sources": [
@@ -947,7 +947,7 @@
     {
       "bytes": 3975025,
       "local_path": "data/reference/candidacy_identity_ledger.csv",
-      "retrieved_at": "2026-11-02T10:40:29.597411Z",
+      "retrieved_at": "2026-11-02T23:20:48.096473Z",
       "sha256": "2a3c387c51aa367154babb58d46d25914149f028e2635d6209585b18f866c135"
     },
     {
@@ -981,10 +981,10 @@
       "sha256": "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231"
     },
     {
-      "bytes": 771001,
+      "bytes": 779847,
       "local_path": "data/reference/identity_review_dispositions.csv",
-      "retrieved_at": "2026-11-02T10:25:37.085358Z",
-      "sha256": "725e44c7265afe4b300dbaa8c07c5d9f11d91013b2eb70db4aa0554340e276d9"
+      "retrieved_at": "2026-11-02T23:17:01.885953Z",
+      "sha256": "bd15e9f07ec92726498f1f9783a2fe745279c6c6c9ae159de8f46388c484759b"
     },
     {
       "bytes": 13148,

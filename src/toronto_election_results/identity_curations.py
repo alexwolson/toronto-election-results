@@ -11878,8 +11878,9 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
 )
 
 # Found in the 2026-11-01 review of federal and provincial holds: each run continues earlier
-# House of Commons runs, while the earlier proposal named the Person holding a provincial run,
-# a different office.
+# House of Commons runs, while the earlier proposal named another Person. For most it is the
+# Person holding a provincial run, a different office; for Paul Coulbeck's 2015 run it is the
+# Person holding his 2011 independent run.
 DEFAULT_IDENTITY_ASSERTIONS += (
     _anchored_continuity_assertion(
         "neil-spiegel-2004-house-continuity",
@@ -11952,6 +11953,135 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         "run. The earlier proposal named the Person holding her 2003 provincial run, a different "
         "office, so this assertion joins the 2004 run to the Person holding the 1993 and 1997 "
         "runs.",
+    ),
+    _anchored_continuity_assertion(
+        "janice-murray-2006-2025-house-continuity",
+        "Janice Murray",
+        "per_5788d4ae602b58e2bd076d96e3a395e0",
+        (
+            (
+                "can_bef62b59b2375c6d8c9a085273f57fce",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+            (
+                "can_16408e6810715e90b32501e04aaec668",
+                "ec-ge-40",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+            (
+                "can_61ba7bbe686e54f0b14f5f47b2a05de1",
+                "ec-ge-41",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+            (
+                "can_7099269ff3a0565e898188057091520d",
+                "ec-ge-42",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+            (
+                "can_12dba48db92c53f3b6ae107a51966b85",
+                "ec-ge-43",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+            (
+                "can_5a927c45c592575a98b1f57faac39e57",
+                "ec-ge-45",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+        ),
+        (
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+            "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv",
+            "https://www.elections.ca/scripts/OVR2006/25/table12.html",
+            "https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv",
+            "https://elections.ca/scripts/ovr2011/34/table12.html",
+            "https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv",
+            "https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/table_tableau12.csv",
+            "https://elections.ca/res/rep/off/ovrGE45/62/table12E.html",
+        ),
+        "Elections Canada gives the Marxist-Leninist candidate Janice Murray in "
+        "Etobicoke—Lakeshore as a bindery operator or bindery machine operator in each of her "
+        "federal runs there from 2004 to 2025, which skip 2021, and as a bindery operator in "
+        "1993, when she ran in Etobicoke Centre. The earlier proposals named the Person holding "
+        "her 2003 provincial run, a different office, so this assertion joins her 2006, 2008, "
+        "2011, 2015, 2019 and 2025 runs to the Person holding the 1993, 1997 and 2004 runs. Her "
+        "2000 run, for which Elections Canada gives industrial worker, is not included.",
+    ),
+    _anchored_continuity_assertion(
+        "paul-coulbeck-2015-house-continuity",
+        "Paul Coulbeck",
+        "per_b05cb2e30902545e86c58d787aceab3d",
+        (
+            (
+                "can_f13cfa5f6c475980a6aa4ee756697436",
+                "ec-ge-42",
+                "canada_house_of_commons",
+                "mp",
+                "Paul Coulbeck",
+            ),
+        ),
+        (
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+            "https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv",
+        ),
+        "Elections Canada gives Paul Coulbeck as an author in 2015, when he ran for the Marijuana "
+        "Party in Scarborough—Guildwood, and as a writer-author in 2000, when he ran for the "
+        "Marijuana Party in Scarborough Centre. The Person holding the 2000 run also holds his "
+        "1997 Willowdale run, for which Elections Canada gives publisher. The earlier proposal "
+        "named the Person holding his 2011 independent run in Scarborough—Guildwood, for which "
+        "Elections Canada gives minister, so this assertion joins the 2015 run to the Person "
+        "holding the 1997 and 2000 runs.",
+    ),
+)
+
+
+# Found in the 2026-11-01 review of federal and provincial holds: runs that belong together
+# but not to the Person the earlier proposal named.
+DEFAULT_IDENTITY_ASSERTIONS += (
+    CuratedIdentityAssertion(
+        assertion_id="andrew-james-eglinton-lawrence-2007-2008",
+        preferred_name="Andrew James",
+        occurrences=(
+            _pinned_occurrence(
+                "can_45abc25c12925c7ba1a005c4c0b10f87",
+                "on-2007-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "ANDREW JAMES",
+            ),
+            _pinned_occurrence(
+                "can_aa84ff7e053255709b56c93fea6f0a93",
+                "ec-ge-40",
+                "canada_house_of_commons",
+                "mp",
+                "Andrew James",
+            ),
+        ),
+        evidence_urls=(
+            "https://www.proquest.com/docview/439498861",
+            "https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv",
+        ),
+        rationale=(
+            "The Toronto Star's 2008 Eglinton—Lawrence profile describes the Green candidate "
+            "Andrew James as a law book writer running his second political campaign, after "
+            "failing to win the riding's provincial seat the year before. Elections Canada gives "
+            "the 2008 candidate as a writer. His 2007 provincial and 2008 federal Green runs in "
+            "Eglinton—Lawrence become one new Person. The council candidates of the same name in "
+            "Ward 29 in 2006 and Ward 30 in 2010 are not joined to it."
+        ),
     ),
 )
 
@@ -12487,6 +12617,39 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "represented accused war criminals from Rwanda and the former Yugoslavia. Elections "
         "Canada gives the Communist candidate Christopher Black in York Centre in 2000 as a "
         "lawyer. The 2000 record joins the Person that holds the 2003 run.",
+    ),
+    _record_merge(
+        "fernand-deschamps-1995-1999-records",
+        "Fernand Deschamps",
+        "per_3fda64d1b5895819997640afa36d7b86",
+        (
+            (
+                "can_878a670ecde459e397da22941ba2a163",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Fernand Deschamps",
+            ),
+            (
+                "can_91e82ea891d85e2490bd8afc791fb31a",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "FERNAND DESCHAMPS",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/436919109",
+            "https://www.proquest.com/docview/437278693",
+            "https://www.proquest.com/docview/437668134",
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+        ),
+        "The Toronto Star's 1993 Trinity—Spadina profile describes the Marxist-Leninist candidate "
+        "Fernand Deschamps as an engineer and geophysicist studying teaching at the University of "
+        "Toronto. Its 1995 profiles call the independent candidate of that name in Eglinton a "
+        "teacher, and its 1997 St. Paul's profile says the Marxist-Leninist candidate is a "
+        "teacher, as Elections Canada does in 1997 and 2000. The 1995 Eglinton and 1999 Don "
+        "Valley East records join the Person holding the 1993 run.",
     ),
 )
 
