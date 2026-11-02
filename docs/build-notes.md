@@ -72,16 +72,16 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 The release has 5,191 People. 5,186 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,568 Candidacies have a confirmed Person and 531 have none: 530
+candidacy in the release. 7,570 Candidacies have a confirmed Person and 529 have none: 528
 were reviewed and left unresolved for insufficient evidence, and one was rejected. Seven of the
-531 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+529 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 478 identity assertions
-over 1,043 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
+continuity, Council rosters and adjudicated curations. The curations are 480 identity assertions
+over 1,045 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
 confirmed earlier races in the release) and 1,633 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,019 confirmed, 611 unresolved and 3 rejected).
+`data/reference/identity_review_dispositions.csv` (1,021 confirmed, 609 unresolved and 3 rejected).
 A disposition is not applied where a career review or a person-record merge covers the same
 Candidacy. No blanket name merges are made, and a hold does not claim that two occurrences are
 different people.

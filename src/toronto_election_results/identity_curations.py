@@ -11877,9 +11877,9 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
-# Found in the 2026-11-01 review of federal and provincial holds: the 2004 run continues the
-# 2000 House of Commons run, while the earlier proposal named the Person holding the 2003
-# provincial run, a different office.
+# Found in the 2026-11-01 review of federal and provincial holds: each run continues earlier
+# House of Commons runs, while the earlier proposal named the Person holding a provincial run,
+# a different office.
 DEFAULT_IDENTITY_ASSERTIONS += (
     _anchored_continuity_assertion(
         "neil-spiegel-2004-house-continuity",
@@ -11902,6 +11902,56 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         "Park in 2000 and 2004, one general election apart, and no other Neil Spiegel ran for "
         "the House of Commons in Toronto. The 2004 record joins the Person that holds the 2000 "
         "run.",
+    ),
+    _anchored_continuity_assertion(
+        "judith-snow-2000-house-continuity",
+        "Judith A. Snow",
+        "per_18c7eb195c9955af91a398f9110f4453",
+        (
+            (
+                "can_f1d4389f228c5a53ae8d8de538300761",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Judith Snow",
+            ),
+        ),
+        (
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+            "https://www.proquest.com/docview/436918058",
+        ),
+        "Elections Canada gives Judith Snow's occupation as adult educator in 1993 and 1997, when "
+        "she ran in Don Valley West, and in 2000, when she ran for the Marxist-Leninist Party in "
+        "Don Valley East. The Toronto Star's 1993 Don Valley West profile describes her as \"a "
+        'self-employed adult educator". The earlier proposal named the Person holding her 1999 '
+        "provincial run, a different office, so this assertion joins the 2000 run to the Person "
+        "holding the 1993 and 1997 runs.",
+    ),
+    _anchored_continuity_assertion(
+        "janice-murray-2004-house-continuity",
+        "Janice Murray",
+        "per_5788d4ae602b58e2bd076d96e3a395e0",
+        (
+            (
+                "can_ae5ef8728d0f53dcb7c9b06508f0dd0e",
+                "ec-ge-38",
+                "canada_house_of_commons",
+                "mp",
+                "Janice Murray",
+            ),
+        ),
+        (
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+            "https://www.elections.ca/res/rep/off/37p/CAND.ZIP",
+            "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv",
+        ),
+        "Elections Canada gives Janice Murray's occupation as bindery operator in 1993, when she "
+        "ran for the Marxist-Leninist Party in Etobicoke Centre, and in 2004, when she ran for "
+        "the party in Etobicoke—Lakeshore. It gives print estimator for her 1997 Etobicoke Centre "
+        "run. The earlier proposal named the Person holding her 2003 provincial run, a different "
+        "office, so this assertion joins the 2004 run to the Person holding the 1993 and 1997 "
+        "runs.",
     ),
 )
 

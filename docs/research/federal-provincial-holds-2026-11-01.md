@@ -20,9 +20,9 @@ and votes), and applied the same standard. Proposals that rested on the Canadian
 alone, or on structural continuity under a common name, were held before that check. Dispositions
 are under reviewer `federal-provincial-holds-2026-11-01`.
 
-Of the 343 rows, 114 are confirmed to their targets and 229 remain unresolved. The sources also
-confirm 13 runs outside the scope: Knia Singh's 1997 Ward 18 council run (printed as George B.
-Singh), and 12 federal and provincial runs from before 2004 that earlier reviews left unresolved.
+Of the 343 rows, 115 are confirmed to their targets and 228 remain unresolved. The sources also
+confirm 14 runs outside the scope: Knia Singh's 1997 Ward 18 council run (printed as George B.
+Singh), and 13 federal and provincial runs from before 2004 that earlier reviews left unresolved.
 The same sources join 30 runs held by 22 other Person records to the Person they belong to.
 
 Three confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
@@ -45,10 +45,12 @@ each party's candidates in each election, often with a short biography and an el
 Many of those entries were later cut, and copies of the pages from 2006, 2007 and 2017 were read
 in their place. Elections Canada's result files for 1993, 1997, 2000 and 2004, which the build
 already reads, give each candidate's occupation. The Toronto Star's riding profiles for the 1993
-and 1997 federal elections, read in ProQuest, describe each candidate in a short paragraph. A
-second agent checked each new confirmation and join against its web sources and the Elections
-Canada files, and two explanations were reworded to say what the sources say. It could not open
-the ProQuest articles.
+and 1997 federal elections, read in ProQuest, describe each candidate in a short paragraph.
+Judith Snow's 2000 run and Janice Murray's 2004 run match the occupations Elections Canada gives
+for a Person other than the one the earlier review proposed, so curated assertions join them to
+that Person, as for Neil Spiegel. A second agent checked each new confirmation and join against
+its web sources and the Elections Canada files, and two explanations were reworded to say what
+the sources say. It could not open the ProQuest articles.
 
 ## Confirmed runs
 
@@ -129,6 +131,7 @@ In each basis, the target is the Person that the earlier review proposed for the
 | Sam Moini, 2025 Don Valley West (Ontario) | Sandford Borins's commentary on the 2025 Don Valley West race gives the PC candidate Sam Moini as a taxi company owner and Toronto Taxi Fleet Association president who ran for council in Willowdale in 2018, the target's Ward 18 run. The PC riding association's Don Valley West biography gives the same taxi association presidency. The source naming both runs is a personal blog by a retired University of Toronto professor. ([sandfordborins.com](https://www.sandfordborins.com/?p=4350), [dvw.ontariopc.ca](https://dvw.ontariopc.ca/?p=513)) |
 | Ignacio Mongrell, 2025 University—Rosedale (federal) | His federal campaign site for University-Rosedale gives him as Assistant Director at ICUBE and Chair of Positive Space at the University of Toronto, and the Annex Gleaner's April 2025 candidate questionnaire lists him as the Green candidate there for the April 28 vote. The Ontario Greens' January 2025 nomination release for University–Rosedale gives the same ICUBE and Positive Space roles, which ties him to the target's February 2025 provincial run. ([voteignacio.ca](https://voteignacio.ca), [gleanernews.ca](https://gleanernews.ca/?p=11076), [gpo.ca](https://gpo.ca/2025/01/17/ignacio-mongrell-nominated-as-ontario-greens-candidate-in-university-rosedale/)) |
 | Michael Mostyn, 2011 York Centre (Ontario) | CTV's 2011 riding profile of York Centre names Michael Mostyn as the PC candidate against Monte Kwinter and says he lost in 2006 as a federal candidate to Ken Dryden, the York Centre MP. That is the target's 2006 Conservative run in York Centre. ([toronto.ctvnews.ca](https://toronto.ctvnews.ca/riding-watch-contenders-target-kwinter-s-quarter-century-1.705922)) |
+| Janice Murray, 2004 Etobicoke—Lakeshore (federal) | Elections Canada gives Janice Murray's occupation as bindery operator in 1993, when she ran for the Marxist-Leninist Party in Etobicoke Centre, and in 2004, when she ran for the party in Etobicoke—Lakeshore. The curated assertion janice-murray-2004-house-continuity joins the 2004 run to the Person holding her 1993 and 1997 runs, since the earlier proposal named the Person holding her 2003 provincial run. ([Elections Canada 1993 results](https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip), [Elections Canada 1997 and 2000 candidates](https://www.elections.ca/res/rep/off/37p/CAND.ZIP), [Elections Canada 2004 candidates](https://www.elections.ca/scripts/OVR2004/23/data/table12.csv)) |
 | Roshan Nallaratnam, 2018 Scarborough—Guildwood (Ontario) | Global News in June 2018 describes Roshan Nallaratnam, the PC candidate in Scarborough-Guildwood (this run), as a Toronto police officer of nine years' service. Global News's 2015 Scarborough Southwest riding page gives the Conservative candidate Roshan Nallaratnam as a Toronto police officer, the target's run. ([globalnews.ca](https://globalnews.ca/news/4250965/pc-candidate-investigation-toronto-police-ontario-election/amp), [globalnews.ca](https://globalnews.ca/news/2184975/federal-election-2015-scarborough-southwest-riding)) |
 | Ali Naqvi, 2006 Etobicoke North (federal) | Wikipedia's page of NDP candidates in the 2006 federal election gives Ali Naqvi in Etobicoke North (3,820 votes, third) with the note that he was the Ontario NDP candidate in Don Valley West in 2003. That is the target's 2003 provincial run. ([Wikipedia: New Democratic Party candidates in the 2006 Canadian federal election](https://en.wikipedia.org/wiki/New_Democratic_Party_candidates_in_the_2006_Canadian_federal_election)) |
 | Thadsha Navaneethan, 2025 Scarborough North (Ontario) | Wikipedia's list of 2025 Ontario NDP candidates notes that the Scarborough North candidate (misspelt Hadsha) was the party's candidate in the 2023 Scarborough—Guildwood by-election, the target's run. The party's 2025 Scarborough North nomination release and its 2023 Scarborough—Guildwood release both describe her as a Human Rights Officer for OPSEU/SEFPO. ([Wikipedia: Ontario New Democratic Party candidates in the 2025 Ontario general election](https://en.wikipedia.org/wiki/Ontario_New_Democratic_Party_candidates_in_the_2025_Ontario_general_election), [ontariondp.ca](https://www.ontariondp.ca/news/local-champion-thadsha-navaneethan-nominated-ontario-ndp-candidate-scarborough-nort), [ontariondp.ca](https://www.ontariondp.ca/press-scarborough-guildwood)) |
@@ -215,11 +218,12 @@ earlier from the Toronto Star, are in the last section.
 | Lee Monaco, 2000 Trinity—Spadina (federal) | The Toronto Star's 1993 Trinity—Spadina profiles describe the Progressive Conservative candidate Lee Monaco as "a lawyer specializing in real estate and business law". Elections Canada gives her occupation as lawyer in 1993 and again in 2000, when she ran in the same riding for the Canadian Alliance. ([Toronto Star, ProQuest 436919109](https://www.proquest.com/docview/436919109), [Elections Canada 1993 results](https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip), [Elections Canada 1997 and 2000 candidates](https://www.elections.ca/res/rep/off/37p/CAND.ZIP)) |
 | Ron Robins, 1999 Trinity—Spadina (Ontario) | A 2007 copy of Wikipedia's list of Natural Law Party candidates in the 1999 Ontario election gives Ron Robins's Trinity—Spadina run with 274 votes and his 1995 St. George—St. David run with 151, matching the official results, and describes him as a former Bay Street investment analyst. ([2007 copy of Wikipedia](https://wikipedia2007.classicistranieri.com/n/a/t/Natural_Law_Party_candidates%2C_1999_Ontario_provincial_election_7f5c.html)) |
 | Judith A. Snow, 1997 Don Valley West (federal) | The Toronto Star's 1993 Don Valley West profiles describe the independent candidate Judith Snow as "a self-employed adult educator". Elections Canada gives Judith A. Snow's occupation as adult educator in 1993 and again in 1997, when she ran in the same riding for the Marxist-Leninist Party. ([Toronto Star, ProQuest 436918058](https://www.proquest.com/docview/436918058), [Elections Canada 1993 results](https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip), [Elections Canada 1997 and 2000 candidates](https://www.elections.ca/res/rep/off/37p/CAND.ZIP)) |
+| Judith A. Snow, 2000 Don Valley East (federal) | Elections Canada gives Judith Snow's occupation as adult educator in 1993 and 1997, when she ran in Don Valley West, and in 2000, when she ran for the Marxist-Leninist Party in Don Valley East. The Toronto Star's 1993 Don Valley West profile describes her as "a self-employed adult educator". The curated assertion judith-snow-2000-house-continuity joins the 2000 run to the Person holding the 1993 and 1997 runs, since the earlier proposal named the Person holding her 1999 provincial run. ([Elections Canada 1993 results](https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip), [Elections Canada 1997 and 2000 candidates](https://www.elections.ca/res/rep/off/37p/CAND.ZIP), [Toronto Star, ProQuest 436918058](https://www.proquest.com/docview/436918058)) |
 | Debbie Weberg, 1997 Don Valley West (federal) | A 2007 copy of Wikipedia's list of Natural Law Party candidates in the 1999 Ontario election gives Debbie Weberg's 1997 Don Valley West run with 173 votes and her 1993 Eglinton—Lawrence run with 384, matching the official results. It describes her as an administrative assistant at an investment firm and a consultant to the proposed Maharishi Veda Land theme park, as the Toronto Star's 1993 Eglinton—Lawrence profile did. ([2007 copy of Wikipedia](https://wikipedia2007.classicistranieri.com/n/a/t/Natural_Law_Party_candidates%2C_1999_Ontario_provincial_election_7f5c.html), [Toronto Star, ProQuest 436922156](https://www.proquest.com/docview/436922156)) |
 
 ## What stays unresolved
 
-For most of the 229 rows no public source describes the candidate beyond the results. Many are
+For most of the 228 rows no public source describes the candidate beyond the results. Many are
 minor-party and independent candidates, and some have common names whose runs cannot be told apart.
 These rows came close and are worth another look:
 
@@ -241,6 +245,9 @@ These rows came close and are worth another look:
   immigration lawyer in 2008.
 - Ryan Kidd's 2011 federal run in Don Valley East, seven years after his last Christian Heritage
   run there. Wikipedia's 2011 list gives no occupation for him.
+- Janice Murray's 2000 Etobicoke—Lakeshore run and her runs there from 2006 on. Elections Canada
+  gives her as an industrial worker in 2000, a label eight Marxist-Leninist candidates used that
+  year, and its listings from 2006 on were not read in this pass.
 - Fernand Deschamps's 1997 and 2000 runs and Guy Hunter's 2000 run, from before 2004. The Star's
   1993 profile says Deschamps was studying teaching at U of T, and Elections Canada gives him as a
   teacher in 1997 and 2000. Elections Canada gives Guy Hunter as a law student in 1993 and a
