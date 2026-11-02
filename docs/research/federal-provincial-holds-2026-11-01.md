@@ -199,15 +199,18 @@ These rows came close and are worth another look:
   immigration lawyer in 2008.
 
 The Toronto Star's riding coverage, read in ProQuest, may settle several of these. A first look
-settled the two runs below.
+settled two of the rows, and two 1997 federal runs from the earlier review, below.
 
 ## Toronto Star
 
-These two rows were read in ProQuest (University of Toronto access) after the web pass, and their
-dispositions are under the same reviewer. The quotes come from the full text of each article. The
-second agent could not check them, because ProQuest needs a login.
+These rows were read in ProQuest (University of Toronto access) after the web pass, and their
+dispositions are under the same reviewer. The last two are 1997 federal runs that the pre-2004
+federal review left unresolved, outside this pass's scope. The quotes come from the full text of
+each article. The second agent could not check them, because ProQuest needs a login.
 
 | Candidacy | Basis |
 |---|---|
 | Maureen Harquail, 2011 St. Paul's (federal) | The Star's report on the result ([864540106](https://www.proquest.com/docview/864540106), 3 May 2011) describes the Conservative candidate as "a relative political newcomer and lawyer who specializes in environmental law" and says she "was once a member of the Canadian Forces Naval Reserve". Stephen Taylor's 2007 post on the Willowdale candidate, the target's 2008 run, and the 2015 Don Valley East profile give the same environmental prosecution work and reserve service. |
 | Heather Jewell, 2008 St. Paul's (federal) | The Star's riding profile ([439495661](https://www.proquest.com/docview/439495661), 9 October 2008) gives the Conservative candidate as 45 and says she "is running for federal office for the second time". Its June 2004 Scarborough Southwest profile ([438719033](https://www.proquest.com/docview/438719033)) gives the Conservative candidate Heather Jewell as 41. That is the target's run, and the only earlier federal run by this name. |
+| Charles Donley, 1997 Etobicoke—Lakeshore (federal) | The Star's 1997 riding profiles ([437661258](https://www.proquest.com/docview/437661258), 30 May 1997) describe the Progressive Conservative candidate as "an expert in international trade". Its 1993 Etobicoke Centre profiles, the target's run, call the Conservative candidate "a banker" whose "experience in global trade" would help him promote Canadian trade ([436921016](https://www.proquest.com/docview/436921016)) and "senior manager of international trade" at his bank ([436913690](https://www.proquest.com/docview/436913690)). |
+| John Pope, 1997 Don Valley East (federal) | The Star's 1997 riding profiles ([437661222](https://www.proquest.com/docview/437661222), 30 May 1997) describe the Reform candidate as "a retired advertising executive and World War II vet". Its September 1993 Scarborough Centre story ([436907038](https://www.proquest.com/docview/436907038)), the target's run, gives Reform's John Pope as 70 and says he "spent most of his life in newspaper advertising". |
