@@ -6068,7 +6068,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
     ),
     _anchored_same_office_continuity_assertion(
         "mehmet-ali-yagiz-ontario-exact-scope",
-        "MEHMET ALI YAGIZ",
+        "Mehmet Ali Yagiz",
         "per_34f86027a4e85065b3f8628892cf286b",
         "ontario_legislative_assembly",
         "mpp",
@@ -11906,7 +11906,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
     ),
     _anchored_continuity_assertion(
         "judith-snow-2000-house-continuity",
-        "Judith A. Snow",
+        "Judith Snow",
         "per_18c7eb195c9955af91a398f9110f4453",
         (
             (
