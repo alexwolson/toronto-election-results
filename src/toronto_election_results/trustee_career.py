@@ -624,7 +624,12 @@ def reconcile_trustee_identity_decisions(
     reference_dir: str | Path,
     assertions: tuple[CuratedIdentityAssertion, ...],
 ) -> pd.DataFrame:
-    """Supersede older proposals with the completed trustee career review."""
+    """Supersede older proposals with the completed trustee career review.
+
+    A career-review hold only records that no source tied the 2026 candidate to an earlier
+    run. A later occurrence review of the same candidacy in the dispositions file, such as a
+    structural confirmation under the dataset-wide standard, replaces that hold.
+    """
 
     asserted_candidacies = {
         occurrence.candidacy_id
@@ -635,7 +640,6 @@ def reconcile_trustee_identity_decisions(
     retained = identity_decisions.loc[
         ~identity_decisions["candidacy_id"].isin(asserted_candidacies)
     ].copy()
-    return pd.concat(
-        [retained, build_trustee_hold_decisions(reference_dir)],
-        ignore_index=True,
-    )
+    holds = build_trustee_hold_decisions(reference_dir)
+    holds = holds.loc[~holds["candidacy_id"].isin(retained["candidacy_id"])]
+    return pd.concat([retained, holds], ignore_index=True)

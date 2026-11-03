@@ -508,11 +508,11 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1633
+    assert len(original_decisions) == 1638
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "confirmed": 892,
-        "unresolved": 738,
-        "rejected": 3,
+        "confirmed": 1138,
+        "unresolved": 496,
+        "rejected": 4,
     }
     decisions = exclude_superseded_identity_decisions(
         original_decisions, REPO_ROOT / "data" / "reference"
@@ -1080,10 +1080,11 @@ def test_2026_proposals_are_settled_from_candidate_guides_and_election_pages():
         REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"
     ).set_index("candidacy_id")
     reviewed = decisions.loc[decisions["reviewer"].eq("results-2026-proposals-2026-10-30")]
-    # John Kladitis's 2026 row was settled later, with his other runs.
-    assert len(reviewed) == 58
+    # John Kladitis's 2026 row was settled later, with his other runs, and Joseph Osuji's
+    # 2026 mayoral run was settled later on same-office continuity with his 2018 run.
+    assert len(reviewed) == 57
     assert results.loc[reviewed["candidacy_id"], "election_date"].eq("2026-10-26").all()
-    assert reviewed["decision"].value_counts().to_dict() == {"confirmed": 52, "unresolved": 6}
+    assert reviewed["decision"].value_counts().to_dict() == {"confirmed": 52, "unresolved": 5}
     accepted = reviewed.loc[reviewed["decision"].eq("confirmed")]
     assert accepted["confidence"].eq("high").all()
     assert (
@@ -1093,7 +1094,6 @@ def test_2026_proposals_are_settled_from_candidate_guides_and_election_pages():
     held = reviewed.loc[reviewed["decision"].eq("unresolved"), "candidacy_id"]
     assert set(results.loc[held, "candidate_name"]) == {
         "Peter De Marco",
-        "Joseph Osuji",
         "Bob Murphy",
         "Michael Mitchell",
         "Adam Pham",
