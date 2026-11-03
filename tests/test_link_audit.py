@@ -192,15 +192,17 @@ def test_link_audit_fixes_join_the_missed_links():
 
 
 def test_link_audit_keeps_party_label_pairs_apart():
-    """A shared Marxist-Leninist candidacy is not a distinctive fact, so these stay apart."""
+    """A shared Marxist-Leninist candidacy is not a distinctive fact, so these stay apart.
+
+    Julie Northrup's 1993 and 1995 runs, the other pair the second check rejected, were later
+    joined by the same-name review on an occupation: Elections Canada gives the 1993 candidate as
+    a sales representative and the Toronto Star's 1995 profile calls her a sales rep.
+    """
 
     people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
         "person_id"
     )
     for person_id in (
-        # Julie Northrup, 1993 federal and 1995 provincial.
-        "per_2224637970bc5043a02ee02aebffc073",
-        "per_75b258215c26544d9e0a8f7f60f911c0",
         # Diane Johnston, 1993 federal and 1995 and 1999 provincial.
         "per_62d320a0d0675e4fa19f854fab58d8bd",
         "per_a8ae022c8024542997fcd84b36b6f9c5",

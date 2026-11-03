@@ -310,3 +310,38 @@ def test_extension_aims_a_name_only_proposal_at_the_same_office_holder():
     assert added["link_status"] == "proposed"
     assert added["person_id"] == "per_trustee"
     assert json.loads(added["evidence"])["review_scope"] == "existing_registry_same_body_and_office"
+
+
+def test_extension_closes_an_incumbent_hold_once_the_flag_is_corrected():
+    from toronto_election_results.identity_review import extend_identity_review
+
+    flagged = _row("c_1999", "1999-06-03", "Jo Roe", incumbent=True, body="ontario", office="mpp")
+    first = bootstrap_identity_review(pd.DataFrame([flagged]), release_id="v1")
+    holds = first.candidacy_person_links.loc[
+        first.candidacy_person_links["method"].eq("incumbent_without_prior_elected_match")
+    ]
+    assert len(holds) == 1
+
+    unchanged = extend_identity_review(
+        pd.DataFrame([flagged]),
+        first.people,
+        first.candidacy_person_links,
+        release_id="v2",
+    )
+    still = unchanged.candidacy_person_links.loc[
+        unchanged.candidacy_person_links["method"].eq("incumbent_without_prior_elected_match")
+    ]
+    assert still["valid_to_release"].isna().all()
+
+    corrected = dict(flagged, incumbent_reported=False)
+    review = extend_identity_review(
+        pd.DataFrame([corrected]),
+        first.people,
+        first.candidacy_person_links,
+        release_id="v2",
+    )
+    links = review.candidacy_person_links
+    closed = links.loc[links["method"].eq("incumbent_without_prior_elected_match")]
+    assert closed["valid_to_release"].tolist() == ["v2"]
+    anchor = links.loc[links["valid_to_release"].isna()]
+    assert anchor["link_status"].tolist() == ["confirmed"]

@@ -104,6 +104,8 @@ def apply_identity_review_decisions(
     ``confirmed`` is the only decision that publishes a Person ID on the modelling
     table. ``unresolved`` retains the candidate Person for audit after an
     insufficient-evidence review, while ``rejected`` records a disproved target.
+    An ``unresolved`` decision may also hold a run that the pipeline linked
+    automatically, but not one that a curated assertion linked.
     Replaying the same decisions is byte-stable and does not append duplicate rows.
     """
 
@@ -156,8 +158,13 @@ def apply_identity_review_decisions(
             active_claims["person_id"].eq(target_person_id)
             & active_claims["method"].astype("string").str.startswith("curated_review_")
         ]
-        can_supersede_confirmation = (
-            decision == "confirmed" and len(matching_automated_confirmation) == 1
+        # A review may confirm a link the pipeline made, or hold one whose only support falls
+        # short of the standard; a curated link can only be confirmed again.
+        automated = ~matching_automated_confirmation["method"].astype("string").str.startswith(
+            "curated_"
+        )
+        can_supersede_confirmation = len(matching_automated_confirmation) == 1 and (
+            decision == "confirmed" or (decision == "unresolved" and bool(automated.all()))
         )
         can_revise_review = len(matching_reviewed_claim) == 1
         if len(active_claims) != 1 or (

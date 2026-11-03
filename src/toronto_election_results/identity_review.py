@@ -615,8 +615,10 @@ def extend_identity_review(
     Bootstrap evidence is recalculated for the cumulative result set, then anchored
     to every overlapping active confirmed Person from the prior release.  Existing
     Person and link rows are retained byte-for-byte; only previously unseen active
-    Candidacies receive new bootstrap rows.  This makes audited IDs and closed link
-    history operational inputs to later releases.
+    Candidacies receive new bootstrap rows.  The one exception is an
+    incumbent-without-match hold whose incumbent flag a source correction has removed,
+    which is closed at ``release_id``.  This makes audited IDs and closed link history
+    operational inputs to later releases.
     """
 
     validate_identity_tables(people, candidacy_person_links)
@@ -769,9 +771,23 @@ def extend_identity_review(
                 review_scope="existing_registry_same_body_and_office",
             )
 
-    merged_links = pd.concat(
-        [candidacy_person_links.copy(), new_links], ignore_index=True, sort=False
+    # An incumbent-without-match hold rests on the authority's incumbent flag, which is
+    # recomputed each build. When a pinned source correction removes the flag, the hold no
+    # longer has a premise and is closed.
+    still_flagged = set(
+        bootstrap.candidacy_person_links.loc[
+            bootstrap.candidacy_person_links["method"].eq("incumbent_without_prior_elected_match"),
+            "candidacy_id",
+        ].astype(str)
     )
+    carried = candidacy_person_links.copy()
+    stale = (
+        carried["valid_to_release"].isna()
+        & carried["method"].eq("incumbent_without_prior_elected_match")
+        & ~carried["candidacy_id"].astype(str).isin(still_flagged)
+    )
+    carried.loc[stale, "valid_to_release"] = release_id
+    merged_links = pd.concat([carried, new_links], ignore_index=True, sort=False)
     merged_people = merged_people.sort_values("person_id", kind="stable").reset_index(drop=True)
     merged_links = merged_links.sort_values(
         ["candidacy_id", "valid_from_release", "link_status", "person_id"],

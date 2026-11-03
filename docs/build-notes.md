@@ -70,19 +70,19 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,174 People. 5,169 hold at least one Candidacy, and five hold only an Office
+The release has 5,104 People. 5,099 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,688 Candidacies have a confirmed Person and 411 have none: 409
+candidacy in the release. 7,693 Candidacies have a confirmed Person and 406 have none: 404
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
-411 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+406 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results. Each held run's disposition names the later
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 501 identity assertions
-over 1,075 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
-candidates have confirmed earlier races in the release) and 1,638 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,139 confirmed, 495 unresolved and 4 rejected).
+continuity, Council rosters and adjudicated curations. The curations are 572 identity assertions
+over 1,156 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+candidates have confirmed earlier races in the release) and 1,639 occurrence-level dispositions in
+`data/reference/identity_review_dispositions.csv` (1,139 confirmed, 496 unresolved and 4 rejected).
 A disposition is not applied where a career review's confirmation or a person-record merge
 covers the same Candidacy, but a later disposition does replace a career review's hold. No
 blanket name merges are made, and a hold does not claim that two occurrences are different
@@ -100,8 +100,12 @@ An audit of a random sample of links
 ([`docs/verification/link-audit-2026-11-03.md`](verification/link-audit-2026-11-03.md)) found no
 join of two different people among 120 sampled joins, which puts a one-sided 95% upper bound of
 3.9% on the share of false merges. Of 40 sampled pairs of Persons with the same first and last
-name, 15 were one individual, and those have been merged. The 152 same-name pairs that were not
-sampled have not been reviewed; at the sampled rate, about 57 of them are one individual.
+name, 15 were one individual, and those have been merged. A review of all 177 same-name pairs
+that remained
+([`docs/verification/same-name-review-2026-11-03.md`](verification/same-name-review-2026-11-03.md))
+joined 66 of their 155 name groups under the same standard and a second check. That leaves 103
+same-name pairs: 99 in groups that no source settled, two in groups joined in part and two that
+are different people.
 
 The Council roster step matches each roster member to a Candidacy by exact name. It reads the
 1997–2002 archive names given name first, as the archive printed them. A roster entry that no
@@ -135,6 +139,8 @@ The City's 2017 Ward 42 by-election workbook prints declined, rejected and under
 the candidates, and the council parser skips them. Elections Ontario's 2011 candidate CSV swaps the
 totals of Willowdale's two Brown candidates; a pinned correction in the Ontario adapter restores
 them and fails if the source figures change. See `docs/research/result-corrections-2026-10-31.md`.
+Its 2006 Parkdale—High Park by-election file codes the Libertarian Jim McIntosh as Liberal, beside
+the Liberal candidate; a pinned correction recodes him.
 
 The City's archived index of past results lists every election it ran from 1998, so event
 enumeration is complete from 1998. The former municipalities left no comparable index, so their
@@ -147,7 +153,12 @@ Trustee incumbency is recorded only for the 20 sitting trustees who ran in 2026.
 trustee `incumbent` stays null until a complete historical roster is acquired.
 
 Elections Canada's raw incumbent marker is preserved as `incumbent_reported`, but it is not treated
-as final-sitting-roster evidence: the source marks some former MPs who no longer held office.
+as final-sitting-roster evidence: the source marks some former MPs who no longer held office. Two
+flags that contradict the record are corrected by pinned corrections that fail the load if the
+source changes: Elections Canada's 2015 file marks Natalie Hunt, the Green candidate in Don Valley
+West, as an incumbent beside the sitting member, and Elections Ontario's 1999 file marks John
+Sewell, who never sat in the legislature. See
+[`docs/verification/same-name-review-2026-11-03.md`](verification/same-name-review-2026-11-03.md).
 Modelled federal incumbency is therefore true only when a confirmed Person's prior election win has
 not been superseded within that parliamentary cycle. Federal non-incumbents stay null because those
 event rosters are intentionally incomplete.

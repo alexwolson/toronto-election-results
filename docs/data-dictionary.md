@@ -98,7 +98,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `coverage_status` | enum | never | `complete`, `partial`, or `source_missing`; independent of legal outcome. A `partial` Contest may carry null `votes` where its only source omits them. |
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
-| `incumbent_reported` | boolean | authority does not report it | Unmodified source flag; the modelled `incumbent` field uses project semantics. |
+| `incumbent_reported` | boolean | authority does not report it | Source flag, except two pinned corrections of flags that contradict the record (Natalie Hunt, 2015; John Sewell, 1999); the modelled `incumbent` field uses project semantics. |
 | `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies; null until predecessor rosters are acquired. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
 | `source_authority` | string | never | Organization responsible for the row's record: the official authority, or `Toronto Star` where only the newspaper's printed results survive (most 1994 and 1997 trustee Contests, eight 1994 council Contests). |
@@ -157,11 +157,12 @@ adjudicated; `unresolved` may retain the reviewed candidate Person when evidence
 
 Every row in this release is current: `valid_from_release` is the release ID and
 `valid_to_release` is null. A later release closes a superseded row instead of deleting it, so
-merges and corrections stay visible. A Candidacy has one current link, except that 63 Candidacies
+merges and corrections stay visible. A Candidacy has one current link, except that 27 Candidacies
 also carry an `unresolved` row without a Person, with method `incumbent_without_prior_elected_match`:
 the authority marked the Candidacy as an incumbent and the release has no earlier elected
-exact-name match in the same body and office. That row does not change
-`election_results.person_id`.
+exact-name match in the same body and office. Twenty-four are sitting members who ran at the 1995
+Ontario election, the first in the release, and the other three are members whose earlier win is
+printed under another form of their name. That row does not change `election_results.person_id`.
 
 ### `parties`
 
@@ -339,7 +340,9 @@ Contest.
 Elections Ontario's 2011 candidate CSV gives Willowdale's two Brown candidates each other's totals.
 `ontario.VOTE_CORRECTIONS` restores 5,556 votes to Alexander Brown (NDP) and 297 to Amy Brown
 (Freedom Party), following the Toronto Star's election-night table and Wikipedia's riding page.
-The load fails if Elections Ontario changes either published figure. The City's 2017 Ward 42
+The load fails if Elections Ontario changes either published figure. Its 2006 Parkdale—High Park
+by-election file codes the Libertarian Jim McIntosh as Liberal; `ontario.PARTY_CODE_CORRECTIONS`
+recodes him, and the load fails if the published code changes. The City's 2017 Ward 42
 by-election workbook prints declined, rejected and under-vote lines below the candidates; the
 parser skips them. See `docs/research/result-corrections-2026-10-31.md`.
 

@@ -80,6 +80,55 @@ VOTE_CORRECTIONS = (
 )
 
 
+@dataclass(frozen=True)
+class IncumbentFlagCorrection:
+    """A pinned fix for a member-of-the-previous-legislature flag that the official CSV gets wrong.
+
+    ``source_flag`` is what the CSV says; a different value fails the load, so a corrected
+    upstream file is noticed instead of being overwritten.
+    """
+
+    polling_date: date
+    district_number: int
+    candidate_name: str
+    source_flag: bool
+    corrected_flag: bool
+
+
+# Elections Ontario's 1999 candidates CSV marks John Sewell, an independent in Toronto
+# Centre-Rosedale, as a member of the previous legislature.  He never sat in it: Wikipedia's list
+# of the members of the 36th Parliament of Ontario (1995 to 1999,
+# https://en.wikipedia.org/wiki/36th_Parliament_of_Ontario) does not include him, and his
+# biography (https://en.wikipedia.org/wiki/John_Sewell) gives him as a former mayor of Toronto
+# who finished third in that race.
+INCUMBENT_FLAG_CORRECTIONS = (
+    IncumbentFlagCorrection(date(1999, 6, 3), 90, "JOHN SEWELL", True, False),
+)
+
+
+@dataclass(frozen=True)
+class PartyCodeCorrection:
+    """A pinned fix for a political-interest code that the official CSV gets wrong.
+
+    ``source_code`` is what the CSV says; a different value fails the load, so a corrected
+    upstream file is noticed instead of being overwritten.
+    """
+
+    polling_date: date
+    district_number: int
+    candidate_name: str
+    source_code: str
+    corrected_code: str
+
+
+# Elections Ontario's candidates CSV for the 2006 Parkdale-High Park by-election codes both
+# Sylvia Watson and Jim McIntosh as Liberal (L), while its party list for that by-election names
+# the Ontario Libertarian Party (LTN) and no candidate carries that code.  Wikipedia's riding page
+# (https://en.wikipedia.org/wiki/Parkdale%E2%80%94High_Park_(provincial_electoral_district))
+# gives Watson as the Liberal and McIntosh as the Libertarian.
+PARTY_CODE_CORRECTIONS = (PartyCodeCorrection(date(2006, 9, 14), 64, "JIM MCINTOSH", "L", "LTN"),)
+
+
 REPORTS = (
     ReportSpec(5, 521, 514, 519),
     ReportSpec(4, 510, 503, 508),
@@ -798,6 +847,18 @@ def parse_official_results(
         if (correction.polling_date, correction.district_number) in event_lookup
     }
     applied: set[tuple[date, int, str]] = set()
+    flag_corrections = {
+        (correction.polling_date, correction.district_number, correction.candidate_name): correction
+        for correction in INCUMBENT_FLAG_CORRECTIONS
+        if (correction.polling_date, correction.district_number) in event_lookup
+    }
+    applied_flags: set[tuple[date, int, str]] = set()
+    code_corrections = {
+        (correction.polling_date, correction.district_number, correction.candidate_name): correction
+        for correction in PARTY_CODE_CORRECTIONS
+        if (correction.polling_date, correction.district_number) in event_lookup
+    }
+    applied_codes: set[tuple[date, int, str]] = set()
     source_detail = ";".join(
         (
             report_csv_url(report.report_group_id, report.candidates_output_id),
@@ -821,6 +882,16 @@ def parse_official_results(
             raise ValueError(f"election-type mismatch for {event.event_id}")
 
         code = "" if pd.isna(row.PoliticalInterestCode) else str(row.PoliticalInterestCode).strip()
+        code_key = (key[0], key[1], str(row.NameOfCandidates).strip())
+        code_correction = code_corrections.get(code_key)
+        if code_correction is not None:
+            if code != code_correction.source_code:
+                raise ValueError(
+                    f"Elections Ontario now reports party code {code!r} for {code_key[2]} "
+                    f"({key[0]}, district {key[1]}); review the pinned party-code correction"
+                )
+            code = code_correction.corrected_code
+            applied_codes.add(code_key)
         if not code:
             affiliation_status = "not_reported"
             party_name = pd.NA
@@ -851,6 +922,15 @@ def parse_official_results(
                 )
             votes = correction.corrected_votes
             applied.add((key[0], key[1], candidate_name))
+        flag_correction = flag_corrections.get((key[0], key[1], candidate_name))
+        if flag_correction is not None:
+            if pd.isna(incumbent) or bool(incumbent) != flag_correction.source_flag:
+                raise ValueError(
+                    f"Elections Ontario now reports incumbent={incumbent} for {candidate_name} "
+                    f"({key[0]}, district {key[1]}); review the pinned flag correction"
+                )
+            incumbent = flag_correction.corrected_flag
+            applied_flags.add((key[0], key[1], candidate_name))
         rows.append(
             {
                 "event_id": event.event_id,
@@ -879,6 +959,16 @@ def parse_official_results(
     unapplied = sorted(set(corrections) - applied)
     if unapplied:
         raise ValueError(f"pinned vote correction matched no Elections Ontario row: {unapplied[0]}")
+    unapplied_flags = sorted(set(flag_corrections) - applied_flags)
+    if unapplied_flags:
+        raise ValueError(
+            f"pinned incumbent-flag correction matched no Elections Ontario row: {unapplied_flags[0]}"
+        )
+    unapplied_codes = sorted(set(code_corrections) - applied_codes)
+    if unapplied_codes:
+        raise ValueError(
+            f"pinned party-code correction matched no Elections Ontario row: {unapplied_codes[0]}"
+        )
 
     result = pd.DataFrame(rows, columns=RESULT_COLUMNS)
     if result.empty:

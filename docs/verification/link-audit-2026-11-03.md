@@ -11,8 +11,8 @@ were confirmed by agents working only from sources they found themselves, and th
 neither confirmed nor refuted. Missed links are more common. Of 40 sampled pairs of Persons with
 the same first and last name, 15 were one individual after a second check of the evidence, which
 puts the share across all 196 such pairs at 37.5% (95% interval 23.8% to 52.9%). Those 15 have been
-merged. The release now has 177 same-name pairs, and the 152 that were not sampled have not been
-reviewed.
+merged. The 177 same-name pairs left after those merges were then reviewed in full (see Remaining
+same-name pairs).
 
 ## Design
 
@@ -147,10 +147,12 @@ These came up during the audit and are not fixed here.
   candidate as a retired meat packer. The database groups candidates by name, and its entry is
   named for the 2006 federal candidate John Brian Steele, whom Elections Canada lists as a retired
   meat packer. The release's standard treats such databases as leads, and the audit found no other
-  source on the 2003 candidate, so this link does not meet the standard.
+  source on the 2003 candidate, so this link does not meet the standard. The same-name review now
+  holds the run.
 - The release marks John Sewell as the incumbent in his 1999 Toronto Centre—Rosedale run and so
   gives him an MPP tenure in `office_tenures`. He never sat in the legislature. The flag comes
-  from Elections Ontario's results file, and the release has no way to override it.
+  from Elections Ontario's results file; the same-name review added a pinned correction that clears
+  it.
 - The release labels the 2000 federal contest in Toronto—Danforth with the riding's earlier name,
   Broadview—Greenwood. Elections Canada reports the 2000 results under Toronto—Danforth.
 - An Ellery Hollingsworth and a Jeremy Hollingsworth both ran for the TDSB in 2006, and a Jeremy
@@ -171,8 +173,8 @@ falls outside it, and the audit gives no estimate for those.
 
 ## Remaining same-name pairs
 
-The release now has 177 same-name pairs. Twenty-five were in the sample and stay apart for lack of
-evidence. If the sampled rate holds for the other 152, about 57 of them are one person (36 to 80 at
-the ends of the 95% interval). They include Mary Hynes and Mary Trapani Hynes, Wiktor Borkowski
-and Wiktor Pawel Borkowski, and Franz Cauchi and Franz L. Cauchi. Until they are reviewed with the
-same method, this estimate stands as a known limitation of the release.
+After these fixes the release had 177 same-name pairs: 25 from the sample that stayed apart for lack
+of evidence and 152 that were not sampled. At the sampled rate about 57 of the 152 were one person
+(36 to 80 at the ends of the 95% interval). All 177 were then reviewed with the same standard and a
+second check ([`same-name-review-2026-11-03.md`](same-name-review-2026-11-03.md)), which joined 66
+of their 155 name groups and left 103 same-name pairs.
