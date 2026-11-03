@@ -5348,7 +5348,7 @@ DEFAULT_IDENTITY_ASSERTIONS += (
     ),
     _anchored_same_office_continuity_assertion(
         "stan-grzywna-ontario-exact-scope",
-        "STAN GRZYWNA",
+        "Stan Grzywna",
         "per_e33403f4b85c50f398797c2582f79047",
         "ontario_legislative_assembly",
         "mpp",
