@@ -6,7 +6,9 @@ them school trustees. The second is the held council, mayor and trustee runs tha
 whose own run or whose proposed Person's runs fall between 2010 and 2019. Research agents searched
 those in sources the earlier passes had not used: Metroland's community papers, Torontoist,
 Global News's ward pages, Toronto blogs that profiled candidates, the Catholic Register and
-community media. Dispositions are under reviewer `municipal-holds-2026-11-03`.
+community media. Later in the pass a data sweep tested every held municipal run for same-office
+continuity, and a second wave of research agents took the rows the first wave had not reached.
+Dispositions are under reviewer `municipal-holds-2026-11-03`.
 
 The standard is the one used throughout: a person-specific source, or strong structural continuity
 for the same office type (the same, a successor or an overlapping ward, a short gap, an uncommon
@@ -15,9 +17,11 @@ source. A second agent checked every confirmation against the release, the ward 
 `data/out/electoral_districts.csv` and the earlier research notes, and against the logged quotes
 for the articles read in ProQuest, which it could not open.
 
-Twenty-one runs are confirmed. Two of them are elected trustee runs settled from Metroland articles read
-in ProQuest, and a 2006 mayoral run is settled by a blog's exact vote count. The other eighteen rest
-on same-office continuity.
+Thirty-one runs are confirmed and one proposed link is rejected. Two of the confirmations are elected
+trustee runs settled from Metroland articles read in ProQuest, a 2006 mayoral run is settled by a
+blog's exact vote count, and a 2016 trustee by-election run is settled by a candidate record that
+names the candidate's 2014 council run. The other twenty-seven rest on same-office continuity:
+eighteen proposed by the research agents and nine found by a sweep of the release.
 
 ## Elected runs
 
@@ -46,9 +50,16 @@ The other five stay without a Person:
 - John Campbell, 1994 Etobicoke Board of Education Ward 6. The Mirror's November 2003 story names
   the TDSB's Ward 2 trustee John Campbell, and the Etobicoke Guardian's 2014 council story calls him
   the former TDSB chair, but neither mentions the Etobicoke board.
-- Tony Marzilli (1994 separate school board) and Mark Stefanini (2000 TCDSB Ward 1). ProQuest asked
-  for a robot check partway through, and these were not searched further.
-- Mohamed Firin (2025 York South—Weston). The web search budget ran out before his row was reached.
+- Tony Marzilli, 1994 Metropolitan Separate School Board Ward 10, proposed for the Person holding
+  his 1997 council run. The Star and the Metroland papers in ProQuest give only candidate lists and
+  an arts group's report card, which describe neither candidate.
+- Mark Stefanini, 2000 TCDSB Ward 1, proposed for the Person holding the 1999 Family Coalition
+  Party run in Etobicoke North. The Star's 2001 stories call him the Ward 1 trustee and report his
+  defence of Marian Academy in Rexdale, but none mentions the provincial run, and the Star's 1999
+  Etobicoke North story gives the Family Coalition candidate as Frank Stefanini.
+- Mohamed Firin, 2025 York South—Weston, proposed for the Person holding the 2016 TDSB Ward 1
+  by-election run. His Wikipedia biography and his Legislative Assembly page describe his work
+  before 2025 but no earlier campaign.
 
 ## Same-office continuity
 
@@ -85,11 +96,61 @@ None of those reasons separates the runs, and each rationale says what the earli
 Michael Nicula's 2023 mayoral by-election run follows from his 2018 run; the second agent pointed
 out that it has the same structure.
 
+### Sweep of the release
+
+Earlier in this pass the structural test was applied only to rows a research agent raised. A script
+then tested every held council, mayor and trustee run against its proposed Person's runs for the
+same office: the same ward, or wards overlapping by at least a fifth of either ward's area
+(trustee wards through the crosswalk to council wards), no more than one general election
+between, and the name of any other Person or held run. It found 18 candidates. A second agent
+checked each against the release, recomputed the overlaps and read the earlier notes, and accepted
+nine.
+
+| Candidacy | Basis |
+|---|---|
+| Mahbubul Alam, 2018 TDSB Ward 10 | Both runs are for TDSB trustee downtown, in the June 2016 Ward 14 by-election and the 2018 election in Ward 10, with no general election between. By the trustee ward crosswalk and the ward boundaries in the release, about half of the 2016 ward lies within the 2018 ward, and the by-election winner, Chris Moise, won the 2018 seat. No one else in the release has the name and no source describes either run, so the link is structural. ([City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip), [City of Toronto elections](https://www.toronto.ca/city-government/elections/)) |
+| Amanda Cain, 2018 Ward 25 — Scarborough-Rouge Park | Both runs are for council in Scarborough, in the February 2017 Ward 42 by-election and the 2018 election in Ward 25 (Scarborough-Rouge Park), with no general election between. By the ward boundaries in the release, 70 per cent of old Ward 42 lies within the 2018 Ward 25. No one else in the release has the name, and the later federal runs under it are held for the same Person. Earlier passes found only generic descriptions and no source that names both runs, so the link is structural. ([City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip), [City of Toronto elections](https://www.toronto.ca/city-government/elections/)) |
+| Sonny Cho, 2018 Ward 18 — Willowdale | Both runs are for council in Willowdale, in 2010 (Ward 24) and 2018 (Ward 18), one general election apart. By the ward boundaries in the release, about a quarter of old Ward 24 lies within the 2018 Ward 18. No one else in the release has the name. The Star coverage found in the 2018-2022 backlog describes both candidates with Liberal ties, and no source names both runs, so the link is structural. ([City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip), [City of Toronto 2010 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/6fbfaab0-bb84-442a-8e4b-1c14d4c10d6d/download/2010-results.zip)) |
+| Taras Kulish, 2018 Ward 4 — Parkdale-High Park | Both runs are for council in consecutive elections (2014 and 2018), and by the ward boundaries in the release old Ward 13 lies entirely within the 2018 Ward 4 (Parkdale-High Park). The name is rare and no other Taras Kulish appears in the release. Earlier passes found only generic descriptions and no source that names both runs, so the link is structural. ([City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip), [City of Toronto 2014 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/d59b5a52-33c3-4380-a136-82707e4d9aae/download/2014-results.zip)) |
+| Suzanne McCormick, 2006 Ward 30 | Both runs are for council in Ward 30 in consecutive elections (2003 and 2006), on the same boundaries, under a name that no one else in the release has. The Star's 2006 profile gives no occupation and no source describes both runs, so same-office continuity applies. ([City of Toronto 2006 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3fb1227c-a279-4523-a1aa-f00190ba717f/download/2006-results.zip), [City of Toronto 2003 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/1ed53c9d-a316-465e-96ce-e72be74f8aa9/download/2003-results.zip)) |
+| Ali Mohamed-Ali, 2018 TDSB Ward 1 | Both runs are for TDSB trustee in Ward 1 (Etobicoke North), in the July 2016 by-election and the 2018 election, with no general election between. By the trustee ward crosswalk and the ward boundaries in the release, 95 per cent of the 2016 ward lies within the 2018 ward. No one else in the release has the name Ali Mohamed-Ali, and no source describes either run, so same-office continuity applies. ([City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip), [City of Toronto elections](https://www.toronto.ca/city-government/elections/)) |
+| Reginald Tull, 2023-06-26 mayor by-election | Both runs are for mayor, in the 2022 general election and the June 2023 by-election, with no general election between. The name is very uncommon, and every other Reginald Tull run in the release is confirmed or held for the same Person, so same-office continuity applies. ([Wikipedia: 2023 Toronto mayoral by-election](https://en.wikipedia.org/wiki/2023_Toronto_mayoral_by-election), [City of Toronto 2022 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip)) |
+| Scott Yee, 2006 mayor | Both runs are for mayor in consecutive elections (2003 and 2006), under a name that no one else in the release has. The only other Scott Yee run, a 2004 federal candidacy, is held for the same Person. The Star's 2006 mayoral profile gives nothing that matches or separates the two runs, so same-office continuity applies. ([City of Toronto 2006 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3fb1227c-a279-4523-a1aa-f00190ba717f/download/2006-results.zip), [City of Toronto 2003 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/1ed53c9d-a316-465e-96ce-e72be74f8aa9/download/2003-results.zip)) |
+| Edward Zaretsky, 2018 Ward 6 — York Centre | Both runs are for council in York Centre, in 2010 (Ward 10) and 2018 (Ward 6), one general election apart. By the ward boundaries in the release, 95 per cent of old Ward 10 lies within the 2018 Ward 6. The name is very uncommon, and the only other Edward Zaretsky run, a 2016 TDSB by-election run in the same area, is held for the same Person. Earlier passes found only generic descriptions and no source that names both runs, so the link is structural. ([City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip), [City of Toronto 2010 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/6fbfaab0-bb84-442a-8e4b-1c14d4c10d6d/download/2010-results.zip)) |
+
+The second agent rejected six because the name is common in Toronto (Scott Harrison, David Smith,
+Alex Perez, Kenneth Chan, Steven Lam and Elizabeth Cook), even where the structure is strong. It
+rejected Jordan Stone's 2018 Ward 13 run because a 2018 report says that candidate had no earlier
+political experience, and Mitch Gold's 2006 mayoral run because a separate Person named Mitchell
+Gold ran for the Toronto Board of Education in 1994. It left Joseph Osuji's 2026 mayoral run for
+the project owner, with the 2026 career-review holds below.
+
 ## Other sources
 
 | Candidacy | Basis |
 |---|---|
 | Douglas Campbell, 2006 mayor | The Davenport Democracy blog's 9 September 2010 list of registered mayoral candidates includes Douglas Campbell, the target's 2010 run, and says he came sixth in 2006 with 4,183 votes out of 584,484. That placing and those totals match this run exactly. ([davenportdemocracy.blogspot.com](https://davenportdemocracy.blogspot.com/2010/09/pick-mayor.html)) |
+| Sandeep Srivastava, 2016-01-25 TDSB Ward 21 by-election | Campaign Life Coalition's candidate record for Sandeep Srivastava was written for the 25 January 2016 TDSB Ward 21 by-election held to replace Shaun Chen. It says he ran for Toronto City Council in Ward 41 (Scarborough-Rouge River) in October 2014 and lost, which is the target's run, and its 2016 figures (0.319 per cent, 53.310 points behind the winner) match this run's 25 of 7,826 votes against Neethan Shan's 4,197. By the release's crosswalk the trustee ward then covered council Wards 41 and 42, where the target ran in 2014 and 2017. Campaign Life Coalition is an advocacy group, and its record gives no source for the 2014 statement. ([campaignlifecoalition.com](https://www.campaignlifecoalition.com/voting-records/view/pst/province//id/13003/name/sandeep-srivastava)) |
+
+## Second wave
+
+A second wave of research agents took 84 municipal rows: the 63 that remained in the two batches
+the first wave had not started, and 21 that it had not searched by name. They searched 72 of them,
+adding Campaign Life Coalition's candidate records, People's Voice, Every Candidate and NOW's ward
+guides to the sources above. Nine were left unsearched because the name is common, and three
+when the search limit was reached. Most searches returned sources already used, and the fetch tool
+refused several pages, among them CBC's 2010 ward pages and LocalWiki's 2010 candidate pages. The
+wave settled Sandeep Srivastava's 2016 trustee by-election run, in the table of other sources
+above, and found the conflict below. It also proposed John Vassal's 2026 TDSB Ward 6 run on
+structure, which is left for the project owner with the other 2026 career-review holds.
+
+## Rejected
+
+| Candidacy | Finding |
+|---|---|
+| Helen Kennedy, 2018 TDSB Ward 4 | People's Voice's 30 July 2018 story on the TDSB Ward 4 candidate Helen Kennedy quotes her as having lived in Ward 4 for over 50 years and describes her as a graduate of Yorkwoods PS, Oakdale Jr High and Westview SS and a CUPE labour education facilitator. Wikipedia's biography of Helen Kennedy, the Egale Canada executive director, gives her 2006 Ward 20 result as 5,334 votes (35.2 per cent), the target's run, and says she was born in Ireland in 1958 and came to Canada in 1979 at 21. Fifty years in Ward 4 by 2018 would date from before 1968, years before the target came to Canada, so the two candidates are different people. ([pvonline.ca](https://pvonline.ca/?p=2301), [Wikipedia: Helen Kennedy](https://en.wikipedia.org/wiki/Helen_Kennedy)) |
+
+The 2018 run stays without a Person, and the 2006 Ward 20 run keeps its own.
 
 ## Left for the project owner
 
@@ -97,17 +158,25 @@ out that it has the same structure.
   2026 TCDSB runs, writing that a stable ward cannot replace a source tying the 2026 candidate to the
   earlier runs. The research agents proposed each on structural continuity: the same ward as the
   earlier runs, one or two elections on, under an uncommon name. They stay held until the project
-  owner decides whether structural continuity applies to the 2026 career reviews.
+  owner decides whether structural continuity applies to the 2026 career reviews. The same
+  question covers John Vassal's 2026 TDSB Ward 6 run, which continues his TDSB runs in Ward 8 from
+  2010 to 2022 (the two wards share city ward 8), and Joseph Osuji's 2026 mayoral run, one general
+  election after his 2018 run. Both were held by the 2026 career reviews.
 - The second agent accepted the structural links above under the dataset's standard and flagged
   three calls for the owner: names that no one else in the release has but that are not rare in the
-  population (Ted Berger, Mohammed Ather, Dean Maher and Jude Coutinho); overlaps of a fifth to a
+  population (Ted Berger, Mohammed Ather, Dean Maher and Jude Coutinho, and from the sweep Ali
+  Mohamed-Ali, Sonny Cho, Scott Yee, Mahbubul Alam and Suzanne McCormick); overlaps of a fifth to a
   half of the earlier ward by area (Marina Laccona, Rob Wolvin, George Sawision, Frank Capisciolto and
-  Dean Maher); and whether structure may settle runs that earlier passes left open for lack of a
-  source.
+  Dean Maher, and from the sweep Sonny Cho); and whether structure may settle runs that earlier
+  passes left open for lack of a source.
 
 ## Not reached
 
-The research agents' web search budget ran out partway through. Of the 111 municipal rows in their
-three batches, 23 got no search of their own, and two further batches of 72 municipal rows were not
-started. Those rows, Tony Marzilli's and Mark Stefanini's elected runs and Mohamed Firin's are for
-the next pass. The Metroland papers in ProQuest are the most promising source for them.
+Of the 183 municipal rows in the two waves' batches, 142 were searched, including the three 2026
+TCDSB runs left for the project owner. Twenty-three were settled before an agent reached them, 14
+have names too common to search usefully, including five the sweep rejected for that reason,
+and the search limit stopped the second wave before three more (Paul Maguire, Gord Reynolds and
+Pat Brar). Joseph Osuji's 2026 mayoral run went to the sweep instead. For a later pass, the most
+promising sources are Campaign Life Coalition's records of trustee candidates, which only some
+searches return, LocalWiki's 2010 candidate pages and Every Candidate's 2014 profiles, which the
+fetch tool refused or timed out on here.

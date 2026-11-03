@@ -20,12 +20,12 @@ and votes), and applied the same standard. Proposals that rested on the Canadian
 alone, or on structural continuity under a common name, were held before that check. Dispositions
 are under reviewer `federal-provincial-holds-2026-11-01`.
 
-Of the 343 rows, 179 are confirmed to their targets and 164 remain unresolved. The sources also
+Of the 343 rows, 181 are confirmed to their targets and 162 remain unresolved. The sources also
 confirm 26 runs outside the scope: Knia Singh's 1997 Ward 18 council run (printed as George B.
 Singh), and 25 federal and provincial runs from before 2004 that earlier reviews left unresolved.
-The same sources join 32 runs held by 23 other Person records to the Person they belong to.
+The same sources join 33 runs held by 24 other Person records to the Person they belong to.
 
-Five confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
+Six confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
 run there. The earlier proposal named the Person holding his 2003 provincial run, a different
 office, so the curated assertion `neil-spiegel-2004-house-continuity` joins the 2004 run to the
 Person holding the 2000 run. Elections Canada's 2000 candidate file and 2004 results table both give
@@ -35,7 +35,8 @@ Scarborough—Guildwood partly replaced. Two Person records held those earlier r
 archived Wikipedia biography, which names all three, joined them. In the third pass, Bahman
 Yazdanfar's November 2013 Toronto Centre by-election run continues his 2011 independent run
 there, and Johan Boyden's 2008 Toronto Centre run continues his 2006 Communist run there. The
-third pass confirmed both earlier runs on the occupations Elections Canada gives.
+third pass confirmed both earlier runs on the occupations Elections Canada gives. In the fifth
+pass, Mary Trapani Hynes's 2011 Don Valley East run continues her 2008 NDP run there.
 
 Two confirmations and one join rest on archived copies of Wikipedia biographies that Wikipedia no
 longer carries: Sheila White's, Rob Newman's and Sam Apelbaum's. Each copy gives the runs with the
@@ -89,7 +90,24 @@ earlier passes had not used, mainly the parties' own publications and community 
 search budget ran out after they had searched under a third of the federal and provincial rows. They
 confirmed one, Diana Filipova's April 2026 Scarborough Southwest by-election run, which Humber Et
 Cetera ties to her 2025 Spadina—Harbourfront run. The municipal confirmations from the same pass are
-in `municipal-holds-2026-11-03.md`, and the other rows are left for a later pass.
+in `municipal-holds-2026-11-03.md`.
+
+Later in the pass a second wave of research agents took 129 more federal and provincial rows: the
+110 in the three batches the first wave had not started, and 19 that it had searched little or not
+at all. They searched 101 of them, in party publications, community papers, Xtra, the Annex Gleaner
+and People's Voice among others. Of the other 28, most have common names, two were covered while
+researching another row, and five were left when the search limit was reached. A sweep of the
+held runs for same-office continuity, like the municipal one, followed. The second agent accepted
+two confirmations. Michael Erickson's 2011 Etobicoke—Lakeshore run rests on Xtra and the Annex
+Gleaner, which both describe a high school
+teacher at Harbord Collegiate who grew up in Ottawa, Xtra calling him a former council candidate.
+Mary Trapani Hynes's 2011 Don Valley East run continues her 2008 NDP run there, which this review
+confirmed on the Star's 2007 profile and Elections Canada's 2008 listing. The second agent rejected
+the proposals for Philip Fernandez's 2007 provincial run and Nick Lin's 2011 federal run on the
+uncommon-name test, and it could not verify Sean Carson's 2021 run, which rests on a CV whose web
+address contains his contact details. It also found that Wikipedia's note on Nick Lin gives a 1999
+York West provincial run with the vote count and placing of the record printed as S. Nicholas C.
+Lin, so the curated assertion `nick-lin-1999-york-west` joins that record to his Person.
 
 ## Confirmed runs
 
@@ -141,6 +159,7 @@ basis names a curated assertion that joins the run to another Person.
 | Peter Elgie, 2004 St. Paul's (federal) | The Toronto Star's 2003 St. Paul's riding story names the Green candidate as elementary school teacher Peter Elgie. Elections Canada gives the Green candidate in St. Paul's in 2004 as a teacher. ([Toronto Star, ProQuest 438625225](https://www.proquest.com/docview/438625225), [Elections Canada 2004 candidates](https://www.elections.ca/scripts/OVR2004/23/data/table12.csv)) |
 | Gary Ellis, 2018 Scarborough Southwest (Ontario) | The Toronto Observer's 2011 report on Scarborough—Guildwood says PC candidate Gary Ellis placed second with 9,137 votes, the target's run, and taught at the University of Guelph-Humber. The Ontario PC Party's April 2018 announcement of Gary Ellis as its Scarborough Southwest candidate says he heads the Justice Studies program at the University of Guelph-Humber. ([torontoobserver.ca](https://torontoobserver.ca/2011/10/07/pcs-ellis-bested-by-best-in-scarborough-guildwood/), [ontariopc.ca](https://ontariopc.ca/pc-party-appoints-remaining-candidates)) |
 | April Engelberg, 2025 Spadina—Fort York (Ontario) | TorontoToday's 2025 Spadina-Fort York profile gives the Liberal candidate April Engelberg as a litigation lawyer at the Canadian Investment Regulatory Organization. SheDoesTheCity's October 2018 profile of her council campaign in Spadina—Fort York describes her as a litigation lawyer for an investment regulator, and CBC's 2022 Ward 10 preview says she placed second to Cressy in 2018 and was running again, which are the target's runs. ([torontotoday.ca](https://torontotoday.ca/local/politics-government/ontario-election-2025-candidate-running-spadina-fort-york-10269522), [shedoesthecity.com](https://www.shedoesthecity.com/?p=128097), [cbc.ca](https://amp.cbc.ca/news/canada/toronto/open-ward-race-spadina-fort-york-1.6592031)) |
+| Michael Erickson, 2011 Etobicoke—Lakeshore (federal) | Xtra's 24 March 2011 story says former Toronto city council candidate Michael Erickson was seeking the NDP nomination in Etobicoke-Lakeshore, the held run, and describes him as a 36-year-old high school teacher who grew up in Ottawa and coaches hockey at Harbord Collegiate. Elections Canada gives the party's 2011 candidate there as a high school teacher. The Annex Gleaner's 17 October 2010 Ward 14 page describes the council candidate Michael Erickson, the target's run, as a 35-year-old high school teacher at Harbord Collegiate Institute who grew up in Ottawa. ([xtramagazine.com](https://xtramagazine.com/power/local-teacher-set-to-challenge-ignatieff-34184), [gleanernews.ca](https://gleanernews.ca/?p=828), [Elections Canada 2011 candidates](https://elections.ca/scripts/ovr2011/34/table12.html)) |
 | Judi Falardeau, 2011 Toronto Centre (Ontario) | Elections Ontario gives Judi Falardeau as the Ontario Libertarian Party candidate in Toronto Centre in the 2011 provincial election, and Elections Canada gives the target as the Libertarian Party of Canada candidate there in the 2011 federal election. The link rests on this review's rule for runs at both levels in one riding: the runs are no more than two years apart, the candidate ran for the federal and Ontario parties of one name, the name is uncommon, and no other Person in the release has it. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv), [Elections Canada 2011 candidates](https://www.elections.ca/scripts/OVR2011/34/data_donnees/pollresults_resultatsbureau35.zip)) |
 | Judi Falardeau, 2014 Toronto Centre (Ontario) | Elections Ontario gives Judi Falardeau as the Ontario Libertarian Party candidate in Toronto Centre in the 2014 provincial election, and Elections Canada gives the target as the Libertarian Party of Canada candidate there in the November 2013 federal by-election. The link rests on this review's rule for runs at both levels in one riding: the runs are no more than two years apart, the candidate ran for the federal and Ontario parties of one name, the name is uncommon, and no other Person in the release has it. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/2/report-outputs/488/csv), [elections.ca](https://www.elections.ca/res/rep/off/ovr_2013b2/csv/35093_e.csv)) |
 | Judi Falardeau, 2018 Toronto Centre (Ontario) | Elections Ontario gives Judi Falardeau as the Ontario Libertarian Party candidate in Toronto Centre in 2014 and again in 2018, after the riding was redrawn. This review joins the 2014 run to the target under its rule for runs at both levels in one riding, and the 2018 run continues it in the same office and party in the redrawn Toronto Centre one general election later, under an uncommon name. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/2/report-outputs/488/csv), [results.elections.on.ca](https://results.elections.on.ca/api/report-groups/1/report-outputs/932/csv)) |
@@ -167,6 +186,7 @@ basis names a curated assertion that joins the run to another Person.
 | Cathy Holliday, 2011 Toronto Centre (federal) | Wikipedia's list of Communist candidates in the 2011 federal election gives Cathy Holliday, a nurse, in Toronto Centre with 159 votes, sixth of eight, and notes that she was the 2008 candidate in Don Valley East. Elections Canada's results show no Communist in Don Valley East that year and Catherine Holliday as the Communist candidate in Don Valley West with 162 votes, the target's run, so the note misnames the riding. ([Wikipedia: Communist Party of Canada candidates in the 2011 Canadian federal election](https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2011_Canadian_federal_election), [elections.ca](https://www.elections.ca/Scripts/VIS/HistoricalResults/35017_e.html), [elections.ca](https://elections.ca/Scripts/VIS/HistoricalResults/35016_e.html)) |
 | Cathy Holliday, 2011 Toronto Centre (Ontario) | Elections Ontario gives Cathy Holliday as the Communist Party of Canada (Ontario) candidate in Toronto Centre in the 2011 provincial election, and Elections Canada gives the target, recorded there as Catherine Holliday, as the Communist Party of Canada candidate in Toronto Centre in the 2011 federal election. The link rests on this review's rule for runs at both levels in one riding: the runs are no more than two years apart, the candidate ran for the federal and Ontario parties of one name, the name is uncommon, and no other Person in the release has it in either form. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv), [Elections Canada 2011 candidates](https://www.elections.ca/scripts/OVR2011/34/data_donnees/pollresults_resultatsbureau35.zip)) |
 | Mary Trapani Hynes, 2008 Don Valley East (federal) | The Toronto Star's 2007 Don Valley East profile describes the NDP candidate Mary Trapani Hynes as a widow and retired teacher, and Elections Canada gives the party's 2008 candidate in the riding as a retired educator. ([Toronto Star, ProQuest 439326807](https://www.proquest.com/docview/439326807), [Elections Canada 2008 candidates](https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv)) |
+| Mary Trapani Hynes, 2011 Don Valley East (federal) | Mary Trapani Hynes ran for the NDP in Don Valley East in the 2008 and 2011 federal elections, with no general election between. The 2008 run is confirmed to the target, who also holds her 2007 provincial NDP run in the riding, on the Toronto Star's 2007 profile and Elections Canada's 2008 listing. Elections Canada gives her as a retired educator in 2008 and a writer in 2011, which does not conflict. The 2011 run continues the 2008 run in the same office, riding and party under a name that no one else in the release has, so same-office continuity applies. ([Elections Canada 2008 candidates](https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv), [Elections Canada 2011 candidates](https://elections.ca/scripts/ovr2011/34/table12.html)) |
 | Andrew James, 2007 Eglinton—Lawrence (Ontario) | The Toronto Star's 2008 Eglinton—Lawrence profile describes the Green candidate Andrew James as a law book writer running his second political campaign, after failing to win the riding's provincial seat the year before, which is this 2007 run. The curated assertion andrew-james-eglinton-lawrence-2007-2008 joins this run and the 2008 federal run as a new Person. The earlier proposal named the 2006 Ward 29 council candidate, whom the Star's 2006 council guide describes as calling for environmental awareness, electricity conservation and a better city justice system. That is consistent with the Green candidate but gives no distinctive fact to join them, and the Star's 2008 count of his campaigns does not include a 2006 run. ([Toronto Star, ProQuest 439498861](https://www.proquest.com/docview/439498861), [Toronto Star, ProQuest 439099227](https://www.proquest.com/docview/439099227)) |
 | Andrew James, 2008 Eglinton—Lawrence (federal) | The Toronto Star's 2008 Eglinton—Lawrence profile describes the Green candidate Andrew James as a law book writer running his second political campaign, after failing to win the riding's provincial seat the year before, and Elections Canada gives him as a writer. The curated assertion andrew-james-eglinton-lawrence-2007-2008 joins this run and the 2007 provincial run as a new Person. The earlier proposal named the 2006 Ward 29 council candidate, whom the Star's 2006 council guide describes as calling for environmental awareness, electricity conservation and a better city justice system. That is consistent with the Green candidate but gives no distinctive fact to join them, and the Star's 2008 count of his campaigns does not include a 2006 run. ([Toronto Star, ProQuest 439498861](https://www.proquest.com/docview/439498861), [Elections Canada 2008 candidates](https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv), [Toronto Star, ProQuest 439099227](https://www.proquest.com/docview/439099227)) |
 | Andrea Vásquez Jiménez, 2019 York Centre (federal) | A New Canadian Media profile dated 17 October 2019 of the NDP candidate in York Centre for the 21 October federal election says she ran for the NDP in York Centre in the 2018 provincial election and finished second, which is the target's run. ([newcanadianmedia.ca](https://newcanadianmedia.ca/ndp-candidate-decides-to-run-after-not-being-heard)) |
@@ -336,6 +356,7 @@ authorities printed them.
 | Ryan Kidd: 1999 Don Valley East (Ontario) | A 2007 copy of Wikipedia's list of Family Coalition Party candidates in the 2003 Ontario election, which Wikipedia no longer carries, says Ryan Kidd works in the computer software industry in Toronto. It gives his Don Valley East runs in 1999 with 153 votes, 2000 with 212 (as an independent, the Christian Heritage Party having been deregistered), 2003 with 460 and 2004 for the Christian Heritage Party with 351, matching the official results. The 1999 record joins the Person that holds the 2003 run. ([2007 copy of Wikipedia](https://wikipedia2007.classicistranieri.com/en/f/a/m/Family_Coalition_Party_candidates%2C_2003_Ontario_provincial_election_bdd4.html)) |
 | Christopher Black: 2000 York Centre (federal) | Wikipedia's list of Communist Party of Canada (Ontario) candidates in the 2003 election describes Christopher Black, the York West candidate, as a criminal lawyer who has represented accused war criminals from Rwanda and the former Yugoslavia. Elections Canada gives the Communist candidate Christopher Black in York Centre in 2000 as a lawyer. The 2000 record joins the Person that holds the 2003 run. ([Wikipedia: Communist Party of Canada (Ontario) candidates in the 2003 Ontario provincial election](https://en.wikipedia.org/wiki/Communist_Party_of_Canada_(Ontario)_candidates_in_the_2003_Ontario_provincial_election), [Elections Canada 1997 and 2000 candidates](https://www.elections.ca/res/rep/off/37p/CAND.ZIP)) |
 | Fernand Deschamps: 1995 Eglinton (Ontario); 1999 Don Valley East (Ontario) | The Toronto Star's 1993 Trinity—Spadina profile describes the Marxist-Leninist candidate Fernand Deschamps as an engineer and geophysicist studying teaching at the University of Toronto. Its 1995 profiles call the independent candidate of that name in Eglinton a teacher, and its 1997 St. Paul's profile says the Marxist-Leninist candidate is a teacher, as Elections Canada does in 1997 and 2000. The 1995 Eglinton and 1999 Don Valley East records join the Person holding the 1993 run. ([Toronto Star, ProQuest 436919109](https://www.proquest.com/docview/436919109), [Toronto Star, ProQuest 437278693](https://www.proquest.com/docview/437278693), [Toronto Star, ProQuest 437668134](https://www.proquest.com/docview/437668134), [Elections Canada 1997 and 2000 candidates](https://www.elections.ca/res/rep/off/37p/CAND.ZIP)) |
+| Nick Lin: 1999 York West (Ontario) | Wikipedia's note on Nick Lin in its list of Marxist-Leninist candidates in the 2006 federal election gives a 1999 provincial run in York West as an independent Marxist-Leninist, with 194 votes, sixth of seven, won by Mario Sergio. The 1999 York West record printed as S. Nicholas C. Lin has the same count and placing, and it joins the Person that holds his Trinity—Spadina runs. ([Wikipedia: Communist Party of Canada (Marxist–Leninist) candidates in the 2006 Canadian federal election](https://en.wikipedia.org/wiki/Communist_Party_of_Canada_(Marxist%E2%80%93Leninist)_candidates_in_the_2006_Canadian_federal_election)) |
 
 ## Runs before 2004
 
@@ -372,7 +393,7 @@ earlier from the Toronto Star, are in the last section.
 
 ## What stays unresolved
 
-For most of the 164 rows no public source describes the candidate beyond the results. Many are
+For most of the 162 rows no public source describes the candidate beyond the results. Many are
 minor-party and independent candidates, and some have common names whose runs cannot be told apart.
 These rows came close and are worth another look:
 
@@ -388,10 +409,25 @@ These rows came close and are worth another look:
 - Janice Murray's 2000 Etobicoke—Lakeshore run. Elections Canada gives her as an industrial worker
   that year, a label eight Marxist-Leninist candidates used. Her 2003 and 2007 provincial runs
   there stay apart from her federal runs, since Elections Ontario gives no occupations.
-- Philip Fernandez's federal runs from 2000 to 2025. Elections Canada gives him as a literacy
-  worker in 2000, an adult educator in 2004 and 2006 and a teacher from 2008 on, so the runs very
-  likely belong together. Each was proposed for the Person holding his 2003 provincial run, and
-  no source ties a provincial run to a federal one.
+- Philip Fernandez's federal runs from 2000 to 2025 and his 2007 provincial run. Elections Canada
+  gives him as a literacy worker in 2000, an adult educator in 2004 and 2006 and a teacher from
+  2008 on, so the federal runs very likely belong together. The 2000 run was proposed for the
+  Person holding a 1999 St. Paul's provincial run under the name and the others for the Person
+  holding his 2003 provincial run, and no source ties a provincial run to a federal one. A 2007
+  blog post puts the 2007 Toronto Centre candidate on the Marxist-Leninists' Renewal slate, as
+  Wikipedia does the 2003 candidate, but the name is fairly common and the 1999 run sits on a
+  separate Person, so the second agent held the 2007 run. A party biography or another
+  person-specific source would probably settle the whole set.
+- Nick Lin's federal runs in 2011, 2015 and 2025. The 2011 run repeats the office, riding and
+  party of his 2006 run, but the name is common, and Elections Canada also lists a
+  Marxist-Leninist candidate of that name in Ottawa West—Nepean in 2019. It gives the 2011 and
+  2025 candidate as a web designer, which matches none of the target's runs.
+- Sean Carson's 2021 Etobicoke—Lakeshore and 2024 Toronto—St. Paul's runs. A CV posted by the
+  comedian Sean Carson lists Rhinoceros Party candidacies in 2019, 2021, 2022 and 2023 and says his
+  first campaign was in Toronto Centre in 2019, the target's run, and Elections Canada gives the
+  2021 candidate as a comedian. The CV's web address contains his phone number and email, so it
+  is not cited, and the second agent did not open it. Whether a source cited by description
+  can carry the link is for the project owner.
 - John Kittredge's runs in Don Valley West, federal in 2015 and 2019 and provincial in 2018 and
   2022. He moved there from St. Paul's at both levels, and Elections Canada gives him as retired
   in 2015 and 2019 against management consultant in 2008 and 2011.
@@ -408,6 +444,19 @@ These rows came close and are worth another look:
   activist and nurse.
 - Guy Hunter's 2000 run, from before 2004. Elections Canada gives him as a law student in 1993 and
   a lawyer in 2000, which is consistent with one person but does not match.
+
+Forty-five held runs repeat the office and party of one of their proposed Person's runs, one or two
+elections apart, but in a riding with a different name, so the same-office test does not apply.
+Minor-party candidates often move between ridings. In 27 of these runs no other Person or held run
+has the name and the surname is not among the most common in Toronto: Shelly Lipsey (1997 and
+1999), Dan Largy (1999), Erica Kindl (1999), Mir Kamal (2007), Franz Cauchi (2007), Andrew Strachan
+(2007), Wiktor Pawel Borkowski (2007), Raj Rama (2010), Raphael Rosch (2013), Leslie Bory (2013),
+Akil Sadikali (2014), John Kittredge (2015, 2018, 2019 and 2022), Tara Dos Remedios (2021), Sean
+Carson (2021 and 2024), Drew Garvie (2022), Danielle Height (2023), Randi Ramdeen (2025), Mario
+Bilusic (2025), Dean Boulding (2025), Ron Shaw (2025), Victor Ehikwe (2025) and Peter Koubakis
+(2026). Some of these ridings overlap after a redistribution, such as Don Valley East and Don
+Valley North, but the release has no riding boundaries to measure the overlap. Whether a rule like
+the one for runs at both levels should cover them is for the project owner.
 
 A first look at the Toronto Star's riding coverage, read in ProQuest, settled three of the rows
 and two 1997 federal runs from the earlier review, below. The second and third passes read it

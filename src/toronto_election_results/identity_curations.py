@@ -12686,6 +12686,26 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "teacher, as Elections Canada does in 1997 and 2000. The 1995 Eglinton and 1999 Don "
         "Valley East records join the Person holding the 1993 run.",
     ),
+    _record_merge(
+        "nick-lin-1999-york-west",
+        "Nick Lin",
+        "per_67fc59512d505e36bf04935cd5245190",
+        (
+            (
+                "can_a82eed716fcf5b2190fe7a386142f0c1",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "S. NICHOLAS C. LIN",
+            ),
+        ),
+        (_CPCML_2006_CANDIDATES,),
+        "Wikipedia's note on Nick Lin in its list of Marxist-Leninist candidates in the 2006 "
+        "federal election gives a 1999 provincial run in York West as an independent "
+        "Marxist-Leninist, with 194 votes, sixth of seven, won by Mario Sergio. The 1999 York West "
+        "record printed as S. Nicholas C. Lin has the same count and placing, and it joins the "
+        "Person that holds his Trinity—Spadina runs.",
+    ),
 )
 
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS

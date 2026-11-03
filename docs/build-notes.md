@@ -70,19 +70,19 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,191 People. 5,186 hold at least one Candidacy, and five hold only an Office
+The release has 5,190 People. 5,185 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,667 Candidacies have a confirmed Person and 432 have none: 431
-were reviewed and left unresolved for insufficient evidence, and one was rejected. Five of the
-432 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+candidacy in the release. 7,679 Candidacies have a confirmed Person and 420 have none: 418
+were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
+420 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results. Each held run's disposition names the later
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 485 identity assertions
-over 1,057 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
+continuity, Council rosters and adjudicated curations. The curations are 486 identity assertions
+over 1,058 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
 confirmed earlier races in the release) and 1,633 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,118 confirmed, 512 unresolved and 3 rejected).
+`data/reference/identity_review_dispositions.csv` (1,130 confirmed, 499 unresolved and 4 rejected).
 A disposition is not applied where a career review or a person-record merge covers the same
 Candidacy. No blanket name merges are made, and a hold does not claim that two occurrences are
 different people. A House of Commons run and an Ontario legislature run are linked without a
