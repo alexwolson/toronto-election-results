@@ -12708,6 +12708,417 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Found in the 2026-11-03 audit of Person links
+# (docs/verification/link-audit-2026-11-03.md): records that one source ties together.
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    _record_merge(
+        "stan-grzywna-1999-parkdale-high-park",
+        "Stan Grzywna",
+        "per_e33403f4b85c50f398797c2582f79047",
+        (
+            (
+                "can_cfbcd44125c65ff79bceec985eabe1f9",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "STAN J. GRZYWNA",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/f/a/m/Family_Coalition_Party_candidates%2C_2003_Ontario_provincial_election_bdd4.html",
+            "https://results.elections.on.ca/api/report-groups/6/report-outputs/532/csv",
+            "https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv",
+        ),
+        "Elections Ontario's results give Stan J. Grzywna as the Family Coalition Party "
+        "candidate in Parkdale—High Park in 1999, with 289 votes, and Stan Grzywna as the "
+        "party's candidate there in 2003, with 591 votes, and in the 2006 by-election. A 2007 "
+        "copy of Wikipedia's list of Family Coalition Party candidates in the 2003 Ontario "
+        "election describes the Parkdale—High Park candidate as an educational assistant with "
+        "the Toronto Catholic District School Board. It says he first ran for the party in "
+        "1999, receiving 289 votes and finishing sixth of eight, that he received 591 votes in "
+        "2003, finishing fifth of eight, and that he ran again in 2006 when the seat was "
+        "vacated. The 1999 run joins the Person holding the 2003 and 2006 runs.",
+    ),
+    _record_merge(
+        "gloria-lindsay-luby-1994-etobicoke-ward-7",
+        "Gloria Lindsay Luby",
+        "per_3d8c75381a6d5544ba55fe80cb5f946a",
+        (
+            (
+                "can_572737c50518516580a34182f24278e3",
+                "evt_f3d5134ef9b25e0a9179ede437def849",
+                "etobicoke_city_council",
+                "councillor",
+                "Gloria Luby",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Gloria_Lindsay_Luby",
+            "https://en.wikipedia.org/wiki/1994_Toronto_municipal_election",
+        ),
+        "Gloria Lindsay Luby's Wikipedia biography gives her as Etobicoke City Councillor for "
+        "Ward 7 from December 1, 1985 to January 1, 1998, and says she was elected to Toronto "
+        "City Council after Etobicoke was merged into the new city in 1997. Wikipedia's page "
+        "on the 1994 Toronto municipal election lists Gloria Luby as the Etobicoke Ward 7 "
+        "winner with 5,460 votes, the total of this run. The 1994 Ward 7 run joins the Person "
+        "holding her 1997 to 2010 Toronto council runs.",
+    ),
+    _record_merge(
+        "sat-singh-khalsa-1993-1999",
+        "Sat K. Singh Khalsa",
+        "per_20abb57696a05b379248b3518ceefa7b",
+        (
+            (
+                "can_1593aabe54775efeb5f4c1c6a4fbda36",
+                "ec-ge-36",
+                "canada_house_of_commons",
+                "mp",
+                "Sat Singh Khalsa",
+            ),
+            (
+                "can_2e5047e364ed5e10b340f41bd227e1a4",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "SAT KHALSA",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Green_Party_of_Ontario_candidates_in_the_1999_Ontario_provincial_election",
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+        ),
+        "Wikipedia's list of Green Party of Ontario candidates in the 1999 election describes "
+        "Sat K. Singh Khalsa, the candidate in Trinity—Spadina, as a frequent Green candidate "
+        "in the 1990s who was listed as a LETS administrator in 1993 and described himself as "
+        "a househusband during the 1997 federal election. Its electoral record for him gives "
+        "254 votes and seventh of ten in Davenport in the 1993 federal election, 392 votes and "
+        "fifth of ten in Trinity—Spadina in the 1997 federal election, and 612 votes and "
+        "fourth of eight in Trinity—Spadina in the 1999 Ontario election. Elections Canada "
+        "gives the 1993 Davenport Green candidate's occupation as administrator. The 1993, "
+        "1997 and 1999 runs are joined as one Person.",
+    ),
+    _record_merge(
+        "maria-saras-voutsinas-2014-2026",
+        "Maria Saras-Voutsinas",
+        "per_4a892ba346045b789ee04703cebc7b14",
+        (
+            (
+                "can_f2571c0845b95d6d9a3dd7cf0b241af4",
+                "evt_27c3a2e636a457f1b1f922774525b74a",
+                "toronto_city_council",
+                "councillor",
+                "Maria Voutsinas",
+            ),
+        ),
+        (
+            "https://eestielu.ca/maria-saras-voutsinas-is-running-for-school-board-trustee-in-what-used-to-be-broadview-greenwood/",
+            "https://www.frequencynews.ca/news/%e5%a4%9a%e4%bc%a6%e5%a4%9a%e7%94%9f%e6%b4%bb%e6%88%90%e6%9c%ac%e5%92%8c%e6%b2%bb%e5%ae%89%e6%88%90%e5%b1%85%e6%b0%91%e5%85%b3%e6%b3%a8%e9%87%8d%e7%82%b9-%e7%a4%be%e5%8c%ba%e4%ba%ba%e5%a3%ab%e5%8f%82/",
+            "https://www.toronto.ca/data/elections/candidate_list/councilorCandidates_2026.json",
+        ),
+        "Eesti Elu reported on August 29, 2014 that Maria Saras-Voutsinas was running for "
+        "school board trustee in what used to be the Broadview-Greenwood riding, the area of "
+        "TDSB Ward 15. It describes her as the daughter of Thomas Saras, president and CEO of "
+        "the National Ethnic Press and Media Council of Canada, says she had been asked to "
+        "take over as the council's executive vice-president, and gives her campaign website "
+        "as www.votemaria.ca. Frequency News reported on August 25, 2026 that Maria "
+        "Saras-Voutsinas, executive director of the National Ethnic Press and Media Council of "
+        "Canada, had announced her run for city councillor in Toronto-Danforth Ward 14. The "
+        "City's certified 2026 candidate list gives votemaria.ca as the website of the Ward 14 "
+        "candidate Maria Voutsinas. The 2014 trustee run and the 2026 council run are joined "
+        "as one Person.",
+    ),
+    _record_merge(
+        "unblind-tibbin-2011-2021",
+        "Unblind Tibbin",
+        "per_e1856222b9d95f5da5263eeced739fb2",
+        (
+            (
+                "can_b002c481c5d6500b8ffffec3c1c3f1ee",
+                "ec-ge-44",
+                "canada_house_of_commons",
+                "mp",
+                "Unblind Tibbin",
+            ),
+        ),
+        (
+            "https://anglescovered.blogspot.com/2021/09/unblind-tibbin-feels-good-about-his.html",
+            "https://elections.ca/scripts/ovr2011/34/table12.html",
+            "https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/table_tableau12.csv",
+        ),
+        "A post on the Angles Covered blog dated September 15, 2021 describes Unblind Tibbin "
+        "as the Green Party of Canada's candidate in Humber River—Black Creek and says he was "
+        "the Green candidate in York West, now Humber River—Black Creek, in the 2011 federal "
+        "election. Elections Canada lists the 2011 York West Green candidate as Unblind Kheper "
+        "Keseb Efekh Tibbin, a teacher, artist and outreach worker, and the 2021 Humber "
+        "River—Black Creek Green candidate as Unblind Tibbin, a youth services officer. The "
+        "post describes him as a youth services officer in the Ontario public service who has "
+        "worked as a French teacher. The 2011 and 2021 runs are joined as one Person.",
+    ),
+    _record_merge(
+        "john-nunziata-house-mayor-council",
+        "John Nunziata",
+        "per_1c7a0a36928b5fb69f0d5a1e10be2fb1",
+        (
+            (
+                "can_775dea313a5f5a43b2db1ce993fe6a03",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "mayor",
+                "John Nunziata",
+            ),
+            (
+                "can_0cd830441bb059bab3011ae788b8401e",
+                "evt_54673fd104ab5ef08eb865e162ac040c",
+                "toronto_city_council",
+                "councillor",
+                "John Nunziata",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/John_Nunziata",),
+        "John Nunziata's Wikipedia biography gives him as the Member of Parliament for York "
+        "South—Weston from September 4, 1984 to November 27, 2000. It says he served three "
+        "terms as a Liberal, was re-elected as an independent in 1997, defeating Judy Sgro by "
+        "4,431 votes, and lost to the Liberal Alan Tonks in 2000. It also says he ran for "
+        "mayor of Toronto in 2003 and finished fourth behind David Miller, and that he ran "
+        "against Frank Di Giorgio in Ward 12 in 2014 and lost by 238 votes, with 4,546. These "
+        "match the 1993, 1997 and 2000 York South—Weston runs, the 2003 mayoral run and the "
+        "2014 Ward 12 run, which are joined as one Person.",
+    ),
+    _record_merge(
+        "judith-snow-1999-don-valley-west",
+        "Judith Snow",
+        "per_18c7eb195c9955af91a398f9110f4453",
+        (
+            (
+                "can_b7d326a678ad5a7997773173b98c01dc",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "JUDITH SNOW",
+            ),
+        ),
+        (
+            "https://theglobeandmail.com/news/judith-snow-advocate-for-inclusion-was-a-visionary/article25213213",
+            "https://kaweah.freedombox.rocks/kiwix/wikipedia_en_all_maxi_2023-10/Independent_Marxist%E2%80%93Leninist_candidates%2C_1999_Ontario_provincial_election",
+            "https://en.wikipedia.org/wiki/1999_Ontario_general_election",
+            "https://www.elections.ca/res/rep/off/37g/table12_ont1_e.html",
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+        ),
+        "Elections Canada gives Judith A. Snow's occupation as adult educator for her 1993 "
+        "independent run and her 1997 Marxist-Leninist run in Don Valley West, and Judith "
+        "Snow's as adult educator for her 2000 Marxist-Leninist run in Don Valley East. "
+        "Wikipedia lists Judith Snow in Don Valley West in the 1999 Ontario election as an "
+        "independent affiliated with the Communist Party of Canada (Marxist-Leninist), with "
+        "312 votes. The Globe and Mail's obituary of Judith Snow, a Toronto educator and "
+        "advocate for inclusion, says she was a member of the Communist Party of Canada "
+        "(Marxist-Leninist) and stood as a party candidate in both federal and provincial "
+        "elections. The 1999 provincial run joins the Person holding her federal runs.",
+    ),
+    _record_merge(
+        "john-sewell-1999-2006",
+        "John Sewell",
+        "per_f53e7a2010255ceb8116a7558b6a04bd",
+        (
+            (
+                "can_78c48a55ebd5557595f36c7ab7a4a60a",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "toronto_city_council",
+                "councillor",
+                "John Sewell",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/John_Sewell",
+            "https://en.wikipedia.org/wiki/2006_Toronto_municipal_election",
+        ),
+        "John Sewell's Wikipedia biography says the former mayor ran as an independent in "
+        "Toronto Centre—Rosedale in the 1999 Ontario election and finished third, and its "
+        "results table gives him 8,822 votes. It also says he ran against Joe Mihevc in Ward "
+        "21 in the 2006 municipal election, and gives him 3,326 votes. These are the 1999 "
+        "provincial run and the 2006 Ward 21 run, which are joined as one Person.",
+    ),
+    _record_merge(
+        "terry-parker-2000-parkdale-high-park",
+        "Terry Parker",
+        "per_432ecd5805715b9591c55a2b1d511a2f",
+        (
+            (
+                "can_4868493642c5548c999f13e8742b7938",
+                "ec-ge-37",
+                "canada_house_of_commons",
+                "mp",
+                "Terry Parker",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Marijuana_Party_candidates_in_the_2006_Canadian_federal_election",
+            "https://www.elections.ca/res/rep/off/37g/table12_ont3_e.html",
+            "https://www.elections.ca/scripts/OVR2006/25/table12.html",
+            "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv",
+        ),
+        "Elections Canada lists Terry Parker as the Marijuana Party candidate in Parkdale—High "
+        "Park in 2000 and in 2006 and gives his occupation both times as marijuana advocate, "
+        "with 775 votes in 2000. Wikipedia's list of Marijuana Party candidates in the 2006 "
+        "federal election describes the Parkdale—High Park candidate as a marijuana advocate "
+        "with 311 votes and says he also ran in the riding in 2000 and 2004. It gives his 2000 "
+        "total as 711 votes. The 2000 result here follows Elections Canada's count of 775. The "
+        "2000 run joins the Person holding his 2004 to 2025 runs.",
+    ),
+    _record_merge(
+        "jim-conrad-1993-1999",
+        "Jim Conrad",
+        "per_78c7e136429251fdbb7cbedbd5f77fd3",
+        (
+            (
+                "can_7a8def9ad9e05037bdafbf441e589a15",
+                "on-1999-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "JIM CONRAD",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/j/i/m/Jim_Conrad_cb28.html",
+            "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip",
+        ),
+        "A 2007 copy of Wikipedia's biography of Jim Conrad, a petrochemical engineer, says he "
+        "ran as an independent in St. Paul's in the 1993 federal election and received 245 "
+        "votes, finishing eighth against the Liberal Barry Campbell. It also says he was the "
+        "Family Coalition Party candidate in Willowdale in the 1999 Ontario election and "
+        "finished fourth against the Progressive Conservative David Young. Elections Canada "
+        "gives the 1993 St. Paul's candidate's occupation as professional engineer. The 1993 "
+        "and 1999 runs are joined as one Person.",
+    ),
+    _record_merge(
+        "mehmet-yagiz-2003-mayor",
+        "Mehmet Ali Yagiz",
+        "per_34f86027a4e85065b3f8628892cf286b",
+        (
+            (
+                "can_e2d51cef44a75de6885ff72fcf18184b",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "mayor",
+                "Mehmet Yagiz",
+            ),
+        ),
+        (
+            "https://wikipedia2007.classicistranieri.com/i/n/d/Independent_candidates%2C_2003_Ontario_provincial_election_57cf.html",
+            "https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv",
+        ),
+        "Elections Ontario gives Mehmet Ali Yagiz as an independent candidate in "
+        "Toronto—Danforth in the 2003 general election, with 73 votes, and in the 2006 "
+        "by-election. A 2007 copy of Wikipedia's list of independent candidates in the 2003 "
+        "Ontario election says the Toronto—Danforth candidate received 73 votes and finished "
+        "sixth of six. It says he ran for mayor of Toronto in 2003, receiving 193 votes and "
+        "finishing 40th of 44, and ran for mayor again in 2006, receiving 753 votes. These "
+        "totals match the 2003 mayoral run and the 2006 mayoral run, which join the Person "
+        "holding his 2003 and 2006 Toronto—Danforth runs.",
+    ),
+    _record_merge(
+        "john-steele-2006-eglinton-lawrence",
+        "John Steele",
+        "per_d0086333d4765d6e8698f919c23a2826",
+        (
+            (
+                "can_62e91ad5c738554d8348cbab799ad8ec",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "John Brian Steele",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Eglinton%E2%80%94Lawrence_(federal_electoral_district)",
+            "https://themilitant.com/2000/6432/643257.html",
+            "https://www.elections.ca/scripts/OVR2006/25/table12.html",
+            "https://en.wikipedia.org/wiki/Results_of_the_2003_Ontario_general_election_by_riding",
+        ),
+        "Elections Canada lists John Brian Steele in Eglinton—Lawrence in the 2006 federal "
+        "election with no affiliation and the occupation retired meat packer, and Wikipedia's "
+        "results for the riding give him as the Communist League candidate, with 123 votes. "
+        "The Militant of August 21, 2000 names John Steele as the Communist League's candidate "
+        "for mayor of Toronto in that year's municipal election and describes him as a meat "
+        "packer and a member of the United Food and Commercial Workers union. The matching "
+        "occupation and organization join the 2006 federal run to the Person holding the 2000 "
+        "mayoral run and the 1994 mayoral run linked to it. The Person also holds the 2003 "
+        "Parkdale—High Park run, which Wikipedia gives as a Communist League candidacy. This "
+        "audit found no source giving an occupation or other detail for that run, so this "
+        "evidence does not cover it.",
+    ),
+    _record_merge(
+        "pauline-browes-1993-2006",
+        "Pauline Browes",
+        "per_78d4e5acfd9154fa9cf60977cf897754",
+        (
+            (
+                "can_6ff814cbdd5a5fbb85a58f52f9b896ee",
+                "ec-ge-39",
+                "canada_house_of_commons",
+                "mp",
+                "Pauline Browes",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Pauline_Browes",
+            "https://eesti.ca/pauline-browes-intends-to-go-back-to-ottawa/print12152",
+        ),
+        "Pauline Browes's Wikipedia biography says she was first elected as the Progressive "
+        "Conservative member for Scarborough Centre in 1984 and lost her seat in the 1993 "
+        "federal election. It also says she later ran in Scarborough—Guildwood and finished "
+        "second to the Liberal John McKay with 11,790 votes. Eesti.ca reported in January 2006 "
+        "that Pauline Browes, a former Progressive Conservative MP and federal minister, was a "
+        "Conservative candidate in Scarborough—Guildwood. The 1993 Scarborough Centre run and "
+        "the 2006 Scarborough—Guildwood run are joined as one Person.",
+    ),
+    _record_merge(
+        "ellery-hollingsworth-1994-2000",
+        "Ellery Hollingsworth",
+        "per_678a6c155c045a00b7c635042c911899",
+        (
+            (
+                "can_e37964d0dfdb5d0fbbf9f45175a83dc0",
+                "evt_9370d23e7ee7590cbfae36084c53debc",
+                "scarborough_board_of_education",
+                "trustee",
+                "Ellery Hollingsworth",
+            ),
+        ),
+        (
+            "https://en.wikipedia.org/wiki/Progressive_Conservative_Party_of_Canada_candidates_in_the_2000_Canadian_federal_election",
+            "https://www.elections.ca/res/rep/off/37g/table12_ont4_e.html",
+        ),
+        "Wikipedia's list of Progressive Conservative candidates in the 2000 federal election "
+        "says the Scarborough Southwest candidate Ellery Hollingsworth, a retired manager for "
+        "the Canadian Broadcasting Corporation, had served as a trustee on the Scarborough "
+        "Board of Education from 1994 to 1997, after unsuccessful campaigns in 1988 and 1991. "
+        "It gives him 5,251 votes and second place in 2000. Ellery Hollingsworth won the "
+        "Scarborough Board of Education's Ward 7 seat in 1994. The 1994 trustee run and the "
+        "2000 Scarborough Southwest run are joined as one Person.",
+    ),
+    _record_merge(
+        "magda-gondor-berkovits-2006-2010",
+        "Magda Gondor Berkovits",
+        "per_409d52e4e60e55ba991e2eb85acf7bf6",
+        (
+            (
+                "can_f7b8dd8cc12a51308b221f47e5f0a289",
+                "evt_5a786c1da7ec5e758036205f04351fc5",
+                "toronto_city_council",
+                "councillor",
+                "Magda Gondor Berkovits",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/2010_Toronto_municipal_election",),
+        "Wikipedia's page on the 2010 Toronto municipal election lists Magda Gondor Berkovits "
+        "among the Ward 10 candidates, with 935 votes. Its note says she managed the "
+        "constituency office of a federal Member of Parliament before becoming a "
+        "businessperson and had been president of the Ontario Women's Liberal Commission. It "
+        "also says she was a candidate for Ward 10 in the 2006 election. The 2006 Ward 10 run "
+        "under the name Magda Berkovits and the 2010 Ward 10 run are joined as one Person.",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 

@@ -70,19 +70,19 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,190 People. 5,185 hold at least one Candidacy, and five hold only an Office
+The release has 5,174 People. 5,169 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,687 Candidacies have a confirmed Person and 412 have none: 410
+candidacy in the release. 7,688 Candidacies have a confirmed Person and 411 have none: 409
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
-412 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+411 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results. Each held run's disposition names the later
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 486 identity assertions
-over 1,058 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+continuity, Council rosters and adjudicated curations. The curations are 501 identity assertions
+over 1,075 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
 candidates have confirmed earlier races in the release) and 1,638 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,138 confirmed, 496 unresolved and 4 rejected).
+`data/reference/identity_review_dispositions.csv` (1,139 confirmed, 495 unresolved and 4 rejected).
 A disposition is not applied where a career review's confirmation or a person-record merge
 covers the same Candidacy, but a later disposition does replace a career review's hold. No
 blanket name merges are made, and a hold does not claim that two occurrences are different
@@ -95,6 +95,13 @@ linked without a person-specific source only under the narrow rule in
 `docs/research/federal-provincial-holds-2026-11-01.md`: the same riding at both levels within two
 years, the federal and Ontario parties of one name or no party at either, an uncommon name, and
 no other Person of that name in the release.
+
+An audit of a random sample of links
+([`docs/verification/link-audit-2026-11-03.md`](verification/link-audit-2026-11-03.md)) found no
+join of two different people among 120 sampled joins, which puts a one-sided 95% upper bound of
+3.9% on the share of false merges. Of 40 sampled pairs of Persons with the same first and last
+name, 15 were one individual, and those have been merged. The 152 same-name pairs that were not
+sampled have not been reviewed; at the sampled rate, about 57 of them are one individual.
 
 The Council roster step matches each roster member to a Candidacy by exact name. It reads the
 1997–2002 archive names given name first, as the archive printed them. A roster entry that no
