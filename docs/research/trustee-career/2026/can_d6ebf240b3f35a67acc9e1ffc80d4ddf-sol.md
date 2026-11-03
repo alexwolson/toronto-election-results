@@ -20,7 +20,7 @@ Luna proposed confirming both rows from name, person-ledger, and TDSB-community 
 
 ## Sol search findings
 
-The official 2026 feed attributes `andrewwaters.ca` and `candidate@andrewwaters.ca` to the certified candidate. The 2025 Northlea School and Community Council questionnaire for the Ward 11 by-election uses that same website and email, while the official TDSB declaration records Andrew Waters in that contest. This is a direct contact-controlled bridge from the current filing to the 2025 occurrence.
+The official 2026 feed attributes `andrewwaters.ca` and [email removed] to the certified candidate. The 2025 Northlea School and Community Council questionnaire for the Ward 11 by-election uses that same website and email, while the official TDSB declaration records Andrew Waters in that contest. This is a direct contact-controlled bridge from the current filing to the 2025 occurrence.
 
 New evidence:
 

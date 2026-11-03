@@ -11,14 +11,14 @@
 ## Observed names and identity anchors
 
 - The City of Toronto certified-candidate feed records **Weizhen Tang**, raw form **Tang, Weizhen**, as a 2026 Toronto mayoral candidate: <https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json>.
-- Tang's candidate-controlled campaign site describes him as a Toronto/Scarborough financial businessman and 2023 mayoral candidate, with the Scarborough address **1193 Huntingwood Dr** and `weizhentang@gmail.com`: <https://www.torontonewsnet.com/weizhentang/>.
+- Tang's candidate-controlled campaign site describes him as a Toronto/Scarborough financial businessman and 2023 mayoral candidate, with a Scarborough street address and an email address (both removed here): <https://www.torontonewsnet.com/weizhentang/>.
 - A 2026 campaign release uses the same name, Toronto campaign address, email, and phone, and states that Tang has lived in Ontario/Toronto for decades: <https://www.linkedin.com/posts/weizhentang_for-immediate-release-ai-as-a-mirror-and-activity-7457949267903709184-axtQ>.
 - Official regulatory records identify Weizhen Tang of Toronto as a financial-fund manager: SEC complaint (2009), <https://www.sec.gov/files/litigation/complaints/2009/comp20988.pdf>; Ontario Capital Markets Tribunal decision (2016), <https://www.capitalmarketstribunal.ca/sites/default/files/pdfs/proceedings/rad_20160421_tangw_0.pdf>.
 - A contemporaneous Toronto Life profile identifies the same Toronto financial figure and his 2010 mayoral campaign: <https://torontolife.com/city/the-1-club-the-story-behind-weizhen-tang-torontos-bernie-madoff/>.
 
 ## Candidate-controlled career claims
 
-VoteMate's candidate-submitted biography claims financial, writing, teaching, and litigation work and lists `weizhentang4mayor@gmail.com`: <https://votemate.org/toronto2023/candidates/8455>. The campaign site claims the 2023 mayoral candidacy and professional history: <https://www.torontonewsnet.com/weizhentang/>. These claims are identity leads; exact results below come from official Toronto returns.
+VoteMate's candidate-submitted biography claims financial, writing, teaching, and litigation work and lists [email removed]: <https://votemate.org/toronto2023/candidates/8455>. The campaign site claims the 2023 mayoral candidacy and professional history: <https://www.torontonewsnet.com/weizhentang/>. These claims are identity leads; exact results below come from official Toronto returns.
 
 ## Possible prior occurrences
 

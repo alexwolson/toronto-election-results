@@ -7,7 +7,7 @@
 
 ## Independent identity anchors
 
-- The City’s certified record links the 2026 candidate to `rob.shusterman@gmail.com` and <https://www.robertshusterman.com>: <https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json>.
+- The City’s certified record links the 2026 candidate to [email removed] and <https://www.robertshusterman.com>: <https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json>.
 - The current candidate-controlled site identifies Robert Shusterman, Toronto mayoral candidate, as a sales representative: <https://www.robertshusterman.com/>. The 2023 candidate profile used the same email and described the same Toronto real-estate career: <https://en.votemate.org/toronto2023/candidates/8448>.
 
 ## Independent election search

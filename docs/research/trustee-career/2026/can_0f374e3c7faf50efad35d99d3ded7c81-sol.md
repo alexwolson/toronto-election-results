@@ -14,7 +14,7 @@ Both earlier dossiers verified the 2022 Ward 11 council result and the CJRU/Cana
 
 ## New Sol search and assessment
 
-The certified 2026 feed now supplies `axelarvizuTO@gmail.com` and a Wix campaign page, but the accessible campaign page does not state the 2022 council history. Searches for that email and site in 2022 sources did not locate an official, archived-candidate, or reputable-news source tying those contact details to the Ward 11 candidate. Current and historical photographs/biographical compatibility are suggestive but do not meet the explicit bridge standard.
+The certified 2026 feed now supplies [email removed] and a Wix campaign page, but the accessible campaign page does not state the 2022 council history. Searches for that email and site in 2022 sources did not locate an official, archived-candidate, or reputable-news source tying those contact details to the Ward 11 candidate. Current and historical photographs/biographical compatibility are suggestive but do not meet the explicit bridge standard.
 
 Strongest sources retained:
 
