@@ -10,7 +10,7 @@
 
 ## Independent identity anchors
 
-The City of Toronto certified-candidate feed records Roberto Curto's 11 August 2026 mayoral nomination, the email `Info@curto.ca`, and the campaign social link `https://x.com/votecurto`. Those are the only candidate-specific anchors located. A 2023 City Council item using the same `@curto.ca` address corroborates a Toronto participant, but is not election-history evidence.
+The City of Toronto certified-candidate feed records Roberto Curto's 11 August 2026 mayoral nomination, the email [email removed], and the campaign social link `https://x.com/votecurto`. Those are the only candidate-specific anchors located. A 2023 City Council item using the same `@curto.ca` address corroborates a Toronto participant, but is not election-history evidence.
 
 ## Independent election search
 

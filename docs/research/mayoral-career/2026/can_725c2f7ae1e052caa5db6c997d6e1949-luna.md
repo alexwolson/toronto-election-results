@@ -11,9 +11,9 @@
 ## Observed names and identity anchors
 
 - The City of Toronto certified-candidate feed records **Robert Shusterman**, raw form **Shusterman, Robert**, as a 2026 Toronto mayoral candidate: <https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json>.
-- The candidate-submitted 2023 VoteMate profile identifies Robert Shusterman as 61, born and raised in Toronto, a real-estate sales representative for more than 30 years, with a sociology degree, radio-broadcasting experience, hockey coaching, and sign-language-interpreter training. It gives `rob.shusterman@gmail.com`: <https://votemate.org/toronto2023/candidates/8448>.
+- The candidate-submitted 2023 VoteMate profile identifies Robert Shusterman as 61, born and raised in Toronto, a real-estate sales representative for more than 30 years, with a sociology degree, radio-broadcasting experience, hockey coaching, and sign-language-interpreter training. It gives [email removed]: <https://votemate.org/toronto2023/candidates/8448>.
 - His real-estate website identifies Robert Shusterman as a Royal LePage Terrequity Realty sales representative in Toronto and uses the same email: <https://www.robertshusterman.com/contact/>.
-- The 2026 candidate directory records the same email, phone 416-837-1787, website, and 2023 mayoral history: <https://toronto-candidates.netlify.app/candidate/robert-shusterman/>.
+- The 2026 candidate directory records the same email, phone [number removed], website, and 2023 mayoral history: <https://toronto-candidates.netlify.app/candidate/robert-shusterman/>.
 
 ## Candidate-controlled career claims
 
@@ -33,7 +33,7 @@ No other plausible Canadian public-election occurrence was located.
 
 ## Identity bridges
 
-- VoteMate's candidate-submitted profile provides the 2023 campaign identity, Toronto biography, and `rob.shusterman@gmail.com`.
+- VoteMate's candidate-submitted profile provides the 2023 campaign identity, Toronto biography, and [email removed].
 - The candidate's own real-estate website independently uses the same full name, Toronto location, occupation, email, and phone.
 - The 2026 directory—sourced from the official current candidate feed—repeats the same contact details and links the 2023 result to the current filing. This is a direct continuity bridge beyond name matching.
 

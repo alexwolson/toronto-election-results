@@ -111,3 +111,9 @@ Use `--refresh-candidates` to overwrite all three City candidate rosters while r
 historical-result cache. The build manifest derives its candidate snapshot date from the oldest
 of those three source retrieval times in Toronto time. Scheme-less `www.` campaign links in the
 official roster receive an HTTPS scheme; other unsupported or malformed links still fail validation.
+
+## Licence
+
+The code is released under the MIT License, and the data and documentation under the Creative
+Commons Attribution 4.0 International Licence (CC BY 4.0). The source records remain subject to
+their publishers' terms; see [`LICENSE`](LICENSE).

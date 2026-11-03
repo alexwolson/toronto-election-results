@@ -10,7 +10,7 @@
 
 ## Independent identity anchors
 
-The City of Toronto's [certified 2026 mayoral feed](https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json) establishes **Dean, Laura** and supplies `lauradeanformayor@gmail.com`. No candidate-controlled site or current biography was found. A City Council communication by a Laura Dean concerns civic advocacy, but has no demonstrated connection to the nomination and is not used as an identity bridge.
+The City of Toronto's [certified 2026 mayoral feed](https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json) establishes **Dean, Laura** and supplies [email removed]. No candidate-controlled site or current biography was found. A City Council communication by a Laura Dean concerns civic advocacy, but has no demonstrated connection to the nomination and is not used as an identity bridge.
 
 ## Independent election search
 
