@@ -8,7 +8,9 @@ those in sources the earlier passes had not used: Metroland's community papers, 
 Global News's ward pages, Toronto blogs that profiled candidates, the Catholic Register and
 community media. Later in the pass a data sweep tested every held municipal run for same-office
 continuity, and a second wave of research agents took the rows the first wave had not reached.
-Dispositions are under reviewer `municipal-holds-2026-11-03`.
+After the project owner asked for one approach in every year, the same test was applied to the
+2026 runs that the 2026 career reviews had held. Dispositions are under reviewer
+`municipal-holds-2026-11-03`.
 
 The standard is the one used throughout: a person-specific source, or strong structural continuity
 for the same office type (the same, a successor or an overlapping ward, a short gap, an uncommon
@@ -17,11 +19,12 @@ source. A second agent checked every confirmation against the release, the ward 
 `data/out/electoral_districts.csv` and the earlier research notes, and against the logged quotes
 for the articles read in ProQuest, which it could not open.
 
-Thirty-one runs are confirmed and one proposed link is rejected. Two of the confirmations are elected
+Thirty-seven runs are confirmed and one proposed link is rejected. Two of the confirmations are elected
 trustee runs settled from Metroland articles read in ProQuest, a 2006 mayoral run is settled by a
 blog's exact vote count, and a 2016 trustee by-election run is settled by a candidate record that
-names the candidate's 2014 council run. The other twenty-seven rest on same-office continuity:
-eighteen proposed by the research agents and nine found by a sweep of the release.
+names the candidate's 2014 council run. The other thirty-three rest on same-office continuity:
+eighteen proposed by the research agents, nine found by a sweep of the release and six 2026 runs
+that the career reviews had held.
 
 ## Elected runs
 
@@ -123,7 +126,27 @@ Alex Perez, Kenneth Chan, Steven Lam and Elizabeth Cook), even where the structu
 rejected Jordan Stone's 2018 Ward 13 run because a 2018 report says that candidate had no earlier
 political experience, and Mitch Gold's 2006 mayoral run because a separate Person named Mitchell
 Gold ran for the Toronto Board of Education in 1994. It left Joseph Osuji's 2026 mayoral run for
-the project owner, with the 2026 career-review holds below.
+the project owner, and that run is confirmed with the other 2026 runs below.
+
+### 2026 runs
+
+The 2026 career reviews held runs whose earlier history no source tied to the 2026 filer, writing
+that a stable ward could not replace such a source. The project owner asked for one approach in
+every year, so the sweep was run again over all 32 runs from 2026 without a Person, including the
+23 trustee runs the career reviews held. Six pass the structural test. A second agent read the
+career-review dossiers for each and found that every reason they give is the lack of a source tying
+the runs, not a fact separating the candidates, and it accepted all six. The career reviews' own
+tables keep their record of the holds. The build now lets a later disposition replace a trustee
+career review's hold, and the dispositions below do so.
+
+| Candidacy | Basis |
+|---|---|
+| Rosina Bonavota, 2026 TCDSB Ward 9 | Both runs are for TCDSB trustee in Ward 9 in consecutive elections (2022 and 2026). The ward covered council Wards 10 to 13 in both years, so the boundaries are the same. No one else in the release has the name. The 2026 career review held the run because no source tied the 2026 filer to the earlier runs, and its dossiers record nothing that separates the two candidates, so same-office continuity applies. ([City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/10/8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf), [City of Toronto 2022 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip)) |
+| Gianfranco Cristiano, 2026 TCDSB Ward 5 | Both runs are for TCDSB trustee in Ward 5 in consecutive elections (2022 and 2026). The ward covered council Wards 6, 8 and 18 in both years, so the boundaries are the same. No one else in the release has the name, and the 2018 and 2022 Ward 5 runs are already one Person. The 2026 career review held the run because no source tied the 2026 filer to those runs, and its dossiers record nothing that separates the candidates, so same-office continuity applies. ([City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/10/8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf), [City of Toronto 2022 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip)) |
+| Renato Fallico, 2026 TCDSB Ward 9 | Both runs are for TCDSB trustee in Ward 9 in consecutive elections (2022 and 2026). The ward covered council Wards 10 to 13 in both years, so the boundaries are the same. No one else in the release has the name. The 2026 career review held the run because no source named both campaigns. Its dossiers mention a third-party report of a 2026 mayoral registration under the name that was withdrawn; that is not a run in the release and does not describe a different person. Same-office continuity applies. ([City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/10/8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf), [City of Toronto 2022 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip)) |
+| Joseph Osuji, 2026 mayor | Both runs are for mayor, in 2018 and 2026, with one general election (2022) between; the 2023 by-election is not a general election. No one else in the release has the name, and Osuji is not a common surname in Toronto. No source describes either candidate, so nothing separates them. The 2026 career review and the 2026 results review held the run only because no source tied the 2026 filer to the 2018 run, and same-office continuity applies. ([City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/10/8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf), [City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip)) |
+| Paul Salvatori, 2026 TCDSB Ward 10 | Both runs are for TCDSB trustee in Ward 10, in 2018 and 2026, with one general election between. The ward covered council Ward 5 (York South-Weston) in both years, so the boundaries are the same. No one else in the release has the name. The 2018 trustee profile calls the candidate a professor of ethics and no source describes the 2026 candidate, so nothing separates them. The 2026 career review held the run only because no source tied the 2026 filer to the 2018 run, and same-office continuity applies. ([City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/10/8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf), [City of Toronto 2018 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip)) |
+| John Vassal, 2026 TDSB Ward 6 | Both runs are for TDSB trustee in consecutive elections, in Ward 8 in 2022 and Ward 6 in 2026. By the City's school board ward charts the 2022 ward covered council Wards 8 and 12 and the 2026 ward covers council Wards 5 and 8. By the ward boundaries in the release, the shared council Ward 8 (Eglinton-Lawrence) is 63 per cent of the 2022 ward and 48 per cent of the 2026 ward. No one else in the release has the name. The 2026 career review held the run because no source tied the 2026 filer to the Ward 8 runs from 2010 to 2022, and its dossiers record nothing that separates the candidates, so same-office continuity applies. ([City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/10/8966-Declaration-of-Results-2026-Toronto-Municipal-Election-Oct-29-Final.pdf), [City of Toronto 2022 results](https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip), [City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2022/04/8ef1-2022-School-Board-Ward-Reference-Chart.pdf), [City of Toronto elections](https://www.toronto.ca/wp-content/uploads/2026/04/9600-2026-School-board-ward-reference-chart.pdf)) |
 
 ## Other sources
 
@@ -142,7 +165,7 @@ when the search limit was reached. Most searches returned sources already used, 
 refused several pages, among them CBC's 2010 ward pages and LocalWiki's 2010 candidate pages. The
 wave settled Sandeep Srivastava's 2016 trustee by-election run, in the table of other sources
 above, and found the conflict below. It also proposed John Vassal's 2026 TDSB Ward 6 run on
-structure, which is left for the project owner with the other 2026 career-review holds.
+structure, which is confirmed with the other 2026 runs above.
 
 ## Rejected
 
@@ -152,31 +175,25 @@ structure, which is left for the project owner with the other 2026 career-review
 
 The 2018 run stays without a Person, and the 2006 Ward 20 run keeps its own.
 
-## Left for the project owner
+## Decided by the project owner
 
-- The 2026 trustee career review held Gianfranco Cristiano's, Paul Salvatori's and Rosina Bonavota's
-  2026 TCDSB runs, writing that a stable ward cannot replace a source tying the 2026 candidate to the
-  earlier runs. The research agents proposed each on structural continuity: the same ward as the
-  earlier runs, one or two elections on, under an uncommon name. They stay held until the project
-  owner decides whether structural continuity applies to the 2026 career reviews. The same
-  question covers John Vassal's 2026 TDSB Ward 6 run, which continues his TDSB runs in Ward 8 from
-  2010 to 2022 (the two wards share city ward 8), and Joseph Osuji's 2026 mayoral run, one general
-  election after his 2018 run. Both were held by the 2026 career reviews.
-- The second agent accepted the structural links above under the dataset's standard and flagged
-  three calls for the owner: names that no one else in the release has but that are not rare in the
-  population (Ted Berger, Mohammed Ather, Dean Maher and Jude Coutinho, and from the sweep Ali
-  Mohamed-Ali, Sonny Cho, Scott Yee, Mahbubul Alam and Suzanne McCormick); overlaps of a fifth to a
-  half of the earlier ward by area (Marina Laccona, Rob Wolvin, George Sawision, Frank Capisciolto and
-  Dean Maher, and from the sweep Sonny Cho); and whether structure may settle runs that earlier
-  passes left open for lack of a source.
+The project owner asked for one approach throughout. Structural continuity applies to 2026 runs as
+to other years, which settled the six 2026 runs above, among them the three TCDSB runs the trustee
+career review had held. The thresholds the second agent flagged stay as they are: an overlap of
+about a fifth of either ward or more, and a name that no one else in the release has unless it is
+common in Toronto. The links that rest on names not rare in the population are Ted Berger's,
+Mohammed Ather's, Dean Maher's and Jude Coutinho's, and from the sweep Ali Mohamed-Ali's, Sonny
+Cho's, Scott Yee's, Mahbubul Alam's and Suzanne McCormick's. Those that rest on overlaps of a fifth
+to a half are Marina Laccona's, Rob Wolvin's, George Sawision's, Frank Capisciolto's, Dean Maher's
+and Sonny Cho's.
 
 ## Not reached
 
 Of the 183 municipal rows in the two waves' batches, 142 were searched, including the three 2026
-TCDSB runs left for the project owner. Twenty-three were settled before an agent reached them, 14
-have names too common to search usefully, including five the sweep rejected for that reason,
-and the search limit stopped the second wave before three more (Paul Maguire, Gord Reynolds and
-Pat Brar). Joseph Osuji's 2026 mayoral run went to the sweep instead. For a later pass, the most
-promising sources are Campaign Life Coalition's records of trustee candidates, which only some
-searches return, LocalWiki's 2010 candidate pages and Every Candidate's 2014 profiles, which the
-fetch tool refused or timed out on here.
+TCDSB runs now confirmed on structure. Twenty-three were settled before an agent reached them, 14
+have names too common to search usefully, including five the sweep rejected for that reason, and the
+search limit stopped the second wave before three more (Paul Maguire, Gord Reynolds and Pat Brar).
+Joseph Osuji's 2026 mayoral run went to the sweep instead and is now confirmed. For a later pass,
+the most promising sources are Campaign Life Coalition's records of trustee candidates, which only
+some searches return, LocalWiki's 2010 candidate pages and Every Candidate's 2014 profiles, which
+the fetch tool refused or timed out on here.

@@ -15,6 +15,7 @@ from toronto_election_results.trustee_career import (
     build_trustee_career_identity_assertions,
     build_trustee_hold_decisions,
     load_trustee_career_cohort,
+    reconcile_trustee_identity_decisions,
     validate_trustee_career_cohort,
     validate_trustee_career_contracts,
     validate_trustee_sol_reviews,
@@ -198,6 +199,31 @@ def test_a_held_alternative_does_not_override_a_confirmed_identity():
     holds = build_trustee_hold_decisions(reference)
 
     assert set(holds["candidacy_id"]).isdisjoint(mixed_subjects)
+
+
+def test_a_later_disposition_replaces_a_career_review_hold():
+    holds = build_trustee_hold_decisions(REFERENCE)
+    subject = holds.iloc[0]
+    later = pd.DataFrame(
+        [
+            {
+                "candidacy_id": subject["candidacy_id"],
+                "target_person_id": subject["target_person_id"],
+                "decision": "confirmed",
+                "confidence": "high",
+                "rationale": "A later structural review confirms the run.",
+                "evidence_urls": "https://www.toronto.ca/city-government/elections/",
+                "reviewer": "later-review",
+            }
+        ],
+        dtype="string",
+    )
+
+    decisions = reconcile_trustee_identity_decisions(later, REFERENCE, ())
+
+    rows = decisions.loc[decisions["candidacy_id"].eq(subject["candidacy_id"])]
+    assert rows["decision"].tolist() == ["confirmed"]
+    assert len(decisions) == len(holds)
 
 
 def test_expected_board_contest_contract_has_29_contests():

@@ -72,21 +72,26 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 The release has 5,190 People. 5,185 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,679 Candidacies have a confirmed Person and 420 have none: 418
+candidacy in the release. 7,687 Candidacies have a confirmed Person and 412 have none: 410
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
-420 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+412 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results. Each held run's disposition names the later
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
 continuity, Council rosters and adjudicated curations. The curations are 486 identity assertions
-over 1,058 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
-confirmed earlier races in the release) and 1,633 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,130 confirmed, 499 unresolved and 4 rejected).
-A disposition is not applied where a career review or a person-record merge covers the same
-Candidacy. No blanket name merges are made, and a hold does not claim that two occurrences are
-different people. A House of Commons run and an Ontario legislature run are linked without a
-person-specific source only under the narrow rule in
+over 1,058 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+candidates have confirmed earlier races in the release) and 1,638 occurrence-level dispositions in
+`data/reference/identity_review_dispositions.csv` (1,138 confirmed, 496 unresolved and 4 rejected).
+A disposition is not applied where a career review's confirmation or a person-record merge
+covers the same Candidacy, but a later disposition does replace a career review's hold. No
+blanket name merges are made, and a hold does not claim that two occurrences are different
+people. Without a person-specific source, two runs for the same office are linked on structure
+under one test for every year and office: the same, a successor or an overlapping ward or riding
+(at least about a fifth of either by area where the release has the boundaries), the same party
+where parties apply, no more than one general election between, a name that is not common, and
+no competing candidate of that name. A House of Commons run and an Ontario legislature run are
+linked without a person-specific source only under the narrow rule in
 `docs/research/federal-provincial-holds-2026-11-01.md`: the same riding at both levels within two
 years, the federal and Ontario parties of one name or no party at either, an uncommon name, and
 no other Person of that name in the release.

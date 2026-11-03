@@ -20,12 +20,12 @@ and votes), and applied the same standard. Proposals that rested on the Canadian
 alone, or on structural continuity under a common name, were held before that check. Dispositions
 are under reviewer `federal-provincial-holds-2026-11-01`.
 
-Of the 343 rows, 181 are confirmed to their targets and 162 remain unresolved. The sources also
+Of the 343 rows, 183 are confirmed to their targets and 160 remain unresolved. The sources also
 confirm 26 runs outside the scope: Knia Singh's 1997 Ward 18 council run (printed as George B.
 Singh), and 25 federal and provincial runs from before 2004 that earlier reviews left unresolved.
 The same sources join 33 runs held by 24 other Person records to the Person they belong to.
 
-Six confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
+Seven confirmations are structural. Neil Spiegel's 2004 Parkdale—High Park run continues his 2000
 run there. The earlier proposal named the Person holding his 2003 provincial run, a different
 office, so the curated assertion `neil-spiegel-2004-house-continuity` joins the 2004 run to the
 Person holding the 2000 run. Elections Canada's 2000 candidate file and 2004 results table both give
@@ -36,7 +36,9 @@ archived Wikipedia biography, which names all three, joined them. In the third p
 Yazdanfar's November 2013 Toronto Centre by-election run continues his 2011 independent run
 there, and Johan Boyden's 2008 Toronto Centre run continues his 2006 Communist run there. The
 third pass confirmed both earlier runs on the occupations Elections Canada gives. In the fifth
-pass, Mary Trapani Hynes's 2011 Don Valley East run continues her 2008 NDP run there.
+pass, Mary Trapani Hynes's 2011 Don Valley East run continues her 2008 NDP run there, and Akil
+Sadikali's 2014 NDP run in Don Valley East joins his 2018 run in Don Valley North on the same test,
+since Don Valley North took almost half of Don Valley East in the 2012 redistribution.
 
 Two confirmations and one join rest on archived copies of Wikipedia biographies that Wikipedia no
 longer carries: Sheila White's, Rob Newman's and Sam Apelbaum's. Each copy gives the runs with the
@@ -96,18 +98,19 @@ Later in the pass a second wave of research agents took 129 more federal and pro
 110 in the three batches the first wave had not started, and 19 that it had searched little or not
 at all. They searched 101 of them, in party publications, community papers, Xtra, the Annex Gleaner
 and People's Voice among others. Of the other 28, most have common names, two were covered while
-researching another row, and five were left when the search limit was reached. A sweep of the
-held runs for same-office continuity, like the municipal one, followed. The second agent accepted
-two confirmations. Michael Erickson's 2011 Etobicoke—Lakeshore run rests on Xtra and the Annex
-Gleaner, which both describe a high school
-teacher at Harbord Collegiate who grew up in Ottawa, Xtra calling him a former council candidate.
-Mary Trapani Hynes's 2011 Don Valley East run continues her 2008 NDP run there, which this review
-confirmed on the Star's 2007 profile and Elections Canada's 2008 listing. The second agent rejected
-the proposals for Philip Fernandez's 2007 provincial run and Nick Lin's 2011 federal run on the
-uncommon-name test, and it could not verify Sean Carson's 2021 run, which rests on a CV whose web
-address contains his contact details. It also found that Wikipedia's note on Nick Lin gives a 1999
-York West provincial run with the vote count and placing of the record printed as S. Nicholas C.
-Lin, so the curated assertion `nick-lin-1999-york-west` joins that record to his Person.
+researching another row, and five were left when the search limit was reached. A sweep of the held
+runs for same-office continuity, like the municipal one, followed. The second agent accepted two
+confirmations. Michael Erickson's 2011 Etobicoke—Lakeshore run rests on Xtra and the Annex Gleaner,
+which both describe a high school teacher at Harbord Collegiate who grew up in Ottawa, Xtra calling
+him a former council candidate. Mary Trapani Hynes's 2011 Don Valley East run continues her 2008 NDP
+run there, which this review confirmed on the Star's 2007 profile and Elections Canada's 2008
+listing. The second agent rejected the proposals for Philip Fernandez's 2007 provincial run and Nick
+Lin's 2011 federal run on the uncommon-name test. It could not open the CV behind Sean Carson's 2021
+run, because the CV's web address contains his contact details; the project owner then accepted a
+public source cited by description, the reviewer read the CV, and that run is confirmed. The second
+agent also found that Wikipedia's note on Nick Lin gives a 1999 York West provincial run with the
+vote count and placing of the record printed as S. Nicholas C. Lin, so the curated assertion
+`nick-lin-1999-york-west` joins that record to his Person.
 
 ## Confirmed runs
 
@@ -142,6 +145,7 @@ basis names a curated assertion that joins the run to another Person.
 | Ivan Byard, 2021 Toronto Centre (federal) | The Eyeopener's September 2021 guide to Toronto Centre candidates gives the Communist candidate, spelled Byrad in its text, as general secretary of the Young Communist League, and the YCL's May 2021 article is signed by Ivan Byard as its general secretary. Wikipedia's 2019 Communist list describes Ivan Byard as a YCL Ontario organizer and an Ontario election candidate in Toronto Danforth, the target's 2018 run (the note misdates it to 2015). ([theeyeopener.com](https://theeyeopener.com/?p=104274), [ry-jm.ycl-ljc.ca](https://ry-jm.ycl-ljc.ca/?p=965), [Wikipedia: Communist Party of Canada candidates in the 2019 Canadian federal election](https://en.wikipedia.org/wiki/Communist_Party_of_Canada_candidates_in_the_2019_Canadian_federal_election), [internationalmagz.com](https://www.internationalmagz.com/articles/elections-in-canada-history-in-hands-of-communist-party)) |
 | Ivan Byard, 2022 Toronto Centre (Ontario) | Elections Ontario gives Ivan Byard as the Communist Party of Canada (Ontario) candidate in Toronto Centre in the 2022 provincial election, and Elections Canada gives the target as the Communist Party of Canada candidate there in the 2021 federal election. The link rests on this review's rule for runs at both levels in one riding: the runs are no more than two years apart, the candidate ran for the federal and Ontario parties of one name, the name is uncommon, and no other Person in the release has it. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/45/report-outputs/1050/csv), [Elections Canada 2021 candidates](https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/pollresults_resultatsbureau35.zip)) |
 | John Cannis, 2019 Scarborough Centre (federal) | His Wikipedia biography says he was elected as the Liberal MP for Scarborough Centre in 1993, served 18 years until his 2011 defeat, and ran as an independent in Scarborough Centre in 2019; its results table gives him 2,524 votes. The Liberal runs from 1993 to 2011 are the target's. ([Wikipedia: John Cannis](https://en.wikipedia.org/wiki/John_Cannis)) |
+| Sean Carson, 2021 Etobicoke—Lakeshore (federal) | Sean Carson's CV, a PDF on FilmFreeway's public file storage read on 3 November 2026 (its address is not listed because the file name contains his phone number and email), describes a stand-up comedian who hosts and produces Off The Rails Comedy, lists Rhinoceros Party candidacies in 2019, 2021, 2022 and 2023, and says his first campaign was in Toronto Centre in 2019, the target's run. Elections Canada's 2021 results list one Sean Carson, the Rhinoceros candidate in Etobicoke-Lakeshore, as a comedian. The Montreal Guardian's May 2026 profile of the comedian says he runs for the Rhinoceros Party in federal elections, and The Suburban's June 2023 by-election item calls him a comedian in his fourth federal election with the party. ([montrealguardian.com](https://montrealguardian.com/?p=13677), [thesuburban.com](https://www.thesuburban.com/news/city_news/ten-candidates-in-ndg-westmount/article_b078166d-36cc-5d3a-a9d3-8eacb4c7e678.html), [Elections Canada 2019 candidates](https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/table_tableau12.csv), [Elections Canada 2021 candidates](https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/table_tableau12.csv)) |
 | Brian Chang, 2019 Toronto Centre (federal) | Brian Chang's own biography page says he was the federal NDP candidate in the December 2017 Scarborough-Agincourt by-election and then won the Toronto Centre NDP nomination and ran in the October 21, 2019 general election. That joins this run to the target's 2017 run. ([brainchange-brainchange.nationbuilder.com](https://brainchange-brainchange.nationbuilder.com/experience)) |
 | Brian Chang, 2020-10-26 Toronto Centre by-election (federal) | The Wikipedia page on the 2020 Toronto Centre by-election says the NDP's Brian Chang had been the party's candidate in the riding in 2019. His own biography page ties that 2019 Toronto Centre run to the target's 2017 Scarborough-Agincourt by-election run. ([Wikipedia: 2020 Toronto Centre federal by-election](https://en.wikipedia.org/wiki/2020_Toronto_Centre_federal_by-election), [brainchange-brainchange.nationbuilder.com](https://brainchange-brainchange.nationbuilder.com/experience)) |
 | Brian Chang, 2021 Toronto Centre (federal) | On the Record's September 2021 interview with the Toronto Centre NDP candidate says Brian Chang won the riding's NDP nomination in 2019, and he refers to campaigning in the by-election the year before. His biography page ties the 2019 Toronto Centre run to the target's 2017 Scarborough-Agincourt run. ([ontherecordnews.ca](https://ontherecordnews.ca/?p=86229), [brainchange-brainchange.nationbuilder.com](https://brainchange-brainchange.nationbuilder.com/experience)) |
@@ -256,6 +260,7 @@ basis names a curated assertion that joins the run to another Person.
 | Rocco Rossi, 2011 Eglinton—Lawrence (Ontario) | CTV's 2011 riding profile of Eglinton-Lawrence describes Rocco Rossi as the Progressive Conservative candidate there and says he ran in Toronto's 2010 mayoral race before withdrawing. Global News reports the same person moving from that 2010 mayoral campaign to the provincial Tory candidacy, so this run belongs to the target, whose 2010 mayoral result is that campaign. ([toronto.ctvnews.ca](https://toronto.ctvnews.ca/riding-watch-eglinton-lawrence-becomes-battleground-for-big-names-1.706191), [Global News](https://globalnews.ca/news/108152/rocco-rossi-to-run-for-provincial-tories/)) |
 | Carol Royer, 2021 Etobicoke North (federal) | VoteMate's 2021 profile of the independent candidate in Etobicoke North describes Carol Royer as an entrepreneur and community activist and as executive director of Buddy Services, and Elections Canada gives her occupation as executive director. The Toronto Star's 2018 council endorsements describe Carol Royer, the Ward 1 Etobicoke North candidate and the target's run, as an entrepreneur and community activist, and its Ward 1 story says she ran as an independent in Parkdale—High Park in 2015, the target's other run. ([embed-en.votemate.org](https://embed-en.votemate.org/c/5249?riding=970), [Elections Canada 2021 candidates](https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/table_tableau12.csv), [Toronto Star, ProQuest 2119860439](https://www.proquest.com/docview/2119860439), [Toronto Star, ProQuest 2123467113](https://www.proquest.com/docview/2123467113)) |
 | Steve Rutchinski, 2025 Beaches—East York (federal) | Elections Canada gives the Marxist-Leninist candidate Steve Rutchinski as a university administrator in 2015 and 2019, when he ran in University—Rosedale, and as a post-secondary education administrator in 2025, when he ran in Beaches—East York. ([Elections Canada 2015 candidates](https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv), [Elections Canada 2019 candidates](https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/table_tableau12.csv), [Elections Canada 2025 candidates](https://elections.ca/res/rep/off/ovrGE45/62/table12E.html)) |
+| Akil Sadikali, 2014 Don Valley East (Ontario) | Both runs are for the Ontario legislature as the NDP candidate in consecutive elections, in Don Valley East in 2014 on the 2003 boundaries and in Don Valley North in 2018 on the 2013 boundaries. Don Valley East lost almost half of its territory to Don Valley North in the 2012 redistribution (Wikipedia), so Don Valley North is a successor riding. The ward boundaries in the release give a similar share, with the 1996 Don Valley East (council Wards 33 and 34 of 2000–2014) standing in for the 2003 riding: about 40 per cent of its area and half of its 2014 electors lie in Don Valley North. No one else in the release has the name. Elections Canada and the Toronto Star describe the Person's candidate as a software engineer or software developer in 2011, 2015 and 2018, and no source describes the 2014 candidate in a way that conflicts, so same-office continuity applies across the redistribution. ([results.elections.on.ca](https://results.elections.on.ca/api/report-groups/2/report-outputs/488/csv), [results.elections.on.ca](https://results.elections.on.ca/api/report-groups/1/report-outputs/932/csv), [Wikipedia: Don Valley East (federal electoral district)](https://en.wikipedia.org/wiki/Don_Valley_East_(federal_electoral_district))) |
 | Akil Sadikali, 2015 Don Valley North (federal) | Elections Canada gives Akil Sadikali's occupation as software engineer in 2011, when he ran for the Green Party in Don Valley East, and as software developer in 2015, when he ran for the NDP in Don Valley North. Global News's 2015 Don Valley North guide also calls the NDP candidate a software developer. ([Elections Canada 2011 candidates](https://elections.ca/scripts/ovr2011/34/table12.html), [Elections Canada 2015 candidates](https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv), [Global News](https://globalnews.ca/news/2159703/federal-election-2015-don-valley-north-riding/)) |
 | Akil Sadikali, 2018 Don Valley North (Ontario) | The Toronto Star's report on the 2018 Don Valley North result describes the NDP candidate Akil Sadikali as a software developer. Elections Canada gives him as a software developer in 2015, when he ran for the NDP in the same riding, and as a software engineer in 2011, when he ran for the Green Party in Don Valley East, the target's run. ([Toronto Star, ProQuest 2051566820](https://www.proquest.com/docview/2051566820), [Elections Canada 2015 candidates](https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv), [Elections Canada 2011 candidates](https://elections.ca/scripts/ovr2011/34/table12.html)) |
 | Angela Salewsky, 2015 Etobicoke—Lakeshore (federal) | Elections Canada gives Angela Salewsky, the Green Party of Canada candidate in Etobicoke—Lakeshore in 2015, as a business development manager. The Etobicoke Guardian's 9 July 2013 story on the Etobicoke—Lakeshore by-election, the target's run, calls the Green Party of Ontario candidate Angela Salewsky a business development manager who had run for the party in the riding since 2011. ([Elections Canada 2015 candidates](https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/table_tableau12.csv), [Etobicoke Guardian, ProQuest 1399134810](https://www.proquest.com/docview/1399134810)) |
@@ -393,7 +398,7 @@ earlier from the Toronto Star, are in the last section.
 
 ## What stays unresolved
 
-For most of the 162 rows no public source describes the candidate beyond the results. Many are
+For most of the 160 rows no public source describes the candidate beyond the results. Many are
 minor-party and independent candidates, and some have common names whose runs cannot be told apart.
 These rows came close and are worth another look:
 
@@ -404,8 +409,6 @@ These rows came close and are worth another look:
   separate George Singh ran for council in Ward 42 in 2010, so the second agent held it.
 - Runs whose other runs are documented but which no source describes: Mir Kamal's 2007 York
   South—Weston by-election and Danish Ahmed's 2009 St. Paul's by-election.
-- Akil Sadikali's 2014 provincial run, which only the Canadian Elections Database groups with the
-  target.
 - Janice Murray's 2000 Etobicoke—Lakeshore run. Elections Canada gives her as an industrial worker
   that year, a label eight Marxist-Leninist candidates used. Her 2003 and 2007 provincial runs
   there stay apart from her federal runs, since Elections Ontario gives no occupations.
@@ -422,12 +425,8 @@ These rows came close and are worth another look:
   party of his 2006 run, but the name is common, and Elections Canada also lists a
   Marxist-Leninist candidate of that name in Ottawa West—Nepean in 2019. It gives the 2011 and
   2025 candidate as a web designer, which matches none of the target's runs.
-- Sean Carson's 2021 Etobicoke—Lakeshore and 2024 Toronto—St. Paul's runs. A CV posted by the
-  comedian Sean Carson lists Rhinoceros Party candidacies in 2019, 2021, 2022 and 2023 and says his
-  first campaign was in Toronto Centre in 2019, the target's run, and Elections Canada gives the
-  2021 candidate as a comedian. The CV's web address contains his phone number and email, so it
-  is not cited, and the second agent did not open it. Whether a source cited by description
-  can carry the link is for the project owner.
+- Sean Carson's 2024 Toronto—St. Paul's by-election run. The CV that ties his 2019 and 2021 runs
+  lists campaigns up to 2023 only, and the riding differs from both earlier ones.
 - John Kittredge's runs in Don Valley West, federal in 2015 and 2019 and provincial in 2018 and
   2022. He moved there from St. Paul's at both levels, and Elections Canada gives him as retired
   in 2015 and 2019 against management consultant in 2008 and 2011.
@@ -446,17 +445,17 @@ These rows came close and are worth another look:
   a lawyer in 2000, which is consistent with one person but does not match.
 
 Forty-five held runs repeat the office and party of one of their proposed Person's runs, one or two
-elections apart, but in a riding with a different name, so the same-office test does not apply.
-Minor-party candidates often move between ridings. In 27 of these runs no other Person or held run
-has the name and the surname is not among the most common in Toronto: Shelly Lipsey (1997 and
-1999), Dan Largy (1999), Erica Kindl (1999), Mir Kamal (2007), Franz Cauchi (2007), Andrew Strachan
-(2007), Wiktor Pawel Borkowski (2007), Raj Rama (2010), Raphael Rosch (2013), Leslie Bory (2013),
-Akil Sadikali (2014), John Kittredge (2015, 2018, 2019 and 2022), Tara Dos Remedios (2021), Sean
-Carson (2021 and 2024), Drew Garvie (2022), Danielle Height (2023), Randi Ramdeen (2025), Mario
-Bilusic (2025), Dean Boulding (2025), Ron Shaw (2025), Victor Ehikwe (2025) and Peter Koubakis
-(2026). Some of these ridings overlap after a redistribution, such as Don Valley East and Don
-Valley North, but the release has no riding boundaries to measure the overlap. Whether a rule like
-the one for runs at both levels should cover them is for the project owner.
+elections apart, but in a riding with a different name. The project owner asked for the same test
+as for wards: the same, a successor or an overlapping riding. In 18 of the runs the name is common
+or another Person has it, which rules out a structural link whatever the riding. Of the other 27,
+15 pair two ridings from the same set of boundaries, which cannot overlap; Sean Carson's 2021 run
+among them is confirmed instead on his CV. The other 12 cross a redistribution, and a second agent
+traced each riding's lineage. It accepted Akil Sadikali's 2014 run, above. John Kittredge's four
+Don Valley West runs came closest: in 2012 Don Valley West took the strip between Mount Pleasant
+Road and Bayview Avenue from St. Paul's, about 14 per cent of St. Paul's and 7 per cent of Don
+Valley West by area, which is below the fifth used for wards, so they stay held. The ridings of
+Shelly Lipsey's, Dan Largy's and Erica Kindl's 1999 runs, Franz Cauchi's, Andrew Strachan's and
+Wiktor Pawel Borkowski's 2007 runs and Drew Garvie's 2022 run took no part of the earlier riding.
 
 A first look at the Toronto Star's riding coverage, read in ProQuest, settled three of the rows
 and two 1997 federal runs from the earlier review, below. The second and third passes read it
