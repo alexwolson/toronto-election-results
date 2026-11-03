@@ -12073,14 +12073,18 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         evidence_urls=(
             "https://www.proquest.com/docview/439498861",
             "https://www.elections.ca/scripts/OVR2008/31/data/table_tableau12.csv",
+            "https://www.proquest.com/docview/439099227",
         ),
         rationale=(
             "The Toronto Star's 2008 Eglinton—Lawrence profile describes the Green candidate "
             "Andrew James as a law book writer running his second political campaign, after "
             "failing to win the riding's provincial seat the year before. Elections Canada gives "
             "the 2008 candidate as a writer. His 2007 provincial and 2008 federal Green runs in "
-            "Eglinton—Lawrence become one new Person. The council candidates of the same name in "
-            "Ward 29 in 2006 and Ward 30 in 2010 are not joined to it."
+            "Eglinton—Lawrence become one new Person. The Star's 2006 council guide describes the "
+            "Ward 29 candidate of the same name as calling for environmental awareness, "
+            "electricity conservation and a better city justice system, which is consistent with "
+            "the Green candidate but gives no distinctive fact, so that run is not joined to it, "
+            "and nor is the 2010 Ward 30 run, which no source in this review describes."
         ),
     ),
 )
