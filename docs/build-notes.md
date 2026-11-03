@@ -75,7 +75,8 @@ tenure from a Council roster. Each of those five was appointed to fill a vacancy
 candidacy in the release. 7,667 Candidacies have a confirmed Person and 432 have none: 431
 were reviewed and left unresolved for insufficient evidence, and one was rejected. Five of the
 432 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
-nulls are review outcomes, not missing results.
+nulls are review outcomes, not missing results. Each held run's disposition names the later
+research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
 continuity, Council rosters and adjudicated curations. The curations are 485 identity assertions
