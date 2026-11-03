@@ -10613,7 +10613,7 @@ PERSON_RECORD_MERGE_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             "https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/table_tableau12.csv",
         ),
         rationale=(
-            "Elections Canada's 1993 candidate record and the City's 2018 campaign-contribution record, where he contributed to his own mayoral campaign, give the same home postal code, joining the 1993 federal run to the 2014 and 2018 mayoral runs. Elections Canada gives his occupation as engineer in 1993, 2008, 2019 and 2021, joining the Davenport runs, and the 2015 Davenport run is the same independent in the same riding. His 1994-2000 York-area council runs, the 2016 and 2017 council by-elections and the 2018 provincial run are not established and stay unresolved."
+            "Elections Canada's 1993 candidate record and the City's 2018 campaign-contribution record, where he contributed to his own mayoral campaign, give the same home postal code, joining the 1993 federal run to the 2014 and 2018 mayoral runs. Elections Canada gives his occupation as engineer in 1993, 2008, 2019 and 2021, joining the Davenport runs, and the 2015 Davenport run is the same independent in the same riding. His 1994-2000 York-area council runs and the 2016 and 2017 council by-elections are not established by this assertion. The 2018 provincial run in Davenport joins this Person through a review disposition under the rule for federal and provincial runs in one riding."
         ),
         registry_person_ids=("per_7a6c09e82feb52cdbcd1fa757f7c708d",),
         canonical_person_id="per_7a6c09e82feb52cdbcd1fa757f7c708d",
@@ -12044,6 +12044,37 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         "named the Person holding his 2011 independent run in Scarborough—Guildwood, for which "
         "Elections Canada gives minister, so this assertion joins the 2015 run to the Person "
         "holding the 1997 and 2000 runs.",
+    ),
+)
+
+# Found in the 2026-11-03 review of municipal holds: a school board run that belongs to the Person
+# holding a candidate's provincial runs, while the earlier proposal named another Person.
+DEFAULT_IDENTITY_ASSERTIONS += (
+    _anchored_continuity_assertion(
+        "pak-cheong-choo-1994-etobicoke-board",
+        "P. C. CHOO",
+        "per_628e0ca495585a479f4a5faaa676dc20",
+        (
+            (
+                "can_370dc554d2d25d48bfe480b5a192b193",
+                "evt_f3d5134ef9b25e0a9179ede437def849",
+                "etobicoke_board_of_education",
+                "trustee",
+                "Pak-Cheong Choo",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/1399134810",
+            "https://www.proquest.com/docview/1428146066",
+        ),
+        "The Etobicoke Guardian's 9 July 2013 story on the Etobicoke—Lakeshore by-election calls "
+        'the NDP candidate P.C. Choo, whose 2013 and 2014 runs this Person holds, "a former '
+        "public school board trustee with the Etobicoke Board of Education\". The Gleaner's "
+        'report of 8 to 14 August 2013 on the by-elections names him as "PC. (Pak-Cheong) Choo '
+        'of the NDP", and the 1994 Ward 12 win is the only Etobicoke board run of that name in '
+        "the record, so this assertion joins it to this Person. The 2016 TDSB Ward 1 by-election "
+        "candidate of the same full name, whom the earlier proposal named, is not described by "
+        "any source in this review and keeps a separate Person.",
     ),
 )
 

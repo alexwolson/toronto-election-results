@@ -72,19 +72,23 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 The release has 5,191 People. 5,186 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,624 Candidacies have a confirmed Person and 475 have none: 474
-were reviewed and left unresolved for insufficient evidence, and one was rejected. Seven of the
-475 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+candidacy in the release. 7,667 Candidacies have a confirmed Person and 432 have none: 431
+were reviewed and left unresolved for insufficient evidence, and one was rejected. Five of the
+432 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 484 identity assertions
-over 1,056 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
+continuity, Council rosters and adjudicated curations. The curations are 485 identity assertions
+over 1,057 occurrences, the two 2026 career reviews (21 mayoral and 28 trustee candidates have
 confirmed earlier races in the release) and 1,633 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,075 confirmed, 555 unresolved and 3 rejected).
+`data/reference/identity_review_dispositions.csv` (1,118 confirmed, 512 unresolved and 3 rejected).
 A disposition is not applied where a career review or a person-record merge covers the same
 Candidacy. No blanket name merges are made, and a hold does not claim that two occurrences are
-different people.
+different people. A House of Commons run and an Ontario legislature run are linked without a
+person-specific source only under the narrow rule in
+`docs/research/federal-provincial-holds-2026-11-01.md`: the same riding at both levels within two
+years, the federal and Ontario parties of one name or no party at either, an uncommon name, and
+no other Person of that name in the release.
 
 The Council roster step matches each roster member to a Candidacy by exact name. It reads the
 1997–2002 archive names given name first, as the archive printed them. A roster entry that no
