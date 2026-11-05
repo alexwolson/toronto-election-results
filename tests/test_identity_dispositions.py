@@ -371,6 +371,57 @@ def test_review_confirmation_can_supersede_matching_automated_confirmation():
     assert active["person_id"] == "per_one"
 
 
+def test_review_hold_can_supersede_an_automated_link_but_not_a_curated_one():
+    people = pd.DataFrame(
+        {
+            "person_id": ["per_one"],
+            "preferred_name": ["Alex One"],
+            "identity_status": ["active"],
+            "redirect_to_person_id": [pd.NA],
+            "created_release": ["v1"],
+        }
+    )
+    hold = pd.DataFrame(
+        {
+            "candidacy_id": ["can_one"],
+            "target_person_id": ["per_one"],
+            "decision": ["unresolved"],
+            "confidence": ["low"],
+            "rationale": ["Only a name-matched database ties this run to the Person."],
+            "evidence_urls": ["https://example.test/result"],
+            "reviewer": ["reviewer-a"],
+        }
+    )
+
+    def links(method: str) -> pd.DataFrame:
+        return pd.DataFrame(
+            {
+                "candidacy_id": ["can_one"],
+                "person_id": ["per_one"],
+                "link_status": ["confirmed"],
+                "method": [method],
+                "evidence": ["link evidence"],
+                "reviewer": ["pipeline"],
+                "valid_from_release": ["v1"],
+                "valid_to_release": [pd.NA],
+            }
+        )
+
+    held = apply_identity_review_decisions(
+        people, links("official_candidacy_record"), hold, release_id="v2"
+    )
+    active = held.loc[held["valid_to_release"].isna()].iloc[0]
+    assert active["link_status"] == "unresolved"
+    assert active["method"] == "curated_review_unresolved"
+    assert active["person_id"] == "per_one"
+    assert held["valid_to_release"].eq("v2").sum() == 1
+
+    with pytest.raises(ValueError, match="does not match exactly one"):
+        apply_identity_review_decisions(
+            people, links("curated_official_cross_event_identity"), hold, release_id="v2"
+        )
+
+
 def test_new_evidence_can_revise_a_reviewed_hold_without_rewriting_history():
     people = pd.DataFrame(
         {
@@ -508,9 +559,9 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1638
+    assert len(original_decisions) == 1639
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "confirmed": 1138,
+        "confirmed": 1139,
         "unresolved": 496,
         "rejected": 4,
     }
@@ -740,10 +791,11 @@ def test_person_record_merges_join_biography_backed_careers():
         unresolved.loc["can_98f13c94ab1f560994954198b31935dd", "person_id"]
         == "per_4cdca864f8055243963b86909ed39038"
     )
-    # Paul Sutherland's 1995 Oriole run is not covered by his biography.
+    # Paul Sutherland's 1995 Oriole run is not covered by his biography. The Toronto Star's
+    # 1995 riding profiles, read in the same-name review, join it to the North York councillor.
     assert (
         confirmed.loc["can_f14b32f044585ca490d383a9295eddf9", "person_id"]
-        == "per_81a4729b82615321ab2157051003edf5"
+        == "per_5c71d0d296235cfe946e4ce549424af0"
     )
 
 
@@ -814,7 +866,8 @@ def test_variant_name_merges_join_split_careers():
             "can_2bb5543b9fe6513caef7dde2ad618828",
             "can_97cccfc87fce5dac8f2fc2916ae439ee",
         ],
-        # Constantine Kritsonis: 1995 Oakwood and the York Centre federal runs.
+        # Constantine Kritsonis: 1995 Oakwood, the York Centre federal runs and, since the
+        # same-name review, his 2003 York Centre provincial run.
         "per_7bc0075b9dc654e0bc0cd0f8ba293879": [
             "can_69b9b9adc1cc5504884c0d93b0549f6c",
             "can_9d041f0580fd58d1a27fe5f6413a9cc3",
@@ -822,6 +875,7 @@ def test_variant_name_merges_join_split_careers():
             "can_cd970a3b3c0e5ee881be85d7a62aa280",
             "can_3d6529e8861f5d7b947e46b79ae816d6",
             "can_44fc83800bf55475b694fea79eb3e0d1",
+            "can_e60111ecd5f45c6e80d7d39e39d3ebf6",
         ],
         # Claude-Reno D'Aigle: French Catholic trustee races 1994-2018.
         "per_19437117d92857d9ac07198a36e10a37": [
@@ -838,20 +892,17 @@ def test_variant_name_merges_join_split_careers():
     for person_id, candidacy_ids in careers.items():
         assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
         assert people.loc[person_id, "identity_status"] == "active"
-    # Not established, so left as they were: Elizabeth Moyer's 2006 council run and
-    # Kritsonis's 2003 provincial run. (The 2000 and 2003 André Duclos records were joined
-    # later from the Star's 2003 profile; see test_star_profiles_settle_backlog_runs.)
+    # Not established, so left as it was: Elizabeth Moyer's 2006 council run. (The 2000 and
+    # 2003 André Duclos records were joined later from the Star's 2003 profile; see
+    # test_star_profiles_settle_backlog_runs. Kritsonis's 2003 provincial run was joined by
+    # the same-name review under the rule for runs at both levels in one riding.)
     for person_id in (
         "per_f285f0621dbe566cadb4c7cee0d4a752",
-        "per_6ae741fa1fc65281a8b7aea106352cb1",
         "per_01d27f754bc75218aa848e00887a9d36",
     ):
         assert people.loc[person_id, "identity_status"] == "active"
     assert confirmed.loc["can_2293417524625b80b2790e8b10c7ee9b", "person_id"] == (
         "per_f285f0621dbe566cadb4c7cee0d4a752"
-    )
-    assert confirmed.loc["can_e60111ecd5f45c6e80d7d39e39d3ebf6", "person_id"] == (
-        "per_6ae741fa1fc65281a8b7aea106352cb1"
     )
 
 
@@ -1118,9 +1169,11 @@ def test_star_ward_previews_link_backlog_runs():
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
     revised = decisions.loc[decisions["reviewer"].eq("star-ward-previews-2026-10-30")]
-    assert len(revised) == 38
+    # The same-name review rewrote two of this pass's rows, John Steele's 1994 and 2000
+    # mayoral runs, to rest on Elections Canada instead of a name-matched database.
+    assert len(revised) == 36
     assert revised.groupby(["decision", "confidence"]).size().to_dict() == {
-        ("confirmed", "high"): 37,
+        ("confirmed", "high"): 35,
         ("unresolved", "medium"): 1,
     }
     accepted = revised.loc[revised["decision"].eq("confirmed")]
@@ -1149,11 +1202,11 @@ def test_star_ward_previews_link_backlog_runs():
             "can_204ac98a9b6f5b7780b8426d6bcbd7c0",
             "can_f275f1db0b365b798ddf1b8928b8272f",
         ],
-        # John Steele: Communist League mayoral runs and the 2003 provincial run.
+        # John Steele: Communist League mayoral runs. His 2003 provincial run, tied to them
+        # only by a name-matched database, is held (see tests/test_same_name_review.py).
         "per_d0086333": [
             "can_bd305cd075c9575e8712a875b83681f5",
             "can_2fe5215fa60e5a369a3fea55f59955bc",
-            "can_45191a44a24353f682ec876f44cf2a27",
         ],
         # Paul Ferreira: federal, council and provincial runs.
         "per_3ec6d8e6": [
@@ -1242,7 +1295,6 @@ def test_1995_to_2002_by_election_proposals_are_settled_from_press_reports():
         == accepted["target_person_id"].tolist()
     )
     held = reviewed.loc[reviewed["decision"].eq("unresolved"), "candidacy_id"]
-    assert results.loc[held, "person_id"].isna().all()
     assert set(results.loc[held, "candidate_name"]) == {
         "Vince Corriero",
         "Barbara Carter",
@@ -1252,6 +1304,11 @@ def test_1995_to_2002_by_election_proposals_are_settled_from_press_reports():
         "Diana-De Maxted",
         "Leslie Soobrian",
     }
+    # Wikipedia's page on the 2014 mayoral election names Diana-De Maxted's 2001 Ward 31
+    # by-election run, so the same-name review joined it to her mayoral runs.
+    maxted = "can_69f9c1de893a5106a22669c3feada02d"
+    assert results.loc[maxted, "person_id"] == "per_6bf38ca530a1574684d74d6c5f66fbd5"
+    assert results.loc[held[held.ne(maxted)], "person_id"].isna().all()
 
     # The City printed Michael Tziretas's 1994 East York win as "Tzirstas"; the Star's 1998 and
     # 2001 stories say he sat on East York council from 1994 to 1997.

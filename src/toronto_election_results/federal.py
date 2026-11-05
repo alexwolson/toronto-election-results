@@ -3,7 +3,8 @@
 The public parsing seam returns one row per :term:`Candidacy` with ``NORMALIZED_COLUMNS``. Raw
 poll/subdivision rows are used only to calculate official Contest totals; no poll-level result is
 published. ``incumbent_reported`` deliberately preserves Elections Canada's source flag without
-claiming that it satisfies this project's cross-boundary incumbency definition.
+claiming that it satisfies this project's cross-boundary incumbency definition; the only changes
+are the pinned ``INCUMBENT_FLAG_CORRECTIONS`` of flags that contradict the record.
 
 Elections Canada publishes two raw layouts in the coverage window. Format 2 is long (one
 candidate per polling division) and carries party, elected, and incumbent fields. The 2004 general
@@ -79,6 +80,53 @@ class FederalEvent:
     districts: tuple[tuple[str, str], ...]
     source_urls: tuple[str, ...]
     summary_source_urls: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class IncumbentFlagCorrection:
+    """A pinned fix for an incumbent indicator that an Elections Canada poll file gets wrong.
+
+    ``source_flag`` is what the file says; a different value fails the load, so a corrected
+    upstream file is noticed instead of being overwritten.
+    """
+
+    event_id: str
+    official_district_id: str
+    candidate_name: str
+    source_flag: bool
+    corrected_flag: bool
+
+
+# Elections Canada's 2015 poll-by-poll file for Don Valley West marks both John Carmichael, the
+# sitting Conservative member, and Natalie Hunt, the Green candidate, as incumbents.  Hunt never
+# sat in the House of Commons: the riding's Wikipedia page
+# (https://en.wikipedia.org/wiki/Don_Valley_West_(federal_electoral_district)) gives Carmichael
+# as its member from 2011 to 2015 and lists no Natalie Hunt among its members.
+INCUMBENT_FLAG_CORRECTIONS = (
+    IncumbentFlagCorrection("ec-ge-42", "35021", "Natalie Hunt", True, False),
+)
+
+
+def _apply_incumbent_flag_corrections(candidate: pd.DataFrame, event: FederalEvent) -> pd.DataFrame:
+    out = candidate.copy()
+    for correction in INCUMBENT_FLAG_CORRECTIONS:
+        if correction.event_id != event.event_id:
+            continue
+        in_district = out["official_district_id"].eq(correction.official_district_id)
+        if not in_district.any():
+            continue
+        mask = in_district & out["candidate_name_raw"].eq(correction.candidate_name)
+        if int(mask.sum()) != 1:
+            raise ValueError(f"pinned incumbent-flag correction matched {int(mask.sum())} rows")
+        value = out.loc[mask, "incumbent_reported"].iloc[0]
+        if pd.isna(value) or bool(value) != correction.source_flag:
+            raise ValueError(
+                f"Elections Canada now reports incumbent={value} for {correction.candidate_name} "
+                f"({event.event_id}, district {correction.official_district_id}); review the "
+                "pinned flag correction"
+            )
+        out.loc[mask, "incumbent_reported"] = correction.corrected_flag
+    return out
 
 
 _RO_2003 = "federal-2003-representation-order"
@@ -527,6 +575,7 @@ def parse_federal_results(
         )
         if supplied_summary_paths:
             result = _enrich_with_summary(result, event, supplied_summary_paths)
+    result = _apply_incumbent_flag_corrections(result, event)
     result = result.sort_values(
         ["official_district_id", "candidate_name_raw"], kind="stable"
     ).reset_index(drop=True)

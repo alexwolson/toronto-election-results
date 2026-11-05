@@ -428,3 +428,60 @@ def test_vote_correction_fails_when_its_row_is_missing(tmp_path):
 
     with pytest.raises(ValueError, match="matched no Elections Ontario row"):
         parse_official_results(*paths, report=report)
+
+
+def _parkdale_high_park_2006(tmp_path, *, mcintosh_code="L"):
+    """Part of the 2006 Parkdale-High Park by-election, as Elections Ontario's CSVs print it."""
+
+    event = "2004 - 2006 By Elections,élection partielles de 2004 - 2006"
+    candidates = [_CANDIDATE_HEADER] + [
+        f"{event},0,064,PARKDALE-HIGH PARK,PARKDALE-HIGH PARK,,Toronto,2006-Sep-14,,"
+        f"{name},{code},{votes},,{plurality},0"
+        for name, code, votes, plurality in (
+            ("CHERI DI NOVO", "ND", 11677, 2290),
+            ("SYLVIA WATSON", "L", 9387, 0),
+            ("JIM MCINTOSH", mcintosh_code, 164, 0),
+        )
+    ]
+    statistics = [
+        _STATISTICS_HEADER,
+        (
+            f"{event},2006-Sep-14,064,PARKDALE-HIGH PARK,PARKDALE-HIGH PARK,8,80000,0,80000,0,"
+            "100,5,28000,100,50,10,28160,35.2"
+        ),
+    ]
+    parties = [_PARTIES_HEADER] + [
+        f"élections partielles de 2006 (ED064),2006 By Election (ED064),{code},{name},{name},1"
+        for code, name in (
+            ("L", "LIBERAL"),
+            ("LTN", "ONTARIO LIBERTARIAN PARTY"),
+            ("ND", "NEW DEMOCRATIC"),
+        )
+    ]
+    paths = []
+    for stem, lines in (
+        ("candidates", candidates),
+        ("statistics", statistics),
+        ("parties", parties),
+    ):
+        path = tmp_path / f"{stem}.csv"
+        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        paths.append(path)
+    report = next(report for report in REPORTS if report.report_group_id == 4)
+    return paths, report
+
+
+def test_parkdale_high_park_2006_libertarian_is_not_a_second_liberal(tmp_path):
+    paths, report = _parkdale_high_park_2006(tmp_path)
+
+    results = parse_official_results(*paths, report=report).set_index("candidate_name_raw")
+
+    assert results.loc["JIM MCINTOSH", "party_name_raw"] == "ONTARIO LIBERTARIAN PARTY"
+    assert results.loc["SYLVIA WATSON", "party_name_raw"] == "LIBERAL"
+
+
+def test_party_code_correction_fails_when_the_published_code_changes(tmp_path):
+    paths, report = _parkdale_high_park_2006(tmp_path, mcintosh_code="LTN")
+
+    with pytest.raises(ValueError, match="review the pinned party-code correction"):
+        parse_official_results(*paths, report=report)

@@ -139,6 +139,37 @@ def test_long_poll_rows_reject_malformed_candidate_votes(tmp_path):
         parse_federal_results(path, event_id="ec-ge-44")
 
 
+def _don_valley_west_2015(tmp_path, hunt_flag: str) -> Path:
+    """The fixture recast as Don Valley West in 2015, with Natalie Hunt as the second candidate."""
+
+    source = (
+        LONG_RESULTS.read_text(encoding="utf-8-sig")
+        .replace("35007", "35021")
+        .replace('"Beaches--East York"', '"Don Valley West"')
+        .replace(
+            '"Joseph","","Diane","Independent","Indépendant(e)",N,',
+            f'"Hunt","","Natalie","Green Party","Parti Vert",{hunt_flag},',
+        )
+    )
+    path = tmp_path / "pollresults_resultatsbureau35021.csv"
+    path.write_text(source, encoding="utf-8-sig")
+    return path
+
+
+def test_pinned_correction_clears_a_wrong_federal_incumbent_flag(tmp_path):
+    result = parse_federal_results(_don_valley_west_2015(tmp_path, "Y"), event_id="ec-ge-42")
+
+    hunt = result.loc[result["candidate_name_raw"] == "Natalie Hunt"].iloc[0]
+    assert not bool(hunt["incumbent_reported"])
+    other = result.loc[result["candidate_name_raw"] == "Nathaniel Erskine-Smith"].iloc[0]
+    assert bool(other["incumbent_reported"])
+
+
+def test_pinned_federal_flag_correction_fails_when_the_source_changes(tmp_path):
+    with pytest.raises(ValueError, match="review the pinned flag correction"):
+        parse_federal_results(_don_valley_west_2015(tmp_path, "N"), event_id="ec-ge-42")
+
+
 def test_normalized_rows_cross_the_shared_adapter_seam():
     adapter_rows = parse_federal_results(LONG_RESULTS, event_id="ec-ge-44")
 
