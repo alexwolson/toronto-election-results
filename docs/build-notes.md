@@ -122,11 +122,11 @@ names the roster entry, so the tenure belongs to their Person.
 
 The roster for the November 13, 2000 general election is `data/reference/council_roster_2000.csv`.
 It lists the mayor and the 57 councillors in office that day: the certified 1997 winners, the 1998
-by-election winner for a third East York seat, the 1999 by-election winner after Frank Faubert's
-death, and the two members Council appointed in 2000, Paul Valenti for Judy Sgro and Cesar Palacio
-for Dennis Fotinos. The City's list of councillors for the 1998-2000 term names these 57 and the
-three who left, and no one else. Council and mayoral incumbency stays null for 1994 and 1997,
-where the release holds no earlier roster.
+by-election winner for a third East York seat that provincial legislation added, the 1999
+by-election winner after Frank Faubert's death, and the two members Council appointed in 2000, Paul
+Valenti for Judy Sgro and Cesar Palacio for Dennis Fotinos. The City's list of councillors for the
+1998-2000 term names these 57 and the three who left, and no one else. Council and mayoral
+incumbency stays null for 1994 and 1997, where the release holds no earlier roster.
 
 ## Provenance and known uncertainty
 
