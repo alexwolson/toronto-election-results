@@ -70,17 +70,17 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,104 People. 5,099 hold at least one Candidacy, and five hold only an Office
+The release has 5,078 People. 5,073 hold at least one Candidacy, and five hold only an Office
 tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
-candidacy in the release. 7,693 Candidacies have a confirmed Person and 406 have none: 404
+candidacy in the release. 7,695 Candidacies have a confirmed Person and 404 have none: 402
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
-406 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+404 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results. Each held run's disposition names the later
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 572 identity assertions
-over 1,156 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+continuity, Council rosters and adjudicated curations. The curations are 596 identity assertions
+over 1,184 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
 candidates have confirmed earlier races in the release) and 1,639 occurrence-level dispositions in
 `data/reference/identity_review_dispositions.csv` (1,139 confirmed, 496 unresolved and 4 rejected).
 A disposition is not applied where a career review's confirmation or a person-record merge
@@ -90,7 +90,9 @@ people. Without a person-specific source, two runs for the same office are linke
 under one test for every year and office: the same, a successor or an overlapping ward or riding
 (at least about a fifth of either by area where the release has the boundaries), the same party
 where parties apply, no more than one general election between, a name that is not common, and
-no competing candidate of that name. A House of Commons run and an Ontario legislature run are
+no competing candidate of that name. Where the two runs print the name differently, the two forms
+must evidently be one name: a common nickname, a middle name or initial added or dropped, the same
+words in another order, or a nickname printed beside the full name. A House of Commons run and an Ontario legislature run are
 linked without a person-specific source only under the narrow rule in
 `docs/research/federal-provincial-holds-2026-11-01.md`: the same riding at both levels within two
 years, the federal and Ontario parties of one name or no party at either, an uncommon name, and
@@ -103,9 +105,13 @@ join of two different people among 120 sampled joins, which puts a one-sided 95%
 name, 15 were one individual, and those have been merged. A review of all 177 same-name pairs
 that remained
 ([`docs/verification/same-name-review-2026-11-03.md`](verification/same-name-review-2026-11-03.md))
-joined 66 of their 155 name groups under the same standard and a second check. That leaves 103
-same-name pairs: 99 in groups that no source settled, two in groups joined in part and two that
-are different people.
+joined 66 of their 155 name groups under the same standard and a second check. A review of the 71
+pairs of Persons whose printed names are close but differ
+([`docs/verification/near-name-review-2026-11-04.md`](verification/near-name-review-2026-11-04.md))
+then joined 26 of them in 24 merges, among them three Greg Roberts Persons that the same-name review
+had left apart, found one pair to be different people and left 44 undetermined. That leaves 100
+same-name pairs (96 in groups that no source settled, two in groups joined in part and two that are
+different people) and 45 near-name pairs.
 
 The Council roster step matches each roster member to a Candidacy by exact name. It reads the
 1997–2002 archive names given name first, as the archive printed them. A roster entry that no

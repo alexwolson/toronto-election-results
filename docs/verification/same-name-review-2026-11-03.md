@@ -152,9 +152,9 @@ form of their name.
 
 - Dan Goldstick's 2004 Toronto Centre run: Elections Canada gives him as a university teacher in
   2000 and 2004, and the 2000 run is now in Danny Goldstick's Person. The printed names differ, so
-  the pair is outside this frame.
-- Kostadinos Stefanis and Gus Stefanis, Arnold Kwok and Kingsley Arnold Kwok: near-name pairs that
-  may be one individual.
+  the pair is outside this frame. The near-name review joined it.
+- Kostadinos Stefanis and Gus Stefanis, Arnold Kwok and Kingsley Arnold Kwok: pairs that may be one
+  individual. The near-name review left the Kwok pair undetermined.
 - Philip Fernandez's held federal runs, whose occupations in Elections Canada's files (literacy
   worker, adult educator, teacher) suggest one career.
 - The three Nunzio Venuto Persons, which look like one Libertarian career.
@@ -163,8 +163,9 @@ form of their name.
 distinct Persons whose printed names are close but do not share a first and last name: a common
 nickname pair, a first name used as a middle name, surnames one letter apart, or the same words in
 another order. On this release it lists 71 pairs
-([`same-name-review-2026-11-03/near_name_pairs.csv`](same-name-review-2026-11-03/near_name_pairs.csv)).
-They have not been reviewed.
+([`same-name-review-2026-11-03/near_name_pairs.csv`](same-name-review-2026-11-03/near_name_pairs.csv)),
+which the review of near-name Persons
+([`near-name-review-2026-11-04.md`](near-name-review-2026-11-04.md)) went through.
 
 ## Limitations
 
