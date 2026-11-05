@@ -15,6 +15,7 @@ authors:
   - given-names: Matt
     family-names: Elliott
 version: results-2026-11-05.1
+doi: 10.5281/zenodo.23984668
 date-released: 2026-11-05
 repository-code: "https://github.com/alexwolson/toronto-election-results"
 license:
