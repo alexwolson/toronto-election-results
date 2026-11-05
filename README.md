@@ -1,5 +1,7 @@
 # Toronto Election Results
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23984668.svg)](https://doi.org/10.5281/zenodo.23984668)
+
 A unified, analysis-ready history of elections within the City of Toronto. The inclusive
 election-date coverage window runs through **2026-10-26** and begins with the last general election
 before amalgamation for each level of government (ADR 0010): the **1994-11-14 municipal elections**
@@ -115,7 +117,11 @@ official roster receive an HTTPS scheme; other unsupported or malformed links st
 ## Citing
 
 Cite the archived release you used. Each tagged release is archived on Zenodo with its own DOI,
-and [`CITATION.cff`](CITATION.cff) gives the citation for the current one.
+and [`CITATION.cff`](CITATION.cff) gives the citation for the current one. The release
+`results-2026-11-05.1` is:
+
+> Olson, A., & Elliott, M. (2026). *Toronto Election Results* (Version results-2026-11-05.1)
+> [Data set]. Zenodo. https://doi.org/10.5281/zenodo.23984668
 
 ## Licence
 
