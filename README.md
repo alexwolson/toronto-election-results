@@ -112,6 +112,11 @@ historical-result cache. The build manifest derives its candidate snapshot date 
 of those three source retrieval times in Toronto time. Scheme-less `www.` campaign links in the
 official roster receive an HTTPS scheme; other unsupported or malformed links still fail validation.
 
+## Citing
+
+Cite the archived release you used. Each tagged release is archived on Zenodo with its own DOI,
+and [`CITATION.cff`](CITATION.cff) gives the citation for the current one.
+
 ## Licence
 
 The code is released under the MIT License, and the data and documentation under the Creative
