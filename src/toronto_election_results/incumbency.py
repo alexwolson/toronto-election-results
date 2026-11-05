@@ -10,7 +10,9 @@ City's Council **meeting-attendance** and **voting-record** open datasets:
 
 The mayor sits on City Council, so the incumbent mayor is captured too. Elections 2003/2006 have
 no City data and are supplied by a curated compilation (data/reference/); the 2023 mayoral
-by-election has no incumbent (the office was vacant).
+by-election has no incumbent (the office was vacant). The 2000 election's sitting council is the
+curated ``council_roster_2000.csv``: the certified 1997 and by-election winners, checked against
+the City's list of councillors for the 1998-2000 term and the two appointment records.
 
 ``flag_incumbents`` matches a composition to candidates by identity key and writes
 ``incumbent`` / ``incumbent_source`` / ``incumbent_confidence``.
@@ -19,6 +21,7 @@ by-election has no incumbent (the office was vacant).
 from __future__ import annotations
 
 import re
+from io import StringIO
 from pathlib import Path
 
 import pandas as pd
@@ -265,8 +268,47 @@ def roster_to_composition(reconciled: pd.DataFrame) -> pd.DataFrame:
 
 REFERENCE = Path("data/reference")
 
+COUNCIL_ROSTER_2000 = "council_roster_2000.csv"
+# The 2000 roster rests on certified results and the City's own list of the term's councillors,
+# so it ranks between the agent-compiled 2003/2006 rosters and the City attendance data.
+ROSTER_2000_CONFIDENCE = 0.90
+
+
+def roster_2000_composition(*, reference: Path = REFERENCE) -> pd.DataFrame:
+    """Council composition before the November 13, 2000 election, from the curated roster.
+
+    The file lists the mayor and the councillors of the 1997-2000 term in office on the eve of the
+    election, one row per member, with leading ``#`` comment lines. A missing file yields no rows,
+    which leaves 2000 incumbency null and raises the roster step's missing-composition flag.
+    """
+    path = reference / COUNCIL_ROSTER_2000
+    if not path.is_file():
+        return pd.DataFrame(columns=_COMPOSITION_COLUMNS)
+    lines = [
+        line for line in path.read_text(encoding="utf-8").splitlines() if not line.startswith("#")
+    ]
+    table = pd.read_csv(StringIO("\n".join(lines)), dtype=str, keep_default_na=False)
+    if set(table["term"]) != {"1997-2000"}:
+        raise ValueError(f"{COUNCIL_ROSTER_2000} must hold only the 1997-2000 term")
+    rows = [
+        (
+            2000,
+            name,
+            _key(name),
+            None,
+            _roster_office(ward),
+            "curated_roster_2000",
+            ROSTER_2000_CONFIDENCE,
+            arrival,
+        )
+        for ward, name, arrival in zip(table["ward"], table["member_name"], table["arrival"])
+    ]
+    return pd.DataFrame(rows, columns=_COMPOSITION_COLUMNS)
+
+
 # How complete/trusted each election's roster is (drives non-incumbent confidence).
 ROSTER_CONFIDENCE = {
+    2000: ROSTER_2000_CONFIDENCE,
     2003: WIKI_CONFIDENCE,
     2006: WIKI_CONFIDENCE,
     2010: CITY_ROSTER_CONFIDENCE,
@@ -281,15 +323,20 @@ ROSTER_CONFIDENCE = {
 def build_composition(*, reference: Path = REFERENCE, raw: Path = RAW) -> pd.DataFrame:
     """Assemble council composition for every election with a roster source.
 
-    2003/2006 from the two reconciled agent rosters; 2010–2022 from the City attendance/voting
-    datasets. 2023 (the mayoral by-election) is added by the assembler from the 2022 winners,
-    since its sitting council is the 2022-elected one.
+    2000 from the curated roster of the 1997-2000 council; 2003/2006 from the two reconciled
+    agent rosters; 2010–2022 from the City attendance/voting datasets. 2023 (the mayoral
+    by-election) is added by the assembler from the 2022 winners, since its sitting council is
+    the 2022-elected one.
     """
     reconciled, _ = reconcile_rosters(
         (reference / "roster_agent_a.txt").read_text(),
         (reference / "roster_agent_b.txt").read_text(),
     )
-    parts = [roster_to_composition(reconciled), build_city_composition(raw=raw)]
+    parts = [
+        roster_2000_composition(reference=reference),
+        roster_to_composition(reconciled),
+        build_city_composition(raw=raw),
+    ]
     return pd.concat(parts, ignore_index=True)
 
 

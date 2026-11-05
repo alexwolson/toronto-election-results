@@ -29,6 +29,8 @@ _WHITESPACE = re.compile(r"\s+")
 
 # Total offices in the last-holder snapshot: councillors plus one mayor.
 _EXPECTED_GENERAL_ROSTER_SIZE = {
+    # 28 two-member wards, a third East York seat added in 1998, and the mayor.
+    2000: 58,
     2003: 45,
     2006: 45,
     2010: 45,
@@ -249,6 +251,8 @@ def _composition_source(row: pd.Series, *, election_year: int) -> str:
             "data/reference/roster_agent_a.txt",
             "data/reference/roster_agent_b.txt",
         ]
+    elif source == "curated_roster_2000":
+        detail["source_files"] = ["data/reference/council_roster_2000.csv"]
     reconciliation = _clean_text(row.get("reconciliation_source"))
     if reconciliation is not None:
         detail["last_holder_reconciliation"] = json.loads(reconciliation)
