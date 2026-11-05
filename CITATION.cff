@@ -11,6 +11,7 @@ authors:
   - given-names: Alex
     family-names: Olson
     affiliation: University of Toronto
+    orcid: "https://orcid.org/0000-0002-6593-2779"
   - given-names: Matt
     family-names: Elliott
 version: results-2026-11-05.1
