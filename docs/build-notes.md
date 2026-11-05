@@ -70,8 +70,8 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,078 People. 5,073 hold at least one Candidacy, and five hold only an Office
-tenure from a Council roster. Each of those five was appointed to fill a vacancy and has no
+The release has 5,079 People. 5,073 hold at least one Candidacy, and six hold only an Office
+tenure from a Council roster. Each of those six was appointed to fill a vacancy and has no
 candidacy in the release. 7,695 Candidacies have a confirmed Person and 404 have none: 402
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
 404 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
@@ -79,8 +79,8 @@ nulls are review outcomes, not missing results. Each held run's disposition name
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 596 identity assertions
-over 1,184 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+continuity, Council rosters and adjudicated curations. The curations are 597 identity assertions
+over 1,185 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
 candidates have confirmed earlier races in the release) and 1,639 occurrence-level dispositions in
 `data/reference/identity_review_dispositions.csv` (1,139 confirmed, 496 unresolved and 4 rejected).
 A disposition is not applied where a career review's confirmation or a person-record merge
@@ -119,6 +119,14 @@ Candidacy matches is a councillor appointed to fill a vacancy whose other races 
 release, or a member whom the City's attendance and voting records list under another form of
 their name, such as A.A. Heaps for Adrian Heaps. The identity assertion for each of these people
 names the roster entry, so the tenure belongs to their Person.
+
+The roster for the November 13, 2000 general election is `data/reference/council_roster_2000.csv`.
+It lists the mayor and the 57 councillors in office that day: the certified 1997 winners, the 1998
+by-election winner for a third East York seat that provincial legislation added, the 1999
+by-election winner after Frank Faubert's death, and the two members Council appointed in 2000, Paul
+Valenti for Judy Sgro and Cesar Palacio for Dennis Fotinos. The City's list of councillors for the
+1998-2000 term names these 57 and the three who left, and no one else. Council and mayoral
+incumbency stays null for 1994 and 1997, where the release holds no earlier roster.
 
 ## Provenance and known uncertainty
 

@@ -64,7 +64,7 @@ def test_default_pinned_candidacies_are_active_checked_ledger_entries():
 
     # These pins distinguish otherwise ambiguous same-name occurrences.  They must
     # be persistent ledger IDs, never IDs copied from a pre-ledger draft build.
-    assert len(pinned) == 1149
+    assert len(pinned) == 1150
     assert len({occurrence.candidacy_id for _, occurrence in pinned}) == len(pinned)
     for assertion_id, occurrence in pinned:
         assert occurrence.candidacy_id in active.index, assertion_id
@@ -1048,9 +1048,9 @@ def test_curated_assertion_is_idempotent_when_reusing_the_prior_registry():
 def test_curated_roster_members_name_one_person_each():
     resolutions = curated_roster_resolutions(DEFAULT_IDENTITY_ASSERTIONS)
 
-    # Six councillors appointed to fill a vacancy and three members the City's attendance and
+    # Seven councillors appointed to fill a vacancy and three members the City's attendance and
     # voting records list under another form of their name.
-    assert len(resolutions) == 9
+    assert len(resolutions) == 10
     people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
         "person_id"
     )
@@ -1086,6 +1086,7 @@ def test_council_roster_members_join_their_candidate_people():
         "Ceta Ramkhalawansingh",
         "Jim Hart",
         "Miganoush Megardichian",
+        "Paul Valenti",
         "Peter Leon",
         "Rose Milczyn",
     ]

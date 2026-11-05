@@ -14,8 +14,7 @@ authors:
     orcid: "https://orcid.org/0000-0002-6593-2779"
   - given-names: Matt
     family-names: Elliott
-version: results-2026-11-05.1
-doi: 10.5281/zenodo.23984668
+version: results-2026-11-05.2
 date-released: 2026-11-05
 repository-code: "https://github.com/alexwolson/toronto-election-results"
 license:

@@ -9802,6 +9802,37 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         ),
     ),
     CuratedIdentityAssertion(
+        assertion_id="cesar-palacio-2000-appointment-and-council-candidacies",
+        preferred_name="Cesar Palacio",
+        occurrences=(
+            _pinned_occurrence(
+                "can_f9b23bd365e553b2b9bb6dacb8055daa",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Cesar Palacio",
+            ),
+        ),
+        registry_person_ids=("per_f43071f7a8d95740a4fcc8890b28d327",),
+        roster_members=(
+            RosterMemberLocator("evt_b4a8433485f551878400c616c3d023b2", "Cesar Palacio"),
+        ),
+        evidence_urls=(
+            "https://en.wikipedia.org/wiki/Cesar_Palacio",
+            "https://www.toronto.ca/legdocs/2000/agendas/council/cc/cc000229/agenda.htm",
+            "https://www.toronto.ca/explore-enjoy/history-art-culture/mayors-councillors-reeves-chairmen/city-of-toronto-councillors/",
+        ),
+        rationale=(
+            "Cesar Palacio's Wikipedia biography says he was appointed for a few months in 2000 "
+            "to the Ward 21 Davenport seat Dennis Fotinos vacated, on condition that he not run "
+            "that November, and his later terms for Ward 17 Davenport. Council's agenda of February "
+            "29 to March 2, 2000 has a motion to fill the Ward 21 Davenport vacancy, and the "
+            "City's list of councillors for the 1998-2000 term includes him. The appointed Ward "
+            "21 member of the 1997-2000 Council roster joins the Person that holds his Ward 17 "
+            "candidacies."
+        ),
+    ),
+    CuratedIdentityAssertion(
         assertion_id="harvey-barron-scarborough-council-and-2006-appointment",
         preferred_name="Harvey Barron",
         occurrences=(

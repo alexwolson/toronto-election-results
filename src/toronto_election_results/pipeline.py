@@ -110,6 +110,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         if path.is_file() and not path.name.endswith(".part")
     }
     source_paths.update(reference.glob("roster_agent_*.txt"))
+    source_paths.update(reference.glob("council_roster_*.csv"))
     ledger_path = reference / CANDIDACY_LEDGER_FILENAME
     if ledger_path.is_file():
         source_paths.add(ledger_path)

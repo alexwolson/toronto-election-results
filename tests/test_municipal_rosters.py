@@ -340,6 +340,7 @@ def test_real_composition_reconciles_to_one_last_holder_per_council_office():
     )
 
     assert reconciled.groupby("election_year").size().to_dict() == {
+        2000: 58,
         2003: 45,
         2006: 45,
         2010: 45,

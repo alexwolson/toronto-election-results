@@ -299,8 +299,8 @@ back to name matching or blanket historical coverage claims.
   validated contest totals when the poll-level export is not yet available.
 - Elections Ontario official candidate/statistics/party CSV reports.
 - City voter-statistics files for explicitly scoped municipal turnout.
-- City Council attendance/voting records and reconciled historical rosters for municipal
-  incumbency evidence.
+- City Council attendance/voting records, reconciled historical rosters and the curated 2000
+  roster for municipal incumbency evidence.
 - City Clerk candidate-list JSON snapshots for the 2026 Mayor and City Councillor Candidacies.
 - The City Clerk's 2026 Declaration of Results (PDF), pinned with its transcription. It omits the
   winner's mark for Conseil scolaire Viamonde Ward 3; there, as the declaration itself states, the
@@ -345,6 +345,14 @@ by-election file codes the Libertarian Jim McIntosh as Liberal; `ontario.PARTY_C
 recodes him, and the load fails if the published code changes. The City's 2017 Ward 42
 by-election workbook prints declined, rejected and under-vote lines below the candidates; the
 parser skips them. See `docs/research/result-corrections-2026-10-31.md`.
+
+City Council and mayoral `incumbent` comes from the sitting council before each general
+election. For 2000 that is `data/reference/council_roster_2000.csv`: the mayor and 57
+councillors in office on the eve of the November 13, 2000 election, being the certified 1997
+winners, the 1998 and 1999 by-election winners and the two members Council appointed in 2000,
+checked against the City's list of councillors for the 1998-2000 term. Council and mayoral
+`incumbent` is null for 1994 and 1997: the release holds no roster for the councils elected
+before 1994, and the amalgamated council first sat in 1998 (see `predecessor_incumbent`).
 
 Trustee result sources do not report a structured incumbent flag. For 2026,
 `data/reference/trustee_incumbents_2026.csv` records the 20 sitting trustees who ran, from official
