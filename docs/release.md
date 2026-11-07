@@ -8,16 +8,17 @@ link changes after the audit.
 ## Before the tag
 
 1. Choose the release name, `results-YYYY-MM-DD.N`, from the day of the tag.
-2. Set `RELEASE_ID` in `src/toronto_election_results/pipeline.py` to that date. Links, Persons
-   and Candidacy ledger rows made or closed from then on carry it.
+2. Set `RELEASE_ID` in `src/toronto_election_results/pipeline.py` to that date. Rows already in
+   the identity registry and the Candidacy ledger keep the release they record; only rows made or
+   closed from then on carry the new ID. (A test build on 7 November 2026 with the ID moved
+   changed no table.)
 3. Set `version` and `date-released` in `CITATION.cff`, and the release named in the README's
    Citing section.
 4. Rebuild (`uv run python -m toronto_election_results.pipeline --skip-download`), rebuild again
    to check that every table is reproduced byte for byte, and run the tests.
 5. If any Person link changed since the census in
    `docs/verification/link-audit-2026-11-07.md`, audit the changed joins under the same rules
-   before going on. If only the file changed, for example because closed rows now carry the new
-   release ID, record its SHA-256 in that report and say that the joins are the same.
+   before going on, and record the new SHA-256 of `candidacy_person_links.csv` in that report.
 6. Merge to `main`.
 
 ## The tag

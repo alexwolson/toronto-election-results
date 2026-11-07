@@ -56,6 +56,7 @@ records**.
   same-name and near-name Persons, and the reconciliation of results with external datasets.
 - [`docs/provenance.md`](./docs/provenance.md) — what code, AI agents and the authors each did at
   every stage of the build.
+- [`docs/release.md`](./docs/release.md) — the steps that freeze a release and deposit it.
 - [`docs/adr/`](./docs/adr/) — the load-bearing design decisions:
   - `0001` — record wards as-run; no reprojection across the 2018 boundary change.
   - `0002` — historical municipal roster sources (superseded for identity semantics).
