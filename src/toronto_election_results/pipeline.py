@@ -45,6 +45,7 @@ from .identity_curations import (
     exclude_person_record_merge_decisions,
 )
 from .identity_dispositions import read_identity_review_decisions
+from .link_basis import LINK_BASIS_FILENAME, add_evidence_basis, read_link_basis
 from .mayoral_career import (
     build_mayoral_career_identity_assertions,
     exclude_superseded_identity_decisions,
@@ -133,6 +134,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
         CANDIDATE_NAME_CURATIONS_FILENAME,
+        LINK_BASIS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
         DECLARATION_FILENAME,
         "results_2026/declaration_of_results_2026.pdf",
@@ -206,7 +208,10 @@ def _load_existing_identity_registry(
     if not results_path.exists():
         raise ValueError("a prior identity registry also requires election_results.csv")
     people = pd.read_csv(people_path, dtype="string")
-    links = pd.read_csv(links_path, dtype="string")
+    # evidence_basis is derived at publication, so the registry history is read without it.
+    links = pd.read_csv(links_path, dtype="string").drop(
+        columns=["evidence_basis"], errors="ignore"
+    )
     prior_results = pd.read_csv(results_path, usecols=["candidacy_id"], dtype="string")
     active_ledger_ids = set(
         candidacy_ledger.loc[candidacy_ledger["valid_to_release"].isna(), "candidacy_id"].astype(
@@ -465,6 +470,9 @@ def run_all(
         ),
         electoral_districts=enrich_district_geometries(
             named_districts, trustee_crosswalks=trustee_crosswalks
+        ),
+        candidacy_person_links=add_evidence_basis(
+            built.tables.candidacy_person_links, read_link_basis(reference / LINK_BASIS_FILENAME)
         ),
     )
     endorsement_inputs = build_default_endorsement_inputs(
