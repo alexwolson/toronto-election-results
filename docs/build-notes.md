@@ -142,8 +142,17 @@ It lists the mayor and the 57 councillors in office that day: the certified 1997
 by-election winner for a third East York seat that provincial legislation added, the 1999
 by-election winner after Frank Faubert's death, and the two members Council appointed in 2000, Paul
 Valenti for Judy Sgro and Cesar Palacio for Dennis Fotinos. The City's list of councillors for the
-1998-2000 term names these 57 and the three who left, and no one else. Council and mayoral
-incumbency stays null for 1994 and 1997, where the release holds no earlier roster.
+1998-2000 term names these 57 and the three who left, and no one else.
+
+The 1997 election was the amalgamated council's first, so `incumbent` is null for it, and ADR 0012's
+`predecessor_incumbent` records whether a candidate sat on a council the new City replaced.
+`data/reference/predecessor_rosters_1997.csv` lists the members of Metro Council and the six former
+councils on 9 November 1997: the 1994 winners, less Mario Sergio and John Hastings, who left for the
+legislature in 1995, plus George Mammoliti, elected to Sergio's seat, and Vincent Crisanti, appointed
+to Hastings's. Of the 1997 council candidates with a Person, 81 had sat on a predecessor council and
+101 had not; two of the mayoral candidates, Barbara Hall and Mel Lastman, were sitting mayors. See
+`docs/research/predecessor-rosters-1997-2026-11-07.md`. The 1994 municipal elections are there to
+supply this and have no incumbency of their own.
 
 ## Provenance and known uncertainty
 

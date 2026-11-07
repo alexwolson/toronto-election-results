@@ -99,7 +99,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_reported` | boolean | authority does not report it | Source flag, except two pinned corrections of flags that contradict the record (Natalie Hunt, 2015; John Sewell, 1999); the modelled `incumbent` field uses project semantics. |
-| `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies; null until predecessor rosters are acquired. |
+| `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies. The Mayor and City Councillor races have it for every Candidacy with a Person (`data/reference/predecessor_rosters_1997.csv`); the trustee races are null because the release holds no board rosters. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
 | `source_authority` | string | never | Organization responsible for the row's record: the official authority, or `Toronto Star` where only the newspaper's printed results survive (most 1994 and 1997 trustee Contests, eight 1994 council Contests). |
 | `source_resource` | string | never | Official dataset/report family. |
@@ -220,6 +220,8 @@ of office:
   for a sitting member.
 - An Ontario row comes from Elections Ontario's incumbent flag and says only that the Person sat on
   the day before polling, so its start and entry method are unknown.
+- A predecessor roster row says the Person sat on Metro Council or one of the six former councils
+  on 9 November 1997, the eve of the first amalgamated election (ADR 0012).
 
 Appointments may appear here even though appointments are not Election results.
 `started_on_precision` and `ended_on_precision` say how each date is bounded, and
@@ -227,7 +229,7 @@ Appointments may appear here even though appointments are not Election results.
 
 `spell_id` groups the rows of one unbroken stretch of service: rows of one Person, Represented body
 and Office type share a spell when each starts no later than the day after the latest end so far.
-The 1,156 rows form 250 spells. The 208 rows whose start is unknown have no `spell_id`: the 188
+The 1,262 rows form 356 spells. The 208 rows whose start is unknown have no `spell_id`: the 188
 Ontario rows, 16 Council appointments whose date is not recorded, and four other Council rows.
 
 ### `electoral_districts`
@@ -409,7 +411,8 @@ councillors in office on the eve of the November 13, 2000 election, being the ce
 winners, the 1998 and 1999 by-election winners and the two members Council appointed in 2000,
 checked against the City's list of councillors for the 1998-2000 term. Council and mayoral
 `incumbent` is null for 1994 and 1997: the release holds no roster for the councils elected
-before 1994, and the amalgamated council first sat in 1998 (see `predecessor_incumbent`).
+before 1994, and the amalgamated council first sat in 1998. For 1997, `predecessor_incumbent`
+records membership of Metro Council or the six former councils on the eve of the election.
 
 Trustee result sources do not report a structured incumbent flag. For 2026,
 `data/reference/trustee_incumbents_2026.csv` records the 20 sitting trustees who ran, from official

@@ -26,7 +26,11 @@ from .identity_review import (
     extend_identity_review,
 )
 from .municipal_rosters import build_municipal_roster_evidence
-from .predecessor_incumbency import derive_predecessor_incumbency
+from .predecessor_incumbency import (
+    build_predecessor_roster_evidence,
+    derive_predecessor_incumbency,
+    read_predecessor_rosters,
+)
 from .release_validation import validate_release
 from .reported_incumbency import ReportedIncumbency, build_reported_incumbency
 from .schema import (
@@ -247,6 +251,7 @@ def assemble_release(
     people: pd.DataFrame | None = None,
     candidacy_person_links: pd.DataFrame | None = None,
     office_tenures: pd.DataFrame | None = None,
+    complete_predecessor_rosters: frozenset[tuple[str, str]] = frozenset(),
     incumbency_rosters: pd.DataFrame | None = None,
 ) -> ReleaseTables:
     """Normalize adapters once and build every public relational table."""
@@ -308,7 +313,9 @@ def assemble_release(
     tenures = _normalize_tenure_dates(
         _empty_tenures() if office_tenures is None else office_tenures
     )
-    candidacies = derive_predecessor_incumbency(candidacies, tenures)
+    candidacies = derive_predecessor_incumbency(
+        candidacies, tenures, complete_rosters=complete_predecessor_rosters
+    )
     candidacies = candidacies.merge(
         parties[["party_id", "canonical_name"]].rename(columns={"canonical_name": "party_name"}),
         on="party_id",
@@ -454,12 +461,17 @@ def assemble_bootstrapped_release(
         linked,
         read_house_members(municipal_reference) if municipal_reference is not None else None,
     )
+    predecessor = build_predecessor_roster_evidence(
+        linked,
+        read_predecessor_rosters(municipal_reference) if municipal_reference is not None else None,
+    )
     office_tenures = assign_tenure_spells(
         pd.concat(
             [
                 municipal_evidence.office_tenures,
                 federal.office_tenures,
                 reported.office_tenures,
+                predecessor.office_tenures,
                 *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
             ],
             ignore_index=True,
@@ -482,6 +494,7 @@ def assemble_bootstrapped_release(
         people=review.people,
         candidacy_person_links=review.candidacy_person_links,
         office_tenures=office_tenures,
+        complete_predecessor_rosters=predecessor.complete_rosters,
         incumbency_rosters=incumbency_rosters,
     )
     return BootstrappedRelease(tables, review, reported, assignment.ledger)
