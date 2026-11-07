@@ -94,10 +94,16 @@ def _words(text: object) -> list[str]:
     return re.sub(r"[^a-z]+", " ", folded.casefold()).split()
 
 
+# Short forms with more than one long form.
+_OTHER_GIVEN_NAME_FORMS = {"al": frozenset({"alan", "allan", "allen"})}
+
+
 def _given_names_fit(first: list[str], second: list[str]) -> bool:
-    if first and second and len(first[0]) > 1 and len(second[0]) > 1:
-        short, long = sorted((first[0], second[0]), key=len)
-        if long.startswith(short):
+    if first and second:
+        pair = (first[0], second[0])
+        if pair[1] in _OTHER_GIVEN_NAME_FORMS.get(pair[0], ()) or pair[0] in (
+            _OTHER_GIVEN_NAME_FORMS.get(pair[1], ())
+        ):
             return True
     first = [_GIVEN_NAME_FORMS.get(word, word) for word in first]
     second = [_GIVEN_NAME_FORMS.get(word, word) for word in second]
@@ -114,8 +120,8 @@ def house_member_name_fits(first_name: object, last_name: object, candidate_name
     """Whether a House member's name could be the person printed on a ballot.
 
     The surname must match, ignoring spaces within it (DiNovo and Di Novo), and the given names
-    must fit: the same name, a common short form or the start of the longer name (Al for Allan),
-    a shared middle name or an initial.
+    must fit: the same name, a common short form (Al for Allan), a shared middle name or an
+    initial.
     """
 
     printed = str(candidate_name)
