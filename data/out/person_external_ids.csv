@@ -2,8 +2,13 @@ person_id,scheme,external_id,basis,source_url,retrieved_on
 per_013de966bb2c56608e603464c752c310,house_of_commons,59036,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
 per_013de966bb2c56608e603464c752c310,parlinfo,17290,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17290,2026-11-07
 per_013de966bb2c56608e603464c752c310,wikidata,Q6837244,Wikidata item holding member of the House of Commons of Canada for Scarborough Southwest in the 40th Parliament,https://www.wikidata.org/wiki/Q6837244,2026-11-07
+per_01e70b86cebc5251a675fd6b550aa007,ontario_legislature,william-j-saunderson,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/william-j-saunderson,2026-11-07
+per_01e70b86cebc5251a675fd6b550aa007,wikidata,Q4910758,Wikidata item whose Ontario MPP ID (P3054) is william-j-saunderson,https://www.wikidata.org/wiki/Q4910758,2026-11-07
 per_038cc72298e557cf8090e925c2f00de0,house_of_commons,123276,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
+per_038cc72298e557cf8090e925c2f00de0,ontario_legislature,roman-baber,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/roman-baber,2026-11-07
+per_038cc72298e557cf8090e925c2f00de0,wikidata,Q55081065,Wikidata item whose Ontario MPP ID (P3054) is roman-baber,https://www.wikidata.org/wiki/Q55081065,2026-11-07
 per_03d63913c07a5476ad459f21d58ec10b,house_of_commons,110373,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
+per_03d63913c07a5476ad459f21d58ec10b,ontario_legislature,michael-coteau,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/michael-coteau,2026-11-07
 per_03d63913c07a5476ad459f21d58ec10b,parlinfo,20224,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20224,2026-11-07
 per_03d63913c07a5476ad459f21d58ec10b,wikidata,Q6829490,Wikidata item holding member of the House of Commons of Canada for Don Valley East in the 44th Parliament,https://www.wikidata.org/wiki/Q6829490,2026-11-07
 per_043d7885af095ec7ba2ba1e7c4bca7dd,house_of_commons,1103,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
@@ -12,6 +17,12 @@ per_043d7885af095ec7ba2ba1e7c4bca7dd,wikidata,Q705518,Wikidata item holding memb
 per_0757d1d0b36f52e5ab1c3464ce6a6697,house_of_commons,35573,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=39,2026-11-07
 per_0757d1d0b36f52e5ab1c3464ce6a6697,parlinfo,4927,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=4927,2026-11-07
 per_0757d1d0b36f52e5ab1c3464ce6a6697,wikidata,Q311684,Wikidata item holding member of the House of Commons of Canada for Etobicoke—Lakeshore in the 39th Parliament,https://www.wikidata.org/wiki/Q311684,2026-11-07
+per_094ad060da2654dfa39a6a04fdfab959,ontario_legislature,marilyn-churley,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/marilyn-churley,2026-11-07
+per_094ad060da2654dfa39a6a04fdfab959,wikidata,Q6763513,Wikidata item whose Ontario MPP ID (P3054) is marilyn-churley,https://www.wikidata.org/wiki/Q6763513,2026-11-07
+per_0afc100cce0552f3ab72875cb6474788,ontario_legislature,jonathan-tsao,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/jonathan-tsao,2026-11-07
+per_0afc100cce0552f3ab72875cb6474788,wikidata,Q53952727,Wikidata item whose Ontario MPP ID (P3054) is jonathan-tsao,https://www.wikidata.org/wiki/Q53952727,2026-11-07
+per_0b81d67c3a195d4382abb0dc1f6d9839,ontario_legislature,stan-cho,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/stan-cho,2026-11-07
+per_0b81d67c3a195d4382abb0dc1f6d9839,wikidata,Q55081030,Wikidata item whose Ontario MPP ID (P3054) is stan-cho,https://www.wikidata.org/wiki/Q55081030,2026-11-07
 per_0bf581c7815c51f6964d53ddb7b07052,house_of_commons,110654,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_0bf581c7815c51f6964d53ddb7b07052,parlinfo,20265,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20265,2026-11-07
 per_0bf581c7815c51f6964d53ddb7b07052,wikidata,Q108635638,Wikidata item holding member of the House of Commons of Canada for Spadina—Fort York in the 44th Parliament,https://www.wikidata.org/wiki/Q108635638,2026-11-07
@@ -19,31 +30,56 @@ per_0e93ad2dfc325ddf9a6cd5451ec43e93,house_of_commons,1086,"House of Commons mem
 per_0e93ad2dfc325ddf9a6cd5451ec43e93,parlinfo,10507,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=10507,2026-11-07
 per_0e93ad2dfc325ddf9a6cd5451ec43e93,wikidata,Q3178916,Wikidata item holding member of the House of Commons of Canada for Willowdale in the 38th Parliament,https://www.wikidata.org/wiki/Q3178916,2026-11-07
 per_10d1c0f15d7e566ba4eec7f92f24636f,house_of_commons,14188,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
+per_10d1c0f15d7e566ba4eec7f92f24636f,ontario_legislature,bob-keith-rae,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/bob-keith-rae,2026-11-07
 per_10d1c0f15d7e566ba4eec7f92f24636f,parlinfo,5257,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=5257,2026-11-07
 per_10d1c0f15d7e566ba4eec7f92f24636f,wikidata,Q888208,Wikidata item holding member of the House of Commons of Canada for Toronto Centre in the 41st Parliament,https://www.wikidata.org/wiki/Q888208,2026-11-07
 per_126cd2092cf35be3a9d6ab1dacc22a8c,parlinfo,5754,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=5754,2026-11-07
 per_126cd2092cf35be3a9d6ab1dacc22a8c,wikidata,Q5301888,Wikidata item holding member of the House of Commons of Canada for Scarborough East in the 35th Parliament,https://www.wikidata.org/wiki/Q5301888,2026-11-07
+per_13c35326e35f5616b2b579c7af89ed3c,ontario_legislature,john-hastings,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/john-hastings,2026-11-07
+per_13c35326e35f5616b2b579c7af89ed3c,wikidata,Q6238206,Wikidata item whose Ontario MPP ID (P3054) is john-hastings,https://www.wikidata.org/wiki/Q6238206,2026-11-07
 per_149f5bfb67c15086a1790fb82f99e49e,house_of_commons,1787,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_149f5bfb67c15086a1790fb82f99e49e,parlinfo,3950,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=3950,2026-11-07
 per_149f5bfb67c15086a1790fb82f99e49e,wikidata,Q3188045,Wikidata item holding member of the House of Commons of Canada for York West in the 36th Parliament,https://www.wikidata.org/wiki/Q3188045,2026-11-07
+per_15643a9d6a59549bb8e536af298a4b2c,ontario_legislature,doug-ford,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/doug-ford,2026-11-07
+per_15643a9d6a59549bb8e536af298a4b2c,wikidata,Q5300478,Wikidata item whose Ontario MPP ID (P3054) is doug-ford,https://www.wikidata.org/wiki/Q5300478,2026-11-07
 per_195d8880a189532cad9b323cb5260687,house_of_commons,946,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_195d8880a189532cad9b323cb5260687,parlinfo,1621,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=1621,2026-11-07
 per_195d8880a189532cad9b323cb5260687,wikidata,Q3178858,Wikidata item holding member of the House of Commons of Canada for Scarborough—Agincourt in the 41st Parliament,https://www.wikidata.org/wiki/Q3178858,2026-11-07
+per_195deaf2b67750d8b3b779357e8d791e,ontario_legislature,derwyn-shea,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/derwyn-shea,2026-11-07
+per_195deaf2b67750d8b3b779357e8d791e,wikidata,Q5263380,Wikidata item whose Ontario MPP ID (P3054) is derwyn-shea,https://www.wikidata.org/wiki/Q5263380,2026-11-07
 per_19eebebe2b355ce3b6d34fd7dc25a4b6,house_of_commons,573,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_19eebebe2b355ce3b6d34fd7dc25a4b6,parlinfo,17056,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17056,2026-11-07
 per_19eebebe2b355ce3b6d34fd7dc25a4b6,wikidata,Q1063889,Wikidata item holding member of the House of Commons of Canada for Davenport in the 36th Parliament,https://www.wikidata.org/wiki/Q1063889,2026-11-07
+per_1a0c039bb67d5176b10184a4067bee62,ontario_legislature,tony-silipo,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/tony-silipo,2026-11-07
+per_1a0c039bb67d5176b10184a4067bee62,wikidata,Q7823410,Wikidata item whose Ontario MPP ID (P3054) is tony-silipo,https://www.wikidata.org/wiki/Q7823410,2026-11-07
 per_1c7a0a36928b5fb69f0d5a1e10be2fb1,house_of_commons,1121,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_1c7a0a36928b5fb69f0d5a1e10be2fb1,parlinfo,10496,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=10496,2026-11-07
 per_1c7a0a36928b5fb69f0d5a1e10be2fb1,wikidata,Q3182196,Wikidata item holding member of the House of Commons of Canada for York South—Weston in the 36th Parliament,https://www.wikidata.org/wiki/Q3182196,2026-11-07
+per_1cd576998bf25df0b9f1e4ab31842e5d,ontario_legislature,soo-wong,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/soo-wong,2026-11-07
+per_1cd576998bf25df0b9f1e4ab31842e5d,wikidata,Q7562633,Wikidata item whose Ontario MPP ID (P3054) is soo-wong,https://www.wikidata.org/wiki/Q7562633,2026-11-07
 per_1e050548381953f7b04a0284a97ac566,house_of_commons,105091,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=43,2026-11-07
+per_1e050548381953f7b04a0284a97ac566,ontario_legislature,han-dong,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/han-dong,2026-11-07
 per_1e050548381953f7b04a0284a97ac566,parlinfo,20103,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20103,2026-11-07
 per_1e050548381953f7b04a0284a97ac566,wikidata,Q17183113,Wikidata item holding member of the House of Commons of Canada for Don Valley North in the 43rd Parliament,https://www.wikidata.org/wiki/Q17183113,2026-11-07
+per_1f2774074aab5c1da25e6b21d03f5578,ontario_legislature,dan-newman,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/dan-newman,2026-11-07
+per_1f2774074aab5c1da25e6b21d03f5578,wikidata,Q5214096,Wikidata item whose Ontario MPP ID (P3054) is dan-newman,https://www.wikidata.org/wiki/Q5214096,2026-11-07
+per_1fa6d5ee6eb356a2971fcf978880349b,ontario_legislature,glen-r-murray,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/glen-r-murray,2026-11-07
+per_1fa6d5ee6eb356a2971fcf978880349b,wikidata,Q1530835,Wikidata item whose Ontario MPP ID (P3054) is glen-r-murray,https://www.wikidata.org/wiki/Q1530835,2026-11-07
+per_2168d2e9cf0c573fbcf05bdd23291abe,ontario_legislature,fatima-shaban,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/fatima-shaban,2026-11-07
 per_21ab1613f1c058e48024d7074b3966c5,house_of_commons,88721,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=43,2026-11-07
 per_21ab1613f1c058e48024d7074b3966c5,parlinfo,18491,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18491,2026-11-07
 per_21ab1613f1c058e48024d7074b3966c5,wikidata,Q22086204,Wikidata item holding member of the House of Commons of Canada for Davenport in the 43rd Parliament,https://www.wikidata.org/wiki/Q22086204,2026-11-07
+per_23e90faa5b66501aa48b838f277f5608,ontario_legislature,peter-tabuns,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/peter-tabuns,2026-11-07
+per_23e90faa5b66501aa48b838f277f5608,wikidata,Q7177232,Wikidata item whose Ontario MPP ID (P3054) is peter-tabuns,https://www.wikidata.org/wiki/Q7177232,2026-11-07
+per_2ad28fad887850aab3f8edc1c03f90ef,ontario_legislature,kathleen-o-wynne,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/kathleen-o-wynne,2026-11-07
+per_2ad28fad887850aab3f8edc1c03f90ef,wikidata,Q3786221,Wikidata item whose Ontario MPP ID (P3054) is kathleen-o-wynne,https://www.wikidata.org/wiki/Q3786221,2026-11-07
+per_2afac45ef535504b9a41458b675cc4c0,ontario_legislature,suze-morrison,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/suze-morrison,2026-11-07
+per_2afac45ef535504b9a41458b675cc4c0,wikidata,Q54862572,Wikidata item whose Ontario MPP ID (P3054) is suze-morrison,https://www.wikidata.org/wiki/Q54862572,2026-11-07
 per_2d62e6a39a6555478ec5533fca2f3ae2,house_of_commons,30503,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_2d62e6a39a6555478ec5533fca2f3ae2,parlinfo,17889,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17889,2026-11-07
 per_2d62e6a39a6555478ec5533fca2f3ae2,wikidata,Q2967649,Wikidata item holding member of the House of Commons of Canada for Willowdale in the 41st Parliament,https://www.wikidata.org/wiki/Q2967649,2026-11-07
+per_2db32d1655745b41849c332c58a6ebe2,ontario_legislature,marit-stiles,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/marit-stiles,2026-11-07
+per_2db32d1655745b41849c332c58a6ebe2,wikidata,Q54862567,Wikidata item whose Ontario MPP ID (P3054) is marit-stiles,https://www.wikidata.org/wiki/Q54862567,2026-11-07
 per_2e862df7dac85e2f8407e3fac034ea8d,house_of_commons,107099,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_2e862df7dac85e2f8407e3fac034ea8d,parlinfo,20188,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20188,2026-11-07
 per_2e862df7dac85e2f8407e3fac034ea8d,wikidata,Q100937829,Wikidata item holding member of the House of Commons of Canada for York Centre in the 44th Parliament,https://www.wikidata.org/wiki/Q100937829,2026-11-07
@@ -62,21 +98,33 @@ per_33705bc16481579cb342ead791793e1c,wikidata,Q21160212,Wikidata item holding me
 per_33d6e2b27ccc5a80a8ab679c25df5526,house_of_commons,35555,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_33d6e2b27ccc5a80a8ab679c25df5526,parlinfo,17870,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17870,2026-11-07
 per_33d6e2b27ccc5a80a8ab679c25df5526,wikidata,Q3181201,Wikidata item holding member of the House of Commons of Canada for Don Valley West in the 41st Parliament,https://www.wikidata.org/wiki/Q3181201,2026-11-07
+per_357da703cf82545ea2598a1fa5d578f5,ontario_legislature,jessica-bell,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/jessica-bell,2026-11-07
+per_357da703cf82545ea2598a1fa5d578f5,wikidata,Q55615036,Wikidata item whose Ontario MPP ID (P3054) is jessica-bell,https://www.wikidata.org/wiki/Q55615036,2026-11-07
+per_35a74b64eea251898e6dec4a1aa09483,ontario_legislature,david-smith,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/david-smith,2026-11-07
+per_35a74b64eea251898e6dec4a1aa09483,wikidata,Q112622520,Wikidata item whose Ontario MPP ID (P3054) is david-smith,https://www.wikidata.org/wiki/Q112622520,2026-11-07
+per_388439f4a559551a93ee9f577b3b7df6,ontario_legislature,joseph-cordiano,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/joseph-cordiano,2026-11-07
+per_388439f4a559551a93ee9f577b3b7df6,wikidata,Q6282260,Wikidata item whose Ontario MPP ID (P3054) is joseph-cordiano,https://www.wikidata.org/wiki/Q6282260,2026-11-07
 per_397ce487a25e5cafaf54f92ce890c243,house_of_commons,88687,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_397ce487a25e5cafaf54f92ce890c243,parlinfo,18483,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18483,2026-11-07
 per_397ce487a25e5cafaf54f92ce890c243,wikidata,Q20676568,Wikidata item holding member of the House of Commons of Canada for Beaches—East York in the 45th Parliament,https://www.wikidata.org/wiki/Q20676568,2026-11-07
 per_3bdab327ee4f56e2b4bf90257bb26641,house_of_commons,54434,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=42,2026-11-07
 per_3bdab327ee4f56e2b4bf90257bb26641,parlinfo,18280,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18280,2026-11-07
 per_3bdab327ee4f56e2b4bf90257bb26641,wikidata,Q4679921,Wikidata item holding member of the House of Commons of Canada for Spadina—Fort York in the 42nd Parliament,https://www.wikidata.org/wiki/Q4679921,2026-11-07
+per_3bfc97221e9f5084965a75e92f462451,ontario_legislature,mary-margaret-mcmahon,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/mary-margaret-mcmahon,2026-11-07
+per_3bfc97221e9f5084965a75e92f462451,wikidata,Q6778730,Wikidata item whose Ontario MPP ID (P3054) is mary-margaret-mcmahon,https://www.wikidata.org/wiki/Q6778730,2026-11-07
 per_3d04fe7bc3ab5e29bd3c7f51a4dd30fa,house_of_commons,631,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_3d04fe7bc3ab5e29bd3c7f51a4dd30fa,parlinfo,5098,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=5098,2026-11-07
 per_3d04fe7bc3ab5e29bd3c7f51a4dd30fa,wikidata,Q2837766,Wikidata item holding member of the House of Commons of Canada for Etobicoke Centre in the 35th Parliament,https://www.wikidata.org/wiki/Q2837766,2026-11-07
+per_3ec6d8e61c565378ae90753ba7c51ab9,ontario_legislature,paul-ferreira,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/paul-ferreira,2026-11-07
+per_3ec6d8e61c565378ae90753ba7c51ab9,wikidata,Q7150614,Wikidata item whose Ontario MPP ID (P3054) is paul-ferreira,https://www.wikidata.org/wiki/Q7150614,2026-11-07
 per_4208833231b15c24b856134aa2d3708c,house_of_commons,992,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_4208833231b15c24b856134aa2d3708c,parlinfo,10038,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=10038,2026-11-07
 per_4208833231b15c24b856134aa2d3708c,wikidata,Q2403422,Wikidata item holding member of the House of Commons of Canada for Toronto—St. Paul's in the 44th Parliament,https://www.wikidata.org/wiki/Q2403422,2026-11-07
 per_445d107ff6a9566e83f3ee0695af93b7,house_of_commons,963,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=37,2026-11-07
 per_445d107ff6a9566e83f3ee0695af93b7,parlinfo,2661,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=2661,2026-11-07
 per_445d107ff6a9566e83f3ee0695af93b7,wikidata,Q3023741,Wikidata item holding member of the House of Commons of Canada for Scarborough—Rouge River in the 37th Parliament,https://www.wikidata.org/wiki/Q3023741,2026-11-07
+per_4826264c176d51b9a676838e17f3ba2d,ontario_legislature,jonah-schein,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/jonah-schein,2026-11-07
+per_4826264c176d51b9a676838e17f3ba2d,wikidata,Q6271928,Wikidata item whose Ontario MPP ID (P3054) is jonah-schein,https://www.wikidata.org/wiki/Q6271928,2026-11-07
 per_4c3aaee74ba25b559eac08297dcc4d7f,house_of_commons,86249,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=42,2026-11-07
 per_4c3aaee74ba25b559eac08297dcc4d7f,parlinfo,18281,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18281,2026-11-07
 per_4c3aaee74ba25b559eac08297dcc4d7f,wikidata,Q17305769,Wikidata item holding member of the House of Commons of Canada for Scarborough—Agincourt in the 42nd Parliament,https://www.wikidata.org/wiki/Q17305769,2026-11-07
@@ -88,15 +136,25 @@ per_4db59e6bb01d5c42be00e46c8fc0079a,wikidata,Q7424215,Wikidata item holding mem
 per_4dcec440468d54acb6dfdd05c244837e,house_of_commons,589,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_4dcec440468d54acb6dfdd05c244837e,parlinfo,8349,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=8349,2026-11-07
 per_4dcec440468d54acb6dfdd05c244837e,wikidata,Q3181599,Wikidata item holding member of the House of Commons of Canada for Don Valley West in the 36th Parliament,https://www.wikidata.org/wiki/Q3181599,2026-11-07
+per_4efd8e2fcc8059f295f7695304fffcf6,ontario_legislature,monte-kwinter,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/monte-kwinter,2026-11-07
+per_4efd8e2fcc8059f295f7695304fffcf6,wikidata,Q6904798,Wikidata item whose Ontario MPP ID (P3054) is monte-kwinter,https://www.wikidata.org/wiki/Q6904798,2026-11-07
+per_4fc6f782f5385ee99540f686e0c1faa4,ontario_legislature,michelle-cooper,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/michelle-cooper,2026-11-07
+per_4fc6f782f5385ee99540f686e0c1faa4,wikidata,Q132906746,Wikidata item whose Ontario MPP ID (P3054) is michelle-cooper,https://www.wikidata.org/wiki/Q132906746,2026-11-07
 per_5086953fe96a54ae86350a60c4cf4063,house_of_commons,123214,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_5086953fe96a54ae86350a60c4cf4063,parlinfo,20445,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20445,2026-11-07
 per_5086953fe96a54ae86350a60c4cf4063,wikidata,Q134267315,Wikidata item holding member of the House of Commons of Canada for Taiaiako'n—Parkdale—High Park in the 45th Parliament,https://www.wikidata.org/wiki/Q134267315,2026-11-07
 per_56963b4350105041aef2536725521738,house_of_commons,119705,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_56963b4350105041aef2536725521738,parlinfo,20447,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20447,2026-11-07
 per_56963b4350105041aef2536725521738,wikidata,Q126540443,Wikidata item holding member of the House of Commons of Canada for Toronto—St. Paul's in the 45th Parliament,https://www.wikidata.org/wiki/Q126540443,2026-11-07
+per_571d27875a9252adbe1f563784928a5a,ontario_legislature,marilyn-mushinski,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/marilyn-mushinski,2026-11-07
+per_571d27875a9252adbe1f563784928a5a,wikidata,Q6763602,Wikidata item whose Ontario MPP ID (P3054) is marilyn-mushinski,https://www.wikidata.org/wiki/Q6763602,2026-11-07
+per_58016e26ffa55f6bbdc8f7490273a4a5,ontario_legislature,george-smitherman,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/george-smitherman,2026-11-07
+per_58016e26ffa55f6bbdc8f7490273a4a5,wikidata,Q210259,Wikidata item whose Ontario MPP ID (P3054) is george-smitherman,https://www.wikidata.org/wiki/Q210259,2026-11-07
 per_59833f8a8e695df29b74149f280fb3fa,house_of_commons,19425,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=39,2026-11-07
 per_59833f8a8e695df29b74149f280fb3fa,parlinfo,16970,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=16970,2026-11-07
 per_59833f8a8e695df29b74149f280fb3fa,wikidata,Q739820,Wikidata item holding member of the House of Commons of Canada for York Centre in the 39th Parliament,https://www.wikidata.org/wiki/Q739820,2026-11-07
+per_59e8fc21d73350fa9478b0f8dbb2c7cb,ontario_legislature,lorenzo-berardinetti,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/lorenzo-berardinetti,2026-11-07
+per_59e8fc21d73350fa9478b0f8dbb2c7cb,wikidata,Q6680633,Wikidata item whose Ontario MPP ID (P3054) is lorenzo-berardinetti,https://www.wikidata.org/wiki/Q6680633,2026-11-07
 per_5a7ce90ce04b51bda92cea74556efcd7,house_of_commons,88748,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_5a7ce90ce04b51bda92cea74556efcd7,parlinfo,18496,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18496,2026-11-07
 per_5a7ce90ce04b51bda92cea74556efcd7,wikidata,Q17386312,Wikidata item holding member of the House of Commons of Canada for Etobicoke—Lakeshore in the 45th Parliament,https://www.wikidata.org/wiki/Q17386312,2026-11-07
@@ -109,6 +167,8 @@ per_5c16add0f57c57ffb6108decd999bb64,wikidata,Q6848982,Wikidata item holding mem
 per_5c5a2caf9dd05533a76a5f76dcef6eca,house_of_commons,75006,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_5c5a2caf9dd05533a76a5f76dcef6eca,parlinfo,18056,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18056,2026-11-07
 per_5c5a2caf9dd05533a76a5f76dcef6eca,wikidata,Q5181431,Wikidata item holding member of the House of Commons of Canada for Toronto—Danforth in the 41st Parliament,https://www.wikidata.org/wiki/Q5181431,2026-11-07
+per_5c70fa3de7b3522cbbe136e3410d1eda,ontario_legislature,mary-anne-v-chambers,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/mary-anne-v-chambers,2026-11-07
+per_5c70fa3de7b3522cbbe136e3410d1eda,wikidata,Q6778937,Wikidata item whose Ontario MPP ID (P3054) is mary-anne-v-chambers,https://www.wikidata.org/wiki/Q6778937,2026-11-07
 per_5e078da852c05f82854fb7256c4afd9b,house_of_commons,894,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_5e078da852c05f82854fb7256c4afd9b,parlinfo,1407,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=1407,2026-11-07
 per_5e078da852c05f82854fb7256c4afd9b,wikidata,Q7424308,Wikidata item holding member of the House of Commons of Canada for Parkdale—High Park in the 36th Parliament,https://www.wikidata.org/wiki/Q7424308,2026-11-07
@@ -116,14 +176,27 @@ per_5e50494bdb4855d59ea7ed60abb82b40,house_of_commons,71611,"House of Commons me
 per_5e50494bdb4855d59ea7ed60abb82b40,parlinfo,17868,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17868,2026-11-07
 per_5e50494bdb4855d59ea7ed60abb82b40,wikidata,Q4756567,Wikidata item holding member of the House of Commons of Canada for Davenport in the 41st Parliament,https://www.wikidata.org/wiki/Q4756567,2026-11-07
 per_5e97564405c75d6c8afd2d6f8166170f,house_of_commons,59000,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
+per_5e97564405c75d6c8afd2d6f8166170f,ontario_legislature,gerard-kennedy,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/gerard-kennedy,2026-11-07
 per_5e97564405c75d6c8afd2d6f8166170f,parlinfo,17289,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17289,2026-11-07
 per_5e97564405c75d6c8afd2d6f8166170f,wikidata,Q965835,Wikidata item holding member of the House of Commons of Canada for Parkdale—High Park in the 40th Parliament,https://www.wikidata.org/wiki/Q965835,2026-11-07
 per_5f9ff0988c5d5bb8aa289e250cd144b0,house_of_commons,25468,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=39,2026-11-07
 per_5f9ff0988c5d5bb8aa289e250cd144b0,parlinfo,16783,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=16783,2026-11-07
 per_5f9ff0988c5d5bb8aa289e250cd144b0,wikidata,Q2911380,Wikidata item holding member of the House of Commons of Canada for Etobicoke Centre in the 39th Parliament,https://www.wikidata.org/wiki/Q2911380,2026-11-07
+per_5fe051401d365173bc863062f15be0e2,ontario_legislature,bas-balkissoon,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/bas-balkissoon,2026-11-07
+per_5fe051401d365173bc863062f15be0e2,wikidata,Q4866139,Wikidata item whose Ontario MPP ID (P3054) is bas-balkissoon,https://www.wikidata.org/wiki/Q4866139,2026-11-07
 per_61ea362c84225861ba1061353851ae2e,house_of_commons,58877,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
 per_61ea362c84225861ba1061353851ae2e,parlinfo,17275,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17275,2026-11-07
 per_61ea362c84225861ba1061353851ae2e,wikidata,Q3197422,Wikidata item holding member of the House of Commons of Canada for Etobicoke North in the 40th Parliament,https://www.wikidata.org/wiki/Q3197422,2026-11-07
+per_622a383671675710894f9e6d10f36f05,ontario_legislature,annamarie-castrilli,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/annamarie-castrilli,2026-11-07
+per_622a383671675710894f9e6d10f36f05,wikidata,Q4767892,Wikidata item whose Ontario MPP ID (P3054) is annamarie-castrilli,https://www.wikidata.org/wiki/Q4767892,2026-11-07
+per_6254d5a51a3a57ca9c25f2741efa7eb3,ontario_legislature,rosario-marchese,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/rosario-marchese,2026-11-07
+per_6254d5a51a3a57ca9c25f2741efa7eb3,wikidata,Q7367399,Wikidata item whose Ontario MPP ID (P3054) is rosario-marchese,https://www.wikidata.org/wiki/Q7367399,2026-11-07
+per_656bf9ee8956529195719d111d5fe53d,ontario_legislature,david-caplan,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/david-caplan,2026-11-07
+per_656bf9ee8956529195719d111d5fe53d,wikidata,Q5232146,Wikidata item whose Ontario MPP ID (P3054) is david-caplan,https://www.wikidata.org/wiki/Q5232146,2026-11-07
+per_6624f47cb4fc5e28974bf58aac3e6874,ontario_legislature,frances-lankin,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/frances-lankin,2026-11-07
+per_6624f47cb4fc5e28974bf58aac3e6874,wikidata,Q5478789,Wikidata item whose Ontario MPP ID (P3054) is frances-lankin,https://www.wikidata.org/wiki/Q5478789,2026-11-07
+per_6c4d13bdb048521e8decad122d81128a,ontario_legislature,mitzie-hunter,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/mitzie-hunter,2026-11-07
+per_6c4d13bdb048521e8decad122d81128a,wikidata,Q16211050,Wikidata item whose Ontario MPP ID (P3054) is mitzie-hunter,https://www.wikidata.org/wiki/Q16211050,2026-11-07
 per_6c8ba79da7cb5eb989aebcb0bb3fa5e1,house_of_commons,89010,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_6c8ba79da7cb5eb989aebcb0bb3fa5e1,parlinfo,18548,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18548,2026-11-07
 per_6c8ba79da7cb5eb989aebcb0bb3fa5e1,wikidata,Q21156200,Wikidata item holding member of the House of Commons of Canada for Willowdale in the 45th Parliament,https://www.wikidata.org/wiki/Q21156200,2026-11-07
@@ -133,6 +206,10 @@ per_6d8651a3b9c25398b54f345a2d90b1cd,wikidata,Q21210275,Wikidata item holding me
 per_6e69f959e7b6537bb4bb95220d6f82d9,house_of_commons,58866,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_6e69f959e7b6537bb4bb95220d6f82d9,parlinfo,17871,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17871,2026-11-07
 per_6e69f959e7b6537bb4bb95220d6f82d9,wikidata,Q6211627,Wikidata item holding member of the House of Commons of Canada for Eglinton—Lawrence in the 41st Parliament,https://www.wikidata.org/wiki/Q6211627,2026-11-07
+per_6fa2e2191a5d5c9fa141a534be4c4ab4,ontario_legislature,vijay-thanigasalam,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/vijay-thanigasalam,2026-11-07
+per_6fa2e2191a5d5c9fa141a534be4c4ab4,wikidata,Q55081060,Wikidata item whose Ontario MPP ID (P3054) is vijay-thanigasalam,https://www.wikidata.org/wiki/Q55081060,2026-11-07
+per_6fca90a21d2a5ecb9adafdac257e7a03,ontario_legislature,mario-sergio,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/mario-sergio,2026-11-07
+per_6fca90a21d2a5ecb9adafdac257e7a03,wikidata,Q6764971,Wikidata item whose Ontario MPP ID (P3054) is mario-sergio,https://www.wikidata.org/wiki/Q6764971,2026-11-07
 per_744d98dde3d2548e8dc2c809972b9fca,house_of_commons,123192,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_744d98dde3d2548e8dc2c809972b9fca,parlinfo,20443,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20443,2026-11-07
 per_744d98dde3d2548e8dc2c809972b9fca,wikidata,Q135003396,Wikidata item holding member of the House of Commons of Canada for Spadina—Harbourfront in the 45th Parliament,https://www.wikidata.org/wiki/Q135003396,2026-11-07
@@ -141,65 +218,124 @@ per_7739034f2088547fb930e5baf7f0cac7,parlinfo,11745,Library of Parliament person
 per_7739034f2088547fb930e5baf7f0cac7,wikidata,Q1899045,Wikidata item holding member of the House of Commons of Canada for Davenport in the 38th Parliament,https://www.wikidata.org/wiki/Q1899045,2026-11-07
 per_77ca36e7c307582283bdc3b29872a61a,parlinfo,11936,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=11936,2026-11-07
 per_77ca36e7c307582283bdc3b29872a61a,wikidata,Q6186321,Wikidata item holding member of the House of Commons of Canada for Parkdale—High Park in the 35th Parliament,https://www.wikidata.org/wiki/Q6186321,2026-11-07
+per_78173448185a5e75812ab32b3ef02105,ontario_legislature,kinga-surma,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/kinga-surma,2026-11-07
+per_78173448185a5e75812ab32b3ef02105,wikidata,Q55081037,Wikidata item whose Ontario MPP ID (P3054) is kinga-surma,https://www.wikidata.org/wiki/Q55081037,2026-11-07
+per_78fd07f017e055fdb6645ef054d4f86a,ontario_legislature,tom-rakocevic,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/tom-rakocevic,2026-11-07
+per_78fd07f017e055fdb6645ef054d4f86a,wikidata,Q54862577,Wikidata item whose Ontario MPP ID (P3054) is tom-rakocevic,https://www.wikidata.org/wiki/Q54862577,2026-11-07
 per_791106f36261525dbc579ab6cf45b553,house_of_commons,71627,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_791106f36261525dbc579ab6cf45b553,parlinfo,17873,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17873,2026-11-07
 per_791106f36261525dbc579ab6cf45b553,wikidata,Q16196303,Wikidata item holding member of the House of Commons of Canada for Etobicoke—Lakeshore in the 41st Parliament,https://www.wikidata.org/wiki/Q16196303,2026-11-07
 per_79227bb8180e547fb44f233c97fcb027,house_of_commons,141713,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
+per_79227bb8180e547fb44f233c97fcb027,ontario_legislature,doly-begum,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/doly-begum,2026-11-07
 per_79227bb8180e547fb44f233c97fcb027,wikidata,Q54862573,Wikidata item holding member of the House of Commons of Canada for Scarborough Southwest in the 45th Parliament,https://www.wikidata.org/wiki/Q54862573,2026-11-07
 per_7b147a95da2c5e71ab742d7c89e403e5,house_of_commons,554,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=38,2026-11-07
 per_7b147a95da2c5e71ab742d7c89e403e5,parlinfo,3730,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=3730,2026-11-07
 per_7b147a95da2c5e71ab742d7c89e403e5,wikidata,Q317842,Wikidata item holding member of the House of Commons of Canada for Toronto—Danforth in the 38th Parliament,https://www.wikidata.org/wiki/Q317842,2026-11-07
+per_7be3d5853e13593a89a34075bd107872,ontario_legislature,stephanie-bowman,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/stephanie-bowman,2026-11-07
+per_7be3d5853e13593a89a34075bd107872,wikidata,Q112622508,Wikidata item whose Ontario MPP ID (P3054) is stephanie-bowman,https://www.wikidata.org/wiki/Q112622508,2026-11-07
+per_7cf2b726f64e5cd7a38e03c49183cb28,ontario_legislature,charles-harnick,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/charles-harnick,2026-11-07
+per_7cf2b726f64e5cd7a38e03c49183cb28,wikidata,Q5078780,Wikidata item whose Ontario MPP ID (P3054) is charles-harnick,https://www.wikidata.org/wiki/Q5078780,2026-11-07
+per_80e5c5af07865631b7c540d12cb6f3be,ontario_legislature,isabel-bassett,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/isabel-bassett,2026-11-07
+per_80e5c5af07865631b7c540d12cb6f3be,wikidata,Q6077558,Wikidata item whose Ontario MPP ID (P3054) is isabel-bassett,https://www.wikidata.org/wiki/Q6077558,2026-11-07
 per_829a9d92988c50a8874e1d470c8b9ada,house_of_commons,35707,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_829a9d92988c50a8874e1d470c8b9ada,parlinfo,17885,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17885,2026-11-07
 per_829a9d92988c50a8874e1d470c8b9ada,wikidata,Q7372364,Wikidata item holding member of the House of Commons of Canada for Scarborough Centre in the 41st Parliament,https://www.wikidata.org/wiki/Q7372364,2026-11-07
 per_83596fed9c285708a673fc1ef09acf68,parlinfo,11685,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=11685,2026-11-07
 per_83596fed9c285708a673fc1ef09acf68,wikidata,Q2170864,Wikidata item holding member of the House of Commons of Canada for Etobicoke North in the 35th Parliament,https://www.wikidata.org/wiki/Q2170864,2026-11-07
+per_841695362d0b5f5b9318600f3b63942c,ontario_legislature,chris-glover,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/chris-glover,2026-11-07
+per_841695362d0b5f5b9318600f3b63942c,wikidata,Q55080987,Wikidata item whose Ontario MPP ID (P3054) is chris-glover,https://www.wikidata.org/wiki/Q55080987,2026-11-07
 per_871492eeaeb55ab2a8d86ff38a205ae4,house_of_commons,107097,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_871492eeaeb55ab2a8d86ff38a205ae4,parlinfo,20189,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20189,2026-11-07
 per_871492eeaeb55ab2a8d86ff38a205ae4,wikidata,Q6757065,Wikidata item holding member of the House of Commons of Canada for Toronto Centre in the 44th Parliament,https://www.wikidata.org/wiki/Q6757065,2026-11-07
 per_87efbe376bd65a3cb9cecc821dec0081,house_of_commons,88961,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_87efbe376bd65a3cb9cecc821dec0081,parlinfo,18537,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18537,2026-11-07
 per_87efbe376bd65a3cb9cecc821dec0081,wikidata,Q4908168,Wikidata item holding member of the House of Commons of Canada for Scarborough Southwest in the 45th Parliament,https://www.wikidata.org/wiki/Q4908168,2026-11-07
+per_89c892f4852f57deae6f2c4bf5a1e39f,ontario_legislature,john-l-parker,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/john-l-parker,2026-11-07
+per_89c892f4852f57deae6f2c4bf5a1e39f,wikidata,Q6251899,Wikidata item whose Ontario MPP ID (P3054) is john-l-parker,https://www.wikidata.org/wiki/Q6251899,2026-11-07
+per_89dfc328ae8952089fadab7b9c3a0832,ontario_legislature,cristina-martins,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/cristina-martins,2026-11-07
+per_89dfc328ae8952089fadab7b9c3a0832,wikidata,Q17180771,Wikidata item whose Ontario MPP ID (P3054) is cristina-martins,https://www.wikidata.org/wiki/Q17180771,2026-11-07
 per_8b9e35cf6a065328a1113acf55d27319,house_of_commons,98747,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_8b9e35cf6a065328a1113acf55d27319,parlinfo,20006,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20006,2026-11-07
 per_8b9e35cf6a065328a1113acf55d27319,wikidata,Q45311888,Wikidata item holding member of the House of Commons of Canada for Scarborough—Agincourt in the 44th Parliament,https://www.wikidata.org/wiki/Q45311888,2026-11-07
+per_8bdaf9064ad85af19ce437be9cb5e447,ontario_legislature,tony-ruprecht,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/tony-ruprecht,2026-11-07
+per_8bdaf9064ad85af19ce437be9cb5e447,wikidata,Q15516400,Wikidata item whose Ontario MPP ID (P3054) is tony-ruprecht,https://www.wikidata.org/wiki/Q15516400,2026-11-07
+per_8c446d7231315710a476ae8296616fe2,ontario_legislature,alexa-gilmour,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/alexa-gilmour,2026-11-07
+per_8c446d7231315710a476ae8296616fe2,wikidata,Q132811655,Wikidata item whose Ontario MPP ID (P3054) is alexa-gilmour,https://www.wikidata.org/wiki/Q132811655,2026-11-07
+per_8e0e56e3ed2358e0ab9ded05d302437f,ontario_legislature,arthur-potts,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/arthur-potts,2026-11-07
+per_8e0e56e3ed2358e0ab9ded05d302437f,wikidata,Q17180770,Wikidata item whose Ontario MPP ID (P3054) is arthur-potts,https://www.wikidata.org/wiki/Q17180770,2026-11-07
 per_8e95fd4f54dd5411a4ec54417b3b638d,house_of_commons,642,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=38,2026-11-07
 per_8e95fd4f54dd5411a4ec54417b3b638d,parlinfo,2999,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=2999,2026-11-07
 per_8e95fd4f54dd5411a4ec54417b3b638d,wikidata,Q3445764,Wikidata item holding member of the House of Commons of Canada for Etobicoke North in the 38th Parliament,https://www.wikidata.org/wiki/Q3445764,2026-11-07
 per_90df68b63b37556d8cefa4159bfff7fd,house_of_commons,528,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
 per_90df68b63b37556d8cefa4159bfff7fd,parlinfo,5372,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=5372,2026-11-07
 per_90df68b63b37556d8cefa4159bfff7fd,wikidata,Q3291003,Wikidata item holding member of the House of Commons of Canada for Beaches—East York in the 40th Parliament,https://www.wikidata.org/wiki/Q3291003,2026-11-07
+per_91bbcc30e1e25b29b9107f090c910b96,ontario_legislature,david-zimmer,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/david-zimmer,2026-11-07
+per_91bbcc30e1e25b29b9107f090c910b96,wikidata,Q5241414,Wikidata item whose Ontario MPP ID (P3054) is david-zimmer,https://www.wikidata.org/wiki/Q5241414,2026-11-07
 per_9357f8bf332550b6af971c04eafa3dbd,house_of_commons,30428,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_9357f8bf332550b6af971c04eafa3dbd,parlinfo,17886,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17886,2026-11-07
 per_9357f8bf332550b6af971c04eafa3dbd,wikidata,Q5213646,Wikidata item holding member of the House of Commons of Canada for Scarborough Southwest in the 41st Parliament,https://www.wikidata.org/wiki/Q5213646,2026-11-07
+per_94a78e1366525a339e6ddbba35babcca,ontario_legislature,douglas-c-holyday,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/douglas-c-holyday,2026-11-07
+per_94a78e1366525a339e6ddbba35babcca,wikidata,Q5300579,Wikidata item whose Ontario MPP ID (P3054) is douglas-c-holyday,https://www.wikidata.org/wiki/Q5300579,2026-11-07
 per_9516c35147cb5a5b8dcd321ba33f6509,house_of_commons,583,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=37,2026-11-07
 per_9516c35147cb5a5b8dcd321ba33f6509,parlinfo,16506,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=16506,2026-11-07
 per_9516c35147cb5a5b8dcd321ba33f6509,wikidata,Q3017694,Wikidata item holding member of the House of Commons of Canada for Don Valley East in the 37th Parliament,https://www.wikidata.org/wiki/Q3017694,2026-11-07
 per_965b9767b0d0563da65e3a0db59e0afe,house_of_commons,608,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_965b9767b0d0563da65e3a0db59e0afe,parlinfo,7036,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=7036,2026-11-07
 per_965b9767b0d0563da65e3a0db59e0afe,wikidata,Q3180208,Wikidata item holding member of the House of Commons of Canada for Eglinton—Lawrence in the 36th Parliament,https://www.wikidata.org/wiki/Q3180208,2026-11-07
+per_9acde0d542b4537485d80198d1669c10,ontario_legislature,allan-f-leach,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/allan-f-leach,2026-11-07
+per_9acde0d542b4537485d80198d1669c10,wikidata,Q4704281,Wikidata item whose Ontario MPP ID (P3054) is allan-f-leach,https://www.wikidata.org/wiki/Q4704281,2026-11-07
+per_9b5f9e3c202a5425881c5e952e7e2e46,ontario_legislature,morley-kells,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/morley-kells,2026-11-07
+per_9b5f9e3c202a5425881c5e952e7e2e46,wikidata,Q6912540,Wikidata item whose Ontario MPP ID (P3054) is morley-kells,https://www.wikidata.org/wiki/Q6912540,2026-11-07
 per_a4291ca7539b53e2acc1c4f108bc73e6,house_of_commons,20816,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
 per_a4291ca7539b53e2acc1c4f108bc73e6,parlinfo,12321,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=12321,2026-11-07
 per_a4291ca7539b53e2acc1c4f108bc73e6,wikidata,Q3350703,Wikidata item holding member of the House of Commons of Canada for Trinity—Spadina in the 40th Parliament,https://www.wikidata.org/wiki/Q3350703,2026-11-07
 per_a53e9965219950538ffbd906a800eba1,house_of_commons,88994,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_a53e9965219950538ffbd906a800eba1,parlinfo,18544,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18544,2026-11-07
 per_a53e9965219950538ffbd906a800eba1,wikidata,Q21572925,Wikidata item holding member of the House of Commons of Canada for Toronto—Danforth in the 44th Parliament,https://www.wikidata.org/wiki/Q21572925,2026-11-07
+per_a66ff7324933544bb4a2905d0113b5d0,ontario_legislature,kristyn-wong-tam,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/kristyn-wong-tam,2026-11-07
+per_a66ff7324933544bb4a2905d0113b5d0,wikidata,Q6438493,Wikidata item whose Ontario MPP ID (P3054) is kristyn-wong-tam,https://www.wikidata.org/wiki/Q6438493,2026-11-07
 per_a7e5c2e7c5e35e8c9d787bad062d5c57,house_of_commons,142763,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
+per_a9eb70da799659daaa285f92cfed1674,ontario_legislature,john-tory,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/john-tory,2026-11-07
+per_a9eb70da799659daaa285f92cfed1674,wikidata,Q928118,Wikidata item whose Ontario MPP ID (P3054) is john-tory,https://www.wikidata.org/wiki/Q928118,2026-11-07
+per_ac838225659851ee811342e914470a30,ontario_legislature,christina-maria-mitas,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/christina-maria-mitas,2026-11-07
+per_ac838225659851ee811342e914470a30,wikidata,Q55081055,Wikidata item whose Ontario MPP ID (P3054) is christina-maria-mitas,https://www.wikidata.org/wiki/Q55081055,2026-11-07
+per_adfe5092c7875038b2a2a47101b7023c,ontario_legislature,bhutila-karpoche,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/bhutila-karpoche,2026-11-07
+per_adfe5092c7875038b2a2a47101b7023c,wikidata,Q54862571,Wikidata item whose Ontario MPP ID (P3054) is bhutila-karpoche,https://www.wikidata.org/wiki/Q54862571,2026-11-07
+per_af6a15e2bea65331bd90c95def47f62f,ontario_legislature,shafiq-qaadri,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/shafiq-qaadri,2026-11-07
+per_af6a15e2bea65331bd90c95def47f62f,wikidata,Q7461053,Wikidata item whose Ontario MPP ID (P3054) is shafiq-qaadri,https://www.wikidata.org/wiki/Q7461053,2026-11-07
+per_afe1b989c1315568a8cb59f7194a46ca,ontario_legislature,cheri-dinovo,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/cheri-dinovo,2026-11-07
+per_afe1b989c1315568a8cb59f7194a46ca,wikidata,Q2962729,Wikidata item whose Ontario MPP ID (P3054) is cheri-dinovo,https://www.wikidata.org/wiki/Q2962729,2026-11-07
 per_b05bca5a3f225453b8484ce46c8b2bb8,house_of_commons,71585,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_b05bca5a3f225453b8484ce46c8b2bb8,parlinfo,17864,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17864,2026-11-07
 per_b05bca5a3f225453b8484ce46c8b2bb8,wikidata,Q6790781,Wikidata item holding member of the House of Commons of Canada for Beaches—East York in the 41st Parliament,https://www.wikidata.org/wiki/Q6790781,2026-11-07
+per_b3bb5c3e743e5980abcc4bbacceeac47,ontario_legislature,michael-s-kerzner,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/michael-s-kerzner,2026-11-07
+per_b3bb5c3e743e5980abcc4bbacceeac47,wikidata,Q112221180,Wikidata item whose Ontario MPP ID (P3054) is michael-s-kerzner,https://www.wikidata.org/wiki/Q112221180,2026-11-07
+per_b565750840aa5f1d9985bd60de6c423c,ontario_legislature,raymond-sung-joon-cho,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/raymond-sung-joon-cho,2026-11-07
+per_b565750840aa5f1d9985bd60de6c423c,wikidata,Q7298666,Wikidata item whose Ontario MPP ID (P3054) is raymond-sung-joon-cho,https://www.wikidata.org/wiki/Q7298666,2026-11-07
 per_b682ef204c825d01970cca7bffe84deb,house_of_commons,632,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=38,2026-11-07
 per_b682ef204c825d01970cca7bffe84deb,parlinfo,3321,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=3321,2026-11-07
 per_b682ef204c825d01970cca7bffe84deb,wikidata,Q3170455,Wikidata item holding member of the House of Commons of Canada for Etobicoke—Lakeshore in the 38th Parliament,https://www.wikidata.org/wiki/Q3170455,2026-11-07
+per_b705ffb5006454dcac11cc5405a67875,ontario_legislature,laura-albanese,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/laura-albanese,2026-11-07
+per_b705ffb5006454dcac11cc5405a67875,wikidata,Q16148983,Wikidata item whose Ontario MPP ID (P3054) is laura-albanese,https://www.wikidata.org/wiki/Q16148983,2026-11-07
+per_b86726a008275564ad98645987d51074,ontario_legislature,elinor-caplan,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/elinor-caplan,2026-11-07
+per_b86726a008275564ad98645987d51074,wikidata,Q5361139,Wikidata item whose Ontario MPP ID (P3054) is elinor-caplan,https://www.wikidata.org/wiki/Q5361139,2026-11-07
+per_b8c7ac1e1bdd57698d5f7955f63c2c25,ontario_legislature,michael-d-ford,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/michael-d-ford,2026-11-07
+per_b8c7ac1e1bdd57698d5f7955f63c2c25,wikidata,Q24663887,Wikidata item whose Ontario MPP ID (P3054) is michael-d-ford,https://www.wikidata.org/wiki/Q24663887,2026-11-07
 per_b8d0336603b4526bb182e6df53d7c22d,house_of_commons,89020,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=43,2026-11-07
 per_b8d0336603b4526bb182e6df53d7c22d,parlinfo,18551,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18551,2026-11-07
 per_b8d0336603b4526bb182e6df53d7c22d,wikidata,Q16211070,Wikidata item holding member of the House of Commons of Canada for York South—Weston in the 43rd Parliament,https://www.wikidata.org/wiki/Q16211070,2026-11-07
+per_ba02ae8a21845a909019f9602334e504,ontario_legislature,alvin-curling,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/alvin-curling,2026-11-07
+per_ba02ae8a21845a909019f9602334e504,wikidata,Q4738075,Wikidata item whose Ontario MPP ID (P3054) is alvin-curling,https://www.wikidata.org/wiki/Q4738075,2026-11-07
+per_ba93265add5250b287d017a337c4d179,ontario_legislature,david-young,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/david-young,2026-11-07
+per_ba93265add5250b287d017a337c4d179,wikidata,Q5241369,Wikidata item whose Ontario MPP ID (P3054) is david-young,https://www.wikidata.org/wiki/Q5241369,2026-11-07
 per_bcc1ca15f7be54a4acb9d6147c561069,house_of_commons,122911,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_bcc1ca15f7be54a4acb9d6147c561069,parlinfo,20419,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20419,2026-11-07
 per_bcc1ca15f7be54a4acb9d6147c561069,wikidata,Q134279428,Wikidata item holding member of the House of Commons of Canada for Eglinton—Lawrence in the 45th Parliament,https://www.wikidata.org/wiki/Q134279428,2026-11-07
 per_be3398f5eb7d52188e436eb7b1981a97,house_of_commons,1837,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=38,2026-11-07
 per_be3398f5eb7d52188e436eb7b1981a97,parlinfo,9583,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=9583,2026-11-07
 per_be3398f5eb7d52188e436eb7b1981a97,wikidata,Q2830607,Wikidata item holding member of the House of Commons of Canada for York South—Weston in the 38th Parliament,https://www.wikidata.org/wiki/Q2830607,2026-11-07
+per_be8539f801a05a118dd65b59f48b76a9,ontario_legislature,adil-shamji,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/adil-shamji,2026-11-07
+per_be8539f801a05a118dd65b59f48b76a9,wikidata,Q112221191,Wikidata item whose Ontario MPP ID (P3054) is adil-shamji,https://www.wikidata.org/wiki/Q112221191,2026-11-07
 per_bf05264cccdc516a9c06919760cf28c3,house_of_commons,971,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=39,2026-11-07
 per_bf05264cccdc516a9c06919760cf28c3,parlinfo,290,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=290,2026-11-07
 per_bf05264cccdc516a9c06919760cf28c3,wikidata,Q3530918,Wikidata item holding member of the House of Commons of Canada for Scarborough Southwest in the 39th Parliament,https://www.wikidata.org/wiki/Q3530918,2026-11-07
@@ -212,10 +348,13 @@ per_c10fdd7256dc5cf7b73327f5dc8ce0e6,wikidata,Q22704264,Wikidata item holding me
 per_c3a5a68980145a11b4ff0e9887b85bf1,house_of_commons,88738,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=42,2026-11-07
 per_c3a5a68980145a11b4ff0e9887b85bf1,parlinfo,18493,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18493,2026-11-07
 per_c3a5a68980145a11b4ff0e9887b85bf1,wikidata,Q21336208,Wikidata item holding member of the House of Commons of Canada for Eglinton—Lawrence in the 42nd Parliament,https://www.wikidata.org/wiki/Q21336208,2026-11-07
+per_c3c1063b1db255be8fddaa0281613c31,ontario_legislature,david-turnbull,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/david-turnbull,2026-11-07
+per_c3c1063b1db255be8fddaa0281613c31,wikidata,Q5240524,Wikidata item whose Ontario MPP ID (P3054) is david-turnbull,https://www.wikidata.org/wiki/Q5240524,2026-11-07
 per_c479aa3742b456459e18f07fa93185ce,house_of_commons,67632,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_c479aa3742b456459e18f07fa93185ce,parlinfo,20345,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20345,2026-11-07
 per_c479aa3742b456459e18f07fa93185ce,wikidata,Q126540444,Wikidata item holding member of the House of Commons of Canada for Toronto—St. Paul's in the 44th Parliament,https://www.wikidata.org/wiki/Q126540444,2026-11-07
 per_c5372e6dbb6d53df8414c2da4f9764d8,house_of_commons,105121,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
+per_c5372e6dbb6d53df8414c2da4f9764d8,ontario_legislature,yvan-baker,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/yvan-baker,2026-11-07
 per_c5372e6dbb6d53df8414c2da4f9764d8,parlinfo,20108,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20108,2026-11-07
 per_c5372e6dbb6d53df8414c2da4f9764d8,wikidata,Q17180515,Wikidata item holding member of the House of Commons of Canada for Etobicoke Centre in the 45th Parliament,https://www.wikidata.org/wiki/Q17180515,2026-11-07
 per_c69632b7167c533dbffd7ea1dd4fd59e,house_of_commons,71780,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
@@ -224,12 +363,24 @@ per_c69632b7167c533dbffd7ea1dd4fd59e,wikidata,Q575997,Wikidata item holding memb
 per_c733c5676f4154899acad3ecfe7a93ac,house_of_commons,122925,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_c733c5676f4154899acad3ecfe7a93ac,parlinfo,20421,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20421,2026-11-07
 per_c733c5676f4154899acad3ecfe7a93ac,wikidata,Q134267695,Wikidata item holding member of the House of Commons of Canada for Etobicoke North in the 45th Parliament,https://www.wikidata.org/wiki/Q134267695,2026-11-07
+per_c8159180e5785d9482e03dd9de039d25,ontario_legislature,chris-stockwell,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/chris-stockwell,2026-11-07
+per_c8159180e5785d9482e03dd9de039d25,wikidata,Q5108167,Wikidata item whose Ontario MPP ID (P3054) is chris-stockwell,https://www.wikidata.org/wiki/Q5108167,2026-11-07
+per_c81e74f5835c52ebb7332f46d5b60bdc,ontario_legislature,david-john-johnson,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/david-john-johnson,2026-11-07
+per_c81e74f5835c52ebb7332f46d5b60bdc,wikidata,Q5235692,Wikidata item whose Ontario MPP ID (P3054) is david-john-johnson,https://www.wikidata.org/wiki/Q5235692,2026-11-07
+per_c84fd6c4e07659928fdeb07cf9c45a9c,ontario_legislature,lee-fairclough,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/lee-fairclough,2026-11-07
+per_c84fd6c4e07659928fdeb07cf9c45a9c,wikidata,Q132810676,Wikidata item whose Ontario MPP ID (P3054) is lee-fairclough,https://www.wikidata.org/wiki/Q132810676,2026-11-07
 per_cfe7ac7375535c50be88361fd9360947,house_of_commons,949,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=36,2026-11-07
 per_cfe7ac7375535c50be88361fd9360947,parlinfo,9046,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=9046,2026-11-07
 per_cfe7ac7375535c50be88361fd9360947,wikidata,Q3181184,Wikidata item holding member of the House of Commons of Canada for Scarborough Centre in the 35th Parliament,https://www.wikidata.org/wiki/Q3181184,2026-11-07
+per_d368ac68c7cc5a2ea3c01c915acd2cc3,ontario_legislature,andrea-hazell,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/andrea-hazell,2026-11-07
+per_d368ac68c7cc5a2ea3c01c915acd2cc3,wikidata,Q120971961,Wikidata item whose Ontario MPP ID (P3054) is andrea-hazell,https://www.wikidata.org/wiki/Q120971961,2026-11-07
+per_d45bd0a80a1f534789b44389acf113d4,ontario_legislature,brad-duguid,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/brad-duguid,2026-11-07
+per_d45bd0a80a1f534789b44389acf113d4,wikidata,Q4953900,Wikidata item whose Ontario MPP ID (P3054) is brad-duguid,https://www.wikidata.org/wiki/Q4953900,2026-11-07
 per_d6dd847e13f55e469cbaf70b6d26aeea,house_of_commons,556,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=37,2026-11-07
 per_d6dd847e13f55e469cbaf70b6d26aeea,parlinfo,10002,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=10002,2026-11-07
 per_d6dd847e13f55e469cbaf70b6d26aeea,wikidata,Q5258742,Wikidata item holding member of the House of Commons of Canada for Toronto—Danforth in the 37th Parliament,https://www.wikidata.org/wiki/Q5258742,2026-11-07
+per_d87baa6a15115b7fbf1db8c7df591fc3,ontario_legislature,robin-martin,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/robin-martin,2026-11-07
+per_d87baa6a15115b7fbf1db8c7df591fc3,wikidata,Q55631868,Wikidata item whose Ontario MPP ID (P3054) is robin-martin,https://www.wikidata.org/wiki/Q55631868,2026-11-07
 per_d87c13c1767355cab6c2f11cf831454a,parlinfo,4640,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=4640,2026-11-07
 per_d87c13c1767355cab6c2f11cf831454a,wikidata,Q4864074,Wikidata item holding member of the House of Commons of Canada for St. Paul's in the 35th Parliament,https://www.wikidata.org/wiki/Q4864074,2026-11-07
 per_da2ed4974252569fbccce4d1d45cf20c,house_of_commons,88992,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=42,2026-11-07
@@ -238,35 +389,73 @@ per_da2ed4974252569fbccce4d1d45cf20c,wikidata,Q21175197,Wikidata item holding me
 per_dad820b172cb53408f68a4166cb6e103,house_of_commons,71824,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_dad820b172cb53408f68a4166cb6e103,parlinfo,17890,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17890,2026-11-07
 per_dad820b172cb53408f68a4166cb6e103,wikidata,Q1841200,Wikidata item holding member of the House of Commons of Canada for York Centre in the 41st Parliament,https://www.wikidata.org/wiki/Q1841200,2026-11-07
+per_dc61c3287bb457c588a78e1be5a29f72,ontario_legislature,gerry-phillips,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/gerry-phillips,2026-11-07
+per_dc61c3287bb457c588a78e1be5a29f72,wikidata,Q5552976,Wikidata item whose Ontario MPP ID (P3054) is gerry-phillips,https://www.wikidata.org/wiki/Q5552976,2026-11-07
+per_de1a64ad073f55be8ab96b408929514a,ontario_legislature,michael-bryant,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/michael-bryant,2026-11-07
+per_de1a64ad073f55be8ab96b408929514a,wikidata,Q6828900,Wikidata item whose Ontario MPP ID (P3054) is michael-bryant,https://www.wikidata.org/wiki/Q6828900,2026-11-07
+per_e48218441abd54edad58d4ebb8bc36f6,ontario_legislature,douglas-b-ford,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/douglas-b-ford,2026-11-07
+per_e48218441abd54edad58d4ebb8bc36f6,wikidata,Q5300479,Wikidata item whose Ontario MPP ID (P3054) is douglas-b-ford,https://www.wikidata.org/wiki/Q5300479,2026-11-07
 per_e5774591f0d3581eaba97de73805e0f8,house_of_commons,58858,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=42,2026-11-07
 per_e5774591f0d3581eaba97de73805e0f8,parlinfo,17274,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17274,2026-11-07
 per_e5774591f0d3581eaba97de73805e0f8,wikidata,Q7340436,Wikidata item holding member of the House of Commons of Canada for Don Valley West in the 42nd Parliament,https://www.wikidata.org/wiki/Q7340436,2026-11-07
 per_e8074a3f1bb8585a801c01e9659db468,house_of_commons,88953,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_e8074a3f1bb8585a801c01e9659db468,parlinfo,18536,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18536,2026-11-07
 per_e8074a3f1bb8585a801c01e9659db468,wikidata,Q22277334,Wikidata item holding member of the House of Commons of Canada for Scarborough North in the 44th Parliament,https://www.wikidata.org/wiki/Q22277334,2026-11-07
+per_e9388d60378456ba921db61dc50c5800,ontario_legislature,michael-prue,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/michael-prue,2026-11-07
+per_e9388d60378456ba921db61dc50c5800,wikidata,Q6833630,Wikidata item whose Ontario MPP ID (P3054) is michael-prue,https://www.wikidata.org/wiki/Q6833630,2026-11-07
 per_e9a2e6c0447d5f55a6bf9432a4d49352,house_of_commons,957,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=44,2026-11-07
 per_e9a2e6c0447d5f55a6bf9432a4d49352,parlinfo,8991,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=8991,2026-11-07
 per_e9a2e6c0447d5f55a6bf9432a4d49352,wikidata,Q3182063,Wikidata item holding member of the House of Commons of Canada for Scarborough—Guildwood in the 44th Parliament,https://www.wikidata.org/wiki/Q3182063,2026-11-07
 per_eb591fcd80585a2f90f11fe1dbfbf43e,house_of_commons,25449,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
 per_eb591fcd80585a2f90f11fe1dbfbf43e,parlinfo,1747,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=1747,2026-11-07
 per_eb591fcd80585a2f90f11fe1dbfbf43e,wikidata,Q3571913,Wikidata item holding member of the House of Commons of Canada for Don Valley East in the 40th Parliament,https://www.wikidata.org/wiki/Q3571913,2026-11-07
+per_ed310cf4a763521c84083f6712c1b26f,ontario_legislature,donna-h-cansfield,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/donna-h-cansfield,2026-11-07
+per_ed310cf4a763521c84083f6712c1b26f,wikidata,Q5296319,Wikidata item whose Ontario MPP ID (P3054) is donna-h-cansfield,https://www.wikidata.org/wiki/Q5296319,2026-11-07
+per_edecabd8d350592d805ade3e15a65d99,ontario_legislature,eric-hoskins,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/eric-hoskins,2026-11-07
+per_edecabd8d350592d805ade3e15a65d99,wikidata,Q5386756,Wikidata item whose Ontario MPP ID (P3054) is eric-hoskins,https://www.wikidata.org/wiki/Q5386756,2026-11-07
 per_eebf1caae41455fdb16e92dced03d455,house_of_commons,84665,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=43,2026-11-07
 per_eebf1caae41455fdb16e92dced03d455,parlinfo,18214,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18214,2026-11-07
 per_eebf1caae41455fdb16e92dced03d455,wikidata,Q4492815,Wikidata item holding member of the House of Commons of Canada for University—Rosedale in the 43rd Parliament,https://www.wikidata.org/wiki/Q4492815,2026-11-07
+per_ef898d6031ed5d799359463f6c388f1f,ontario_legislature,rima-berns-mcgown,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/rima-berns-mcgown,2026-11-07
+per_ef898d6031ed5d799359463f6c388f1f,wikidata,Q54862570,Wikidata item whose Ontario MPP ID (P3054) is rima-berns-mcgown,https://www.wikidata.org/wiki/Q54862570,2026-11-07
+per_f15ce6590bcb5250ae4aedeaaccb3431,ontario_legislature,faisal-hassan,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/faisal-hassan,2026-11-07
+per_f15ce6590bcb5250ae4aedeaaccb3431,wikidata,Q54862581,Wikidata item whose Ontario MPP ID (P3054) is faisal-hassan,https://www.wikidata.org/wiki/Q54862581,2026-11-07
+per_f2da73ec0f9a504984df002135e44873,ontario_legislature,christine-hogarth,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/christine-hogarth,2026-11-07
+per_f2da73ec0f9a504984df002135e44873,wikidata,Q55080898,Wikidata item whose Ontario MPP ID (P3054) is christine-hogarth,https://www.wikidata.org/wiki/Q55080898,2026-11-07
+per_f560221dfe455207a9cc597093a3b671,ontario_legislature,mike-colle,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/mike-colle,2026-11-07
+per_f560221dfe455207a9cc597093a3b671,wikidata,Q6829366,Wikidata item whose Ontario MPP ID (P3054) is mike-colle,https://www.wikidata.org/wiki/Q6829366,2026-11-07
 per_f5dca33663575f7bbbc6d7dfe8ebd464,house_of_commons,31254,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=40,2026-11-07
 per_f5dca33663575f7bbbc6d7dfe8ebd464,parlinfo,10735,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=10735,2026-11-07
 per_f5dca33663575f7bbbc6d7dfe8ebd464,wikidata,Q3295157,Wikidata item holding member of the House of Commons of Canada for Willowdale in the 40th Parliament,https://www.wikidata.org/wiki/Q3295157,2026-11-07
+per_f67e1ad9cb6c5d86a1f3221621b33a9e,ontario_legislature,peter-z-milczyn,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/peter-z-milczyn,2026-11-07
+per_f67e1ad9cb6c5d86a1f3221621b33a9e,wikidata,Q7175882,Wikidata item whose Ontario MPP ID (P3054) is peter-z-milczyn,https://www.wikidata.org/wiki/Q7175882,2026-11-07
 per_f68134a7b22f503eaf85e8fc8dd76675,house_of_commons,71625,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_f68134a7b22f503eaf85e8fc8dd76675,parlinfo,17872,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17872,2026-11-07
 per_f68134a7b22f503eaf85e8fc8dd76675,wikidata,Q7693578,Wikidata item holding member of the House of Commons of Canada for Etobicoke Centre in the 41st Parliament,https://www.wikidata.org/wiki/Q7693578,2026-11-07
+per_f7f1b09bd7d15dc4ac83d841e0fdd27d,ontario_legislature,aris-babikian,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/aris-babikian,2026-11-07
+per_f7f1b09bd7d15dc4ac83d841e0fdd27d,wikidata,Q55081059,Wikidata item whose Ontario MPP ID (P3054) is aris-babikian,https://www.wikidata.org/wiki/Q55081059,2026-11-07
+per_f88f4543543f5627b4305200370f1be3,ontario_legislature,vincent-ke,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/vincent-ke,2026-11-07
+per_f88f4543543f5627b4305200370f1be3,wikidata,Q55081026,Wikidata item whose Ontario MPP ID (P3054) is vincent-ke,https://www.wikidata.org/wiki/Q55081026,2026-11-07
 per_f989af8943665c76bd68d40eb08ffb94,house_of_commons,89018,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=42,2026-11-07
 per_f989af8943665c76bd68d40eb08ffb94,parlinfo,18550,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=18550,2026-11-07
 per_f989af8943665c76bd68d40eb08ffb94,wikidata,Q22278851,Wikidata item holding member of the House of Commons of Canada for York Centre in the 42nd Parliament,https://www.wikidata.org/wiki/Q22278851,2026-11-07
+per_f98d57bac1e0594796b01f0566410605,ontario_legislature,laurel-c-broten,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/laurel-c-broten,2026-11-07
+per_f98d57bac1e0594796b01f0566410605,wikidata,Q4141602,Wikidata item whose Ontario MPP ID (P3054) is laurel-c-broten,https://www.wikidata.org/wiki/Q4141602,2026-11-07
 per_fc35a8520a0e596d9683ebd3ae979bb2,house_of_commons,123229,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_fc35a8520a0e596d9683ebd3ae979bb2,parlinfo,20446,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=20446,2026-11-07
 per_fc35a8520a0e596d9683ebd3ae979bb2,wikidata,Q5415550,Wikidata item holding member of the House of Commons of Canada for Toronto Centre in the 45th Parliament,https://www.wikidata.org/wiki/Q5415550,2026-11-07
+per_fc48556488d85fc6aee54d564eff2719,ontario_legislature,jill-andrew,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/jill-andrew,2026-11-07
+per_fc48556488d85fc6aee54d564eff2719,wikidata,Q54862566,Wikidata item whose Ontario MPP ID (P3054) is jill-andrew,https://www.wikidata.org/wiki/Q54862566,2026-11-07
+per_fc9cfb91b6245c00b476af357e9bfb7e,ontario_legislature,steve-gilchrist,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/steve-gilchrist,2026-11-07
+per_fc9cfb91b6245c00b476af357e9bfb7e,wikidata,Q7612652,Wikidata item whose Ontario MPP ID (P3054) is steve-gilchrist,https://www.wikidata.org/wiki/Q7612652,2026-11-07
 per_fce5029dd139577eaa20a0b2afc56c33,house_of_commons,90964,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=45,2026-11-07
 per_fce5029dd139577eaa20a0b2afc56c33,wikidata,Q16728371,Wikidata item holding member of the House of Commons of Canada for University—Rosedale in the 45th Parliament,https://www.wikidata.org/wiki/Q16728371,2026-11-07
 per_fcfb1eb982c0574b83bb2ad0d48907db,house_of_commons,71613,"House of Commons member export, as the release's House tenures cite",https://www.ourcommons.ca/Members/en/search/xml?parliament=41,2026-11-07
 per_fcfb1eb982c0574b83bb2ad0d48907db,parlinfo,17869,Library of Parliament person ID (P6616) of the matched Wikidata item,https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId=17869,2026-11-07
 per_fcfb1eb982c0574b83bb2ad0d48907db,wikidata,Q3180041,Wikidata item holding member of the House of Commons of Canada for Don Valley East in the 41st Parliament,https://www.wikidata.org/wiki/Q3180041,2026-11-07
+per_fd5ff4e5505f5453a7773118c8a96e5e,ontario_legislature,stephanie-smyth,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/stephanie-smyth,2026-11-07
+per_fd5ff4e5505f5453a7773118c8a96e5e,wikidata,Q132811669,Wikidata item whose Ontario MPP ID (P3054) is stephanie-smyth,https://www.wikidata.org/wiki/Q132811669,2026-11-07
+per_fdb016b9905751f7b5b463a1579e4e96,ontario_legislature,margarett-r-best,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/margarett-r-best,2026-11-07
+per_fdb016b9905751f7b5b463a1579e4e96,wikidata,Q6760100,Wikidata item whose Ontario MPP ID (P3054) is margarett-r-best,https://www.wikidata.org/wiki/Q6760100,2026-11-07
+per_fed0d624bf1051f2a53007ae12c813e6,ontario_legislature,jim-brown,"Legislative Assembly member profile, as the release's tenures cite",https://www.ola.org/en/members/all/jim-brown,2026-11-07
+per_fed0d624bf1051f2a53007ae12c813e6,wikidata,Q6193875,Wikidata item whose Ontario MPP ID (P3054) is jim-brown,https://www.wikidata.org/wiki/Q6193875,2026-11-07
