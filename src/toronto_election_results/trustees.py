@@ -50,6 +50,7 @@ from openpyxl.utils.exceptions import InvalidFileException
 
 from .candidates import known_multiword_surnames, normalize_given_name_first, normalize_name
 from .coverage import ELECTION_DAY
+from .official_sources import GENERAL_RESULT_URLS
 from .schema import stable_id
 
 COVERAGE_END = ELECTION_DAY
@@ -78,14 +79,7 @@ _GENERAL_ELECTION_DATES = {
     2022: date(2022, 10, 24),
 }
 
-_GENERAL_RESULT_URLS = {
-    2003: "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/1ed53c9d-a316-465e-96ce-e72be74f8aa9/download/2003-results.zip",
-    2006: "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3fb1227c-a279-4523-a1aa-f00190ba717f/download/2006-results.zip",
-    2010: "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/6fbfaab0-bb84-442a-8e4b-1c14d4c10d6d/download/2010-results.zip",
-    2014: "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/d59b5a52-33c3-4380-a136-82707e4d9aae/download/2014-results.zip",
-    2018: "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip",
-    2022: "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip",
-}
+_GENERAL_RESULT_URLS = GENERAL_RESULT_URLS
 
 _DECLARATION_URLS = {
     2003: "https://www.toronto.ca/wp-content/uploads/2017/08/9868-election-2003-clerkofficialdeclaration.pdf",

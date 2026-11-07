@@ -116,7 +116,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
 | `source_authority` | string | never | Organization responsible for the row's record: the official authority, or `Toronto Star` where only the newspaper's printed results survive (most 1994 and 1997 trustee Contests, eight 1994 council Contests). |
 | `source_resource` | string | never | Official dataset/report family. |
-| `source_detail` | string | never | Concrete official URL/file detail. |
+| `source_detail` | string | never | Published URL of the record the row comes from; several are separated by `;`. A City poll-by-poll workbook is cited as the results ZIP's URL, then ` :: ` and the workbook's path inside the ZIP. Other sources add, after `#`, the file inside an archive or the part of a page or report the row uses. |
 | `source_candidacy_id` | string | never | Authority candidate key where one exists; otherwise the opaque occurrence key persisted in the project Candidacy ledger. |
 
 ### Important null semantics
@@ -339,6 +339,11 @@ Records the inclusive election-date coverage horizon, the pending candidate-snap
 schema version, generation timestamp, source and artifact SHA-256 checksums, known archive
 uncertainty, deliberately excluded election calls, in-scope results awaiting acquisition, and the
 separately enumerated pending event.
+
+Each source file downloaded into the untracked `data/raw/` also has a `source_url`, the address it
+is downloaded from, so a reader can fetch the file and check it against the recorded checksum. The
+URLs come from `data/reference/raw_source_urls.csv`, which `scripts/build_raw_source_urls.py`
+writes from the adapters' own URL tables and the City Open Data portal's listings.
 
 ### `data/reference/candidacy_identity_ledger.csv`
 
