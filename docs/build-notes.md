@@ -1,7 +1,8 @@
 # Build notes
 
 How the release is built. See `docs/data-dictionary.md` for the public schema, `CONTEXT.md` for
-domain language, and `docs/adr/` for load-bearing decisions.
+domain language, and `docs/adr/` for load-bearing decisions. `docs/provenance.md` records what
+code, AI agents and the authors each did at every stage.
 
 ## Status
 
