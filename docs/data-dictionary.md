@@ -61,8 +61,8 @@ Toronto before 1998). The build records no Contest left out for crossing the Cit
 
 The release contains 8,099 Candidacies, 1,385 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
-Evidence-backed Endorsement companion tables cover Mayor and City
-Councillor Contests only.
+The build also assembles and validates Endorsement tables for Mayor and City Councillor Contests,
+but it does not write them to `data/out/` (see the Endorsement tables below).
 
 See `CONTEXT.md` for canonical domain language and `docs/adr/` for design decisions.
 
@@ -329,6 +329,14 @@ because the page puts a bot check in front of the download; the build manifest r
 its page URL. Still without shapes: the 1994 municipal districts, the 1997 council wards (Metro
 Toronto's wards), the 1997 trustee areas, the federal ridings of the 1987 order, and Ontario's
 1987 ridings.
+
+### Endorsement tables (held back)
+
+The four tables below are assembled and pass the Endorsement gates on every build, but
+`release.HELD_BACK_TABLES` keeps them out of `data/out/` and the build manifest. Their coverage is
+too thin to stand on: nine Endorsers, Mayor and City Councillor Contests only, and a small share of
+Endorser-by-Contest cells searched in full. An absent endorsement is also easy to misread as none.
+They are described here for the release of their own they may have once coverage is enough.
 
 ### `endorsers`
 

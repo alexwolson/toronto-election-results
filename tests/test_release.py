@@ -11,8 +11,10 @@ from toronto_election_results.identity_curations import (
     CuratedIdentityAssertion,
 )
 from toronto_election_results.release import (
+    HELD_BACK_TABLES,
     assemble_bootstrapped_release,
     assemble_release,
+    published_table_names,
     write_release,
 )
 
@@ -325,9 +327,27 @@ def test_write_release_publishes_every_table_without_leaving_staging_files(tmp_p
 
     written = write_release(release, tmp_path / "out")
 
-    assert len(written) == 26
+    assert len(written) == 18
     assert all(path.is_file() for path in written)
     assert not list(tmp_path.glob(".out.stage-*"))
+
+
+def test_write_release_holds_back_the_endorsement_tables(tmp_path):
+    release = assemble_release([_adapter()])
+
+    written = write_release(release, tmp_path / "out")
+
+    assert not [path.name for path in written if path.name.startswith("endorse")]
+    assert not list((tmp_path / "out").glob("endorse*"))
+    assert published_table_names(release) == [
+        name for name in release.__dataclass_fields__ if name not in HELD_BACK_TABLES
+    ]
+    assert HELD_BACK_TABLES == {
+        "endorsers",
+        "endorsement_assertions",
+        "endorsements",
+        "endorsement_coverage",
+    }
 
 
 def test_release_normalizes_mixed_office_tenure_dates_before_parquet_write(tmp_path):
@@ -360,7 +380,7 @@ def test_release_normalizes_mixed_office_tenure_dates_before_parquet_write(tmp_p
     release = assemble_release([_adapter()], people=people, office_tenures=tenures)
     written = write_release(release, tmp_path / "out")
 
-    assert len(written) == 26
+    assert len(written) == 18
     assert {type(value) for value in release.office_tenures["started_on"]} == {date}
 
 

@@ -38,15 +38,14 @@ contradictory, or newly queued matches remain unlinked instead of becoming fuzzy
 link's `evidence_basis` says whether it rests on an official record, a source about the person or
 the structural rules alone, so users can keep only source-confirmed links.
 
-Mayor and City Councillor Contests also have evidence-backed endorsement companion tables.
-Endorsements are positive, open-world facts: an absent fact never means that an Endorser opposed or
-declined to endorse a Candidacy. Separate Endorser-by-Contest coverage records say how completely
-each approved Endorser was searched.
+The build also assembles and validates evidence-backed Endorsement tables for Mayor and City
+Councillor Contests, but it does not write them to `data/out/`. Their coverage is too thin to stand
+on, and an absent endorsement is easy to misread as none, so they are held back from the release
+until their coverage is enough for a release of their own. The code, curations and research stay
+in this repository.
 
 The release contains **8,099 Candidacies in 1,385 Contests across 80 Election events**, all with
-final results, including the 361 Candidacies in 55 Contests of the 2026-10-26 municipal election. Two void historical Contests have no Candidacy rows. The endorsement companion dataset contains **9 Endorsers, 161 audited source
-assertions, 160 confirmed positive Endorsement facts, and 3,078 Endorser-by-Contest coverage
-records**.
+final results, including the 361 Candidacies in 55 Contests of the 2026-10-26 municipal election. Two void historical Contests have no Candidacy rows.
 
 ## Documentation
 
@@ -88,12 +87,7 @@ Every table is written as CSV and Parquet unless noted otherwise:
   Assembly of Ontario IDs for People who sat in the House or the Assembly;
 - `data/out/parties.*` and `data/out/office_tenures.*`;
 - `data/out/electoral_districts.*` — native Contest-level geometry where available, with explicit
-  missing-geometry status otherwise;
-- `data/out/endorsers.*` — exact people, organizations, and editorial boards in the approved panel;
-- `data/out/endorsement_assertions.*` — sourced claims and their review states;
-- `data/out/endorsements.*` — confirmed positive Endorser-to-Candidacy facts;
-- `data/out/endorsement_coverage.*` — open-world search state for every approved
-  Endorser-by-Contest cell; and
+  missing-geometry status otherwise; and
 - `data/out/build_manifest.json` — source/artifact checksums, the inclusive election-date horizon,
   the pending candidate snapshot, known archive uncertainty, deliberately excluded election calls,
   and in-scope results awaiting acquisition.
