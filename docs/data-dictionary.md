@@ -205,9 +205,11 @@ results.loc[~results["candidacy_id"].isin(source_confirmed), "person_id"] = pd.N
 This drops each structural link but does not recheck the joins among the runs that remain: a run
 whose source ties it to a structurally joined run keeps its Person.
 
-Every row in this release is current: `valid_from_release` is the release ID and
-`valid_to_release` is null. A later release closes a superseded row instead of deleting it, so
-merges and corrections stay visible. A Candidacy has one current link, except that 27 Candidacies
+`valid_from_release` is the release ID on every row. A superseded row is closed instead of
+deleted, so merges and corrections stay visible: its `valid_to_release` is set and its
+`evidence_basis` is null. One row is closed in this release, the first link of Fatima Shaban's
+2026 provincial by-election run, which a person-record merge replaced; every other row is current,
+with a null `valid_to_release`. A Candidacy has one current link, except that 27 Candidacies
 also carry an `unresolved` row without a Person, with method `incumbent_without_prior_elected_match`:
 the authority marked the Candidacy as an incumbent and the release has no earlier elected
 exact-name match in the same body and office. Twenty-four are sitting members who ran at the 1995
