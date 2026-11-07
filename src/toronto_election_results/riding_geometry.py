@@ -7,10 +7,9 @@ Toronto ridings it uses (matched by district number) and attaches their shapes i
 Ontario's ridings within Toronto are the federal ridings by statute. The Representation Act, 2005
 kept the federal ridings of the 2003 order for southern Ontario, and the Representation Act, 2015
 did the same with the 2013 order, while giving Northern Ontario its own count. Each Ontario riding
-of the 2007 and 2018 boundary sets therefore takes the shape of its federal namesake: by district
-number for 2007, whose Ontario numbers are the federal ones without the province prefix, and by
-name for 2018. The build fails if a riding has no federal match, or if a number match and a name
-match disagree.
+of the 2007 and 2018 boundary sets therefore takes the shape of its federal namesake, matched by
+name; the Ontario district numbers differ from the federal ones, since Ontario numbers its own
+northern ridings among them. The build fails if a riding has no federal match or more than one.
 
 The 1996 order, which Ontario used from 1999 to 2003, comes from Statistics Canada and is added
 when its file is in place.
@@ -95,15 +94,14 @@ class OntarioRule:
 
     federal_regime: str
     statute: str
-    match_by_number: bool
 
 
 ONTARIO_FROM_FEDERAL: dict[str, OntarioRule] = {
     "ontario-2007-107": OntarioRule(
-        "federal-2003-representation-order", "Representation Act, 2005", match_by_number=True
+        "federal-2003-representation-order", "Representation Act, 2005"
     ),
     "ontario-2018-124": OntarioRule(
-        "federal-2013-representation-order", "Representation Act, 2015", match_by_number=False
+        "federal-2013-representation-order", "Representation Act, 2015"
     ),
 }
 
@@ -199,27 +197,18 @@ def add_riding_geometries(
             out.loc[rows, "geometry_missing_reason"] = "boundary_source_file_missing"
             continue
         ontario = ridings.loc[ridings["number"].str.startswith("35")]
-        by_name = {
-            name_key(name): number for number, name in zip(ontario["number"], ontario["name"])
-        }
+        by_name: dict[str, list[str]] = {}
+        for number, name in zip(ontario["number"], ontario["name"], strict=True):
+            by_name.setdefault(name_key(name), []).append(number)
         by_number = ontario.set_index("number")
         source = configured[rule.federal_regime]
         for index in rows:
-            name = name_key(out.at[index, "district_name"])
-            named = by_name.get(name)
-            if rule.match_by_number:
-                number = "35" + str(out.at[index, "official_district_id"]).zfill(3)
-                if number not in by_number.index or named != number:
-                    raise ValueError(
-                        f"{regime} {out.at[index, 'district_name']} does not match federal "
-                        f"district {number}"
-                    )
-            else:
-                if named is None:
-                    raise ValueError(
-                        f"{regime} {out.at[index, 'district_name']} has no federal match"
-                    )
-                number = named
+            matches = by_name.get(name_key(out.at[index, "district_name"]), [])
+            if len(matches) != 1:
+                raise ValueError(
+                    f"{regime} {out.at[index, 'district_name']} matches federal districts {matches}"
+                )
+            number = matches[0]
             _attach(out, geometry, index, by_number.at[number, "geometry"], source)
             out.at[index, "geometry_derivation"] = f"same_as_federal_district_{number}"
             out.at[index, "geometry_membership_source_authority"] = (

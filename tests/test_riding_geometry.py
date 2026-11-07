@@ -94,7 +94,7 @@ def test_federal_and_ontario_ridings_take_the_federal_shapes(tmp_path, monkeypat
         "toronto_election_results.riding_geometry.ONTARIO_FROM_FEDERAL",
         {
             "ontario-2007-107": OntarioRule(
-                "federal-2003-representation-order", "Representation Act, 2005", True
+                "federal-2003-representation-order", "Representation Act, 2005"
             )
         },
     )
