@@ -267,6 +267,21 @@ fields record why and when an Endorser belongs in the systematic panel. Every ap
 Endorser applies to both Mayor and City Councillor Contests; that scope flag neither creates an
 Endorsement nor claims that a specific Contest was searched.
 
+The project owner approved the panel on 21 August 2026 from the evidence in
+`docs/research/toronto-2026-endorser-panel-evidence-matrix-2026-08-21.md`, and it has not changed
+since. An organization or editorial board is on it if, before polls closed on 26 June 2023, it
+publicly endorsed or selected a certified candidate in that year's mayoral by-election, and it also
+has one of the following: a Toronto-wide newspaper editorial board's practice of municipal
+endorsements, a formal slate across two or more Toronto mayor or council Contests at one election,
+Toronto mayoral endorsements at two or more elections, or a reason recorded for it by name. Six
+organizations qualify; Progress Toronto, which selects candidates as "champions" rather than
+endorsing them, is the one included by name. They are covered from 2003, Progress Toronto from
+2018. The three people on the panel are the amalgamated City's mayors who were living on 20 August
+2026, David Miller, John Tory and Olivia Chow, each from the start of their first term as mayor.
+The searches behind `endorsement_coverage` were made from 21 to 23 August 2026. The only later
+addition is Progress Toronto's first six 2026 council endorsements, on 26 September 2026, so the
+2026 election is covered only as of those dates.
+
 ### `endorsement_assertions`
 
 One row per source-specific Endorsement claim. `assertion_id` is the assertion identity;
