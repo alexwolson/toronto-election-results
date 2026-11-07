@@ -121,7 +121,10 @@ held; see `docs/research/structural-rule-check-2026-11-07.md`.
 An audit of a random sample of links
 ([`docs/verification/link-audit-2026-11-03.md`](verification/link-audit-2026-11-03.md)) found no
 join of two different people among 120 sampled joins, which puts a one-sided 95% upper bound of
-3.9% on the share of false merges. Of 40 sampled pairs of Persons with the same first and last
+3.9% on the share of false merges. A census of the 135 joins made after that sample
+([`docs/verification/link-audit-2026-11-07.md`](verification/link-audit-2026-11-07.md)) found
+none either, and with the older joins weighted by the sample the bound across all 2,613 joins in
+the release is 3.7%. Of 40 sampled pairs of Persons with the same first and last
 name, 15 were one individual, and those have been merged. A review of all 177 same-name pairs
 that remained
 ([`docs/verification/same-name-review-2026-11-03.md`](verification/same-name-review-2026-11-03.md))
