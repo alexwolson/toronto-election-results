@@ -12,6 +12,7 @@ import pandas as pd
 from .candidacy_ledger import CandidacyLedgerAssignment, assign_candidacy_ids
 from .council_tenures import (
     COUNCIL_APPOINTMENTS_FILENAME,
+    council_by_election_rosters,
     date_council_rosters,
     read_council_appointments,
 )
@@ -30,7 +31,7 @@ from .identity_review import (
     bootstrap_identity_review,
     extend_identity_review,
 )
-from .municipal_rosters import build_municipal_roster_evidence
+from .municipal_rosters import COUNCIL_BY_ELECTION_PENDING_RULE, build_municipal_roster_evidence
 from .ontario_rosters import ontario_roster_evidence, read_ontario_members
 from .predecessor_incumbency import (
     build_predecessor_roster_evidence,
@@ -91,6 +92,9 @@ ELECTION_RESULT_COLUMNS = [
     "coverage_status",
     "incumbent",
     "incumbent_office_tenure_id",
+    "incumbent_appointed",
+    "incumbent_held_district_id",
+    "incumbent_changed_district",
     "incumbent_reported",
     "predecessor_incumbent",
     "predecessor_office_tenure_id",
@@ -333,6 +337,14 @@ def assemble_release(
         columns=["canonical_party_name", "person_link_method", "person_link_evidence"],
         errors="ignore",
     )
+    # Filled by incumbent_seats.add_incumbent_seat_fields once district geometry is attached.
+    candidacies["incumbent_appointed"] = pd.Series(pd.NA, index=candidacies.index, dtype="boolean")
+    candidacies["incumbent_held_district_id"] = pd.Series(
+        pd.NA, index=candidacies.index, dtype="string"
+    )
+    candidacies["incumbent_changed_district"] = pd.Series(
+        pd.NA, index=candidacies.index, dtype="boolean"
+    )
     candidacies = candidacies.sort_values(
         ["election_date", "election_authority", "office_type", "district_id", "vote_rank"],
         kind="stable",
@@ -501,9 +513,19 @@ def assemble_bootstrapped_release(
             sort=False,
         )
     )
+    municipal_rosters = (
+        council_by_election_rosters(
+            municipal_evidence.rosters,
+            linked,
+            council_tenures,
+            pending_rule=COUNCIL_BY_ELECTION_PENDING_RULE,
+        )
+        if council_appointments is not None
+        else municipal_evidence.rosters
+    )
     incumbency_rosters = pd.concat(
         [
-            municipal_evidence.rosters,
+            municipal_rosters,
             federal.rosters,
             ontario.rosters,
             *([trustee_incumbency.rosters] if trustee_incumbency is not None else []),

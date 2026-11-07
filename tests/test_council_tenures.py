@@ -12,9 +12,12 @@ import pytest
 from toronto_election_results.council_tenures import (
     APPOINTMENT_COLUMNS,
     COUNCIL_APPOINTMENTS_FILENAME,
+    council_by_election_rosters,
     date_council_rosters,
     read_council_appointments,
 )
+from toronto_election_results.identity import derive_incumbency
+from toronto_election_results.municipal_rosters import COUNCIL_BY_ELECTION_PENDING_RULE
 
 REPO_ROOT = Path(__file__).parents[1]
 OUT = REPO_ROOT / "data" / "out"
@@ -201,3 +204,157 @@ def test_joe_mihevc_2022_seat_is_his_appointment_to_ward_10():
     row = rows.iloc[0]
     assert (row["started_on"], row["entry_method"]) == ("2022-06-01", "appointment")
     assert districts[row["district_id"]] == "Ward 10 — Spadina-Fort York"
+
+
+PENDING = COUNCIL_BY_ELECTION_PENDING_RULE
+
+
+def _pending_scope(event_id: str) -> pd.DataFrame:
+    return pd.DataFrame(
+        [
+            {
+                "event_id": event_id,
+                "person_id": pd.NA,
+                "represented_body": "toronto_city_council",
+                "office_type": "councillor",
+                "office_tenure_id": pd.NA,
+                "roster_complete": False,
+                "reference_date": datetime.date(2016, 7, 25),
+                "reference_date_rule": PENDING,
+                "source_detail": "{}",
+            }
+        ]
+    )
+
+
+def _by_election(*runs) -> pd.DataFrame:
+    rows = [
+        {**_run("g1", "per_a", "2014-10-27", "dst_2", "ward-2", "Rob Able", elected=True)},
+        {**_run("g2", "per_b", "2014-10-27", "dst_3", "ward-3", "Bea Bee", elected=True)},
+        *runs,
+    ]
+    frame = pd.DataFrame(rows)
+    frame["event_id"] = "evt_" + frame["election_date"] + "_" + frame["election_type"]
+    return frame
+
+
+def _appointed_tenure(person_id: str, appointed_on: str) -> pd.DataFrame:
+    return pd.DataFrame(
+        [
+            {
+                "office_tenure_id": "ten_appointed",
+                "person_id": person_id,
+                "represented_body": "toronto_city_council",
+                "office_type": "councillor",
+                "district_id": "dst_3",
+                "started_on": datetime.date.fromisoformat(appointed_on),
+                "entry_method": "appointment",
+            }
+        ]
+    )
+
+
+def test_a_council_by_election_scope_proves_absence_when_no_candidate_held_a_seat():
+    candidacies = _by_election(
+        _run(
+            "b1", "per_n", "2016-07-25", "dst_2", "ward-2", "New Comer", elected=True, general=False
+        ),
+        _run(
+            "b2", pd.NA, "2016-07-25", "dst_2", "ward-2", "No Person", elected=False, general=False
+        ),
+    )
+    event = "evt_2016-07-25_by_election"
+    rosters = council_by_election_rosters(
+        _pending_scope(event),
+        candidacies,
+        _appointed_tenure("per_z", "2015-01-01"),
+        pending_rule=PENDING,
+    )
+
+    assert len(rosters) == 1
+    assert bool(rosters["roster_complete"].iloc[0])
+    detail = json.loads(rosters["source_detail"].iloc[0])
+    assert detail["seats_won_in_term"] == 2
+    assert detail["appointments_in_term"] == 1
+    out = derive_incumbency(candidacies, rosters).set_index("candidacy_id")
+    assert not out.loc["b1", "incumbent"]
+    assert pd.notna(out.loc["b1", "incumbent"])
+    assert pd.isna(out.loc["b2", "incumbent"])
+
+
+def test_a_council_by_election_fails_when_a_candidate_won_a_seat_in_the_term():
+    candidacies = _by_election(
+        _run(
+            "b1", "per_a", "2016-07-25", "dst_2", "ward-2", "Rob Able", elected=False, general=False
+        ),
+    )
+    with pytest.raises(ValueError, match="won or was appointed"):
+        council_by_election_rosters(
+            _pending_scope("evt_2016-07-25_by_election"),
+            candidacies,
+            _appointed_tenure("per_z", "2015-01-01"),
+            pending_rule=PENDING,
+        )
+
+
+def test_a_council_by_election_fails_when_a_candidate_was_appointed_in_the_term():
+    candidacies = _by_election(
+        _run(
+            "b1",
+            "per_z",
+            "2016-07-25",
+            "dst_2",
+            "ward-2",
+            "Zed Pointed",
+            elected=False,
+            general=False,
+        ),
+    )
+    with pytest.raises(ValueError, match="won or was appointed"):
+        council_by_election_rosters(
+            _pending_scope("evt_2016-07-25_by_election"),
+            candidacies,
+            _appointed_tenure("per_z", "2015-01-01"),
+            pending_rule=PENDING,
+        )
+
+
+def test_an_appointment_after_polling_does_not_count():
+    candidacies = _by_election(
+        _run(
+            "b1",
+            "per_z",
+            "2016-07-25",
+            "dst_2",
+            "ward-2",
+            "Zed Pointed",
+            elected=False,
+            general=False,
+        ),
+    )
+    rosters = council_by_election_rosters(
+        _pending_scope("evt_2016-07-25_by_election"),
+        candidacies,
+        _appointed_tenure("per_z", "2017-06-28"),
+        pending_rule=PENDING,
+    )
+    assert json.loads(rosters["source_detail"].iloc[0])["appointments_in_term"] == 0
+
+
+def test_published_council_by_elections_have_incumbency_and_no_roster_rows_of_their_own():
+    results = pd.read_csv(OUT / "election_results.csv", dtype=str, keep_default_na=False)
+    tenures = pd.read_csv(OUT / "office_tenures.csv", dtype=str, keep_default_na=False)
+    council = results.loc[
+        results["represented_body"].eq("toronto_city_council")
+        & results["election_type"].eq("by_election")
+        & results["office_type"].eq("councillor")
+    ]
+    assert len(council) == 153
+    with_person = council["person_id"].ne("")
+    assert council.loc[with_person, "incumbent"].eq("False").all()
+    assert council.loc[~with_person, "incumbent"].eq("").all()
+    assert (
+        not tenures["source_detail"]
+        .str.contains("certified_winner_since_latest_general_in_incomplete_by_election_roster")
+        .any()
+    )

@@ -187,3 +187,84 @@ def date_council_rosters(
             "election, but no Council roster row is theirs"
         )
     return out
+
+
+def council_by_election_rosters(
+    rosters: pd.DataFrame,
+    candidacies: pd.DataFrame,
+    tenures: pd.DataFrame,
+    *,
+    pending_rule: str,
+) -> pd.DataFrame:
+    """Settle each council by-election's councillor scope once every Person is final.
+
+    A council by-election fills one vacant ward. Anyone on Council the day before polling won
+    a seat at the term's first general election or at a by-election since, or was appointed
+    since, and every appointment is in the dated roster tenures. A Candidacy whose Person is in
+    neither group cannot have sat, so the scope can prove ``incumbent=false``. The build fails
+    when a candidate's Person is in either group, since that member may still sit or may have
+    left, and the release has no record of which.
+    """
+
+    pending = (
+        rosters["represented_body"].eq(_BODY)
+        & rosters["office_type"].eq("councillor")
+        & rosters["reference_date_rule"].eq(pending_rule)
+    )
+    if not pending.any():
+        return rosters
+    council = candidacies.loc[candidacies["represented_body"].eq(_BODY)].copy()
+    council["_date"] = pd.to_datetime(council["election_date"])
+    council["_won"] = council["elected"].astype("boolean").fillna(False).astype(bool)
+    generals = sorted(council.loc[council["election_type"].eq("general"), "_date"].unique())
+    seats = tenures.loc[
+        tenures["represented_body"].eq(_BODY)
+        & tenures["office_type"].eq("councillor")
+        & tenures["entry_method"].eq("appointment")
+    ].copy()
+    seats["_appointed"] = pd.to_datetime(seats["started_on"])
+
+    settled = []
+    for _, row in rosters.loc[pending].iterrows():
+        event = council.loc[council["event_id"].eq(row["event_id"])]
+        if event.empty or not event["election_type"].eq("by_election").all():
+            raise ValueError(f"council by-election roster {row['event_id']} has no by-election")
+        polling = event["_date"].iloc[0]
+        earlier = [day for day in generals if day < polling]
+        if not earlier:
+            raise ValueError(f"no Council general election precedes {row['event_id']}")
+        opening = pd.Timestamp(earlier[-1])
+        won = council.loc[
+            council["_won"]
+            & council["office_type"].eq("councillor")
+            & council["person_id"].notna()
+            & council["_date"].ge(opening)
+            & council["_date"].lt(polling)
+        ]
+        appointed = seats.loc[seats["_appointed"].ge(opening) & seats["_appointed"].lt(polling)]
+        members = set(won["person_id"].astype(str)) | set(appointed["person_id"].astype(str))
+        running = event.loc[event["office_type"].eq("councillor") & event["person_id"].notna()]
+        holders = sorted(
+            running.loc[running["person_id"].astype(str).isin(members), "candidacy_id"]
+        )
+        if holders:
+            raise ValueError(
+                f"council by-election {row['event_id']}: Candidacy {holders[0]} belongs to a "
+                "Person who won or was appointed to a Council seat in the term"
+            )
+        out = row.copy()
+        out["roster_complete"] = True
+        out["reference_date_rule"] = "no_candidate_won_or_was_appointed_to_a_seat_in_the_term"
+        out["source_detail"] = _detail(
+            {
+                "appointments_in_term": len(appointed),
+                "event_id": str(row["event_id"]),
+                "rule": "council_by_election_candidates_hold_no_seat",
+                "seats_won_in_term": len(won),
+                "term_opened": opening.date().isoformat(),
+            }
+        )
+        settled.append(out)
+    return pd.concat(
+        [rosters.loc[~pending], pd.DataFrame(settled)], ignore_index=True, sort=False
+    ).astype({"roster_complete": "boolean"})

@@ -32,7 +32,18 @@ class CouncilGeometrySource:
     area_code_column: str
     source_year: int
     expected_ward_count: int | None = None
+    # The file's published Open Data URL, cited in place of the local cache path.
+    source_url: str | None = None
 
+    @property
+    def detail(self) -> str:
+        return self.source_url or str(self.path)
+
+
+_SUBDIVISIONS_URL = (
+    "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/"
+    "1f5df7fa-8606-4085-b75e-6d658a227558/resource/"
+)
 
 # The ward regimes are stable within each era.  Use the last general-election
 # snapshot in each regime, rather than mixing subdivision vintages across contests.
@@ -42,12 +53,16 @@ DEFAULT_COUNCIL_GEOMETRY_SOURCES: dict[str, CouncilGeometrySource] = {
         area_code_column="AREA_LONG_CODE",
         source_year=2014,
         expected_ward_count=44,
+        source_url=_SUBDIVISIONS_URL
+        + "16672575-bf8b-494c-8f57-c2f065a91d3d/download/voting-subdivisions-2014-4326.geojson",
     ),
     "toronto_council_25_wards": CouncilGeometrySource(
         path=Path("data/raw/subdivisions/voting-subdivisions-2022-4326.geojson"),
         area_code_column="AREA_LONG_CODE",
         source_year=2022,
         expected_ward_count=25,
+        source_url=_SUBDIVISIONS_URL
+        + "38a9aa78-be8e-468c-9b80-262535c9bd84/download/voting-subdivisions-2022-4326.geojson",
     ),
 }
 
@@ -211,7 +226,7 @@ def enrich_district_geometries(
 
         out.loc[indexes, "geometry_source_authority"] = "City of Toronto"
         out.loc[indexes, "geometry_source_resource"] = "Elections — Voting Subdivisions"
-        out.loc[indexes, "geometry_source_detail"] = str(source.path)
+        out.loc[indexes, "geometry_source_detail"] = source.detail
         out.loc[indexes, "geometry_source_year"] = source.source_year
 
         source_path = Path(source.path)
@@ -280,7 +295,7 @@ def enrich_district_geometries(
                 out.at[index, "geometry_missing_reason"] = pd.NA
                 out.at[index, "geometry_source_authority"] = "City of Toronto"
                 out.at[index, "geometry_source_resource"] = "Elections — Voting Subdivisions"
-                out.at[index, "geometry_source_detail"] = str(current_source.path)
+                out.at[index, "geometry_source_detail"] = current_source.detail
                 out.at[index, "geometry_source_year"] = current_source.source_year
                 out.at[index, "geometry_derivation"] = "union_of_city_wards"
                 out.at[index, "geometry_membership_source_authority"] = crosswalk.source_authority
@@ -296,3 +311,39 @@ def enrich_district_geometries(
 
     out["geometry"] = gpd.GeoSeries(geometry_values, index=out.index, crs=TARGET_CRS)
     return gpd.GeoDataFrame(out, geometry="geometry", crs=TARGET_CRS)
+
+
+def council_poll_points(
+    electoral_districts: pd.DataFrame,
+    *,
+    sources: Mapping[str, CouncilGeometrySource] | None = None,
+) -> dict[str, list[BaseGeometry]]:
+    """Return one point inside each voting subdivision (poll), by council ward ``district_id``.
+
+    The points come from the same subdivision file as each regime's ward geometry, in
+    EPSG:4326. A regime whose file is missing has no points.
+    """
+
+    configured = DEFAULT_COUNCIL_GEOMETRY_SOURCES if sources is None else sources
+    if not _REQUIRED_DISTRICT_COLUMNS.issubset(electoral_districts.columns):
+        return {}
+    council = electoral_districts.loc[electoral_districts["represented_body"].eq(COUNCIL_BODY)]
+    points: dict[str, list[BaseGeometry]] = {}
+    for regime, source in configured.items():
+        if not Path(source.path).is_file():
+            continue
+        raw = gpd.read_file(source.path)[[source.area_code_column, "geometry"]].to_crs(TARGET_CRS)
+        wards = raw[source.area_code_column].map(_ward_number)
+        districts = council.loc[council["boundary_regime"].eq(regime)]
+        by_ward = {
+            int(match.group(1)): str(district_id)
+            for district_id, official_id in zip(
+                districts["district_id"], districts["official_district_id"], strict=True
+            )
+            if (match := re.fullmatch(r"ward-(\d+)", str(official_id)))
+        }
+        for ward, geometry in zip(wards, raw.geometry, strict=True):
+            district_id = by_ward.get(int(ward))
+            if district_id is not None:
+                points.setdefault(district_id, []).append(geometry.representative_point())
+    return points

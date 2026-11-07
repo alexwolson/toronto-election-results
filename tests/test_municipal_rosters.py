@@ -8,6 +8,7 @@ import pytest
 from toronto_election_results.identity import attach_confirmed_people, derive_incumbency
 from toronto_election_results.incumbency import build_composition
 from toronto_election_results.municipal_rosters import (
+    COUNCIL_BY_ELECTION_PENDING_RULE,
     build_municipal_roster_evidence,
     reconcile_composition_last_holders,
 )
@@ -481,7 +482,7 @@ def test_mayoral_by_election_uses_last_certified_holder():
     assert confirmed["person_id"].tolist() == ["per_councillor"]
 
 
-def test_councillor_by_election_known_holder_proves_true_but_absence_is_unknown():
+def test_councillor_by_election_scope_waits_for_final_persons():
     candidacies = pd.DataFrame(
         [
             _candidate("can_holder_2022", "2022-10-24", "Holder Jules", "councillor", elected=True),
@@ -527,12 +528,20 @@ def test_councillor_by_election_known_holder_proves_true_but_absence_is_unknown(
     )
     roster = evidence.rosters.query("event_id == 'evt_2023-11-30'")
 
+    # The latest winner of each ward is not the sitting council, so the scope has no members
+    # and no Office tenures until the release settles it from the final Persons.
+    assert len(roster) == 1
+    assert roster["person_id"].isna().all()
     assert not roster["roster_complete"].any()
+    assert roster["reference_date_rule"].eq(COUNCIL_BY_ELECTION_PENDING_RULE).all()
+    assert not evidence.office_tenures["ended_on"].astype(str).eq("2023-11-30").any()
     attached = attach_confirmed_people(
         candidacies, evidence.people, evidence.candidacy_person_links
     )
+    # The holder's exact name still joins the by-election run to the holder's Person.
+    assert attached.set_index("candidacy_id").loc["can_holder_2023", "person_id"] == "per_holder"
     out = derive_incumbency(attached, evidence.rosters).set_index("candidacy_id")
-    assert out.loc["can_holder_2023", "incumbent"]
+    assert pd.isna(out.loc["can_holder_2023", "incumbent"])
     assert pd.isna(out.loc["can_new_2023", "incumbent"])
 
 

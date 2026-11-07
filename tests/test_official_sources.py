@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 from toronto_election_results.assemble import BY_ELECTIONS, ELECTIONS
+from toronto_election_results.district_geometry import DEFAULT_COUNCIL_GEOMETRY_SOURCES
 from toronto_election_results.official_sources import (
     BY_ELECTION_RESULT_URLS,
     COUNCIL_RECORD_URLS,
@@ -40,6 +41,7 @@ def test_no_published_record_cites_the_download_cache():
         ("contests", "source_detail"),
         ("office_tenures", "source_detail"),
         ("candidacy_person_links", "evidence"),
+        ("electoral_districts", "geometry_source_detail"),
     ):
         table = _read(name)
         assert not table[column].str.contains(CACHE_PATH, regex=True).any(), name
@@ -64,3 +66,10 @@ def test_every_downloaded_source_in_the_manifest_has_a_url():
     assert all(record.get("source_url", "").startswith("https://") for record in raw)
     tracked = [r for r in manifest["sources"] if not r["local_path"].startswith("data/raw/")]
     assert not any("source_url" in record for record in tracked)
+
+
+def test_council_geometry_sources_cite_the_files_the_manifest_records():
+    urls = pd.read_csv(REPO_ROOT / "data" / "reference" / "raw_source_urls.csv", dtype=str)
+    by_path = dict(zip(urls.iloc[:, 0], urls.iloc[:, 1], strict=True))
+    for source in DEFAULT_COUNCIL_GEOMETRY_SOURCES.values():
+        assert source.detail == by_path[str(source.path)]

@@ -11,6 +11,9 @@ The census covers the link set whose `candidacy_person_links.csv` has SHA-256
 `election_results.csv` has SHA-256
 `8c052978247a321c544a8d9582327153cb20bcb58441135cfbda3bdd534f5871`, as built at commit
 `427b1cc`. Any later change to the links needs the same check before these figures apply to it.
+The incumbency changes of 7 November 2026 rebuilt `election_results.csv` without changing any
+Candidacy's `person_id`, and left `candidacy_person_links.csv` with the same SHA-256, so the
+figures apply to that build too.
 
 No join was found to tie two different people. After a second check of the evidence, 52 of the
 136 joins were confirmed from sources the auditors found themselves, and 84 could be neither

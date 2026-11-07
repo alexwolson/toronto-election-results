@@ -32,7 +32,7 @@ from .candidate_name_curations import (
     apply_candidate_name_curations,
 )
 from .council_tenures import COUNCIL_APPOINTMENTS_FILENAME
-from .district_geometry import enrich_district_geometries
+from .district_geometry import council_poll_points, enrich_district_geometries
 from .endorsement_curations import (
     ENDORSEMENT_ASSERTIONS_FILENAME,
     ENDORSEMENT_COVERAGE_FILENAME,
@@ -58,6 +58,7 @@ from .identity_curations import (
     exclude_person_record_merge_decisions,
 )
 from .identity_dispositions import read_identity_review_decisions
+from .incumbent_seats import add_incumbent_seat_fields
 from .link_basis import LINK_BASIS_FILENAME, add_evidence_basis, read_link_basis
 from .mayoral_career import (
     build_mayoral_career_identity_assertions,
@@ -484,14 +485,18 @@ def run_all(
     named_districts = enrich_electoral_districts(
         built.tables.electoral_districts, city_ward_names, trustee_crosswalks
     )
+    districts = enrich_district_geometries(named_districts, trustee_crosswalks=trustee_crosswalks)
     release = replace(
         built.tables,
-        election_results=apply_campaign_url_curations(
-            built.tables.election_results, reference / CAMPAIGN_URL_CURATIONS_FILENAME
+        election_results=add_incumbent_seat_fields(
+            apply_campaign_url_curations(
+                built.tables.election_results, reference / CAMPAIGN_URL_CURATIONS_FILENAME
+            ),
+            built.tables.office_tenures,
+            districts,
+            council_poll_points(districts),
         ),
-        electoral_districts=enrich_district_geometries(
-            named_districts, trustee_crosswalks=trustee_crosswalks
-        ),
+        electoral_districts=districts,
         candidacy_person_links=add_evidence_basis(
             built.tables.candidacy_person_links, read_link_basis(reference / LINK_BASIS_FILENAME)
         ),

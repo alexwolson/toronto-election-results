@@ -148,6 +148,28 @@ the 17 members Council appointed to fill a vacancy, from the appointment in
 under another form of the name and could reach back past the term: Joe Mihevc's 2014 win in Ward
 21 had dated the Ward 10 seat Council appointed him to in 2022.
 
+A council by-election has no roster of its own. Earlier releases took the latest winner of each
+ward as the council sitting at each by-election. That list kept the member whose seat had fallen
+vacant, such as Rob Ford at the Ward 2 by-election of July 2016, months after his death, and
+Raymond Cho at the Ward 42 by-election of February 2017, after he had left for the legislature.
+It also left out members Council had appointed. It could not prove a candidate's absence, so
+council by-election incumbency was null, and its 343 rows were Office tenures. The release now
+drops those rows and settles each by-election once every Candidacy has its Person: a member
+sitting the day before polling won a seat at the term's first general election or a by-election
+since, or was appointed since, so a candidate whose Person did neither was not an incumbent. The
+build fails if a candidate's Person did either. None did, so the 136 council by-election
+Candidacies with a Person have `incumbent=false`, and the 17 without one stay null. A member who
+left during a term now has no Office tenure for it: the general-election rosters list only the
+members still sitting at the end of a term.
+
+Three fields describe the seat behind each incumbency: whether Council appointed the member to
+it (`incumbent_appointed`), its district (`incumbent_held_district_id`), and whether the member
+is running for another seat (`incumbent_changed_district`). Within one Boundary regime a change
+of district is a different `district_id`. Across the 2018 change from 44 council wards to 25, the
+release counts the polls (voting subdivisions) of the 2014 ward: the member kept the seat if the
+new ward holds more of them than any other ward. For the other boundary changes the release has
+no polls of the earlier districts, so the field is null.
+
 The roster for the November 13, 2000 general election is `data/reference/council_roster_2000.csv`.
 It lists the mayor and the 57 councillors in office that day: the certified 1997 winners, the 1998
 by-election winner for a third East York seat that provincial legislation added, the 1999
@@ -260,3 +282,10 @@ The House of Commons publishes its member lists on its website, whose Important 
 the terms for reproducing its content, and ParlInfo is the Library of Parliament's. The release
 keeps only the facts it uses from them: each member's name, riding, province, caucus and dates of
 service, with the House's person ID and the source of each row.
+
+The Legislative Assembly of Ontario's terms of use
+(<https://www.ola.org/en/office-assembly/copyright-privacy>) let anyone display, print and
+reproduce the Assembly's materials without charge where the use is reasonable, fair and
+non-commercial and credits the Assembly. The release keeps only facts from the member profiles:
+each member's name, riding, party and dates of service, with the profile's URL as the source of
+each row.

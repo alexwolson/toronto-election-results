@@ -601,6 +601,17 @@ def validate_release(
         stray_tenure = ~incumbent_true & candidacies["incumbent_office_tenure_id"].notna()
         if stray_tenure.any():
             issues.append("only incumbent=true may reference an Office tenure")
+        seat_fields = [
+            column
+            for column in (
+                "incumbent_appointed",
+                "incumbent_held_district_id",
+                "incumbent_changed_district",
+            )
+            if column in candidacies
+        ]
+        if seat_fields and (~incumbent_true & candidacies[seat_fields].notna().any(axis=1)).any():
+            issues.append("incumbent seat fields must be null unless incumbent=true")
 
         if office_tenures is not None and not office_tenures.empty:
             evidence_rows = candidacies.loc[
