@@ -164,6 +164,9 @@ def add_riding_geometries(
     """Attach federal and Ontario riding shapes to the districts they belong to."""
 
     configured = FEDERAL_RIDING_SOURCES if sources is None else sources
+    required = {"represented_body", "boundary_regime", "official_district_id", "district_name"}
+    if not required.issubset(districts.columns) or "geometry" not in districts.columns:
+        return districts
     out = districts.copy()
     geometry = list(out.geometry)
     federal_shapes: dict[str, pd.DataFrame] = {}
