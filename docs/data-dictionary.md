@@ -113,7 +113,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_appointed` | boolean | not incumbent, or the tenure does not say | `true` when the incumbent's seat came by appointment to fill a vacancy, `false` when by election. Null for the 1995 Ontario incumbents, whose tenure comes only from Elections Ontario's flag. |
 | `incumbent_held_district_id` | string | not incumbent, the tenure does not say, or the seat is outside the release | `district_id` of the seat the incumbent held, from the supporting Office tenure. It can belong to an earlier Boundary regime than the Candidacy's. |
-| `incumbent_changed_district` | boolean | not incumbent, or the boundaries cannot be compared | `true` when the incumbent runs for a seat other than the one held. Within one Boundary regime that is another district. Across a boundary change it is `false` only when the district contested holds more of the held district's polls (the City's voting subdivisions) than any other district does, which the release can test only for the 2018 council election. A mayor never changes district. A legislature seat outside the City (John Tory's in 2007) is `true`. |
+| `incumbent_changed_district` | boolean | not incumbent, or the boundaries cannot be compared | `true` when the incumbent runs for a seat other than the one held. Within one Boundary regime that is another district. Across a boundary change it is `false` only when the district contested holds more of the held district's people than any other district does (ADR 0013): for council wards the people are counted by the City's polls, which settles the 2018 council election; for ridings by census population, which settles the 2015 and 2025 federal and the 2018 Ontario elections. Other boundary changes leave it null. A mayor never changes district. A legislature seat outside the City (John Tory's in 2007) is `true`. |
 | `incumbent_reported` | boolean | authority does not report it | Source flag, except two pinned corrections of flags that contradict the record (Natalie Hunt, 2015; John Sewell, 1999); the modelled `incumbent` field uses project semantics. |
 | `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies. The Mayor and City Councillor races have it for every Candidacy with a Person (`data/reference/predecessor_rosters_1997.csv`); the trustee races are null because the release holds no board rosters. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
@@ -476,6 +476,10 @@ back to name matching or blanket historical coverage claims.
   Canada's Federal Electoral Districts (1996 Representation Order) Cartographic Boundary File,
   2001 Census (Statistics Canada Open Licence); and Elections Ontario's electoral district
   shapefile for the 2018 ridings (Elections Ontario's Open Use Data Product Licence).
+- Statistics Canada's Geographic Attribute Files of the 2011 and 2021 Censuses (Statistics Canada
+  Open Licence), for the census population points that compare riding seats across a
+  redistribution (`scripts/build_census_population_points.py`,
+  `data/reference/census_population_points.csv`, ADR 0013).
 - The Legislative Assembly of Ontario's member profiles for the 36th to 44th Parliaments, compiled
   in `data/reference/ontario_legislature_members.csv`, for Ontario incumbency from 1996 and MPP
   Office tenures.

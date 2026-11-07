@@ -5,126 +5,126 @@
       "local_path": "data/out/candidacy_person_links.csv",
       "rows": 8127,
       "sha256": "40c10c0a61cc9fd6a4a571485467e098c27041b41c7dff04fa0a7d01ca45b459",
-      "written_at": "2026-11-07T20:13:42.471139Z"
+      "written_at": "2026-11-07T20:44:24.479272Z"
     },
     {
       "bytes": 2220089,
       "local_path": "data/out/candidacy_person_links.parquet",
       "rows": 8127,
       "sha256": "8a6bb75fb4659f3cf8c101ceace6149a44b5e66c4a07c38111145eae48a5f082",
-      "written_at": "2026-11-07T20:13:42.479796Z"
+      "written_at": "2026-11-07T20:44:24.488043Z"
     },
     {
       "bytes": 666050,
       "local_path": "data/out/contests.csv",
       "rows": 1385,
       "sha256": "f6e68f03307f70a762ece26883d170e81fe1fe58877dfcc8cd3278523640be03",
-      "written_at": "2026-11-07T20:13:42.406691Z"
+      "written_at": "2026-11-07T20:44:24.416566Z"
     },
     {
       "bytes": 133195,
       "local_path": "data/out/contests.parquet",
       "rows": 1385,
       "sha256": "3a2a6fda4c6037e913b1bdf5dbc5b79bcf77442388a9fdd0c46f64052c4b70b4",
-      "written_at": "2026-11-07T20:13:42.408886Z"
+      "written_at": "2026-11-07T20:44:24.418398Z"
     },
     {
       "bytes": 5663,
       "local_path": "data/out/election_events.csv",
       "rows": 80,
       "sha256": "a136b4527adb80f6784281a1ea3064338cf4db6869e5404bcdc3f0805ad76d34",
-      "written_at": "2026-11-07T20:13:42.398778Z"
+      "written_at": "2026-11-07T20:44:24.408916Z"
     },
     {
       "bytes": 6118,
       "local_path": "data/out/election_events.parquet",
       "rows": 80,
       "sha256": "f2b21e599b230ce0da34c94001869edc5a0e23478f335763bfd9f6fde5a09721",
-      "written_at": "2026-11-07T20:13:42.399471Z"
+      "written_at": "2026-11-07T20:44:24.409460Z"
     },
     {
-      "bytes": 6515064,
+      "bytes": 6515341,
       "local_path": "data/out/election_results.csv",
       "rows": 8099,
-      "sha256": "0acf956be6aee4a9560fe6980481c6a69f3aa2b46f1a2c655a0cb6e8c322f8c1",
-      "written_at": "2026-11-07T20:13:42.367767Z"
+      "sha256": "92e1c39f3a3e187159d99c58c6e8a130c022be8e04365f3a7218e5eea16eb423",
+      "written_at": "2026-11-07T20:44:24.382989Z"
     },
     {
-      "bytes": 1278944,
+      "bytes": 1279032,
       "local_path": "data/out/election_results.parquet",
       "rows": 8099,
-      "sha256": "7a7a24e81003b7aebca810e5ebdebdd70f2e050ee09a64fe800be0f1208acc1e",
-      "written_at": "2026-11-07T20:13:42.397941Z"
+      "sha256": "3871745ec9f23f9f81c9e5bad9c6bdfd3227e8f06325c410b2afb19d9482513e",
+      "written_at": "2026-11-07T20:44:24.408271Z"
     },
     {
       "bytes": 26653741,
       "local_path": "data/out/electoral_districts.csv",
       "rows": 848,
       "sha256": "62664f712ecf1d9b3c89be889a195b832aa7554aff390d1a6a10ad148d1367e4",
-      "written_at": "2026-11-07T20:13:42.703688Z"
+      "written_at": "2026-11-07T20:44:24.709214Z"
     },
     {
       "bytes": 4938064,
       "local_path": "data/out/electoral_districts.parquet",
       "rows": 848,
       "sha256": "7ebfad4d5fdfac25ac29f7dce58119331aaf43ec62956b1df41bafbcd1f3626b",
-      "written_at": "2026-11-07T20:13:42.723584Z"
+      "written_at": "2026-11-07T20:44:24.727917Z"
     },
     {
       "bytes": 791740,
       "local_path": "data/out/office_tenures.csv",
       "rows": 986,
       "sha256": "f4267e82c459e2b4a7e434e3f4401ed51b7367c020b758519d07d9e885afe4af",
-      "written_at": "2026-11-07T20:13:42.487422Z"
+      "written_at": "2026-11-07T20:44:24.495537Z"
     },
     {
       "bytes": 197603,
       "local_path": "data/out/office_tenures.parquet",
       "rows": 986,
       "sha256": "c039895bd4a7abcfbbf8f255b3187c62d719ebd26f4f186f1a23400f7d8379e6",
-      "written_at": "2026-11-07T20:13:42.488889Z"
+      "written_at": "2026-11-07T20:44:24.497057Z"
     },
     {
       "bytes": 8383,
       "local_path": "data/out/parties.csv",
       "rows": 82,
       "sha256": "a0359370749bd302b02f542ae193878aa5131643c8d489b4af321149089b4d8d",
-      "written_at": "2026-11-07T20:13:42.480480Z"
+      "written_at": "2026-11-07T20:44:24.488733Z"
     },
     {
       "bytes": 8692,
       "local_path": "data/out/parties.parquet",
       "rows": 82,
       "sha256": "e8abc0d11c57649bc8252ff7c8d04a41608a9cba6d045f5bc173f3b7e9a59a68",
-      "written_at": "2026-11-07T20:13:42.480954Z"
+      "written_at": "2026-11-07T20:44:24.489197Z"
     },
     {
       "bytes": 357922,
       "local_path": "data/out/people.csv",
       "rows": 5079,
       "sha256": "01ba51bf31bf12813351925b55bf3322cc791fee39ef097468bc10d78f383f51",
-      "written_at": "2026-11-07T20:13:42.412843Z"
+      "written_at": "2026-11-07T20:44:24.422251Z"
     },
     {
       "bytes": 245383,
       "local_path": "data/out/people.parquet",
       "rows": 5079,
       "sha256": "07a77b6f7a73fcb0bbc565c4c171fbfaea4d3e6803c05e3568d3558391caf2a4",
-      "written_at": "2026-11-07T20:13:42.414686Z"
+      "written_at": "2026-11-07T20:44:24.423879Z"
     },
     {
       "bytes": 91622,
       "local_path": "data/out/person_external_ids.csv",
       "rows": 460,
       "sha256": "1f1ea1662af7c666ae1882f39a8584fddae626739b7c8e8dc9b05ea977fb88c2",
-      "written_at": "2026-11-07T20:13:42.724817Z"
+      "written_at": "2026-11-07T20:44:24.729225Z"
     },
     {
       "bytes": 24457,
       "local_path": "data/out/person_external_ids.parquet",
       "rows": 460,
       "sha256": "c43df9d1a73af61f9ce0d9dec825ca7a801fae4980f1399b7cd847bc2371ee38",
-      "written_at": "2026-11-07T20:13:42.725412Z"
+      "written_at": "2026-11-07T20:44:24.729859Z"
     }
   ],
   "coverage": {
@@ -154,7 +154,7 @@
       "scheduled_date": "2008-09-22"
     }
   ],
-  "generated_at": "2026-11-07T20:13:42.736791Z",
+  "generated_at": "2026-11-07T20:44:24.740463Z",
   "pending_events": [],
   "schema_version": "2.2.0",
   "sources": [
@@ -283,6 +283,20 @@
       "retrieved_at": "2026-08-19T19:33:20.120008Z",
       "sha256": "9dbe8fd3a3c751f4d0dbfb12e7d7aa9927da15f36c2ee7770b5d23a60319ece0",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/54011bd4-93a0-484a-a294-2f3d5d0a1086/download/2025-ward-25-by-election-voter-statistics.xlsx"
+    },
+    {
+      "bytes": 76984067,
+      "local_path": "data/raw/census/2011_92-151_XBB_xlsx.zip",
+      "retrieved_at": "2026-11-07T20:37:18.997549Z",
+      "sha256": "18b93be4d2320ab2f5e892880b00e3e14c46e12bb1ae6b4fc7dca418a924114c",
+      "source_url": "https://www12.statcan.gc.ca/census-recensement/2011/geo/ref/att-eng.cfm"
+    },
+    {
+      "bytes": 9832890,
+      "local_path": "data/raw/census/2021_92-151_X.zip",
+      "retrieved_at": "2026-11-07T20:37:18.999980Z",
+      "sha256": "918aa8502d9d95b1ae5ce437ed9674e0977ec55977c08b8d01822a9dab6fe5da",
+      "source_url": "https://www12.statcan.gc.ca/census-recensement/2021/geo/aip-pia/attribute-attribs/index-eng.cfm"
     },
     {
       "bytes": 10756,
@@ -1063,7 +1077,7 @@
     {
       "bytes": 4255535,
       "local_path": "data/reference/candidacy_identity_ledger.csv",
-      "retrieved_at": "2026-11-07T20:13:41.369608Z",
+      "retrieved_at": "2026-11-07T20:44:23.372673Z",
       "sha256": "9508482b17d764364ac22df2a321e5d7859ab7d97801210447f499b9c6653ff2"
     },
     {
@@ -1071,6 +1085,12 @@
       "local_path": "data/reference/candidate_name_curations.csv",
       "retrieved_at": "2026-11-07T19:55:30.823241Z",
       "sha256": "e6c1e022f3b4a14b1ab4ba41b8e445d32603f6e30b848e9db6c3426dc40f35f8"
+    },
+    {
+      "bytes": 289268,
+      "local_path": "data/reference/census_population_points.csv",
+      "retrieved_at": "2026-11-07T20:38:26.881950Z",
+      "sha256": "96bbaba66d8a6fe2e14559c533252b925d92fafa2ace8149d996ecf37857965f"
     },
     {
       "bytes": 10201,
@@ -1169,10 +1189,10 @@
       "sha256": "6214cd742ed391aa314ea9fc0708dc44a519f2786554badf35105b81c30bf053"
     },
     {
-      "bytes": 23549,
+      "bytes": 23792,
       "local_path": "data/reference/raw_source_urls.csv",
-      "retrieved_at": "2026-11-07T19:55:30.837101Z",
-      "sha256": "99a688b295c5d8f66a4d38490f220ff6b98772bb6c3022e44fb119c3388ef097"
+      "retrieved_at": "2026-11-07T20:41:09.205258Z",
+      "sha256": "f139d1e8d336bd9e0467ce3433e340c20a5f8942d10d98176733cc66f62a930d"
     },
     {
       "bytes": 326094,

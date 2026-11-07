@@ -17,6 +17,8 @@ data/raw/byelection_voter_stats/2021_voter_turnout_statistics_ward_22_by-electio
 data/raw/byelection_voter_stats/2023-councillor-ward-20-by-election-voter-statistics.xlsx,https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/8e49907b-98bf-41e4-acfc-4141d5804d0f/download/2023-councillor-ward-20-by-election-voter-statistics.xlsx
 data/raw/byelection_voter_stats/2024-councillor-ward-15-by-election-voter-statistics.xlsx,https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/eb873a1c-b11d-4274-94f1-84afce523b12/download/2024-councillor-ward-15-by-election-voter-statistics.xlsx
 data/raw/byelection_voter_stats/2025-ward-25-by-election-voter-statistics.xlsx,https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/54011bd4-93a0-484a-a294-2f3d5d0a1086/download/2025-ward-25-by-election-voter-statistics.xlsx
+data/raw/census/2011_92-151_XBB_xlsx.zip,https://www12.statcan.gc.ca/census-recensement/2011/geo/ref/att-eng.cfm
+data/raw/census/2021_92-151_X.zip,https://www12.statcan.gc.ca/census-recensement/2021/geo/aip-pia/attribute-attribs/index-eng.cfm
 data/raw/ckan/elected-officials-contact-information.json,https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elected-officials-contact-information
 data/raw/ckan/election-results-official.json,https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=election-results-official
 data/raw/ckan/elections-official-by-election-results.json,https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elections-official-by-election-results

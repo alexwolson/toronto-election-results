@@ -25,6 +25,7 @@ import pandas as pd
 REPO_ROOT = Path(__file__).parents[1]
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
+from toronto_election_results.census_points import CENSUS_FILES
 from toronto_election_results.download import (
     _MANIFEST,
     CKAN_PACKAGE_SHOW,
@@ -98,6 +99,8 @@ def _known_urls() -> dict[str, str]:
         add(tabulation_path(RAW / "ontario", spec), spec.tabulation_url)
     for source in RIDING_SOURCES.values():
         add(source.path, source.url)
+    for path, url in CENSUS_FILES.values():
+        add(path, url)
     return urls
 
 
