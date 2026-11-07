@@ -15974,6 +15974,257 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Found in the November 2026 search of the Toronto Star in ProQuest for same-name and near-name
+# Persons that earlier reviews left undetermined (docs/verification/star-pass-2026-11-07.md).
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    _record_merge(
+        "loucas-cafe-1993-1995",
+        "Loucas Café",
+        "per_278f39f2d7505dc5bc03dde37ab94fcc",
+        (
+            (
+                "can_12abfc2a20ef5e10a8aab7444c5980a3",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Loucas Café",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/437278693",
+            "https://www.proquest.com/docview/436919898",
+        ),
+        "The Toronto Star's profiles of the 1995 Ontario candidates (5 June 1995) list Loucas Cafe, "
+        "Natural Law Party, in Riverdale and say: 'A French teacher, Cafe ran federally in 1993 "
+        "under the same banner.' The Star's 1993 profile of the Scarborough-Rouge River candidates "
+        "(22 October 1993) describes the Natural Law candidate Loucas Cafe as a French teacher. The "
+        "1995 Riverdale run, sixth of six with 124 votes, is joined to the Person who holds the "
+        "1993 and 1997 Natural Law runs in Scarborough—Rouge River. Nothing found describes the "
+        "1999 Scarborough East run, which stays a separate Person.",
+    ),
+    _record_merge(
+        "nunzio-venuto-1993-1995",
+        "Nunzio Venuto",
+        "per_02223abd943f548b950debf5c1f07c44",
+        (
+            (
+                "can_074c92a444bc556abb02b6b29039e85c",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Nunzio Venuto",
+            ),
+        ),
+        ("https://www.proquest.com/docview/437278693",),
+        "The Toronto Star's profiles of the 1995 Ontario candidates (5 June 1995) list Nunzio "
+        "Venuto, 35, Libertarian, in Oakwood: 'A pension administrator, Venuto tried for a federal "
+        "seat in the 1993 election.' The only federal run of that name in the release is the 1993 "
+        "Libertarian run in Davenport, for which Elections Canada gives a pension trust officer. "
+        "The 1995 Oakwood run, seventh of seven with 100 votes, is joined to the 1993 federal run.",
+    ),
+    _record_merge(
+        "nunzio-venuto-1999-2022-davenport",
+        "Nunzio Venuto",
+        "per_02223abd943f548b950debf5c1f07c44",
+        tuple(
+            (candidacy_id, event_id, "ontario_legislative_assembly", "mpp", name)
+            for candidacy_id, event_id, name in (
+                ("can_094d070f38ba505c93bff41d7bd5f211", "on-1999-general", "NUNZIO VENUTO"),
+                ("can_bd5ef6cf12095622a5ab7af4439b04b5", "on-2003-general", "NUNZIO VENUTO"),
+                ("can_359e7578304a59aabe34e1b7f5b69aa8", "on-2007-general", "NUNZIO VENUTO"),
+                ("can_2105b750095e50f09db86f7d2b9f0836", "on-2014-general", "NUNZIO VENUTO"),
+                ("can_3f6d624758675c29b551058a89e67ffc", "on-2018-general", "Nunzio Venuto"),
+                ("can_30f0284c4e1554e393c746030f8b89f1", "on-2022-general", "NUNZIO VENUTO"),
+            )
+        ),
+        (
+            "https://www.proquest.com/docview/437278693",
+            "https://results.elections.on.ca/api/report-groups/6/report-outputs/532/csv",
+        ),
+        "Structural continuity: Nunzio Venuto ran for the Libertarians in Oakwood in 1995 and in "
+        "Davenport in every Ontario general election from 1999 to 2022 except 2011, with no more "
+        "than one general election between runs and an uncommon name. An earlier review joined "
+        "the 1999 run to the 1995 Oakwood run on the structural rule. The same-name review of "
+        "November 2026 declined to join the 2003 and later Davenport runs because a third Person "
+        "of the name had run federally in 1993; the Star's 1995 profile shows that candidate is "
+        "the same man, so no other candidate of the name remains. The Davenport runs from 1999 to "
+        "2022 are joined to the Person of the 1993 and 1995 runs. The held 2007 York South—Weston "
+        "by-election run is not covered.",
+    ),
+    _record_merge(
+        "douglas-quinn-1993-1995",
+        "Douglas Quinn",
+        "per_bb61509bace75af7bc10ffc9b6aa057a",
+        (
+            (
+                "can_2eaca1854a4257cface154e7fb2e7245",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "Douglas Quinn",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/436918545",
+            "https://www.proquest.com/docview/437278693",
+        ),
+        "The Toronto Star's 1993 profile of the York Centre candidates (22 October 1993) describes "
+        "the Libertarian Douglas Quinn as 'the owner of a word processing and freelance writing and "
+        "computer programming business'. Its 1995 profiles of the Ontario candidates (5 June 1995) "
+        "describe the Libertarian Douglas Quinn, 30, in Dovercourt as 'the owner of a computer "
+        "business'. The two profiles give the same business for a Libertarian of the same name two "
+        "years apart. The 1995 Dovercourt run, seventh of seven with 161 votes, is joined to the "
+        "1993 York Centre run.",
+    ),
+    _record_merge(
+        "john-steele-1995-fort-york",
+        "John Steele",
+        "per_d0086333d4765d6e8698f919c23a2826",
+        (
+            (
+                "can_25436373adb95b96917deed1a3451e9b",
+                "on-1995-general",
+                "ontario_legislative_assembly",
+                "mpp",
+                "John B. Steele",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/437278693",
+            "https://www.proquest.com/docview/438158660",
+        ),
+        "The Toronto Star's profiles of the 1995 Ontario candidates (5 June 1995) describe John B. "
+        "Steele, 54, an independent in Fort York, as 'a machinist and Communist League provincial "
+        "secretary'. The Star's column of 3 August 2000 on the Communist League's mayoral candidate "
+        "says 'JOHN STEELE is, at 59' and that he 'ran once before for mayor' and joined the "
+        "Communist League as a young man. The ages agree, the 1995 ballot name John B. Steele fits "
+        "the John Brian Steele of the Person's 2006 federal run, and both describe the Communist "
+        "League's Toronto candidate. The 1995 Fort York run, eighth of eight with 129 votes, is "
+        "joined to the Person of the 1994 and 2000 mayoral runs and the 2006 federal run. Nothing "
+        "found describes the held 2003 Parkdale—High Park run, which stays held.",
+    ),
+    _record_merge(
+        "franz-cauchi-2003-2006",
+        "Franz Cauchi",
+        "per_d6acb15f737053038b9f0ea1e0dbc691",
+        (
+            (
+                "can_b74246ecbcad5c519ed9c0872b678a9a",
+                "on-2006-03-30-by-008",
+                "ontario_legislative_assembly",
+                "mpp",
+                "FRANZ L. CAUCHI",
+            ),
+        ),
+        ("https://www.proquest.com/docview/330535903",),
+        "The National Post's story of 23 March 2006 on the Toronto-Danforth provincial by-election "
+        "describes Franz Cauchi, the Freedom Party of Ontario candidate, and says he 'ran in 2003 "
+        "provincial election in the Davenport riding, receiving 264 votes to finish sixth in a "
+        "seven- person race'. The release's 2003 Davenport run for the Freedom Party is sixth of "
+        "seven with 264 votes. The 2006 by-election run is joined to the Person of the Davenport "
+        "runs. Nothing found ties the held 2007 Eglinton—Lawrence run to either, and it stays held.",
+    ),
+    _record_merge(
+        "elizabeth-moyer-2006-ward-35",
+        "Elizabeth Moyer",
+        "per_526d2746efd55198a90b1e6c06dbc83c",
+        (
+            (
+                "can_2293417524625b80b2790e8b10c7ee9b",
+                "evt_159f073fa6f15c23a840651723d3c3af",
+                "toronto_city_council",
+                "councillor",
+                "Elizabeth Moyer",
+            ),
+        ),
+        ("https://www.proquest.com/docview/439073958",),
+        "The Toronto Star's story of 17 October 2006 on the open Ward 35 (Scarborough Southwest) "
+        "council race says 'Elizabeth Moyer, 43, a long-time public school trustee, threw her hat "
+        "into the ring after first considering serving as a temporary councillor'. The release's "
+        "Elizabeth Moyer was the Scarborough and Toronto District School Board trustee for the "
+        "area. The 2006 Ward 35 council run, fourth of 13 with 1,371 votes, is joined to the "
+        "trustee's Person.",
+    ),
+    _record_merge(
+        "virginia-jones-2003-ward-38",
+        "Virginia Jones",
+        "per_7b1d134a748c548d88e87ee552a2ce3c",
+        (
+            (
+                "can_b0fef88424e1539b93450f2a3ce8da29",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_city_council",
+                "councillor",
+                "Virginia Jones",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/1348973081",
+            "https://www.proquest.com/docview/362409637",
+            "https://cp24.com/news/what-you-need-to-know-about-the-race-in-ward-23-scarborough-north-1.6114205",
+        ),
+        "The Toronto Star's 2003 council guide (6 November 2003) describes the Ward 38 candidate "
+        "Virginia Jones as a 'political assistant to past councillor and MPP Brad Duguid' with "
+        "'six years' experience at city hall plus prior work in event planning and media "
+        "research'. The Scarborough Mirror of 27 November 2005 names Virginia Jones, 'a former "
+        "political aide at both city hall and Queen's Park', as a possible Ward 41 candidate. "
+        "CP24's 2022 guide to Ward 23 (Scarborough North) quotes her campaign website describing "
+        "a 'communications, media, community and government relations, event planning' and "
+        "emergency management specialist with decades of experience. The descriptions share "
+        "government work, media and event planning, all in Scarborough, and no one else in the "
+        "release has the name. The 2003 Ward 38 run, second of six with 2,568 votes, is joined to "
+        "the Person of the 2017 and 2022 runs.",
+    ),
+    _record_merge(
+        "kingsley-arnold-kwok-2003",
+        "Kingsley Kwok",
+        "per_cfa2a65b47f9546d9c6ee5ac1ceec4b5",
+        (
+            (
+                "can_7207694e98d05adb9951d6a6ff8f3f08",
+                "evt_d89f777f34365c37b114ca39fb376591",
+                "toronto_district_school_board",
+                "trustee",
+                "Arnold Kwok",
+            ),
+        ),
+        (
+            "https://www.proquest.com/docview/438652707",
+            "https://www.proquest.com/docview/1867116187",
+        ),
+        "The Toronto Star's 2003 trustee guide (6 November 2003) describes the TDSB Ward 22 "
+        "(Scarborough East) candidate Arnold Kwok as 'a respiratory therapist, Kwok, 31'. The "
+        "Star's story of 11 February 2017 on the Ward 42 by-election describes Kingsley Kwok as "
+        "'a respiratory therapist, union local president and board member of' TTC Riders, and "
+        "Elections Canada's 2021 return names him Kingsley Arnold Kwok. The 2003 run carries his "
+        "middle name and the same occupation, in eastern Scarborough like his later runs. The 2003 "
+        "TDSB Ward 22 "
+        "run, third of three with 2,669 votes, is joined to the Person of the 2017 to 2025 runs.",
+    ),
+    _record_merge(
+        "mark-bekkering-2025-2026",
+        "Mark Bekkering",
+        "per_0eb355117423558e89394bc508ee4e2d",
+        (
+            (
+                "can_d23b60346ab75c778204840f98b99a9b",
+                "on-2026-09-03-by-098",
+                "ontario_legislative_assembly",
+                "mpp",
+                "MARK BEKKERING",
+            ),
+        ),
+        (
+            "https://results.elections.on.ca/api/report-groups/48/report-outputs/1096/csv",
+            "https://www.elections.on.ca/en/election-results/098.html",
+        ),
+        "Structural continuity: Mark Bekkering ran for the Green Party of Ontario in Scarborough "
+        "Southwest in the 2025 general election and in the riding's September 2026 by-election, "
+        "with no general election between, the same riding and an uncommon name, and no other "
+        "candidate of the name. The 2026 by-election run is joined to the Person of the 2025 run.",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 

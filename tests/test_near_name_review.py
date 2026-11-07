@@ -85,7 +85,19 @@ def test_near_name_pairs_left_after_the_merges():
     results = pd.read_csv(OUT / "election_results.csv", dtype="string", keep_default_na=False)
     left = script.near_name_frame(results)
     pairs = _review("pairs.csv")
-    open_pairs = pairs.loc[pairs["outcome"].ne("joined")]
+    # Pairs that the Star pass of November 2026 joined later are no longer listed.
+    star = pd.read_csv(
+        REPO_ROOT / "docs" / "verification" / "star-pass-2026-11-07" / "items.csv",
+        dtype=str,
+        keep_default_na=False,
+    )
+    joined_later = set(
+        star.loc[star["outcome"].eq("joined"), "earlier_review"]
+        .str.extractall(r"near-name (N\d+)")[0]
+        .tolist()
+    )
+    assert joined_later == {"N060"}
+    open_pairs = pairs.loc[pairs["outcome"].ne("joined") & ~pairs["pair_id"].isin(joined_later)]
     # Every pair the review did not join is still listed, and the merges created no new ones.
     listed = set(zip(left["person_a"], left["person_b"]))
     for row in open_pairs.itertuples(index=False):

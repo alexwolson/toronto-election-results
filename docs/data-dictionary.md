@@ -159,12 +159,14 @@ that correctly have no Candidacy row.
 
 The persistent identity registry: opaque `person_id`, preferred name, `identity_status`, redirect
 target and creation release. A release that merges two Persons keeps the losing ID as
-`deprecated`, with a redirect to the Person that replaced it. One Person is deprecated in this
+`deprecated`, with a redirect to the Person that replaced it. Eleven Persons are deprecated in this
 release: the one made for Fatima Shaban's 2026 provincial by-election run, which a person-record
-merge joined to the Person of her federal runs. The other 5,078 rows are active. An active Person
+merge joined to the Person of her federal runs, and ten that the November 2026 search of the
+Toronto Star joined to other Persons (`docs/verification/star-pass-2026-11-07.md`). The other 5,068
+rows are active. An active Person
 without a Candidacy holds an Office tenure needed to classify Incumbency. Six Persons are of this
 kind: Ceta Ramkhalawansingh, Jim Hart, Miganoush Megardichian, Paul Valenti, Peter Leon and Rose
-Milczyn, each appointed to Council to fill a vacancy, so 5,072 of the active Persons have at least
+Milczyn, each appointed to Council to fill a vacancy, so 5,062 of the active Persons have at least
 one Candidacy. A Person name never rewrites a historical ballot name.
 
 ### `candidacy_person_links`
@@ -188,13 +190,13 @@ adjudicated; `unresolved` may retain the reviewed candidate Person when evidence
 
 | `method` | Confirmed links | `own_record` | `official_record` | `person_specific_source` | `structural` |
 |---|---:|---:|---:|---:|---:|
-| `official_candidacy_record` | 4,941 | 4,941 | | | |
+| `official_candidacy_record` | 4,931 | 4,931 | | | |
 | `official_incumbent_continuity` | 221 | | 221 | | |
 | `municipal_authoritative_roster_exact_name` | 131 | | 131 | | |
-| `curated_official_cross_event_identity` | 1,304 | | | 995 | 309 |
+| `curated_official_cross_event_identity` | 1,319 | | | 1,003 | 316 |
 | `curated_person_redirect` | 9 | | | 9 | |
-| `curated_review_confirmed` | 1,080 | | 3 | 821 | 256 |
-| All | 7,686 | 4,941 | 355 | 1,825 | 565 |
+| `curated_review_confirmed` | 1,075 | | 3 | 821 | 251 |
+| All | 7,686 | 4,931 | 355 | 1,833 | 567 |
 
 To keep only links that a source confirms, treat a Candidacy as unlinked when its link is
 `structural`:

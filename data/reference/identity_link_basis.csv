@@ -200,6 +200,7 @@ assertion,donna-braniff-municipal-exact-scope,,structural,rationale
 assertion,doug-ford-toronto-council-and-ontario-legislature,,person_specific_source,rationale
 assertion,doug-holyday-toronto-council-and-ontario-legislature,,person_specific_source,rationale
 assertion,doug-stephens-1994-2000-north-york-trustee,,person_specific_source,rationale
+assertion,douglas-quinn-1993-1995,,person_specific_source,rationale
 assertion,drew-buckingham-municipal-exact-scope,,structural,rationale
 assertion,duri-naimji-municipal-exact-scope,,structural,rationale
 assertion,ebrahim-astaraki-ontario-exact-scope,,structural,rationale
@@ -207,6 +208,7 @@ assertion,eddy-gasparotto-municipal-exact-scope,,structural,rationale
 assertion,el-farouk-khaki-2008-federal-candidacies,,person_specific_source,rationale
 assertion,elizabeth-abbott-federal-exact-scope,,structural,rationale
 assertion,elizabeth-moyer-1994-2014-trustee-career,,person_specific_source,rationale
+assertion,elizabeth-moyer-2006-ward-35,,person_specific_source,rationale
 assertion,elizabeth-rowley-1993-2025-continuity,,person_specific_source,rationale
 assertion,ella-ng-federal-exact-scope,,structural,rationale
 assertion,ellen-michelson-federal-exact-scope,,structural,rationale
@@ -231,6 +233,7 @@ assertion,francois-guerin-viamonde-name-aliases,,structural,rationale
 assertion,frank-de-jong-1999-parkdale-high-park,,person_specific_source,rationale
 assertion,frank-marra-municipal-exact-scope,,structural,rationale
 assertion,frank-meyers-1993-1995,,person_specific_source,rationale
+assertion,franz-cauchi-2003-2006,,person_specific_source,rationale
 assertion,fred-dominelli-appointed-councillor-and-2006-candidacy,,person_specific_source,rationale
 assertion,fred-johnson-1994-1997,,person_specific_source,rationale
 assertion,gary-crawford-tdsb-council-and-ontario,,person_specific_source,rationale
@@ -327,6 +330,7 @@ assertion,john-papadakis-municipal-exact-scope,,person_specific_source,rationale
 assertion,john-parker-1995-2014-continuity,,person_specific_source,rationale
 assertion,john-richardson-municipal-exact-scope,,structural,rationale
 assertion,john-sewell-1999-2006,,person_specific_source,rationale
+assertion,john-steele-1995-fort-york,,person_specific_source,rationale
 assertion,john-steele-2006-eglinton-lawrence,,person_specific_source,rationale
 assertion,john-the-engineer-turmel-1996-2023,,person_specific_source,rationale
 assertion,john-tory-ontario-legislature-and-toronto-mayor,,person_specific_source,rationale
@@ -367,6 +371,7 @@ assertion,kevin-morrison-tcdsb-ward11-to-ward9-continuity,,person_specific_sourc
 assertion,kevin-rupasinghe-municipal-exact-scope,,structural,rationale
 assertion,khalid-ahmed-ontario-exact-scope,,structural,rationale
 assertion,king-kim-tdsb-continuity,,structural,rationale
+assertion,kingsley-arnold-kwok-2003,,person_specific_source,rationale
 assertion,kingsley-kwok-2017-2025,,structural,rationale
 assertion,kirk-jensen-municipal-exact-scope,,structural,rationale
 assertion,kirsty-duncan-house-candidacies,,person_specific_source,rationale
@@ -393,6 +398,7 @@ assertion,lorenzo-berardinetti-city-council-and-ontario-candidacies,,person_spec
 assertion,lorne-gershuny-2000-2025,,person_specific_source,rationale
 assertion,lorne-gershuny-house-continuity,,structural,rationale
 assertion,lou-carcasole-federal-exact-scope,,structural,rationale
+assertion,loucas-cafe-1993-1995,,person_specific_source,rationale
 assertion,louis-fliss-ontario-exact-scope,,structural,rationale
 assertion,luis-silva-1994-2003-continuity,,person_specific_source,rationale
 assertion,magda-gondor-berkovits-2006-2010,,person_specific_source,rationale
@@ -407,6 +413,7 @@ assertion,marie-crawford-federal-exact-scope,,structural,rationale
 assertion,marilyn-pepper-1993-1997,,person_specific_source,rationale
 assertion,mario-silva-city-council-and-house-candidacies,,person_specific_source,rationale
 assertion,marit-stiles-tdsb-and-ontario-legislature,,person_specific_source,rationale
+assertion,mark-bekkering-2025-2026,,structural,rationale
 assertion,mark-daye-ontario-exact-scope,,structural,rationale
 assertion,mark-meschino-1993-1995,,person_specific_source,rationale
 assertion,mark-obrien-2000-davenport,,person_specific_source,rationale
@@ -471,6 +478,8 @@ assertion,nicolo-fortunato-former-york-councillor,,person_specific_source,ration
 assertion,noah-ng-tdsb-continuity,,structural,rationale
 assertion,norm-gardner-1994-2018-continuity,,person_specific_source,rationale
 assertion,norm-kelly-council-roster-and-candidacies,,person_specific_source,rationale
+assertion,nunzio-venuto-1993-1995,,person_specific_source,rationale
+assertion,nunzio-venuto-1999-2022-davenport,,structural,rationale
 assertion,oliver-carroll-tcdsb-continuity,,person_specific_source,rationale
 assertion,p-c-choo-ontario-exact-scope,,structural,rationale
 assertion,pamela-gough-tdsb-continuity,,person_specific_source,rationale
@@ -587,6 +596,7 @@ assertion,vaughan-byrnes-1999-2003,,structural,rationale
 assertion,vince-gasparro-ontario-to-house-continuity,,person_specific_source,rationale
 assertion,vincent-crisanti-1994-2026,,person_specific_source,rationale
 assertion,vincent-crisanti-2026-pending-continuity,,person_specific_source,rationale
+assertion,virginia-jones-2003-ward-38,,person_specific_source,rationale
 assertion,virginia-jones-runs-2017-2022,,person_specific_source,rationale
 assertion,vitas-naudziunas-ontario-exact-scope,,structural,rationale
 assertion,walied-khogali-ali-2018-2026,,structural,rationale
@@ -634,7 +644,6 @@ disposition,can_086770e9c8ad509a912097f3fec47faa,dual-blind-adjudication-pre2003
 disposition,can_08f71a39dd4358a399bcbffe091d154c,federal-provincial-holds-2026-11-01,person_specific_source,rationale
 disposition,can_0911e45f54c45759a1f4afe72bc7e85b,independent-adjudication-bucket-2,structural,rationale
 disposition,can_093c91b5c480550ebe5e088954692715,federal-provincial-holds-2026-11-01,person_specific_source,rationale
-disposition,can_094d070f38ba505c93bff41d7bd5f211,dual-blind-adjudication-pre2003-provincial-2026-10-29,structural,docs/research/pre2003-provincial-identity-review-2026-10-29.md
 disposition,can_09769e5687995034aee617a56b2260f1,backlog-2010-2017-2026-10-31,person_specific_source,rationale
 disposition,can_09bab15b9a3952a3bf16b610da5402cd,federal-provincial-holds-2026-11-01,structural,rationale
 disposition,can_09c740bad5bb5bc8ac79b8318fdbb93e,federal-provincial-holds-2026-11-01,person_specific_source,rationale
@@ -730,7 +739,6 @@ disposition,can_2059f029fe485801b682b0664b20e816,local-guides-backlog-2026-10-30
 disposition,can_20824627f15e500781ff79382c5abbf7,backlog-2018-2022-2026-10-31,person_specific_source,rationale
 disposition,can_20a5587ffa6b53858a5bf2709b0a09dc,results-2026-proposals-2026-10-30,person_specific_source,rationale
 disposition,can_20a862f802be5fe28576d88d6bc198f8,backlog-2018-2022-2026-10-31,person_specific_source,rationale
-disposition,can_2105b750095e50f09db86f7d2b9f0836,independent-adjudication-bucket-0,structural,rationale
 disposition,can_2142c9a3670c5cbd9de289272c34a429,federal-provincial-holds-2026-11-01,structural,rationale
 disposition,can_214cd09b85415c9486b9f4e3ad2e7b2c,backlog-2010-2017-2026-10-31,person_specific_source,rationale
 disposition,can_217ece8e717d5ff1a14e2047643912c9,dual-blind-adjudication-pre2003-federal-2026-10-29,person_specific_source,docs/research/pre2004-federal-identity-review-2026-10-29.md
@@ -795,7 +803,6 @@ disposition,can_2fdc1a832c565f1b8cff4248c422a296,backlog-2010-2017-2026-10-31,pe
 disposition,can_2fe5215fa60e5a369a3fea55f59955bc,same-name-review-2026-11-03,person_specific_source,rationale
 disposition,can_301a0324c3bb5258a35b821d7620c854,dual-blind-adjudication-pre2003-municipal-2026-10-29,structural,docs/research/pre2003-municipal-identity-review-2026-10-29.md
 disposition,can_305995f1e3de52589ef202020ba18625,dual-blind-adjudication-2000-trustees-2026-10-29,person_specific_source,docs/research/pre2003-trustee-2000-identity-review-2026-10-29.md
-disposition,can_30f0284c4e1554e393c746030f8b89f1,independent-adjudication-bucket-0,structural,rationale
 disposition,can_313d0cdfb2d751fcba34db2376198fba,star-candidate-profiles-backlog-2026-10-30,person_specific_source,rationale
 disposition,can_318e767db7f75756b34a029808e3cdd8,star-candidate-profiles-2026-10-30,person_specific_source,rationale
 disposition,can_319dd6dab3185537acfe2bc5e10b39c1,local-guides-backlog-2026-10-30,person_specific_source,rationale
@@ -817,7 +824,6 @@ disposition,can_351a508d60285d88af2c83f2ec1a3790,local-guides-backlog-2026-10-30
 disposition,can_3549dbabc8b35ca1ad486dab2c2e4947,federal-provincial-holds-2026-11-01,person_specific_source,rationale
 disposition,can_3554de736ce75ac09a7be824cc24556e,results-2026-proposals-2026-10-30,person_specific_source,rationale
 disposition,can_355e8a0ee2ac5138a3286911be91981e,local-guides-backlog-2026-10-30,person_specific_source,rationale
-disposition,can_359e7578304a59aabe34e1b7f5b69aa8,independent-adjudication-bucket-0,structural,rationale
 disposition,can_35a78d4822255074adb204042a1afc30,dual-blind-adjudication-2000-trustees-2026-10-29,structural,docs/research/pre2003-trustee-2000-identity-review-2026-10-29.md
 disposition,can_35a86ab68a975f4d8140100d00429e4d,dual-blind-adjudication-pre2003-municipal-2026-10-29,person_specific_source,docs/research/pre2003-municipal-identity-review-2026-10-29.md
 disposition,can_35cd7fdef9185f108c07669c0c02a3f4,results-2026-proposals-2026-10-30,person_specific_source,rationale
@@ -861,7 +867,6 @@ disposition,can_3efad6239bf45d15a79535b826b7b71d,federal-provincial-holds-2026-1
 disposition,can_3f041a740ae05fb384079a958463f2d3,primary-reviewer-1994-1997-trustees-2026-10-29,official_record,docs/research/school-boards-1994-1997-2026-10-29.md
 disposition,can_3f1c3b5d51d05cfea72ce24bd4801b0a,dual-blind-adjudication-pre2003-municipal-2026-10-29,person_specific_source,docs/research/pre2003-municipal-identity-review-2026-10-29.md
 disposition,can_3f4c0c016a4c557caa57128cdaa33f45,results-2026-proposals-2026-10-30,person_specific_source,rationale
-disposition,can_3f6d624758675c29b551058a89e67ffc,independent-adjudication-bucket-0,structural,rationale
 disposition,can_3f7377dd408056238b9d0ddae492b23f,federal-provincial-holds-2026-11-01,person_specific_source,rationale
 disposition,can_3f8334c01b9559de9ac5d907d6695463,dual-blind-adjudication-pre2003-municipal-2026-10-29,person_specific_source,docs/research/pre2003-municipal-identity-review-2026-10-29.md
 disposition,can_40478ba79e9f575db3d3a873656c600c,independent-adjudication-bucket-1,structural,rationale

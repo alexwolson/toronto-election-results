@@ -23,3 +23,6 @@ joined, and all four stay separate Persons.
 The screen cannot find a change that also moved the candidate to another office or district, or a
 first name that changed as well. The ProQuest search of the Toronto Star that the earlier reviews
 used for the hardest same-name groups was not repeated here.
+A later search of ProQuest ([`star-pass-2026-11-07.md`](star-pass-2026-11-07.md)) read the Star's
+2003 council guide for the Ward 26 and Ward 20 pairs and found only platforms; it did not search
+the other two.

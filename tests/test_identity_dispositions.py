@@ -589,7 +589,16 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     actual = active_claims.loc[expected_status.index]
     assert actual.index.is_unique
     assert actual["link_status"].to_dict() == expected_status.to_dict()
-    expected_people = decisions.set_index("candidacy_id")["target_person_id"]
+    # A review that named a Person later merged into another applies to the merged Person.
+    people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string")
+    redirects = people.dropna(subset=["redirect_to_person_id"]).set_index("person_id")[
+        "redirect_to_person_id"
+    ]
+    expected_people = (
+        decisions.set_index("candidacy_id")["target_person_id"]
+        .map(lambda person_id: redirects.get(person_id, person_id))
+        .astype("string")
+    )
     assert actual["person_id"].to_dict() == expected_people.to_dict()
 
     confirmed = expected_status.index[expected_status.eq("confirmed")]
@@ -892,17 +901,17 @@ def test_variant_name_merges_join_split_careers():
     for person_id, candidacy_ids in careers.items():
         assert confirmed.loc[candidacy_ids, "person_id"].eq(person_id).all(), person_id
         assert people.loc[person_id, "identity_status"] == "active"
-    # Not established, so left as it was: Elizabeth Moyer's 2006 council run. (The 2000 and
-    # 2003 André Duclos records were joined later from the Star's 2003 profile; see
-    # test_star_profiles_settle_backlog_runs. Kritsonis's 2003 provincial run was joined by
-    # the same-name review under the rule for runs at both levels in one riding.)
-    for person_id in (
-        "per_f285f0621dbe566cadb4c7cee0d4a752",
-        "per_01d27f754bc75218aa848e00887a9d36",
-    ):
-        assert people.loc[person_id, "identity_status"] == "active"
+    # Not established here, so left as it was. (The 2000 and 2003 André Duclos records were
+    # joined later from the Star's 2003 profile; see test_star_profiles_settle_backlog_runs.
+    # Kritsonis's 2003 provincial run was joined by the same-name review under the rule for
+    # runs at both levels in one riding. Elizabeth Moyer's 2006 council run was joined to the
+    # trustee by the Star pass of November 2026, from the Star's story on the Ward 35 race.)
+    assert people.loc["per_01d27f754bc75218aa848e00887a9d36", "identity_status"] == "active"
+    assert people.loc["per_f285f0621dbe566cadb4c7cee0d4a752", "redirect_to_person_id"] == (
+        "per_526d2746efd55198a90b1e6c06dbc83c"
+    )
     assert confirmed.loc["can_2293417524625b80b2790e8b10c7ee9b", "person_id"] == (
-        "per_f285f0621dbe566cadb4c7cee0d4a752"
+        "per_526d2746efd55198a90b1e6c06dbc83c"
     )
 
 

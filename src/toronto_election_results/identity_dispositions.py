@@ -92,6 +92,16 @@ def _evidence(row: pd.Series) -> str:
     )
 
 
+def _follow_redirects(person_id: str, redirects: dict[str, str]) -> str:
+    seen = {person_id}
+    while person_id in redirects:
+        person_id = redirects[person_id]
+        if person_id in seen:
+            raise ValueError(f"Person redirects form a cycle at {person_id!r}")
+        seen.add(person_id)
+    return person_id
+
+
 def apply_identity_review_decisions(
     people: pd.DataFrame,
     candidacy_person_links: pd.DataFrame,
@@ -115,11 +125,19 @@ def apply_identity_review_decisions(
         raise ValueError("release_id cannot be blank")
 
     active_people = set(people.loc[people["identity_status"].eq("active"), "person_id"].astype(str))
+    redirects = {
+        str(person_id): str(target)
+        for person_id, target in zip(
+            people["person_id"], people["redirect_to_person_id"], strict=True
+        )
+        if pd.notna(target)
+    }
     out = candidacy_person_links.copy()
     new_rows: list[dict[str, object]] = []
     for _, row in decisions.sort_values("candidacy_id", kind="stable").iterrows():
         candidacy_id = str(row["candidacy_id"])
-        target_person_id = str(row["target_person_id"])
+        # A review that named a Person later merged into another applies to the merged Person.
+        target_person_id = _follow_redirects(str(row["target_person_id"]), redirects)
         decision = str(row["decision"])
         reviewer = str(row["reviewer"]).strip()
         confidence = str(row["confidence"]).strip()
