@@ -49,6 +49,16 @@ authority's results. Cynthia Lai, a council candidate in Ward 23 Scarborough Nor
 three days before polling; the City did not count votes cast for her and its results list only the
 other three candidates, so she has no Candidacy in that Contest.
 
+One Contest reaches beyond the City. Conseil scolaire Viamonde's 1997 Region 1B also took in
+Markham, Richmond Hill, Vaughan, King and Whitchurch-Stouffville; its trustee, Evelyne Chelli, was
+acclaimed, and the Contest is included as the City reported it. The other French-language trustee
+areas lie within today's City. In 1994 and 1997 each was a group of the former municipalities. From
+2000 the City's wards for Viamonde and MonAvenir divide the City between them: in 2000 each board's
+wards took in all 1,992 of the City's polls, and from 2003 the City's files assign every council
+ward to exactly one of them (`data/reference/trustee_ward_crosswalks.csv`). The federal and Ontario
+Contests are those of the ridings the representation orders draw within the City (Metropolitan
+Toronto before 1998). The build records no Contest left out for crossing the City's boundary.
+
 The release contains 8,099 Candidacies, 1,385 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
