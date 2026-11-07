@@ -49,6 +49,16 @@ authority's results. Cynthia Lai, a council candidate in Ward 23 Scarborough Nor
 three days before polling; the City did not count votes cast for her and its results list only the
 other three candidates, so she has no Candidacy in that Contest.
 
+One Contest reaches beyond the City. Conseil scolaire Viamonde's 1997 Region 1B also took in
+Markham, Richmond Hill, Vaughan, King and Whitchurch-Stouffville; its trustee, Evelyne Chelli, was
+acclaimed, and the Contest is included as the City reported it. The other French-language trustee
+areas lie within today's City. In 1994 and 1997 each was a group of the former municipalities. From
+2000 the City's wards for Viamonde and MonAvenir divide the City between them: in 2000 each board's
+wards took in all 1,992 of the City's polls, and from 2003 the City's files assign every council
+ward to exactly one of them (`data/reference/trustee_ward_crosswalks.csv`). The federal and Ontario
+Contests are those of the ridings the representation orders draw within the City (Metropolitan
+Toronto before 1998). The build records no Contest left out for crossing the City's boundary.
+
 The release contains 8,099 Candidacies, 1,385 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
 Evidence-backed Endorsement companion tables cover Mayor and City
@@ -256,6 +266,21 @@ entity's alias. Core fields are `endorser_id`, `canonical_name`, `endorser_type`
 fields record why and when an Endorser belongs in the systematic panel. Every approved panel
 Endorser applies to both Mayor and City Councillor Contests; that scope flag neither creates an
 Endorsement nor claims that a specific Contest was searched.
+
+The project owner approved the panel on 21 August 2026 from the evidence in
+`docs/research/toronto-2026-endorser-panel-evidence-matrix-2026-08-21.md`, and it has not changed
+since. An organization or editorial board is on it if, before polls closed on 26 June 2023, it
+publicly endorsed or selected a certified candidate in that year's mayoral by-election, and it also
+has one of the following: a Toronto-wide newspaper editorial board's practice of municipal
+endorsements, a formal slate across two or more Toronto mayor or council Contests at one election,
+Toronto mayoral endorsements at two or more elections, or a reason recorded for it by name. Six
+organizations qualify; Progress Toronto, which selects candidates as "champions" rather than
+endorsing them, is the one included by name. They are covered from 2003, Progress Toronto from
+2018. The three people on the panel are the amalgamated City's mayors who were living on 20 August
+2026, David Miller, John Tory and Olivia Chow, each from the start of their first term as mayor.
+The searches behind `endorsement_coverage` were made from 21 to 23 August 2026. The only later
+addition is Progress Toronto's first six 2026 council endorsements, on 26 September 2026, so the
+2026 election is covered only as of those dates.
 
 ### `endorsement_assertions`
 
