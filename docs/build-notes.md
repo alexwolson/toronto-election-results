@@ -68,7 +68,7 @@ validity and City containment.
 The main modules are the source adapters (`municipal`, `municipal_archive`, `trustees`, `federal`,
 `federal_historical`, `ontario` and `pending_candidates`), `schema`, `candidacy_ledger`,
 `identity_review`, `identity_curations`, `identity_dispositions`, `municipal_rosters`,
-`reported_incumbency`, `predecessor_incumbency`, `district_geometry`, `release`,
+`council_tenures`, `reported_incumbency`, `predecessor_incumbency`, `district_geometry`, `release`,
 `release_validation`, `build_manifest` and `pipeline`.
 
 ## Identity
@@ -138,7 +138,12 @@ The Council roster step matches each roster member to a Candidacy by exact name.
 Candidacy matches is a councillor appointed to fill a vacancy whose other races are in the
 release, or a member whom the City's attendance and voting records list under another form of
 their name, such as A.A. Heaps for Adrian Heaps. The identity assertion for each of these people
-names the roster entry, so the tenure belongs to their Person.
+names the roster entry, so the tenure belongs to their Person. Once every Candidacy has its
+Person, the build dates each roster row from the Person's latest Council win in the term, or, for
+the 17 members Council appointed to fill a vacancy, from the appointment in
+`data/reference/council_appointments.csv`. Dating from an exact-name win alone missed wins printed
+under another form of the name and could reach back past the term: Joe Mihevc's 2014 win in Ward
+21 had dated the Ward 10 seat Council appointed him to in 2022.
 
 The roster for the November 13, 2000 general election is `data/reference/council_roster_2000.csv`.
 It lists the mayor and the 57 councillors in office that day: the certified 1997 winners, the 1998

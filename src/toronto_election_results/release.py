@@ -10,6 +10,11 @@ from pathlib import Path
 import pandas as pd
 
 from .candidacy_ledger import CandidacyLedgerAssignment, assign_candidacy_ids
+from .council_tenures import (
+    COUNCIL_APPOINTMENTS_FILENAME,
+    date_council_rosters,
+    read_council_appointments,
+)
 from .endorsements import EndorsementTables, validate_endorsement_tables
 from .federal_rosters import federal_roster_evidence, read_house_members
 from .identity import attach_confirmed_people, derive_incumbency
@@ -466,10 +471,20 @@ def assemble_bootstrapped_release(
         linked,
         read_predecessor_rosters(municipal_reference) if municipal_reference is not None else None,
     )
+    council_appointments = (
+        read_council_appointments(municipal_reference / COUNCIL_APPOINTMENTS_FILENAME)
+        if municipal_reference is not None
+        else None
+    )
+    council_tenures = (
+        date_council_rosters(municipal_evidence.office_tenures, linked, council_appointments)
+        if council_appointments is not None
+        else municipal_evidence.office_tenures
+    )
     office_tenures = assign_tenure_spells(
         pd.concat(
             [
-                municipal_evidence.office_tenures,
+                council_tenures,
                 federal.office_tenures,
                 reported.office_tenures,
                 predecessor.office_tenures,
