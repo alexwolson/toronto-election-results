@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 from datetime import UTC, datetime
@@ -66,7 +67,13 @@ def sha256_file(path: str | Path) -> str:
     return digest.hexdigest()
 
 
-def _file_record(path: Path, *, rows: int | None = None, timestamp_field: str) -> dict[str, object]:
+def _file_record(
+    path: Path,
+    *,
+    rows: int | None = None,
+    timestamp_field: str,
+    source_url: str | None = None,
+) -> dict[str, object]:
     record: dict[str, object] = {
         "local_path": path.as_posix(),
         "bytes": path.stat().st_size,
@@ -77,7 +84,26 @@ def _file_record(path: Path, *, rows: int | None = None, timestamp_field: str) -
     }
     if rows is not None:
         record["rows"] = rows
+    if source_url is not None:
+        record["source_url"] = source_url
     return record
+
+
+RAW_SOURCE_URLS_FILENAME = "raw_source_urls.csv"
+
+
+def read_raw_source_urls(path: str | Path) -> dict[str, str]:
+    """Read the published URL of each downloaded source file, keyed by its local path."""
+
+    path = Path(path)
+    if not path.is_file():
+        return {}
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    urls = {row["local_path"]: row["source_url"] for row in rows}
+    if len(urls) != len(rows) or not all(urls.values()):
+        raise ValueError(f"{path.name} must give one URL for each local path")
+    return urls
 
 
 def build_manifest(
@@ -86,6 +112,7 @@ def build_manifest(
     artifacts: list[str | Path],
     row_counts: dict[str, int],
     generated_at: str,
+    source_urls: dict[str, str] | None = None,
 ) -> dict[str, object]:
     """Build JSON-serializable release metadata from concrete local files."""
 
@@ -114,7 +141,14 @@ def build_manifest(
         "schema_version": "2.2.0",
         "generated_at": generated_at,
         "coverage": coverage,
-        "sources": [_file_record(path, timestamp_field="retrieved_at") for path in source_paths],
+        "sources": [
+            _file_record(
+                path,
+                timestamp_field="retrieved_at",
+                source_url=(source_urls or {}).get(path.as_posix()),
+            )
+            for path in source_paths
+        ],
         "artifacts": [
             _file_record(path, rows=row_counts.get(path.name), timestamp_field="written_at")
             for path in artifact_paths

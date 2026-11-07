@@ -776,10 +776,13 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://www.toronto.ca/legdocs/1999/agendas/council/cc/cc991123/pof10rpt/cl006.pdf",
             "https://results.elections.on.ca/",
+            "https://en.wikipedia.org/wiki/Brad_Duguid",
         ),
         rationale=(
-            "Official City minutes identify Councillor Brad Duguid and Elections "
-            "Ontario records enumerate his subsequent provincial candidacies."
+            "Brad Duguid's Wikipedia biography says he was elected to Scarborough council in "
+            "1994 and to the amalgamated council in 1997 and 2000, and that he was MPP for "
+            "Scarborough Centre from 2003 to 2018. Official City minutes identify Councillor "
+            "Brad Duguid, and Elections Ontario's records give the provincial runs."
         ),
     ),
     CuratedIdentityAssertion(
@@ -877,10 +880,13 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://www.toronto.ca/legdocs/2003/minutes/council/cc030722.pdf",
             "https://results.elections.on.ca/",
+            "https://en.wikipedia.org/wiki/Irene_Jones",
         ),
         rationale=(
-            "Official 2003 Council minutes identify Councillor Irene Jones and the "
-            "official provincial result records her Etobicoke-Lakeshore candidacy."
+            "Irene Jones's Wikipedia biography says she sat on the Etobicoke and Toronto "
+            "councils from 1988 until 2003 and ran for the NDP in Etobicoke—Lakeshore in the "
+            "2003 provincial election, finishing third. Official 2003 Council minutes identify "
+            "Councillor Irene Jones."
         ),
     ),
     CuratedIdentityAssertion(
@@ -1060,10 +1066,14 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             "https://www.toronto.ca/legdocs/2001/minutes/council/cc010530.pdf",
             "https://results.elections.on.ca/",
             "https://open.toronto.ca/dataset/election-results/",
+            "https://en.wikipedia.org/wiki/Lorenzo_Berardinetti",
         ),
         rationale=(
-            "Official City minutes identify Councillor Lorenzo Berardinetti; official "
-            "provincial and City results enumerate the later candidacies."
+            "Lorenzo Berardinetti's Wikipedia biography says he sat on Scarborough council from "
+            "1988 to 1996 and on the amalgamated council from 1997 to 2003, was MPP for "
+            "Scarborough Southwest from 2003 until he lost the seat in 2018, and ran for council "
+            "in Ward 20 Scarborough Southwest in 2022, finishing fourth. Official City minutes "
+            "identify Councillor Lorenzo Berardinetti."
         ),
     ),
     CuratedIdentityAssertion(
@@ -2086,10 +2096,13 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://open.toronto.ca/dataset/election-results/",
             "https://results.elections.on.ca/",
+            "https://en.wikipedia.org/wiki/Gary_Crawford_(politician)",
         ),
         rationale=(
-            "Official City and Ontario results enumerate Gary Crawford's distinctive "
-            "Scarborough trustee, councillor, and provincial candidacies."
+            "Gary Crawford's Wikipedia biography says he was the TDSB trustee for Scarborough "
+            "Southwest from 2003 to 2010, ran for the Progressive Conservatives in the 2007 "
+            "provincial election, was elected to council in 2010, and resigned in 2023 to run "
+            "for the party in the Scarborough—Guildwood by-election."
         ),
     ),
     CuratedIdentityAssertion(
@@ -2145,10 +2158,13 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://www.toronto.ca/city-government/council/members-of-council/councillor-ward-4/",
             "https://www.elections.ca/content.aspx?section=ele&dir=pas&document=index&lang=e",
+            "https://en.wikipedia.org/wiki/Gord_Perks",
         ),
         rationale=(
-            "Official federal results and the City profile enumerate Gord Perks's "
-            "2006 federal candidacy and Council service beginning later that year."
+            "Gord Perks's Wikipedia biography says he was the NDP candidate in Davenport in the "
+            "2006 federal election, won a council seat a few months later in the 2006 "
+            "municipal election, and was re-elected through 2022. The City's councillor page "
+            "and Elections Canada's records give the runs."
         ),
     ),
     CuratedIdentityAssertion(
@@ -2295,10 +2311,12 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             "https://www.elections.ca/content.aspx?section=ele&dir=pas&document=index&lang=e",
             "https://www.toronto.ca/legdocs/mmis/2020/ra/comm/communicationfile-101734.pdf",
             "https://open.toronto.ca/dataset/election-results/",
+            "https://en.wikipedia.org/wiki/Joe_Cressy",
         ),
         rationale=(
-            "Official federal results and City records enumerate Joe Cressy's 2014 "
-            "federal by-election followed by his two Council candidacies."
+            "Joe Cressy's Wikipedia biography says he ran for the NDP in the June 2014 "
+            "Trinity—Spadina federal by-election, placing second, and was elected to council "
+            "in Ward 20 Trinity—Spadina in 2014 and in Ward 10 Spadina—Fort York in 2018."
         ),
     ),
     CuratedIdentityAssertion(
@@ -3311,10 +3329,15 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                 ),
             )
         ),
-        evidence_urls=("https://open.toronto.ca/dataset/election-results/",),
+        evidence_urls=(
+            "https://open.toronto.ca/dataset/election-results/",
+            "https://en.wikipedia.org/wiki/Mike_Del_Grande",
+        ),
         rationale=(
-            "Official City Clerk results enumerate Mike Del Grande's three Council and "
-            "three Catholic school-board victories in adjacent Scarborough districts."
+            "Mike Del Grande's Wikipedia biography says he was first elected a separate school "
+            "trustee in 1994, represented Ward 39 Scarborough—Agincourt on council from 2003 "
+            "to 2014 after winning in 2003 and again in 2006 and 2010, and has represented "
+            "TCDSB Ward 7 since 2014."
         ),
     ),
     CuratedIdentityAssertion(
@@ -3609,10 +3632,12 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://open.toronto.ca/dataset/election-results/",
             "https://www.toronto.ca/wp-content/uploads/2023/06/8eef-Declaration-of-Results-for-the-2023-Toronto-By-Election-for-Mayor-Final.pdf",
+            "https://en.wikipedia.org/wiki/Ana_Bail%C3%A3o",
         ),
         rationale=(
-            "Official Clerk records enumerate Ana Bailão's Council career and 2023 "
-            "mayoral candidacy despite the 2003 source omitting her accent."
+            "Ana Bailão's Wikipedia biography says she placed second to Adam Giambrone in 2003, "
+            "won Ward 18 in 2010, was re-elected in 2014 and in Ward 9 Davenport in 2018, and "
+            "was runner-up in the 2023 mayoral by-election. The 2003 record omits her accent."
         ),
     ),
     CuratedIdentityAssertion(
@@ -3744,13 +3769,6 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
                     "ERWIN SNIEDZINS",
                 ),
                 (
-                    "can_82d24823c9fb587586157f07a784f565",
-                    "evt_54673fd104ab5ef08eb865e162ac040c",
-                    "toronto_city_council",
-                    "mayor",
-                    "Erwin Sniedzins",
-                ),
-                (
                     "can_6ea1dce4d8445facbf414b2804469c32",
                     "on-2022-general",
                     "ontario_legislative_assembly",
@@ -3770,10 +3788,14 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             "https://results.elections.on.ca/api/report-groups/2/report-outputs/488/csv",
             "https://results.elections.on.ca/api/report-groups/45/report-outputs/1050/csv",
             "https://www.toronto.ca/wp-content/uploads/2023/06/8eef-Declaration-of-Results-for-the-2023-Toronto-By-Election-for-Mayor-Final.pdf",
+            "https://en.wikipedia.org/wiki/2023_Toronto_mayoral_by-election",
         ),
         rationale=(
-            "Official Ontario and Toronto Clerk records enumerate the distinctive Erwin "
-            "Sniedzins candidacies with one source adding a middle initial."
+            "Wikipedia's page on the 2023 mayoral by-election says the candidate Erwin "
+            "Sniedzins ran as an independent in Eglinton—Lawrence in 2014 and for the New Blue "
+            "Party in 2022, which are the two provincial runs here; the 2022 record adds a "
+            "middle initial. No source found ties his 2014 mayoral run to these, and it is "
+            "not joined."
         ),
     ),
     CuratedIdentityAssertion(
@@ -3826,10 +3848,12 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://results.elections.on.ca/",
             "https://www.toronto.ca/wp-content/uploads/2023/06/8eef-Declaration-of-Results-for-the-2023-Toronto-By-Election-for-Mayor-Final.pdf",
+            "https://en.wikipedia.org/wiki/Mark_Saunders_(police_officer)",
         ),
         rationale=(
-            "The official Ontario and Toronto results enumerate former Toronto Police "
-            "Chief Mark Saunders in the 2022 Don Valley West and 2023 mayoral contests."
+            "Mark Saunders's Wikipedia biography says the former Toronto police chief was the "
+            "Progressive Conservative candidate in Don Valley West in the 2022 provincial "
+            "election and came third in the 2023 mayoral by-election."
         ),
     ),
     CuratedIdentityAssertion(
@@ -3848,10 +3872,12 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
         evidence_urls=(
             "https://www.toronto.ca/city-government/elections/election-results-reports/election-results/general-election-results/",
             "https://www.toronto.ca/wp-content/uploads/2023/06/8eef-Declaration-of-Results-for-the-2023-Toronto-By-Election-for-Mayor-Final.pdf",
+            "https://en.wikipedia.org/wiki/Giorgio_Mammoliti",
         ),
         rationale=(
-            "The Clerk's official results enumerate the distinctive Giorgio Mammoliti "
-            "council career and his 2023 mayoral candidacy."
+            "Giorgio Mammoliti's Wikipedia biography says he represented Ward 7 York West on "
+            "council from 2000 to 2018 and entered the 2023 mayoral by-election, later "
+            "suspending his campaign."
         ),
     ),
     CuratedIdentityAssertion(
@@ -3888,10 +3914,12 @@ DEFAULT_IDENTITY_ASSERTIONS: tuple[CuratedIdentityAssertion, ...] = (
             "https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/pollresults_resultatsbureau35.zip",
             "https://www.toronto.ca/city-government/elections/election-results-reports/election-results/general-election-results/",
             "https://www.toronto.ca/wp-content/uploads/2023/06/8eef-Declaration-of-Results-for-the-2023-Toronto-By-Election-for-Mayor-Final.pdf",
+            "https://en.wikipedia.org/wiki/2023_Toronto_mayoral_by-election",
         ),
         rationale=(
-            "Elections Canada and the Toronto Clerk enumerate the distinctive Sarah "
-            "Climenhaga candidacies in 2018, 2019, 2022, and 2023."
+            "Wikipedia's page on the 2023 mayoral by-election says the candidate Sarah "
+            "Climenhaga came sixth in the 2018 and fifth in the 2022 mayoral elections and was "
+            "the Green Party of Canada's 2019 candidate in Toronto—St. Paul's."
         ),
     ),
     CuratedIdentityAssertion(
@@ -4357,22 +4385,6 @@ DEFAULT_IDENTITY_ASSERTIONS += (
                 "can_465970bcaa3a54069be92ec8f08c0d6c",
                 "evt_a52ef78967f05336bdb5d591fd50f122",
                 "Adam Smith",
-            ),
-        ),
-        ("https://www.toronto.ca/city-government/elections/election-results-reports/"),
-        "Independent same-body/same-office/exact-district/party adjudication for the selected municipal occurrences, with no collision against the active Person registry.",
-    ),
-    _anchored_same_office_continuity_assertion(
-        "bob-smith-municipal-exact-scope",
-        "Bob Smith",
-        "per_17e2dabefe625e00b96160e3d410944a",
-        "toronto_city_council",
-        "councillor",
-        (
-            (
-                "can_48932970021a5fc68e44c30c115d9899",
-                "evt_54673fd104ab5ef08eb865e162ac040c",
-                "Bob Smith",
             ),
         ),
         ("https://www.toronto.ca/city-government/elections/election-results-reports/"),
@@ -4871,8 +4883,14 @@ DEFAULT_IDENTITY_ASSERTIONS += (
                 "John Papadakis",
             ),
         ),
-        ("https://www.toronto.ca/city-government/elections/election-results-reports/"),
-        "Independent same-body/same-office/exact-district/party adjudication for the selected municipal occurrences, with no collision against the active Person registry.",
+        (
+            "https://www.toronto.ca/city-government/elections/election-results-reports/",
+            "https://torontoobserver.ca/2014/10/27/papadakis-comeback-bid-fizzles/",
+        ),
+        "The Toronto Observer's report of 27 October 2014 describes the Ward 29 candidate John "
+        "Papadakis as the former East York councillor who served one term about twenty years "
+        "earlier, which ties this run to the Person holding his East York council runs and his "
+        "2003 Ward 29 run.",
     ),
     _anchored_same_office_continuity_assertion(
         "david-vallance-municipal-exact-scope",
@@ -5444,23 +5462,6 @@ DEFAULT_IDENTITY_ASSERTIONS += (
             "https://results.elections.on.ca/api/report-groups/1/report-outputs/932/csv",
             "https://results.elections.on.ca/api/report-groups/1/report-outputs/925/csv",
             "https://results.elections.on.ca/api/report-groups/1/report-outputs/930/csv",
-            "https://results.elections.on.ca/api/report-groups/45/report-outputs/1050/csv",
-            "https://results.elections.on.ca/api/report-groups/45/report-outputs/1043/csv",
-            "https://results.elections.on.ca/api/report-groups/45/report-outputs/1048/csv",
-        ),
-        "Independent same-body/same-office/exact-district/party adjudication for the selected Ontario occurrences, with no collision against the active Person registry.",
-    ),
-    _anchored_same_office_continuity_assertion(
-        "lilya-eklishaeva-ontario-exact-scope",
-        "LILYA EKLISHAEVA",
-        "per_ec06fbec009b5f868a4e323c41260d1f",
-        "ontario_legislative_assembly",
-        "mpp",
-        (("can_2ae49e7f959058c49551e0f10a753c13", "on-2025-general", "LILYA EKLISHAEVA"),),
-        (
-            "https://results.elections.on.ca/api/report-groups/48/report-outputs/1096/csv",
-            "https://results.elections.on.ca/api/report-groups/48/report-outputs/1089/csv",
-            "https://results.elections.on.ca/api/report-groups/48/report-outputs/1094/csv",
             "https://results.elections.on.ca/api/report-groups/45/report-outputs/1050/csv",
             "https://results.elections.on.ca/api/report-groups/45/report-outputs/1043/csv",
             "https://results.elections.on.ca/api/report-groups/45/report-outputs/1048/csv",
@@ -9232,15 +9233,14 @@ DEFAULT_IDENTITY_ASSERTIONS += (
         "per_8da31055b44052e1a7a0c99b3ec529d6",
         "canada_house_of_commons",
         "mp",
-        (
-            ("can_a0e3e8ab5f135e219e2a765edcc7335c", "ec-ge-39", "George Szebik"),
-            ("can_e4c1a405feb851dba9465e1ffb1ef677", "ec-ge-42", "George Szebik"),
-        ),
+        (("can_a0e3e8ab5f135e219e2a765edcc7335c", "ec-ge-39", "George Szebik"),),
         (
             "https://www.elections.ca/Scripts/OVR2006/25/data_donnees/pollresults_resultatsbureau35.zip",
-            "https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/pollresults_resultatsbureau35.zip",
         ),
-        "Elections Canada's official records preserve Szebik's name and distinctive candidacy attributes across the selected federal occurrences and existing anchor.",
+        "Elections Canada's results give George Szebik without a party in Etobicoke North in "
+        "2004 and 2006, consecutive general elections, under an uncommon name, so same-office "
+        "continuity applies. His 2015 run there came two general elections later and is not "
+        "joined.",
     ),
     _anchored_same_office_continuity_assertion(
         "king-kim-tdsb-continuity",
@@ -15944,6 +15944,33 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
         "the profile shows that Person is the same man, so that reason no longer applies. The 1994 "
         "Toronto Board of Education Ward 11 run, the 2003 mayoral run and the 2006 mayoral run are "
         "joined as one Person.",
+    ),
+)
+
+# Found when Ontario incumbency moved to the Legislative Assembly's records: Elections Ontario's
+# tabulation printed the 2026 by-election winner as SHABAN, FATIMA, which hid her federal runs.
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    _record_merge(
+        "fatima-shaban-2025-2026",
+        "Fatima Shaban",
+        "per_baea45166fb358f39552b7d1dccd9e1b",
+        (
+            (
+                "can_9091cd01497e53e78b1df088a8fdbd1d",
+                "on-2026-09-03-by-098",
+                "ontario_legislative_assembly",
+                "mpp",
+                "FATIMA SHABAN",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/2026_Scarborough_Southwest_provincial_by-election",),
+        "Wikipedia's page on the 2026 Scarborough Southwest provincial by-election says the NDP's "
+        "Fatima Shaban, who won it with 8,914 votes, was the New Democratic Party candidate in "
+        "Scarborough Southwest in the 2025 federal election and again in the 2026 federal "
+        "by-election. The release's run of the provincial by-election, 8,914 votes for the "
+        "Ontario NDP, is that win. The Person who holds her 2025 and April 2026 federal NDP runs in "
+        "Scarborough Southwest is the candidate the page describes, so the provincial run is "
+        "joined to that Person.",
     ),
 )
 

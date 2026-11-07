@@ -10,8 +10,13 @@ from pathlib import Path
 import pandas as pd
 
 from .candidacy_ledger import CandidacyLedgerAssignment, assign_candidacy_ids
+from .council_tenures import (
+    COUNCIL_APPOINTMENTS_FILENAME,
+    date_council_rosters,
+    read_council_appointments,
+)
 from .endorsements import EndorsementTables, validate_endorsement_tables
-from .federal_rosters import build_federal_roster_evidence
+from .federal_rosters import federal_roster_evidence, read_house_members
 from .identity import attach_confirmed_people, derive_incumbency
 from .identity_curations import (
     CuratedIdentityAssertion,
@@ -26,7 +31,12 @@ from .identity_review import (
     extend_identity_review,
 )
 from .municipal_rosters import build_municipal_roster_evidence
-from .predecessor_incumbency import derive_predecessor_incumbency
+from .ontario_rosters import ontario_roster_evidence, read_ontario_members
+from .predecessor_incumbency import (
+    build_predecessor_roster_evidence,
+    derive_predecessor_incumbency,
+    read_predecessor_rosters,
+)
 from .release_validation import validate_release
 from .reported_incumbency import ReportedIncumbency, build_reported_incumbency
 from .schema import (
@@ -38,6 +48,7 @@ from .schema import (
     derive_result_metrics,
     normalize_adapter_frame,
 )
+from .tenure_spells import assign_tenure_spells
 from .trustee_incumbency import build_trustee_incumbency_evidence
 
 ELECTION_RESULT_COLUMNS = [
@@ -106,6 +117,7 @@ class ReleaseTables:
     endorsement_assertions: pd.DataFrame = field(default_factory=pd.DataFrame)
     endorsements: pd.DataFrame = field(default_factory=pd.DataFrame)
     endorsement_coverage: pd.DataFrame = field(default_factory=pd.DataFrame)
+    person_external_ids: pd.DataFrame = field(default_factory=pd.DataFrame)
 
 
 @dataclass(frozen=True)
@@ -246,6 +258,7 @@ def assemble_release(
     people: pd.DataFrame | None = None,
     candidacy_person_links: pd.DataFrame | None = None,
     office_tenures: pd.DataFrame | None = None,
+    complete_predecessor_rosters: frozenset[tuple[str, str]] = frozenset(),
     incumbency_rosters: pd.DataFrame | None = None,
 ) -> ReleaseTables:
     """Normalize adapters once and build every public relational table."""
@@ -307,7 +320,9 @@ def assemble_release(
     tenures = _normalize_tenure_dates(
         _empty_tenures() if office_tenures is None else office_tenures
     )
-    candidacies = derive_predecessor_incumbency(candidacies, tenures)
+    candidacies = derive_predecessor_incumbency(
+        candidacies, tenures, complete_rosters=complete_predecessor_rosters
+    )
     candidacies = candidacies.merge(
         parties[["party_id", "canonical_name"]].rename(columns={"canonical_name": "party_name"}),
         on="party_id",
@@ -446,25 +461,51 @@ def assemble_bootstrapped_release(
         if municipal_reference is not None
         else None
     )
-    reported = build_reported_incumbency(
-        linked.loc[linked["represented_body"].eq("ontario_legislative_assembly")].copy()
+    ontario_candidacies = linked.loc[
+        linked["represented_body"].eq("ontario_legislative_assembly")
+    ].copy()
+    reported = build_reported_incumbency(ontario_candidacies)
+    ontario = ontario_roster_evidence(
+        ontario_candidacies,
+        reported,
+        read_ontario_members(municipal_reference) if municipal_reference is not None else None,
     )
-    federal = build_federal_roster_evidence(linked)
-    office_tenures = pd.concat(
-        [
-            municipal_evidence.office_tenures,
-            federal.office_tenures,
-            reported.office_tenures,
-            *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
-        ],
-        ignore_index=True,
-        sort=False,
+    federal = federal_roster_evidence(
+        linked,
+        read_house_members(municipal_reference) if municipal_reference is not None else None,
+    )
+    predecessor = build_predecessor_roster_evidence(
+        linked,
+        read_predecessor_rosters(municipal_reference) if municipal_reference is not None else None,
+    )
+    council_appointments = (
+        read_council_appointments(municipal_reference / COUNCIL_APPOINTMENTS_FILENAME)
+        if municipal_reference is not None
+        else None
+    )
+    council_tenures = (
+        date_council_rosters(municipal_evidence.office_tenures, linked, council_appointments)
+        if council_appointments is not None
+        else municipal_evidence.office_tenures
+    )
+    office_tenures = assign_tenure_spells(
+        pd.concat(
+            [
+                council_tenures,
+                federal.office_tenures,
+                ontario.office_tenures,
+                predecessor.office_tenures,
+                *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
+            ],
+            ignore_index=True,
+            sort=False,
+        )
     )
     incumbency_rosters = pd.concat(
         [
             municipal_evidence.rosters,
             federal.rosters,
-            reported.rosters,
+            ontario.rosters,
             *([trustee_incumbency.rosters] if trustee_incumbency is not None else []),
         ],
         ignore_index=True,
@@ -476,6 +517,7 @@ def assemble_bootstrapped_release(
         people=review.people,
         candidacy_person_links=review.candidacy_person_links,
         office_tenures=office_tenures,
+        complete_predecessor_rosters=predecessor.complete_rosters,
         incumbency_rosters=incumbency_rosters,
     )
     return BootstrappedRelease(tables, review, reported, assignment.ledger)

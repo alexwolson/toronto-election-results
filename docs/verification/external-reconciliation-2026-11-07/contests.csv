@@ -1,0 +1,750 @@
+source,contest_id,election_date,district_name,release_candidacies,external_candidacies,status
+sevi_federal,con_f4e6a35a178b56679395d6d9259dace7,1993-10-25,Beaches—Woodbine,11,11,agrees
+sevi_federal,con_b15f97d8b48b58aa90465f7918fc6383,1993-10-25,Broadview—Greenwood,9,9,agrees
+sevi_federal,con_ea59252c3d055840bb7b8a4b000ab325,1993-10-25,Davenport,10,10,agrees
+sevi_federal,con_f1f6ebaae1585e4fb4bd861d284feaa3,1993-10-25,Don Valley East,9,9,agrees
+sevi_federal,con_da371c56d0fd5680955a42c7361fa717,1993-10-25,Don Valley North,6,6,agrees
+sevi_federal,con_21acb258264c5357ab08b4298bb33b4d,1993-10-25,Don Valley West,9,9,agrees
+sevi_federal,con_79514393dd0c5f4e9f6ae8e9c7248a3a,1993-10-25,Eglinton—Lawrence,7,7,agrees
+sevi_federal,con_a42437757d9e512eb22dcce04a7ef267,1993-10-25,Etobicoke Centre,9,9,agrees
+sevi_federal,con_7ec0391f64775e02a174f1d0370d2939,1993-10-25,Etobicoke—Lakeshore,9,9,agrees
+sevi_federal,con_0bf556f597fc59cdb5f60739514f8393,1993-10-25,Etobicoke North,9,9,agrees
+sevi_federal,con_f99b8f6ac4955e679d665b47e93a7203,1993-10-25,Parkdale—High Park,11,11,agrees
+sevi_federal,con_db4ae7e137425a9ea4b864c50d59c25e,1993-10-25,Rosedale,10,10,agrees
+sevi_federal,con_cc9635f1c6ea510185ebc5959aee68eb,1993-10-25,Scarborough—Agincourt,9,9,agrees
+sevi_federal,con_51e61b4bcb4f58b5b24fa3a254998775,1993-10-25,Scarborough Centre,10,10,agrees
+sevi_federal,con_f16d9c96b25d536e885c769d2ec76d3c,1993-10-25,Scarborough East,9,9,agrees
+sevi_federal,con_1f36fbbcf1b45ed18a8183b762aa2f89,1993-10-25,Scarborough—Rouge River,9,9,agrees
+sevi_federal,con_fb2abf372d3c5e46a74188c4de9bc174,1993-10-25,Scarborough West,8,8,agrees
+sevi_federal,con_85f8b4b1ccdc5ca0a712e049250e8a38,1993-10-25,St. Paul's,12,12,agrees
+sevi_federal,con_c4ca4e9e7cf6525b9756186bdd1e2f86,1993-10-25,Trinity—Spadina,10,10,agrees
+sevi_federal,con_5df975a75cd052a5970ec50ee213e564,1993-10-25,Willowdale,9,9,agrees
+sevi_federal,con_536652c7c0905e75be55687c13dc016c,1993-10-25,York Centre,11,11,agrees
+sevi_federal,con_72c86797071a5e2a8b07f89f393a0caa,1993-10-25,York South—Weston,11,11,agrees
+sevi_federal,con_0a0eede536a15067bdf594380e7e3e6a,1993-10-25,York West,7,7,agrees
+sevi_federal,con_95e9347b9e8b59b4a7ec41e02d07f432,1996-03-25,Etobicoke North,7,7,agrees
+sevi_federal,con_12953dff20ba5d4f8f46759948862e53,1997-06-02,Beaches—East York,6,6,agrees
+sevi_federal,con_1b38098278155c37ac8908f706d2ada1,1997-06-02,Broadview—Greenwood,8,8,agrees
+sevi_federal,con_57de306a58a2545085a87e57d4c98aa0,1997-06-02,Davenport,8,8,agrees
+sevi_federal,con_d957baf36da051df9a35295473abc7c7,1997-06-02,Don Valley East,7,7,agrees
+sevi_federal,con_da7ccb2f9b155617a8dd40c77cd95edc,1997-06-02,Don Valley West,7,7,agrees
+sevi_federal,con_8c51e13d6b4c5241805d480a4489b9f4,1997-06-02,Eglinton—Lawrence,5,5,agrees
+sevi_federal,con_270426f20b5f52679ae0b48ff901a0ea,1997-06-02,Etobicoke Centre,6,6,agrees
+sevi_federal,con_8fe95c453e265c84a20adac229178c4d,1997-06-02,Etobicoke—Lakeshore,8,8,agrees
+sevi_federal,con_e3ddc2dc793f5e39bea459d211b2b57a,1997-06-02,Etobicoke North,7,7,agrees
+sevi_federal,con_7ba04d007cce5586a1a90c2307b0e545,1997-06-02,Parkdale—High Park,8,8,agrees
+sevi_federal,con_b8f6f3f145b850afb7e0863dcdfd229c,1997-06-02,Scarborough—Agincourt,4,4,agrees
+sevi_federal,con_154fc42afa4f5b159cd54610baaf58f1,1997-06-02,Scarborough Centre,4,4,agrees
+sevi_federal,con_0d367c29f85755de890072c34ccda4d7,1997-06-02,Scarborough East,8,8,agrees
+sevi_federal,con_11d7ddd7e3e752829cde1c1ff91a2cdf,1997-06-02,Scarborough—Rouge River,6,6,agrees
+sevi_federal,con_2cfb8685a0e15b47838962c0fc86f737,1997-06-02,Scarborough Southwest,5,5,agrees
+sevi_federal,con_ab333aae70b252edaf64bad7172d7064,1997-06-02,St. Paul's,8,8,agrees
+sevi_federal,con_dde2e2469828596993e79df79e63ade4,1997-06-02,Toronto Centre—Rosedale,9,9,agrees
+sevi_federal,con_0cbdbfe6904c5ccfbedb934e7403bed3,1997-06-02,Trinity—Spadina,10,10,agrees
+sevi_federal,con_5543a6b5a287579db00d4da8e42f10d4,1997-06-02,Willowdale,6,6,agrees
+sevi_federal,con_8d6a7bc14477593b955fcc6e4ef7c92f,1997-06-02,York Centre,8,8,agrees
+sevi_federal,con_05bafde3304a5348962c55201402af12,1997-06-02,York South—Weston,8,8,agrees
+sevi_federal,con_4d0296496df7541195dd7effdfdfaea4,1997-06-02,York West,4,4,agrees
+sevi_federal,con_f493572f845b5c06aa35fdb3cbed4e47,1999-11-15,York West,6,6,agrees
+sevi_federal,con_8dcf2c98bfb15a859ad23ade37efa8d5,2000-11-27,Beaches—East York,10,10,agrees
+sevi_federal,con_3014090e26e05390a41113598ed1eed4,2000-11-27,Davenport,8,8,agrees
+sevi_federal,con_41b778cd85545f72813315c7ce165b9b,2000-11-27,Don Valley East,6,6,agrees
+sevi_federal,con_4bd1acb216d153029a5f2671d55e8039,2000-11-27,Don Valley West,6,6,agrees
+sevi_federal,con_9d07c09212a6526d8cf53a68d159de39,2000-11-27,Eglinton—Lawrence,7,7,agrees
+sevi_federal,con_2152abac7c1c54b6910a7a498d8082e3,2000-11-27,Etobicoke Centre,5,5,agrees
+sevi_federal,con_e67f4b904903572b976bdc150c029c58,2000-11-27,Etobicoke—Lakeshore,7,7,agrees
+sevi_federal,con_bc63b02e8af056ee9d85066c52a5357b,2000-11-27,Etobicoke North,4,4,agrees
+sevi_federal,con_726fe8d5c49e57d18697ad4f14f00996,2000-11-27,Parkdale—High Park,10,10,agrees
+sevi_federal,con_54d63cdfe84156bd9e3e121195164bbc,2000-11-27,Scarborough—Agincourt,6,6,agrees
+sevi_federal,con_bf1482db115f50a3ba592087ab8bad60,2000-11-27,Scarborough Centre,4,4,agrees
+sevi_federal,con_b72649162da45528835d1d468f88543a,2000-11-27,Scarborough East,6,6,agrees
+sevi_federal,con_b274fc9923525c2283f82d754c54a6ea,2000-11-27,Scarborough—Rouge River,4,4,agrees
+sevi_federal,con_bc314fabe49c51f2a677f561b7bfee1c,2000-11-27,Scarborough Southwest,6,6,agrees
+sevi_federal,con_4e9f2056b7dc528dabc94ccdc07211f3,2000-11-27,St. Paul's,9,9,agrees
+sevi_federal,con_3b791e19572b54a9b9aee006af7737e9,2000-11-27,Toronto Centre—Rosedale,9,9,agrees
+sevi_federal,con_c1865206809e5c1f95d6590b39e8ad3a,2000-11-27,Broadview—Greenwood,10,10,agrees
+sevi_federal,con_6a910455087d5de39d81bfb79d2da620,2000-11-27,Trinity—Spadina,9,9,agrees
+sevi_federal,con_3fddc3212b005c67b2e93874f833a155,2000-11-27,Willowdale,5,5,agrees
+sevi_federal,con_1c11f5cf35475572aee48573e4229a8e,2000-11-27,York Centre,7,7,agrees
+sevi_federal,con_e4e7f583943d5cd491162856ab01e705,2000-11-27,York South—Weston,8,8,differs
+sevi_federal,con_bc0e2f1163ff5defb178dee733706400,2000-11-27,York West,5,5,agrees
+sevi_federal,con_2981a9007fcc516aab8c58e1dfdf65ab,2004-06-28,Beaches—East York,8,8,agrees
+sevi_federal,con_a81d108376655351a688e97fe3e56656,2004-06-28,Davenport,8,8,agrees
+sevi_federal,con_09b64b9baf8357fcb8e79e6ca3b52442,2004-06-28,Don Valley East,6,6,agrees
+sevi_federal,con_dc37f26d33be518fb7c611bc3f681e8f,2004-06-28,Don Valley West,4,4,agrees
+sevi_federal,con_bea4e7787e7c51f5a41655515659d91b,2004-06-28,Eglinton—Lawrence,5,5,agrees
+sevi_federal,con_65556ca183015b839812c5f5fef9fa8f,2004-06-28,Etobicoke Centre,5,5,agrees
+sevi_federal,con_9ad5efd9c1ec5c8fb52ddb705968ada9,2004-06-28,Etobicoke—Lakeshore,5,5,agrees
+sevi_federal,con_1942bd7026e25eaa8f244ff8789d670b,2004-06-28,Etobicoke North,7,7,agrees
+sevi_federal,con_48ee5914c75c513292e797c6d2a5a78d,2004-06-28,Parkdale—High Park,6,6,agrees
+sevi_federal,con_2c43543429095f69b182d11e234b64f9,2004-06-28,Scarborough—Agincourt,5,5,agrees
+sevi_federal,con_7977133e6d165c31a6d1eca44f15df05,2004-06-28,Scarborough Centre,5,5,agrees
+sevi_federal,con_fc185e72a38d54d7ad73a4d7b0cbb72e,2004-06-28,Scarborough—Guildwood,5,5,agrees
+sevi_federal,con_29f6400415bf5c6c9114110a7a4fb6d6,2004-06-28,Scarborough—Rouge River,5,5,agrees
+sevi_federal,con_c377ca4004145d03ac8aceb5f640df9a,2004-06-28,Scarborough Southwest,5,5,agrees
+sevi_federal,con_0d7dc9aee2a85bc09356fe99c195fd47,2004-06-28,St. Paul's,4,4,agrees
+sevi_federal,con_2da6c2963598517ca243e165daed7d09,2004-06-28,Toronto Centre,8,8,agrees
+sevi_federal,con_d21af1ce0ec75df28b2f61761a439169,2004-06-28,Toronto—Danforth,6,6,agrees
+sevi_federal,con_7ba8bda5ddb959b1beab94afa5006710,2004-06-28,Trinity—Spadina,8,8,differs
+sevi_federal,con_cc860a1b7f1c59f1a485ec611266211c,2004-06-28,Willowdale,6,6,agrees
+sevi_federal,con_251dc69c9d6c51bba55b0d2d2574ae65,2004-06-28,York Centre,5,5,agrees
+sevi_federal,con_d3f761c215705b648200064fba9e72c2,2004-06-28,York South—Weston,5,5,agrees
+sevi_federal,con_59daed3930bd5249bcbc983096f5bf80,2004-06-28,York West,5,5,agrees
+sevi_federal,con_6f2ad82fa358597c9343e97858e01910,2006-01-23,Beaches—East York,6,6,agrees
+sevi_federal,con_8f52512d58ba5298a5ee80959531a82f,2006-01-23,Davenport,7,7,agrees
+sevi_federal,con_907a0019c7915d3fb3d206b706bb18cc,2006-01-23,Don Valley East,4,4,agrees
+sevi_federal,con_5c701c845ef156eb8f6ce9503d123d2d,2006-01-23,Don Valley West,6,6,agrees
+sevi_federal,con_5a9d639be1c65bf9a15ab1b6a6c4541c,2006-01-23,Eglinton—Lawrence,5,5,agrees
+sevi_federal,con_1f47681f9edf5604981c52e82efa7ced,2006-01-23,Etobicoke Centre,6,6,agrees
+sevi_federal,con_ae89345725fe5990963283c29203fc6e,2006-01-23,Etobicoke—Lakeshore,6,6,agrees
+sevi_federal,con_1068f2ffe18c5c52bc6a9b3bc022986d,2006-01-23,Etobicoke North,7,7,agrees
+sevi_federal,con_127ee751fc925bf3a03fd0e92e810bd7,2006-01-23,Parkdale—High Park,7,7,agrees
+sevi_federal,con_294a2112dee65f5589feafc9e3e305eb,2006-01-23,Scarborough—Agincourt,4,4,agrees
+sevi_federal,con_257ee3775cb858fdb59d067edbb3d657,2006-01-23,Scarborough Centre,4,4,agrees
+sevi_federal,con_30cd69f6b3a35f198537046e3e6222b6,2006-01-23,Scarborough—Guildwood,7,7,agrees
+sevi_federal,con_e59c7a0a82d054b594a5902a8ee3a232,2006-01-23,Scarborough—Rouge River,6,6,agrees
+sevi_federal,con_0746a86e7a42557cb5c0a7102b38cd7a,2006-01-23,Scarborough Southwest,6,6,agrees
+sevi_federal,con_2d23f5a2ba60592caa5e333834fdbe2f,2006-01-23,St. Paul's,4,4,agrees
+sevi_federal,con_7ed1f0e80e525c75b44de2099424d5bd,2006-01-23,Toronto Centre,8,8,agrees
+sevi_federal,con_01f61cda965950daa658759a5ab03681,2006-01-23,Toronto—Danforth,5,5,agrees
+sevi_federal,con_2b6a43d74dba566b976c67fc581d0e3b,2006-01-23,Trinity—Spadina,7,7,agrees
+sevi_federal,con_5eac27d221c75db2aa4916fdca01f6e4,2006-01-23,Willowdale,4,4,agrees
+sevi_federal,con_2ba43e2d8bb95ef7b53da3c5f0a5ede5,2006-01-23,York Centre,4,4,agrees
+sevi_federal,con_3381589d7f245f2491260ea657a5a918,2006-01-23,York South—Weston,5,5,agrees
+sevi_federal,con_2a51a4afa6a156ecb8383bc952ec7b4b,2006-01-23,York West,5,5,agrees
+sevi_federal,con_95081549ba29517fad54ee172059053d,2008-03-17,Toronto Centre,6,6,agrees
+sevi_federal,con_117fad6c51b2500fbb3b775a6256c2c4,2008-03-17,Willowdale,4,4,agrees
+sevi_federal,con_592c7067cad15b6c8b125c847d6b0b2c,2008-10-14,Beaches—East York,5,5,agrees
+sevi_federal,con_b7be06092218544bb95723e0da585cd4,2008-10-14,Davenport,8,8,agrees
+sevi_federal,con_af71770b89345b7fa37cb77aae096ff9,2008-10-14,Don Valley East,5,5,agrees
+sevi_federal,con_e0479857d17c5a6bb30a0907ccabf649,2008-10-14,Don Valley West,5,5,agrees
+sevi_federal,con_455a502533585eec80c4368c65d38083,2008-10-14,Eglinton—Lawrence,4,4,agrees
+sevi_federal,con_c292a03d52f35a95923d519d444bb508,2008-10-14,Etobicoke Centre,4,4,agrees
+sevi_federal,con_fac419bc9df4565989921c0dd76f424b,2008-10-14,Etobicoke—Lakeshore,5,5,agrees
+sevi_federal,con_afa3f56ee1485e4f93c2e17e37d26d3b,2008-10-14,Etobicoke North,5,5,agrees
+sevi_federal,con_b176ca26163456c0aadbccaab9558252,2008-10-14,Parkdale—High Park,7,7,agrees
+sevi_federal,con_5db8735332b3520e8d303e775fd1db51,2008-10-14,Scarborough—Agincourt,4,4,agrees
+sevi_federal,con_d0095b083f3059eab45503683377c688,2008-10-14,Scarborough Centre,4,4,agrees
+sevi_federal,con_65e73c416fb855f188181512c16304d0,2008-10-14,Scarborough—Guildwood,4,4,agrees
+sevi_federal,con_0e7ff85c50d8595db851f6364aded67e,2008-10-14,Scarborough—Rouge River,5,5,agrees
+sevi_federal,con_fa799df94dd75b299760509f18ee5d33,2008-10-14,Scarborough Southwest,5,5,agrees
+sevi_federal,con_29b2eac81a57517a955ab3488bc6928d,2008-10-14,St. Paul's,5,5,agrees
+sevi_federal,con_90683a7b85fc591c8c218383d25dd0a5,2008-10-14,Toronto Centre,8,8,agrees
+sevi_federal,con_c20867c592da5cf386d336f7d18e89d3,2008-10-14,Toronto—Danforth,8,8,agrees
+sevi_federal,con_0f7e855b63c957a7979549117cb4515a,2008-10-14,Trinity—Spadina,7,7,agrees
+sevi_federal,con_283e5bfeed72555cadf91f5c3cdcbe16,2008-10-14,Willowdale,6,6,agrees
+sevi_federal,con_d577cd29f1bf53fda6cfbd66d42c616c,2008-10-14,York Centre,4,4,agrees
+sevi_federal,con_0eb2046a06d95d99b299d1c60292d1a2,2008-10-14,York South—Weston,4,4,agrees
+sevi_federal,con_ab8661b11cf7541580240cf320a13414,2008-10-14,York West,4,4,agrees
+sevi_federal,con_15a495e0c3ed5beeb8d2e6eb380a5350,2011-05-02,Beaches—East York,5,5,agrees
+sevi_federal,con_15dd649a874e5592b47fb2adc5d62975,2011-05-02,Davenport,6,6,agrees
+sevi_federal,con_9c39ff3ab4ac594d9fe2b6fe03a65d44,2011-05-02,Don Valley East,5,5,agrees
+sevi_federal,con_1fef5f260edd554babf8790d88b0720d,2011-05-02,Don Valley West,5,5,agrees
+sevi_federal,con_26d706adabda5bf9bbbc248108405fd0,2011-05-02,Eglinton—Lawrence,4,4,agrees
+sevi_federal,con_7102bf8a67825a9ba07498394128dea8,2011-05-02,Etobicoke Centre,5,5,agrees
+sevi_federal,con_89b990f25c965679a6775504dd7a42f5,2011-05-02,Etobicoke—Lakeshore,5,5,agrees
+sevi_federal,con_de0115a5c1c555a083d7635bf2660c0a,2011-05-02,Etobicoke North,6,6,agrees
+sevi_federal,con_e4d82cad66c85c24a438572c194edb96,2011-05-02,Parkdale—High Park,7,7,agrees
+sevi_federal,con_ff5743ab41b05455bf485c4cfc796d2f,2011-05-02,Scarborough—Agincourt,4,4,agrees
+sevi_federal,con_f18c942dd0975e4d9b7e5285d87cc061,2011-05-02,Scarborough Centre,4,4,agrees
+sevi_federal,con_8e7c6b6e77c15614a54f3d8ab783cddc,2011-05-02,Scarborough—Guildwood,5,5,agrees
+sevi_federal,con_c420eb0c89265bbab696bdf9e48f04b1,2011-05-02,Scarborough—Rouge River,5,5,agrees
+sevi_federal,con_0ed5728dbab65fa5b257b3f7fb99f4a9,2011-05-02,Scarborough Southwest,4,4,agrees
+sevi_federal,con_ac525ebbecea5781a456117916eff017,2011-05-02,St. Paul's,5,5,agrees
+sevi_federal,con_6f9cb8084c7f5896a8cf5cba0ef845c3,2011-05-02,Toronto Centre,8,8,agrees
+sevi_federal,con_ef430c7c175b5d3a99019e9e4f07003f,2011-05-02,Toronto—Danforth,5,5,agrees
+sevi_federal,con_badf6d6d4e165bfd8890fb23ed3ea76d,2011-05-02,Trinity—Spadina,6,6,agrees
+sevi_federal,con_b002788f639659beb9988841a5ba62a8,2011-05-02,Willowdale,3,3,agrees
+sevi_federal,con_2bbd07e354325e0e9dd38881d7aaf114,2011-05-02,York Centre,4,4,agrees
+sevi_federal,con_1b0e5e9c99a159ad9a38ce2a2eedf1a6,2011-05-02,York South—Weston,4,4,agrees
+sevi_federal,con_8c2007bdd5885992a27d9732355f856f,2011-05-02,York West,6,6,agrees
+sevi_federal,con_c9e21d97541f5269a00cc01c4b5959f1,2012-03-19,Toronto—Danforth,11,11,agrees
+sevi_federal,con_cc45a2e6d40e5401b3cedf466cb739ac,2013-11-25,Toronto Centre,11,11,agrees
+sevi_federal,con_58432d2f73ac5a0c940150d09c2b22e6,2014-06-30,Scarborough—Agincourt,5,5,agrees
+sevi_federal,con_fb801e88a9bd5877971619c5686879b4,2014-06-30,Trinity—Spadina,6,6,agrees
+sevi_federal,con_bb11d64b33f6599fabcc95479864c2c9,2015-10-19,Beaches—East York,7,7,agrees
+sevi_federal,con_80698b09823d5f2e8f0cd6ee70777c2f,2015-10-19,Davenport,6,6,agrees
+sevi_federal,con_3abc74714278508c80149a45fd3c90c2,2015-10-19,Don Valley East,4,4,agrees
+sevi_federal,con_5543235464eb551b8097609a92d3e911,2015-10-19,Don Valley North,4,4,agrees
+sevi_federal,con_8f0efe0c90ca5cf98782bcb73556de9e,2015-10-19,Don Valley West,7,7,agrees
+sevi_federal,con_057367b6d64f5e5084e25360257c9550,2015-10-19,Eglinton—Lawrence,6,6,agrees
+sevi_federal,con_7752ac94bc6c51b88b6370e295347711,2015-10-19,Etobicoke Centre,5,5,agrees
+sevi_federal,con_1af0ed38e71c5ee6b88ccee70197e389,2015-10-19,Etobicoke—Lakeshore,6,6,agrees
+sevi_federal,con_f37a523c259d5eeab69d284ada12b856,2015-10-19,Etobicoke North,6,6,agrees
+sevi_federal,con_586dd80ad5c5582aadad1ab241536058,2015-10-19,Humber River—Black Creek,5,5,agrees
+sevi_federal,con_1d1a551e252d50669ad008524e339b14,2015-10-19,Parkdale—High Park,8,8,agrees
+sevi_federal,con_7fa9298a3f0f5e839717ed8cecba37cc,2015-10-19,Scarborough—Agincourt,5,5,agrees
+sevi_federal,con_16dfeb6245d6540f86fa4a2be7508845,2015-10-19,Scarborough Centre,5,5,agrees
+sevi_federal,con_cd4a5b84425a5a2784467a76f7f54ced,2015-10-19,Scarborough—Guildwood,6,6,agrees
+sevi_federal,con_455586b31c3f5c51b897edd76eaf5604,2015-10-19,Scarborough North,6,6,agrees
+sevi_federal,con_c9a906deeec856fa8fd02dc412c9f5c0,2015-10-19,Scarborough—Rouge Park,4,4,agrees
+sevi_federal,con_6c208839169c5e7a9be55a599c84b421,2015-10-19,Scarborough Southwest,4,4,agrees
+sevi_federal,con_3f7b57536f755992b5c2787ed88ea920,2015-10-19,Spadina—Fort York,6,6,agrees
+sevi_federal,con_6f7f3d199cac54a486add68a9f790330,2015-10-19,Toronto Centre,7,7,agrees
+sevi_federal,con_7950e8d98054525c923dddccc76f9b2f,2015-10-19,Toronto—Danforth,6,6,agrees
+sevi_federal,con_0e1f84d8c7a3564e9226ed49d4029eb9,2015-10-19,Toronto—St. Paul's,4,4,agrees
+sevi_federal,con_d8977087d2ee5e4485b16b36149c01b0,2015-10-19,University—Rosedale,9,9,agrees
+sevi_federal,con_cb2727626f7b5d0397f32b754bedc560,2015-10-19,Willowdale,5,5,agrees
+sevi_federal,con_0fd1b2660acd5a4d880edcbff37c53ef,2015-10-19,York Centre,4,4,agrees
+sevi_federal,con_1cf2a19cb3af57458ffea7de0083dde9,2015-10-19,York South—Weston,5,5,agrees
+sevi_federal,con_6f51d7b2cb29501785b7d0cae26cfb79,2017-12-11,Scarborough—Agincourt,7,7,differs
+sevi_federal,con_55e77453736759c5858b448267743c96,2019-10-21,Beaches—East York,5,5,agrees
+sevi_federal,con_5e7a871fdebd582fa03a02b96e03d664,2019-10-21,Davenport,8,8,agrees
+sevi_federal,con_c8e7b7c9d85851dc83fbc0a6b79270bb,2019-10-21,Don Valley East,5,5,agrees
+sevi_federal,con_44eaa650324d5ab484216e398a908ffe,2019-10-21,Don Valley North,5,5,agrees
+sevi_federal,con_7d7120e032e059e8a9b4a4dd3bb45d93,2019-10-21,Don Valley West,6,6,agrees
+sevi_federal,con_e93a31bc551a5868ba96beb5f800df68,2019-10-21,Eglinton—Lawrence,5,5,agrees
+sevi_federal,con_9fba491381b2517f8afd2b9715db585c,2019-10-21,Etobicoke Centre,6,6,agrees
+sevi_federal,con_3203a233671256c29bd17e7a3724e105,2019-10-21,Etobicoke—Lakeshore,6,6,agrees
+sevi_federal,con_04a0c00361f552b19eab619015283671,2019-10-21,Etobicoke North,6,6,agrees
+sevi_federal,con_6cd0bebb665f5fd19d2770e382d2b263,2019-10-21,Humber River—Black Creek,7,7,agrees
+sevi_federal,con_4f57ce76414f55dcb188c5b2d923d9f8,2019-10-21,Parkdale—High Park,8,8,agrees
+sevi_federal,con_b7cab26a48765b57b0bfb86178466b71,2019-10-21,Scarborough—Agincourt,5,5,agrees
+sevi_federal,con_5f558ba17e075146b6c0e587930146d3,2019-10-21,Scarborough Centre,6,6,agrees
+sevi_federal,con_e68f1c73b7505433851f3226bf6ccfc2,2019-10-21,Scarborough—Guildwood,10,10,agrees
+sevi_federal,con_7732cbd2a5fc52f6b109339962e865b2,2019-10-21,Scarborough North,6,6,agrees
+sevi_federal,con_45d7ac57d5185255b9fb781fd201c10c,2019-10-21,Scarborough—Rouge Park,6,6,agrees
+sevi_federal,con_036ea3a2c9135bac982fa1e2d2614208,2019-10-21,Scarborough Southwest,6,6,agrees
+sevi_federal,con_2af8e133b09358d6ae635ce30700982c,2019-10-21,Spadina—Fort York,6,6,agrees
+sevi_federal,con_78426265b563585ca074ec3d2655444e,2019-10-21,Toronto Centre,9,9,agrees
+sevi_federal,con_607c73250da95c3abba2c7a4637187c4,2019-10-21,Toronto—Danforth,8,8,agrees
+sevi_federal,con_f5895a53f5ba5b1eba411de92c8dd742,2019-10-21,Toronto—St. Paul's,5,5,agrees
+sevi_federal,con_a07a8a139362514eb9f169e4bd535ed4,2019-10-21,University—Rosedale,9,9,agrees
+sevi_federal,con_82281908c98c59f8a2300360c69d3bf0,2019-10-21,Willowdale,7,7,agrees
+sevi_federal,con_4f09631ad92c504dbaa8bc946fad5149,2019-10-21,York Centre,4,4,agrees
+sevi_federal,con_933a54c9a3095f27bd127f3895c6a00c,2019-10-21,York South—Weston,5,5,agrees
+sevi_federal,con_3a27a61c21405651965fade810fb7fca,2020-10-26,Toronto Centre,9,9,differs
+sevi_federal,con_e5af6bc3cc055a089b110c829ffa4f7c,2020-10-26,York Centre,6,6,agrees
+sevi_federal,con_b3c1307a455d5378adf13e2d28d0b61c,2021-09-20,Beaches—East York,8,8,agrees
+sevi_federal,con_bb8a950f412a50d0af27ccabd88e6a07,2021-09-20,Davenport,7,7,agrees
+sevi_federal,con_049744bcb8565dfba76dd1ee26f72d99,2021-09-20,Don Valley East,4,4,agrees
+sevi_federal,con_f49f7f03e0a95bd1b5578612101b0790,2021-09-20,Don Valley North,5,5,agrees
+sevi_federal,con_01ecf4873a9f5826830419d1c3e95a30,2021-09-20,Don Valley West,6,6,agrees
+sevi_federal,con_9a67f4f0cae359e4878353976d2ecdbf,2021-09-20,Eglinton—Lawrence,5,5,agrees
+sevi_federal,con_2ee4eef568c951ae898f17f5da8d0ccd,2021-09-20,Etobicoke Centre,4,4,agrees
+sevi_federal,con_0e4f87e4d3a25d73b33acadb01fc53e1,2021-09-20,Etobicoke—Lakeshore,7,7,agrees
+sevi_federal,con_fa7a62c362e35d9185d7e448132f8d12,2021-09-20,Etobicoke North,5,5,agrees
+sevi_federal,con_64dce9cef0d8531ab4587292fb508bb4,2021-09-20,Humber River—Black Creek,6,6,agrees
+sevi_federal,con_6e01e7dd2898569e9cd212647a765301,2021-09-20,Parkdale—High Park,7,7,agrees
+sevi_federal,con_ade35891a9175794b411175883b3326d,2021-09-20,Scarborough—Agincourt,5,5,agrees
+sevi_federal,con_732b307d13e55abfa854093c626daf48,2021-09-20,Scarborough Centre,5,5,agrees
+sevi_federal,con_55c926deb8e757ea97c663c418027db2,2021-09-20,Scarborough—Guildwood,8,8,agrees
+sevi_federal,con_2876d941af435cfc844165a75bd3b56f,2021-09-20,Scarborough North,5,5,agrees
+sevi_federal,con_6010b4ec21c85193b796aae1ceb34592,2021-09-20,Scarborough—Rouge Park,4,4,agrees
+sevi_federal,con_969262b2503353719dcf0421c2ab355d,2021-09-20,Scarborough Southwest,6,6,agrees
+sevi_federal,con_33daa87c807953c9a6727327e7e6fd7d,2021-09-20,Spadina—Fort York,5,5,agrees
+sevi_federal,con_1a844b55a2875d498e1fc418d224d7b3,2021-09-20,Toronto Centre,7,7,agrees
+sevi_federal,con_442de0b28d805df78b066aede1d19a1c,2021-09-20,Toronto—Danforth,8,8,agrees
+sevi_federal,con_b48ac7a7fc6459af81338fd86fe0cd9f,2021-09-20,Toronto—St. Paul's,5,5,agrees
+sevi_federal,con_f11c7c3d12f35256a027491df3221674,2021-09-20,University—Rosedale,6,6,agrees
+sevi_federal,con_b54e166b68d5527886ca7ab58595c7ff,2021-09-20,Willowdale,5,5,agrees
+sevi_federal,con_42153e070d4e58b5b9fdb25033671f21,2021-09-20,York Centre,4,4,agrees
+sevi_federal,con_7afe181770aa5be1a7e226138640847d,2021-09-20,York South—Weston,5,5,agrees
+sevi_ontario,con_d9dfe46e474c5e3c92d29075ca74fdf0,1995-06-08,Beaches-Woodbine,6,6,agrees
+sevi_ontario,con_7a4f09936fcf5effb691b82ddbad9de9,1995-06-08,Don Mills,7,7,agrees
+sevi_ontario,con_dd933f44fc2852bfa413e6b41ffc9c43,1995-06-08,Dovercourt,7,7,agrees
+sevi_ontario,con_4533d476ee8e587799baa4cf3f76b5ae,1995-06-08,Downsview,5,5,agrees
+sevi_ontario,con_cf6907636d1f52d6a1c4aa35962cd514,1995-06-08,Eglinton,6,6,agrees
+sevi_ontario,con_1ad1f1d15cc259458dc57220341f429c,1995-06-08,Etobicoke-Humber,6,6,agrees
+sevi_ontario,con_34b745da8f5c523d887dfea2115a0b47,1995-06-08,Etobicoke-Lakeshore,6,6,agrees
+sevi_ontario,con_e4997abe47e05b42ab43957f5f009d1f,1995-06-08,Etobicoke-Rexdale,5,5,agrees
+sevi_ontario,con_9be9362795235faeac2209f1789f0835,1995-06-08,Etobicoke West,4,4,agrees
+sevi_ontario,con_209f8b8d71b35e7cba6bb4e5bff5e5e8,1995-06-08,Fort York,8,8,agrees
+sevi_ontario,con_ab2ab18b429c527fb6586be0e008b65b,1995-06-08,High Park-Swansea,5,5,agrees
+sevi_ontario,con_9d521271aab550efb932dd2241573cf0,1995-06-08,Lawrence,5,5,agrees
+sevi_ontario,con_a77aee965e705846b98d5d5b9968e789,1995-06-08,Oakwood,7,7,agrees
+sevi_ontario,con_ab30861c13775d8eaa847c8d0efb34a0,1995-06-08,Oriole,6,6,agrees
+sevi_ontario,con_8f6e3cc6edf0541fb69945e7261a829f,1995-06-08,Parkdale,5,5,agrees
+sevi_ontario,con_986399ea6a765b129ee7c7750df5b853,1995-06-08,Riverdale,6,6,agrees
+sevi_ontario,con_fe1435c67b3051b6a4d5c14c42fa1632,1995-06-08,Scarborough-Agincourt,4,4,agrees
+sevi_ontario,con_dd9336af96e2519a94c4b98fedffcec9,1995-06-08,Scarborough Centre,5,5,agrees
+sevi_ontario,con_b9028f2a0e0a5bc2bd52bc1aeaecc09d,1995-06-08,Scarborough East,6,6,agrees
+sevi_ontario,con_51d04ee7366855148a43c31572223eaa,1995-06-08,Scarborough-Ellesmere,5,5,agrees
+sevi_ontario,con_66c7b775f96f55d4b41633ac0727b077,1995-06-08,Scarborough North,6,6,agrees
+sevi_ontario,con_b0e7e835d3eb52c8b289d39568d51000,1995-06-08,Scarborough West,7,7,agrees
+sevi_ontario,con_994a6ec96e755c23b4ea90e2bc82f4b4,1995-06-08,St. Andrew-St. Patrick,6,6,agrees
+sevi_ontario,con_8a3caf766c6659d19ad84ecbbe86275d,1995-06-08,St. George-St. David,7,7,agrees
+sevi_ontario,con_1f71290db7ac5191a9db5da3efa2fb90,1995-06-08,Willowdale,6,6,agrees
+sevi_ontario,con_2d14b9e879b259f1b6bf14803068e9a3,1995-06-08,Wilson Heights,7,7,agrees
+sevi_ontario,con_4dd12d7ec7625990aaa0553158762b03,1995-06-08,York East,6,6,agrees
+sevi_ontario,con_3f170960f44f56139d68e4efc244851c,1995-06-08,York Mills,6,6,agrees
+sevi_ontario,con_8aed53064a3456e98fb677c995d1a4b9,1995-06-08,York South,9,9,agrees
+sevi_ontario,con_6b1e26aaf2f157178a76e529ac9cb9ae,1995-06-08,Yorkview,3,3,agrees
+sevi_ontario,con_56e1a65d782a5b8a8270d27bae6ecf0a,1996-05-23,York South,6,6,agrees
+sevi_ontario,con_327489631a005cff80875f329bb639ce,1997-09-04,Oriole,5,5,agrees
+sevi_ontario,con_27117a1fe89657f798bc19727224aaeb,1999-06-03,Beaches—East York,7,7,agrees
+sevi_ontario,con_1ed8c85ade6e5475a4d03974c2f1b7e1,1999-06-03,Davenport,8,8,agrees
+sevi_ontario,con_4c3df541f8925826b52987b970379d8c,1999-06-03,Don Valley East,10,10,agrees
+sevi_ontario,con_da1de690d57a5905b21322b060c7899a,1999-06-03,Don Valley West,5,5,agrees
+sevi_ontario,con_9dbc9bfd3c3d5b16b3f82be036824524,1999-06-03,Eglinton—Lawrence,6,6,agrees
+sevi_ontario,con_76ef67de6df55814b2702a95bd7e8595,1999-06-03,Etobicoke Centre,7,7,agrees
+sevi_ontario,con_909711c47e5b532cb9f3b313dc3ce25f,1999-06-03,Etobicoke—Lakeshore,6,6,agrees
+sevi_ontario,con_5385f730d6e354b9b1bd909148ea85d6,1999-06-03,Etobicoke North,6,6,agrees
+sevi_ontario,con_f5b769648a3a5beb81b30d05dc0bb0f4,1999-06-03,Parkdale—High Park,8,8,agrees
+sevi_ontario,con_df333f0d2df55059bf2538403aa3f90d,1999-06-03,Scarborough—Agincourt,6,6,agrees
+sevi_ontario,con_4e30aec3c92351b9919ae74f03cc585b,1999-06-03,Scarborough Centre,5,5,agrees
+sevi_ontario,con_56b1cdec50445149999b6ff5492d0941,1999-06-03,Scarborough East,7,7,agrees
+sevi_ontario,con_d76a7b7cfe175d50b03dae7d88120ec1,1999-06-03,Scarborough—Rouge River,5,5,agrees
+sevi_ontario,con_2b91c479110d53caa84e03b47401b935,1999-06-03,Scarborough Southwest,6,6,agrees
+sevi_ontario,con_cab94ca71ad5574a92a833001221e808,1999-06-03,St. Paul's,7,7,agrees
+sevi_ontario,con_1ecc9e675c9757929a5ca609022ca558,1999-06-03,Toronto Centre—Rosedale,9,9,agrees
+sevi_ontario,con_c00af9d5d2125cd6b6a8da0dbc52cd4e,1999-06-03,Toronto—Danforth,6,6,agrees
+sevi_ontario,con_641ee095154d5716b50cb501d1454846,1999-06-03,Trinity—Spadina,8,8,agrees
+sevi_ontario,con_a984f34a2c335c7aa79604872c74e608,1999-06-03,Willowdale,8,8,agrees
+sevi_ontario,con_b504ec7af7085c46aba5591f0986f19e,1999-06-03,York Centre,4,4,agrees
+sevi_ontario,con_a863f3e9484a5f72af3a938efd1a021d,1999-06-03,York South—Weston,8,8,agrees
+sevi_ontario,con_b7ab4972cb5f5590b6a79c8af5116531,1999-06-03,York West,7,7,agrees
+sevi_ontario,con_fb12b0317a8250818fbd91cedf1a639e,2001-09-20,Beaches—East York,8,0,not_in_external
+sevi_ontario,con_c9c2f1ba26da5afaba62cecb510b0e3d,2003-10-02,Beaches—East York,4,4,agrees
+sevi_ontario,con_b16459da620253debfa7167b76a77e0a,2003-10-02,Davenport,7,7,agrees
+sevi_ontario,con_7b3ac2d095ac55ed9fa558ff607099af,2003-10-02,Don Valley East,6,6,agrees
+sevi_ontario,con_8b7ee30d9f7e56e3b562a58110554e0d,2003-10-02,Don Valley West,4,4,agrees
+sevi_ontario,con_709a928612995173b3aa0d0fa1c5f94e,2003-10-02,Eglinton—Lawrence,4,4,agrees
+sevi_ontario,con_5d604f6a0187587b836e7e5898f97aba,2003-10-02,Etobicoke Centre,4,4,agrees
+sevi_ontario,con_df75bac6b20658719e55bd5952d0fa78,2003-10-02,Etobicoke—Lakeshore,6,6,agrees
+sevi_ontario,con_6e29293d1c155bae90c9f779a24e0d12,2003-10-02,Etobicoke North,6,6,agrees
+sevi_ontario,con_e4972ec278855c919690432ddeb74061,2003-10-02,Parkdale—High Park,8,8,agrees
+sevi_ontario,con_7243c06395b954dbac5930fdbb8179ed,2003-10-02,Scarborough—Agincourt,5,5,agrees
+sevi_ontario,con_762937f2678b5606944a295c4bde147a,2003-10-02,Scarborough Centre,7,7,agrees
+sevi_ontario,con_c023224f934152008517373a5cb060cc,2003-10-02,Scarborough East,5,5,agrees
+sevi_ontario,con_3c777a1d5d90533a8cdbfbbdd841a2c5,2003-10-02,Scarborough—Rouge River,5,5,agrees
+sevi_ontario,con_abf9db58c661551d84380bb87702a4a2,2003-10-02,Scarborough Southwest,5,5,agrees
+sevi_ontario,con_31159f2b3ad85267b12c3b3d0c594c5d,2003-10-02,St. Paul's,5,5,agrees
+sevi_ontario,con_2a7077f089ee51d4becffe7914461cfa,2003-10-02,Toronto Centre—Rosedale,6,6,agrees
+sevi_ontario,con_68082782276b5a0fa3520e1c36b413d6,2003-10-02,Toronto—Danforth,6,6,agrees
+sevi_ontario,con_102b32eadfcb5a4a80646e78fdf78f2b,2003-10-02,Trinity—Spadina,6,6,agrees
+sevi_ontario,con_00412a167b445daa9595d0d4ce3fde91,2003-10-02,Willowdale,6,6,agrees
+sevi_ontario,con_f3f932a17620528aa94355476218d056,2003-10-02,York Centre,4,4,agrees
+sevi_ontario,con_62036709c8405bc7b345c44c9db4f27f,2003-10-02,York South—Weston,5,5,agrees
+sevi_ontario,con_8dc68fb1dff45da19697d05d9307caf8,2003-10-02,York West,5,5,agrees
+sevi_ontario,con_28df4cd3fa02553098ce0b036dbd336e,2005-11-24,Scarborough—Rouge River,7,7,differs
+sevi_ontario,con_531b4d2a3b9954aa933b7d4e16999e62,2006-03-30,Toronto—Danforth,8,8,agrees
+sevi_ontario,con_c82cac78095955ef96a0c111ffb36b7d,2006-09-14,Parkdale—High Park,8,8,differs
+sevi_ontario,con_491c4de6b8ec5fc0b0148c9e363bdf54,2007-02-08,York South—Weston,9,9,agrees
+sevi_ontario,con_189348223b3f518a80b44f08aef1262d,2007-10-10,Beaches—East York,7,7,agrees
+sevi_ontario,con_7053f71304955cadaa6fa0f96f9af0e1,2007-10-10,Davenport,8,8,agrees
+sevi_ontario,con_066ba77fa61d549db11a10a423c33325,2007-10-10,Don Valley East,7,7,agrees
+sevi_ontario,con_08307c61288e5f22b3917feb0ae05dc8,2007-10-10,Don Valley West,5,5,agrees
+sevi_ontario,con_7fae42daedfa57229ad030a4b88c566a,2007-10-10,Eglinton—Lawrence,8,8,agrees
+sevi_ontario,con_5fa3712ed1125dec854c8d23eebe5370,2007-10-10,Etobicoke Centre,4,4,agrees
+sevi_ontario,con_1acb19b351f754cabaf961661dbeed03,2007-10-10,Etobicoke—Lakeshore,6,6,agrees
+sevi_ontario,con_e177060b2f4057e2b204b55e93cde040,2007-10-10,Etobicoke North,5,5,agrees
+sevi_ontario,con_8ac747dda9485264896ffc4543db0c51,2007-10-10,Parkdale—High Park,6,6,agrees
+sevi_ontario,con_c7d03413d3dc59638b82a7861ae9a73e,2007-10-10,Scarborough—Agincourt,5,5,agrees
+sevi_ontario,con_fa0d3a964d5454b3a5895fae33233e08,2007-10-10,Scarborough Centre,6,6,agrees
+sevi_ontario,con_6dbf691cabb1567fa5efd68bb6523965,2007-10-10,Scarborough—Guildwood,6,6,agrees
+sevi_ontario,con_c98e9c539bac50ea9280ded2a79e3de3,2007-10-10,Scarborough—Rouge River,6,6,agrees
+sevi_ontario,con_7622c498a3b55f47a9a18500e33fe184,2007-10-10,Scarborough Southwest,6,6,agrees
+sevi_ontario,con_93f0a098ef4754e386178ea5c46e4341,2007-10-10,St. Paul's,8,8,agrees
+sevi_ontario,con_14236e1929435db8b1f5a97d207fda8d,2007-10-10,Toronto Centre,9,9,agrees
+sevi_ontario,con_e89b9d1af4e5575eb187417dce449139,2007-10-10,Toronto—Danforth,7,7,agrees
+sevi_ontario,con_ebf12169653e5c93b8d8248dd54878c9,2007-10-10,Trinity—Spadina,8,8,agrees
+sevi_ontario,con_aa44331119af5e95a20a3c798aab6647,2007-10-10,Willowdale,7,7,agrees
+sevi_ontario,con_051858ed39d25ef0b6fe5712a304ac3f,2007-10-10,York Centre,5,5,agrees
+sevi_ontario,con_84848f2bd2d05e09bbf14739a99c16a1,2007-10-10,York South—Weston,6,6,agrees
+sevi_ontario,con_85724f29e3465c8689bf53ea0a41b009,2007-10-10,York West,6,6,agrees
+sevi_ontario,con_fde39bf04f5659cd8689131e8a40c0aa,2009-09-17,St. Paul's,10,10,agrees
+sevi_ontario,con_4ac09cf96af650c0afc05db39bb555a1,2010-02-04,Toronto Centre,8,8,agrees
+sevi_ontario,con_372421da623c55ddb67753bcb3364e74,2011-10-06,Beaches—East York,6,6,agrees
+sevi_ontario,con_9a8dbe45985757be9e2a9a0f91ac0cfe,2011-10-06,Davenport,9,9,agrees
+sevi_ontario,con_83209bd3d1605758a666542a641e534d,2011-10-06,Don Valley East,6,6,agrees
+sevi_ontario,con_3ba7b601f21452e8ab1b1fd799c365c5,2011-10-06,Don Valley West,7,7,agrees
+sevi_ontario,con_1b59691d90c25192880ce429454d67c4,2011-10-06,Eglinton—Lawrence,7,7,agrees
+sevi_ontario,con_e62e179c240f5ed8af3c3b596262088b,2011-10-06,Etobicoke Centre,7,7,agrees
+sevi_ontario,con_6529bd8bd0095131b64919590dcfe9a1,2011-10-06,Etobicoke—Lakeshore,9,9,agrees
+sevi_ontario,con_014dbc30e6e95178852bf6b5a59cf5e3,2011-10-06,Etobicoke North,7,7,agrees
+sevi_ontario,con_e624d4ddafb653f0b68f93ea3dabc1dd,2011-10-06,Parkdale—High Park,10,10,agrees
+sevi_ontario,con_c38869134dc5548397c32580c26c6a87,2011-10-06,Scarborough—Agincourt,7,7,agrees
+sevi_ontario,con_f0d710a316065711937ec7b1851e7813,2011-10-06,Scarborough Centre,5,5,agrees
+sevi_ontario,con_e39efa72b3d2579da11f6c3511f625e5,2011-10-06,Scarborough—Guildwood,6,6,agrees
+sevi_ontario,con_797b0bc4efe45017aae06eb8d8399e7a,2011-10-06,Scarborough—Rouge River,7,7,agrees
+sevi_ontario,con_8c3bbc0b081d5a74980e903c08a5ed19,2011-10-06,Scarborough Southwest,5,5,agrees
+sevi_ontario,con_ef0d8b13a79d537ab51dec916ea76ca3,2011-10-06,St. Paul's,8,8,agrees
+sevi_ontario,con_59e85b8d9baa5700aa4daf2077f538c9,2011-10-06,Toronto Centre,10,10,agrees
+sevi_ontario,con_1b7406c8628f519cb5d260f1fae74208,2011-10-06,Toronto—Danforth,9,9,agrees
+sevi_ontario,con_71ef752a73df536582bdc7065a5556c9,2011-10-06,Trinity—Spadina,8,8,agrees
+sevi_ontario,con_022eee5142f458ebbedf618a25ced224,2011-10-06,Willowdale,5,5,agrees
+sevi_ontario,con_1ad2f668796b58758cb06cd37c3c6488,2011-10-06,York Centre,7,7,agrees
+sevi_ontario,con_1d6b48f174775f86a068b218962fe7ae,2011-10-06,York South—Weston,6,6,agrees
+sevi_ontario,con_69389f13c642547783e58a3f613fefdf,2011-10-06,York West,7,7,agrees
+sevi_ontario,con_c53572627c575ab0b997e2635306abc8,2013-08-01,Etobicoke—Lakeshore,8,8,agrees
+sevi_ontario,con_03474c3b16555cf0a72ab6a0d75924bb,2013-08-01,Scarborough—Guildwood,10,10,agrees
+sevi_ontario,con_9a7f741b48eb530a9df4484ec5329879,2014-06-12,Beaches—East York,6,6,agrees
+sevi_ontario,con_b9934a18f64a546397962715d831578a,2014-06-12,Davenport,8,8,agrees
+sevi_ontario,con_af1587a2d8205f1cb41cf9424f94d58e,2014-06-12,Don Valley East,5,5,agrees
+sevi_ontario,con_8ff1d9a6322a573e910896d562d21fd9,2014-06-12,Don Valley West,9,9,agrees
+sevi_ontario,con_228a68e8815e51f3b9978023d8c246c8,2014-06-12,Eglinton—Lawrence,6,6,agrees
+sevi_ontario,con_f731d9de48205490b95e90a0536937c7,2014-06-12,Etobicoke Centre,8,8,agrees
+sevi_ontario,con_56f2ed6d0ca758aa9e0476ab8a9f3212,2014-06-12,Etobicoke—Lakeshore,8,8,agrees
+sevi_ontario,con_3a91b6e033b65499b1051ca993ba22a3,2014-06-12,Etobicoke North,6,6,agrees
+sevi_ontario,con_d55e3456da7252d0bd18c7539868dac7,2014-06-12,Parkdale—High Park,7,7,agrees
+sevi_ontario,con_75636026b4495494883128af937b5b65,2014-06-12,Scarborough—Agincourt,5,5,agrees
+sevi_ontario,con_7ee4ea6178a45101bec1a5ed8b7fd6fc,2014-06-12,Scarborough Centre,4,4,agrees
+sevi_ontario,con_679187b4c8f657aa9e1f4a36c7b60fa4,2014-06-12,Scarborough—Guildwood,7,7,agrees
+sevi_ontario,con_4bd440a99ad055c0b7f8a6b51c7a4dd7,2014-06-12,Scarborough—Rouge River,5,5,agrees
+sevi_ontario,con_a3a82f9e510c51c0b1dc94d44ba3c9db,2014-06-12,Scarborough Southwest,6,6,agrees
+sevi_ontario,con_42452ee1c0a652f19f1350522267136b,2014-06-12,St. Paul's,6,6,agrees
+sevi_ontario,con_eab59ea6987751f0bc3a32f7e3ba47cb,2014-06-12,Toronto Centre,11,11,agrees
+sevi_ontario,con_c22e8834810a50139184aa5954859093,2014-06-12,Toronto—Danforth,10,10,agrees
+sevi_ontario,con_e71047247ce156948a61df30b79f95de,2014-06-12,Trinity—Spadina,7,7,agrees
+sevi_ontario,con_b508134236d950e49f66506ffb8290bc,2014-06-12,Willowdale,4,4,agrees
+sevi_ontario,con_cf003dc747245fb38489f65017736e19,2014-06-12,York Centre,5,5,agrees
+sevi_ontario,con_03339cee57f558a086ed015f8fbb14fe,2014-06-12,York South—Weston,6,6,agrees
+sevi_ontario,con_93649f0d9a985ce3ae0a3371d34f3c83,2014-06-12,York West,6,6,agrees
+sevi_ontario,con_714af2d3d99a50629e28bf9b41e722d4,2016-09-01,Scarborough—Rouge River,11,0,not_in_external
+sevi_ontario,con_020c75b7f18455208dccb555338de735,2018-06-07,Beaches—East York,11,11,agrees
+sevi_ontario,con_fea49c607fbd501f8a774c8af20d3bda,2018-06-07,Davenport,9,9,agrees
+sevi_ontario,con_0f7490fd32ae56f59b95128d62249417,2018-06-07,Don Valley East,6,6,agrees
+sevi_ontario,con_defeceffd4355719ad3b40a9b7a889da,2018-06-07,Don Valley North,6,6,agrees
+sevi_ontario,con_9faa608456bc58ddac8461c22e86efeb,2018-06-07,Don Valley West,6,6,agrees
+sevi_ontario,con_f8807b4ac38f57dca8f13793b2229daa,2018-06-07,Eglinton—Lawrence,6,6,agrees
+sevi_ontario,con_1447b808f0175c7f886ee58eaca3c679,2018-06-07,Etobicoke Centre,7,7,agrees
+sevi_ontario,con_3ca6dba64b335382a786d532609298e2,2018-06-07,Etobicoke—Lakeshore,6,6,agrees
+sevi_ontario,con_6d66a602fab951d2a602a7c9ba305cbc,2018-06-07,Etobicoke North,5,5,agrees
+sevi_ontario,con_5e6fe85334375e86b6cdaa3185e71a91,2018-06-07,Humber River—Black Creek,7,7,agrees
+sevi_ontario,con_803dfa287c985c6186a4855548d0361a,2018-06-07,Parkdale—High Park,6,6,agrees
+sevi_ontario,con_01f9088a7aab51d58bb3ae0b19bc6fa6,2018-06-07,Scarborough—Agincourt,9,9,agrees
+sevi_ontario,con_a4d8b458c99e50b1a4df848652aa171b,2018-06-07,Scarborough Centre,6,6,agrees
+sevi_ontario,con_50c16e2afa935c61823e7771e1f6c175,2018-06-07,Scarborough—Guildwood,9,9,agrees
+sevi_ontario,con_7aaa49c81aff57c0b771051a13d4f478,2018-06-07,Scarborough North,5,5,agrees
+sevi_ontario,con_069a297d7f3a566b8c8cd1a92c2b692d,2018-06-07,Scarborough—Rouge Park,6,6,agrees
+sevi_ontario,con_4c7b81f3621b5718bb5b4cc08a540b66,2018-06-07,Scarborough Southwest,8,8,agrees
+sevi_ontario,con_e03b40c3e2c25ffd8dd31e0623638c6a,2018-06-07,Spadina—Fort York,7,7,agrees
+sevi_ontario,con_4078d64b893750af99f9616c8babe99d,2018-06-07,Toronto Centre,10,10,agrees
+sevi_ontario,con_04024150fecf5bf9ace1c8e137bddedd,2018-06-07,Toronto—Danforth,8,8,agrees
+sevi_ontario,con_e219d03b88a65f25947f9925271b93d8,2018-06-07,Toronto—St. Paul's,6,6,agrees
+sevi_ontario,con_350a00d14a3f523aaa4ff9e49c5e8b24,2018-06-07,University—Rosedale,9,9,agrees
+sevi_ontario,con_d55ee64365fa54fb8217ad0596da5635,2018-06-07,Willowdale,6,6,agrees
+sevi_ontario,con_098642e21edd5dc8828538f617988fd4,2018-06-07,York Centre,7,7,agrees
+sevi_ontario,con_5330cf3435ab5beebb89c0524ef94bd0,2018-06-07,York South—Weston,5,5,agrees
+cmed,con_5a792ff2fb42560fb3ea67ba2fbc7ffc,1994-11-14,Ward 1,6,6,agrees
+cmed,con_1f556851f1c859fa892302e50014d439,1994-11-14,Ward 10,4,4,differs
+cmed,con_c324899515645101822fb62fc4095779,1994-11-14,Ward 11,5,5,agrees
+cmed,con_526ab0e570f95d2d8d32262a1247974f,1994-11-14,Ward 12,2,2,agrees
+cmed,con_48c384f41968533484018dd14a602bba,1994-11-14,Ward 13,2,2,agrees
+cmed,con_e394dd9c87a05fb7af64872870a70612,1994-11-14,Ward 14,5,5,agrees
+cmed,con_d6e3cdd0425c57539be9363c03097b59,1994-11-14,Ward 15,2,2,agrees
+cmed,con_6be3f67ec1415443a82743b689dc54b7,1994-11-14,Ward 16,2,2,agrees
+cmed,con_2c0d829688e551c594bd8fcd4a12ad71,1994-11-14,Ward 2,3,3,agrees
+cmed,con_2857c7dce7c15e67a6d4c9bcb6bd42e3,1994-11-14,Ward 3,4,4,differs
+cmed,con_2b90dd2bd293567ebf9a656f7def2c87,1994-11-14,Ward 4,3,3,agrees
+cmed,con_ca4b5273e7655c9eb2a158adcea6d761,1994-11-14,Ward 5,3,3,agrees
+cmed,con_7e3f8b4e14d25957a65223fe7f1bd53d,1994-11-14,Ward 6,2,2,agrees
+cmed,con_d44558ea494456d4804fac07a8cefc92,1994-11-14,Ward 7,5,5,agrees
+cmed,con_8f52177303fe5106b2170ec3a5f53775,1994-11-14,Ward 8,4,4,agrees
+cmed,con_daaf86ee314e533d89d89d34423ff39c,1994-11-14,Ward 9,3,3,agrees
+cmed,con_757241f2299a5f26ac617806c660451e,1994-11-14,City of Toronto (former),11,11,agrees
+cmed,con_1d6c97062fd75588bb4a725b43e27547,1994-11-14,Davenport,1,1,differs
+cmed,con_3a55d9359be05fc584f0aa22f03add48,1994-11-14,Don River,5,5,agrees
+cmed,con_2a58f9a3786a5230a73dc5e5f729abb6,1994-11-14,Downtown,2,2,agrees
+cmed,con_8aa125d4ecd55b47b06b5ba6379eb444,1994-11-14,East Toronto,3,3,agrees
+cmed,con_b6b9274984de56c49fa119ff4d99a979,1994-11-14,High Park,4,4,agrees
+cmed,con_98a68ae7f7a35caf965c9da81b54fe6d,1994-11-14,Midtown,3,3,agrees
+cmed,con_e206402ec0c75d76bf594051e4a1739e,1994-11-14,North Toronto,1,1,differs
+cmed,con_f15030a4760451a39d4de3bc1cf1b597,1994-11-14,Trinity Niagara,1,1,differs
+cmed,con_bdf7cd9dff285f8387cb435f16a22a96,1997-11-10,Ward 1,11,11,differs
+cmed,con_58b39092fa2e5921a4e835f1820358ca,1997-11-10,Ward 10,3,3,agrees
+cmed,con_045b609e7a8a52bb9f2be62ff1e3deaf,1997-11-10,Ward 11,9,9,agrees
+cmed,con_c6cde961fd7e57e0bcf60b6d847c5c17,1997-11-10,Ward 12,5,5,agrees
+cmed,con_5ccac7cd819459fe9f853eddc0ae1801,1997-11-10,Ward 13,6,6,agrees
+cmed,con_27a361c4b6f0584e8050aa4fd85d0a71,1997-11-10,Ward 14,5,5,agrees
+cmed,con_65068b1a4d0e52ac80afb6e63bf7575f,1997-11-10,Ward 15,6,6,differs
+cmed,con_32ee5523f459558290b27d77c6260f09,1997-11-10,Ward 16,4,4,agrees
+cmed,con_8771d928797d5bc99d0d0453b2c3603a,1997-11-10,Ward 17,5,5,agrees
+cmed,con_5006a0a4e80d50abbe04d11b5ac133f5,1997-11-10,Ward 18,9,9,differs
+cmed,con_07818160b5d758598d4247a3fc95e027,1997-11-10,Ward 19,8,8,agrees
+cmed,con_19b0fc62bf71590f932107959599f7a9,1997-11-10,Ward 2,9,9,agrees
+cmed,con_2b261f7e0c4a55659f30e3dfc7bf8000,1997-11-10,Ward 20,4,4,agrees
+cmed,con_c5013e91894452c68dc0145fe4c72eaf,1997-11-10,Ward 21,7,7,agrees
+cmed,con_4fa425216a3151129ee4925f593796cb,1997-11-10,Ward 22,6,6,differs
+cmed,con_d30fda51c378562a908160f153574773,1997-11-10,Ward 23,8,8,agrees
+cmed,con_3f8009bf87aa581aa761f03500a5ec4d,1997-11-10,Ward 24,9,9,agrees
+cmed,con_e910dab288b65f4ebef363c6704c99ed,1997-11-10,Ward 25,9,9,agrees
+cmed,con_25e7dcc17eac5fd89a076ffdd91be7fd,1997-11-10,Ward 26,5,5,differs
+cmed,con_cdffe21e75ab5567b8387554fac4d41d,1997-11-10,Ward 27,9,9,differs
+cmed,con_b55e06f18b52582c97b6e6e8ef8d16bb,1997-11-10,Ward 28,6,6,agrees
+cmed,con_6042f5374c7d5a2d8ba28c85ec8ac039,1997-11-10,Ward 3,6,6,differs
+cmed,con_25b92c05df765d61b7221310ae0264ca,1997-11-10,Ward 4,9,9,agrees
+cmed,con_70f2a79a6acd51b8bb5fb838e27652ba,1997-11-10,Ward 5,12,12,differs
+cmed,con_562896ef4dac59438b463daa8d37a215,1997-11-10,Ward 6,6,6,agrees
+cmed,con_483c51a4c62c516cb2a19aa4e81388ff,1997-11-10,Ward 7,7,7,agrees
+cmed,con_7f778a4f113556ab8091918ee1e9e04e,1997-11-10,Ward 8,6,6,differs
+cmed,con_3cb5c4eb8f1b5ba489b1477f7a754a05,1997-11-10,Ward 9,4,4,agrees
+cmed,con_1fa92907fe875d0a9ce5f630060f86ff,1997-11-10,City of Toronto,20,20,agrees
+cmed,con_c917474ee5bf549d93285b24e44eda8d,2000-11-13,Ward 1,9,9,agrees
+cmed,con_7f04b949b8985282b789f15c3b20ee1a,2000-11-13,Ward 10,2,2,agrees
+cmed,con_fe64d3e4283e50c88c0a0e3b81c58939,2000-11-13,Ward 11,2,2,differs
+cmed,con_61c9679fed05560f9ea9e022b2f49164,2000-11-13,Ward 12,5,5,agrees
+cmed,con_2c51adceb15956448adf0695b9e681c9,2000-11-13,Ward 13,2,2,agrees
+cmed,con_4f03ab043ed659069a390f351f9f4d42,2000-11-13,Ward 14,4,4,differs
+cmed,con_3fc94a20e1fb5c6780ffa555b991d289,2000-11-13,Ward 15,4,4,agrees
+cmed,con_06c9f4c939865fd39a8272e26446bd26,2000-11-13,Ward 16,4,4,agrees
+cmed,con_2f8a87d48b1c52abaeb2946e4929791c,2000-11-13,Ward 17,2,2,agrees
+cmed,con_d037d8f14fc45674a364d173faa86f11,2000-11-13,Ward 18,4,4,differs
+cmed,con_06272bbcbc165fdcb9b5858abced60df,2000-11-13,Ward 19,2,2,agrees
+cmed,con_accf9b2827d9504ea65d417141360196,2000-11-13,Ward 2,6,6,agrees
+cmed,con_5e6c594ca5ab58b1aec7010876a6c86e,2000-11-13,Ward 20,3,3,agrees
+cmed,con_494a757e52725a448ccac493e1823a12,2000-11-13,Ward 21,3,3,agrees
+cmed,con_fbee7f8ed3cd5d2ab7057625e342e181,2000-11-13,Ward 22,2,2,agrees
+cmed,con_3eebd6c0d45650ee9fb71d442e3c65cb,2000-11-13,Ward 23,3,3,agrees
+cmed,con_8822153d20815aef9d2fb68cb163f312,2000-11-13,Ward 24,2,2,agrees
+cmed,con_87a53c3ab6fd559090d85b4b52517e63,2000-11-13,Ward 25,2,2,agrees
+cmed,con_d7f980b471955a329796502fb2bcac0d,2000-11-13,Ward 26,3,3,agrees
+cmed,con_b1c0ac284c465856babdcb0b220757bc,2000-11-13,Ward 27,1,1,differs
+cmed,con_b73054f50966591e8ba7fdf1a229376b,2000-11-13,Ward 28,7,7,agrees
+cmed,con_772eb132392754709832a3a80d3ff86b,2000-11-13,Ward 29,4,4,agrees
+cmed,con_651702b9980b512f94e625c62c282efb,2000-11-13,Ward 3,2,2,agrees
+cmed,con_f1d41eb334365d0e96dffa956de24c5c,2000-11-13,Ward 30,6,6,agrees
+cmed,con_04c8351076f353cb86d997770f970291,2000-11-13,Ward 31,3,3,agrees
+cmed,con_d10c3f933ea457c9afe0ff37daed6278,2000-11-13,Ward 32,5,5,agrees
+cmed,con_9e08c4bf8fff5718b36d3f201a6d5fa9,2000-11-13,Ward 33,4,4,agrees
+cmed,con_089c0c0cac765a209d3f6a0c69995ac3,2000-11-13,Ward 34,3,3,agrees
+cmed,con_073076d57d155366b1db110c319f544f,2000-11-13,Ward 35,3,3,agrees
+cmed,con_f37411545e01539ea4439fbd96d5eff3,2000-11-13,Ward 36,2,2,agrees
+cmed,con_016aa50aa2dc5573b9e1fad965826d6c,2000-11-13,Ward 37,2,2,agrees
+cmed,con_900563756aa25ac5bd06cd7b867252ef,2000-11-13,Ward 38,2,2,agrees
+cmed,con_317b0660d3df5bd59056a8ce1dba221f,2000-11-13,Ward 39,3,3,agrees
+cmed,con_d77f8715e7b05ebab8cf46e81195a81a,2000-11-13,Ward 4,3,3,agrees
+cmed,con_34046014411357c9947f5f789dc6d903,2000-11-13,Ward 40,4,4,agrees
+cmed,con_b47cc482c5985cc48260ecb27013f615,2000-11-13,Ward 41,2,2,differs
+cmed,con_bcf65b308c9b56b19a4dc6e6ac6918f8,2000-11-13,Ward 42,4,4,agrees
+cmed,con_e3249650638d5f30ace19d612bf39ef6,2000-11-13,Ward 43,1,1,differs
+cmed,con_91cee00df11b5f1989e12025be64f6df,2000-11-13,Ward 44,3,3,agrees
+cmed,con_a7abc0cd602353228cd9f78c6a052c80,2000-11-13,Ward 5,3,3,agrees
+cmed,con_26a236074c215ae081313b4a75303f2c,2000-11-13,Ward 6,3,3,agrees
+cmed,con_b66f4ff8a660546798f14827101e4381,2000-11-13,Ward 7,2,2,agrees
+cmed,con_e6e688ec3f565b988055598a6e6983a5,2000-11-13,Ward 8,2,2,agrees
+cmed,con_a0c183b32cf857ceb8ae458890ce1942,2000-11-13,Ward 9,3,3,agrees
+cmed,con_5044c37ba21750e4a086063e4a06c147,2000-11-13,City of Toronto,26,26,differs
+cmed,con_6d7f00a8037754c0a6f34579bee44966,2003-11-10,Ward 1,9,9,agrees
+cmed,con_18fc5604e3b45ef08d8af9b0813a1918,2003-11-10,Ward 10,2,2,agrees
+cmed,con_ab103b8f3a915dd0b0131abea73fad5c,2003-11-10,Ward 11,2,2,agrees
+cmed,con_04a4bbe5ef575c72b4ec49d601f24b71,2003-11-10,Ward 12,2,2,agrees
+cmed,con_28b9bf4109765f57a3a7923479b37af9,2003-11-10,Ward 13,6,6,agrees
+cmed,con_d100fd7c171150b8b18125987b174c3d,2003-11-10,Ward 14,8,8,agrees
+cmed,con_d69bc70f79a45bf397b2a657aa858e50,2003-11-10,Ward 15,6,6,differs
+cmed,con_a060705663a15882b307108144aa8720,2003-11-10,Ward 16,5,5,agrees
+cmed,con_be3ee1a1a31f533885cbb71a268beda9,2003-11-10,Ward 17,5,5,agrees
+cmed,con_4b3374ab9039564fa8ed1cedf493a0e3,2003-11-10,Ward 18,6,6,agrees
+cmed,con_d9eeb6c962c854b58be1e179e2168cb1,2003-11-10,Ward 19,3,3,agrees
+cmed,con_6131490bb0d75b1ba4033e2284df71f8,2003-11-10,Ward 2,3,3,agrees
+cmed,con_2befcc6536315440902962b270ad7f70,2003-11-10,Ward 20,5,5,agrees
+cmed,con_95ddf0ee07b85a9da9038f871eeefaba,2003-11-10,Ward 21,6,6,agrees
+cmed,con_88f5ccc6b744588da3d07590c5dca974,2003-11-10,Ward 22,2,2,agrees
+cmed,con_744dd2f798b8521e8de9693750f474d2,2003-11-10,Ward 23,2,2,differs
+cmed,con_3c1699cb4b0257ae8cf61da26db0c160,2003-11-10,Ward 24,1,1,agrees
+cmed,con_47f9c6bba0165404a3fec5492a0940b3,2003-11-10,Ward 25,8,8,agrees
+cmed,con_ae44722023c153d7a460278c9b621435,2003-11-10,Ward 26,3,3,agrees
+cmed,con_b5ffb866cf475caca42769d641deb4a7,2003-11-10,Ward 27,6,6,agrees
+cmed,con_727f839c8adc5531bd874edb6b663c05,2003-11-10,Ward 28,9,9,differs
+cmed,con_ec88bd40dff858e695ae9533199be499,2003-11-10,Ward 29,3,3,agrees
+cmed,con_7eba7d2b2ccb57e5aa6ab13c307b2517,2003-11-10,Ward 3,4,4,agrees
+cmed,con_d18675753b8f580c8834170f374d1e7c,2003-11-10,Ward 30,8,8,agrees
+cmed,con_46f4af62ff4956f5b31ebec2e77229fa,2003-11-10,Ward 31,4,4,agrees
+cmed,con_6d24ced99da9539aaaad476a9a2747f4,2003-11-10,Ward 32,7,7,differs
+cmed,con_f3e797bac18a5e45a723ff263eafb93e,2003-11-10,Ward 33,8,8,differs
+cmed,con_bf4b3cd94fcd50ba8d2259a6df440a17,2003-11-10,Ward 34,4,4,agrees
+cmed,con_b9bda7a65c8a5e03a69746d0072f95c1,2003-11-10,Ward 35,7,7,agrees
+cmed,con_d3ecc496be285eebb80559abe5d5f9f1,2003-11-10,Ward 36,2,2,agrees
+cmed,con_9d346093453659cba5591e6e2efd506a,2003-11-10,Ward 37,7,7,agrees
+cmed,con_61eed2bcd6ce5343bea274fe8a8028bc,2003-11-10,Ward 38,6,6,agrees
+cmed,con_c49857c2f0a6591fa165be262c38930c,2003-11-10,Ward 39,2,2,agrees
+cmed,con_2317176dbf5e5a4fab7fd65b16359ebd,2003-11-10,Ward 4,4,4,agrees
+cmed,con_90b9ffb191415b13a8c7f334ef771513,2003-11-10,Ward 40,3,3,agrees
+cmed,con_02e530a81bf75a6bbf6b4ca0a9ea6738,2003-11-10,Ward 41,2,2,agrees
+cmed,con_5f814673ab4050e5b50e46685dbfbecb,2003-11-10,Ward 42,3,3,agrees
+cmed,con_7b92b7a12bbf5240a728cbe9d42aa420,2003-11-10,Ward 43,2,2,agrees
+cmed,con_abe0e1350e7856ad9a70ffdc75dd84f2,2003-11-10,Ward 44,4,4,agrees
+cmed,con_802f842541d15d899e8f6acf3b86ae45,2003-11-10,Ward 5,2,2,agrees
+cmed,con_99b9fbf5df5f504eb0906d1c2b113d63,2003-11-10,Ward 6,10,10,differs
+cmed,con_845cf9eb2c1b5ed6b35801d45f86cd82,2003-11-10,Ward 7,1,1,agrees
+cmed,con_6beb6fc4da14503aa70fa94b8fe0b600,2003-11-10,Ward 8,2,2,agrees
+cmed,con_3a262cc7bf83579eae79ce2032ea06d1,2003-11-10,Ward 9,5,5,agrees
+cmed,con_945161409a0450f29e351ff3f263f815,2003-11-10,City of Toronto,44,44,agrees
+cmed,con_83ded5c17ed75ca788f320a13b17dd08,2006-11-13,Ward 1,8,8,agrees
+cmed,con_86779f733e9f58e78227d4c49c260033,2006-11-13,Ward 10,7,7,agrees
+cmed,con_0b8c9e853efa5e3da86b0f1eff65589e,2006-11-13,Ward 11,4,4,differs
+cmed,con_f449befd52f1538191ef612c9e711c45,2006-11-13,Ward 12,5,5,agrees
+cmed,con_76db9d7d1989548fadeac8b8116dc357,2006-11-13,Ward 13,6,6,agrees
+cmed,con_b4c70c0c6f465c4091dce97cbbd286b3,2006-11-13,Ward 14,14,14,differs
+cmed,con_9473b9c31bb55e62ac4432451881acf1,2006-11-13,Ward 15,7,7,agrees
+cmed,con_77f42d0ca0a15c57a01b5579fef4625a,2006-11-13,Ward 16,6,6,agrees
+cmed,con_46f7b754b02b57d0a651c417f9f0471d,2006-11-13,Ward 17,7,7,agrees
+cmed,con_387d212e18c453e2a8eb298de5c374ff,2006-11-13,Ward 18,6,6,agrees
+cmed,con_610d1afaa15d592eb956835f8fd51600,2006-11-13,Ward 19,4,4,agrees
+cmed,con_393178f4fb765cd0bbeaa13d06dca32c,2006-11-13,Ward 2,6,6,agrees
+cmed,con_398774c449785307baa3822c581963e9,2006-11-13,Ward 20,8,8,agrees
+cmed,con_88a17b76344c50ba9a3a118dd558c185,2006-11-13,Ward 21,4,4,agrees
+cmed,con_95ce62f8d45154c7836ec0372d2a416e,2006-11-13,Ward 22,3,3,agrees
+cmed,con_1fa443b3390f5d6691f7994877cf55c8,2006-11-13,Ward 23,5,5,agrees
+cmed,con_c90c50ce5e7c59dbaf6f3fb8efe575fd,2006-11-13,Ward 24,4,4,differs
+cmed,con_899c01be1cc951dfb79010a2fbd8ad10,2006-11-13,Ward 25,5,5,agrees
+cmed,con_2070d155d42250abac2e50baf8c6bf39,2006-11-13,Ward 26,15,15,differs
+cmed,con_4a5af0945c9a5a01ae50e3a5ea61b3fb,2006-11-13,Ward 27,8,8,agrees
+cmed,con_107ad5f6c01f5d4389c8194358534375,2006-11-13,Ward 28,7,7,differs
+cmed,con_2f8a0c46b37950fd9149d9b62f1f0142,2006-11-13,Ward 29,6,6,differs
+cmed,con_c760f9c404835bb595e5671cf893c340,2006-11-13,Ward 3,4,4,agrees
+cmed,con_ebbe0512549c59bc8a7a31e7ec5a59e9,2006-11-13,Ward 30,6,6,differs
+cmed,con_09d3330e921d5e53ae19007709e75bf9,2006-11-13,Ward 31,5,5,agrees
+cmed,con_218bbbaab66c59bc8d0d747f3ae2fb3c,2006-11-13,Ward 32,9,9,agrees
+cmed,con_31d375f206cb5fe1955efa73ae9da43e,2006-11-13,Ward 33,5,5,agrees
+cmed,con_b1ec123602ab559c939e1aa02badcd71,2006-11-13,Ward 34,5,5,agrees
+cmed,con_4ead7aa21a905ad7bd1838cb33f37045,2006-11-13,Ward 35,13,13,agrees
+cmed,con_e7325536f8e85cffa249480df8a556a2,2006-11-13,Ward 36,4,4,agrees
+cmed,con_d0cb7c26d6e55def83cde1da2c9bc8c5,2006-11-13,Ward 37,3,3,agrees
+cmed,con_17c2e1a7404c5641823443ca7a6dcc10,2006-11-13,Ward 38,8,8,differs
+cmed,con_f0bbc885a5535e28bc005ca644cc4e22,2006-11-13,Ward 39,6,6,differs
+cmed,con_1c0aff783cfb5ac995b40930229ffd15,2006-11-13,Ward 4,3,3,agrees
+cmed,con_e93ddb13c85852b58b88208c71191394,2006-11-13,Ward 40,4,4,agrees
+cmed,con_86a1f5b3235452b4a3cb3b3297e4dd51,2006-11-13,Ward 41,10,10,agrees
+cmed,con_1969b3b6667f56549d1f35b90f606cbf,2006-11-13,Ward 42,4,4,agrees
+cmed,con_59aa1ee85e2d51ca8dee4338d37665c2,2006-11-13,Ward 43,7,7,agrees
+cmed,con_c59d97019dab554698aea8cb6eeb469a,2006-11-13,Ward 44,8,8,agrees
+cmed,con_3ae0da024263524d8e13691dbeeadc88,2006-11-13,Ward 5,5,5,agrees
+cmed,con_d4f2ce7b93c75f4ca9c7bc73a4ba2a30,2006-11-13,Ward 6,9,9,agrees
+cmed,con_2c70fd784be55c4794f8294a723dedb9,2006-11-13,Ward 7,4,4,agrees
+cmed,con_2c97298461635376899e36569d2c7be3,2006-11-13,Ward 8,6,6,agrees
+cmed,con_d42434b7f93353e6b9eeb64711b54648,2006-11-13,Ward 9,2,2,agrees
+cmed,con_5d8609e7e7f4584ea28ad032690bdae8,2006-11-13,City of Toronto,38,38,differs
+cmed,con_f0cf1eca40845631b0bd4d4750413711,2010-10-25,Ward 1,6,6,agrees
+cmed,con_e8d5ffca829d5a06ad87216dc76d6e6a,2010-10-25,Ward 10,12,12,agrees
+cmed,con_43b57e74c0a454db9f5ed346b6fc7095,2010-10-25,Ward 11,4,4,agrees
+cmed,con_cceb1911b8545151a85313ea9045fdd6,2010-10-25,Ward 12,7,7,differs
+cmed,con_5c4da484552c546aaff98277d675d594,2010-10-25,Ward 13,5,5,agrees
+cmed,con_20589f7261325cd892231ed42321b3cf,2010-10-25,Ward 14,10,10,agrees
+cmed,con_579cae8a3fa455a7a3e68d1b1900fffa,2010-10-25,Ward 15,7,7,differs
+cmed,con_680464772a025da6aa5eaf650cefb52a,2010-10-25,Ward 16,4,4,agrees
+cmed,con_bdb4bceb8d3d535e9d9284d19bf99bb0,2010-10-25,Ward 17,7,7,differs
+cmed,con_d6f7b1cb92f959ab9408dbb936bcf2ff,2010-10-25,Ward 18,12,12,agrees
+cmed,con_1cf871058a8c5bc9a34c7dbdf6edca83,2010-10-25,Ward 19,9,9,agrees
+cmed,con_834d568760e15dcdb0b423512c33fe9c,2010-10-25,Ward 2,6,6,agrees
+cmed,con_8c969ca3bbbb537382be9d4ed8dd7697,2010-10-25,Ward 20,5,5,agrees
+cmed,con_3fd9226a06995ec78201f807f175b930,2010-10-25,Ward 21,6,6,agrees
+cmed,con_11ea4a9756fd5bc4a466dc797994b068,2010-10-25,Ward 22,4,4,agrees
+cmed,con_e689393a84cc500bab2476e3913f093d,2010-10-25,Ward 23,5,5,agrees
+cmed,con_a62a387b9ca8511db50248d4738f3eea,2010-10-25,Ward 24,4,4,agrees
+cmed,con_da88824c2975511d9432812d4988c9d5,2010-10-25,Ward 25,4,4,agrees
+cmed,con_4977aa6e0a865d788ed7ebf871e4027c,2010-10-25,Ward 26,7,7,agrees
+cmed,con_2ce79e4f63945b9b90a05c245e9382fc,2010-10-25,Ward 27,15,15,agrees
+cmed,con_272ca0eaeab656b89a5038bc74ad9988,2010-10-25,Ward 28,6,6,agrees
+cmed,con_1a46b115b13d55619bcaf30903c183e3,2010-10-25,Ward 29,6,6,agrees
+cmed,con_8283f00fca6855af9a0a63e550482bda,2010-10-25,Ward 3,4,4,agrees
+cmed,con_5587a8b9ae37546eb39a67333b5011ed,2010-10-25,Ward 30,8,8,agrees
+cmed,con_e358c35644bd5b94b662f1e211fbc70e,2010-10-25,Ward 31,7,7,agrees
+cmed,con_17593cee737354878c920526a9fa7afd,2010-10-25,Ward 32,9,9,agrees
+cmed,con_fc66f2cac25c5ea58dccc4005672bad8,2010-10-25,Ward 33,4,4,agrees
+cmed,con_662d709bee42574392549fc786efea0d,2010-10-25,Ward 34,3,3,agrees
+cmed,con_bf589c2ec43c513aa964b64309534ac6,2010-10-25,Ward 35,10,10,differs
+cmed,con_ebcb4d472e005fbbadabf9f6201cbe13,2010-10-25,Ward 36,10,10,agrees
+cmed,con_b6bdff47e14a590897fb7531e91999d1,2010-10-25,Ward 37,4,4,agrees
+cmed,con_edd7a5395e9a586bb5289cb5ed1106b3,2010-10-25,Ward 38,5,5,agrees
+cmed,con_8a8efa738bef57fc9329489f768529c9,2010-10-25,Ward 39,3,3,agrees
+cmed,con_be2d96cb623553cdbd79b303f9576bda,2010-10-25,Ward 4,3,3,agrees
+cmed,con_e78d7e5eb6975c7b98ef0efd13e5c783,2010-10-25,Ward 40,4,4,agrees
+cmed,con_c713b29e028a582893ad021c4a2b8546,2010-10-25,Ward 41,3,3,agrees
+cmed,con_33da03ca4a1159089c55d78f4edd2bf3,2010-10-25,Ward 42,9,9,agrees
+cmed,con_a160a05c9e3e5dd7b972cd5c16d456b0,2010-10-25,Ward 43,5,5,agrees
+cmed,con_6240f694b6ce5307a2126a9103153475,2010-10-25,Ward 44,4,4,differs
+cmed,con_a46853faf8a85598b55614ee5bfc99e2,2010-10-25,Ward 5,5,5,agrees
+cmed,con_e14c9528646b58ba89bddde54ae0f23e,2010-10-25,Ward 6,6,6,agrees
+cmed,con_7bbdc7e302705fee987b1ebca87ef16d,2010-10-25,Ward 7,9,9,agrees
+cmed,con_0a880ce7b6ad5bdaa2e2dc7b19601aa8,2010-10-25,Ward 8,8,8,agrees
+cmed,con_ed22821703705704bff31b43ed036014,2010-10-25,Ward 9,5,5,agrees
+cmed,con_099fbf24dd655a0e8b1720fbe2215a6a,2010-10-25,City of Toronto,40,40,differs
+cmed,con_5c8144ae39615a3189a3691c99c5ea4e,2014-10-27,Ward 1,12,12,differs
+cmed,con_7d07021e53b35a609a75560232a15fd1,2014-10-27,Ward 10,6,6,agrees
+cmed,con_fed30965855757d399c6acfbd6e6d4f4,2014-10-27,Ward 11,3,3,differs
+cmed,con_e230d66a67245cd08a806de4208d288b,2014-10-27,Ward 12,4,4,agrees
+cmed,con_7ee43d0beaab558c9788d151bbd8d067,2014-10-27,Ward 13,12,12,agrees
+cmed,con_5161ebd9ab2b5c55bfcd6eef433082c9,2014-10-27,Ward 14,6,6,agrees
+cmed,con_17f69fde16cb514bb16fb6e361c07fff,2014-10-27,Ward 15,5,5,agrees
+cmed,con_e8f16f1721ce5517977fa5bc1f660248,2014-10-27,Ward 16,16,16,agrees
+cmed,con_b123ac953da1590ebb8bca29f5eb3bdc,2014-10-27,Ward 17,4,4,agrees
+cmed,con_f59fe6995c8b528dbd3cbfbb5c3277c8,2014-10-27,Ward 18,12,12,agrees
+cmed,con_c4de914fc9f15a3cab65125ee118d9c8,2014-10-27,Ward 19,4,4,agrees
+cmed,con_622c2ee026875ae4ac60200b1559e8f6,2014-10-27,Ward 2,14,14,agrees
+cmed,con_a3ad5138021a51309ade19f0cbc4ebe1,2014-10-27,Ward 20,22,22,agrees
+cmed,con_643801dc921651c3a1ef5d96772fb13d,2014-10-27,Ward 21,4,4,differs
+cmed,con_2d92299c561559d99eccb92c22f4eb47,2014-10-27,Ward 22,4,4,differs
+cmed,con_79a0aa63063d5dd6a5a2ed28c29ecec1,2014-10-27,Ward 23,6,6,differs
+cmed,con_e2f423965407516280c8b3af41b9f5cf,2014-10-27,Ward 24,5,5,agrees
+cmed,con_d61412ebefff5d2b8bc9183244150abf,2014-10-27,Ward 25,5,5,agrees
+cmed,con_636fab9611ed540ebff54ad772a1827d,2014-10-27,Ward 26,6,6,agrees
+cmed,con_13660de4bc485cc68e0744199d21cb46,2014-10-27,Ward 27,10,10,agrees
+cmed,con_d5af05a065045bf9adaf30847252c957,2014-10-27,Ward 28,14,14,agrees
+cmed,con_2f43675e2c5c59b796fafde036252ed1,2014-10-27,Ward 29,6,6,agrees
+cmed,con_54d4d8b5d91f5df5ba8bfdf9c61296af,2014-10-27,Ward 3,10,10,agrees
+cmed,con_6c708130eaa15c9080cc3cd3a207f63b,2014-10-27,Ward 30,6,6,agrees
+cmed,con_639f022801275cedb8f9b4fe82711ae3,2014-10-27,Ward 31,9,9,agrees
+cmed,con_6629fd920f2b5a8d9b7959fafdd04a1a,2014-10-27,Ward 32,12,12,agrees
+cmed,con_c57f0385335559e696305e7d4e632b40,2014-10-27,Ward 33,5,5,agrees
+cmed,con_d8e03f953ae157089237a1febc263587,2014-10-27,Ward 34,6,6,agrees
+cmed,con_59bfad1b37305c63a378a4614deb11ae,2014-10-27,Ward 35,9,9,agrees
+cmed,con_b592d84a34965294a78c84c50bab4ddb,2014-10-27,Ward 36,8,8,differs
+cmed,con_1e16e8a3edc55c77847b36d881fb8fe7,2014-10-27,Ward 37,3,3,agrees
+cmed,con_c8a9dfe07ee5545eb20e21d12773c57e,2014-10-27,Ward 38,11,11,agrees
+cmed,con_350f0c58a79a574d926206857445b2d9,2014-10-27,Ward 39,9,9,agrees
+cmed,con_7acbde45d7355dbeb5327c8eff9039ed,2014-10-27,Ward 4,10,10,agrees
+cmed,con_e3f1226fd27e5ec6bf5d96a8439cc26a,2014-10-27,Ward 40,3,3,agrees
+cmed,con_82f64d71deda5204bf8ba5ab710c21e6,2014-10-27,Ward 41,5,5,agrees
+cmed,con_222bdce34cf75bbeb159589e8f46045b,2014-10-27,Ward 42,11,11,agrees
+cmed,con_4e3ebb6b13cb5d2396519f9df6fbdf4b,2014-10-27,Ward 43,5,5,agrees
+cmed,con_4e432b136b83537fb08e7e8485f4949c,2014-10-27,Ward 44,15,15,differs
+cmed,con_5cb64f68c501559d960b05fb29843745,2014-10-27,Ward 5,9,9,agrees
+cmed,con_5babda81dd6351a28a423340a03b5d8a,2014-10-27,Ward 6,12,12,agrees
+cmed,con_0dc4d6b99efa5f32a8f36b24d080bb2d,2014-10-27,Ward 7,8,8,differs
+cmed,con_2cf721e86d7a55de8cf53a0ae3f6413c,2014-10-27,Ward 8,6,6,agrees
+cmed,con_004711e5bbda5d169a7774d906befd21,2014-10-27,Ward 9,6,6,agrees
+cmed,con_9250eb2b2609550597520e68352ac56a,2014-10-27,City of Toronto,65,65,differs
+cmed,con_922d425132ad5243b459c0ca40a6dcd9,2018-10-22,Ward 1 — Etobicoke North,9,9,agrees
+cmed,con_2865d31031005dd897904c3f07e4d039,2018-10-22,Ward 10 — Spadina-Fort York,14,14,agrees
+cmed,con_810611751acb5e86ab30b3277e7e6dad,2018-10-22,Ward 11 — University-Rosedale,7,7,agrees
+cmed,con_8b4a03ef5a3c55c4ab20662c886b31a7,2018-10-22,Ward 12 — Toronto-St. Paul's,6,6,agrees
+cmed,con_3a43982e2a0450b2a3f4c5241f6965d8,2018-10-22,Ward 13 — Toronto Centre,19,19,differs
+cmed,con_1b8d99f619f758efb737805a20bcf6fb,2018-10-22,Ward 14 — Toronto-Danforth,10,10,agrees
+cmed,con_6a1f4d7470675d869b3b11aede0812f2,2018-10-22,Ward 15 — Don Valley West,5,5,agrees
+cmed,con_147dca9e3758595d8766dc52d11a65f4,2018-10-22,Ward 16 — Don Valley East,8,8,agrees
+cmed,con_7a4043e26d4256e78ee3861fb81e718a,2018-10-22,Ward 17 — Don Valley North,9,9,agrees
+cmed,con_4def6d4e85f85950babb9030e4eae0cb,2018-10-22,Ward 18 — Willowdale,18,18,differs
+cmed,con_45eb3e143f1b5492b4652498c957ed6b,2018-10-22,Ward 19 — Beaches-East York,16,16,agrees
+cmed,con_3fc9df4b254c5eb6a2a7fb629a124bfb,2018-10-22,Ward 2 — Etobicoke Centre,5,5,differs
+cmed,con_6fd864aec40c5bbc9f3eb32d2e9e4379,2018-10-22,Ward 20 — Scarborough Southwest,10,10,agrees
+cmed,con_16fad19349255393a28639cd62e83ae3,2018-10-22,Ward 21 — Scarborough Centre,11,11,differs
+cmed,con_c555f2e9b45051a8b960bdbb0ac6080a,2018-10-22,Ward 22 — Scarborough-Agincourt,7,7,agrees
+cmed,con_c85783d7c9a4550bae21b8e14f2ff992,2018-10-22,Ward 23 — Scarborough North,11,11,agrees
+cmed,con_7e6cf2fd75ba560a900bb024e72fe99c,2018-10-22,Ward 24 — Scarborough-Guildwood,9,9,agrees
+cmed,con_eeda9883ca2d57148405d41f7f5a80a4,2018-10-22,Ward 25 — Scarborough-Rouge Park,11,11,agrees
+cmed,con_612115bf42b450d3aeb63bb430d3aec9,2018-10-22,Ward 3 — Etobicoke-Lakeshore,10,10,agrees
+cmed,con_f961284da53f5a38ba3a20e7e998ef4f,2018-10-22,Ward 4 — Parkdale-High Park,10,10,agrees
+cmed,con_ac347f98e5715159b3adecf8debcbde8,2018-10-22,Ward 5 — York South-Weston,11,11,agrees
+cmed,con_849867f583195ad38c77941612883bd9,2018-10-22,Ward 6 — York Centre,4,4,agrees
+cmed,con_990816d2030b592787bdf4a19382627f,2018-10-22,Ward 7 — Humber River-Black Creek,8,8,agrees
+cmed,con_caa23fae586656b2bab11ee711073a2c,2018-10-22,Ward 8 — Eglinton-Lawrence,10,10,agrees
+cmed,con_55f5230db0d85c499ce7cea0ce379f5f,2018-10-22,Ward 9 — Davenport,4,4,agrees
+cmed,con_b93d69f083ed511ab264f38cc1d8b94c,2018-10-22,City of Toronto,35,35,differs
+cmed,con_0d314382ba1a5d62b399c1eefc717cc1,2022-10-24,Ward 1 — Etobicoke North,16,16,agrees
+cmed,con_c44af6fcb9ff527e8974217b3d633af1,2022-10-24,Ward 10 — Spadina-Fort York,12,12,agrees
+cmed,con_037ae72c455f558590ca04bc929df4cb,2022-10-24,Ward 11 — University-Rosedale,14,14,agrees
+cmed,con_91f80636385c5df5b2d409f9c9b389ed,2022-10-24,Ward 12 — Toronto-St. Paul's,4,4,agrees
+cmed,con_9476d4c41a7d5fa48b97b47e28f9305d,2022-10-24,Ward 13 — Toronto Centre,9,9,differs
+cmed,con_ac0a746327ea57b39ba13add8456bbd3,2022-10-24,Ward 14 — Toronto-Danforth,5,5,agrees
+cmed,con_f8a855ebf8c250bda4eeed75246305b5,2022-10-24,Ward 15 — Don Valley West,4,4,agrees
+cmed,con_af1f1cbea2a15cf4899bdd37d9fc80f7,2022-10-24,Ward 16 — Don Valley East,11,11,agrees
+cmed,con_a548943febc15683bb34e547001ee6e7,2022-10-24,Ward 17 — Don Valley North,6,6,agrees
+cmed,con_8d2d5f08a1095a14abbcb526483a3aa0,2022-10-24,Ward 18 — Willowdale,4,4,agrees
+cmed,con_b7158aa7285c513f8255b4f87166c723,2022-10-24,Ward 19 — Beaches-East York,7,7,agrees
+cmed,con_a1f3f1e6009c53c7a9cbb88e7e2346c0,2022-10-24,Ward 2 — Etobicoke Centre,5,5,agrees
+cmed,con_9e0a04dcf1245155b6f1fd50c6a83e99,2022-10-24,Ward 20 — Scarborough Southwest,8,8,agrees
+cmed,con_c637e2ad153c516eb79ab5edb84161f8,2022-10-24,Ward 21 — Scarborough Centre,6,6,agrees
+cmed,con_db6acf978ec15e2c9ac0230649ef0609,2022-10-24,Ward 22 — Scarborough-Agincourt,6,6,agrees
+cmed,con_c686b3ad3bd059d78db8cc44229817a0,2022-10-24,Ward 23 — Scarborough North,3,4,differs
+cmed,con_98fc649f10ee5100a44520c1500dfac9,2022-10-24,Ward 24 — Scarborough-Guildwood,4,4,agrees
+cmed,con_e3987d425526548a844f6d73b662eac3,2022-10-24,Ward 25 — Scarborough-Rouge Park,3,3,agrees
+cmed,con_bcc3da3d377f5fd3bb1d8a0c3ad7160b,2022-10-24,Ward 3 — Etobicoke-Lakeshore,6,6,differs
+cmed,con_2c0ca30fc75e51a3acf50c4693b1cc1b,2022-10-24,Ward 4 — Parkdale-High Park,6,6,agrees
+cmed,con_52f50431db92559f8d4391fb2e932f16,2022-10-24,Ward 5 — York South-Weston,3,3,agrees
+cmed,con_bab4f35c5b9a51da935131d5c790bddf,2022-10-24,Ward 6 — York Centre,4,4,agrees
+cmed,con_43f8a49a6b095ee8a38c2a1aa0477382,2022-10-24,Ward 7 — Humber River-Black Creek,3,3,agrees
+cmed,con_27e80d547d0256149213a7e90956055b,2022-10-24,Ward 8 — Eglinton-Lawrence,5,5,agrees
+cmed,con_6821258c9f7f598e829c8617b8765c25,2022-10-24,Ward 9 — Davenport,9,9,agrees
+cmed,con_778d3d5e612151bcb14703a9f987556d,2022-10-24,City of Toronto,31,31,agrees

@@ -258,6 +258,7 @@ def test_pinned_tabulation_becomes_a_complete_by_election_contest(tmp_path):
     result = parse_tabulation(path, spec)
 
     assert list(result["candidate_name_raw"]) == ["ROE, ANN", "DOE, JO"]
+    assert list(result["candidate_name"]) == ["ANN ROE", "JO DOE"]
     assert list(result["elected"]) == [True, False]
     assert list(result["affiliation_status"]) == ["party", "independent"]
     assert set(result["official_district_id"]) == {"098"}
@@ -265,7 +266,7 @@ def test_pinned_tabulation_becomes_a_complete_by_election_contest(tmp_path):
     assert result["eligible_electors"].isna().all()
     assert result["ballots_cast"].isna().all()
     assert set(result["source_resource"]) == {"Vote Totals From Official Tabulation"}
-    assert set(result.columns) == {*RESULT_COLUMNS, "source_resource"}
+    assert set(result.columns) == {*RESULT_COLUMNS, "candidate_name", "source_resource"}
 
 
 def test_tabulation_that_differs_from_its_pin_fails(tmp_path):

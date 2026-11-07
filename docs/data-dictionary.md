@@ -44,7 +44,20 @@ those fields are null for 2026 until the City publishes its final voter statisti
 declared trustee Acclamations are final with null vote totals. The dataset includes Mayor, City
 Councillor, all four School Board Trustee systems, MP, and MPP elections. General elections,
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
-used only to produce Contest totals and are not published.
+used only to produce Contest totals and are not published. Candidacies are the candidates in the
+authority's results. Cynthia Lai, a council candidate in Ward 23 Scarborough North in 2022, died
+three days before polling; the City did not count votes cast for her and its results list only the
+other three candidates, so she has no Candidacy in that Contest.
+
+One Contest reaches beyond the City. Conseil scolaire Viamonde's 1997 Region 1B also took in
+Markham, Richmond Hill, Vaughan, King and Whitchurch-Stouffville; its trustee, Evelyne Chelli, was
+acclaimed, and the Contest is included as the City reported it. The other French-language trustee
+areas lie within today's City. In 1994 and 1997 each was a group of the former municipalities. From
+2000 the City's wards for Viamonde and MonAvenir divide the City between them: in 2000 each board's
+wards took in all 1,992 of the City's polls, and from 2003 the City's files assign every council
+ward to exactly one of them (`data/reference/trustee_ward_crosswalks.csv`). The federal and Ontario
+Contests are those of the ridings the representation orders draw within the City (Metropolitan
+Toronto before 1998). The build records no Contest left out for crossing the City's boundary.
 
 The release contains 8,099 Candidacies, 1,385 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
@@ -99,11 +112,11 @@ modelling. The authoritative normalized entities remain available as companion t
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_reported` | boolean | authority does not report it | Source flag, except two pinned corrections of flags that contradict the record (Natalie Hunt, 2015; John Sewell, 1999); the modelled `incumbent` field uses project semantics. |
-| `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies; null until predecessor rosters are acquired. |
+| `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies. The Mayor and City Councillor races have it for every Candidacy with a Person (`data/reference/predecessor_rosters_1997.csv`); the trustee races are null because the release holds no board rosters. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
 | `source_authority` | string | never | Organization responsible for the row's record: the official authority, or `Toronto Star` where only the newspaper's printed results survive (most 1994 and 1997 trustee Contests, eight 1994 council Contests). |
 | `source_resource` | string | never | Official dataset/report family. |
-| `source_detail` | string | never | Concrete official URL/file detail. |
+| `source_detail` | string | never | Published URL of the record the row comes from; several are separated by `;`. A City poll-by-poll workbook is cited as the results ZIP's URL, then ` :: ` and the workbook's path inside the ZIP. Other sources add, after `#`, the file inside an archive or the part of a page or report the row uses. |
 | `source_candidacy_id` | string | never | Authority candidate key where one exists; otherwise the opaque occurrence key persisted in the project Candidacy ledger. |
 
 ### Important null semantics
@@ -145,7 +158,10 @@ The persistent identity registry: opaque `person_id`, preferred name, `identity_
 target and creation release. Every Person in this release is `active` with no redirect. A later
 release that merges two Persons keeps the losing ID as `deprecated`, with a redirect to the Person
 that replaced it. An active Person without a Candidacy holds an Office tenure needed to classify
-Incumbency. A Person name never rewrites a historical ballot name.
+Incumbency. Six Persons are of this kind: Ceta Ramkhalawansingh, Jim Hart, Miganoush Megardichian,
+Paul Valenti, Peter Leon and Rose Milczyn, each appointed to Council to fill a vacancy, so the
+release's 5,078 People include 5,072 with at least one Candidacy. A Person name never rewrites a
+historical ballot name.
 
 ### `candidacy_person_links`
 
@@ -155,14 +171,76 @@ adjudicated; `unresolved` may retain the reviewed candidate Person when evidence
 `rejected` records a disproved candidate Person. Only active confirmed links populate
 `election_results.person_id`.
 
-Every row in this release is current: `valid_from_release` is the release ID and
-`valid_to_release` is null. A later release closes a superseded row instead of deleting it, so
-merges and corrections stay visible. A Candidacy has one current link, except that 27 Candidacies
+`evidence_basis` says what each active confirmed link rests on, and is null on every other row:
+
+- `own_record`: the Person was built from this Candidacy, so the link joins nothing;
+- `official_record`: an official record ties the runs, being incumbency that the election
+  authority reported, a Council roster, or one archive record printed twice;
+- `person_specific_source`: a source about the person ties the runs, such as a biography, a news
+  report, a candidate profile, an official record of service, or an occupation that the candidate
+  records give for each run;
+- `structural`: no source about the person was found, and the runs are joined under the
+  structural rules in the Identity section of `docs/build-notes.md`.
+
+| `method` | Confirmed links | `own_record` | `official_record` | `person_specific_source` | `structural` |
+|---|---:|---:|---:|---:|---:|
+| `official_candidacy_record` | 4,941 | 4,941 | | | |
+| `official_incumbent_continuity` | 221 | | 221 | | |
+| `municipal_authoritative_roster_exact_name` | 131 | | 131 | | |
+| `curated_official_cross_event_identity` | 1,304 | | | 995 | 309 |
+| `curated_person_redirect` | 9 | | | 9 | |
+| `curated_review_confirmed` | 1,080 | | 3 | 821 | 256 |
+| All | 7,686 | 4,941 | 355 | 1,825 | 565 |
+
+To keep only links that a source confirms, treat a Candidacy as unlinked when its link is
+`structural`:
+
+```python
+links = pd.read_csv("candidacy_person_links.csv", dtype="string")
+confirmed = links.loc[links["link_status"].eq("confirmed") & links["valid_to_release"].isna()]
+source_confirmed = confirmed.loc[confirmed["evidence_basis"].ne("structural"), "candidacy_id"]
+results.loc[~results["candidacy_id"].isin(source_confirmed), "person_id"] = pd.NA
+```
+
+This drops each structural link but does not recheck the joins among the runs that remain: a run
+whose source ties it to a structurally joined run keeps its Person.
+
+`valid_from_release` is the release ID on every row. A superseded row is closed instead of
+deleted, so merges and corrections stay visible: its `valid_to_release` is set and its
+`evidence_basis` is null. One row is closed in this release, the first link of Fatima Shaban's
+2026 provincial by-election run, which a person-record merge replaced; every other row is current,
+with a null `valid_to_release`. A Candidacy has one current link, except that 27 Candidacies
 also carry an `unresolved` row without a Person, with method `incumbent_without_prior_elected_match`:
 the authority marked the Candidacy as an incumbent and the release has no earlier elected
 exact-name match in the same body and office. Twenty-four are sitting members who ran at the 1995
 Ontario election, the first in the release, and the other three are members whose earlier win is
 printed under another form of their name. That row does not change `election_results.person_id`.
+
+### `person_external_ids`
+
+Identifiers that other sources give the same Person, so the release can be joined to national
+career files. One row per Person and `scheme`, with `external_id`, the `basis` of the match, a
+`source_url` where it can be checked and the `retrieved_on` date.
+
+- `house_of_commons`: the House of Commons person ID, from the member export the Person's House
+  tenure cites (36th Parliament on).
+- `ontario_legislature`: the Legislative Assembly of Ontario's member ID, the slug of the member
+  profile the Person's Ontario tenure cites.
+- `wikidata`: the Wikidata item that holds "member of the House of Commons of Canada" for the same
+  constituency in the same Parliament as one of the Person's House tenures, with the member's
+  surname in its label, or whose Ontario MPP ID (P3054) is the Person's Assembly member ID. A
+  Person matches one item and an item one Person.
+- `parlinfo`: the Library of Parliament (ParlInfo) person ID recorded on the House match's
+  Wikidata item.
+
+The table covers the 185 People with a House tenure or an Assembly member term. The 14 whose only
+Ontario tenure is a 1995 flag row are not matched. 183 have a Wikidata item: Fatima Shaban,
+elected at the September 2026 Ontario by-election, and Tanveer Shahnawaz, elected at the August
+2026 federal by-election, had none on 7 November 2026. Of the 94 with a House tenure, 90 have a
+ParlInfo ID and the 89 who sat from the 36th Parliament on have a House ID. All 98 with an
+Assembly member term have an Assembly ID. The rows are built by
+`scripts/build_person_external_ids.py` into `data/reference/person_external_ids.csv`, and the build
+fails if a row names a Person who is no longer active.
 
 ### `parties`
 
@@ -171,10 +249,44 @@ and retained source label. Party is a Candidacy relationship, never a permanent 
 
 ### `office_tenures`
 
-Evidence that a Person held one Office type in one Represented body, including known/approximate
-dates, district where available, entry method, and source. Appointments may appear here even though
-appointments are not Election results. Date-precision fields distinguish exact election dates from
-unknown or reference-bounded dates; `source_authority` and `source_detail` retain the evidence.
+Evidence that a Person held one Office type in one Represented body, with dates, the district
+where available, the entry method and the source. Each row is one piece of evidence, not one term
+of office:
+
+- A Council roster row says the Person was in office from their latest Council win in the term
+  (`started_on_precision = election_date`), or from the day Council appointed them to fill a
+  vacancy (`appointment_date`), to at least the reference date of one election or by-election
+  (`ended_on_precision = at_or_after_reference`). The win can be at the term's first general
+  election or at a by-election since. A councillor whose seat was checked at many events has a
+  row for each, up to 17.
+- A House of Commons row is one member's term in one Parliament, from polling day to the last day
+  of the term as the House or ParlInfo records it (`exact`), or `ongoing` with a null `ended_on`
+  for a sitting member.
+- An Ontario legislature row is likewise one member's term in one Parliament from the 36th on,
+  from polling day to the last day of the term as the Legislative Assembly records it, or
+  `ongoing`. A term that begins when a riding is renamed during a Parliament extends the tenure
+  of the member's election. John Tory's term for Dufferin—Peel—Wellington—Grey, which he won at a
+  by-election outside the release, is tied to his Person by the sources named in its
+  `source_detail` and has no district.
+- An Ontario row for the 1995 election comes from Elections Ontario's incumbent flag and says only
+  that the Person sat the day before the Legislature was dissolved, so its start and entry method
+  are unknown.
+- A predecessor roster row says the Person sat on Metro Council or one of the six former councils
+  on 9 November 1997, the eve of the first amalgamated election (ADR 0012).
+
+Appointments appear here even though they are not Election results. The 17 Council rows with
+`entry_method = appointment` are dated from `data/reference/council_appointments.csv`, which
+gives each appointment's ward, predecessor and source: the City Clerk's list of Council vacancies
+since amalgamation, or the minutes of the meeting, to 2006, and the by-law that made the
+appointment, or a news report from the day of the vote, after that. The only other appointment
+is Vincent Crisanti's to Etobicoke council in the predecessor rosters. `started_on_precision` and
+`ended_on_precision` say how each date is bounded, and `source_authority` and `source_detail` keep
+the evidence.
+
+`spell_id` groups the rows of one unbroken stretch of service: rows of one Person, Represented body
+and Office type share a spell when each starts no later than the day after the latest end so far.
+The 1,329 rows form 471 spells. The 26 Ontario rows from 1995 have no `spell_id`, since their
+start is unknown.
 
 ### `electoral_districts`
 
@@ -198,6 +310,21 @@ fields record why and when an Endorser belongs in the systematic panel. Every ap
 Endorser applies to both Mayor and City Councillor Contests; that scope flag neither creates an
 Endorsement nor claims that a specific Contest was searched.
 
+The project owner approved the panel on 21 August 2026 from the evidence in
+`docs/research/toronto-2026-endorser-panel-evidence-matrix-2026-08-21.md`, and it has not changed
+since. An organization or editorial board is on it if, before polls closed on 26 June 2023, it
+publicly endorsed or selected a certified candidate in that year's mayoral by-election, and it also
+has one of the following: a Toronto-wide newspaper editorial board's practice of municipal
+endorsements, a formal slate across two or more Toronto mayor or council Contests at one election,
+Toronto mayoral endorsements at two or more elections, or a reason recorded for it by name. Six
+organizations qualify; Progress Toronto, which selects candidates as "champions" rather than
+endorsing them, is the one included by name. They are covered from 2003, Progress Toronto from
+2018. The three people on the panel are the amalgamated City's mayors who were living on 20 August
+2026, David Miller, John Tory and Olivia Chow, each from the start of their first term as mayor.
+The searches behind `endorsement_coverage` were made from 21 to 23 August 2026. The only later
+addition is Progress Toronto's first six 2026 council endorsements, on 26 September 2026, so the
+2026 election is covered only as of those dates.
+
 ### `endorsement_assertions`
 
 One row per source-specific Endorsement claim. `assertion_id` is the assertion identity;
@@ -219,13 +346,13 @@ an Endorsement row never means opposition, neutrality, or a decision not to endo
 ### `endorsement_coverage`
 
 One row per approved Endorser and Mayor/City Councillor Contest: `endorser_id`, `contest_id`,
-`coverage_state`, `assessed_through`, and `coverage_basis`. The 2,385 cells distinguish
+`coverage_state`, `assessed_through`, and `coverage_basis`. The 3,078 cells distinguish
 `not_applicable`, `not_searched`, `partially_searched`, `searched_no_endorsement_found`,
 `comprehensive_source_found`, and `source_unavailable`. Coverage is open-world metadata, not a set
 of candidate-level negatives. Even `searched_no_endorsement_found` records only what the completed
 search found; it does not assert that the Endorser opposed any Candidacy. `assessed_through` is null
 for `not_searched` cells, so a release date cannot be mistaken for evidence that a historical
-Contest-specific search occurred. The current release contains 670 `not_applicable`, 145
+Contest-specific search occurred. The current release contains 1,336 `not_applicable`, 145
 `not_searched`, 1,277 `partially_searched`, 207 `comprehensive_source_found`, and 113
 `source_unavailable` cells; it uses no `searched_no_endorsement_found` cells.
 
@@ -235,6 +362,11 @@ Records the inclusive election-date coverage horizon, the pending candidate-snap
 schema version, generation timestamp, source and artifact SHA-256 checksums, known archive
 uncertainty, deliberately excluded election calls, in-scope results awaiting acquisition, and the
 separately enumerated pending event.
+
+Each source file downloaded into the untracked `data/raw/` also has a `source_url`, the address it
+is downloaded from, so a reader can fetch the file and check it against the recorded checksum. The
+URLs come from `data/reference/raw_source_urls.csv`, which `scripts/build_raw_source_urls.py`
+writes from the adapters' own URL tables and the City Open Data portal's listings.
 
 ### `data/reference/candidacy_identity_ledger.csv`
 
@@ -297,7 +429,13 @@ back to name matching or blanket historical coverage claims.
   no geographic name.
 - Elections Canada official poll-result archives, official summary tables, and returning-officer
   validated contest totals when the poll-level export is not yet available.
+- The House of Commons members export for the 36th to 45th Parliaments and ParlInfo's list of the
+  35th Parliament's members, compiled in `data/reference/house_of_commons_members.csv`, for federal
+  incumbency and MP Office tenures.
 - Elections Ontario official candidate/statistics/party CSV reports.
+- The Legislative Assembly of Ontario's member profiles for the 36th to 44th Parliaments, compiled
+  in `data/reference/ontario_legislature_members.csv`, for Ontario incumbency from 1996 and MPP
+  Office tenures.
 - City voter-statistics files for explicitly scoped municipal turnout.
 - City Council attendance/voting records, reconciled historical rosters and the curated 2000
   roster for municipal incumbency evidence.
@@ -352,7 +490,8 @@ councillors in office on the eve of the November 13, 2000 election, being the ce
 winners, the 1998 and 1999 by-election winners and the two members Council appointed in 2000,
 checked against the City's list of councillors for the 1998-2000 term. Council and mayoral
 `incumbent` is null for 1994 and 1997: the release holds no roster for the councils elected
-before 1994, and the amalgamated council first sat in 1998 (see `predecessor_incumbent`).
+before 1994, and the amalgamated council first sat in 1998. For 1997, `predecessor_incumbent`
+records membership of Metro Council or the six former councils on the eve of the election.
 
 Trustee result sources do not report a structured incumbent flag. For 2026,
 `data/reference/trustee_incumbents_2026.csv` records the 20 sitting trustees who ran, from official

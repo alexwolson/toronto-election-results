@@ -357,6 +357,8 @@ def test_pipeline_advances_ledger_before_promoting_public_release(tmp_path, monk
         lambda districts, *_: districts,
     )
     monkeypatch.setattr(pipeline, "enrich_district_geometries", lambda frame, **_: frame)
+    monkeypatch.setattr(pipeline, "read_link_basis", lambda _: empty)
+    monkeypatch.setattr(pipeline, "add_evidence_basis", lambda links, _: links)
     monkeypatch.setattr(
         pipeline,
         "build_default_endorsement_inputs",

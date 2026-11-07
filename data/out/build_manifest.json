@@ -1,172 +1,186 @@
 {
   "artifacts": [
     {
-      "bytes": 7544233,
+      "bytes": 8056511,
       "local_path": "data/out/candidacy_person_links.csv",
-      "rows": 8126,
-      "sha256": "d10953c6d77815dcbaa89669fe49baa19d97bd5c9fa3c9c82f5fab8aca12ea39",
-      "written_at": "2026-11-05T19:56:50.005254Z"
+      "rows": 8127,
+      "sha256": "40c10c0a61cc9fd6a4a571485467e098c27041b41c7dff04fa0a7d01ca45b459",
+      "written_at": "2026-11-07T14:42:58.566720Z"
     },
     {
-      "bytes": 2166377,
+      "bytes": 2220089,
       "local_path": "data/out/candidacy_person_links.parquet",
-      "rows": 8126,
-      "sha256": "847f01c4e2b3fe1797bd5855076c7e4b3e74e0ee285378382f1dd89ca59acf47",
-      "written_at": "2026-11-05T19:56:50.029254Z"
+      "rows": 8127,
+      "sha256": "8a6bb75fb4659f3cf8c101ceace6149a44b5e66c4a07c38111145eae48a5f082",
+      "written_at": "2026-11-07T14:42:58.594720Z"
     },
     {
-      "bytes": 632210,
+      "bytes": 666050,
       "local_path": "data/out/contests.csv",
       "rows": 1385,
-      "sha256": "22c69419d323201f8c863d7b7ab7e67ca23ca2d625310222c655887a8b18f362",
-      "written_at": "2026-11-05T19:56:49.865254Z"
+      "sha256": "f6e68f03307f70a762ece26883d170e81fe1fe58877dfcc8cd3278523640be03",
+      "written_at": "2026-11-07T14:42:58.394720Z"
     },
     {
-      "bytes": 132725,
+      "bytes": 133195,
       "local_path": "data/out/contests.parquet",
       "rows": 1385,
-      "sha256": "58e2329dc54ba1ff03653c8e7d15df532c88827ce87fd50db44c733f752d4313",
-      "written_at": "2026-11-05T19:56:49.870954Z"
+      "sha256": "3a2a6fda4c6037e913b1bdf5dbc5b79bcf77442388a9fdd0c46f64052c4b70b4",
+      "written_at": "2026-11-07T14:42:58.401431Z"
     },
     {
       "bytes": 5663,
       "local_path": "data/out/election_events.csv",
       "rows": 80,
       "sha256": "a136b4527adb80f6784281a1ea3064338cf4db6869e5404bcdc3f0805ad76d34",
-      "written_at": "2026-11-05T19:56:49.848649Z"
+      "written_at": "2026-11-07T14:42:58.376525Z"
     },
     {
       "bytes": 6118,
       "local_path": "data/out/election_events.parquet",
       "rows": 80,
       "sha256": "f2b21e599b230ce0da34c94001869edc5a0e23478f335763bfd9f6fde5a09721",
-      "written_at": "2026-11-05T19:56:49.849573Z"
+      "written_at": "2026-11-07T14:42:58.377918Z"
     },
     {
-      "bytes": 6170415,
+      "bytes": 6460775,
       "local_path": "data/out/election_results.csv",
       "rows": 8099,
-      "sha256": "77fbfcab3b70bb73e1522c28136c68e96d03877a47ba94cd007a83dfce13b9f8",
-      "written_at": "2026-11-05T19:56:49.801254Z"
+      "sha256": "8c052978247a321c544a8d9582327153cb20bcb58441135cfbda3bdd534f5871",
+      "written_at": "2026-11-07T14:42:58.298720Z"
     },
     {
-      "bytes": 1260424,
+      "bytes": 1264131,
       "local_path": "data/out/election_results.parquet",
       "rows": 8099,
-      "sha256": "ef1d866e19c5cef8f6eea20ef3fda6807c1a7730d5ee8cec45053ee7c51b2307",
-      "written_at": "2026-11-05T19:56:49.841254Z"
+      "sha256": "5df2466c1e42a37aba8b8c5c935a7bb672250a6b30922f1ca0febc8449134ded",
+      "written_at": "2026-11-07T14:42:58.370720Z"
     },
     {
       "bytes": 5866157,
       "local_path": "data/out/electoral_districts.csv",
       "rows": 848,
       "sha256": "4d4822c947f5327b89e8231ab42d02a1f6e06cc04577634bdcde22e956a57fba",
-      "written_at": "2026-11-05T19:56:50.181254Z"
+      "written_at": "2026-11-07T14:42:58.826720Z"
     },
     {
       "bytes": 2336169,
       "local_path": "data/out/electoral_districts.parquet",
       "rows": 848,
       "sha256": "6284c45c32bc4d24bcfc7b03ae3e428cef19e3c5c3fe6732966ba863884485e9",
-      "written_at": "2026-11-05T19:56:50.205254Z"
+      "written_at": "2026-11-07T14:42:58.854720Z"
     },
     {
       "bytes": 70085,
       "local_path": "data/out/endorsement_assertions.csv",
       "rows": 161,
       "sha256": "88d1c158f04384914b16e40ae13dd965a9d4dd02461d326d46b50a3338a72ca9",
-      "written_at": "2026-11-05T19:56:50.213254Z"
+      "written_at": "2026-11-07T14:42:58.862720Z"
     },
     {
       "bytes": 37252,
       "local_path": "data/out/endorsement_assertions.parquet",
       "rows": 161,
       "sha256": "d6d85ac14e6f505a5c9a6082abb227109ed4caa62f0a04a68bb3798bcb47f56f",
-      "written_at": "2026-11-05T19:56:50.217497Z"
+      "written_at": "2026-11-07T14:42:58.866263Z"
     },
     {
       "bytes": 494826,
       "local_path": "data/out/endorsement_coverage.csv",
       "rows": 3078,
       "sha256": "c9e76939e51d05b3f8579981cae89f97afa6c0e0497cc458995191cf898482b5",
-      "written_at": "2026-11-05T19:56:50.229254Z"
+      "written_at": "2026-11-07T14:42:58.874720Z"
     },
     {
       "bytes": 22292,
       "local_path": "data/out/endorsement_coverage.parquet",
       "rows": 3078,
       "sha256": "cd7f0462d7128b7b99653a417512fc5ed7cda31a822e544ff6f7ca509998c9e5",
-      "written_at": "2026-11-05T19:56:50.237411Z"
+      "written_at": "2026-11-07T14:42:58.881738Z"
     },
     {
       "bytes": 23731,
       "local_path": "data/out/endorsements.csv",
       "rows": 160,
       "sha256": "dedac2711227506dae8c166cb7a5be9a44bce82aec1878edabb7793c46734e36",
-      "written_at": "2026-11-05T19:56:50.219540Z"
+      "written_at": "2026-11-07T14:42:58.868170Z"
     },
     {
       "bytes": 17166,
       "local_path": "data/out/endorsements.parquet",
       "rows": 160,
       "sha256": "4b638e3893cce5759ca0b8b23a694a058ba6ecc7be979adbdbc8eafa161f55dc",
-      "written_at": "2026-11-05T19:56:50.220253Z"
+      "written_at": "2026-11-07T14:42:58.868862Z"
     },
     {
       "bytes": 2537,
       "local_path": "data/out/endorsers.csv",
       "rows": 9,
       "sha256": "9bfdb461ff5f4279be215031a4a9ca996c2235b3ea967e7b169d781480a2b7d1",
-      "written_at": "2026-11-05T19:56:50.211039Z"
+      "written_at": "2026-11-07T14:42:58.860458Z"
     },
     {
       "bytes": 8618,
       "local_path": "data/out/endorsers.parquet",
       "rows": 9,
       "sha256": "e10fb740979dfda5df2de1ce891ace8795295a35c465b62644a0a1dbd3705b36",
-      "written_at": "2026-11-05T19:56:50.212631Z"
+      "written_at": "2026-11-07T14:42:58.861682Z"
     },
     {
-      "bytes": 743774,
+      "bytes": 1060126,
       "local_path": "data/out/office_tenures.csv",
-      "rows": 1093,
-      "sha256": "65fec48f804ecd968284afba9232b68e08a50f75c3ccbf4077e29ce247d5cacf",
-      "written_at": "2026-11-05T19:56:50.045254Z"
+      "rows": 1329,
+      "sha256": "eaf654938049d4436e221a1278f8e42829051e67691420bca3dd91336365f90e",
+      "written_at": "2026-11-07T14:42:58.630720Z"
     },
     {
-      "bytes": 155475,
+      "bytes": 249290,
       "local_path": "data/out/office_tenures.parquet",
-      "rows": 1093,
-      "sha256": "24688725217a7bd432e2b6565eca530771889d15d5b62c81411f18874bef3e00",
-      "written_at": "2026-11-05T19:56:50.052145Z"
+      "rows": 1329,
+      "sha256": "784c07a18ddae73a7c9f1ddfa82f8443f41db83ed029f3b20c921d0e3d3d00d3",
+      "written_at": "2026-11-07T14:42:58.639551Z"
     },
     {
       "bytes": 8383,
       "local_path": "data/out/parties.csv",
       "rows": 82,
       "sha256": "a0359370749bd302b02f542ae193878aa5131643c8d489b4af321149089b4d8d",
-      "written_at": "2026-11-05T19:56:50.033981Z"
+      "written_at": "2026-11-07T14:42:58.598720Z"
     },
     {
       "bytes": 8692,
       "local_path": "data/out/parties.parquet",
       "rows": 82,
       "sha256": "e8abc0d11c57649bc8252ff7c8d04a41608a9cba6d045f5bc173f3b7e9a59a68",
-      "written_at": "2026-11-05T19:56:50.034919Z"
+      "written_at": "2026-11-07T14:42:58.602768Z"
     },
     {
-      "bytes": 357903,
+      "bytes": 357922,
       "local_path": "data/out/people.csv",
       "rows": 5079,
-      "sha256": "29e62a1696648df339c0b27d5ce7de4a33edb4c72b10522913b4bfb84bf36610",
-      "written_at": "2026-11-05T19:56:49.881254Z"
+      "sha256": "01ba51bf31bf12813351925b55bf3322cc791fee39ef097468bc10d78f383f51",
+      "written_at": "2026-11-07T14:42:58.410720Z"
     },
     {
-      "bytes": 245166,
+      "bytes": 245383,
       "local_path": "data/out/people.parquet",
       "rows": 5079,
-      "sha256": "59f69aadcfbb6895266d4836012218613e93fe7721efa6f2818ca72c85647432",
-      "written_at": "2026-11-05T19:56:49.885672Z"
+      "sha256": "07a77b6f7a73fcb0bbc565c4c171fbfaea4d3e6803c05e3568d3558391caf2a4",
+      "written_at": "2026-11-07T14:42:58.417059Z"
+    },
+    {
+      "bytes": 91622,
+      "local_path": "data/out/person_external_ids.csv",
+      "rows": 460,
+      "sha256": "1f1ea1662af7c666ae1882f39a8584fddae626739b7c8e8dc9b05ea977fb88c2",
+      "written_at": "2026-11-07T14:42:58.882720Z"
+    },
+    {
+      "bytes": 24457,
+      "local_path": "data/out/person_external_ids.parquet",
+      "rows": 460,
+      "sha256": "c43df9d1a73af61f9ce0d9dec825ca7a801fae4980f1399b7cd847bc2371ee38",
+      "written_at": "2026-11-07T14:42:58.886791Z"
     }
   ],
   "coverage": {
@@ -196,7 +210,7 @@
       "scheduled_date": "2008-09-22"
     }
   ],
-  "generated_at": "2026-11-05T19:56:50.283104Z",
+  "generated_at": "2026-11-07T14:42:58.932101Z",
   "pending_events": [],
   "schema_version": "2.2.0",
   "sources": [
@@ -204,739 +218,862 @@
       "bytes": 10415,
       "local_path": "data/raw/byelection/2016-councillor-ward-2.xlsx",
       "retrieved_at": "2026-08-19T19:33:19Z",
-      "sha256": "f0b92c18c99724ce814a2adbdcd9512c71f059f4f62c7db0ccd0e9457630f9fc"
+      "sha256": "f0b92c18c99724ce814a2adbdcd9512c71f059f4f62c7db0ccd0e9457630f9fc",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/389e00d1-8637-4e6f-88bc-7f6936a2a150/download/2016-councillor-ward-2.xlsx"
     },
     {
       "bytes": 47087,
       "local_path": "data/raw/byelection/2017-councillor-ward-42.xlsx",
       "retrieved_at": "2026-08-19T19:33:19Z",
-      "sha256": "c45b4109e6688aece0e007c59a49ec00f4ee49ef23818efda64440b3e50c8755"
+      "sha256": "c45b4109e6688aece0e007c59a49ec00f4ee49ef23818efda64440b3e50c8755",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/edf3e37a-b416-47f6-9cef-d7369a1b4553/download/2017-councillor-ward-42.xlsx"
     },
     {
       "bytes": 22002,
       "local_path": "data/raw/byelection/2021-councillor-ward-22-scarborough-agincourt-1.xlsx",
       "retrieved_at": "2026-08-19T19:33:19Z",
-      "sha256": "7b2c1f98d22c44f8190338f048ad513d0fc0f2d256362bc963314c18e5183bf4"
+      "sha256": "7b2c1f98d22c44f8190338f048ad513d0fc0f2d256362bc963314c18e5183bf4",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/287f8b0d-dde8-4ebd-887c-bd9f628a2e3c/download/2021-councillor-ward-22-scarborough-agincourt-1.xlsx"
     },
     {
       "bytes": 23682,
       "local_path": "data/raw/byelection/2023-office-of-the-councillor-ward-20-poll-by-poll.xlsx",
       "retrieved_at": "2026-08-19T19:33:19Z",
-      "sha256": "489a78b37eae4b3b90b8a7907bf4ee852c29449f2703d874e17572ca8c9df9f1"
+      "sha256": "489a78b37eae4b3b90b8a7907bf4ee852c29449f2703d874e17572ca8c9df9f1",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/5ced6a0b-1f7a-4717-b522-da02a4d916ab/download/2023-office-of-the-councillor-ward-20-poll-by-poll.xlsx"
     },
     {
       "bytes": 553579,
       "local_path": "data/raw/byelection/2023_office_of_the_mayor.xlsx",
       "retrieved_at": "2026-08-19T16:41:20Z",
-      "sha256": "8077b5b94ebd25fb97d34cdeaeeadfb8a8c058d4530c06ab1ad56665a3fe435a"
+      "sha256": "8077b5b94ebd25fb97d34cdeaeeadfb8a8c058d4530c06ab1ad56665a3fe435a",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/868f890d-5432-432b-823c-c6a6fafa2f63/download/2023_office_of_the_mayor.xlsx"
     },
     {
       "bytes": 20639,
       "local_path": "data/raw/byelection/2024-councillor-ward-15-poll-by-poll.xlsx",
       "retrieved_at": "2026-08-19T19:33:19Z",
-      "sha256": "f7e2c9023a041982a5645732b92fb70dad92962fc5f9cf6d567c4f5641b5d872"
+      "sha256": "f7e2c9023a041982a5645732b92fb70dad92962fc5f9cf6d567c4f5641b5d872",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/7e64ea38-c3a4-4b1f-a68e-4127dfca6430/download/2024-councillor-ward-15-poll-by-poll.xlsx"
     },
     {
       "bytes": 26780,
       "local_path": "data/raw/byelection/2025-councillor-ward25-poll-by-poll.xlsx",
       "retrieved_at": "2026-08-19T19:33:19Z",
-      "sha256": "ce9b2d1466aa87b603d4a1cc4c77e23a111af21bab09d198e9b8a06fa5645fed"
+      "sha256": "ce9b2d1466aa87b603d4a1cc4c77e23a111af21bab09d198e9b8a06fa5645fed",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/1a29cfb8-0ee8-4e7d-b415-f07963d5a436/download/2025-councillor-ward25-poll-by-poll.xlsx"
     },
     {
       "bytes": 16518,
       "local_path": "data/raw/byelection_voter_stats/2016-councillor-ward-2-by-election-voter-statistics.xlsx",
       "retrieved_at": "2026-08-19T19:33:20Z",
-      "sha256": "9916d20f0e7ce75ad8a64be5587cc2ac63945b0f37ec31598443ffca8c750fc6"
+      "sha256": "9916d20f0e7ce75ad8a64be5587cc2ac63945b0f37ec31598443ffca8c750fc6",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/33e16e66-81bb-4de8-8e2c-792a6c695a8b/download/2016-councillor-ward-2-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 15382,
       "local_path": "data/raw/byelection_voter_stats/2017-councillor-ward-42-by-election-voter-statistics.xlsx",
       "retrieved_at": "2026-08-19T19:33:20Z",
-      "sha256": "bbed41eab9ce69a3724973db2b44705cdf6175e30e36dadf88c97376e253e221"
+      "sha256": "bbed41eab9ce69a3724973db2b44705cdf6175e30e36dadf88c97376e253e221",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/534bdfe0-64ab-4d4a-a3ec-84a8413e839b/download/2017-councillor-ward-42-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 18869,
       "local_path": "data/raw/byelection_voter_stats/2021_voter_turnout_statistics_ward_22_by-election.xlsx",
       "retrieved_at": "2026-08-19T19:33:20Z",
-      "sha256": "0d043fc437fa56d81de5573eacef8145ab0f8feee757b8bea03ea0e722195d40"
+      "sha256": "0d043fc437fa56d81de5573eacef8145ab0f8feee757b8bea03ea0e722195d40",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/e0ad662f-a434-41c5-a6b5-d2ab4a4b281f/download/2021_voter_turnout_statistics_ward_22_by-election.xlsx"
     },
     {
       "bytes": 18192,
       "local_path": "data/raw/byelection_voter_stats/2023-councillor-ward-20-by-election-voter-statistics.xlsx",
       "retrieved_at": "2026-08-19T19:33:20Z",
-      "sha256": "93e49416eede00d082d3a0c6fe063fca362df32c8da055a1c0142cca4e724eb5"
+      "sha256": "93e49416eede00d082d3a0c6fe063fca362df32c8da055a1c0142cca4e724eb5",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/8e49907b-98bf-41e4-acfc-4141d5804d0f/download/2023-councillor-ward-20-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 21040,
       "local_path": "data/raw/byelection_voter_stats/2024-councillor-ward-15-by-election-voter-statistics.xlsx",
       "retrieved_at": "2026-08-19T19:33:20Z",
-      "sha256": "d6ae5f09e9ef57355a8df8f39c1a0792311e815800fe244c6766994cb58540dd"
+      "sha256": "d6ae5f09e9ef57355a8df8f39c1a0792311e815800fe244c6766994cb58540dd",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/eb873a1c-b11d-4274-94f1-84afce523b12/download/2024-councillor-ward-15-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 19935,
       "local_path": "data/raw/byelection_voter_stats/2025-ward-25-by-election-voter-statistics.xlsx",
       "retrieved_at": "2026-08-19T19:33:20Z",
-      "sha256": "9dbe8fd3a3c751f4d0dbfb12e7d7aa9927da15f36c2ee7770b5d23a60319ece0"
+      "sha256": "9dbe8fd3a3c751f4d0dbfb12e7d7aa9927da15f36c2ee7770b5d23a60319ece0",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/54011bd4-93a0-484a-a294-2f3d5d0a1086/download/2025-ward-25-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 10756,
       "local_path": "data/raw/ckan/elected-officials-contact-information.json",
       "retrieved_at": "2026-08-19T16:39:35Z",
-      "sha256": "ff1ffeba8aa0e79927cbf339b674248ff9bb1404a1eb7326a76797b12330c433"
+      "sha256": "ff1ffeba8aa0e79927cbf339b674248ff9bb1404a1eb7326a76797b12330c433",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elected-officials-contact-information"
     },
     {
       "bytes": 7319,
       "local_path": "data/raw/ckan/election-results-official.json",
       "retrieved_at": "2026-08-19T16:39:34Z",
-      "sha256": "c53959b6c4e28b53e0fd3e21497f84c4e5368de2ecfb018abe39d2b6264b5678"
+      "sha256": "c53959b6c4e28b53e0fd3e21497f84c4e5368de2ecfb018abe39d2b6264b5678",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=election-results-official"
     },
     {
       "bytes": 15454,
       "local_path": "data/raw/ckan/elections-official-by-election-results.json",
       "retrieved_at": "2026-08-19T16:39:34Z",
-      "sha256": "a46e458a69377101138fac3e07b4d75e065e7096cf930c5f2f6a4111844f70de"
+      "sha256": "a46e458a69377101138fac3e07b4d75e065e7096cf930c5f2f6a4111844f70de",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elections-official-by-election-results"
     },
     {
       "bytes": 43998,
       "local_path": "data/raw/ckan/elections-subdivisions.json",
       "retrieved_at": "2026-08-19T16:39:35Z",
-      "sha256": "3d7136a1f6a88359b6c77c41d4d30919d366cb6287d5a9d9bbf56cc20ffb037f"
+      "sha256": "3d7136a1f6a88359b6c77c41d4d30919d366cb6287d5a9d9bbf56cc20ffb037f",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elections-subdivisions"
     },
     {
       "bytes": 21950,
       "local_path": "data/raw/ckan/members-of-toronto-city-council-meeting-attendance.json",
       "retrieved_at": "2026-08-19T16:39:35Z",
-      "sha256": "26df800c03990d3e8f59ef308c5c8fbec917a4b422b072d69ccb96c3af10decb"
+      "sha256": "26df800c03990d3e8f59ef308c5c8fbec917a4b422b072d69ccb96c3af10decb",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=members-of-toronto-city-council-meeting-attendance"
     },
     {
       "bytes": 21506,
       "local_path": "data/raw/ckan/members-of-toronto-city-council-voting-record.json",
       "retrieved_at": "2026-08-19T16:39:35Z",
-      "sha256": "7a8d99c06194f3147940689da9b581fa77e041a29007fa3520cd859abc4f7278"
+      "sha256": "7a8d99c06194f3147940689da9b581fa77e041a29007fa3520cd859abc4f7278",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=members-of-toronto-city-council-voting-record"
     },
     {
       "bytes": 828937,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2006-2010.csv",
       "retrieved_at": "2026-08-19T16:41:23Z",
-      "sha256": "d4c2de3b47fc9774dcd1c484c7023f015a83a87abb82993129e9c1a86e44bbf7"
+      "sha256": "d4c2de3b47fc9774dcd1c484c7023f015a83a87abb82993129e9c1a86e44bbf7",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/28c4b513-4210-4ea4-9454-839d57e55d98/download/councillors-meeting-attendance-2006-2010.csv"
     },
     {
       "bytes": 3046613,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2010-2014.csv",
       "retrieved_at": "2026-08-19T16:41:24Z",
-      "sha256": "961bb371b593eb0cf5d1ae1ce2e232e50175644b9fb7a32916a56d7e0ab4b462"
+      "sha256": "961bb371b593eb0cf5d1ae1ce2e232e50175644b9fb7a32916a56d7e0ab4b462",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/34d61725-e383-4633-ab5e-c7b6d639fad9/download/councillors-meeting-attendance-2010-2014.csv"
     },
     {
       "bytes": 2948088,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2014-2018.csv",
       "retrieved_at": "2026-08-19T16:41:24Z",
-      "sha256": "ae1095e79574ad77f5f814171dbffd4e14883f251b593378aebee34bf5a38bcb"
+      "sha256": "ae1095e79574ad77f5f814171dbffd4e14883f251b593378aebee34bf5a38bcb",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/76c23b41-d5e5-44b6-b5fd-e40c6409b1e3/download/councillors-meeting-attendance-2014-2018.csv"
     },
     {
       "bytes": 1278423,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2018-2022.csv",
       "retrieved_at": "2026-08-19T16:41:24Z",
-      "sha256": "b35a9f85573d2d3db9a5149d90eb474cdee922870f3f3ff8e5b3984e6a7b726f"
+      "sha256": "b35a9f85573d2d3db9a5149d90eb474cdee922870f3f3ff8e5b3984e6a7b726f",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/05449b17-32bf-4329-8558-5167a960ea56/download/councillors-meeting-attendance-2018-2022.csv"
     },
     {
       "bytes": 1281287,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2022-2026.csv",
       "retrieved_at": "2026-10-30T11:58:50.995233Z",
-      "sha256": "469a380cacd989b8c363855260bdad927eea7df3f4ecfd200ad28506410143b8"
+      "sha256": "469a380cacd989b8c363855260bdad927eea7df3f4ecfd200ad28506410143b8",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/073189ce-951e-4a18-a466-705abf3802d1/download/councillors-meeting-attendance-2022-2026.csv"
     },
     {
       "bytes": 65138,
       "local_path": "data/raw/council/candidates_2026/councilorCandidates_2026.json",
       "retrieved_at": "2026-10-21T16:50:44Z",
-      "sha256": "0eae926479752ec22e1ee0b4de92c332d88acf47d6e35043ace3fb340e2e8679"
+      "sha256": "0eae926479752ec22e1ee0b4de92c332d88acf47d6e35043ace3fb340e2e8679",
+      "source_url": "https://www.toronto.ca/data/elections/candidate_list/councilorCandidates_2026.json"
     },
     {
       "bytes": 15619,
       "local_path": "data/raw/council/candidates_2026/mayorCandidates_2026.json",
       "retrieved_at": "2026-10-21T16:50:44Z",
-      "sha256": "41a63015598f2d666fd43186b9fb54497dd938bc45678a2291c060f22831de49"
+      "sha256": "41a63015598f2d666fd43186b9fb54497dd938bc45678a2291c060f22831de49",
+      "source_url": "https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json"
     },
     {
       "bytes": 32433,
       "local_path": "data/raw/council/candidates_2026/trusteeCandidates_2026.json",
       "retrieved_at": "2026-10-21T16:50:45Z",
-      "sha256": "3ecbc48b30038abb6956573ee45bd536fe5b3e4b9706bce7dbe3f24f7b7c025f"
+      "sha256": "3ecbc48b30038abb6956573ee45bd536fe5b3e4b9706bce7dbe3f24f7b7c025f",
+      "source_url": "https://www.toronto.ca/data/elections/candidate_list/trusteeCandidates_2026.json"
     },
     {
       "bytes": 11713,
       "local_path": "data/raw/council/contact/2018-2022-elected-officials-contact-info.csv",
       "retrieved_at": "2026-08-19T16:41:33Z",
-      "sha256": "3892d377c82dbbcef0809d10c6cc2e35f50a956375bb81b291621656d4fb5ce0"
+      "sha256": "3892d377c82dbbcef0809d10c6cc2e35f50a956375bb81b291621656d4fb5ce0",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/27aa4651-4548-4e57-bf00-53a346931251/resource/89e7d4ae-367b-450c-8680-8c7f80f78175/download/2018-2022-elected-officials-contact-info.csv"
     },
     {
       "bytes": 9281,
       "local_path": "data/raw/council/contact/2022-2026-elected-officials-contact-info.csv",
       "retrieved_at": "2026-08-19T16:41:33Z",
-      "sha256": "e4d8c780e4dc0d4c07aa7486e485e4cf8a2cd4293ae21eb0dd2058b0b2c1ed52"
+      "sha256": "e4d8c780e4dc0d4c07aa7486e485e4cf8a2cd4293ae21eb0dd2058b0b2c1ed52",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/27aa4651-4548-4e57-bf00-53a346931251/resource/dea217a2-f7c1-4e62-aec1-48fffaad1170/download/2022-2026-elected-officials-contact-info.csv"
     },
     {
       "bytes": 14637520,
       "local_path": "data/raw/council/voting/member-voting-record-2006-2010.csv",
       "retrieved_at": "2026-08-19T16:41:25Z",
-      "sha256": "8cb59a59d2c8a546eade971c4789270a556768c81e188d03bd11581d50e27f17"
+      "sha256": "8cb59a59d2c8a546eade971c4789270a556768c81e188d03bd11581d50e27f17",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/01655cbd-dc66-4339-9f27-891e64413cbf/download/member-voting-record-2006-2010.csv"
     },
     {
       "bytes": 88703573,
       "local_path": "data/raw/council/voting/member-voting-record-2010-2014.csv",
       "retrieved_at": "2026-08-19T16:41:29Z",
-      "sha256": "e07c93723f70526112947fec856f9e5f0ca803aa99abbbe806c5826a33f747b5"
+      "sha256": "e07c93723f70526112947fec856f9e5f0ca803aa99abbbe806c5826a33f747b5",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/6c7dd98b-08d0-4f68-bee7-a0ba77a7da92/download/member-voting-record-2010-2014.csv"
     },
     {
       "bytes": 50379770,
       "local_path": "data/raw/council/voting/member-voting-record-2014-2018.csv",
       "retrieved_at": "2026-08-19T16:41:32Z",
-      "sha256": "059f88b52780843151088fe7556d8c47ec23ebc2d8159f4d2517204ea31748d1"
+      "sha256": "059f88b52780843151088fe7556d8c47ec23ebc2d8159f4d2517204ea31748d1",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/11d89d61-24c3-4241-8194-04b22098745e/download/member-voting-record-2014-2018.csv"
     },
     {
       "bytes": 14460550,
       "local_path": "data/raw/council/voting/member-voting-record-2018-2022.csv",
       "retrieved_at": "2026-08-19T16:41:30Z",
-      "sha256": "da62a64ce755ebe82731f61644a40e8df0c432d2009a63e4a8970219464dc62c"
+      "sha256": "da62a64ce755ebe82731f61644a40e8df0c432d2009a63e4a8970219464dc62c",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/373390e9-af88-4b58-a6a4-6863e3606a4b/download/member-voting-record-2018-2022.csv"
     },
     {
       "bytes": 12028242,
       "local_path": "data/raw/council/voting/member-voting-record-2022-2026.csv",
       "retrieved_at": "2026-10-30T11:58:51.635233Z",
-      "sha256": "4ea96c43fad9f4035bb5665efa4c079a4b917857f6949f113070669e60f8110f"
+      "sha256": "4ea96c43fad9f4035bb5665efa4c079a4b917857f6949f113070669e60f8110f",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/c4feb78c-c867-42a9-b803-7c6d859df969/download/member-voting-record-2022-2026.csv"
     },
     {
       "bytes": 25628,
       "local_path": "data/raw/federal/ec-be-2008-03-17/35093_e.html",
       "retrieved_at": "2026-08-20T15:52:33Z",
-      "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb"
+      "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb",
+      "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35093_e.html"
     },
     {
       "bytes": 16712,
       "local_path": "data/raw/federal/ec-be-2008-03-17/35100_e.html",
       "retrieved_at": "2026-08-20T15:52:33Z",
-      "sha256": "11c37e4d7a3a17f8560aef31ab35a1b6c202fbe3b2f49661dd39ed3029f90a62"
+      "sha256": "11c37e4d7a3a17f8560aef31ab35a1b6c202fbe3b2f49661dd39ed3029f90a62",
+      "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35100_e.html"
     },
     {
       "bytes": 23297,
       "local_path": "data/raw/federal/ec-be-2008-03-17/pollbypoll35093.csv",
       "retrieved_at": "2026-08-20T15:27:18Z",
-      "sha256": "ced1d008019c0d709147d2abb0c53e51ab23f83729a4f34397cbfb12ae5b8772"
+      "sha256": "ced1d008019c0d709147d2abb0c53e51ab23f83729a4f34397cbfb12ae5b8772",
+      "source_url": "https://www.elections.ca/ele/pas/2008/csv/pollbypoll35093.csv"
     },
     {
       "bytes": 20781,
       "local_path": "data/raw/federal/ec-be-2008-03-17/pollbypoll35100.csv",
       "retrieved_at": "2026-08-20T15:27:18Z",
-      "sha256": "ca81bdb276b3a064c3fa90181cdae4b4eade04ab7fc36e8ac024a3ec7076c911"
+      "sha256": "ca81bdb276b3a064c3fa90181cdae4b4eade04ab7fc36e8ac024a3ec7076c911",
+      "source_url": "https://www.elections.ca/ele/pas/2008/csv/pollbypoll35100.csv"
     },
     {
       "bytes": 20265,
       "local_path": "data/raw/federal/ec-be-2012-03-19/35094_e.html",
       "retrieved_at": "2026-08-20T15:52:33Z",
-      "sha256": "6b1aa1d6ff3ff93fee818710578e66452020442de9e6f8ad1c60b72b89314fea"
+      "sha256": "6b1aa1d6ff3ff93fee818710578e66452020442de9e6f8ad1c60b72b89314fea",
+      "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35094_e.html"
     },
     {
       "bytes": 19701,
       "local_path": "data/raw/federal/ec-be-2012-03-19/pollbypoll_bureauparbureau35094.csv",
       "retrieved_at": "2026-08-20T15:27:19Z",
-      "sha256": "fca4934f0532bcb937a75634dbc936adf1893c90b4c1e4049c78fad099d2804f"
+      "sha256": "fca4934f0532bcb937a75634dbc936adf1893c90b4c1e4049c78fad099d2804f",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2012/pollbypoll_bureauparbureau35094.csv"
     },
     {
       "bytes": 20487,
       "local_path": "data/raw/federal/ec-be-2013-11-25/35093_e.csv",
       "retrieved_at": "2026-08-20T15:27:19Z",
-      "sha256": "038c05bd923461178b957077e1ff8a6ee3983892095afab9ac31d4dba1aaa2cb"
+      "sha256": "038c05bd923461178b957077e1ff8a6ee3983892095afab9ac31d4dba1aaa2cb",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2013b2/csv/35093_e.csv"
     },
     {
       "bytes": 25628,
       "local_path": "data/raw/federal/ec-be-2013-11-25/35093_e.html",
       "retrieved_at": "2026-08-20T15:52:33Z",
-      "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb"
+      "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb",
+      "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35093_e.html"
     },
     {
       "bytes": 22007,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35080.csv",
       "retrieved_at": "2026-08-20T15:27:19Z",
-      "sha256": "66a3e7d538214ee39d7c6f3beafe5677d9b8502697ba8de6e6b53239ee41d00f"
+      "sha256": "66a3e7d538214ee39d7c6f3beafe5677d9b8502697ba8de6e6b53239ee41d00f",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2014/csv/35080.csv"
     },
     {
       "bytes": 16460,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35080_e.html",
       "retrieved_at": "2026-08-20T15:52:33Z",
-      "sha256": "f48ad24aeeed0efefa56708aaa14c0285528cff5615e29655581d5eaf89aa1f9"
+      "sha256": "f48ad24aeeed0efefa56708aaa14c0285528cff5615e29655581d5eaf89aa1f9",
+      "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35080_e.html"
     },
     {
       "bytes": 32786,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35095.csv",
       "retrieved_at": "2026-08-20T15:27:20Z",
-      "sha256": "7cbe7ba791fc4eaf4b58b62411217ef057b41d65f150e3a628c4b31457cea27b"
+      "sha256": "7cbe7ba791fc4eaf4b58b62411217ef057b41d65f150e3a628c4b31457cea27b",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2014/csv/35095.csv"
     },
     {
       "bytes": 19936,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35095_e.html",
       "retrieved_at": "2026-08-20T15:52:34Z",
-      "sha256": "c899bae92ac08d1ee6b96a45c7461f76201f55e99221b25be0a314d15cda8248"
+      "sha256": "c899bae92ac08d1ee6b96a45c7461f76201f55e99221b25be0a314d15cda8248",
+      "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35095_e.html"
     },
     {
       "bytes": 216935,
       "local_path": "data/raw/federal/ec-be-2017-12-11/pollresults_resultatsbureau35093.csv",
       "retrieved_at": "2026-08-20T15:27:20Z",
-      "sha256": "03cd92b843582c6bdddc25dfa28d30640195c04cd441e94948ed9a3ebbfb9d38"
+      "sha256": "03cd92b843582c6bdddc25dfa28d30640195c04cd441e94948ed9a3ebbfb9d38",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2017d/46/data_donnees/pollresults_resultatsbureau35093.csv"
     },
     {
       "bytes": 293325,
       "local_path": "data/raw/federal/ec-be-2020-10-26/pollresults_resultatsbureau35108.csv",
       "retrieved_at": "2026-08-20T15:27:21Z",
-      "sha256": "59bb5388f5fdd288f4ebd362a33c47b08d567be6dce2d923a8f58076bbd0bc89"
+      "sha256": "59bb5388f5fdd288f4ebd362a33c47b08d567be6dce2d923a8f58076bbd0bc89",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2020/52/data_donnees/pollresults_resultatsbureau35108.csv"
     },
     {
       "bytes": 164391,
       "local_path": "data/raw/federal/ec-be-2020-10-26/pollresults_resultatsbureau35118.csv",
       "retrieved_at": "2026-08-20T15:27:21Z",
-      "sha256": "d5a790971a21f76cd50d94d70995f1e1df68aeb401076178fd20ec7ae229517f"
+      "sha256": "d5a790971a21f76cd50d94d70995f1e1df68aeb401076178fd20ec7ae229517f",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2020/52/data_donnees/pollresults_resultatsbureau35118.csv"
     },
     {
       "bytes": 2669753,
       "local_path": "data/raw/federal/ec-be-2024-06-24/pollresults_resultatsbureau35090.csv",
       "retrieved_at": "2026-08-20T15:27:22Z",
-      "sha256": "4394dcd99d0fce14f48f35773f4c900053956c074200aa77b185dd0e30d46121"
+      "sha256": "4394dcd99d0fce14f48f35773f4c900053956c074200aa77b185dd0e30d46121",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2024b/58/data_donnees/pollresults_resultatsbureau35090.csv"
     },
     {
       "bytes": 240232,
       "local_path": "data/raw/federal/ec-be-2026-04-13/pollresults_resultatsbureau35096.csv",
       "retrieved_at": "2026-08-20T15:27:23Z",
-      "sha256": "1bc267e652038752f70a56b7c77328618ce4d57b206f3202aa28ddf2160febe5"
+      "sha256": "1bc267e652038752f70a56b7c77328618ce4d57b206f3202aa28ddf2160febe5",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2026/64/data_donnees/pollresults_resultatsbureau35096.csv"
     },
     {
       "bytes": 356448,
       "local_path": "data/raw/federal/ec-be-2026-04-13/pollresults_resultatsbureau35112.csv",
       "retrieved_at": "2026-08-20T15:27:23Z",
-      "sha256": "b97fdea917dcef943ed00371e8e13b86a8f4eadb53f263b9ed4112f6c980ce74"
+      "sha256": "b97fdea917dcef943ed00371e8e13b86a8f4eadb53f263b9ed4112f6c980ce74",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr_2026/64/data_donnees/pollresults_resultatsbureau35112.csv"
     },
     {
       "bytes": 24877,
       "local_path": "data/raw/federal/ec-be-2026-08-31/ElectoralDistricts.aspx",
       "retrieved_at": "2026-10-21T16:50:44Z",
-      "sha256": "97d8dbd1a8c495c6b23598110a2de45da96b9b9eab37f103424f152f0144fc5b"
+      "sha256": "97d8dbd1a8c495c6b23598110a2de45da96b9b9eab37f103424f152f0144fc5b",
+      "source_url": "https://enr.elections.ca/ElectoralDistricts.aspx?ed=2385&lang=e"
     },
     {
       "bytes": 419535,
       "local_path": "data/raw/federal/ec-ge-38/ON.zip",
       "retrieved_at": "2026-08-20T15:27:17Z",
-      "sha256": "4ba7c74457e010c5eeabc823213079074d1b29251e280f4cf9fbbe2d167dc4a1"
+      "sha256": "4ba7c74457e010c5eeabc823213079074d1b29251e280f4cf9fbbe2d167dc4a1",
+      "source_url": "https://www.elections.ca/scripts/OVR2004/23/data/ON.zip"
     },
     {
       "bytes": 245421,
       "local_path": "data/raw/federal/ec-ge-38/table12.csv",
       "retrieved_at": "2026-08-20T15:52:33Z",
-      "sha256": "de20c50955fd0f6d0bb38ae3afabe9ea5cc7e4900073e8dce86590f95f594318"
+      "sha256": "de20c50955fd0f6d0bb38ae3afabe9ea5cc7e4900073e8dce86590f95f594318",
+      "source_url": "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv"
     },
     {
       "bytes": 845777,
       "local_path": "data/raw/federal/ec-ge-39/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:17Z",
-      "sha256": "aac2aa7b56e97a31e90a901b5c9b3c6460c71c042ddece2329e66741ace8e9e5"
+      "sha256": "aac2aa7b56e97a31e90a901b5c9b3c6460c71c042ddece2329e66741ace8e9e5",
+      "source_url": "https://www.elections.ca/Scripts/OVR2006/25/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 949400,
       "local_path": "data/raw/federal/ec-ge-40/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:18Z",
-      "sha256": "a24b937e34688804139cdbd2325eb10f00d67b9db2971187660d9ca1fa920152"
+      "sha256": "a24b937e34688804139cdbd2325eb10f00d67b9db2971187660d9ca1fa920152",
+      "source_url": "https://www.elections.ca/scripts/OVR2008/31/data/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 971466,
       "local_path": "data/raw/federal/ec-ge-41/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:19Z",
-      "sha256": "83ec0819d7455b2ea6094d8841c031b79c8b91f6d6049b64a83e37ea0630f7a2"
+      "sha256": "83ec0819d7455b2ea6094d8841c031b79c8b91f6d6049b64a83e37ea0630f7a2",
+      "source_url": "https://www.elections.ca/scripts/OVR2011/34/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1092431,
       "local_path": "data/raw/federal/ec-ge-42/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:20Z",
-      "sha256": "fdbf80bb71a0fdb45297436000eda765443ac582540b2f004ef6640d5f621b33"
+      "sha256": "fdbf80bb71a0fdb45297436000eda765443ac582540b2f004ef6640d5f621b33",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1281096,
       "local_path": "data/raw/federal/ec-ge-43/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:21Z",
-      "sha256": "b33e23a4d88a18d56ee65258a836e7d5dc9525e10b6e563b9684d20f4deea751"
+      "sha256": "b33e23a4d88a18d56ee65258a836e7d5dc9525e10b6e563b9684d20f4deea751",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1194554,
       "local_path": "data/raw/federal/ec-ge-44/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:22Z",
-      "sha256": "63e0c9a2a507b53fa67559b68b0d4db2b20bfa61fab9fd04d40191aaea05e781"
+      "sha256": "63e0c9a2a507b53fa67559b68b0d4db2b20bfa61fab9fd04d40191aaea05e781",
+      "source_url": "https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1319530,
       "local_path": "data/raw/federal/ec-ge-45/pollresults_resultatsbureau35.zip",
       "retrieved_at": "2026-08-20T15:27:23Z",
-      "sha256": "454dc2a1d0a4b41b8504ee18bcb147198d6fb4752f942e6a443b406df04288e1"
+      "sha256": "454dc2a1d0a4b41b8504ee18bcb147198d6fb4752f942e6a443b406df04288e1",
+      "source_url": "https://www.elections.ca/res/rep/off/ovrGE45/62/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 7287404,
       "local_path": "data/raw/federal/historical/1993results.zip",
       "retrieved_at": "2026-10-28T23:35:52Z",
-      "sha256": "40dc5a1c2c498d63f37f1a8ef744abdab31f2056d1900d91a9d927cb4f5466fa"
+      "sha256": "40dc5a1c2c498d63f37f1a8ef744abdab31f2056d1900d91a9d927cb4f5466fa",
+      "source_url": "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip"
     },
     {
       "bytes": 116142,
       "local_path": "data/raw/federal/historical/CAND.ZIP",
       "retrieved_at": "2026-10-28T23:35:52Z",
-      "sha256": "612c9a0dacc666af04de70ee031bf80abcd8a47caea62a0e4aa548fbcff2a7b4"
+      "sha256": "612c9a0dacc666af04de70ee031bf80abcd8a47caea62a0e4aa548fbcff2a7b4",
+      "source_url": "https://www.elections.ca/res/rep/off/37p/CAND.ZIP"
     },
     {
       "bytes": 43115,
       "local_path": "data/raw/federal/historical/EDSUM.ZIP",
       "retrieved_at": "2026-10-28T23:35:52Z",
-      "sha256": "f4e6d903bb7f3b0023cf12c334771a170e2d76aa628ec38fe194d20bc0b9a61b"
+      "sha256": "f4e6d903bb7f3b0023cf12c334771a170e2d76aa628ec38fe194d20bc0b9a61b",
+      "source_url": "https://www.elections.ca/res/rep/off/37p/EDSUM.ZIP"
     },
     {
       "bytes": 265580,
       "local_path": "data/raw/federal/historical/SE1-2-1999-2.pdf",
       "retrieved_at": "2026-10-28T23:35:52Z",
-      "sha256": "cd9b9c7397b958d0fae2c199de23afa59e30af360f0bcf3cc07d5d4310cc0306"
+      "sha256": "cd9b9c7397b958d0fae2c199de23afa59e30af360f0bcf3cc07d5d4310cc0306",
+      "source_url": "https://bac-lac.wayback.archive-it.org/web/20061212070736/http://dsp-psd.pwgsc.gc.ca/Collection/SE1-2-1999-2.pdf"
     },
     {
       "bytes": 23649,
       "local_path": "data/raw/federal/historical/dec1396-synopsis1a.html",
       "retrieved_at": "2026-10-29T00:05:45Z",
-      "sha256": "cf72a75d2eb831ec0300386ab075eff5f872fc0e0123c26ec0865ed3fba9fe2b"
+      "sha256": "cf72a75d2eb831ec0300386ab075eff5f872fc0e0123c26ec0865ed3fba9fe2b",
+      "source_url": "https://www.elections.ca/content.aspx?section=res&dir=rep/off/dec1396&document=synopsis1a&lang=e"
     },
     {
       "bytes": 30215,
       "local_path": "data/raw/federal/historical/dec1396-synopsis2.html",
       "retrieved_at": "2026-10-29T00:05:45Z",
-      "sha256": "7b1373becb13910833e150384ab4dff3308f3b0e389c126070346ff2c9d0b8eb"
+      "sha256": "7b1373becb13910833e150384ab4dff3308f3b0e389c126070346ff2c9d0b8eb",
+      "source_url": "https://www.elections.ca/content.aspx?section=res&dir=rep/off/dec1396&document=synopsis2&lang=e"
     },
     {
       "bytes": 162523,
       "local_path": "data/raw/ontario/report-group-1/candidates-932.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "f2c00411b4fc7af46f64b5cac1aa69a512c7f56a0939a814db958358131331cd"
+      "sha256": "f2c00411b4fc7af46f64b5cac1aa69a512c7f56a0939a814db958358131331cd",
+      "source_url": "https://results.elections.on.ca/api/report-groups/1/report-outputs/932/csv"
     },
     {
       "bytes": 10962,
       "local_path": "data/raw/ontario/report-group-1/parties-930.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "2324f385538177b8871aeddb6222cda201a5719efc26718ef10ac89a83143d06"
+      "sha256": "2324f385538177b8871aeddb6222cda201a5719efc26718ef10ac89a83143d06",
+      "source_url": "https://results.elections.on.ca/api/report-groups/1/report-outputs/930/csv"
     },
     {
       "bytes": 23613,
       "local_path": "data/raw/ontario/report-group-1/statistics-925.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "b72633fda6f74af112cadcbc7edeb19557cc27b1318a43f15c187d6989fa39d7"
+      "sha256": "b72633fda6f74af112cadcbc7edeb19557cc27b1318a43f15c187d6989fa39d7",
+      "source_url": "https://results.elections.on.ca/api/report-groups/1/report-outputs/925/csv"
     },
     {
       "bytes": 124320,
       "local_path": "data/raw/ontario/report-group-2/candidates-488.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "2961c5d4f12c1c3a2bb1e5d462050cd6fb43ed32751d483468c738b5fa2ce9b1"
+      "sha256": "2961c5d4f12c1c3a2bb1e5d462050cd6fb43ed32751d483468c738b5fa2ce9b1",
+      "source_url": "https://results.elections.on.ca/api/report-groups/2/report-outputs/488/csv"
     },
     {
       "bytes": 7591,
       "local_path": "data/raw/ontario/report-group-2/parties-486.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "c1d85d92bbc8503047f4d9351cf1dc1891077599ef23090b10f94232d3183969"
+      "sha256": "c1d85d92bbc8503047f4d9351cf1dc1891077599ef23090b10f94232d3183969",
+      "source_url": "https://results.elections.on.ca/api/report-groups/2/report-outputs/486/csv"
     },
     {
       "bytes": 21030,
       "local_path": "data/raw/ontario/report-group-2/statistics-481.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "a5f234fd80e4d688df4779e9fa42fb34797d5d6add68853e8c29fcb82179c632"
+      "sha256": "a5f234fd80e4d688df4779e9fa42fb34797d5d6add68853e8c29fcb82179c632",
+      "source_url": "https://results.elections.on.ca/api/report-groups/2/report-outputs/481/csv"
     },
     {
       "bytes": 124223,
       "local_path": "data/raw/ontario/report-group-3/candidates-499.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "f8b4590c82a7fb6ae2aca1477d3163ac3c9e0de676795c5e3ff5a18152f1309c"
+      "sha256": "f8b4590c82a7fb6ae2aca1477d3163ac3c9e0de676795c5e3ff5a18152f1309c",
+      "source_url": "https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv"
     },
     {
       "bytes": 6508,
       "local_path": "data/raw/ontario/report-group-3/parties-497.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "db8bcef4b140dca3e14f917b07bf83a223ab154c959aa596c2409178af9b96ce"
+      "sha256": "db8bcef4b140dca3e14f917b07bf83a223ab154c959aa596c2409178af9b96ce",
+      "source_url": "https://results.elections.on.ca/api/report-groups/3/report-outputs/497/csv"
     },
     {
       "bytes": 20129,
       "local_path": "data/raw/ontario/report-group-3/statistics-492.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "6755033c4ad895e9becab538fe42284f1db3b086941338ad5ffc8e7d8da465df"
+      "sha256": "6755033c4ad895e9becab538fe42284f1db3b086941338ad5ffc8e7d8da465df",
+      "source_url": "https://results.elections.on.ca/api/report-groups/3/report-outputs/492/csv"
     },
     {
       "bytes": 119481,
       "local_path": "data/raw/ontario/report-group-4/candidates-510.csv",
       "retrieved_at": "2026-08-20T15:21:59Z",
-      "sha256": "c889e39d00b29498ca665d68f73ccbd9ad01b875e30187de9f0b8388d91714d5"
+      "sha256": "c889e39d00b29498ca665d68f73ccbd9ad01b875e30187de9f0b8388d91714d5",
+      "source_url": "https://results.elections.on.ca/api/report-groups/4/report-outputs/510/csv"
     },
     {
       "bytes": 6865,
       "local_path": "data/raw/ontario/report-group-4/parties-508.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "baa6badaae6bd6a656a72a756b4dc62c68100be967d0d690314020ee06d7dd40"
+      "sha256": "baa6badaae6bd6a656a72a756b4dc62c68100be967d0d690314020ee06d7dd40",
+      "source_url": "https://results.elections.on.ca/api/report-groups/4/report-outputs/508/csv"
     },
     {
       "bytes": 21036,
       "local_path": "data/raw/ontario/report-group-4/statistics-503.csv",
       "retrieved_at": "2026-08-20T15:22:00Z",
-      "sha256": "29c9fdeef97a70a2226abf7f55e4d75190e335055d273ce70c79bf1b34023c5d"
+      "sha256": "29c9fdeef97a70a2226abf7f55e4d75190e335055d273ce70c79bf1b34023c5d",
+      "source_url": "https://results.elections.on.ca/api/report-groups/4/report-outputs/503/csv"
     },
     {
       "bytes": 218483,
       "local_path": "data/raw/ontario/report-group-45/candidates-1050.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "86d1fb5ec1a8710a844152e0704d43d2b2eceed86a62022d820d03ee4c99b024"
+      "sha256": "86d1fb5ec1a8710a844152e0704d43d2b2eceed86a62022d820d03ee4c99b024",
+      "source_url": "https://results.elections.on.ca/api/report-groups/45/report-outputs/1050/csv"
     },
     {
       "bytes": 5782,
       "local_path": "data/raw/ontario/report-group-45/parties-1048.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "6c813ab8ce2b423a279fcb5597e11a419243fa1c8c01bd97300057c3a203a10a"
+      "sha256": "6c813ab8ce2b423a279fcb5597e11a419243fa1c8c01bd97300057c3a203a10a",
+      "source_url": "https://results.elections.on.ca/api/report-groups/45/report-outputs/1048/csv"
     },
     {
       "bytes": 28146,
       "local_path": "data/raw/ontario/report-group-45/statistics-1043.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "3d8784f3c068aa6488054968e1d7664ca13d39693a5d7e430cb3078aad46100e"
+      "sha256": "3d8784f3c068aa6488054968e1d7664ca13d39693a5d7e430cb3078aad46100e",
+      "source_url": "https://results.elections.on.ca/api/report-groups/45/report-outputs/1043/csv"
     },
     {
       "bytes": 186015,
       "local_path": "data/raw/ontario/report-group-48/candidates-1096.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "21c09e8729eda6dd996091861aa59aa2cb4af3565c296eee8232a9313848c04e"
+      "sha256": "21c09e8729eda6dd996091861aa59aa2cb4af3565c296eee8232a9313848c04e",
+      "source_url": "https://results.elections.on.ca/api/report-groups/48/report-outputs/1096/csv"
     },
     {
       "bytes": 12215,
       "local_path": "data/raw/ontario/report-group-48/parties-1094.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "516a7d5c84706dd95cf34b3a527121e3252635d1d545b356e1399df8d1a78dc0"
+      "sha256": "516a7d5c84706dd95cf34b3a527121e3252635d1d545b356e1399df8d1a78dc0",
+      "source_url": "https://results.elections.on.ca/api/report-groups/48/report-outputs/1094/csv"
     },
     {
       "bytes": 25452,
       "local_path": "data/raw/ontario/report-group-48/statistics-1089.csv",
       "retrieved_at": "2026-08-20T15:22:01Z",
-      "sha256": "6d106d334bc7ec02a4e0208dc151233f6dba18bf5d0990d3c35f06b1a15bd365"
+      "sha256": "6d106d334bc7ec02a4e0208dc151233f6dba18bf5d0990d3c35f06b1a15bd365",
+      "source_url": "https://results.elections.on.ca/api/report-groups/48/report-outputs/1089/csv"
     },
     {
       "bytes": 100363,
       "local_path": "data/raw/ontario/report-group-5/candidates-521.csv",
       "retrieved_at": "2026-08-20T15:21:59Z",
-      "sha256": "267ece0aef7a14e038c89c0b0012d18698627958b22132b3ab3400bd78064aa1"
+      "sha256": "267ece0aef7a14e038c89c0b0012d18698627958b22132b3ab3400bd78064aa1",
+      "source_url": "https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv"
     },
     {
       "bytes": 4436,
       "local_path": "data/raw/ontario/report-group-5/parties-519.csv",
       "retrieved_at": "2026-08-20T15:21:59Z",
-      "sha256": "f0c01e15b5f73423fd72fd38a5be8f6f658a06c89f9805aababecdbb38c85c18"
+      "sha256": "f0c01e15b5f73423fd72fd38a5be8f6f658a06c89f9805aababecdbb38c85c18",
+      "source_url": "https://results.elections.on.ca/api/report-groups/5/report-outputs/519/csv"
     },
     {
       "bytes": 19388,
       "local_path": "data/raw/ontario/report-group-5/statistics-514.csv",
       "retrieved_at": "2026-08-20T15:21:59Z",
-      "sha256": "3e0220ef8d7d1fa4f2d6e8af226f9bd50d9cc5e007cd9d41f2623bf35ddd6d30"
+      "sha256": "3e0220ef8d7d1fa4f2d6e8af226f9bd50d9cc5e007cd9d41f2623bf35ddd6d30",
+      "source_url": "https://results.elections.on.ca/api/report-groups/5/report-outputs/514/csv"
     },
     {
       "bytes": 105726,
       "local_path": "data/raw/ontario/report-group-6/candidates-532.csv",
       "retrieved_at": "2026-10-28T21:41:43Z",
-      "sha256": "bc72b34296dad4166731bdb3474d796be6791f9340ec9679310d4e663581b998"
+      "sha256": "bc72b34296dad4166731bdb3474d796be6791f9340ec9679310d4e663581b998",
+      "source_url": "https://results.elections.on.ca/api/report-groups/6/report-outputs/532/csv"
     },
     {
       "bytes": 3094,
       "local_path": "data/raw/ontario/report-group-6/parties-530.csv",
       "retrieved_at": "2026-10-28T21:41:43Z",
-      "sha256": "d28c176ec0f87076b8d0bf4c8c19ed897550e7c07d13d143559a07b91591165a"
+      "sha256": "d28c176ec0f87076b8d0bf4c8c19ed897550e7c07d13d143559a07b91591165a",
+      "source_url": "https://results.elections.on.ca/api/report-groups/6/report-outputs/530/csv"
     },
     {
       "bytes": 19081,
       "local_path": "data/raw/ontario/report-group-6/statistics-525.csv",
       "retrieved_at": "2026-10-28T21:41:43Z",
-      "sha256": "59c8e0b27766c02cd96bd4a4fe3a40e3e896630e34b858bd7f74aa7aedcac067"
+      "sha256": "59c8e0b27766c02cd96bd4a4fe3a40e3e896630e34b858bd7f74aa7aedcac067",
+      "source_url": "https://results.elections.on.ca/api/report-groups/6/report-outputs/525/csv"
     },
     {
       "bytes": 116792,
       "local_path": "data/raw/ontario/report-group-7/candidates-876.csv",
       "retrieved_at": "2026-10-28T21:41:43Z",
-      "sha256": "89371f7b904f38577ac3392711bcf8decf09c9a77972c0a646df3901ed022d5d"
+      "sha256": "89371f7b904f38577ac3392711bcf8decf09c9a77972c0a646df3901ed022d5d",
+      "source_url": "https://results.elections.on.ca/api/report-groups/7/report-outputs/876/csv"
     },
     {
       "bytes": 3921,
       "local_path": "data/raw/ontario/report-group-7/parties-874.csv",
       "retrieved_at": "2026-10-28T21:41:43Z",
-      "sha256": "49004773ecf2d91ea25091f9d5148ddef4873b43463432127ff7d1f48de3012c"
+      "sha256": "49004773ecf2d91ea25091f9d5148ddef4873b43463432127ff7d1f48de3012c",
+      "source_url": "https://results.elections.on.ca/api/report-groups/7/report-outputs/874/csv"
     },
     {
       "bytes": 22874,
       "local_path": "data/raw/ontario/report-group-7/statistics-869.csv",
       "retrieved_at": "2026-10-28T21:41:43Z",
-      "sha256": "23e9823efd79ae2c276b8768bd6b39be7c54e0d5c110c5dabd0b877003fc24d1"
+      "sha256": "23e9823efd79ae2c276b8768bd6b39be7c54e0d5c110c5dabd0b877003fc24d1",
+      "source_url": "https://results.elections.on.ca/api/report-groups/7/report-outputs/869/csv"
     },
     {
       "bytes": 240944,
       "local_path": "data/raw/ontario/tabulations/on-2026-09-03-by-098.pdf",
       "retrieved_at": "2026-10-28T08:59:01Z",
-      "sha256": "d109b594e64851d8d6b00f4bf335752dfc86c21cb70819b599181905be59f998"
+      "sha256": "d109b594e64851d8d6b00f4bf335752dfc86c21cb70819b599181905be59f998",
+      "source_url": "https://www.elections.on.ca/content/dam/NGW/sitecontent/2026/results/Vote%20Totals%20Report%20from%20Official%20Tabulation%20-%20Scarborough%20Southwest%20098.pdf"
     },
     {
       "bytes": 288273,
       "local_path": "data/raw/results/2003-results.zip",
       "retrieved_at": "2026-08-19T16:41:20Z",
-      "sha256": "d6f4346f4a8371d4b66db69079ff17f5b39f0559b8513245efb1ffb4cdc442d8"
+      "sha256": "d6f4346f4a8371d4b66db69079ff17f5b39f0559b8513245efb1ffb4cdc442d8",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/1ed53c9d-a316-465e-96ce-e72be74f8aa9/download/2003-results.zip"
     },
     {
       "bytes": 297663,
       "local_path": "data/raw/results/2006-results.zip",
       "retrieved_at": "2026-08-19T16:41:20Z",
-      "sha256": "924289fd4d6401587e806b21e747c285a0171a04279a61c9dc5a48ec30304628"
+      "sha256": "924289fd4d6401587e806b21e747c285a0171a04279a61c9dc5a48ec30304628",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3fb1227c-a279-4523-a1aa-f00190ba717f/download/2006-results.zip"
     },
     {
       "bytes": 273425,
       "local_path": "data/raw/results/2010-results.zip",
       "retrieved_at": "2026-08-19T16:41:20Z",
-      "sha256": "1579650581ef38dcecd9b59b554221ad0da2df65615caca0149c34bfa959e4a3"
+      "sha256": "1579650581ef38dcecd9b59b554221ad0da2df65615caca0149c34bfa959e4a3",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/6fbfaab0-bb84-442a-8e4b-1c14d4c10d6d/download/2010-results.zip"
     },
     {
       "bytes": 261053,
       "local_path": "data/raw/results/2014-results.zip",
       "retrieved_at": "2026-08-19T16:41:20Z",
-      "sha256": "a6e7b8acaa4c7acc8756a582b2a4b2a8ac324cdd6823f62a7c1bc22ddb6c4a6b"
+      "sha256": "a6e7b8acaa4c7acc8756a582b2a4b2a8ac324cdd6823f62a7c1bc22ddb6c4a6b",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/d59b5a52-33c3-4380-a136-82707e4d9aae/download/2014-results.zip"
     },
     {
       "bytes": 727155,
       "local_path": "data/raw/results/2018-results.zip",
       "retrieved_at": "2026-08-19T16:41:20Z",
-      "sha256": "786aa376d5b4d5d3042d3e0b8af148f3cf4edce0c9345677e412ccc744f940e0"
+      "sha256": "786aa376d5b4d5d3042d3e0b8af148f3cf4edce0c9345677e412ccc744f940e0",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip"
     },
     {
       "bytes": 939065,
       "local_path": "data/raw/results/2022-results.zip",
       "retrieved_at": "2026-08-19T16:41:19Z",
-      "sha256": "127d0a29ee82b1e9694078588999e825377cfbb2c5d9f1d1bfaf234f9dbaba76"
+      "sha256": "127d0a29ee82b1e9694078588999e825377cfbb2c5d9f1d1bfaf234f9dbaba76",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip"
     },
     {
       "bytes": 1223076,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2006.zip",
       "retrieved_at": "2026-08-19T16:41:23Z",
-      "sha256": "acbebafd85d72535d994f1a20204ae9458bb73a60a411c6d528516412e76e10b"
+      "sha256": "acbebafd85d72535d994f1a20204ae9458bb73a60a411c6d528516412e76e10b",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/fa84d633-b341-4121-b558-0970c7ea21e2/download/voting-subdivisions-2006.zip"
     },
     {
       "bytes": 4699592,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2010-4326.geojson",
       "retrieved_at": "2026-08-19T16:41:21Z",
-      "sha256": "1e011bfae69f48a69163d55a70930f1ad60d76a124968658326e5032d16b0c03"
+      "sha256": "1e011bfae69f48a69163d55a70930f1ad60d76a124968658326e5032d16b0c03",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/ea904820-42e0-402f-a744-1995b4b67ac0/download/voting-subdivisions-2010-4326.geojson"
     },
     {
       "bytes": 4875461,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2014-4326.geojson",
       "retrieved_at": "2026-08-19T16:41:22Z",
-      "sha256": "fcd866a2d0f7c138aefc395923be74aaac3a02a129fdc3f9eee0968a232324d2"
+      "sha256": "fcd866a2d0f7c138aefc395923be74aaac3a02a129fdc3f9eee0968a232324d2",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/16672575-bf8b-494c-8f57-c2f065a91d3d/download/voting-subdivisions-2014-4326.geojson"
     },
     {
       "bytes": 4807539,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2018-4326.geojson",
       "retrieved_at": "2026-08-19T16:41:22Z",
-      "sha256": "4cff92903855e57f92ea9be962450591f92ae7fbef90e330864429b622d29307"
+      "sha256": "4cff92903855e57f92ea9be962450591f92ae7fbef90e330864429b622d29307",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/778119c0-edbb-4fa5-9724-205781200106/download/voting-subdivisions-2018-4326.geojson"
     },
     {
       "bytes": 4967952,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2022-4326.geojson",
       "retrieved_at": "2026-08-19T16:41:22Z",
-      "sha256": "b5ea30c673c89c0a53eb62802cba6e2a5cee9bb5da1786bbb1958b7a7c3d1aef"
+      "sha256": "b5ea30c673c89c0a53eb62802cba6e2a5cee9bb5da1786bbb1958b7a7c3d1aef",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/38a9aa78-be8e-468c-9b80-262535c9bd84/download/voting-subdivisions-2022-4326.geojson"
     },
     {
       "bytes": 4918707,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2023-4326.geojson",
       "retrieved_at": "2026-08-19T16:41:23Z",
-      "sha256": "a409309a206977951bc3b0e83ea84f450cf3c3669aa3ab458e891fec6f74a7dc"
+      "sha256": "a409309a206977951bc3b0e83ea84f450cf3c3669aa3ab458e891fec6f74a7dc",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/4cfb651c-9831-4e57-90d9-a22e6335759c/download/voting-subdivisions-2023-4326.geojson"
     },
     {
       "bytes": 15376,
       "local_path": "data/raw/trustee_byelections/2012-tcdsb-ward-8.xls",
       "retrieved_at": "2026-08-20T15:17:37Z",
-      "sha256": "000d935374ca9a1ed51ee77d6194def97d4b3342ab405190a9dddd94e5a5e599"
+      "sha256": "000d935374ca9a1ed51ee77d6194def97d4b3342ab405190a9dddd94e5a5e599",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/a75d576c-f315-4c90-b5c9-1ca7d9f8b51f/download/2012-tcdsb-ward-8.xls"
     },
     {
       "bytes": 23543,
       "local_path": "data/raw/trustee_byelections/2012-tdsb-wards-17-20.xls",
       "retrieved_at": "2026-08-20T15:17:37Z",
-      "sha256": "49879352ace7c5ee08c8869176e77686ce19ce19d2e60650bb2d9834fe24c346"
+      "sha256": "49879352ace7c5ee08c8869176e77686ce19ce19d2e60650bb2d9834fe24c346",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/79f831c8-48ec-45f2-a65e-3b514f877a93/download/2012-tdsb-wards-17-20.xls"
     },
     {
       "bytes": 12867,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-1-.xlsx",
       "retrieved_at": "2026-08-20T15:17:38Z",
-      "sha256": "0c3b820c268ae4a0b4701690bc1e6caad9b3aa684171b28a56dc0e1aa9d95269"
+      "sha256": "0c3b820c268ae4a0b4701690bc1e6caad9b3aa684171b28a56dc0e1aa9d95269",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/836c4152-0603-4fd4-8ab4-a53cf386bc43/download/2016-tdsb-ward-1-.xlsx"
     },
     {
       "bytes": 18255,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-14.xlsx",
       "retrieved_at": "2026-08-20T15:17:38Z",
-      "sha256": "93523bac1cb62f7153265ba3a0d2c7860d6b00616fa123b651338b75e8fca6d7"
+      "sha256": "93523bac1cb62f7153265ba3a0d2c7860d6b00616fa123b651338b75e8fca6d7",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/0190932e-d817-4d8e-8634-8a1cc8cf5a9d/download/2016-tdsb-ward-14.xlsx"
     },
     {
       "bytes": 13147,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-21.xlsx",
       "retrieved_at": "2026-08-20T15:17:38Z",
-      "sha256": "a690a5096df51eddc1db36c4c494f478e097bbd349fd46a864e0c036a7b42883"
+      "sha256": "a690a5096df51eddc1db36c4c494f478e097bbd349fd46a864e0c036a7b42883",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/7b83316d-f2a7-4dbe-9b67-08138178c739/download/2016-tdsb-ward-21.xlsx"
     },
     {
       "bytes": 11086,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-5.xlsx",
       "retrieved_at": "2026-08-20T15:17:38Z",
-      "sha256": "b0a07ed079465cf09da137f497cb0a302bdfab99ca9ef88fe2e9900d2bc0b042"
+      "sha256": "b0a07ed079465cf09da137f497cb0a302bdfab99ca9ef88fe2e9900d2bc0b042",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/25343469-085b-4c9f-8a36-7d7f9115c630/download/2016-tdsb-ward-5.xlsx"
     },
     {
       "bytes": 32114,
       "local_path": "data/raw/trustee_byelections/2023-csv-ward-3-centre-csc-monavenir-ward-4-toronto-est.zip",
       "retrieved_at": "2026-08-20T15:17:38Z",
-      "sha256": "ce62bf25fb6f739ad6c93b161e055431e07552e0f246246e44edd202f1c71194"
+      "sha256": "ce62bf25fb6f739ad6c93b161e055431e07552e0f246246e44edd202f1c71194",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/ef7e9bbc-71ea-4d89-a412-a9ebad706fd7/download/2023-csv-ward-3-centre-csc-monavenir-ward-4-toronto-est.zip"
     },
     {
       "bytes": 17867,
       "local_path": "data/raw/trustee_byelections/2025-tdsb-ward-11.xlsx",
       "retrieved_at": "2026-08-20T15:17:39Z",
-      "sha256": "734a7276f74161c1a8bb8984e1d6d0887d32ed9a0bf5ef03eeb4365cdaeee44c"
+      "sha256": "734a7276f74161c1a8bb8984e1d6d0887d32ed9a0bf5ef03eeb4365cdaeee44c",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/7057b4fe-f71d-469b-bf61-c366895fc62e/download/2025-tdsb-ward-11.xlsx"
     },
     {
       "bytes": 138288,
       "local_path": "data/raw/voter_stats/2003-voter-statistics.xls",
       "retrieved_at": "2026-08-19T18:44:53Z",
-      "sha256": "c0f0ce783382dd8de745cb6976fe077569b8ade7bb575a01f9b3a094d1bd2d76"
+      "sha256": "c0f0ce783382dd8de745cb6976fe077569b8ade7bb575a01f9b3a094d1bd2d76",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/030a7234-7ee0-46a0-94de-3a31fa58352a/download/2003-voter-statistics.xls"
     },
     {
       "bytes": 145423,
       "local_path": "data/raw/voter_stats/2006-voter-statistics.xls",
       "retrieved_at": "2026-08-19T18:44:53Z",
-      "sha256": "67a006f762cd4b170f8f0ccc01b9b817a71665b9d05a7fd325fcd4cd00b2da8d"
+      "sha256": "67a006f762cd4b170f8f0ccc01b9b817a71665b9d05a7fd325fcd4cd00b2da8d",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/0b5691a6-7235-46d0-94a6-47f309605829/download/2006-voter-statistics.xls"
     },
     {
       "bytes": 330240,
       "local_path": "data/raw/voter_stats/2010-voter-statistics.xls",
       "retrieved_at": "2026-08-19T18:44:53Z",
-      "sha256": "7e0de20d2a24e7a227fcdc80becfb3a22f4c4170e336b63ffd856fcb59f31183"
+      "sha256": "7e0de20d2a24e7a227fcdc80becfb3a22f4c4170e336b63ffd856fcb59f31183",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/4615e48b-11f1-4965-94f1-170401b674c4/download/2010-voter-statistics.xls"
     },
     {
       "bytes": 196608,
       "local_path": "data/raw/voter_stats/2014-voter-statistics.xls",
       "retrieved_at": "2026-08-19T18:44:53Z",
-      "sha256": "9dee143b9348f6d81d2076f4e752990787933104737bbc5d4d2a7e66890153dc"
+      "sha256": "9dee143b9348f6d81d2076f4e752990787933104737bbc5d4d2a7e66890153dc",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/a20ad5ef-c77c-4ea3-8144-e270c1f6f9d1/download/2014-voter-statistics.xls"
     },
     {
       "bytes": 226402,
       "local_path": "data/raw/voter_stats/2018-voter-statistics.zip",
       "retrieved_at": "2026-08-19T18:44:54Z",
-      "sha256": "da01568efc8057e685d188c3b793cc5cff88fcdcd19bc6475452f1044d0679fd"
+      "sha256": "da01568efc8057e685d188c3b793cc5cff88fcdcd19bc6475452f1044d0679fd",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/cb352fd3-7228-48f3-bac3-00c6f7c5dfa6/download/2018-voter-statistics.zip"
     },
     {
       "bytes": 185514,
       "local_path": "data/raw/voter_stats/2022_voter_turnout_statistics_final.xlsx",
       "retrieved_at": "2026-08-19T18:44:54Z",
-      "sha256": "ab66fa7da43c0118ee3455c804b431ae0ec03e491f7496b3061004c1721cbf21"
+      "sha256": "ab66fa7da43c0118ee3455c804b431ae0ec03e491f7496b3061004c1721cbf21",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/631b7042-bd71-46b1-9c27-2d4119462ec7/download/2022_voter_turnout_statistics_final.xlsx"
     },
     {
       "bytes": 139993,
       "local_path": "data/raw/voter_stats/2023-mayoral-by-election-voter-statistics-1.xlsx",
       "retrieved_at": "2026-08-19T18:44:54Z",
-      "sha256": "e2073b8814e505b7f9e53be8fee9e75a407323fc23f6563ddaf9bf32c0bb2fd5"
+      "sha256": "e2073b8814e505b7f9e53be8fee9e75a407323fc23f6563ddaf9bf32c0bb2fd5",
+      "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/46ccd64f-4a40-41b3-b045-d13ab34e54eb/download/2023-mayoral-by-election-voter-statistics-1.xlsx"
     },
     {
       "bytes": 347,
@@ -945,10 +1082,10 @@
       "sha256": "6d578ef360c1d6a955b398c841cb5b0b60dd5f9a0aa84eb4df2b774f6ae1dab7"
     },
     {
-      "bytes": 3975025,
+      "bytes": 4255535,
       "local_path": "data/reference/candidacy_identity_ledger.csv",
-      "retrieved_at": "2026-11-05T19:56:46.673254Z",
-      "sha256": "2a3c387c51aa367154babb58d46d25914149f028e2635d6209585b18f866c135"
+      "retrieved_at": "2026-11-07T14:42:54.726720Z",
+      "sha256": "9508482b17d764364ac22df2a321e5d7859ab7d97801210447f499b9c6653ff2"
     },
     {
       "bytes": 13378,
@@ -963,9 +1100,15 @@
       "sha256": "0f5f3a92280eb46cf6004997d664012284c58ed433b50cb6e327f97ab82bfee8"
     },
     {
+      "bytes": 5426,
+      "local_path": "data/reference/council_appointments.csv",
+      "retrieved_at": "2026-11-07T08:40:00.713449Z",
+      "sha256": "c5ff628058d2ca88804071bfa201a0f7f5795b3b2701be2ff6961b44a9ad6b26"
+    },
+    {
       "bytes": 19728,
       "local_path": "data/reference/council_roster_2000.csv",
-      "retrieved_at": "2026-11-05T19:52:08.758489Z",
+      "retrieved_at": "2026-11-05T21:16:18.467977Z",
       "sha256": "40d1b664ef4c179fb0b939a1d7b74528a37b353c35716d1ada1fdce99394fa94"
     },
     {
@@ -987,10 +1130,22 @@
       "sha256": "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231"
     },
     {
-      "bytes": 868078,
+      "bytes": 533616,
+      "local_path": "data/reference/house_of_commons_members.csv",
+      "retrieved_at": "2026-11-07T05:25:35.852756Z",
+      "sha256": "43999bf770c08fdf25a098c39f17d67dd4d8283ff9d8f9aabf6ae4c0709f3a70"
+    },
+    {
+      "bytes": 190411,
+      "local_path": "data/reference/identity_link_basis.csv",
+      "retrieved_at": "2026-11-07T14:36:09.002696Z",
+      "sha256": "a187dc986a7380b7b768bfa14570d8d0a28b7e0a07c9bae9428bdd81cccdda6b"
+    },
+    {
+      "bytes": 868801,
       "local_path": "data/reference/identity_review_dispositions.csv",
-      "retrieved_at": "2026-11-05T15:08:32.570440Z",
-      "sha256": "ab54744427eb2d6c004905db2e6f28bd713247caf0970e23a598f231187bb2fb"
+      "retrieved_at": "2026-11-07T05:07:41.244692Z",
+      "sha256": "5be4286ec8ee508baea229f0dc9c9386b71998649d0e1a1f24f123561b412452"
     },
     {
       "bytes": 13148,
@@ -1015,6 +1170,30 @@
       "local_path": "data/reference/mayoral_career_reviews.csv",
       "retrieved_at": "2026-10-31T22:51:12.600283Z",
       "sha256": "21514bc011a5dc03caf3b0a60b3f4a580ec6dd99475ec22adfc94fc346a8d265"
+    },
+    {
+      "bytes": 166920,
+      "local_path": "data/reference/ontario_legislature_members.csv",
+      "retrieved_at": "2026-11-07T13:02:38.211653Z",
+      "sha256": "eaf1701d031f49b5cbd47b04ee1a8a2d32776ea5b8a5bc4ef5971b09d1070b1f"
+    },
+    {
+      "bytes": 91622,
+      "local_path": "data/reference/person_external_ids.csv",
+      "retrieved_at": "2026-11-07T14:35:53.563455Z",
+      "sha256": "e3519df3ecc3665949295d5485f9a339c0fc98e9a43894c1aa1cfd30e084eb07"
+    },
+    {
+      "bytes": 26853,
+      "local_path": "data/reference/predecessor_rosters_1997.csv",
+      "retrieved_at": "2026-11-07T05:48:41.780690Z",
+      "sha256": "6214cd742ed391aa314ea9fc0708dc44a519f2786554badf35105b81c30bf053"
+    },
+    {
+      "bytes": 22378,
+      "local_path": "data/reference/raw_source_urls.csv",
+      "retrieved_at": "2026-11-07T07:55:31.466485Z",
+      "sha256": "c47a91bc41a818bfbdf000a9f21ad41ddce624bda2ad41e73d00924ecd83212b"
     },
     {
       "bytes": 326094,

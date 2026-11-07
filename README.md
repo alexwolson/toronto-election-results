@@ -34,7 +34,9 @@ retain the district and boundary regime under which votes were cast; they are ne
 a common modern map. Party affiliation is attached to each Candidacy where an authority reports
 it. Persistent Person links are evidence-backed and auditable; machine-generated identity
 proposals are never published as confirmed links without adjudication. Insufficient,
-contradictory, or newly queued matches remain unlinked instead of becoming fuzzy merges.
+contradictory, or newly queued matches remain unlinked instead of becoming fuzzy merges. Each
+link's `evidence_basis` says whether it rests on an official record, a source about the person or
+the structural rules alone, so users can keep only source-confirmed links.
 
 Mayor and City Councillor Contests also have evidence-backed endorsement companion tables.
 Endorsements are positive, open-world facts: an absent fact never means that an Endorser opposed or
@@ -50,6 +52,10 @@ records**.
 
 - [`CONTEXT.md`](./CONTEXT.md) — domain glossary (the canonical vocabulary).
 - [`docs/data-dictionary.md`](./docs/data-dictionary.md) — full schema, sources, and QC gates.
+- [`docs/verification/`](./docs/verification/) — the audit of Person links, the reviews of
+  same-name and near-name Persons, and the reconciliation of results with external datasets.
+- [`docs/provenance.md`](./docs/provenance.md) — what code, AI agents and the authors each did at
+  every stage of the build.
 - [`docs/adr/`](./docs/adr/) — the load-bearing design decisions:
   - `0001` — record wards as-run; no reprojection across the 2018 boundary change.
   - `0002` — historical municipal roster sources (superseded for identity semantics).
@@ -77,6 +83,8 @@ Every table is written as CSV and Parquet unless noted otherwise:
 - `data/out/election_results.*` — modelling-ready Candidacy rows;
 - `data/out/election_events.*` and `data/out/contests.*`;
 - `data/out/people.*` and `data/out/candidacy_person_links.*`;
+- `data/out/person_external_ids.*` — Wikidata, ParlInfo and House of Commons IDs for People who
+  sat in the House;
 - `data/out/parties.*` and `data/out/office_tenures.*`;
 - `data/out/electoral_districts.*` — native Contest-level geometry where available, with explicit
   missing-geometry status otherwise;
@@ -94,7 +102,8 @@ enumeration is complete from 1998. The former municipalities left no such index,
 enumeration for 1995–1997 is marked uncertain; a search of the Toronto Star found one by-election
 in that period (North York Ward 1, 1995), which is included. No result rows are fabricated to fill
 an archive gap.
-Trustee incumbency remains null because the result sources do not report it and a complete,
+Trustee `incumbent` is recorded only for the 20 sitting trustees who ran in 2026. It is null for
+every other trustee Candidacy because the result sources do not report it and a complete,
 evidence-backed historical trustee roster has not been acquired.
 
 ## Development
