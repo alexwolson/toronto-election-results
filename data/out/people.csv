@@ -311,7 +311,7 @@ per_0e92b920c801557cb395263a9cda6ad1,RICHARD VON FUCHS,active,,2026-09-30
 per_0e93ad2dfc325ddf9a6cd5451ec43e93,Jim Peterson,active,,2026-09-30
 per_0e9435aafc59527b8d1e55a3466d4b95,Sarah Thompson,active,,2026-09-30
 per_0e9de90ced365a8f8d601bf86f844dfc,Ryan Sloan,active,,2026-09-30
-per_0eb355117423558e89394bc508ee4e2d,MARK BEKKERING,active,,2026-09-30
+per_0eb355117423558e89394bc508ee4e2d,Mark Bekkering,active,,2026-09-30
 per_0ed0945828fe50949f4fe63c88ba6975,Abdi Hashised,active,,2026-09-30
 per_0ed7fdb645dd5f79b2286fd803916285,George Singh,active,,2026-09-30
 per_0ee7442e279a503792622f3dc6ebb13c,Donald Fraser,active,,2026-09-30
@@ -1144,7 +1144,7 @@ per_39b874395c1f5989991e14d378bcf01c,Shane Bennett,active,,2026-09-30
 per_39cba649c2ec54709d4bd7b0a3249bf0,Oscar Wailoo,active,,2026-09-30
 per_39e4e1c85aac50019b67c8563706beb0,Eugene Loo,active,,2026-09-30
 per_39e6731b601654e9bc92a28075f2837f,Jeff Layton,active,,2026-09-30
-per_39ead11456b554139b4e19081b2d26c8,MARK BEKKERING,active,,2026-09-30
+per_39ead11456b554139b4e19081b2d26c8,MARK BEKKERING,deprecated,per_0eb355117423558e89394bc508ee4e2d,2026-09-30
 per_3a0bb24f4de254409d12722b0441b5f6,Karthik Suriyacumaran,active,,2026-09-30
 per_3a2015e6fb2e56a4af60d7b8f9248eef,Maria Rodrigues,active,,2026-09-30
 per_3a2fd4dcc9125d67af5b628373f21fcd,Weizhen Tang,active,,2026-09-30
@@ -1297,7 +1297,7 @@ per_40fe1349d6b35173bf1ff5791541ec59,Carlos Santos Almeida,active,,2026-09-30
 per_40fff250a1e45841adc853c9e0a8a362,Connie Lukawski,active,,2026-09-30
 per_411747ea055154f083a32c2684a03b8b,Mark Lubinski,active,,2026-09-30
 per_41230ee0ac715300b0ced268abe0d0aa,TIM RUDKINS,active,,2026-09-30
-per_41341692086d5d8c84908e42a879287a,FRANZ L. CAUCHI,active,,2026-09-30
+per_41341692086d5d8c84908e42a879287a,FRANZ L. CAUCHI,deprecated,per_d6acb15f737053038b9f0ea1e0dbc691,2026-09-30
 per_414ac86b989654d4bff5061659764f28,Moussa Tahlil,active,,2026-09-30
 per_4152e45f85bd593eba76dec685675e70,MARK VIITALA,active,,2026-09-30
 per_415c15e5d1e155ccba81546b0f24f2fe,Bob Frankford,active,,2026-09-30
@@ -1365,7 +1365,7 @@ per_44263332208c520fae8ef1c3cd779733,Sandra Y. Richardson,active,,2026-09-30
 per_4426f79f0e8d5e639aa007a3e6712197,Stephen Thiele,active,,2026-09-30
 per_442ddf6b55c95348b8198508e813db50,George Vona,active,,2026-09-30
 per_4436244498af51ae95e9fbbf93072903,April Engelberg,active,,2026-09-30
-per_443faa4b55235df2a75e74216f08e4c5,Virginia Jones,active,,2026-09-30
+per_443faa4b55235df2a75e74216f08e4c5,Virginia Jones,deprecated,per_7b1d134a748c548d88e87ee552a2ce3c,2026-09-30
 per_444992e944fb5234b82560849661538a,Danielle Ouellette,active,,2026-09-30
 per_445d107ff6a9566e83f3ee0695af93b7,Derek Lee,active,,2026-09-30
 per_445d686ec88e5d98850708900a057087,Axel Arvizu,active,,2026-09-30
@@ -1424,7 +1424,7 @@ per_4744ed2ab17a52f18445ac4d732c2321,Jason Pedlar,active,,2026-09-30
 per_47632a2424565cf89bc4d2e841dd80a1,Cristina Marques,active,,2026-09-30
 per_47794f7f66f95e61b0ebc7c9639d58e4,Stephen Fish,active,,2026-09-30
 per_47842194f72b529d80664350ca0cf634,Didi Moffat,active,,2026-09-30
-per_478f7bb2883e5f7dab96e00ffef2fea6,Nunzio Venuto,active,,2026-09-30
+per_478f7bb2883e5f7dab96e00ffef2fea6,Nunzio Venuto,deprecated,per_02223abd943f548b950debf5c1f07c44,2026-09-30
 per_47a53feb836252c8a8a44aef3b604d99,Thomas Athan Voltsinis,active,,2026-09-30
 per_47addeb7130454cb8be587530e65d837,Pushpa Mathanalingam,active,,2026-09-30
 per_47bc1df6cb2a503d92e6fd7744de7d40,AMY BROWN,active,,2026-09-30
@@ -1818,7 +1818,7 @@ per_5b334c7e2f5d504fad8367a4774c1daf,LEE MIGUEL GONZALEZ,active,,2026-09-30
 per_5b50e57cde67529295798fd64157c9cd,Julien Baeta,active,,2026-09-30
 per_5b554d6233315b2a966642bc6c5d7ea4,Gerri Gershon,active,,2026-09-30
 per_5b57404aefad5623b29b3d79938d830e,Marinka Ranasinghe,active,,2026-09-30
-per_5b7b8cce36ae58d28c55f058b78d5afa,NUNZIO VENUTO,active,,2026-09-30
+per_5b7b8cce36ae58d28c55f058b78d5afa,NUNZIO VENUTO,deprecated,per_02223abd943f548b950debf5c1f07c44,2026-09-30
 per_5b8836988e2d5c6aaf771e6e7a8ba613,Dave Madder,active,,2026-09-30
 per_5b8d2de9abe25ed9b787b3d2dab17076,Mahdi Abdurahman,active,,2026-09-30
 per_5b922e00b239538d9ec34f8216b43554,Jamil Nowwarah,active,,2026-09-30
@@ -2489,7 +2489,7 @@ per_7c39295b0c855389b474267d2886f053,Ari Grosman,active,,2026-09-30
 per_7c4ad0a7f8345a38896e346d9b3d89ff,Larry Luby,active,,2026-09-30
 per_7c4fecf3a6995b89a6092fa653e1391a,Ahmed Mawel,active,,2026-09-30
 per_7c5bfa9301f05087a6cf70d15764294c,JOSHUA MIERSCH,active,,2026-09-30
-per_7c5c18a9042755fb9ff08704bad33c29,Loucas Café,active,,2026-09-30
+per_7c5c18a9042755fb9ff08704bad33c29,Loucas Café,deprecated,per_278f39f2d7505dc5bc03dde37ab94fcc,2026-09-30
 per_7c6c10a7a98e5517879d1d31260313f1,Jan Jansen,active,,2026-09-30
 per_7c78aa36c23952f0ab168e02db832b6f,Hank Martyn,active,,2026-09-30
 per_7c9ccfedcac15d99b12bdfff0a1ea876,William Macdougall,active,,2026-09-30
@@ -2621,7 +2621,7 @@ per_82a8abe38e1c5b6cbf4c393e7078bbcc,Les Scheininger,active,,2026-09-30
 per_82bbe5950339568280b01685380e4ff5,Michele Choma,active,,2026-09-30
 per_82cd6a63939e5b93b082279baf8478b4,Jon Callegher,active,,2026-09-30
 per_82ee6b7d69235afd8bb9c5999b0b90ef,Kirk Jensen,active,,2026-09-30
-per_8302e245f31b506a8eb707372b62ea4c,Douglas Quinn,active,,2026-09-30
+per_8302e245f31b506a8eb707372b62ea4c,Douglas Quinn,deprecated,per_bb61509bace75af7bc10ffc9b6aa057a,2026-09-30
 per_830dd3152c6253f7b9bf701d1527612e,Blake Acton,active,,2026-09-30
 per_831190895575563fb04fcd48e21ca27d,Mark Dejewski,active,,2026-09-30
 per_831b75aa04085c9282b33fc80c12a770,Leila Yohannes,active,,2026-09-30
@@ -2807,7 +2807,7 @@ per_8baffbd65f9e5733bde88a688bccb86c,Christopher Riley,active,,2026-09-30
 per_8bbe1b30dfaa5e82a21eabd7c1b284ad,Thomas Earl Pennington,active,,2026-09-30
 per_8bd1d4e33e8155b69bbd588d4cc3ac88,CORINNE KORZEN,active,,2026-09-30
 per_8bdaf9064ad85af19ce437be9cb5e447,TONY RUPRECHT,active,,2026-09-30
-per_8bf9832590df5d8ba53200b378f01639,John B. Steele,active,,2026-09-30
+per_8bf9832590df5d8ba53200b378f01639,John B. Steele,deprecated,per_d0086333d4765d6e8698f919c23a2826,2026-09-30
 per_8c0138a4257b5341857fb20be1ca68ac,ZDRAVKO GUNJEVIC,active,,2026-09-30
 per_8c23e524b8b953f7991ace7d27d30fe7,Paul Dhami,active,,2026-09-30
 per_8c27d890a1015ef28cfa3ff79384ef59,Willie Reodica,active,,2026-09-30
@@ -3255,7 +3255,7 @@ per_a20bc857219b537c9843b5bda0cfc337,ARABA OCRAN-CAESAR,active,,2026-09-30
 per_a20cab28b3fb5e298a40e4c04d441649,Eden Gajraj,active,,2026-09-30
 per_a2125d58c5f8527d816f98d3a2863d86,Neil Young,active,,2026-09-30
 per_a212fe00ee825917bdd939563a0f4307,John Chambers,active,,2026-09-30
-per_a21c6b5c92bc542db63fc2e396c7073d,Arnold Kwok,active,,2026-09-30
+per_a21c6b5c92bc542db63fc2e396c7073d,Arnold Kwok,deprecated,per_cfa2a65b47f9546d9c6ee5ac1ceec4b5,2026-09-30
 per_a229cc2680345586a723317b3d81d8cd,ANGUS HUNT,active,,2026-09-30
 per_a22b36acc1fc5813bfd099f014bd7ce2,Yewbdar Petros,active,,2026-09-30
 per_a251812695b85b90863aac995aeabbdf,Greg Hamara,active,,2026-09-30
@@ -4294,7 +4294,7 @@ per_d675591d851e56b09ef3c228fa03628b,Dietmar Lein,active,,2026-09-30
 per_d67fc303bbcd5190a888600ddaa96784,Arfan Naveed,active,,2026-09-30
 per_d681cabf5437531cb886b80d2b3e809e,KATE HOLLOWAY,active,,2026-09-30
 per_d69ca7103edf52d4a578364602556425,Jim Darvill,active,,2026-09-30
-per_d6acb15f737053038b9f0ea1e0dbc691,FRANZ CAUCHI,active,,2026-09-30
+per_d6acb15f737053038b9f0ea1e0dbc691,Franz Cauchi,active,,2026-09-30
 per_d6bc2963d417547a9c0eeef39beff79c,Youssouf Kalogo,active,,2026-09-30
 per_d6bd9ed875f15b2d8e717591ea4e7da9,HORACE GOODEN,active,,2026-09-30
 per_d6c40849057b5c5485f78234fed25606,Alykhan Pabani,active,,2026-09-30
@@ -4801,7 +4801,7 @@ per_f26cd7f0c9fb5c6c8959d4b11742c735,Maurice Seguin,active,,2026-09-30
 per_f26cddbe82e5501d9fdce1e162c142b8,Omar Mohamed,active,,2026-09-30
 per_f2763cdb40aa5445a053a3c7a03ab974,Andrei Zodian,active,,2026-09-30
 per_f279b16f2cc150e6965679ceeccc4323,Charles Arsenault,active,,2026-09-30
-per_f285f0621dbe566cadb4c7cee0d4a752,Elizabeth Moyer,active,,2026-09-30
+per_f285f0621dbe566cadb4c7cee0d4a752,Elizabeth Moyer,deprecated,per_526d2746efd55198a90b1e6c06dbc83c,2026-09-30
 per_f29af4c722f65ebe890c8f95029176a4,Patrick Strzalkowski,active,,2026-09-30
 per_f2adf4ed552a5040b469d1d63a01850b,Rolland Kacsoh,active,,2026-09-30
 per_f2be27060787516c9064a17f7a2efd84,Jean-Paul Bédard,active,,2026-09-30

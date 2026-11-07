@@ -180,3 +180,7 @@ the four 2026 trustee joins and Ray Scott's. The coordinator read those sources 
 Undetermined is not a finding that two Persons are different people. Most undetermined groups are
 minor candidates for whom the only records are result listings, and the web reviewers rated many of
 them as likely one individual.
+
+A later search of ProQuest ([`star-pass-2026-11-07.md`](star-pass-2026-11-07.md)) joined seven of
+the undetermined groups, one of them in part: Loucas Café, Nunzio Venuto, Douglas Quinn, John
+Steele, Franz Cauchi, Elizabeth Moyer and Virginia Jones.

@@ -67,7 +67,7 @@ transcriptions.
 
 ## Person links
 
-Code makes the links that need no judgement. Each Candidacy's own record founds its Person (4,941
+Code makes the links that need no judgement. Each Candidacy's own record founds its Person (4,931
 links), and incumbency reported by the election authority (221) and exact names on a Council roster
 (131) join runs. Code also proposes a link wherever a name matches an existing Person exactly, but
 a name match alone never confirms one.
@@ -101,8 +101,12 @@ and the pass's report sets out its method. The passes took three forms.
   coordinating agent joined Fatima Shaban's 2026 provincial by-election run to her federal runs
   from a source about her, and the census below audited it. The same day a script screened the
   Persons for changed surnames and found four pairs, none joined
-  (`docs/verification/surname-change-screen-2026-11-07.md`). No author has yet reviewed any of
-  these decisions.
+  (`docs/verification/surname-change-screen-2026-11-07.md`). Also on 7 November the coordinating
+  agent searched the Toronto Star and other newspapers in ProQuest, through Alex Olson's library
+  sign-in, for same-name and near-name Persons that the earlier reviews had left undetermined, and
+  made ten person-record merges (15 links) from what it found
+  (`docs/verification/star-pass-2026-11-07.md`). No second agent checked these. No author has yet
+  reviewed any of these decisions.
 
 The table counts the active links by what decided them, and the 413 Candidacies held without a
 Person by the pass that held them. An assertion is dated by the commit that first added it; some
@@ -110,17 +114,18 @@ were extended later.
 
 | Decided by | Period | Tool | Confirmed links | Held (unresolved or rejected) |
 |---|---|---|---:|---:|
-| Code: a Candidacy's own record | | | 4,941 | |
+| Code: a Candidacy's own record | | | 4,931 | |
 | Code: reported incumbency and roster names | | | 352 | |
 | Curated assertions | August 2026 | OpenAI Codex (GPT-5.6); primary review by Alex Olson | 976 | |
-| Dispositions | August and September 2026 | OpenAI Codex (GPT-5.6); primary review by Alex Olson | 129 | 294 |
-| Curated assertions | 28 October to 7 November 2026 | Claude Opus 5.5 | 337 | |
-| Dispositions | 28 October to 7 November 2026 | Claude Opus 5.5 | 951 | 119 |
+| Dispositions | August and September 2026 | OpenAI Codex (GPT-5.6); primary review by Alex Olson | 125 | 294 |
+| Curated assertions | 28 October to 7 November 2026 | Claude Opus 5.5 | 352 | |
+| Dispositions | 28 October to 7 November 2026 | Claude Opus 5.5 | 950 | 119 |
 
-Of the 2,745 links that join a Candidacy to a Person, 352 were made by code, 1,105 in August and
-September 2026 and 1,288 between 28 October and 7 November 2026. Each link's `evidence_basis`
-says whether it rests on an official record, a source about the person or the structural rules
-alone.
+Of the 2,755 links that join a Candidacy to a Person, 352 were made by code, 1,101 in August and
+September 2026 and 1,302 between 28 October and 7 November 2026. Five dispositions no longer
+decide a link: the Star pass's merges of the Nunzio Venuto Persons replaced them. Each link's
+`evidence_basis` says whether it rests on an official record, a source about the person or the
+structural rules alone.
 
 ## Audit
 
@@ -131,6 +136,7 @@ five were Claude Opus 5.5. The census of the 136 joins made after that sample
 (`docs/verification/link-audit-2026-11-07.md`) was carried out on 7 November 2026 by five more
 agents under the same rules, and three others checked every verdict that a join was confirmed.
 All eight were Claude Opus 5.5. The results files give each verdict's sources, quotations and notes.
+The 15 links that the Star pass made later on 7 November are in neither the audit nor the census.
 `docs/verification/human-coding-2026-11-07.md` sets out a sample of joins for people to code
 against the agents' verdicts, drawn by script on 7 November 2026. [The coding is not yet done.
 Report it, and who did it, when it is.]

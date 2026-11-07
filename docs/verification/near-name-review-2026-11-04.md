@@ -157,3 +157,7 @@ search, but The Local's 2026 Ward 1 guide, which may settle Nathen Mazri and Nat
 read. The second check of Shelley and Shel Goldstein also found a film-credits site listing both
 names for one actor; it is an aggregator, so the join rests on the Star, the York Guardian and
 Elections Canada instead.
+
+A later search of ProQuest ([`star-pass-2026-11-07.md`](star-pass-2026-11-07.md)) joined one of the
+undetermined pairs, Arnold Kwok and Kingsley Arnold Kwok, on the Star's descriptions of both as a
+respiratory therapist.

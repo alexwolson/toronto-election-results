@@ -73,7 +73,7 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,078 People. 5,072 hold at least one Candidacy, and six hold only an Office
+The release has 5,068 People. 5,062 hold at least one Candidacy, and six hold only an Office
 tenure from a Council roster. Each of those six was appointed to fill a vacancy and has no
 candidacy in the release. 7,686 Candidacies have a confirmed Person and 413 have none: 411
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
@@ -82,14 +82,15 @@ nulls are review outcomes, not missing results. Each held run's disposition name
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 595 identity assertions
-over 1,181 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+continuity, Council rosters and adjudicated curations. The curations are 606 identity assertions
+over 1,197 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
 candidates have confirmed earlier races in the release) and 1,643 occurrence-level dispositions in
 `data/reference/identity_review_dispositions.csv` (1,134 confirmed, 505 unresolved and 4 rejected).
 A disposition is not applied where a career review's confirmation or a person-record merge
-covers the same Candidacy, but a later disposition does replace a career review's hold. No
-blanket name merges are made, and a hold does not claim that two occurrences are different
-people.
+covers the same Candidacy, but a later disposition does replace a career review's hold. A
+disposition that names a Person later merged into another applies to the Person it was merged
+into. No blanket name merges are made, and a hold does not claim that two occurrences are
+different people.
 
 Without a person-specific source, two runs are joined on structure only under these rules, which
 are the same for every year and office:
@@ -106,11 +107,11 @@ are the same for every year and office:
   (`docs/research/federal-provincial-holds-2026-11-01.md`).
 - Any other two offices need a person-specific source.
 
-Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,941 are a
+Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,931 are a
 Person's own record, the Candidacy from which the Person was built, so nothing is joined. Of the
-2,745 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
+2,755 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
 the election authority reported, 131 on a Council roster and three on one archive record printed
-twice), 1,825 on a source about the person and 565 on the structural rules alone. The basis of
+twice), 1,833 on a source about the person and 567 on the structural rules alone. The basis of
 each curated link is recorded in `data/reference/identity_link_basis.csv`, and a test checks the
 office, Party and election-gap rules on every structural link; name commonness and ward overlap
 are left to the reviewers. When the check was first run, in November 2026, 12 Persons joined
