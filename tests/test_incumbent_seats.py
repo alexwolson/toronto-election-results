@@ -184,3 +184,9 @@ def test_published_seat_fields():
         & results["incumbent_held_district_id"].eq("")
     ]
     assert tory["incumbent_changed_district"].tolist() == ["True"]
+    # In 2018 most of Lucy Troisi's old Ward 28 polls lie in the new Ward 13, where she ran,
+    # but most of Mike Layton's old Ward 19 polls do not lie in Ward 11, where he ran.
+    in_2018 = results.loc[results["election_date"].eq("2018-10-22")].set_index("candidate_name")
+    assert in_2018.loc["Lucy Troisi", "incumbent_changed_district"] == "False"
+    assert in_2018.loc["Mike Layton", "incumbent_changed_district"] == "True"
+    assert in_2018.loc["Lucy Troisi", "incumbent_appointed"] == "True"
