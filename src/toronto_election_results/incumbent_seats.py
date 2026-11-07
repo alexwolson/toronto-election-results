@@ -57,6 +57,20 @@ def add_incumbent_seat_fields(
     """
 
     out = candidacies.copy()
+    if "incumbent" not in out or not out["incumbent"].eq(True).fillna(False).any():
+        out["incumbent_appointed"] = pd.array([pd.NA] * len(out), dtype="boolean")
+        out["incumbent_held_district_id"] = pd.array([pd.NA] * len(out), dtype="string")
+        out["incumbent_changed_district"] = pd.array([pd.NA] * len(out), dtype="boolean")
+        return out
+    district_columns = [
+        "district_id",
+        "boundary_regime",
+        "official_district_id",
+        "geometry_status",
+        "geometry",
+    ]
+    if not set(district_columns).issubset(districts.columns):
+        districts = pd.DataFrame(columns=district_columns)
     by_id = tenures.drop_duplicates("office_tenure_id").set_index("office_tenure_id")
     regime = dict(
         zip(districts["district_id"].astype(str), districts["boundary_regime"], strict=True)

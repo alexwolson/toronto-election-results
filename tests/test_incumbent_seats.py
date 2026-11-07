@@ -182,6 +182,7 @@ def test_published_seat_fields():
         results["represented_body"].eq("ontario_legislative_assembly")
         & results["incumbent"].eq("True")
         & results["incumbent_held_district_id"].eq("")
+        & results["election_date"].eq("2007-10-10")
     ]
     assert tory["incumbent_changed_district"].tolist() == ["True"]
     # In 2018 most of Lucy Troisi's old Ward 28 polls lie in the new Ward 13, where she ran,

@@ -325,6 +325,8 @@ def council_poll_points(
     """
 
     configured = DEFAULT_COUNCIL_GEOMETRY_SOURCES if sources is None else sources
+    if not _REQUIRED_DISTRICT_COLUMNS.issubset(electoral_districts.columns):
+        return {}
     council = electoral_districts.loc[electoral_districts["represented_body"].eq(COUNCIL_BODY)]
     points: dict[str, list[BaseGeometry]] = {}
     for regime, source in configured.items():
