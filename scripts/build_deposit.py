@@ -76,9 +76,9 @@ def _check_release(tag: str) -> dict[str, object]:
         raise SystemExit(f"HEAD does not carry the tag {tag}")
     manifest = json.loads((OUT / "build_manifest.json").read_text(encoding="utf-8"))
     for record in manifest["artifacts"]:
-        path = REPO_ROOT / record["path"]
+        path = REPO_ROOT / record["local_path"]
         if _sha256(path) != record["sha256"]:
-            raise SystemExit(f"{record['path']} does not match the build manifest")
+            raise SystemExit(f"{record['local_path']} does not match the build manifest")
     return manifest
 
 
