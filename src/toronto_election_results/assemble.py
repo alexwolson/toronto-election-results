@@ -26,6 +26,7 @@ from .incumbency import (
     council_surnames,
     flag_incumbents,
 )
+from .official_sources import by_election_result_source, general_result_source
 from .parse_results import parse_open_data_file, to_contest_level
 from .voter_statistics import (
     attach_electorate,
@@ -131,15 +132,17 @@ def build_base(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
         for office in offices:
             if year == 2023:  # the by-election mayor file lives outside the results ZIPs
                 path = raw / "byelection" / "2023_office_of_the_mayor.xlsx"
+                source = by_election_result_source(path.name)
             else:
                 path = _office_file(extracted[year], office)
+                source = general_result_source(year, path.relative_to(extracted[year]).as_posix())
             wardwise = parse_open_data_file(path, office=office)
             contest = to_contest_level(wardwise, office=office)
             contest["election_year"] = year
             contest["election_date"] = date
             contest["election_type"] = etype
             contest["ward_system"] = ward_system
-            contest["source"] = path.as_posix()
+            contest["source"] = source
             contest["contest_id"] = [_contest_id(year, office, w) for w in contest["ward_number"]]
             frames.append(contest)
     for year, ward, filename, date, ward_system in BY_ELECTIONS:
@@ -150,7 +153,7 @@ def build_base(raw: Path = RAW, interim: Path = INTERIM) -> pd.DataFrame:
         contest["election_date"] = date
         contest["election_type"] = "by_election"
         contest["ward_system"] = ward_system
-        contest["source"] = path.as_posix()
+        contest["source"] = by_election_result_source(filename)
         contest["contest_id"] = [_contest_id(year, "councillor", w) for w in contest["ward_number"]]
         frames.append(contest)
     return pd.concat(frames, ignore_index=True)

@@ -21,6 +21,7 @@ from .candidates import known_multiword_surnames, normalize_name
 from .identity import validate_identity_tables
 from .incumbency import RAW, REFERENCE, TERM_BEFORE_ELECTION, build_composition, council_surnames
 from .municipal_archive import ELECTION_DATES as ARCHIVE_ELECTION_DATES
+from .official_sources import COUNCIL_RECORD_URLS
 from .schema import stable_id
 
 _BODY = "toronto_city_council"
@@ -245,7 +246,7 @@ def _composition_source(row: pd.Series, *, election_year: int) -> str:
             if collection == "attendance"
             else f"member-voting-record-{term}.csv"
         )
-        detail["source_file"] = f"data/raw/council/{collection}/{filename}"
+        detail["source_url"] = COUNCIL_RECORD_URLS[filename]
     elif source == "wikipedia":
         detail["source_files"] = [
             "data/reference/roster_agent_a.txt",

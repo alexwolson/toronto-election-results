@@ -208,3 +208,43 @@ def test_link_audit_keeps_party_label_pairs_apart():
         "per_a8ae022c8024542997fcd84b36b6f9c5",
     ):
         assert people.loc[person_id, "identity_status"] == "active"
+
+
+CENSUS_DIR = REPO_ROOT / "docs" / "verification" / "link-audit-2026-11-07"
+
+
+def _census(name: str) -> pd.DataFrame:
+    return pd.read_csv(CENSUS_DIR / name, dtype="string", keep_default_na=False)
+
+
+def test_census_covers_every_join_made_after_the_november_sample():
+    results = _census("joins_results.csv")
+    frame = _census("joins_frame.csv")
+    assert results["pair_id"].tolist() == frame["pair_id"].tolist()
+    assert results["earlier_run"].tolist() == frame["earlier_run"].tolist()
+    sizes = _census("frame_strata.csv").set_index("stratum")["joins"].astype(int)
+    assert sizes["post_audit"] == len(results) == 136
+    assert int(sizes.sum()) == 2614
+    # A join counts as confirmed only if the second check accepted the auditor's evidence.
+    confirmed = results["final_verdict"].eq("CONFIRMED")
+    assert results.loc[confirmed, "verdict"].eq("CONFIRMED").all()
+    assert results.loc[confirmed, "second_check"].eq("ACCEPTED").all()
+    assert results.loc[results["verdict"].eq("CONFIRMED"), "second_check"].ne("").all()
+    assert set(results["final_verdict"]) <= {"CONFIRMED", "CONTRADICTED", "NOT_CONFIRMED"}
+
+
+def test_census_carries_no_contact_details():
+    email = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+    phone = re.compile(r"\(?\b\d{3}\)?[ .-]\d{3}[ .-]\d{4}\b")
+    for path in CENSUS_DIR.glob("*.csv"):
+        text = path.read_text(encoding="utf-8")
+        assert not email.search(text), path.name
+        assert not phone.search(text), path.name
+
+
+def test_census_summary_bounds_false_merges_across_the_release(capsys):
+    _load_script("summarize_post_audit").summarize(CENSUS_DIR, AUDIT_DIR)
+    out = capsys.readouterr().out
+    assert "| Made after the November sample (census) | 136 | 136 | 52 | 0 | 84 |" in out
+    assert "2,614 joins that tie two different people: 0.0% (one-sided 95% upper bound 3.7%)" in out
+    assert "own sources: 71.4% (95% interval 63.0% to 77.3%)" in out

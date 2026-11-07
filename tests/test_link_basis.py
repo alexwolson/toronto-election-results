@@ -44,7 +44,7 @@ def test_every_active_confirmed_link_has_a_basis_and_no_other_link_does():
 
 def test_automatic_methods_have_a_fixed_basis():
     links = _links()
-    confirmed = links.loc[links["link_status"].eq("confirmed")]
+    confirmed = links.loc[links["link_status"].eq("confirmed") & links["valid_to_release"].eq("")]
     by_method = confirmed.groupby("method")["evidence_basis"].unique().map(set).to_dict()
     assert by_method["official_candidacy_record"] == {"own_record"}
     assert by_method["official_incumbent_continuity"] == {"official_record"}

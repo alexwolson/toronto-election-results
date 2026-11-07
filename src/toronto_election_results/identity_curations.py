@@ -15947,6 +15947,33 @@ PERSON_RECORD_MERGE_ASSERTIONS += (
     ),
 )
 
+# Found when Ontario incumbency moved to the Legislative Assembly's records: Elections Ontario's
+# tabulation printed the 2026 by-election winner as SHABAN, FATIMA, which hid her federal runs.
+PERSON_RECORD_MERGE_ASSERTIONS += (
+    _record_merge(
+        "fatima-shaban-2025-2026",
+        "Fatima Shaban",
+        "per_baea45166fb358f39552b7d1dccd9e1b",
+        (
+            (
+                "can_9091cd01497e53e78b1df088a8fdbd1d",
+                "on-2026-09-03-by-098",
+                "ontario_legislative_assembly",
+                "mpp",
+                "FATIMA SHABAN",
+            ),
+        ),
+        ("https://en.wikipedia.org/wiki/2026_Scarborough_Southwest_provincial_by-election",),
+        "Wikipedia's page on the 2026 Scarborough Southwest provincial by-election says the NDP's "
+        "Fatima Shaban, who won it with 8,914 votes, was the New Democratic Party candidate in "
+        "Scarborough Southwest in the 2025 federal election and again in the 2026 federal "
+        "by-election. The release's run of the provincial by-election, 8,914 votes for the "
+        "Ontario NDP, is that win. The Person who holds her 2025 and April 2026 federal NDP runs in "
+        "Scarborough Southwest is the candidate the page describes, so the provincial run is "
+        "joined to that Person.",
+    ),
+)
+
 DEFAULT_IDENTITY_ASSERTIONS += PERSON_RECORD_MERGE_ASSERTIONS
 
 

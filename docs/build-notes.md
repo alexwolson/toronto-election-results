@@ -1,7 +1,8 @@
 # Build notes
 
 How the release is built. See `docs/data-dictionary.md` for the public schema, `CONTEXT.md` for
-domain language, and `docs/adr/` for load-bearing decisions.
+domain language, and `docs/adr/` for load-bearing decisions. `docs/provenance.md` records what
+code, AI agents and the authors each did at every stage.
 
 ## Status
 
@@ -14,13 +15,15 @@ elections, by-elections, acclamations and legally void results are included.
 
 ## Public artifacts
 
-The pipeline publishes twelve tables to `data/out/`, each as CSV and Parquet:
+The pipeline publishes thirteen tables to `data/out/`, each as CSV and Parquet:
 
 - `election_results.*`: modelling-ready Candidacy rows;
 - `election_events.*` and `contests.*`: event and Contest dimensions;
 - `electoral_districts.*`: as-run Contest geographies, with explicit missing-geometry status;
 - `parties.*`: jurisdiction-scoped Party identities;
 - `people.*` and `candidacy_person_links.*`: persistent, audited identity records;
+- `person_external_ids.*`: Wikidata, ParlInfo and House of Commons IDs for People who sat in the
+  House;
 - `office_tenures.*`: evidence used to derive same-office incumbency; and
 - `endorsers.*`, `endorsement_assertions.*`, `endorsements.*` and `endorsement_coverage.*`: the
   endorsement companion tables.
@@ -65,12 +68,12 @@ validity and City containment.
 The main modules are the source adapters (`municipal`, `municipal_archive`, `trustees`, `federal`,
 `federal_historical`, `ontario` and `pending_candidates`), `schema`, `candidacy_ledger`,
 `identity_review`, `identity_curations`, `identity_dispositions`, `municipal_rosters`,
-`reported_incumbency`, `predecessor_incumbency`, `district_geometry`, `release`,
+`council_tenures`, `reported_incumbency`, `predecessor_incumbency`, `district_geometry`, `release`,
 `release_validation`, `build_manifest` and `pipeline`.
 
 ## Identity
 
-The release has 5,079 People. 5,073 hold at least one Candidacy, and six hold only an Office
+The release has 5,078 People. 5,072 hold at least one Candidacy, and six hold only an Office
 tenure from a Council roster. Each of those six was appointed to fill a vacancy and has no
 candidacy in the release. 7,686 Candidacies have a confirmed Person and 413 have none: 411
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
@@ -103,11 +106,11 @@ are the same for every year and office:
   (`docs/research/federal-provincial-holds-2026-11-01.md`).
 - Any other two offices need a person-specific source.
 
-Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,942 are a
+Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,941 are a
 Person's own record, the Candidacy from which the Person was built, so nothing is joined. Of the
-2,744 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
+2,745 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
 the election authority reported, 131 on a Council roster and three on one archive record printed
-twice), 1,824 on a source about the person and 565 on the structural rules alone. The basis of
+twice), 1,825 on a source about the person and 565 on the structural rules alone. The basis of
 each curated link is recorded in `data/reference/identity_link_basis.csv`, and a test checks the
 office, Party and election-gap rules on every structural link; name commonness and ward overlap
 are left to the reviewers. When the check was first run, in November 2026, 12 Persons joined
@@ -118,7 +121,10 @@ held; see `docs/research/structural-rule-check-2026-11-07.md`.
 An audit of a random sample of links
 ([`docs/verification/link-audit-2026-11-03.md`](verification/link-audit-2026-11-03.md)) found no
 join of two different people among 120 sampled joins, which puts a one-sided 95% upper bound of
-3.9% on the share of false merges. Of 40 sampled pairs of Persons with the same first and last
+3.9% on the share of false merges. A census of the 136 joins made after that sample
+([`docs/verification/link-audit-2026-11-07.md`](verification/link-audit-2026-11-07.md)) found
+none either, and with the older joins weighted by the sample the bound across all 2,614 joins in
+the release is 3.7%. Of 40 sampled pairs of Persons with the same first and last
 name, 15 were one individual, and those have been merged. A review of all 177 same-name pairs
 that remained
 ([`docs/verification/same-name-review-2026-11-03.md`](verification/same-name-review-2026-11-03.md))
@@ -135,7 +141,12 @@ The Council roster step matches each roster member to a Candidacy by exact name.
 Candidacy matches is a councillor appointed to fill a vacancy whose other races are in the
 release, or a member whom the City's attendance and voting records list under another form of
 their name, such as A.A. Heaps for Adrian Heaps. The identity assertion for each of these people
-names the roster entry, so the tenure belongs to their Person.
+names the roster entry, so the tenure belongs to their Person. Once every Candidacy has its
+Person, the build dates each roster row from the Person's latest Council win in the term, or, for
+the 17 members Council appointed to fill a vacancy, from the appointment in
+`data/reference/council_appointments.csv`. Dating from an exact-name win alone missed wins printed
+under another form of the name and could reach back past the term: Joe Mihevc's 2014 win in Ward
+21 had dated the Ward 10 seat Council appointed him to in 2022.
 
 The roster for the November 13, 2000 general election is `data/reference/council_roster_2000.csv`.
 It lists the mayor and the 57 councillors in office that day: the certified 1997 winners, the 1998
@@ -182,6 +193,14 @@ them and fails if the source figures change. See `docs/research/result-correctio
 Its 2006 Parkdale—High Park by-election file codes the Libertarian Jim McIntosh as Liberal, beside
 the Liberal candidate; a pinned correction recodes him.
 
+The results were compared, Contest by Contest, with two datasets compiled independently of the
+release: Semra Sevi's federal and Ontario candidate files for the Toronto ridings (federal
+elections from 1993 to 2021, Ontario from 1995 to 2018) and the Canadian Municipal Elections
+Database for Toronto's mayor and council races from 1994 to 2022. Of 749 Contests, 681 agree on
+every name, vote total and winner. Each difference in the other 68 was checked against the
+authority's results; none is an error in the release. See
+[`docs/verification/external-reconciliation-2026-11-07.md`](verification/external-reconciliation-2026-11-07.md).
+
 The City's archived index of past results lists every election it ran from 1998, so event
 enumeration is complete from 1998. The former municipalities left no comparable index, so their
 by-elections from 1995 to 1997 are marked uncertain; a search of the Toronto Star found one, North
@@ -209,9 +228,26 @@ does. Of the 1,743 federal Candidacies, 206 are incumbents, 1,242 are not, and 2
 
 The 1993 federal and 1994 municipal elections, the first of their levels in the release, are there
 to give the next elections their incumbency and have none of their own; it would need the 34th
-Parliament and the councils elected in 1991. Ontario incumbency, including in 1995, comes from
-Elections Ontario's own incumbent flags, which the release uses only where every Candidacy of an
-event has a flag and every flagged incumbent has a confirmed Person.
+Parliament and the councils elected in 1991.
+
+Ontario incumbency from 1996 on comes the same way from the Legislative Assembly's membership in
+`data/reference/ontario_legislature_members.csv`: one row per member's riding term in each
+Parliament from the 36th, from the profiles on ola.org. ola.org serves those pages only to a
+browser, so `scripts/ola_members.js` reads them in one and saves a file that
+`scripts/build_ontario_members.py` turns into the reference table. Read on 7 November 2026, it
+holds 1,086 terms of 431 members. The roster rules are the House's, with two additions. A term
+that begins when a riding is renamed during a Parliament extends the tenure of the member's
+election, as when Broadview—Greenwood became Toronto—Danforth in 2000. And a member whose term no
+winner in the release began can be tied to a Person, or set apart from one, only by sources named
+in `ontario_rosters.py`: John Tory, who sat for Dufferin—Peel—Wellington—Grey from a 2005
+by-election and ran in Don Valley West in 2007, is tied to his Person, and Dave Smith of
+Peterborough—Kawartha is set apart from David Smith of Scarborough Centre, since the two sat
+together from 2022. Every Toronto winner from 1995 on has a term. The roster disagrees with
+Elections Ontario's flags for two Candidacies, both sitting members the flags missed: Morley Kells
+in 1999 and Brad Duguid in 2011. The 1995 general election, the first Ontario election in the
+release, comes before the 36th Parliament and keeps Elections Ontario's own incumbent flags, which
+the release uses only where every Candidacy of an event has a flag and every flagged incumbent has
+a confirmed Person.
 
 Elections Canada's raw incumbent marker is preserved as `incumbent_reported` but is not used: it
 marks some former MPs who no longer held office. Two flags that contradict the record are

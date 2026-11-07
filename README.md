@@ -52,6 +52,10 @@ records**.
 
 - [`CONTEXT.md`](./CONTEXT.md) — domain glossary (the canonical vocabulary).
 - [`docs/data-dictionary.md`](./docs/data-dictionary.md) — full schema, sources, and QC gates.
+- [`docs/verification/`](./docs/verification/) — the audit of Person links, the reviews of
+  same-name and near-name Persons, and the reconciliation of results with external datasets.
+- [`docs/provenance.md`](./docs/provenance.md) — what code, AI agents and the authors each did at
+  every stage of the build.
 - [`docs/adr/`](./docs/adr/) — the load-bearing design decisions:
   - `0001` — record wards as-run; no reprojection across the 2018 boundary change.
   - `0002` — historical municipal roster sources (superseded for identity semantics).
@@ -79,6 +83,8 @@ Every table is written as CSV and Parquet unless noted otherwise:
 - `data/out/election_results.*` — modelling-ready Candidacy rows;
 - `data/out/election_events.*` and `data/out/contests.*`;
 - `data/out/people.*` and `data/out/candidacy_person_links.*`;
+- `data/out/person_external_ids.*` — Wikidata, ParlInfo and House of Commons IDs for People who
+  sat in the House;
 - `data/out/parties.*` and `data/out/office_tenures.*`;
 - `data/out/electoral_districts.*` — native Contest-level geometry where available, with explicit
   missing-geometry status otherwise;

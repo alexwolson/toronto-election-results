@@ -11,7 +11,13 @@ from pathlib import Path
 import pandas as pd
 
 from . import download as city_download
-from .build_manifest import build_manifest, sha256_file, write_manifest
+from .build_manifest import (
+    RAW_SOURCE_URLS_FILENAME,
+    build_manifest,
+    read_raw_source_urls,
+    sha256_file,
+    write_manifest,
+)
 from .campaign_url_curations import (
     CAMPAIGN_URL_CURATIONS_FILENAME,
     apply_campaign_url_curations,
@@ -25,6 +31,7 @@ from .candidate_name_curations import (
     CANDIDATE_NAME_CURATIONS_FILENAME,
     apply_candidate_name_curations,
 )
+from .council_tenures import COUNCIL_APPOINTMENTS_FILENAME
 from .district_geometry import enrich_district_geometries
 from .endorsement_curations import (
     ENDORSEMENT_ASSERTIONS_FILENAME,
@@ -33,6 +40,11 @@ from .endorsement_curations import (
     build_default_endorsement_inputs,
 )
 from .endorsements import assemble_endorsement_tables
+from .external_ids import (
+    EXTERNAL_IDS_FILENAME,
+    build_person_external_ids,
+    read_external_ids,
+)
 from .federal import load_federal_results
 from .federal_historical import (
     download_historical_federal_sources,
@@ -59,6 +71,7 @@ from .ontario import (
     download_ontario_tabulations,
     load_ontario_results,
 )
+from .ontario_rosters import ONTARIO_MEMBERS_FILENAME
 from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
 from .predecessor_incumbency import PREDECESSOR_ROSTERS_FILENAME
 from .release import assemble_bootstrapped_release, validate_tables, write_release
@@ -136,7 +149,11 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
         CANDIDATE_NAME_CURATIONS_FILENAME,
+        COUNCIL_APPOINTMENTS_FILENAME,
+        EXTERNAL_IDS_FILENAME,
         HOUSE_MEMBERS_FILENAME,
+        ONTARIO_MEMBERS_FILENAME,
+        RAW_SOURCE_URLS_FILENAME,
         LINK_BASIS_FILENAME,
         PREDECESSOR_ROSTERS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
@@ -478,6 +495,9 @@ def run_all(
         candidacy_person_links=add_evidence_basis(
             built.tables.candidacy_person_links, read_link_basis(reference / LINK_BASIS_FILENAME)
         ),
+        person_external_ids=build_person_external_ids(
+            built.tables.people, read_external_ids(reference / EXTERNAL_IDS_FILENAME)
+        ),
     )
     endorsement_inputs = build_default_endorsement_inputs(
         release.election_results,
@@ -519,6 +539,7 @@ def run_all(
         artifacts=artifacts,
         row_counts=row_counts,
         generated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        source_urls=read_raw_source_urls(reference / RAW_SOURCE_URLS_FILENAME),
     )
     write_manifest(manifest, out / "build_manifest.json")
 
