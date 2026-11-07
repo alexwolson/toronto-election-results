@@ -113,7 +113,7 @@ modelling. The authoritative normalized entities remain available as companion t
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
 | `incumbent_appointed` | boolean | not incumbent, or the tenure does not say | `true` when the incumbent's seat came by appointment to fill a vacancy, `false` when by election. Null for the 1995 Ontario incumbents, whose tenure comes only from Elections Ontario's flag. |
 | `incumbent_held_district_id` | string | not incumbent, the tenure does not say, or the seat is outside the release | `district_id` of the seat the incumbent held, from the supporting Office tenure. It can belong to an earlier Boundary regime than the Candidacy's. |
-| `incumbent_changed_district` | boolean | not incumbent, or the boundaries cannot be compared | `true` when the incumbent runs for a seat other than the one held. Within one Boundary regime that is another district; across a boundary change, less than half of the held district's area lies in the district contested, which needs the geometry of both (council wards from 2000 on). A mayor never changes district. A legislature seat outside the City (John Tory's in 2007) is `true`. |
+| `incumbent_changed_district` | boolean | not incumbent, or the boundaries cannot be compared | `true` when the incumbent runs for a seat other than the one held. Within one Boundary regime that is another district. Across a boundary change it is `false` only when the district contested holds more of the held district's polls (the City's voting subdivisions) than any other district does, which the release can test only for the 2018 council election. A mayor never changes district. A legislature seat outside the City (John Tory's in 2007) is `true`. |
 | `incumbent_reported` | boolean | authority does not report it | Source flag, except two pinned corrections of flags that contradict the record (Natalie Hunt, 2015; John Sewell, 1999); the modelled `incumbent` field uses project semantics. |
 | `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies. The Mayor and City Councillor races have it for every Candidacy with a Person (`data/reference/predecessor_rosters_1997.csv`); the trustee races are null because the release holds no board rosters. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
@@ -259,10 +259,12 @@ of office:
 
 - A Council roster row says the Person was in office from their latest Council win in the term
   (`started_on_precision = election_date`), or from the day Council appointed them to fill a
-  vacancy (`appointment_date`), to at least the reference date of one election or by-election
+  vacancy (`appointment_date`), to at least the eve of a general election
   (`ended_on_precision = at_or_after_reference`). The win can be at the term's first general
-  election or at a by-election since. A councillor whose seat was checked at many events has a
-  row for each, up to 17.
+  election or at a by-election since. A councillor has a row for each general election they sat
+  through, up to eight. A member who left during a term has no row for it, since the roster of
+  the next general election does not list them. One row says that John Tory was the last mayor
+  before the June 2023 by-election (`ended_on_precision = before_or_at_reference`).
 - A House of Commons row is one member's term in one Parliament, from polling day to the last day
   of the term as the House or ParlInfo records it (`exact`), or `ongoing` with a null `ended_on`
   for a sitting member.
@@ -289,7 +291,7 @@ the evidence.
 
 `spell_id` groups the rows of one unbroken stretch of service: rows of one Person, Represented body
 and Office type share a spell when each starts no later than the day after the latest end so far.
-The 1,329 rows form 471 spells. The 26 Ontario rows from 1995 have no `spell_id`, since their
+The 986 rows form 467 spells. The 26 Ontario rows from 1995 have no `spell_id`, since their
 start is unknown.
 
 ### `electoral_districts`
@@ -496,6 +498,14 @@ checked against the City's list of councillors for the 1998-2000 term. Council a
 `incumbent` is null for 1994 and 1997: the release holds no roster for the councils elected
 before 1994, and the amalgamated council first sat in 1998. For 1997, `predecessor_incumbent`
 records membership of Metro Council or the six former councils on the eve of the election.
+
+A council by-election fills a vacant ward (ADR 0004). A member sitting the day before polling
+won a seat at the term's first general election or at a by-election since, or Council appointed
+them since. A by-election candidate whose Person did neither is `incumbent=false`; the build
+fails if a candidate's Person did either, since the release cannot say whether that member still
+sat. No candidate in the nine council by-elections from 1998 to 2025 did. The appointments are
+the 17 in `data/reference/council_appointments.csv`, which covers every appointed member who sat
+until the next general election.
 
 Trustee result sources do not report a structured incumbent flag. For 2026,
 `data/reference/trustee_incumbents_2026.csv` records the 20 sitting trustees who ran, from official
