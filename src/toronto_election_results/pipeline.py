@@ -76,6 +76,7 @@ from .ontario_rosters import ONTARIO_MEMBERS_FILENAME
 from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
 from .predecessor_incumbency import PREDECESSOR_ROSTERS_FILENAME
 from .release import assemble_bootstrapped_release, validate_tables, write_release
+from .riding_geometry import add_riding_geometries, download_riding_sources
 from .schema import normalize_adapter_frame
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
 from .trustee_career import (
@@ -118,6 +119,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "ontario/**/*",
         "council/**/*",
         "subdivisions/*",
+        "boundaries/**/*",
         "ckan/*",
     ]
     source_paths = {
@@ -337,6 +339,7 @@ def _load_source_adapters(
 ) -> tuple[list[pd.DataFrame], pd.DataFrame]:
     if download:
         city_download.download_all(root=raw)
+        download_riding_sources()
 
     council = load_council_results(raw=raw, interim=interim)
     trustees = load_trustee_results(
@@ -485,7 +488,9 @@ def run_all(
     named_districts = enrich_electoral_districts(
         built.tables.electoral_districts, city_ward_names, trustee_crosswalks
     )
-    districts = enrich_district_geometries(named_districts, trustee_crosswalks=trustee_crosswalks)
+    districts = add_riding_geometries(
+        enrich_district_geometries(named_districts, trustee_crosswalks=trustee_crosswalks)
+    )
     release = replace(
         built.tables,
         election_results=add_incumbent_seat_fields(

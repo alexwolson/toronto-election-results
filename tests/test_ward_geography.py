@@ -48,7 +48,7 @@ def test_canonical_city_ward_catalogue_covers_both_complete_regimes() -> None:
 def test_generalized_crosswalk_reproduces_2026_trustee_labels() -> None:
     city = load_city_ward_geographic_names(REFERENCE / "city_ward_geographic_names.csv")
     crosswalk = load_trustee_ward_crosswalks(REFERENCE / "trustee_ward_crosswalks.csv", city)
-    assert len(crosswalk) == 263
+    assert len(crosswalk) == 302
     current = crosswalk[crosswalk["boundary_regime"].str.endswith("-2026")]
     derived = derive_trustee_ward_geography(current, city).set_index(["board_id", "ward_id"])
 
@@ -85,7 +85,7 @@ def test_historical_crosswalk_covers_every_board_regime_and_city_ward() -> None:
     expected_counts = {
         (board, year): 12 if board == "tdsb" and year == 2026 else count
         for board, count in {"tdsb": 22, "tcdsb": 12, "viamonde": 3, "monavenir": 2}.items()
-        for year in (2003, 2006, 2010, 2014, 2018, 2022, 2026)
+        for year in (2000, 2003, 2006, 2010, 2014, 2018, 2022, 2026)
     }
     actual_counts = {
         (row.board_id, int(row.boundary_regime.rsplit("-", 1)[1])): len(group)
@@ -100,7 +100,7 @@ def test_historical_crosswalk_covers_every_board_regime_and_city_ward() -> None:
         assert covered == set(CITY_WARD_REGIMES[city_regime]), regime
 
 
-def test_catalogue_enriches_all_332_wards_without_replacing_district_name() -> None:
+def test_catalogue_enriches_all_371_wards_without_replacing_district_name() -> None:
     city = load_city_ward_geographic_names(REFERENCE / "city_ward_geographic_names.csv")
     crosswalk = load_trustee_ward_crosswalks(REFERENCE / "trustee_ward_crosswalks.csv", city)
     catalogue = build_ward_geography_catalogue(city, crosswalk)
@@ -133,7 +133,7 @@ def test_catalogue_enriches_all_332_wards_without_replacing_district_name() -> N
     ].iloc[0]
     mayor = enriched.loc[enriched["district_id"].eq("dst_mayor")].iloc[0]
 
-    assert len(catalogue) == 332
+    assert len(catalogue) == 371
     assert ward["district_name"] == "source label"
     assert ward["district_display_name"] == "Ward 19 — Trinity-Spadina"
     assert pd.isna(mayor["district_display_name"])

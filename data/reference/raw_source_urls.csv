@@ -1,4 +1,7 @@
 local_path,source_url
+data/raw/boundaries/federal-2003/federal_electoral_districts_boundaries_2003_en.gdb.zip,https://ftp.maps.canada.ca/pub/elections_elections/Electoral-districts_Circonscription-electorale/federal_electoral_districts_boundaries_2003/federal_electoral_districts_boundaries_2003_en.gdb.zip
+data/raw/boundaries/federal-2013/federal_electoral_districts_boundaries_2013_en.gdb.zip,https://ftp.maps.canada.ca/pub/elections_elections/Electoral-districts_Circonscription-electorale/federal_electoral_districts_boundaries_2013/federal_electoral_districts_boundaries_2013_en.gdb.zip
+data/raw/boundaries/federal-2023/FED_CA_2023_EN-SHP.zip,https://ftp.maps.canada.ca/pub/elections_elections/Electoral-districts_Circonscription-electorale/federal_electoral_districts_boundaries_2023/FED_CA_2023_EN-SHP.zip
 data/raw/byelection/2016-councillor-ward-2.xlsx,https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/389e00d1-8637-4e6f-88bc-7f6936a2a150/download/2016-councillor-ward-2.xlsx
 data/raw/byelection/2017-councillor-ward-42.xlsx,https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/edf3e37a-b416-47f6-9cef-d7369a1b4553/download/2017-councillor-ward-42.xlsx
 data/raw/byelection/2021-councillor-ward-22-scarborough-agincourt-1.xlsx,https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/287f8b0d-dde8-4ebd-887c-bd9f628a2e3c/download/2021-councillor-ward-22-scarborough-agincourt-1.xlsx

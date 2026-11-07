@@ -211,7 +211,7 @@ def derive_trustee_ward_geography(
 def build_ward_geography_catalogue(
     city_wards: pd.DataFrame, trustee_crosswalk: pd.DataFrame
 ) -> pd.DataFrame:
-    """Return the canonical 2003-present City and trustee district-name dimension."""
+    """Return the canonical 2000-present City and trustee district-name dimension."""
 
     city = city_wards.assign(
         represented_body="toronto_city_council",
@@ -248,12 +248,12 @@ def build_ward_geography_catalogue(
     catalogue = pd.concat([city, trustees], ignore_index=True)
     catalogue["official_district_id"] = catalogue["official_district_id"].astype(str)
     if (
-        len(catalogue) != 332
+        len(catalogue) != 371
         or catalogue.duplicated(
             ["represented_body", "boundary_regime", "official_district_id"]
         ).any()
     ):
-        raise ValueError("ward geography catalogue must contain 332 unique district keys")
+        raise ValueError("ward geography catalogue must contain 371 unique district keys")
     return catalogue.sort_values(
         ["represented_body", "boundary_regime", "official_district_id"], kind="stable"
     ).reset_index(drop=True)
