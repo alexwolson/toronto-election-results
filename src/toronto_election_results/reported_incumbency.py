@@ -29,6 +29,13 @@ _ONTARIO_DISSOLUTION_REPORT = (
 )
 
 ONTARIO_GENERAL_ROSTER_REFERENCES: dict[str, OntarioGeneralRosterReference] = {
+    # The Legislative Assembly dates each Parliament from its first sitting to its dissolution.
+    "on-1995-general": OntarioGeneralRosterReference(
+        "1995-04-28", "1995-04-27", "https://www.ola.org/en/members/parliament-35"
+    ),
+    "on-1999-general": OntarioGeneralRosterReference(
+        "1999-05-05", "1999-05-04", "https://www.ola.org/en/members/parliament-36"
+    ),
     "on-2003-general": OntarioGeneralRosterReference(
         "2003-09-02", "2003-09-01", _ONTARIO_DISSOLUTION_REPORT
     ),

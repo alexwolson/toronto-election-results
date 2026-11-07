@@ -71,6 +71,7 @@ from .ontario import (
     download_ontario_tabulations,
     load_ontario_results,
 )
+from .ontario_rosters import ONTARIO_MEMBERS_FILENAME
 from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
 from .predecessor_incumbency import PREDECESSOR_ROSTERS_FILENAME
 from .release import assemble_bootstrapped_release, validate_tables, write_release
@@ -151,6 +152,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         COUNCIL_APPOINTMENTS_FILENAME,
         EXTERNAL_IDS_FILENAME,
         HOUSE_MEMBERS_FILENAME,
+        ONTARIO_MEMBERS_FILENAME,
         RAW_SOURCE_URLS_FILENAME,
         LINK_BASIS_FILENAME,
         PREDECESSOR_ROSTERS_FILENAME,

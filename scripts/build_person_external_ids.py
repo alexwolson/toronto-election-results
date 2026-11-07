@@ -1,4 +1,4 @@
-"""Build `data/reference/person_external_ids.csv`: outside identifiers for elected MPs.
+"""Build `data/reference/person_external_ids.csv`: outside identifiers for elected MPs and MPPs.
 
 Each House of Commons Office tenure in the release is the term of a Toronto seat's winner, and its
 evidence names the Parliament, the constituency as the House records it and the House's person ID.
@@ -19,8 +19,19 @@ The Wikidata statements are the result, saved as CSV, of this query at https://q
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     }
 
+Each Ontario legislature Office tenure is likewise the term of a Toronto seat's winner, and its
+evidence names the member's Legislative Assembly profile, whose slug is the Assembly's member ID.
+A Wikidata item is matched to that Person when its Ontario MPP ID (P3054) is the same slug. A
+Person matched to items by both routes must be matched to the same item. The MPP statements are
+the result, saved as CSV, of this query:
+
+    SELECT ?person ?personLabel ?ola WHERE {
+      ?person wdt:P3054 ?ola .
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+    }
+
 Usage:
-    python -I scripts/build_person_external_ids.py WIKIDATA_MP_CSV RETRIEVED_ON
+    python -I scripts/build_person_external_ids.py WIKIDATA_MP_CSV WIKIDATA_MPP_CSV RETRIEVED_ON
 """
 
 from __future__ import annotations
@@ -39,6 +50,7 @@ OUTPUT = REPO_ROOT / "data" / "reference" / "person_external_ids.csv"
 HOUSE_EXPORT = "https://www.ourcommons.ca/Members/en/search/xml?parliament={parliament}"
 PARLINFO = "https://lop.parl.ca/sites/ParlInfo/default/en_CA/People/Profile?personId={value}"
 WIKIDATA = "https://www.wikidata.org/wiki/{value}"
+OLA_PROFILE = "https://www.ola.org/en/members/all/{value}"
 
 
 def _fold(text: object) -> str:
@@ -80,7 +92,25 @@ def _wikidata(path: Path) -> pd.DataFrame:
     return statements.loc[statements["parliament"].notna()]
 
 
-def build(wikidata_path: Path, retrieved_on: str) -> pd.DataFrame:
+def _ontario_members() -> pd.DataFrame:
+    tenures = pd.read_csv(TENURES, dtype=str, keep_default_na=False)
+    tenures = tenures.loc[tenures["represented_body"].eq("ontario_legislative_assembly")]
+    rows = []
+    for tenure in tenures.itertuples(index=False):
+        member = json.loads(tenure.source_detail).get("ontario_member")
+        if member is None:
+            continue
+        rows.append(
+            {
+                "person_id": tenure.person_id,
+                "ola_member_id": member["ola_member_id"],
+                "name": member["name"],
+            }
+        )
+    return pd.DataFrame(rows).drop_duplicates()
+
+
+def build(wikidata_path: Path, wikidata_mpp_path: Path, retrieved_on: str) -> pd.DataFrame:
     terms = _house_terms()
     statements = _wikidata(wikidata_path)
     matches: dict[str, dict[str, str]] = {}
@@ -115,8 +145,41 @@ def build(wikidata_path: Path, retrieved_on: str) -> pd.DataFrame:
                 raise ValueError(f"{term.name} has several ParlInfo IDs: {sorted(parlinfo)}")
             if parlinfo:
                 record["parlinfo"] = parlinfo.pop()
+    mpps = _ontario_members()
+    if mpps["person_id"].duplicated().any():
+        raise ValueError("a Person has two Legislative Assembly member IDs")
+    if mpps["ola_member_id"].duplicated().any():
+        raise ValueError("a Legislative Assembly member ID belongs to two Persons")
+    by_slug = pd.read_csv(wikidata_mpp_path, dtype=str, keep_default_na=False)
+    by_slug["qid"] = by_slug["person"].str.rsplit("/", n=1).str[-1]
+    by_slug = by_slug.groupby("ola")["qid"].agg(lambda qids: sorted(set(qids)))
+    for member in mpps.itertuples(index=False):
+        record = matches.setdefault(member.person_id, {})
+        record["ontario_legislature"] = member.ola_member_id
+        qids = by_slug.get(member.ola_member_id, [])
+        if len(qids) > 1:
+            raise ValueError(f"{member.name} matches several Wikidata items: {qids}")
+        if qids:
+            if record.get("wikidata", qids[0]) != qids[0]:
+                raise ValueError(f"{member.name} matches different items as an MP and an MPP")
+            record.setdefault("wikidata", qids[0])
+            record.setdefault(
+                "wikidata_basis",
+                f"Wikidata item whose Ontario MPP ID (P3054) is {member.ola_member_id}",
+            )
     rows = []
     for person_id, record in sorted(matches.items()):
+        if "ontario_legislature" in record:
+            rows.append(
+                {
+                    "person_id": person_id,
+                    "scheme": "ontario_legislature",
+                    "external_id": record["ontario_legislature"],
+                    "basis": "Legislative Assembly member profile, as the release's tenures cite",
+                    "source_url": OLA_PROFILE.format(value=record["ontario_legislature"]),
+                    "retrieved_on": retrieved_on,
+                }
+            )
         if "house_of_commons" in record:
             rows.append(
                 {
@@ -155,20 +218,21 @@ def build(wikidata_path: Path, retrieved_on: str) -> pd.DataFrame:
         if group["external_id"].duplicated().any():
             duplicated = group.loc[group["external_id"].duplicated(keep=False), "external_id"]
             raise ValueError(f"{scheme} IDs shared by two Persons: {sorted(set(duplicated))}")
+    elected = pd.concat([terms[["person_id", "name"]], mpps[["person_id", "name"]]])
     missing = sorted(
-        set(terms["person_id"]) - set(out.loc[out["scheme"].eq("wikidata"), "person_id"])
+        set(elected["person_id"]) - set(out.loc[out["scheme"].eq("wikidata"), "person_id"])
     )
-    names = terms.drop_duplicates("person_id").set_index("person_id")["name"]
-    print(f"{terms['person_id'].nunique()} Persons with House terms; no Wikidata match for:")
+    names = elected.drop_duplicates("person_id").set_index("person_id")["name"]
+    print(f"{elected['person_id'].nunique()} Persons with House or Assembly terms; no Wikidata:")
     for person_id in missing:
         print(f"  {names[person_id]} ({person_id})")
     return out
 
 
 def main(argv: list[str]) -> None:
-    if len(argv) != 3:
+    if len(argv) != 4:
         raise SystemExit(__doc__)
-    out = build(Path(argv[1]), argv[2])
+    out = build(Path(argv[1]), Path(argv[2]), argv[3])
     OUTPUT.write_text(out.to_csv(index=False, lineterminator="\n"), encoding="utf-8")
     print(out.groupby("scheme").size().to_string())
 

@@ -31,6 +31,7 @@ from .identity_review import (
     extend_identity_review,
 )
 from .municipal_rosters import build_municipal_roster_evidence
+from .ontario_rosters import ontario_roster_evidence, read_ontario_members
 from .predecessor_incumbency import (
     build_predecessor_roster_evidence,
     derive_predecessor_incumbency,
@@ -460,8 +461,14 @@ def assemble_bootstrapped_release(
         if municipal_reference is not None
         else None
     )
-    reported = build_reported_incumbency(
-        linked.loc[linked["represented_body"].eq("ontario_legislative_assembly")].copy()
+    ontario_candidacies = linked.loc[
+        linked["represented_body"].eq("ontario_legislative_assembly")
+    ].copy()
+    reported = build_reported_incumbency(ontario_candidacies)
+    ontario = ontario_roster_evidence(
+        ontario_candidacies,
+        reported,
+        read_ontario_members(municipal_reference) if municipal_reference is not None else None,
     )
     federal = federal_roster_evidence(
         linked,
@@ -486,7 +493,7 @@ def assemble_bootstrapped_release(
             [
                 council_tenures,
                 federal.office_tenures,
-                reported.office_tenures,
+                ontario.office_tenures,
                 predecessor.office_tenures,
                 *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
             ],
@@ -498,7 +505,7 @@ def assemble_bootstrapped_release(
         [
             municipal_evidence.rosters,
             federal.rosters,
-            reported.rosters,
+            ontario.rosters,
             *([trustee_incumbency.rosters] if trustee_incumbency is not None else []),
         ],
         ignore_index=True,

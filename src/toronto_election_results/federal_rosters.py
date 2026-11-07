@@ -23,7 +23,8 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
-from dataclasses import dataclass
+from collections.abc import Callable
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import pandas as pd
@@ -94,6 +95,10 @@ def _words(text: object) -> list[str]:
 
 
 def _given_names_fit(first: list[str], second: list[str]) -> bool:
+    if first and second and len(first[0]) > 1 and len(second[0]) > 1:
+        short, long = sorted((first[0], second[0]), key=len)
+        if long.startswith(short):
+            return True
     first = [_GIVEN_NAME_FORMS.get(word, word) for word in first]
     second = [_GIVEN_NAME_FORMS.get(word, word) for word in second]
     if not first or not second:
@@ -108,11 +113,16 @@ def _given_names_fit(first: list[str], second: list[str]) -> bool:
 def house_member_name_fits(first_name: object, last_name: object, candidate_name: object) -> bool:
     """Whether a House member's name could be the person printed on a ballot.
 
-    The surname must match and the given names must fit: the same name, a common short form,
+    The surname must match, ignoring spaces within it (DiNovo and Di Novo), and the given names
+    must fit: the same name, a common short form or the start of the longer name (Al for Allan),
     a shared middle name or an initial.
     """
 
-    ballot = _words(candidate_name)
+    printed = str(candidate_name)
+    if printed.count(",") == 1:
+        family, given_names = printed.split(",")
+        printed = f"{given_names} {family}"
+    ballot = _words(printed)
     surname = _words(last_name)
     if not ballot or not surname:
         return False
@@ -121,12 +131,17 @@ def house_member_name_fits(first_name: object, last_name: object, candidate_name
     elif ballot[-1] == surname[-1]:
         given = ballot[:-1]
     else:
-        return False
+        joined = "".join(surname)
+        tails = [k for k in range(1, min(3, len(ballot)) + 1) if "".join(ballot[-k:]) == joined]
+        if not tails:
+            return False
+        given = ballot[: -tails[0]]
     return _given_names_fit(given, _words(first_name))
 
 
 def _district_key(name: object) -> str:
-    return " ".join(_words(name))
+    # Any dash separates the parts of a district name: High Park-Swansea, High Park—Swansea.
+    return " ".join(_words(re.sub(r"[^\w]+", " ", str(name))))
 
 
 def read_house_members(reference: Path) -> pd.DataFrame | None:
@@ -512,18 +527,58 @@ def _house_member_record(member: pd.Series) -> dict[str, object]:
     }
 
 
-def build_house_roster_evidence(
-    candidacies: pd.DataFrame, members: pd.DataFrame
-) -> tuple[FederalRosterEvidence, frozenset[str]]:
-    """Build complete federal rosters from House of Commons membership.
+@dataclass(frozen=True)
+class MembershipRosterSpec:
+    """How one legislature's membership file becomes Office tenures and complete rosters."""
 
-    Returns the evidence and the events it covers: every federal event whose reference date
-    falls on or after the first day of the membership file.
+    represented_body: str
+    office_type: str
+    district_column: str
+    member_label: str
+    tenure_namespace: str
+    tenure_rule: str
+    member_key: str
+    roster_rule: str
+    membership_filename: str
+    member_id_columns: tuple[str, ...]
+    member_record: Callable[[pd.Series], dict[str, object]]
+    source_authority: Callable[[pd.Series], str]
+    roster_reference: Callable[
+        [str, pd.Timestamp, str, pd.DataFrame], tuple[str, str, dict[str, object]]
+    ]
+    # A member whose term no winner in the release began, tied by a source to the Person of a run.
+    member_persons: dict[str, MemberIdentity] = field(default_factory=dict)
+    # A member whose name fits a run by a different Person, shown by a source to be someone else.
+    namesakes: tuple[MemberIdentity, ...] = ()
+
+
+@dataclass(frozen=True)
+class MemberIdentity:
+    """A source's statement that a member is, or is not, the Person of one run."""
+
+    member_key: str
+    candidacy_id: str
+    rationale: str
+    source_urls: tuple[str, ...]
+
+
+def build_membership_roster_evidence(
+    candidacies: pd.DataFrame, members: pd.DataFrame, spec: MembershipRosterSpec
+) -> tuple[FederalRosterEvidence, frozenset[str]]:
+    """Build complete rosters from a legislature's membership file.
+
+    Each member term that began on a polling day is tied to the winner of that seat on that
+    day, which gives the winner's Person an Office tenure with the legislature's dates. Every
+    event whose reference date falls on or after the file's first day gets the complete
+    sitting roster on that date. The build fails if a member term cannot be told apart from
+    another winner, if a winner in the file's years has no term, or if a confirmed candidate's
+    name fits a sitting member who is not their Person. Returns the evidence and the events it
+    covers.
     """
 
     work = candidacies.loc[
-        candidacies["represented_body"].eq("canada_house_of_commons")
-        & candidacies["office_type"].eq("mp")
+        candidacies["represented_body"].eq(spec.represented_body)
+        & candidacies["office_type"].eq(spec.office_type)
     ].copy()
     empty = FederalRosterEvidence(
         pd.DataFrame(columns=TENURE_COLUMNS), pd.DataFrame(columns=ROSTER_COLUMNS)
@@ -537,12 +592,24 @@ def build_house_roster_evidence(
 
     winners = work.loc[work["elected"].eq(True).fillna(False)]
     seat_winner: dict[int, pd.Series] = {}
+    by_district: dict[int, pd.DataFrame] = {}
     for index, member in members.iterrows():
         same_day = winners.loc[winners["_polling_day"].eq(member["from_date"])]
-        if same_day.empty:
+        if not same_day.empty:
+            by_district[int(index)] = same_day.loc[
+                same_day["_district_key"].eq(_district_key(member[spec.district_column]))
+            ]
+    # A winner whose district a member term names cannot also be tied by name to another term.
+    named_seats = {seat.iloc[0]["candidacy_id"] for seat in by_district.values() if len(seat) == 1}
+    for index, member in members.iterrows():
+        seat = by_district.get(int(index))
+        if seat is None:
             continue
-        seat = same_day.loc[same_day["_district_key"].eq(_district_key(member["constituency"]))]
         if len(seat) != 1:
+            same_day = winners.loc[
+                winners["_polling_day"].eq(member["from_date"])
+                & ~winners["candidacy_id"].isin(named_seats)
+            ]
             fits = [
                 house_member_name_fits(member["first_name"], member["last_name"], name)
                 for name in same_day["candidate_name"]
@@ -555,18 +622,21 @@ def build_house_roster_evidence(
             member["first_name"], member["last_name"], winner["candidate_name"]
         ):
             raise ValueError(
-                f"House member {member['first_name']} {member['last_name']} does not fit "
-                f"the name of {winner['candidate_name']!r}, who won {member['constituency']!r}"
+                f"{spec.member_label} {member['first_name']} {member['last_name']} does not fit "
+                f"the name of {winner['candidate_name']!r}, who won "
+                f"{member[spec.district_column]!r}"
             )
         seat_winner[int(index)] = winner
 
     linked_winners = [winner["candidacy_id"] for winner in seat_winner.values()]
     if len(linked_winners) != len(set(linked_winners)):
-        raise ValueError("two House member terms tie to one federal winner")
+        raise ValueError(f"two {spec.member_label} terms tie to one winner")
     covered_winners = winners.loc[winners["_polling_day"].ge(first_day), "candidacy_id"]
     without_term = sorted(set(covered_winners) - set(linked_winners))
     if without_term:
-        raise ValueError(f"House membership has no term for the federal winner {without_term[0]!r}")
+        raise ValueError(
+            f"{spec.membership_filename} has no term for the winner {without_term[0]!r}"
+        )
 
     tenure_rows: list[dict[str, object]] = []
     tenure_of_member: dict[int, tuple[str, str]] = {}
@@ -576,12 +646,16 @@ def build_house_roster_evidence(
         member = members.loc[index]
         person_id = str(winner["person_id"])
         tenure_id = stable_id(
-            "ten", "house_of_commons_member", person_id, member["from_date"], member["constituency"]
+            "ten",
+            spec.tenure_namespace,
+            person_id,
+            member["from_date"],
+            member[spec.district_column],
         )
         tenure_of_member[index] = (tenure_id, person_id)
         detail = {
-            "evidence_rule": "house_member_term_of_seat_winner",
-            "house_member": _house_member_record(member),
+            "evidence_rule": spec.tenure_rule,
+            spec.member_key: spec.member_record(member),
             "elected_candidacy": {
                 "candidacy_id": winner["candidacy_id"],
                 "event_id": winner["event_id"],
@@ -593,24 +667,72 @@ def build_house_roster_evidence(
             {
                 "office_tenure_id": tenure_id,
                 "person_id": person_id,
-                "represented_body": "canada_house_of_commons",
-                "office_type": "mp",
+                "represented_body": spec.represented_body,
+                "office_type": spec.office_type,
                 "district_id": winner["district_id"],
                 "started_on": member["from_date"],
                 "started_on_precision": "election_date",
                 "ended_on": member["to_date"] or pd.NA,
                 "ended_on_precision": "exact" if member["to_date"] else "ongoing",
                 "entry_method": "election",
-                "source_authority": (
-                    "Library of Parliament (ParlInfo)"
-                    if member["parliament"] == "35"
-                    else "House of Commons"
-                ),
+                "source_authority": spec.source_authority(member),
                 "source_detail": json.dumps(
                     detail, ensure_ascii=False, sort_keys=True, default=str
                 ),
             }
         )
+
+    keys = _member_keys(members, spec)
+    person_of_run = work.set_index("candidacy_id")["person_id"]
+    for index, member in members.iterrows():
+        identity = spec.member_persons.get(keys[index])
+        if identity is None or int(index) in tenure_of_member:
+            continue
+        if identity.candidacy_id not in person_of_run.index:
+            raise ValueError(f"{identity.member_key} is tied to an unknown run")
+        person_id = person_of_run[identity.candidacy_id]
+        if pd.isna(person_id):
+            raise ValueError(f"{identity.member_key} is tied to a run with no Person")
+        tenure_id = stable_id(
+            "ten",
+            spec.tenure_namespace,
+            str(person_id),
+            member["from_date"],
+            member[spec.district_column],
+        )
+        tenure_of_member[int(index)] = (tenure_id, str(person_id))
+        detail = {
+            "evidence_rule": "member_tied_to_person_by_source",
+            spec.member_key: spec.member_record(member),
+            "identity": {
+                "candidacy_id": identity.candidacy_id,
+                "rationale": identity.rationale,
+                "source_urls": list(identity.source_urls),
+            },
+        }
+        tenure_rows.append(
+            {
+                "office_tenure_id": tenure_id,
+                "person_id": str(person_id),
+                "represented_body": spec.represented_body,
+                "office_type": spec.office_type,
+                "district_id": pd.NA,
+                "started_on": member["from_date"],
+                "started_on_precision": "election_date",
+                "ended_on": member["to_date"] or pd.NA,
+                "ended_on_precision": "exact" if member["to_date"] else "ongoing",
+                "entry_method": "election",
+                "source_authority": spec.source_authority(member),
+                "source_detail": json.dumps(
+                    detail, ensure_ascii=False, sort_keys=True, default=str
+                ),
+            }
+        )
+    namesakes = {
+        (identity.member_key, str(person_of_run.get(identity.candidacy_id)))
+        for identity in spec.namesakes
+    }
+    _continue_member_tenures(members, spec, tenure_rows, tenure_of_member)
 
     roster_rows: list[dict[str, object]] = []
     covered: set[str] = set()
@@ -621,7 +743,7 @@ def build_house_roster_evidence(
     )
     for event_id, event in events.iterrows():
         group = work.loc[work["event_id"].eq(event_id)]
-        reference_date, rule, reference = _roster_reference(
+        reference_date, rule, reference = spec.roster_reference(
             str(event_id), event["date"], str(event["type"]), group
         )
         if reference_date < first_day:
@@ -644,11 +766,13 @@ def build_house_roster_evidence(
                     member["first_name"], member["last_name"], run["candidate_name"]
                 ):
                     continue
+                if (keys[index], str(run["person_id"])) in namesakes:
+                    continue
                 if tenure_of_member.get(index, ("", ""))[1] != str(run["person_id"]):
                     raise ValueError(
                         f"{run['candidate_name']!r} in {event_id!r} fits the sitting member "
                         f"{member['first_name']} {member['last_name']} "
-                        f"({member['constituency']}), who is not their Person"
+                        f"({member[spec.district_column]}), who is not their Person"
                     )
         listed = {
             tenure_of_member[index][1]: tenure_of_member[index][0]
@@ -657,10 +781,10 @@ def build_house_roster_evidence(
         }
         detail = json.dumps(
             {
-                "evidence_rule": "complete_house_of_commons_membership_on_reference_date",
+                "evidence_rule": spec.roster_rule,
                 "roster_reference": reference,
                 "sitting_members": len(sitting),
-                "membership_source": f"data/reference/{HOUSE_MEMBERS_FILENAME}",
+                "membership_source": f"data/reference/{spec.membership_filename}",
             },
             ensure_ascii=False,
             sort_keys=True,
@@ -670,8 +794,8 @@ def build_house_roster_evidence(
                 {
                     "event_id": event_id,
                     "person_id": person_id,
-                    "represented_body": "canada_house_of_commons",
-                    "office_type": "mp",
+                    "represented_body": spec.represented_body,
+                    "office_type": spec.office_type,
                     "office_tenure_id": tenure_id,
                     "roster_complete": True,
                     "reference_date": reference_date,
@@ -684,6 +808,82 @@ def build_house_roster_evidence(
     rosters = pd.DataFrame(roster_rows, columns=ROSTER_COLUMNS)
     rosters["roster_complete"] = rosters["roster_complete"].astype("boolean")
     return FederalRosterEvidence(tenures, rosters), frozenset(covered)
+
+
+def _member_keys(members: pd.DataFrame, spec: MembershipRosterSpec) -> pd.Series:
+    return members[list(spec.member_id_columns)].astype(str).agg("|".join, axis=1)
+
+
+def _continue_member_tenures(
+    members: pd.DataFrame,
+    spec: MembershipRosterSpec,
+    tenure_rows: list[dict[str, object]],
+    tenure_of_member: dict[int, tuple[str, str]],
+) -> None:
+    """Carry a Person's tenure into a later term of the same member that no polling day began.
+
+    A riding renamed during a Parliament gives its member a new term from the day of the change.
+    That term belongs to the tenure the member's election began, which then ends with it.
+    """
+
+    rows = {row["office_tenure_id"]: row for row in tenure_rows}
+    for _, terms in members.groupby(_member_keys(members, spec), sort=False):
+        current: int | None = None
+        for index, member in terms.sort_values("from_date", kind="stable").iterrows():
+            index = int(index)
+            if index in tenure_of_member:
+                current = index
+                continue
+            if current is None:
+                continue
+            tied = members.loc[current]
+            day_after = (pd.Timestamp(tied["to_date"]) + pd.Timedelta(days=1)).date().isoformat()
+            if tied["to_date"] and member["from_date"] > day_after:
+                current = None
+                continue
+            tenure_of_member[index] = tenure_of_member[current]
+            row = rows[tenure_of_member[current][0]]
+            ends = [str(row["ended_on"]) if pd.notna(row["ended_on"]) else "", member["to_date"]]
+            row["ended_on"] = pd.NA if "" in ends else max(ends)
+            row["ended_on_precision"] = "ongoing" if "" in ends else "exact"
+            detail = json.loads(row["source_detail"])
+            detail.setdefault("continued_in", []).append(spec.member_record(member))
+            row["source_detail"] = json.dumps(
+                detail, ensure_ascii=False, sort_keys=True, default=str
+            )
+
+
+HOUSE_ROSTER_SPEC = MembershipRosterSpec(
+    represented_body="canada_house_of_commons",
+    office_type="mp",
+    district_column="constituency",
+    member_label="House member",
+    tenure_namespace="house_of_commons_member",
+    tenure_rule="house_member_term_of_seat_winner",
+    member_key="house_member",
+    roster_rule="complete_house_of_commons_membership_on_reference_date",
+    membership_filename=HOUSE_MEMBERS_FILENAME,
+    member_id_columns=("house_person_id", "first_name", "last_name"),
+    member_record=lambda member: _house_member_record(member),
+    source_authority=lambda member: (
+        "Library of Parliament (ParlInfo)" if member["parliament"] == "35" else "House of Commons"
+    ),
+    roster_reference=lambda event_id, date, kind, group: _roster_reference(
+        event_id, date, kind, group
+    ),
+)
+
+
+def build_house_roster_evidence(
+    candidacies: pd.DataFrame, members: pd.DataFrame
+) -> tuple[FederalRosterEvidence, frozenset[str]]:
+    """Build complete federal rosters from House of Commons membership.
+
+    Returns the evidence and the events it covers: every federal event whose reference date
+    falls on or after the first day of the membership file.
+    """
+
+    return build_membership_roster_evidence(candidacies, members, HOUSE_ROSTER_SPEC)
 
 
 def federal_roster_evidence(
