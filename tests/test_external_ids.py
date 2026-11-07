@@ -24,7 +24,16 @@ def _read(path: Path) -> pd.DataFrame:
     return pd.read_csv(path, dtype=str, keep_default_na=False)
 
 
-def test_published_ids_cover_the_house_members():
+def _assembly_members(tenures: pd.DataFrame) -> dict[str, str]:
+    ontario = tenures.loc[tenures["represented_body"].eq("ontario_legislative_assembly")]
+    return {
+        row.person_id: json.loads(row.source_detail)["ontario_member"]["ola_member_id"]
+        for row in ontario.itertuples()
+        if row.source_detail.startswith("{")
+    }
+
+
+def test_published_ids_cover_the_house_and_assembly_members():
     published = _read(OUT / "person_external_ids.csv")
     assert tuple(published.columns) == EXTERNAL_ID_COLUMNS
     reference = read_external_ids(REFERENCE / EXTERNAL_IDS_FILENAME)
@@ -34,14 +43,17 @@ def test_published_ids_cover_the_house_members():
     assert set(published["person_id"]) <= set(people["person_id"])
     tenures = _read(OUT / "office_tenures.csv")
     house = tenures.loc[tenures["represented_body"].eq("canada_house_of_commons")]
-    members = set(house["person_id"])
+    assembly = _assembly_members(tenures)
+    members = set(house["person_id"]) | set(assembly)
     by_scheme = published.groupby("scheme")["person_id"].apply(set).to_dict()
     assert by_scheme["wikidata"] <= members
     names = people.set_index("person_id")["preferred_name"]
     assert sorted(names[sorted(members - by_scheme["wikidata"])]) == [
-        "Roman Baber",
+        "Fatima Shaban",
         "Tanveer Shahnawaz",
     ]
+    ola = published.loc[published["scheme"].eq("ontario_legislature")]
+    assert dict(zip(ola["person_id"], ola["external_id"], strict=True)) == assembly
     later = {
         row.person_id
         for row in house.itertuples()
@@ -52,7 +64,8 @@ def test_published_ids_cover_the_house_members():
     assert (
         published.loc[published["scheme"].eq("wikidata"), "external_id"].str.match(r"^Q\d+$").all()
     )
-    assert published.loc[published["scheme"].ne("wikidata"), "external_id"].str.isdigit().all()
+    numeric = published["scheme"].isin({"house_of_commons", "parlinfo"})
+    assert published.loc[numeric, "external_id"].str.isdigit().all()
 
 
 def test_house_ids_match_the_tenure_evidence():

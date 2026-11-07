@@ -47,15 +47,21 @@ def test_every_toronto_ontario_winner_has_a_dated_assembly_tenure():
     results = _results()
     winners = results.loc[results["elected"].eq("True")]
     tenures = _tenures()
-    assert tenures["started_on"].ne("").all()
-    assert tenures["source_authority"].eq("Legislative Assembly of Ontario").all()
+    assembly = tenures["source_authority"].eq("Legislative Assembly of Ontario")
+    assert tenures.loc[assembly, "started_on"].ne("").all()
+    # The rows that are not the Assembly's are the 1995 election's, from Elections Ontario's flags.
+    flags = tenures.loc[~assembly]
+    assert len(flags) == 26 and flags["ended_on"].eq("1995-04-27").all()
+    tenures = tenures.loc[assembly]
     tied = tenures["source_detail"].map(json.loads)
     winning = {
         detail["elected_candidacy"]["candidacy_id"]
         for detail in tied
         if "elected_candidacy" in detail
     }
-    assert winning == set(winners["candidacy_id"])
+    # Every winner with a Person; Mohamed Firin's 2025 win is held without one.
+    assert winning == set(winners.loc[winners["person_id"].ne(""), "candidacy_id"])
+    assert winners["person_id"].eq("").sum() == 1
 
 
 def test_ontario_incumbency_comes_from_the_assembly_after_1995():

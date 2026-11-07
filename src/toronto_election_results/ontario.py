@@ -748,6 +748,8 @@ def parse_tabulation(path: str | Path, spec: TabulationSpec) -> pd.DataFrame:
                 "official_district_id": f"{district.source_number:03d}",
                 "district_name": district.district_name,
                 "candidate_name_raw": candidate.name,
+                # The tabulation prints FAMILY, GIVEN; the other Ontario files print GIVEN FAMILY.
+                "candidate_name": " ".join(reversed(candidate.name.split(", ", 1))),
                 "party_name_raw": candidate.party,
                 "affiliation_status": "independent" if independent else "party",
                 "votes": candidate.votes,
@@ -761,7 +763,7 @@ def parse_tabulation(path: str | Path, spec: TabulationSpec) -> pd.DataFrame:
                 "source_resource": TABULATION_RESOURCE,
             }
         )
-    result = pd.DataFrame(rows, columns=[*RESULT_COLUMNS, "source_resource"])
+    result = pd.DataFrame(rows, columns=[*RESULT_COLUMNS, "candidate_name", "source_resource"])
     for column in ("votes", "eligible_electors", "ballots_cast"):
         result[column] = pd.array(result[column], dtype="Int64")
     for column in ("elected", "incumbent_reported"):
