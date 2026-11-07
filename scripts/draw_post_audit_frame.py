@@ -64,7 +64,11 @@ def _pair_ids(new: pd.DataFrame, key_path: Path) -> dict[tuple[str, str], str]:
 
 
 def _link_basis(links: pd.DataFrame, candidacy_id: str) -> tuple[str, str]:
-    row = links.loc[links["candidacy_id"].eq(candidacy_id) & links["link_status"].eq("confirmed")]
+    row = links.loc[
+        links["candidacy_id"].eq(candidacy_id)
+        & links["link_status"].eq("confirmed")
+        & links["valid_to_release"].eq("")
+    ]
     if row.empty:
         return "", ""
     link = row.iloc[0]
