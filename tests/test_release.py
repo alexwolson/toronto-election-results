@@ -325,7 +325,7 @@ def test_write_release_publishes_every_table_without_leaving_staging_files(tmp_p
 
     written = write_release(release, tmp_path / "out")
 
-    assert len(written) == 24
+    assert len(written) == 26
     assert all(path.is_file() for path in written)
     assert not list(tmp_path.glob(".out.stage-*"))
 
@@ -360,7 +360,7 @@ def test_release_normalizes_mixed_office_tenure_dates_before_parquet_write(tmp_p
     release = assemble_release([_adapter()], people=people, office_tenures=tenures)
     written = write_release(release, tmp_path / "out")
 
-    assert len(written) == 24
+    assert len(written) == 26
     assert {type(value) for value in release.office_tenures["started_on"]} == {date}
 
 
