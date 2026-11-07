@@ -11,7 +11,7 @@ import pandas as pd
 
 from .candidacy_ledger import CandidacyLedgerAssignment, assign_candidacy_ids
 from .endorsements import EndorsementTables, validate_endorsement_tables
-from .federal_rosters import build_federal_roster_evidence
+from .federal_rosters import federal_roster_evidence, read_house_members
 from .identity import attach_confirmed_people, derive_incumbency
 from .identity_curations import (
     CuratedIdentityAssertion,
@@ -38,6 +38,7 @@ from .schema import (
     derive_result_metrics,
     normalize_adapter_frame,
 )
+from .tenure_spells import assign_tenure_spells
 from .trustee_incumbency import build_trustee_incumbency_evidence
 
 ELECTION_RESULT_COLUMNS = [
@@ -449,16 +450,21 @@ def assemble_bootstrapped_release(
     reported = build_reported_incumbency(
         linked.loc[linked["represented_body"].eq("ontario_legislative_assembly")].copy()
     )
-    federal = build_federal_roster_evidence(linked)
-    office_tenures = pd.concat(
-        [
-            municipal_evidence.office_tenures,
-            federal.office_tenures,
-            reported.office_tenures,
-            *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
-        ],
-        ignore_index=True,
-        sort=False,
+    federal = federal_roster_evidence(
+        linked,
+        read_house_members(municipal_reference) if municipal_reference is not None else None,
+    )
+    office_tenures = assign_tenure_spells(
+        pd.concat(
+            [
+                municipal_evidence.office_tenures,
+                federal.office_tenures,
+                reported.office_tenures,
+                *([trustee_incumbency.office_tenures] if trustee_incumbency is not None else []),
+            ],
+            ignore_index=True,
+            sort=False,
+        )
     )
     incumbency_rosters = pd.concat(
         [

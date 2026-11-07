@@ -183,13 +183,35 @@ outside the release scope.
 Trustee incumbency is recorded only for the 20 sitting trustees who ran in 2026. Every other
 trustee `incumbent` stays null until a complete historical roster is acquired.
 
-Elections Canada's raw incumbent marker is preserved as `incumbent_reported`, but it is not treated
-as final-sitting-roster evidence: the source marks some former MPs who no longer held office. Two
-flags that contradict the record are corrected by pinned corrections that fail the load if the
-source changes: Elections Canada's 2015 file marks Natalie Hunt, the Green candidate in Don Valley
-West, as an incumbent beside the sitting member, and Elections Ontario's 1999 file marks John
-Sewell, who never sat in the legislature. See
+Federal incumbency comes from the House of Commons membership in
+`data/reference/house_of_commons_members.csv`: one row per member's term in each Parliament from
+the 35th to the 45th, with the riding and the first and last days of the term. The 36th Parliament
+on come from the House of Commons members export and the 35th from ParlInfo, the Library of
+Parliament's database of parliamentarians; `scripts/build_house_of_commons_members.py` builds the
+file. For each federal event after 1993 the sitting roster is every member whose term covers the
+day before dissolution, or the day before polling for a by-election, in any riding. Each Toronto
+term is tied to the Person who won that seat on the day the term began; every Toronto winner from
+1993 on has such a term, which becomes that Person's Office tenure with the House's dates. A
+confirmed Person is then `incumbent=true` if they hold a sitting term and `false` otherwise. The
+build fails if a candidate's name fits a sitting member who is not their Person, so a namesake
+elsewhere in Canada cannot become an incumbent or a non-incumbent unreviewed; no candidate's name
+does. Of the 1,743 federal Candidacies, 206 are incumbents, 1,242 are not, and 295 are null: the
+214 at the 1993 general election and 81 with no Person.
+
+The 1993 federal and 1994 municipal elections, the first of their levels in the release, are there
+to give the next elections their incumbency and have none of their own; it would need the 34th
+Parliament and the councils elected in 1991. Ontario incumbency, including in 1995, comes from
+Elections Ontario's own incumbent flags, which the release uses only where every Candidacy of an
+event has a flag and every flagged incumbent has a confirmed Person.
+
+Elections Canada's raw incumbent marker is preserved as `incumbent_reported` but is not used: it
+marks some former MPs who no longer held office. Two flags that contradict the record are
+corrected by pinned corrections that fail the load if the source changes: Elections Canada's 2015
+file marks Natalie Hunt, the Green candidate in Don Valley West, as an incumbent beside the sitting
+member, and Elections Ontario's 1999 file marks John Sewell, who never sat in the legislature. See
 [`docs/verification/same-name-review-2026-11-03.md`](verification/same-name-review-2026-11-03.md).
-Modelled federal incumbency is therefore true only when a confirmed Person's prior election win has
-not been superseded within that parliamentary cycle. Federal non-incumbents stay null because those
-event rosters are intentionally incomplete.
+
+The House of Commons publishes its member lists on its website, whose Important Notices set out
+the terms for reproducing its content, and ParlInfo is the Library of Parliament's. The release
+keeps only the facts it uses from them: each member's name, riding, province, caucus and dates of
+service, with the House's person ID and the source of each row.
