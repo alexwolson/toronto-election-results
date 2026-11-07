@@ -222,15 +222,21 @@ career files. One row per Person and `scheme`, with `external_id`, the `basis` o
 
 - `house_of_commons`: the House of Commons person ID, from the member export the Person's House
   tenure cites (36th Parliament on).
+- `ontario_legislature`: the Legislative Assembly of Ontario's member ID, the slug of the member
+  profile the Person's Ontario tenure cites.
 - `wikidata`: the Wikidata item that holds "member of the House of Commons of Canada" for the same
   constituency in the same Parliament as one of the Person's House tenures, with the member's
-  surname in its label. A Person matches one item and an item one Person.
-- `parlinfo`: the Library of Parliament (ParlInfo) person ID recorded on that Wikidata item.
+  surname in its label, or whose Ontario MPP ID (P3054) is the Person's Assembly member ID. A
+  Person matches one item and an item one Person.
+- `parlinfo`: the Library of Parliament (ParlInfo) person ID recorded on the House match's
+  Wikidata item.
 
-The table covers the 94 People with a House tenure: 92 have a Wikidata item and 90 a ParlInfo ID,
-and the 89 who sat from the 36th Parliament on have a House ID. Roman Baber, elected in 2025, and
-Tanveer Shahnawaz, elected at the August 2026 by-election, had no matching Wikidata statement on 7
-November 2026. Members of the Ontario legislature are not yet covered. The rows are built by
+The table covers the 185 People with a House tenure or an Assembly member term. The 14 whose only
+Ontario tenure is a 1995 flag row are not matched. 183 have a Wikidata item: Fatima Shaban,
+elected at the September 2026 Ontario by-election, and Tanveer Shahnawaz, elected at the August
+2026 federal by-election, had none on 7 November 2026. Of the 94 with a House tenure, 90 have a
+ParlInfo ID and the 89 who sat from the 36th Parliament on have a House ID. All 98 with an
+Assembly member term have an Assembly ID. The rows are built by
 `scripts/build_person_external_ids.py` into `data/reference/person_external_ids.csv`, and the build
 fails if a row names a Person who is no longer active.
 
@@ -254,8 +260,15 @@ of office:
 - A House of Commons row is one member's term in one Parliament, from polling day to the last day
   of the term as the House or ParlInfo records it (`exact`), or `ongoing` with a null `ended_on`
   for a sitting member.
-- An Ontario row comes from Elections Ontario's incumbent flag and says only that the Person sat on
-  the day before polling, so its start and entry method are unknown.
+- An Ontario legislature row is likewise one member's term in one Parliament from the 36th on,
+  from polling day to the last day of the term as the Legislative Assembly records it, or
+  `ongoing`. A term that begins when a riding is renamed during a Parliament extends the tenure
+  of the member's election. John Tory's term for Dufferin—Peel—Wellington—Grey, which he won at a
+  by-election outside the release, is tied to his Person by the sources named in its
+  `source_detail` and has no district.
+- An Ontario row for the 1995 election comes from Elections Ontario's incumbent flag and says only
+  that the Person sat the day before the Legislature was dissolved, so its start and entry method
+  are unknown.
 - A predecessor roster row says the Person sat on Metro Council or one of the six former councils
   on 9 November 1997, the eve of the first amalgamated election (ADR 0012).
 
@@ -270,8 +283,8 @@ the evidence.
 
 `spell_id` groups the rows of one unbroken stretch of service: rows of one Person, Represented body
 and Office type share a spell when each starts no later than the day after the latest end so far.
-The 1,262 rows form 373 spells. The 188 Ontario rows have no `spell_id`, since their start is
-unknown.
+The 1,329 rows form 471 spells. The 26 Ontario rows from 1995 have no `spell_id`, since their
+start is unknown.
 
 ### `electoral_districts`
 
@@ -418,6 +431,9 @@ back to name matching or blanket historical coverage claims.
   35th Parliament's members, compiled in `data/reference/house_of_commons_members.csv`, for federal
   incumbency and MP Office tenures.
 - Elections Ontario official candidate/statistics/party CSV reports.
+- The Legislative Assembly of Ontario's member profiles for the 36th to 44th Parliaments, compiled
+  in `data/reference/ontario_legislature_members.csv`, for Ontario incumbency from 1996 and MPP
+  Office tenures.
 - City voter-statistics files for explicitly scoped municipal turnout.
 - City Council attendance/voting records, reconciled historical rosters and the curated 2000
   roster for municipal incumbency evidence.

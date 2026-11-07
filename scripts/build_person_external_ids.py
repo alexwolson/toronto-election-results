@@ -97,6 +97,8 @@ def _ontario_members() -> pd.DataFrame:
     tenures = tenures.loc[tenures["represented_body"].eq("ontario_legislative_assembly")]
     rows = []
     for tenure in tenures.itertuples(index=False):
+        if not tenure.source_detail.startswith("{"):
+            continue  # a 1995 row from Elections Ontario's flag, which names no member
         member = json.loads(tenure.source_detail).get("ontario_member")
         if member is None:
             continue

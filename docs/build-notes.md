@@ -228,9 +228,26 @@ does. Of the 1,743 federal Candidacies, 206 are incumbents, 1,242 are not, and 2
 
 The 1993 federal and 1994 municipal elections, the first of their levels in the release, are there
 to give the next elections their incumbency and have none of their own; it would need the 34th
-Parliament and the councils elected in 1991. Ontario incumbency, including in 1995, comes from
-Elections Ontario's own incumbent flags, which the release uses only where every Candidacy of an
-event has a flag and every flagged incumbent has a confirmed Person.
+Parliament and the councils elected in 1991.
+
+Ontario incumbency from 1996 on comes the same way from the Legislative Assembly's membership in
+`data/reference/ontario_legislature_members.csv`: one row per member's riding term in each
+Parliament from the 36th, from the profiles on ola.org. ola.org serves those pages only to a
+browser, so `scripts/ola_members.js` reads them in one and saves a file that
+`scripts/build_ontario_members.py` turns into the reference table. Read on 7 November 2026, it
+holds 1,086 terms of 431 members. The roster rules are the House's, with two additions. A term
+that begins when a riding is renamed during a Parliament extends the tenure of the member's
+election, as when Broadview—Greenwood became Toronto—Danforth in 2000. And a member whose term no
+winner in the release began can be tied to a Person, or set apart from one, only by sources named
+in `ontario_rosters.py`: John Tory, who sat for Dufferin—Peel—Wellington—Grey from a 2005
+by-election and ran in Don Valley West in 2007, is tied to his Person, and Dave Smith of
+Peterborough—Kawartha is set apart from David Smith of Scarborough Centre, since the two sat
+together from 2022. Every Toronto winner from 1995 on has a term. The roster disagrees with
+Elections Ontario's flags for two Candidacies, both sitting members the flags missed: Morley Kells
+in 1999 and Brad Duguid in 2011. The 1995 general election, the first Ontario election in the
+release, comes before the 36th Parliament and keeps Elections Ontario's own incumbent flags, which
+the release uses only where every Candidacy of an event has a flag and every flagged incumbent has
+a confirmed Person.
 
 Elections Canada's raw incumbent marker is preserved as `incumbent_reported` but is not used: it
 marks some former MPs who no longer held office. Two flags that contradict the record are
