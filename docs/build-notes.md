@@ -182,6 +182,14 @@ them and fails if the source figures change. See `docs/research/result-correctio
 Its 2006 Parkdale—High Park by-election file codes the Libertarian Jim McIntosh as Liberal, beside
 the Liberal candidate; a pinned correction recodes him.
 
+The results were compared, Contest by Contest, with two datasets compiled independently of the
+release: Semra Sevi's federal and Ontario candidate files for the Toronto ridings (federal
+elections from 1993 to 2021, Ontario from 1995 to 2018) and the Canadian Municipal Elections
+Database for Toronto's mayor and council races from 1994 to 2022. Of 749 Contests, 681 agree on
+every name, vote total and winner. Each difference in the other 68 was checked against the
+authority's results; none is an error in the release. See
+[`docs/verification/external-reconciliation-2026-11-07.md`](verification/external-reconciliation-2026-11-07.md).
+
 The City's archived index of past results lists every election it ran from 1998, so event
 enumeration is complete from 1998. The former municipalities left no comparable index, so their
 by-elections from 1995 to 1997 are marked uncertain; a search of the Toronto Star found one, North

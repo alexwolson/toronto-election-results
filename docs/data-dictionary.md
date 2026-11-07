@@ -44,7 +44,10 @@ those fields are null for 2026 until the City publishes its final voter statisti
 declared trustee Acclamations are final with null vote totals. The dataset includes Mayor, City
 Councillor, all four School Board Trustee systems, MP, and MPP elections. General elections,
 by-elections, acclamations, and legally void contests are in scope. Poll/subdivision records are
-used only to produce Contest totals and are not published.
+used only to produce Contest totals and are not published. Candidacies are the candidates in the
+authority's results. Cynthia Lai, a council candidate in Ward 23 Scarborough North in 2022, died
+three days before polling; the City did not count votes cast for her and its results list only the
+other three candidates, so she has no Candidacy in that Contest.
 
 The release contains 8,099 Candidacies, 1,385 Contests, and 80 Election events. All Candidacies
 have final results; the 2026 municipal event contributes 361 Candidacies in 55 Contests. Two void historical Contests have no Candidacy rows.
