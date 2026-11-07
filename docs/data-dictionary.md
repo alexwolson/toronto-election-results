@@ -301,10 +301,27 @@ is EPSG:4326 Polygon/MultiPolygon where acquired. `geometry_status` and
 `geometry_missing_reason` make unavailable historical/authority geometries explicit; missing
 geometry never excludes a result. Geometry provenance records the authority, resource, concrete
 source file, and source year. The CSV serializes geometry as WKT; the Parquet artifact is
-GeoParquet. Current 2026 trustee polygons are exact unions of the canonical current City wards;
-`geometry_derivation` and the membership-source fields record the verified crosswalk used in that
-derivation. Historical trustee geometry remains explicitly unavailable. The release does not
-publish subdivision-level polygons.
+GeoParquet. The release does not publish subdivision-level polygons. The shapes come from three
+sources:
+
+- Council wards: the City's voting subdivisions, dissolved by ward, for the 44 wards of 2000 to
+  2014 (the 2014 file) and the 25 wards from 2018 (the 2022 file).
+- Trustee wards from 2000 on: each is the union of whole City wards, as
+  `data/reference/trustee_ward_crosswalks.csv` records; `geometry_derivation` is
+  `union_of_city_wards` and the membership-source fields cite the crosswalk's source. The 2003 to
+  2026 crosswalks come from the City's results files. The 2000 crosswalks are inferred from the
+  poll totals on the City's 2000 results pages (`scripts/derive_trustee_wards_2000.py`): for
+  TCDSB, Viamonde and MonAvenir only one grouping of Council wards fits; for TDSB the 2003 grouping
+  fits every total and the candidates' wards agree with it, though the totals alone allow others.
+- Ridings: Elections Canada's boundary files for the 2003, 2013 and 2023 representation orders,
+  matched by district number and checked by name. Ontario's 2007 and 2018 ridings in Toronto are
+  the federal ridings of the 2003 and 2013 orders, which the Representation Acts of 2005 and 2015
+  adopted; `geometry_derivation` names the federal district and the membership-source resource
+  names the Act.
+
+Still without shapes: the 1994 municipal districts, the 1997 council wards (Metro Toronto's
+wards), the 1997 trustee areas, the federal ridings of the 1987 and 1996 orders, and Ontario's
+1987 and 1999 ridings.
 
 ### `endorsers`
 
@@ -439,6 +456,9 @@ back to name matching or blanket historical coverage claims.
   35th Parliament's members, compiled in `data/reference/house_of_commons_members.csv`, for federal
   incumbency and MP Office tenures.
 - Elections Ontario official candidate/statistics/party CSV reports.
+- Elections Canada's federal electoral district boundary files for the 2003, 2013 and 2023
+  representation orders (Open Government Licence – Canada), for the federal and Ontario riding
+  shapes.
 - The Legislative Assembly of Ontario's member profiles for the 36th to 44th Parliaments, compiled
   in `data/reference/ontario_legislature_members.csv`, for Ontario incumbency from 1996 and MPP
   Office tenures.
