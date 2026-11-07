@@ -83,8 +83,8 @@ Every table is written as CSV and Parquet unless noted otherwise:
 - `data/out/election_results.*` — modelling-ready Candidacy rows;
 - `data/out/election_events.*` and `data/out/contests.*`;
 - `data/out/people.*` and `data/out/candidacy_person_links.*`;
-- `data/out/person_external_ids.*` — Wikidata, ParlInfo and House of Commons IDs for People who
-  sat in the House;
+- `data/out/person_external_ids.*` — Wikidata, ParlInfo, House of Commons and Legislative
+  Assembly of Ontario IDs for People who sat in the House or the Assembly;
 - `data/out/parties.*` and `data/out/office_tenures.*`;
 - `data/out/electoral_districts.*` — native Contest-level geometry where available, with explicit
   missing-geometry status otherwise;

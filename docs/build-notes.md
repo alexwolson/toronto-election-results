@@ -260,3 +260,10 @@ The House of Commons publishes its member lists on its website, whose Important 
 the terms for reproducing its content, and ParlInfo is the Library of Parliament's. The release
 keeps only the facts it uses from them: each member's name, riding, province, caucus and dates of
 service, with the House's person ID and the source of each row.
+
+The Legislative Assembly of Ontario's terms of use
+(<https://www.ola.org/en/office-assembly/copyright-privacy>) let anyone display, print and
+reproduce the Assembly's materials without charge where the use is reasonable, fair and
+non-commercial and credits the Assembly. The release keeps only facts from the member profiles:
+each member's name, riding, party and dates of service, with the profile's URL as the source of
+each row.

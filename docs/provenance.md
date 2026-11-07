@@ -12,7 +12,7 @@ authors must supply it before the release is frozen.
 |---|---|---|
 | 19 August 2026 | Claude Opus 4.8 (Anthropic), in Claude Code | Co-author lines on the first five commits, which built the pipeline and added the 2003 and 2006 council rosters. |
 | 26 August to 30 September 2026 | [Authors: name the tools and models.] | 42 commits with no co-author line. Four of their branches are named `codex/`, one review tag is `codex-primary-source-review-2026-09-30`, and the trustee career review records the model `gpt-5.6-sol` for its third reviewer, Sol. The reports of this period name two other researchers, Luna and Terra. |
-| 26 September to 7 November 2026 | Claude Opus 5.5 (Anthropic), in Claude Code | Co-author lines on the two commits of 26 September and on every commit from 7 October except Dependabot's. One coordinating session, from 28 October, had launched 175 agents by 7 November, all Claude Opus 5.5, for the review, research and audit passes described below. |
+| 26 September to 7 November 2026 | Claude Opus 5.5 (Anthropic), in Claude Code | Co-author lines on the two commits of 26 September and on every commit from 7 October except Dependabot's. One coordinating session, from 28 October, had launched 183 agents by 7 November, all Claude Opus 5.5, for the review, research and audit passes described below. |
 
 The agents worked in the repository: they wrote the code, ran the build and the tests, and searched
 the public web. From 28 October the coordinating agent read the Toronto Star and other newspapers
@@ -51,6 +51,17 @@ whether, and how, an author reviewed the code or the transcriptions.]
   `docs/research/predecessor-rosters-1997-2026-11-07.md`.
 - The House of Commons: the House's member exports and the Library of Parliament's ParlInfo, read
   by `scripts/build_house_of_commons_members.py`.
+- The Legislative Assembly of Ontario: the member profiles on ola.org, which the site serves only
+  to a browser. On 7 November 2026 the coordinating agent ran `scripts/ola_members.js` in the
+  project owner's Chrome, with his permission, to save them, and
+  `scripts/build_ontario_members.py` turned the file into
+  `data/reference/ontario_legislature_members.csv`.
+- Council appointments: `data/reference/council_appointments.csv`, compiled on 7 November 2026 by
+  the coordinating agent from the City Clerk's list of Council vacancies since amalgamation,
+  Council minutes and by-laws, and two news reports.
+- External identifiers: `scripts/build_person_external_ids.py` matches House and Assembly members
+  to Wikidata items, using the query results the coordinating agent saved from Wikidata's public
+  query service on 7 November 2026.
 
 ## Person links
 
@@ -84,8 +95,12 @@ and the pass's report sets out its method. The passes took three forms.
   sources batch by batch and proposed dispositions with sources and quotations. In the federal and
   provincial holds (1 November), the municipal holds and the same-name and near-name reviews (3 to
   5 November), every proposed confirmation or join went to a second agent that had not done the
-  research, and only the ones it accepted were applied. [Authors: say whether an author reviewed
-  any of these decisions, and what share.]
+  research, and only the ones it accepted were applied. One join came later: on 7 November the
+  coordinating agent joined Fatima Shaban's 2026 provincial by-election run to her federal runs
+  from a source about her, and the census below audited it. The same day a script screened the
+  Persons for changed surnames and found four pairs, none joined
+  (`docs/verification/surname-change-screen-2026-11-07.md`). [Authors: say whether an author
+  reviewed any of these decisions, and what share.]
 
 The table counts the active links by what decided them, and the 413 Candidacies held without a
 Person by the pass that held them. An assertion is dated by the commit that first added it; some
@@ -114,7 +129,9 @@ five were Claude Opus 5.5. The census of the 136 joins made after that sample
 (`docs/verification/link-audit-2026-11-07.md`) was carried out on 7 November 2026 by five more
 agents under the same rules, and three others checked every verdict that a join was confirmed.
 All eight were Claude Opus 5.5. The results files give each verdict's sources, quotations and notes.
-[Authors: report any human coding of the audit sample.]
+`docs/verification/human-coding-2026-11-07.md` sets out a sample of joins for people to code
+against the agents' verdicts, drawn by script on 7 November 2026. [Authors: report the coding
+when it is done, and who did it.]
 
 ## Endorsements
 
@@ -123,8 +140,9 @@ verification reports (`docs/research/endorsement-*.md`); the coverage reports na
 as Luna and Terra. Matt Elliott's tracker of 2022 endorsements, which he maintained during that
 campaign, was used to find and check the Toronto Star editorial board's 2022 council choices; those
 facts cite the Star's editorials (`docs/research/matt-elliott-2022-endorsement-matrix-audit.md`).
-Progress Toronto's 2026 endorsements were added on 26 September 2026 with Claude Opus 5.5. [Authors:
-name the tools for the August work and record how the nine endorsers were chosen.]
+Progress Toronto's 2026 endorsements were added on 26 September 2026 with Claude Opus 5.5. The
+data dictionary records the rule that chose the nine Endorsers and the project owner's approval
+of the panel on 21 August 2026. [Authors: name the tools for the August work.]
 
 ## Reviewer values
 

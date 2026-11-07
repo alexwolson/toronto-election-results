@@ -111,6 +111,9 @@ modelling. The authoritative normalized entities remain available as companion t
 | `coverage_status` | enum | never | `complete`, `partial`, or `source_missing`; independent of legal outcome. A `partial` Contest may carry null `votes` where its only source omits them. |
 | `incumbent` | boolean | insufficient identity/roster evidence | Same Office type and Represented body in the last valid pre-event roster. |
 | `incumbent_office_tenure_id` | string | not incumbent/unknown | Supporting Office tenure for `incumbent=true`. |
+| `incumbent_appointed` | boolean | not incumbent, or the tenure does not say | `true` when the incumbent's seat came by appointment to fill a vacancy, `false` when by election. Null for the 1995 Ontario incumbents, whose tenure comes only from Elections Ontario's flag. |
+| `incumbent_held_district_id` | string | not incumbent, the tenure does not say, or the seat is outside the release | `district_id` of the seat the incumbent held, from the supporting Office tenure. It can belong to an earlier Boundary regime than the Candidacy's. |
+| `incumbent_changed_district` | boolean | not incumbent, or the boundaries cannot be compared | `true` when the incumbent runs for a seat other than the one held. Within one Boundary regime that is another district; across a boundary change, less than half of the held district's area lies in the district contested, which needs the geometry of both (council wards from 2000 on). A mayor never changes district. A legislature seat outside the City (John Tory's in 2007) is `true`. |
 | `incumbent_reported` | boolean | authority does not report it | Source flag, except two pinned corrections of flags that contradict the record (Natalie Hunt, 2015; John Sewell, 1999); the modelled `incumbent` field uses project semantics. |
 | `predecessor_incumbent` | boolean | outside a first amalgamated election, or insufficient evidence | ADR 0012: `true` when the Person sat, the day before polling, in a designated predecessor body for the same Office type. Set only for the November 10, 1997 first elections of the amalgamated bodies. The Mayor and City Councillor races have it for every Candidacy with a Person (`data/reference/predecessor_rosters_1997.csv`); the trustee races are null because the release holds no board rosters. |
 | `predecessor_office_tenure_id` | string | not a predecessor incumbent | Supporting predecessor Office tenure for `predecessor_incumbent=true`. |
@@ -155,13 +158,14 @@ that correctly have no Candidacy row.
 ### `people`
 
 The persistent identity registry: opaque `person_id`, preferred name, `identity_status`, redirect
-target and creation release. Every Person in this release is `active` with no redirect. A later
-release that merges two Persons keeps the losing ID as `deprecated`, with a redirect to the Person
-that replaced it. An active Person without a Candidacy holds an Office tenure needed to classify
-Incumbency. Six Persons are of this kind: Ceta Ramkhalawansingh, Jim Hart, Miganoush Megardichian,
-Paul Valenti, Peter Leon and Rose Milczyn, each appointed to Council to fill a vacancy, so the
-release's 5,078 People include 5,072 with at least one Candidacy. A Person name never rewrites a
-historical ballot name.
+target and creation release. A release that merges two Persons keeps the losing ID as
+`deprecated`, with a redirect to the Person that replaced it. One Person is deprecated in this
+release: the one made for Fatima Shaban's 2026 provincial by-election run, which a person-record
+merge joined to the Person of her federal runs. The other 5,078 rows are active. An active Person
+without a Candidacy holds an Office tenure needed to classify Incumbency. Six Persons are of this
+kind: Ceta Ramkhalawansingh, Jim Hart, Miganoush Megardichian, Paul Valenti, Peter Leon and Rose
+Milczyn, each appointed to Council to fill a vacancy, so 5,072 of the active Persons have at least
+one Candidacy. A Person name never rewrites a historical ballot name.
 
 ### `candidacy_person_links`
 
