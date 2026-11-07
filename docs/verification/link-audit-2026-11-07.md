@@ -2,21 +2,21 @@
 
 The audit of Person links ([`link-audit-2026-11-03.md`](link-audit-2026-11-03.md)) sampled the
 joins of the release at commit `cf92e3b`. The fixes that audit made, the same-name and near-name
-reviews and the later identity work have since made 135 joins whose two runs were not joined at
+reviews and the later identity work have since made 136 joins whose two runs were not joined at
 `cf92e3b`. This census checks every one of them. Combined with the November sample, it bounds
-the share of false merges among all 2,613 joins in the release.
+the share of false merges among all 2,614 joins in the release.
 
-The census was run on the link set whose `candidacy_person_links.csv` has SHA-256
-`1d3b2e4655207bc0611ac07eb69afdb1e6e68f83fe0aa361d609af4d8d6dd6f9` and whose
+The census covers the link set whose `candidacy_person_links.csv` has SHA-256
+`40c10c0a61cc9fd6a4a571485467e098c27041b41c7dff04fa0a7d01ca45b459` and whose
 `election_results.csv` has SHA-256
-`fddd99d03c237162f0866fc425ce5e05b765d5bdd1c9cede3febf781c0572c1c`, as built at commit
-`2be19d9`. Any later change to the links needs the same check before these figures apply to it.
+`8c052978247a321c544a8d9582327153cb20bcb58441135cfbda3bdd534f5871`, as built at commit
+`427b1cc`. Any later change to the links needs the same check before these figures apply to it.
 
-No join was found to tie two different people. After a second check of the evidence, 51 of the
-135 joins were confirmed from sources the auditors found themselves, and 84 could be neither
-confirmed nor refuted. Across the 2,613 joins, with the older joins weighted by the November
+No join was found to tie two different people. After a second check of the evidence, 52 of the
+136 joins were confirmed from sources the auditors found themselves, and 84 could be neither
+confirmed nor refuted. Across the 2,614 joins, with the older joins weighted by the November
 sample, the share of false merges is 0.0%, with a one-sided 95% upper bound of 3.7%. The weighted
-share confirmed is 71.3% (95% interval 63.0% to 77.3%).
+share confirmed is 71.4% (95% interval 63.0% to 77.3%).
 
 ## Design
 
@@ -29,13 +29,15 @@ the Person, Candidacies and links behind each join, which they did not see
 ([`joins_key.csv`](link-audit-2026-11-07/joins_key.csv)), and the size of each stratum of the
 release's joins ([`frame_strata.csv`](link-audit-2026-11-07/frame_strata.csv)).
 
-The later Candidacy of 104 of the 135 joins is linked by a curated identity assertion, 12 by a
+The later Candidacy of 105 of the 136 joins is linked by a curated identity assertion, 12 by a
 review disposition and one by a person-record redirect. In the other 18 the later Candidacy is its
 Person's own record, so the earlier Candidacy's link made the join. 62 joins are for the same
-office and 73 for different offices.
+office and 74 for different offices.
 
-The joins were split at random into four packets of 34, 34, 34 and 33, one for each of four
-agents. None had made or reviewed any of the links, and they were told not to read the release's
+The first 135 joins were split at random into four packets of 34, 34, 34 and 33, one for each of
+four agents. One join was made after them, joining Fatima Shaban's 2026 provincial by-election win
+to her federal runs, and a fifth agent checked it alone under the same rules with five searches.
+The script keeps each join's pair ID when the frame is drawn again, so that join is `P136`. None had made or reviewed any of the links, and they were told not to read the release's
 repository, so each verdict rests on sources the agent found for itself. The rules were those of
 November: web search and pages found through it, a limit of 35 searches each, no ProQuest,
 LinkedIn or pages behind a login, no web archives or mirrors, and no name-matched databases as
@@ -46,14 +48,14 @@ the earlier run won. It was rated contradicted when a source shows two different
 confirmed when nothing found ties or separates the runs. A shared party label is not a distinctive
 fact.
 
-Every join rated confirmed went to one of two further agents, which had not audited any join. They
+Every join rated confirmed went to one of three further agents, which had not audited any join. They
 opened each cited page, checked that the quotations were on it and matched the runs, and judged
 the evidence against the same standard. A user-editable wiki page without references, or an
 anonymous reader comment, did not confirm a join on its own. A join counts as confirmed only if
 this second check accepted it. The November sample's confirmed verdicts had no such check. No
 join was rated contradicted, so none needed one.
 
-The 135 new joins are a census, so their shares are known without sampling error. The 2,478 older
+The 136 new joins are a census, so their shares are known without sampling error. The 2,478 older
 joins are estimated from the November sample, each stratum weighted by its size in the release
 now. Each sampled stratum's rate has a Jeffreys posterior, and the release-wide interval comes from
 200,000 Monte Carlo draws.
@@ -66,13 +68,13 @@ notes.
 
 | Verdict | Auditor | After second check |
 |---|---:|---:|
-| Confirmed | 54 | 51 |
+| Confirmed | 55 | 52 |
 | Contradicted | 0 | 0 |
 | Not confirmed | 81 | 84 |
 
 | Stratum | Joins in release | Checked | Confirmed | Contradicted | Not confirmed |
 |---|---:|---:|---:|---:|---:|
-| Made after the November sample (census) | 135 | 135 | 51 | 0 | 84 |
+| Made after the November sample (census) | 136 | 136 | 52 | 0 | 84 |
 | Curated assertion | 1,023 | 40 | 33 | 0 | 7 |
 | Review disposition | 889 | 40 | 22 | 0 | 18 |
 | Reported incumbency | 221 | 15 | 15 | 0 | 0 |
@@ -83,9 +85,9 @@ The older strata hold 2,478 joins against 2,502 in November. Of the November joi
 that was later held and 14 now have another run between their two, while two older joins are of
 runs that had a run between them at `cf92e3b` that has since been removed. The weighted share of
 joins that tie two different people is 0.0%, with a one-sided 95% upper bound of 3.7%. The
-weighted share confirmed from the auditors' own sources is 71.3% (95% interval 63.0% to 77.3%).
+weighted share confirmed from the auditors' own sources is 71.4% (95% interval 63.0% to 77.3%).
 
-The second check rejected three of the auditors' 54 confirmations. Two joins of Hassan Husseini's
+The second check rejected three of the auditors' 55 confirmations. Two joins of Hassan Husseini's
 runs in York South—Weston (federal 1997, Ontario 1999, federal 2000) rested only on an
 EverybodyWiki page with no references. A join of Costas Manios's 1999 and 2003 runs in
 Scarborough Centre rested only on reader comments on an election-prediction site.
@@ -95,7 +97,7 @@ runs that no source about the person ties. The other 57 rest on a source about t
 of those cite Toronto Star articles read through ProQuest, which the auditors could not use. For
 the rest, the auditors found only result listings, could not open a page they needed (several of
 Wikipedia's lists of party candidates), or, for nine joins, ran out of searches. A join that was
-not confirmed is not evidence of an error. Twenty-five of the 135 joins are also in the human
+not confirmed is not evidence of an error. Twenty-five of the 136 joins are also in the human
 coding sample ([`human-coding-2026-11-07.md`](human-coding-2026-11-07.md)).
 
 ## Other findings

@@ -54,7 +54,7 @@ whether, and how, an author reviewed the code or the transcriptions.]
 
 ## Person links
 
-Code makes the links that need no judgement. Each Candidacy's own record founds its Person (4,942
+Code makes the links that need no judgement. Each Candidacy's own record founds its Person (4,941
 links), and incumbency reported by the election authority (221) and exact names on a Council roster
 (131) join runs. Code also proposes a link wherever a name matches an existing Person exactly, but
 a name match alone never confirms one.
@@ -93,15 +93,15 @@ were extended later.
 
 | Decided by | Period | Tool | Confirmed links | Held (unresolved or rejected) |
 |---|---|---|---:|---:|
-| Code: a Candidacy's own record | | | 4,942 | |
+| Code: a Candidacy's own record | | | 4,941 | |
 | Code: reported incumbency and roster names | | | 352 | |
 | Curated assertions | August 2026 | [Authors] | 976 | |
 | Dispositions | August and September 2026 | [Authors] | 129 | 294 |
-| Curated assertions | 28 October to 7 November 2026 | Claude Opus 5.5 | 336 | |
+| Curated assertions | 28 October to 7 November 2026 | Claude Opus 5.5 | 337 | |
 | Dispositions | 28 October to 7 November 2026 | Claude Opus 5.5 | 951 | 119 |
 
-Of the 2,744 links that join a Candidacy to a Person, 352 were made by code, 1,105 in August and
-September 2026 and 1,287 between 28 October and 7 November 2026. Each link's `evidence_basis`
+Of the 2,745 links that join a Candidacy to a Person, 352 were made by code, 1,105 in August and
+September 2026 and 1,288 between 28 October and 7 November 2026. Each link's `evidence_basis`
 says whether it rests on an official record, a source about the person or the structural rules
 alone.
 
@@ -110,10 +110,10 @@ alone.
 The audit of Person links (`docs/verification/link-audit-2026-11-03.md`) was carried out on 3
 November 2026 by four agents, none of which had made or reviewed a link, working only from sources
 they found themselves. A fifth agent checked each verdict that two Persons were one individual. All
-five were Claude Opus 5.5. The census of the 135 joins made after that sample
-(`docs/verification/link-audit-2026-11-07.md`) was carried out on 7 November 2026 by four more
-agents under the same rules, and two others checked every verdict that a join was confirmed. All
-six were Claude Opus 5.5. The results files give each verdict's sources, quotations and notes.
+five were Claude Opus 5.5. The census of the 136 joins made after that sample
+(`docs/verification/link-audit-2026-11-07.md`) was carried out on 7 November 2026 by five more
+agents under the same rules, and three others checked every verdict that a join was confirmed.
+All eight were Claude Opus 5.5. The results files give each verdict's sources, quotations and notes.
 [Authors: report any human coding of the audit sample.]
 
 ## Endorsements

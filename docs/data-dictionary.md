@@ -160,7 +160,7 @@ release that merges two Persons keeps the losing ID as `deprecated`, with a redi
 that replaced it. An active Person without a Candidacy holds an Office tenure needed to classify
 Incumbency. Six Persons are of this kind: Ceta Ramkhalawansingh, Jim Hart, Miganoush Megardichian,
 Paul Valenti, Peter Leon and Rose Milczyn, each appointed to Council to fill a vacancy, so the
-release's 5,079 People include 5,073 with at least one Candidacy. A Person name never rewrites a
+release's 5,078 People include 5,072 with at least one Candidacy. A Person name never rewrites a
 historical ballot name.
 
 ### `candidacy_person_links`
@@ -184,13 +184,13 @@ adjudicated; `unresolved` may retain the reviewed candidate Person when evidence
 
 | `method` | Confirmed links | `own_record` | `official_record` | `person_specific_source` | `structural` |
 |---|---:|---:|---:|---:|---:|
-| `official_candidacy_record` | 4,942 | 4,942 | | | |
+| `official_candidacy_record` | 4,941 | 4,941 | | | |
 | `official_incumbent_continuity` | 221 | | 221 | | |
 | `municipal_authoritative_roster_exact_name` | 131 | | 131 | | |
-| `curated_official_cross_event_identity` | 1,303 | | | 994 | 309 |
+| `curated_official_cross_event_identity` | 1,304 | | | 995 | 309 |
 | `curated_person_redirect` | 9 | | | 9 | |
 | `curated_review_confirmed` | 1,080 | | 3 | 821 | 256 |
-| All | 7,686 | 4,942 | 355 | 1,824 | 565 |
+| All | 7,686 | 4,941 | 355 | 1,825 | 565 |
 
 To keep only links that a source confirms, treat a Candidacy as unlinked when its link is
 `structural`:

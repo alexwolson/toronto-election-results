@@ -48,10 +48,8 @@ def test_published_ids_cover_the_house_and_assembly_members():
     by_scheme = published.groupby("scheme")["person_id"].apply(set).to_dict()
     assert by_scheme["wikidata"] <= members
     names = people.set_index("person_id")["preferred_name"]
-    # Both won 2026 by-elections. The Person from Elections Ontario's tabulation keeps the
-    # tabulation's FAMILY, GIVEN print as its preferred name.
     assert sorted(names[sorted(members - by_scheme["wikidata"])]) == [
-        "SHABAN, FATIMA",
+        "Fatima Shaban",
         "Tanveer Shahnawaz",
     ]
     ola = published.loc[published["scheme"].eq("ontario_legislature")]

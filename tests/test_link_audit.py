@@ -223,8 +223,8 @@ def test_census_covers_every_join_made_after_the_november_sample():
     assert results["pair_id"].tolist() == frame["pair_id"].tolist()
     assert results["earlier_run"].tolist() == frame["earlier_run"].tolist()
     sizes = _census("frame_strata.csv").set_index("stratum")["joins"].astype(int)
-    assert sizes["post_audit"] == len(results) == 135
-    assert int(sizes.sum()) == 2613
+    assert sizes["post_audit"] == len(results) == 136
+    assert int(sizes.sum()) == 2614
     # A join counts as confirmed only if the second check accepted the auditor's evidence.
     confirmed = results["final_verdict"].eq("CONFIRMED")
     assert results.loc[confirmed, "verdict"].eq("CONFIRMED").all()
@@ -245,6 +245,6 @@ def test_census_carries_no_contact_details():
 def test_census_summary_bounds_false_merges_across_the_release(capsys):
     _load_script("summarize_post_audit").summarize(CENSUS_DIR, AUDIT_DIR)
     out = capsys.readouterr().out
-    assert "| Made after the November sample (census) | 135 | 135 | 51 | 0 | 84 |" in out
-    assert "2,613 joins that tie two different people: 0.0% (one-sided 95% upper bound 3.7%)" in out
-    assert "own sources: 71.3% (95% interval 63.0% to 77.3%)" in out
+    assert "| Made after the November sample (census) | 136 | 136 | 52 | 0 | 84 |" in out
+    assert "2,614 joins that tie two different people: 0.0% (one-sided 95% upper bound 3.7%)" in out
+    assert "own sources: 71.4% (95% interval 63.0% to 77.3%)" in out

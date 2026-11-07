@@ -73,7 +73,7 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 ## Identity
 
-The release has 5,079 People. 5,073 hold at least one Candidacy, and six hold only an Office
+The release has 5,078 People. 5,072 hold at least one Candidacy, and six hold only an Office
 tenure from a Council roster. Each of those six was appointed to fill a vacancy and has no
 candidacy in the release. 7,686 Candidacies have a confirmed Person and 413 have none: 411
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
@@ -106,11 +106,11 @@ are the same for every year and office:
   (`docs/research/federal-provincial-holds-2026-11-01.md`).
 - Any other two offices need a person-specific source.
 
-Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,942 are a
+Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,941 are a
 Person's own record, the Candidacy from which the Person was built, so nothing is joined. Of the
-2,744 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
+2,745 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
 the election authority reported, 131 on a Council roster and three on one archive record printed
-twice), 1,824 on a source about the person and 565 on the structural rules alone. The basis of
+twice), 1,825 on a source about the person and 565 on the structural rules alone. The basis of
 each curated link is recorded in `data/reference/identity_link_basis.csv`, and a test checks the
 office, Party and election-gap rules on every structural link; name commonness and ward overlap
 are left to the reviewers. When the check was first run, in November 2026, 12 Persons joined
@@ -121,9 +121,9 @@ held; see `docs/research/structural-rule-check-2026-11-07.md`.
 An audit of a random sample of links
 ([`docs/verification/link-audit-2026-11-03.md`](verification/link-audit-2026-11-03.md)) found no
 join of two different people among 120 sampled joins, which puts a one-sided 95% upper bound of
-3.9% on the share of false merges. A census of the 135 joins made after that sample
+3.9% on the share of false merges. A census of the 136 joins made after that sample
 ([`docs/verification/link-audit-2026-11-07.md`](verification/link-audit-2026-11-07.md)) found
-none either, and with the older joins weighted by the sample the bound across all 2,613 joins in
+none either, and with the older joins weighted by the sample the bound across all 2,614 joins in
 the release is 3.7%. Of 40 sampled pairs of Persons with the same first and last
 name, 15 were one individual, and those have been merged. A review of all 177 same-name pairs
 that remained
