@@ -214,6 +214,26 @@ exact-name match in the same body and office. Twenty-four are sitting members wh
 Ontario election, the first in the release, and the other three are members whose earlier win is
 printed under another form of their name. That row does not change `election_results.person_id`.
 
+### `person_external_ids`
+
+Identifiers that other sources give the same Person, so the release can be joined to national
+career files. One row per Person and `scheme`, with `external_id`, the `basis` of the match, a
+`source_url` where it can be checked and the `retrieved_on` date.
+
+- `house_of_commons`: the House of Commons person ID, from the member export the Person's House
+  tenure cites (36th Parliament on).
+- `wikidata`: the Wikidata item that holds "member of the House of Commons of Canada" for the same
+  constituency in the same Parliament as one of the Person's House tenures, with the member's
+  surname in its label. A Person matches one item and an item one Person.
+- `parlinfo`: the Library of Parliament (ParlInfo) person ID recorded on that Wikidata item.
+
+The table covers the 94 People with a House tenure: 92 have a Wikidata item and 90 a ParlInfo ID,
+and the 89 who sat from the 36th Parliament on have a House ID. Roman Baber, elected in 2025, and
+Tanveer Shahnawaz, elected at the August 2026 by-election, had no matching Wikidata statement on 7
+November 2026. Members of the Ontario legislature are not yet covered. The rows are built by
+`scripts/build_person_external_ids.py` into `data/reference/person_external_ids.csv`, and the build
+fails if a row names a Person who is no longer active.
+
 ### `parties`
 
 One row per legal Party identity within a jurisdiction: `party_id`, jurisdiction, canonical name,

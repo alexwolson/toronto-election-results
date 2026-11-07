@@ -111,6 +111,7 @@ class ReleaseTables:
     endorsement_assertions: pd.DataFrame = field(default_factory=pd.DataFrame)
     endorsements: pd.DataFrame = field(default_factory=pd.DataFrame)
     endorsement_coverage: pd.DataFrame = field(default_factory=pd.DataFrame)
+    person_external_ids: pd.DataFrame = field(default_factory=pd.DataFrame)
 
 
 @dataclass(frozen=True)

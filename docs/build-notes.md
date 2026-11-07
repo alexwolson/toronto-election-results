@@ -15,13 +15,15 @@ elections, by-elections, acclamations and legally void results are included.
 
 ## Public artifacts
 
-The pipeline publishes twelve tables to `data/out/`, each as CSV and Parquet:
+The pipeline publishes thirteen tables to `data/out/`, each as CSV and Parquet:
 
 - `election_results.*`: modelling-ready Candidacy rows;
 - `election_events.*` and `contests.*`: event and Contest dimensions;
 - `electoral_districts.*`: as-run Contest geographies, with explicit missing-geometry status;
 - `parties.*`: jurisdiction-scoped Party identities;
 - `people.*` and `candidacy_person_links.*`: persistent, audited identity records;
+- `person_external_ids.*`: Wikidata, ParlInfo and House of Commons IDs for People who sat in the
+  House;
 - `office_tenures.*`: evidence used to derive same-office incumbency; and
 - `endorsers.*`, `endorsement_assertions.*`, `endorsements.*` and `endorsement_coverage.*`: the
   endorsement companion tables.

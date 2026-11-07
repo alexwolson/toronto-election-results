@@ -33,6 +33,11 @@ from .endorsement_curations import (
     build_default_endorsement_inputs,
 )
 from .endorsements import assemble_endorsement_tables
+from .external_ids import (
+    EXTERNAL_IDS_FILENAME,
+    build_person_external_ids,
+    read_external_ids,
+)
 from .federal import load_federal_results
 from .federal_historical import (
     download_historical_federal_sources,
@@ -136,6 +141,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
         CANDIDATE_NAME_CURATIONS_FILENAME,
+        EXTERNAL_IDS_FILENAME,
         HOUSE_MEMBERS_FILENAME,
         LINK_BASIS_FILENAME,
         PREDECESSOR_ROSTERS_FILENAME,
@@ -477,6 +483,9 @@ def run_all(
         ),
         candidacy_person_links=add_evidence_basis(
             built.tables.candidacy_person_links, read_link_basis(reference / LINK_BASIS_FILENAME)
+        ),
+        person_external_ids=build_person_external_ids(
+            built.tables.people, read_external_ids(reference / EXTERNAL_IDS_FILENAME)
         ),
     )
     endorsement_inputs = build_default_endorsement_inputs(
