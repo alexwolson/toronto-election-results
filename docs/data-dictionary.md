@@ -208,10 +208,27 @@ and retained source label. Party is a Candidacy relationship, never a permanent 
 
 ### `office_tenures`
 
-Evidence that a Person held one Office type in one Represented body, including known/approximate
-dates, district where available, entry method, and source. Appointments may appear here even though
-appointments are not Election results. Date-precision fields distinguish exact election dates from
-unknown or reference-bounded dates; `source_authority` and `source_detail` retain the evidence.
+Evidence that a Person held one Office type in one Represented body, with dates, the district
+where available, the entry method and the source. Each row is one piece of evidence, not one term
+of office:
+
+- A Council roster row says the Person was in office from the start of a term to at least the
+  reference date of one election or by-election (`ended_on_precision = at_or_after_reference`). A
+  councillor whose seat was checked at many events has a row for each, up to 17.
+- A House of Commons row is one member's term in one Parliament, from polling day to the last day
+  of the term as the House or ParlInfo records it (`exact`), or `ongoing` with a null `ended_on`
+  for a sitting member.
+- An Ontario row comes from Elections Ontario's incumbent flag and says only that the Person sat on
+  the day before polling, so its start and entry method are unknown.
+
+Appointments may appear here even though appointments are not Election results.
+`started_on_precision` and `ended_on_precision` say how each date is bounded, and
+`source_authority` and `source_detail` keep the evidence.
+
+`spell_id` groups the rows of one unbroken stretch of service: rows of one Person, Represented body
+and Office type share a spell when each starts no later than the day after the latest end so far.
+The 1,156 rows form 250 spells. The 208 rows whose start is unknown have no `spell_id`: the 188
+Ontario rows, 16 Council appointments whose date is not recorded, and four other Council rows.
 
 ### `electoral_districts`
 
@@ -334,6 +351,9 @@ back to name matching or blanket historical coverage claims.
   no geographic name.
 - Elections Canada official poll-result archives, official summary tables, and returning-officer
   validated contest totals when the poll-level export is not yet available.
+- The House of Commons members export for the 36th to 45th Parliaments and ParlInfo's list of the
+  35th Parliament's members, compiled in `data/reference/house_of_commons_members.csv`, for federal
+  incumbency and MP Office tenures.
 - Elections Ontario official candidate/statistics/party CSV reports.
 - City voter-statistics files for explicitly scoped municipal turnout.
 - City Council attendance/voting records, reconciled historical rosters and the curated 2000

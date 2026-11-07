@@ -39,6 +39,7 @@ from .federal_historical import (
     historical_federal_placeholder_manifest,
     load_historical_federal_results,
 )
+from .federal_rosters import HOUSE_MEMBERS_FILENAME
 from .identity import validate_identity_tables
 from .identity_curations import (
     DEFAULT_IDENTITY_ASSERTIONS,
@@ -134,6 +135,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
         CANDIDATE_NAME_CURATIONS_FILENAME,
+        HOUSE_MEMBERS_FILENAME,
         LINK_BASIS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
         DECLARATION_FILENAME,
