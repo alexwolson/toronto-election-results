@@ -5,7 +5,9 @@ A join is a pair of consecutive Candidacies (by election date) within one Person
 had no Person, in the release the audit sampled (commit `cf92e3b`). The script writes the frame with
 the run descriptions the auditors see, a separate key with the link that made each join, which the
 auditors do not see, and the size of each stratum of the release's joins: the new joins, and the
-older joins by the November strata. Run from the repository root:
+older joins by the November strata. When the output already holds a key, each join keeps its pair
+ID and a join made since is numbered after the last; the script fails if a join in the key is no
+longer in the release. Run from the repository root:
 
     git show cf92e3b:data/out/election_results.csv > /tmp/results-cf92e3b.csv
     python -I scripts/draw_post_audit_frame.py --baseline /tmp/results-cf92e3b.csv
@@ -36,6 +38,31 @@ def _joins(results: pd.DataFrame) -> pd.DataFrame:
     return pairs.rename(columns={"earlier": "earlier_candidacy_id", "candidacy_id": "later"})
 
 
+def _pair_ids(new: pd.DataFrame, key_path: Path) -> dict[tuple[str, str], str]:
+    """Keep the pair IDs of an earlier draw, and number the joins made since after them."""
+
+    joins = list(zip(new["earlier_candidacy_id"], new["later"], strict=True))
+    kept: dict[tuple[str, str], str] = {}
+    if key_path.is_file():
+        earlier = pd.read_csv(key_path, dtype=str, keep_default_na=False)
+        kept = dict(
+            zip(
+                zip(earlier["earlier_candidacy_id"], earlier["later_candidacy_id"], strict=True),
+                earlier["pair_id"],
+                strict=True,
+            )
+        )
+        gone = sorted(set(kept) - set(joins))
+        if gone:
+            raise SystemExit(f"{len(gone)} joins in {key_path} are no longer in the release")
+    last = max((int(pair_id[1:]) for pair_id in kept.values()), default=0)
+    for join in joins:
+        if join not in kept:
+            last += 1
+            kept[join] = f"P{last:03d}"
+    return kept
+
+
 def _link_basis(links: pd.DataFrame, candidacy_id: str) -> tuple[str, str]:
     row = links.loc[links["candidacy_id"].eq(candidacy_id) & links["link_status"].eq("confirmed")]
     if row.empty:
@@ -58,9 +85,10 @@ def draw(results_path: Path, links_path: Path, baseline_path: Path, output_dir: 
         ]
     ].sort_values(["person_id", "later"], kind="stable")
     by_id = results.set_index("candidacy_id")
+    pair_ids = _pair_ids(new, output_dir / "joins_key.csv")
     frame, key = [], []
-    for number, join in enumerate(new.itertuples(index=False), start=1):
-        pair_id = f"P{number:03d}"
+    for join in new.itertuples(index=False):
+        pair_id = pair_ids[(join.earlier_candidacy_id, join.later)]
         others = results.loc[
             results["person_id"].eq(join.person_id)
             & ~results["candidacy_id"].isin([join.earlier_candidacy_id, join.later])
@@ -99,8 +127,12 @@ def draw(results_path: Path, links_path: Path, baseline_path: Path, output_dir: 
         for stratum, count in strata.value_counts().sort_index().items()
     ]
     output_dir.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(frame).to_csv(output_dir / "joins_frame.csv", index=False, lineterminator="\n")
-    pd.DataFrame(key).to_csv(output_dir / "joins_key.csv", index=False, lineterminator="\n")
+    pd.DataFrame(frame).sort_values("pair_id").to_csv(
+        output_dir / "joins_frame.csv", index=False, lineterminator="\n"
+    )
+    pd.DataFrame(key).sort_values("pair_id").to_csv(
+        output_dir / "joins_key.csv", index=False, lineterminator="\n"
+    )
     pd.DataFrame(sizes).to_csv(output_dir / "frame_strata.csv", index=False, lineterminator="\n")
     print(f"{len(frame)} joins made after the audit's sample, of {len(joins)} in the release")
 
