@@ -110,7 +110,10 @@ alone.
 The audit of Person links (`docs/verification/link-audit-2026-11-03.md`) was carried out on 3
 November 2026 by four agents, none of which had made or reviewed a link, working only from sources
 they found themselves. A fifth agent checked each verdict that two Persons were one individual. All
-five were Claude Opus 5.5. The results files give each verdict's sources, quotations and notes.
+five were Claude Opus 5.5. The census of the 135 joins made after that sample
+(`docs/verification/link-audit-2026-11-07.md`) was carried out on 7 November 2026 by four more
+agents under the same rules, and two others checked every verdict that a join was confirmed. All
+six were Claude Opus 5.5. The results files give each verdict's sources, quotations and notes.
 [Authors: report any human coding of the audit sample.]
 
 ## Endorsements
