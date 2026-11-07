@@ -26,6 +26,7 @@ from .schema import stable_id
 
 _BODY = "toronto_city_council"
 _REVIEWER = "municipal_rosters/v1"
+COUNCIL_BY_ELECTION_PENDING_RULE = "council_by_election_roster_set_after_identity"
 _WHITESPACE = re.compile(r"\s+")
 
 # Total offices in the last-holder snapshot: councillors plus one mayor.
@@ -1074,7 +1075,6 @@ def build_municipal_roster_evidence(
             ].transform("max")
             known_winners = known_winners.loc[known_winners["_date"].eq(latest_by_district)]
 
-        resolved_councillor_holders: list[tuple[pd.Series, str, str]] = []
         for _, holder in known_winners.iterrows():
             source = _evidence(
                 "certified_winner_since_latest_general_in_incomplete_by_election_roster",
@@ -1093,7 +1093,6 @@ def build_municipal_roster_evidence(
                 person_id=person_id,
                 roster_source=source,
             )
-            resolved_councillor_holders.append((holder, person_id, source))
 
         if "mayor" in offices:
             prior_mayors = work.loc[
@@ -1159,34 +1158,20 @@ def build_municipal_roster_evidence(
                 )
 
         if "councillor" in offices:
-            added = 0
-            for holder, person_id, source in resolved_councillor_holders:
-                append_member(
-                    event_id=str(event_id),
-                    reference_date=event_date.date(),
-                    person_id=person_id,
-                    office_type="councillor",
-                    district_id=holder.get("district_id", pd.NA),
-                    started_on=holder["_date"].date(),
-                    started_on_precision="election_date",
-                    ended_on_precision="at_or_after_reference",
-                    entry_method="election",
-                    reference_date_rule="known_elected_holders_before_by_election",
-                    roster_complete=False,
-                    source_detail=source,
-                )
-                added += 1
-            if not added:
-                append_empty_scope(
-                    event_id=str(event_id),
-                    reference_date=event_date.date(),
-                    office_type="councillor",
-                    roster_complete=False,
-                    reference_date_rule="known_elected_holders_before_by_election",
-                    source_detail=_evidence(
-                        "no_known_elected_councillor_holders", event_id=str(event_id)
-                    ),
-                )
+            # The latest winner of each ward is not the sitting council: it keeps the member
+            # whose seat the by-election fills and leaves out members Council appointed. The
+            # release sets this scope once every Candidacy has its final Person
+            # (council_tenures.council_by_election_rosters).
+            append_empty_scope(
+                event_id=str(event_id),
+                reference_date=event_date.date(),
+                office_type="councillor",
+                roster_complete=False,
+                reference_date_rule=COUNCIL_BY_ELECTION_PENDING_RULE,
+                source_detail=_evidence(
+                    "council_by_election_roster_set_after_identity", event_id=str(event_id)
+                ),
+            )
 
     tenures = pd.DataFrame(tenure_rows, columns=_TENURE_COLUMNS)
     rosters = pd.DataFrame(roster_rows, columns=_ROSTER_COLUMNS)
