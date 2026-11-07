@@ -72,31 +72,48 @@ The main modules are the source adapters (`municipal`, `municipal_archive`, `tru
 
 The release has 5,079 People. 5,073 hold at least one Candidacy, and six hold only an Office
 tenure from a Council roster. Each of those six was appointed to fill a vacancy and has no
-candidacy in the release. 7,695 Candidacies have a confirmed Person and 404 have none: 402
+candidacy in the release. 7,686 Candidacies have a confirmed Person and 413 have none: 411
 were reviewed and left unresolved for insufficient evidence, and two were rejected. Five of the
-404 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
+413 are elected Candidacies whose proposed identities did not meet the evidence threshold. These
 nulls are review outcomes, not missing results. Each held run's disposition names the later
 research passes whose scope included it, so a reader can see which sources were searched.
 
 Confirmed links come from the official record behind each Candidacy, authority-reported incumbency
-continuity, Council rosters and adjudicated curations. The curations are 597 identity assertions
-over 1,185 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
-candidates have confirmed earlier races in the release) and 1,639 occurrence-level dispositions in
-`data/reference/identity_review_dispositions.csv` (1,139 confirmed, 496 unresolved and 4 rejected).
+continuity, Council rosters and adjudicated curations. The curations are 595 identity assertions
+over 1,181 occurrences, the two 2026 career reviews (through which 21 mayoral and 28 trustee
+candidates have confirmed earlier races in the release) and 1,643 occurrence-level dispositions in
+`data/reference/identity_review_dispositions.csv` (1,134 confirmed, 505 unresolved and 4 rejected).
 A disposition is not applied where a career review's confirmation or a person-record merge
 covers the same Candidacy, but a later disposition does replace a career review's hold. No
 blanket name merges are made, and a hold does not claim that two occurrences are different
-people. Without a person-specific source, two runs for the same office are linked on structure
-under one test for every year and office: the same, a successor or an overlapping ward or riding
-(at least about a fifth of either by area where the release has the boundaries), the same party
-where parties apply, no more than one general election between, a name that is not common, and
-no competing candidate of that name. Where the two runs print the name differently, the two forms
-must evidently be one name: a common nickname, a middle name or initial added or dropped, the same
-words in another order, or a nickname printed beside the full name. A House of Commons run and an Ontario legislature run are
-linked without a person-specific source only under the narrow rule in
-`docs/research/federal-provincial-holds-2026-11-01.md`: the same riding at both levels within two
-years, the federal and Ontario parties of one name or no party at either, an uncommon name, and
-no other Person of that name in the release.
+people.
+
+Without a person-specific source, two runs are joined on structure only under these rules, which
+are the same for every year and office:
+
+- Two runs for the same office type need the same, a successor or an overlapping ward or riding
+  (at least about a fifth of either by area where the release has the boundaries), the same Party
+  where Parties apply, no more than one general election between, a name that is not common, and
+  no competing candidate of that name. Where the two runs print the name differently, the forms
+  must evidently be one name: a common nickname, a middle name or initial added or dropped, the
+  same words in another order, or a nickname printed beside the full name.
+- A House of Commons run and an Ontario legislature run need the same riding at both levels
+  within two years, the federal and Ontario parties of one name or no party at either, an
+  uncommon name, and no other Person of that name in the release
+  (`docs/research/federal-provincial-holds-2026-11-01.md`).
+- Any other two offices need a person-specific source.
+
+Each link's `evidence_basis` records what it rests on. Of the 7,686 confirmed links, 4,942 are a
+Person's own record, the Candidacy from which the Person was built, so nothing is joined. Of the
+2,744 that join a Candidacy to a Person, 355 rest on an official record (221 on incumbency that
+the election authority reported, 131 on a Council roster and three on one archive record printed
+twice), 1,824 on a source about the person and 565 on the structural rules alone. The basis of
+each curated link is recorded in `data/reference/identity_link_basis.csv`, and a test checks the
+office, Party and election-gap rules on every structural link; name commonness and ward overlap
+are left to the reviewers. When the check was first run, in November 2026, 12 Persons joined
+runs for different offices on results alone and 12 same-office links failed the gap or Party
+rule. Sources now support the 12 Persons and three of the links, and the other nine runs are
+held; see `docs/research/structural-rule-check-2026-11-07.md`.
 
 An audit of a random sample of links
 ([`docs/verification/link-audit-2026-11-03.md`](verification/link-audit-2026-11-03.md)) found no

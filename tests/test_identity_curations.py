@@ -64,7 +64,7 @@ def test_default_pinned_candidacies_are_active_checked_ledger_entries():
 
     # These pins distinguish otherwise ambiguous same-name occurrences.  They must
     # be persistent ledger IDs, never IDs copied from a pre-ledger draft build.
-    assert len(pinned) == 1150
+    assert len(pinned) == 1146
     assert len({occurrence.candidacy_id for _, occurrence in pinned}) == len(pinned)
     for assertion_id, occurrence in pinned:
         assert occurrence.candidacy_id in active.index, assertion_id
@@ -391,8 +391,8 @@ def test_exact_scope_identity_wave_matches_public_artifacts_after_rebuild():
         for assertion in DEFAULT_IDENTITY_ASSERTIONS
         if assertion.assertion_id.endswith("-exact-scope")
     }
-    assert len(assertions) == 173
-    assert sum(len(assertion.occurrences) for assertion in assertions.values()) == 179
+    assert len(assertions) == 171
+    assert sum(len(assertion.occurrences) for assertion in assertions.values()) == 177
 
     people = pd.read_csv(REPO_ROOT / "data" / "out" / "people.csv", dtype="string").set_index(
         "person_id"
@@ -656,7 +656,7 @@ def test_published_release_applies_repeat_identity_review_wave():
         if assertion.assertion_id in assertion_ids
     }
     assert set(assertions) == assertion_ids
-    assert sum(len(assertion.occurrences) for assertion in assertions.values()) == 124
+    assert sum(len(assertion.occurrences) for assertion in assertions.values()) == 123
 
     results = pd.read_csv(
         REPO_ROOT / "data" / "out" / "election_results.csv", dtype="string"

@@ -34,7 +34,9 @@ retain the district and boundary regime under which votes were cast; they are ne
 a common modern map. Party affiliation is attached to each Candidacy where an authority reports
 it. Persistent Person links are evidence-backed and auditable; machine-generated identity
 proposals are never published as confirmed links without adjudication. Insufficient,
-contradictory, or newly queued matches remain unlinked instead of becoming fuzzy merges.
+contradictory, or newly queued matches remain unlinked instead of becoming fuzzy merges. Each
+link's `evidence_basis` says whether it rests on an official record, a source about the person or
+the structural rules alone, so users can keep only source-confirmed links.
 
 Mayor and City Councillor Contests also have evidence-backed endorsement companion tables.
 Endorsements are positive, open-world facts: an absent fact never means that an Endorser opposed or
@@ -94,7 +96,8 @@ enumeration is complete from 1998. The former municipalities left no such index,
 enumeration for 1995–1997 is marked uncertain; a search of the Toronto Star found one by-election
 in that period (North York Ward 1, 1995), which is included. No result rows are fabricated to fill
 an archive gap.
-Trustee incumbency remains null because the result sources do not report it and a complete,
+Trustee `incumbent` is recorded only for the 20 sitting trustees who ran in 2026. It is null for
+every other trustee Candidacy because the result sources do not report it and a complete,
 evidence-backed historical trustee roster has not been acquired.
 
 ## Development

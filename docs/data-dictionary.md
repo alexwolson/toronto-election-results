@@ -145,7 +145,10 @@ The persistent identity registry: opaque `person_id`, preferred name, `identity_
 target and creation release. Every Person in this release is `active` with no redirect. A later
 release that merges two Persons keeps the losing ID as `deprecated`, with a redirect to the Person
 that replaced it. An active Person without a Candidacy holds an Office tenure needed to classify
-Incumbency. A Person name never rewrites a historical ballot name.
+Incumbency. Six Persons are of this kind: Ceta Ramkhalawansingh, Jim Hart, Miganoush Megardichian,
+Paul Valenti, Peter Leon and Rose Milczyn, each appointed to Council to fill a vacancy, so the
+release's 5,079 People include 5,073 with at least one Candidacy. A Person name never rewrites a
+historical ballot name.
 
 ### `candidacy_person_links`
 
@@ -154,6 +157,40 @@ Audited occurrence-to-Person links. `link_status` is `confirmed`, `proposed`, `r
 adjudicated; `unresolved` may retain the reviewed candidate Person when evidence is insufficient;
 `rejected` records a disproved candidate Person. Only active confirmed links populate
 `election_results.person_id`.
+
+`evidence_basis` says what each active confirmed link rests on, and is null on every other row:
+
+- `own_record`: the Person was built from this Candidacy, so the link joins nothing;
+- `official_record`: an official record ties the runs, being incumbency that the election
+  authority reported, a Council roster, or one archive record printed twice;
+- `person_specific_source`: a source about the person ties the runs, such as a biography, a news
+  report, a candidate profile, an official record of service, or an occupation that the candidate
+  records give for each run;
+- `structural`: no source about the person was found, and the runs are joined under the
+  structural rules in the Identity section of `docs/build-notes.md`.
+
+| `method` | Confirmed links | `own_record` | `official_record` | `person_specific_source` | `structural` |
+|---|---:|---:|---:|---:|---:|
+| `official_candidacy_record` | 4,942 | 4,942 | | | |
+| `official_incumbent_continuity` | 221 | | 221 | | |
+| `municipal_authoritative_roster_exact_name` | 131 | | 131 | | |
+| `curated_official_cross_event_identity` | 1,303 | | | 994 | 309 |
+| `curated_person_redirect` | 9 | | | 9 | |
+| `curated_review_confirmed` | 1,080 | | 3 | 821 | 256 |
+| All | 7,686 | 4,942 | 355 | 1,824 | 565 |
+
+To keep only links that a source confirms, treat a Candidacy as unlinked when its link is
+`structural`:
+
+```python
+links = pd.read_csv("candidacy_person_links.csv", dtype="string")
+confirmed = links.loc[links["link_status"].eq("confirmed") & links["valid_to_release"].isna()]
+source_confirmed = confirmed.loc[confirmed["evidence_basis"].ne("structural"), "candidacy_id"]
+results.loc[~results["candidacy_id"].isin(source_confirmed), "person_id"] = pd.NA
+```
+
+This drops each structural link but does not recheck the joins among the runs that remain: a run
+whose source ties it to a structurally joined run keeps its Person.
 
 Every row in this release is current: `valid_from_release` is the release ID and
 `valid_to_release` is null. A later release closes a superseded row instead of deleting it, so
@@ -219,13 +256,13 @@ an Endorsement row never means opposition, neutrality, or a decision not to endo
 ### `endorsement_coverage`
 
 One row per approved Endorser and Mayor/City Councillor Contest: `endorser_id`, `contest_id`,
-`coverage_state`, `assessed_through`, and `coverage_basis`. The 2,385 cells distinguish
+`coverage_state`, `assessed_through`, and `coverage_basis`. The 3,078 cells distinguish
 `not_applicable`, `not_searched`, `partially_searched`, `searched_no_endorsement_found`,
 `comprehensive_source_found`, and `source_unavailable`. Coverage is open-world metadata, not a set
 of candidate-level negatives. Even `searched_no_endorsement_found` records only what the completed
 search found; it does not assert that the Endorser opposed any Candidacy. `assessed_through` is null
 for `not_searched` cells, so a release date cannot be mistaken for evidence that a historical
-Contest-specific search occurred. The current release contains 670 `not_applicable`, 145
+Contest-specific search occurred. The current release contains 1,336 `not_applicable`, 145
 `not_searched`, 1,277 `partially_searched`, 207 `comprehensive_source_found`, and 113
 `source_unavailable` cells; it uses no `searched_no_endorsement_found` cells.
 

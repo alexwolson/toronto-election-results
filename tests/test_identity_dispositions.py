@@ -559,10 +559,10 @@ def test_all_published_proposals_have_an_audited_final_disposition():
     original_decisions = read_identity_review_decisions(
         REPO_ROOT / "data" / "reference" / "identity_review_dispositions.csv"
     )
-    assert len(original_decisions) == 1639
+    assert len(original_decisions) == 1643
     assert original_decisions["decision"].value_counts().to_dict() == {
-        "confirmed": 1139,
-        "unresolved": 496,
+        "confirmed": 1134,
+        "unresolved": 505,
         "rejected": 4,
     }
     decisions = exclude_superseded_identity_decisions(
@@ -1226,11 +1226,11 @@ def test_star_ward_previews_link_backlog_runs():
             "can_6361e989519b56789271681c61fc3cd3",
             "can_dfb362d413b75e4a8cd18b60d0d2d9be",
         ],
-        # Bob Smith: 2003 Ward 31, 2006 mayor and 2014 Ward 31.
+        # Bob Smith: 2003 Ward 31 and 2006 mayor. His 2014 Ward 31 run is held, since no
+        # source names it and it came two general elections after 2003.
         "per_17e2dabe": [
             "can_bb6e6f84d844518fa414d8de1a034460",
             "can_98e4815b33ec543795f6d28ed05ad4a1",
-            "can_48932970021a5fc68e44c30c115d9899",
         ],
         # Gael Hepworth: 1993 NDP Eglinton-Lawrence and the 1994 York trustee run.
         "per_d2b0366a": [
