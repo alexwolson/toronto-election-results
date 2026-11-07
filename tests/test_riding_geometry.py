@@ -133,13 +133,16 @@ def test_a_missing_file_leaves_the_ridings_without_shapes(tmp_path):
 
 
 def test_published_ridings_and_trustee_wards_since_amalgamation_have_shapes():
+    # The 1997 Council and trustee districts and the 1987 Ontario riding still have no source.
     districts = pd.read_csv(OUT / "electoral_districts.csv", dtype=str, keep_default_na=False)
     mapped = districts.loc[
         districts["boundary_regime"].isin(
             [
+                "federal-1996-representation-order",
                 "federal-2003-representation-order",
                 "federal-2013-representation-order",
                 "federal-2023-representation-order",
+                "ontario-1999-103",
                 "ontario-2007-107",
                 "ontario-2018-124",
             ]

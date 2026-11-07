@@ -313,15 +313,22 @@ sources:
   poll totals on the City's 2000 results pages (`scripts/derive_trustee_wards_2000.py`): for
   TCDSB, Viamonde and MonAvenir only one grouping of Council wards fits; for TDSB the 2003 grouping
   fits every total and the candidates' wards agree with it, though the totals alone allow others.
-- Ridings: Elections Canada's boundary files for the 2003, 2013 and 2023 representation orders,
-  matched by district number and checked by name. Ontario's 2007 and 2018 ridings in Toronto are
-  the federal ridings of the 2003 and 2013 orders, which the Representation Acts of 2005 and 2015
-  adopted; `geometry_derivation` names the federal district and the membership-source resource
-  names the Act.
+- Federal ridings: Elections Canada's boundary files for the 2003, 2013 and 2023 representation
+  orders, and Statistics Canada's 2001 Census cartographic boundary file for the 1996 order,
+  matched by district number and checked by name. Broadview—Greenwood keeps its 1997 name; the
+  1996 file prints its later name, Toronto—Danforth.
+- Ontario ridings: Elections Ontario's file for the 2018 set. Ontario's 1999 and 2007 ridings in
+  Toronto are the federal ridings of the 1996 and 2003 orders, which the Representation Acts of
+  1996 and 2005 adopted; `geometry_derivation` names the federal district and the
+  membership-source resource names the Act. Elections Ontario's 2018 ridings agree with the
+  federal 2013 ridings that the Representation Act, 2015 adopted to within 1% of their area,
+  except along the lakeshore, where the two files draw the shoreline and the islands differently.
 
-Still without shapes: the 1994 municipal districts, the 1997 council wards (Metro Toronto's
-wards), the 1997 trustee areas, the federal ridings of the 1987 and 1996 orders, and Ontario's
-1987 and 1999 ridings.
+The Statistics Canada and Elections Ontario files are saved from their pages by hand, the first
+because the page puts a bot check in front of the download; the build manifest records each with
+its page URL. Still without shapes: the 1994 municipal districts, the 1997 council wards (Metro
+Toronto's wards), the 1997 trustee areas, the federal ridings of the 1987 order, and Ontario's
+1987 ridings.
 
 ### `endorsers`
 
@@ -457,8 +464,9 @@ back to name matching or blanket historical coverage claims.
   incumbency and MP Office tenures.
 - Elections Ontario official candidate/statistics/party CSV reports.
 - Elections Canada's federal electoral district boundary files for the 2003, 2013 and 2023
-  representation orders (Open Government Licence – Canada), for the federal and Ontario riding
-  shapes.
+  representation orders and Statistics Canada's 2001 Census boundary file for the 1996 order
+  (Open Government Licence – Canada), and Elections Ontario's electoral district shapefile for
+  the 2018 ridings (Elections Ontario's Open Use Data Product Licence), for the riding shapes.
 - The Legislative Assembly of Ontario's member profiles for the 36th to 44th Parliaments, compiled
   in `data/reference/ontario_legislature_members.csv`, for Ontario incumbency from 1996 and MPP
   Office tenures.

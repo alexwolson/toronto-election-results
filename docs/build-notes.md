@@ -223,9 +223,9 @@ every name, vote total and winner. Each difference in the other 68 was checked a
 authority's results; none is an error in the release. See
 [`docs/verification/external-reconciliation-2026-11-07.md`](verification/external-reconciliation-2026-11-07.md).
 
-District shapes cover every Council ward from 2000, every trustee ward from 2000 and every federal
-and Ontario riding from 2004 and 2007 respectively; the data dictionary's `electoral_districts`
-section gives the sources and the gaps. The 2000 trustee wards rest on an inference from poll
+District shapes cover every Council ward and trustee ward from 2000 and every federal and Ontario
+riding from 1997 and 1999 respectively; the data dictionary's `electoral_districts` section gives
+the sources and the gaps. The 2000 trustee wards rest on an inference from poll
 totals, set out in `scripts/derive_trustee_wards_2000.py`.
 
 The City's archived index of past results lists every election it ran from 1998, so event
