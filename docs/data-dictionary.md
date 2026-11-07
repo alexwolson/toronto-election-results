@@ -463,10 +463,11 @@ back to name matching or blanket historical coverage claims.
   35th Parliament's members, compiled in `data/reference/house_of_commons_members.csv`, for federal
   incumbency and MP Office tenures.
 - Elections Ontario official candidate/statistics/party CSV reports.
-- Elections Canada's federal electoral district boundary files for the 2003, 2013 and 2023
-  representation orders and Statistics Canada's 2001 Census boundary file for the 1996 order
-  (Open Government Licence – Canada), and Elections Ontario's electoral district shapefile for
-  the 2018 ridings (Elections Ontario's Open Use Data Product Licence), for the riding shapes.
+- For the riding shapes: Elections Canada's federal electoral district boundary files for the
+  2003, 2013 and 2023 representation orders (Open Government Licence – Canada); Statistics
+  Canada's Federal Electoral Districts (1996 Representation Order) Cartographic Boundary File,
+  2001 Census (Statistics Canada Open Licence); and Elections Ontario's electoral district
+  shapefile for the 2018 ridings (Elections Ontario's Open Use Data Product Licence).
 - The Legislative Assembly of Ontario's member profiles for the 36th to 44th Parliaments, compiled
   in `data/reference/ontario_legislature_members.csv`, for Ontario incumbency from 1996 and MPP
   Office tenures.

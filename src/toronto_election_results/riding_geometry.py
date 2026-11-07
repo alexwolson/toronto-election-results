@@ -5,8 +5,10 @@ district number and checked by name, and their shapes are attached in EPSG:4326.
 
 - Federal 2003, 2013 and 2023 orders: Elections Canada's boundary files, under the Open
   Government Licence – Canada.
-- Federal 1996 order: Statistics Canada's 2001 Census cartographic boundary file, saved from its
-  page by hand because the page puts a bot check in front of the download. Its names are
+- Federal 1996 order: Statistics Canada's 2001 Census cartographic boundary file, under the
+  Statistics Canada Open Licence, saved from its page by hand because the page puts a bot check
+  in front of the download. (The reference guide inside the ZIP still prints the end-use licence
+  the file was sold under in 2002.) Its names are
   bilingual and later than the 1997 election in one case: Broadview—Greenwood, renamed
   Toronto—Danforth in 2000.
 - Ontario 2018 set (the 2018 and 2022 elections): Elections Ontario's own file, saved from its
