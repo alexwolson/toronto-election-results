@@ -311,3 +311,37 @@ def enrich_district_geometries(
 
     out["geometry"] = gpd.GeoSeries(geometry_values, index=out.index, crs=TARGET_CRS)
     return gpd.GeoDataFrame(out, geometry="geometry", crs=TARGET_CRS)
+
+
+def council_poll_points(
+    electoral_districts: pd.DataFrame,
+    *,
+    sources: Mapping[str, CouncilGeometrySource] | None = None,
+) -> dict[str, list[BaseGeometry]]:
+    """Return one point inside each voting subdivision (poll), by council ward ``district_id``.
+
+    The points come from the same subdivision file as each regime's ward geometry, in
+    EPSG:4326. A regime whose file is missing has no points.
+    """
+
+    configured = DEFAULT_COUNCIL_GEOMETRY_SOURCES if sources is None else sources
+    council = electoral_districts.loc[electoral_districts["represented_body"].eq(COUNCIL_BODY)]
+    points: dict[str, list[BaseGeometry]] = {}
+    for regime, source in configured.items():
+        if not Path(source.path).is_file():
+            continue
+        raw = gpd.read_file(source.path)[[source.area_code_column, "geometry"]].to_crs(TARGET_CRS)
+        wards = raw[source.area_code_column].map(_ward_number)
+        districts = council.loc[council["boundary_regime"].eq(regime)]
+        by_ward = {
+            int(match.group(1)): str(district_id)
+            for district_id, official_id in zip(
+                districts["district_id"], districts["official_district_id"], strict=True
+            )
+            if (match := re.fullmatch(r"ward-(\d+)", str(official_id)))
+        }
+        for ward, geometry in zip(wards, raw.geometry, strict=True):
+            district_id = by_ward.get(int(ward))
+            if district_id is not None:
+                points.setdefault(district_id, []).append(geometry.representative_point())
+    return points

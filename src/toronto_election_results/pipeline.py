@@ -32,7 +32,7 @@ from .candidate_name_curations import (
     apply_candidate_name_curations,
 )
 from .council_tenures import COUNCIL_APPOINTMENTS_FILENAME
-from .district_geometry import enrich_district_geometries
+from .district_geometry import council_poll_points, enrich_district_geometries
 from .endorsement_curations import (
     ENDORSEMENT_ASSERTIONS_FILENAME,
     ENDORSEMENT_COVERAGE_FILENAME,
@@ -494,6 +494,7 @@ def run_all(
             ),
             built.tables.office_tenures,
             districts,
+            council_poll_points(districts),
         ),
         electoral_districts=districts,
         candidacy_person_links=add_evidence_basis(

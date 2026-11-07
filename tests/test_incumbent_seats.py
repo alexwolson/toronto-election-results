@@ -6,18 +6,27 @@ from pathlib import Path
 
 import pandas as pd
 import pytest
-from shapely.geometry import box
+from shapely.geometry import Point, box
 
 from toronto_election_results.incumbent_seats import add_incumbent_seat_fields
 
 REPO_ROOT = Path(__file__).parents[1]
 OUT = REPO_ROOT / "data" / "out"
 
-# Two small squares near Toronto; the new ward takes the west 70% of old ward A.
+# Two small squares near Toronto. The new west ward is the smaller part of old ward A by area,
+# but holds three of its four polls.
 OLD_A = box(-79.40, 43.70, -79.39, 43.71)
 OLD_B = box(-79.39, 43.70, -79.38, 43.71)
-NEW_W = box(-79.40, 43.70, -79.393, 43.71)
-NEW_E = box(-79.393, 43.70, -79.38, 43.71)
+NEW_W = box(-79.40, 43.70, -79.396, 43.71)
+NEW_E = box(-79.396, 43.70, -79.38, 43.71)
+POLLS = {
+    "dst_a": [
+        Point(-79.399, 43.701),
+        Point(-79.398, 43.705),
+        Point(-79.397, 43.709),
+        Point(-79.391, 43.705),
+    ]
+}
 
 
 def _districts() -> pd.DataFrame:
@@ -35,6 +44,9 @@ def _districts() -> pd.DataFrame:
         {
             "district_id": [row[0] for row in rows],
             "boundary_regime": [row[1] for row in rows],
+            "official_district_id": [
+                "city" if row[0].startswith("dst_city") else row[0] for row in rows
+            ],
             "geometry_status": [
                 "available" if row[2] is not None else "not_acquired" for row in rows
             ],
@@ -66,7 +78,7 @@ def _candidacy(candidacy_id, tenure_id, district, regime, *, office="councillor"
 
 def _fields(candidacies, tenures):
     out = add_incumbent_seat_fields(
-        pd.DataFrame(candidacies), pd.DataFrame(tenures), _districts()
+        pd.DataFrame(candidacies), pd.DataFrame(tenures), _districts(), POLLS
     ).set_index("candidacy_id")
     return out[["incumbent_appointed", "incumbent_held_district_id", "incumbent_changed_district"]]
 
@@ -83,7 +95,7 @@ def test_same_regime_compares_district_ids():
     assert out.loc["moved"].tolist() == [True, "dst_a", True]
 
 
-def test_a_boundary_change_compares_areas():
+def test_a_boundary_change_follows_the_held_wards_polls():
     out = _fields(
         [
             _candidacy("most_of_seat", "t_1", "dst_w", "new"),
