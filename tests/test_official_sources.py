@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -54,3 +55,12 @@ def test_council_rows_name_the_workbook_inside_the_results_zip():
     zipped = council["source_detail"].str.extract(r"^(https://\S+\.zip) :: (.+\.xlsx?)$")
     assert zipped.notna().all().all()
     assert set(zipped[0]) == set(GENERAL_RESULT_URLS.values())
+
+
+def test_every_downloaded_source_in_the_manifest_has_a_url():
+    manifest = json.loads((OUT / "build_manifest.json").read_text(encoding="utf-8"))
+    raw = [record for record in manifest["sources"] if record["local_path"].startswith("data/raw/")]
+    assert raw
+    assert all(record.get("source_url", "").startswith("https://") for record in raw)
+    tracked = [r for r in manifest["sources"] if not r["local_path"].startswith("data/raw/")]
+    assert not any("source_url" in record for record in tracked)

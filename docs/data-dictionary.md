@@ -340,6 +340,11 @@ schema version, generation timestamp, source and artifact SHA-256 checksums, kno
 uncertainty, deliberately excluded election calls, in-scope results awaiting acquisition, and the
 separately enumerated pending event.
 
+Each source file downloaded into the untracked `data/raw/` also has a `source_url`, the address it
+is downloaded from, so a reader can fetch the file and check it against the recorded checksum. The
+URLs come from `data/reference/raw_source_urls.csv`, which `scripts/build_raw_source_urls.py`
+writes from the adapters' own URL tables and the City Open Data portal's listings.
+
 ### `data/reference/candidacy_identity_ledger.csv`
 
 Project-owned source-occurrence registry used as a build input. It records the immutable public

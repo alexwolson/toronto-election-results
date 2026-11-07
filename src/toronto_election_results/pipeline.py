@@ -11,7 +11,13 @@ from pathlib import Path
 import pandas as pd
 
 from . import download as city_download
-from .build_manifest import build_manifest, sha256_file, write_manifest
+from .build_manifest import (
+    RAW_SOURCE_URLS_FILENAME,
+    build_manifest,
+    read_raw_source_urls,
+    sha256_file,
+    write_manifest,
+)
 from .campaign_url_curations import (
     CAMPAIGN_URL_CURATIONS_FILENAME,
     apply_campaign_url_curations,
@@ -143,6 +149,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         CANDIDATE_NAME_CURATIONS_FILENAME,
         EXTERNAL_IDS_FILENAME,
         HOUSE_MEMBERS_FILENAME,
+        RAW_SOURCE_URLS_FILENAME,
         LINK_BASIS_FILENAME,
         PREDECESSOR_ROSTERS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
@@ -528,6 +535,7 @@ def run_all(
         artifacts=artifacts,
         row_counts=row_counts,
         generated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        source_urls=read_raw_source_urls(reference / RAW_SOURCE_URLS_FILENAME),
     )
     write_manifest(manifest, out / "build_manifest.json")
 
