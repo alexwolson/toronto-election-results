@@ -60,6 +60,7 @@ from .ontario import (
     load_ontario_results,
 )
 from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
+from .predecessor_incumbency import PREDECESSOR_ROSTERS_FILENAME
 from .release import assemble_bootstrapped_release, validate_tables, write_release
 from .schema import normalize_adapter_frame
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
@@ -137,6 +138,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         CANDIDATE_NAME_CURATIONS_FILENAME,
         HOUSE_MEMBERS_FILENAME,
         LINK_BASIS_FILENAME,
+        PREDECESSOR_ROSTERS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
         DECLARATION_FILENAME,
         "results_2026/declaration_of_results_2026.pdf",

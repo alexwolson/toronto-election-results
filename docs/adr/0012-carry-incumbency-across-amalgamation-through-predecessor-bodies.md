@@ -1,6 +1,6 @@
 # Carry incumbency across amalgamation through predecessor bodies
 
-Status: accepted (2026-10-29). Amends ADR 0005.
+Status: accepted (2026-10-29), council rosters added 2026-11-07. Amends ADR 0005.
 
 ## Context
 
@@ -43,8 +43,13 @@ the new council. That hides the transition ADR 0010 brings into scope.
 
 ## Consequences
 
-- The predecessor Represented-body identifiers in `predecessor_incumbency.py` are provisional
-  until the 1994 municipal adapter publishes those bodies and their rosters.
-- Until predecessor rosters are acquired, `predecessor_incumbent` is null for every Candidacy.
+- The predecessor Represented-body identifiers in `predecessor_incumbency.py` are the ones the 1994
+  municipal results publish.
+- `data/reference/predecessor_rosters_1997.csv` (added 2026-11-07) lists the members of Metro
+  Council and the six former councils on 9 November 1997, so the 1997 Mayor and City Councillor
+  races have `predecessor_incumbent` true or false for every Candidacy with a Person. See
+  `docs/research/predecessor-rosters-1997-2026-11-07.md`.
+- The school boards have no roster, so the 1997 trustee races keep `predecessor_incumbent` null.
+- The 1994 elections are in the release to supply this field and have no incumbency of their own.
 - Models that want one incumbency signal across 1997 can combine the two fields; the release keeps
   them separate so neither definition shifts.
