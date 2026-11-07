@@ -13,6 +13,8 @@ directory of Council members carry contact details, and the deposit leaves those
 The script checks that the working tree is clean, that HEAD carries the release tag and that
 every release table matches the manifest. It writes the deposit to OUT_DIR:
 
+- `repository-TAG.zip`: the tagged repository, with the code and the reference files the build
+  reads, as `git archive` writes it;
 - `data/`: the release tables and `build_manifest.json`;
 - `docs/`, `README.md`, `CONTEXT.md`, `CITATION.cff` and `LICENSE`;
 - `raw/`: the City's raw files, under their `data/raw/` paths, with `raw/SOURCES.csv`;
@@ -119,7 +121,7 @@ https://doi.org/{doi}.
   (https://doi.org/{doi}), and adds the City of Toronto raw files the build reads.
 - **Subject:** Social Sciences
 - **Keywords:** {"; ".join(keywords)}
-- **Related dataset:** Olson, A., & Elliott, M. (2026). *Toronto Election Results* (Version
+- **Related dataset:** Olson, A., & Elliott, M. ({tag[8:12]}). *Toronto Election Results* (Version
   {tag}) [Data set]. Zenodo. https://doi.org/{doi}
 - **Licence:** CC BY 4.0 for the data and documentation. The raw files in `raw/` are the City of
   Toronto's, under the {CITY_LICENCE}.
@@ -141,6 +143,15 @@ def main(argv: list[str]) -> None:
     manifest = _check_release(tag)
     raw, left_out = _city_raw_files(manifest)
 
+    out_dir.mkdir(parents=True)
+    _git(
+        "archive",
+        "--format=zip",
+        f"--prefix=toronto-election-results-{tag}/",
+        "-o",
+        str((out_dir / f"repository-{tag}.zip").resolve()),
+        tag,
+    )
     shutil.copytree(OUT, out_dir / "data")
     shutil.copytree(REPO_ROOT / "docs", out_dir / "docs")
     for name in TOP_LEVEL_FILES:
