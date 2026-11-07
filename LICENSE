@@ -7,7 +7,12 @@ This repository is licensed in two parts.
 
 The release is built from public records published by the City of Toronto, Elections Canada,
 Elections Ontario and other sources listed in README.md and docs/. Those records remain subject to
-their publishers' terms. Contains information licensed under the Open Government Licence – Toronto.
+their publishers' terms. Contains information licensed under the Open Government Licence – Toronto
+and the Open Government Licence – Canada.
+The 1996-order federal riding shapes are adapted from Statistics Canada, Federal Electoral
+Districts (1996 Representation Order) Cartographic Boundary File, 2001 Census, under the
+Statistics Canada Open Licence. This does not constitute an endorsement by Statistics Canada of
+this product.
 Short quotations from newspapers and other publications in docs/research/ remain the property of
 their publishers.
 

@@ -52,6 +52,7 @@ from toronto_election_results.pending_candidates import (
     TRUSTEE_CANDIDATES_URL,
     pending_candidate_paths,
 )
+from toronto_election_results.riding_geometry import RIDING_SOURCES
 
 RAW = Path("data/raw")
 MANIFEST = REPO_ROOT / "data" / "out" / "build_manifest.json"
@@ -95,6 +96,8 @@ def _known_urls() -> dict[str, str]:
             add(path, report_csv_url(report.report_group_id, output_id))
     for spec in TABULATIONS:
         add(tabulation_path(RAW / "ontario", spec), spec.tabulation_url)
+    for source in RIDING_SOURCES.values():
+        add(source.path, source.url)
     return urls
 
 
