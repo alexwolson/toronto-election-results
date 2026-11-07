@@ -245,9 +245,12 @@ Evidence that a Person held one Office type in one Represented body, with dates,
 where available, the entry method and the source. Each row is one piece of evidence, not one term
 of office:
 
-- A Council roster row says the Person was in office from the start of a term to at least the
-  reference date of one election or by-election (`ended_on_precision = at_or_after_reference`). A
-  councillor whose seat was checked at many events has a row for each, up to 17.
+- A Council roster row says the Person was in office from their latest Council win in the term
+  (`started_on_precision = election_date`), or from the day Council appointed them to fill a
+  vacancy (`appointment_date`), to at least the reference date of one election or by-election
+  (`ended_on_precision = at_or_after_reference`). The win can be at the term's first general
+  election or at a by-election since. A councillor whose seat was checked at many events has a
+  row for each, up to 17.
 - A House of Commons row is one member's term in one Parliament, from polling day to the last day
   of the term as the House or ParlInfo records it (`exact`), or `ongoing` with a null `ended_on`
   for a sitting member.
@@ -256,14 +259,19 @@ of office:
 - A predecessor roster row says the Person sat on Metro Council or one of the six former councils
   on 9 November 1997, the eve of the first amalgamated election (ADR 0012).
 
-Appointments may appear here even though appointments are not Election results.
-`started_on_precision` and `ended_on_precision` say how each date is bounded, and
-`source_authority` and `source_detail` keep the evidence.
+Appointments appear here even though they are not Election results. The 17 Council rows with
+`entry_method = appointment` are dated from `data/reference/council_appointments.csv`, which
+gives each appointment's ward, predecessor and source: the City Clerk's list of Council vacancies
+since amalgamation, or the minutes of the meeting, to 2006, and the by-law that made the
+appointment, or a news report from the day of the vote, after that. The only other appointment
+is Vincent Crisanti's to Etobicoke council in the predecessor rosters. `started_on_precision` and
+`ended_on_precision` say how each date is bounded, and `source_authority` and `source_detail` keep
+the evidence.
 
 `spell_id` groups the rows of one unbroken stretch of service: rows of one Person, Represented body
 and Office type share a spell when each starts no later than the day after the latest end so far.
-The 1,262 rows form 356 spells. The 208 rows whose start is unknown have no `spell_id`: the 188
-Ontario rows, 16 Council appointments whose date is not recorded, and four other Council rows.
+The 1,262 rows form 373 spells. The 188 Ontario rows have no `spell_id`, since their start is
+unknown.
 
 ### `electoral_districts`
 

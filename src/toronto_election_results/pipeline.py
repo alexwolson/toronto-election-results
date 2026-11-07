@@ -31,6 +31,7 @@ from .candidate_name_curations import (
     CANDIDATE_NAME_CURATIONS_FILENAME,
     apply_candidate_name_curations,
 )
+from .council_tenures import COUNCIL_APPOINTMENTS_FILENAME
 from .district_geometry import enrich_district_geometries
 from .endorsement_curations import (
     ENDORSEMENT_ASSERTIONS_FILENAME,
@@ -147,6 +148,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "city_ward_geographic_names.csv",
         CAMPAIGN_URL_CURATIONS_FILENAME,
         CANDIDATE_NAME_CURATIONS_FILENAME,
+        COUNCIL_APPOINTMENTS_FILENAME,
         EXTERNAL_IDS_FILENAME,
         HOUSE_MEMBERS_FILENAME,
         RAW_SOURCE_URLS_FILENAME,
