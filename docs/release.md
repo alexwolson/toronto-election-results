@@ -23,17 +23,18 @@ link changes after the audit.
 
 ## The tag
 
-7. Publish a GitHub release named for the tag from `main`. Zenodo archives the tagged
-   repository and mints a version DOI.
-8. Add the version DOI to the README's Citing section on `main`. The tagged copy cannot hold its
-   own DOI.
+7. Tag the merged commit `results-YYYY-MM-DD.N` and push the tag. While the Zenodo GitHub
+   integration is on, a GitHub release named for the tag also archives this repository on Zenodo
+   as software; it is turned off once the first data record exists.
 
-## The Dataverse mirror
+## Publication
 
-9. On the tagged commit, with the City's raw files in `data/raw/`, run
-   `python -I scripts/build_deposit.py TAG ZENODO_VERSION_DOI OUT_DIR`. It copies the release
-   tables, the documentation and the City of Toronto's raw files, which the Open Government
-   Licence – Toronto lets anyone redistribute, and writes the values for the deposit form to
-   `DATAVERSE.md`. The other raw files stay cited by URL and checksum in the build manifest.
-10. Deposit `OUT_DIR` in the CJPS Dataverse with those values, cross-referencing the Zenodo DOI,
-    and add the Dataverse DOI to the README.
+8. Publish the version from
+   [toronto-election-records](https://github.com/alexwolson/toronto-election-records), following
+   its `RELEASING.md`. It builds the user package and the provenance supplement from the tag,
+   publishes them on Zenodo as the version's data record, registers the version for the R, Python
+   and Stata loaders, and assembles the Dataverse deposit, which adds the City of Toronto's raw
+   files from this repository's `data/raw/` (the Open Government Licence – Toronto lets anyone
+   redistribute them). The other raw files stay cited by URL and checksum in the build manifest.
+9. Add the version DOI to the README's Citing section and to `CITATION.cff` on `main`. The tagged
+   copy cannot hold its own DOI.
