@@ -105,6 +105,15 @@ ELECTION_RESULT_COLUMNS = [
 ]
 
 
+# Tables the build assembles and validates but does not write to data/out. The Endorsement
+# tables cover too little to stand on (nine Endorsers, Mayor and Council only, a small share of
+# Endorser-by-Contest cells searched in full) and an absent endorsement is easy to misread as
+# none, so they are held back until their coverage is enough for a release of their own.
+HELD_BACK_TABLES = frozenset(
+    {"endorsers", "endorsement_assertions", "endorsements", "endorsement_coverage"}
+)
+
+
 @dataclass(frozen=True)
 class ReleaseTables:
     """The published result, identity, geography, and endorsement artifacts."""
@@ -582,6 +591,12 @@ def validate_tables(release: ReleaseTables) -> list[str]:
     return issues
 
 
+def published_table_names(release: ReleaseTables) -> list[str]:
+    """The tables written to data/out, in field order: every table but the held-back ones."""
+
+    return [field.name for field in fields(release) if field.name not in HELD_BACK_TABLES]
+
+
 def write_release(release: ReleaseTables, output_dir: str | Path) -> list[Path]:
     """Validate, stage, then atomically promote every CSV and Parquet artifact.
 
@@ -598,7 +613,9 @@ def write_release(release: ReleaseTables, output_dir: str | Path) -> list[Path]:
     destination = Path(output_dir)
     destination.parent.mkdir(parents=True, exist_ok=True)
     artifact_names = [
-        f"{field.name}.{extension}" for field in fields(release) for extension in ("csv", "parquet")
+        f"{name}.{extension}"
+        for name in published_table_names(release)
+        for extension in ("csv", "parquet")
     ]
 
     with tempfile.TemporaryDirectory(
@@ -611,10 +628,10 @@ def write_release(release: ReleaseTables, output_dir: str | Path) -> list[Path]:
         backups.mkdir()
 
         # A serializer failure happens before destination is created or touched.
-        for field in fields(release):
-            frame = getattr(release, field.name)
-            frame.to_csv(payload / f"{field.name}.csv", index=False)
-            frame.to_parquet(payload / f"{field.name}.parquet", index=False)
+        for name in published_table_names(release):
+            frame = getattr(release, name)
+            frame.to_csv(payload / f"{name}.csv", index=False)
+            frame.to_parquet(payload / f"{name}.parquet", index=False)
 
         destination.mkdir(parents=True, exist_ok=True)
         promoted: list[tuple[Path, Path]] = []

@@ -5,182 +5,126 @@
       "local_path": "data/out/candidacy_person_links.csv",
       "rows": 8127,
       "sha256": "40c10c0a61cc9fd6a4a571485467e098c27041b41c7dff04fa0a7d01ca45b459",
-      "written_at": "2026-11-07T18:49:36.613724Z"
+      "written_at": "2026-11-07T20:13:42.471139Z"
     },
     {
       "bytes": 2220089,
       "local_path": "data/out/candidacy_person_links.parquet",
       "rows": 8127,
       "sha256": "8a6bb75fb4659f3cf8c101ceace6149a44b5e66c4a07c38111145eae48a5f082",
-      "written_at": "2026-11-07T18:49:36.641724Z"
+      "written_at": "2026-11-07T20:13:42.479796Z"
     },
     {
       "bytes": 666050,
       "local_path": "data/out/contests.csv",
       "rows": 1385,
       "sha256": "f6e68f03307f70a762ece26883d170e81fe1fe58877dfcc8cd3278523640be03",
-      "written_at": "2026-11-07T18:49:36.445724Z"
+      "written_at": "2026-11-07T20:13:42.406691Z"
     },
     {
       "bytes": 133195,
       "local_path": "data/out/contests.parquet",
       "rows": 1385,
       "sha256": "3a2a6fda4c6037e913b1bdf5dbc5b79bcf77442388a9fdd0c46f64052c4b70b4",
-      "written_at": "2026-11-07T18:49:36.452770Z"
+      "written_at": "2026-11-07T20:13:42.408886Z"
     },
     {
       "bytes": 5663,
       "local_path": "data/out/election_events.csv",
       "rows": 80,
       "sha256": "a136b4527adb80f6784281a1ea3064338cf4db6869e5404bcdc3f0805ad76d34",
-      "written_at": "2026-11-07T18:49:36.431304Z"
+      "written_at": "2026-11-07T20:13:42.398778Z"
     },
     {
       "bytes": 6118,
       "local_path": "data/out/election_events.parquet",
       "rows": 80,
       "sha256": "f2b21e599b230ce0da34c94001869edc5a0e23478f335763bfd9f6fde5a09721",
-      "written_at": "2026-11-07T18:49:36.432605Z"
+      "written_at": "2026-11-07T20:13:42.399471Z"
     },
     {
       "bytes": 6515064,
       "local_path": "data/out/election_results.csv",
       "rows": 8099,
       "sha256": "0acf956be6aee4a9560fe6980481c6a69f3aa2b46f1a2c655a0cb6e8c322f8c1",
-      "written_at": "2026-11-07T18:49:36.361724Z"
+      "written_at": "2026-11-07T20:13:42.367767Z"
     },
     {
       "bytes": 1278944,
       "local_path": "data/out/election_results.parquet",
       "rows": 8099,
       "sha256": "7a7a24e81003b7aebca810e5ebdebdd70f2e050ee09a64fe800be0f1208acc1e",
-      "written_at": "2026-11-07T18:49:36.425724Z"
+      "written_at": "2026-11-07T20:13:42.397941Z"
     },
     {
-      "bytes": 26653328,
+      "bytes": 26653741,
       "local_path": "data/out/electoral_districts.csv",
       "rows": 848,
-      "sha256": "fd7443260b751bc979a46e387aa42252a0f7d483f02c88781c6058924e1f3a52",
-      "written_at": "2026-11-07T18:49:37.173724Z"
+      "sha256": "62664f712ecf1d9b3c89be889a195b832aa7554aff390d1a6a10ad148d1367e4",
+      "written_at": "2026-11-07T20:13:42.703688Z"
     },
     {
-      "bytes": 4938508,
+      "bytes": 4938064,
       "local_path": "data/out/electoral_districts.parquet",
       "rows": 848,
-      "sha256": "61a82ca3a44c4e485082eec1811b62a664e224e32b00279da4503060b8d6cc26",
-      "written_at": "2026-11-07T18:49:37.229724Z"
-    },
-    {
-      "bytes": 70085,
-      "local_path": "data/out/endorsement_assertions.csv",
-      "rows": 161,
-      "sha256": "88d1c158f04384914b16e40ae13dd965a9d4dd02461d326d46b50a3338a72ca9",
-      "written_at": "2026-11-07T18:49:37.237724Z"
-    },
-    {
-      "bytes": 37252,
-      "local_path": "data/out/endorsement_assertions.parquet",
-      "rows": 161,
-      "sha256": "d6d85ac14e6f505a5c9a6082abb227109ed4caa62f0a04a68bb3798bcb47f56f",
-      "written_at": "2026-11-07T18:49:37.242235Z"
-    },
-    {
-      "bytes": 494826,
-      "local_path": "data/out/endorsement_coverage.csv",
-      "rows": 3078,
-      "sha256": "c9e76939e51d05b3f8579981cae89f97afa6c0e0497cc458995191cf898482b5",
-      "written_at": "2026-11-07T18:49:37.253724Z"
-    },
-    {
-      "bytes": 22292,
-      "local_path": "data/out/endorsement_coverage.parquet",
-      "rows": 3078,
-      "sha256": "cd7f0462d7128b7b99653a417512fc5ed7cda31a822e544ff6f7ca509998c9e5",
-      "written_at": "2026-11-07T18:49:37.259014Z"
-    },
-    {
-      "bytes": 23731,
-      "local_path": "data/out/endorsements.csv",
-      "rows": 160,
-      "sha256": "dedac2711227506dae8c166cb7a5be9a44bce82aec1878edabb7793c46734e36",
-      "written_at": "2026-11-07T18:49:37.244376Z"
-    },
-    {
-      "bytes": 17166,
-      "local_path": "data/out/endorsements.parquet",
-      "rows": 160,
-      "sha256": "4b638e3893cce5759ca0b8b23a694a058ba6ecc7be979adbdbc8eafa161f55dc",
-      "written_at": "2026-11-07T18:49:37.245146Z"
-    },
-    {
-      "bytes": 2537,
-      "local_path": "data/out/endorsers.csv",
-      "rows": 9,
-      "sha256": "9bfdb461ff5f4279be215031a4a9ca996c2235b3ea967e7b169d781480a2b7d1",
-      "written_at": "2026-11-07T18:49:37.233724Z"
-    },
-    {
-      "bytes": 8618,
-      "local_path": "data/out/endorsers.parquet",
-      "rows": 9,
-      "sha256": "e10fb740979dfda5df2de1ce891ace8795295a35c465b62644a0a1dbd3705b36",
-      "written_at": "2026-11-07T18:49:37.237489Z"
+      "sha256": "7ebfad4d5fdfac25ac29f7dce58119331aaf43ec62956b1df41bafbcd1f3626b",
+      "written_at": "2026-11-07T20:13:42.723584Z"
     },
     {
       "bytes": 791740,
       "local_path": "data/out/office_tenures.csv",
       "rows": 986,
       "sha256": "f4267e82c459e2b4a7e434e3f4401ed51b7367c020b758519d07d9e885afe4af",
-      "written_at": "2026-11-07T18:49:36.661724Z"
+      "written_at": "2026-11-07T20:13:42.487422Z"
     },
     {
       "bytes": 197603,
       "local_path": "data/out/office_tenures.parquet",
       "rows": 986,
       "sha256": "c039895bd4a7abcfbbf8f255b3187c62d719ebd26f4f186f1a23400f7d8379e6",
-      "written_at": "2026-11-07T18:49:36.666158Z"
+      "written_at": "2026-11-07T20:13:42.488889Z"
     },
     {
       "bytes": 8383,
       "local_path": "data/out/parties.csv",
       "rows": 82,
       "sha256": "a0359370749bd302b02f542ae193878aa5131643c8d489b4af321149089b4d8d",
-      "written_at": "2026-11-07T18:49:36.647543Z"
+      "written_at": "2026-11-07T20:13:42.480480Z"
     },
     {
       "bytes": 8692,
       "local_path": "data/out/parties.parquet",
       "rows": 82,
       "sha256": "e8abc0d11c57649bc8252ff7c8d04a41608a9cba6d045f5bc173f3b7e9a59a68",
-      "written_at": "2026-11-07T18:49:36.648492Z"
+      "written_at": "2026-11-07T20:13:42.480954Z"
     },
     {
       "bytes": 357922,
       "local_path": "data/out/people.csv",
       "rows": 5079,
       "sha256": "01ba51bf31bf12813351925b55bf3322cc791fee39ef097468bc10d78f383f51",
-      "written_at": "2026-11-07T18:49:36.461724Z"
+      "written_at": "2026-11-07T20:13:42.412843Z"
     },
     {
       "bytes": 245383,
       "local_path": "data/out/people.parquet",
       "rows": 5079,
       "sha256": "07a77b6f7a73fcb0bbc565c4c171fbfaea4d3e6803c05e3568d3558391caf2a4",
-      "written_at": "2026-11-07T18:49:36.468199Z"
+      "written_at": "2026-11-07T20:13:42.414686Z"
     },
     {
       "bytes": 91622,
       "local_path": "data/out/person_external_ids.csv",
       "rows": 460,
       "sha256": "1f1ea1662af7c666ae1882f39a8584fddae626739b7c8e8dc9b05ea977fb88c2",
-      "written_at": "2026-11-07T18:49:37.262568Z"
+      "written_at": "2026-11-07T20:13:42.724817Z"
     },
     {
       "bytes": 24457,
       "local_path": "data/out/person_external_ids.parquet",
       "rows": 460,
       "sha256": "c43df9d1a73af61f9ce0d9dec825ca7a801fae4980f1399b7cd847bc2371ee38",
-      "written_at": "2026-11-07T18:49:37.263342Z"
+      "written_at": "2026-11-07T20:13:42.725412Z"
     }
   ],
   "coverage": {
@@ -210,2764 +154,2764 @@
       "scheduled_date": "2008-09-22"
     }
   ],
-  "generated_at": "2026-11-07T18:49:37.299080Z",
+  "generated_at": "2026-11-07T20:13:42.736791Z",
   "pending_events": [],
   "schema_version": "2.2.0",
   "sources": [
     {
       "bytes": 62113718,
       "local_path": "data/raw/boundaries/federal-1996/gfed000b01m_e.zip",
-      "retrieved_at": "2026-11-07T18:41:12.813694Z",
+      "retrieved_at": "2026-11-07T18:40:23.540547Z",
       "sha256": "0526ced43cd62915ab009d34374903ec0dffa3861fa7d61d7d4e0750049c9fb9",
       "source_url": "https://www12.statcan.gc.ca/census-recensement/2011/geo/bound-limit/bound-limit-2001-eng.cfm"
     },
     {
       "bytes": 4107866,
       "local_path": "data/raw/boundaries/federal-2003/federal_electoral_districts_boundaries_2003_en.gdb.zip",
-      "retrieved_at": "2026-11-07T17:43:12.181769Z",
+      "retrieved_at": "2026-11-07T20:01:38.838336Z",
       "sha256": "3a26c6ac6382f65f5be5743d09c5d0051898f16f969f7c8a10eaa4fd0b6842d3",
       "source_url": "https://ftp.maps.canada.ca/pub/elections_elections/Electoral-districts_Circonscription-electorale/federal_electoral_districts_boundaries_2003/federal_electoral_districts_boundaries_2003_en.gdb.zip"
     },
     {
       "bytes": 3297463,
       "local_path": "data/raw/boundaries/federal-2013/federal_electoral_districts_boundaries_2013_en.gdb.zip",
-      "retrieved_at": "2026-11-07T17:44:37.193774Z",
+      "retrieved_at": "2026-11-07T20:01:41.529417Z",
       "sha256": "ca84c13d4db88ce34b9ee638a5bce5c7064d04feb7c5365c1e0ae09ac3236b10",
       "source_url": "https://ftp.maps.canada.ca/pub/elections_elections/Electoral-districts_Circonscription-electorale/federal_electoral_districts_boundaries_2013/federal_electoral_districts_boundaries_2013_en.gdb.zip"
     },
     {
       "bytes": 9388965,
       "local_path": "data/raw/boundaries/federal-2023/FED_CA_2023_EN-SHP.zip",
-      "retrieved_at": "2026-11-07T17:49:58.649793Z",
+      "retrieved_at": "2026-11-07T20:01:43.354228Z",
       "sha256": "eab55b952164ba7e8bf569f00c1fe4b6480b532411e1436de427772d9cebae59",
       "source_url": "https://ftp.maps.canada.ca/pub/elections_elections/Electoral-districts_Circonscription-electorale/federal_electoral_districts_boundaries_2023/FED_CA_2023_EN-SHP.zip"
     },
     {
       "bytes": 1847182,
       "local_path": "data/raw/boundaries/ontario-2022/Electoral District Shapefile - 2022 General Election.zip",
-      "retrieved_at": "2026-11-07T18:42:31.399885Z",
+      "retrieved_at": "2026-11-07T18:41:55.076460Z",
       "sha256": "70fd809a4998147b228fd9275e34e569be8ae1fd67470e2f4a20761e5d1e7cae",
       "source_url": "https://www.elections.on.ca/content/dam/NGW/sitecontent/2017/preo/shapefiles/Electoral%20District%20Shapefile%20-%202022%20General%20Election.zip"
     },
     {
       "bytes": 10415,
       "local_path": "data/raw/byelection/2016-councillor-ward-2.xlsx",
-      "retrieved_at": "2026-08-19T19:33:19Z",
+      "retrieved_at": "2026-08-19T19:33:19.963408Z",
       "sha256": "f0b92c18c99724ce814a2adbdcd9512c71f059f4f62c7db0ccd0e9457630f9fc",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/389e00d1-8637-4e6f-88bc-7f6936a2a150/download/2016-councillor-ward-2.xlsx"
     },
     {
       "bytes": 47087,
       "local_path": "data/raw/byelection/2017-councillor-ward-42.xlsx",
-      "retrieved_at": "2026-08-19T19:33:19Z",
+      "retrieved_at": "2026-08-19T19:33:19.850635Z",
       "sha256": "c45b4109e6688aece0e007c59a49ec00f4ee49ef23818efda64440b3e50c8755",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/edf3e37a-b416-47f6-9cef-d7369a1b4553/download/2017-councillor-ward-42.xlsx"
     },
     {
       "bytes": 22002,
       "local_path": "data/raw/byelection/2021-councillor-ward-22-scarborough-agincourt-1.xlsx",
-      "retrieved_at": "2026-08-19T19:33:19Z",
+      "retrieved_at": "2026-08-19T19:33:19.705561Z",
       "sha256": "7b2c1f98d22c44f8190338f048ad513d0fc0f2d256362bc963314c18e5183bf4",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/287f8b0d-dde8-4ebd-887c-bd9f628a2e3c/download/2021-councillor-ward-22-scarborough-agincourt-1.xlsx"
     },
     {
       "bytes": 23682,
       "local_path": "data/raw/byelection/2023-office-of-the-councillor-ward-20-poll-by-poll.xlsx",
-      "retrieved_at": "2026-08-19T19:33:19Z",
+      "retrieved_at": "2026-08-19T19:33:19.586157Z",
       "sha256": "489a78b37eae4b3b90b8a7907bf4ee852c29449f2703d874e17572ca8c9df9f1",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/5ced6a0b-1f7a-4717-b522-da02a4d916ab/download/2023-office-of-the-councillor-ward-20-poll-by-poll.xlsx"
     },
     {
       "bytes": 553579,
       "local_path": "data/raw/byelection/2023_office_of_the_mayor.xlsx",
-      "retrieved_at": "2026-08-19T16:41:20Z",
+      "retrieved_at": "2026-08-19T16:41:20.879986Z",
       "sha256": "8077b5b94ebd25fb97d34cdeaeeadfb8a8c058d4530c06ab1ad56665a3fe435a",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/868f890d-5432-432b-823c-c6a6fafa2f63/download/2023_office_of_the_mayor.xlsx"
     },
     {
       "bytes": 20639,
       "local_path": "data/raw/byelection/2024-councillor-ward-15-poll-by-poll.xlsx",
-      "retrieved_at": "2026-08-19T19:33:19Z",
+      "retrieved_at": "2026-08-19T19:33:19.421131Z",
       "sha256": "f7e2c9023a041982a5645732b92fb70dad92962fc5f9cf6d567c4f5641b5d872",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/7e64ea38-c3a4-4b1f-a68e-4127dfca6430/download/2024-councillor-ward-15-poll-by-poll.xlsx"
     },
     {
       "bytes": 26780,
       "local_path": "data/raw/byelection/2025-councillor-ward25-poll-by-poll.xlsx",
-      "retrieved_at": "2026-08-19T19:33:19Z",
+      "retrieved_at": "2026-08-19T19:33:19.301091Z",
       "sha256": "ce9b2d1466aa87b603d4a1cc4c77e23a111af21bab09d198e9b8a06fa5645fed",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/1a29cfb8-0ee8-4e7d-b415-f07963d5a436/download/2025-councillor-ward25-poll-by-poll.xlsx"
     },
     {
       "bytes": 16518,
       "local_path": "data/raw/byelection_voter_stats/2016-councillor-ward-2-by-election-voter-statistics.xlsx",
-      "retrieved_at": "2026-08-19T19:33:20Z",
+      "retrieved_at": "2026-08-19T19:33:20.800440Z",
       "sha256": "9916d20f0e7ce75ad8a64be5587cc2ac63945b0f37ec31598443ffca8c750fc6",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/33e16e66-81bb-4de8-8e2c-792a6c695a8b/download/2016-councillor-ward-2-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 15382,
       "local_path": "data/raw/byelection_voter_stats/2017-councillor-ward-42-by-election-voter-statistics.xlsx",
-      "retrieved_at": "2026-08-19T19:33:20Z",
+      "retrieved_at": "2026-08-19T19:33:20.676071Z",
       "sha256": "bbed41eab9ce69a3724973db2b44705cdf6175e30e36dadf88c97376e253e221",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/534bdfe0-64ab-4d4a-a3ec-84a8413e839b/download/2017-councillor-ward-42-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 18869,
       "local_path": "data/raw/byelection_voter_stats/2021_voter_turnout_statistics_ward_22_by-election.xlsx",
-      "retrieved_at": "2026-08-19T19:33:20Z",
+      "retrieved_at": "2026-08-19T19:33:20.549877Z",
       "sha256": "0d043fc437fa56d81de5573eacef8145ab0f8feee757b8bea03ea0e722195d40",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/e0ad662f-a434-41c5-a6b5-d2ab4a4b281f/download/2021_voter_turnout_statistics_ward_22_by-election.xlsx"
     },
     {
       "bytes": 18192,
       "local_path": "data/raw/byelection_voter_stats/2023-councillor-ward-20-by-election-voter-statistics.xlsx",
-      "retrieved_at": "2026-08-19T19:33:20Z",
+      "retrieved_at": "2026-08-19T19:33:20.400277Z",
       "sha256": "93e49416eede00d082d3a0c6fe063fca362df32c8da055a1c0142cca4e724eb5",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/8e49907b-98bf-41e4-acfc-4141d5804d0f/download/2023-councillor-ward-20-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 21040,
       "local_path": "data/raw/byelection_voter_stats/2024-councillor-ward-15-by-election-voter-statistics.xlsx",
-      "retrieved_at": "2026-08-19T19:33:20Z",
+      "retrieved_at": "2026-08-19T19:33:20.247951Z",
       "sha256": "d6ae5f09e9ef57355a8df8f39c1a0792311e815800fe244c6766994cb58540dd",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/eb873a1c-b11d-4274-94f1-84afce523b12/download/2024-councillor-ward-15-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 19935,
       "local_path": "data/raw/byelection_voter_stats/2025-ward-25-by-election-voter-statistics.xlsx",
-      "retrieved_at": "2026-08-19T19:33:20Z",
+      "retrieved_at": "2026-08-19T19:33:20.120008Z",
       "sha256": "9dbe8fd3a3c751f4d0dbfb12e7d7aa9927da15f36c2ee7770b5d23a60319ece0",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/54011bd4-93a0-484a-a294-2f3d5d0a1086/download/2025-ward-25-by-election-voter-statistics.xlsx"
     },
     {
       "bytes": 10756,
       "local_path": "data/raw/ckan/elected-officials-contact-information.json",
-      "retrieved_at": "2026-08-19T16:39:35Z",
+      "retrieved_at": "2026-08-19T16:39:35.528702Z",
       "sha256": "ff1ffeba8aa0e79927cbf339b674248ff9bb1404a1eb7326a76797b12330c433",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elected-officials-contact-information"
     },
     {
       "bytes": 7319,
       "local_path": "data/raw/ckan/election-results-official.json",
-      "retrieved_at": "2026-08-19T16:39:34Z",
+      "retrieved_at": "2026-08-19T16:39:34.645232Z",
       "sha256": "c53959b6c4e28b53e0fd3e21497f84c4e5368de2ecfb018abe39d2b6264b5678",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=election-results-official"
     },
     {
       "bytes": 15454,
       "local_path": "data/raw/ckan/elections-official-by-election-results.json",
-      "retrieved_at": "2026-08-19T16:39:34Z",
+      "retrieved_at": "2026-08-19T16:39:34.835074Z",
       "sha256": "a46e458a69377101138fac3e07b4d75e065e7096cf930c5f2f6a4111844f70de",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elections-official-by-election-results"
     },
     {
       "bytes": 43998,
       "local_path": "data/raw/ckan/elections-subdivisions.json",
-      "retrieved_at": "2026-08-19T16:39:35Z",
+      "retrieved_at": "2026-08-19T16:39:35.039763Z",
       "sha256": "3d7136a1f6a88359b6c77c41d4d30919d366cb6287d5a9d9bbf56cc20ffb037f",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=elections-subdivisions"
     },
     {
       "bytes": 21950,
       "local_path": "data/raw/ckan/members-of-toronto-city-council-meeting-attendance.json",
-      "retrieved_at": "2026-08-19T16:39:35Z",
+      "retrieved_at": "2026-08-19T16:39:35.215235Z",
       "sha256": "26df800c03990d3e8f59ef308c5c8fbec917a4b422b072d69ccb96c3af10decb",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=members-of-toronto-city-council-meeting-attendance"
     },
     {
       "bytes": 21506,
       "local_path": "data/raw/ckan/members-of-toronto-city-council-voting-record.json",
-      "retrieved_at": "2026-08-19T16:39:35Z",
+      "retrieved_at": "2026-08-19T16:39:35.412927Z",
       "sha256": "7a8d99c06194f3147940689da9b581fa77e041a29007fa3520cd859abc4f7278",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/api/3/action/package_show?id=members-of-toronto-city-council-voting-record"
     },
     {
       "bytes": 828937,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2006-2010.csv",
-      "retrieved_at": "2026-08-19T16:41:23Z",
+      "retrieved_at": "2026-08-19T16:41:23.728561Z",
       "sha256": "d4c2de3b47fc9774dcd1c484c7023f015a83a87abb82993129e9c1a86e44bbf7",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/28c4b513-4210-4ea4-9454-839d57e55d98/download/councillors-meeting-attendance-2006-2010.csv"
     },
     {
       "bytes": 3046613,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2010-2014.csv",
-      "retrieved_at": "2026-08-19T16:41:24Z",
+      "retrieved_at": "2026-08-19T16:41:24.044462Z",
       "sha256": "961bb371b593eb0cf5d1ae1ce2e232e50175644b9fb7a32916a56d7e0ab4b462",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/34d61725-e383-4633-ab5e-c7b6d639fad9/download/councillors-meeting-attendance-2010-2014.csv"
     },
     {
       "bytes": 2948088,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2014-2018.csv",
-      "retrieved_at": "2026-08-19T16:41:24Z",
+      "retrieved_at": "2026-08-19T16:41:24.339296Z",
       "sha256": "ae1095e79574ad77f5f814171dbffd4e14883f251b593378aebee34bf5a38bcb",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/76c23b41-d5e5-44b6-b5fd-e40c6409b1e3/download/councillors-meeting-attendance-2014-2018.csv"
     },
     {
       "bytes": 1278423,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2018-2022.csv",
-      "retrieved_at": "2026-08-19T16:41:24Z",
+      "retrieved_at": "2026-08-19T16:41:24.541340Z",
       "sha256": "b35a9f85573d2d3db9a5149d90eb474cdee922870f3f3ff8e5b3984e6a7b726f",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/05449b17-32bf-4329-8558-5167a960ea56/download/councillors-meeting-attendance-2018-2022.csv"
     },
     {
-      "bytes": 1281287,
+      "bytes": 1282196,
       "local_path": "data/raw/council/attendance/councillors-meeting-attendance-2022-2026.csv",
-      "retrieved_at": "2026-10-30T11:58:50.995233Z",
-      "sha256": "469a380cacd989b8c363855260bdad927eea7df3f4ecfd200ad28506410143b8",
+      "retrieved_at": "2026-11-07T20:01:43.723548Z",
+      "sha256": "a30e5c1d712d2927dcc0e1130173a176ca9496315eb38f9c01686a279f9e6e89",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/9426c94d-abdb-45fe-9a81-79be40d204d2/resource/073189ce-951e-4a18-a466-705abf3802d1/download/councillors-meeting-attendance-2022-2026.csv"
     },
     {
       "bytes": 65138,
       "local_path": "data/raw/council/candidates_2026/councilorCandidates_2026.json",
-      "retrieved_at": "2026-10-21T16:50:44Z",
+      "retrieved_at": "2026-10-21T16:50:44.930652Z",
       "sha256": "0eae926479752ec22e1ee0b4de92c332d88acf47d6e35043ace3fb340e2e8679",
       "source_url": "https://www.toronto.ca/data/elections/candidate_list/councilorCandidates_2026.json"
     },
     {
       "bytes": 15619,
       "local_path": "data/raw/council/candidates_2026/mayorCandidates_2026.json",
-      "retrieved_at": "2026-10-21T16:50:44Z",
+      "retrieved_at": "2026-10-21T16:50:44.785816Z",
       "sha256": "41a63015598f2d666fd43186b9fb54497dd938bc45678a2291c060f22831de49",
       "source_url": "https://www.toronto.ca/data/elections/candidate_list/mayorCandidates_2026.json"
     },
     {
       "bytes": 32433,
       "local_path": "data/raw/council/candidates_2026/trusteeCandidates_2026.json",
-      "retrieved_at": "2026-10-21T16:50:45Z",
+      "retrieved_at": "2026-10-21T16:50:45.079053Z",
       "sha256": "3ecbc48b30038abb6956573ee45bd536fe5b3e4b9706bce7dbe3f24f7b7c025f",
       "source_url": "https://www.toronto.ca/data/elections/candidate_list/trusteeCandidates_2026.json"
     },
     {
       "bytes": 11713,
       "local_path": "data/raw/council/contact/2018-2022-elected-officials-contact-info.csv",
-      "retrieved_at": "2026-08-19T16:41:33Z",
+      "retrieved_at": "2026-08-19T16:41:33.250798Z",
       "sha256": "3892d377c82dbbcef0809d10c6cc2e35f50a956375bb81b291621656d4fb5ce0",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/27aa4651-4548-4e57-bf00-53a346931251/resource/89e7d4ae-367b-450c-8680-8c7f80f78175/download/2018-2022-elected-officials-contact-info.csv"
     },
     {
       "bytes": 9281,
       "local_path": "data/raw/council/contact/2022-2026-elected-officials-contact-info.csv",
-      "retrieved_at": "2026-08-19T16:41:33Z",
+      "retrieved_at": "2026-08-19T16:41:33.073374Z",
       "sha256": "e4d8c780e4dc0d4c07aa7486e485e4cf8a2cd4293ae21eb0dd2058b0b2c1ed52",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/27aa4651-4548-4e57-bf00-53a346931251/resource/dea217a2-f7c1-4e62-aec1-48fffaad1170/download/2022-2026-elected-officials-contact-info.csv"
     },
     {
       "bytes": 14637520,
       "local_path": "data/raw/council/voting/member-voting-record-2006-2010.csv",
-      "retrieved_at": "2026-08-19T16:41:25Z",
+      "retrieved_at": "2026-08-19T16:41:25.557498Z",
       "sha256": "8cb59a59d2c8a546eade971c4789270a556768c81e188d03bd11581d50e27f17",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/01655cbd-dc66-4339-9f27-891e64413cbf/download/member-voting-record-2006-2010.csv"
     },
     {
       "bytes": 88703573,
       "local_path": "data/raw/council/voting/member-voting-record-2010-2014.csv",
-      "retrieved_at": "2026-08-19T16:41:29Z",
+      "retrieved_at": "2026-08-19T16:41:29.310048Z",
       "sha256": "e07c93723f70526112947fec856f9e5f0ca803aa99abbbe806c5826a33f747b5",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/6c7dd98b-08d0-4f68-bee7-a0ba77a7da92/download/member-voting-record-2010-2014.csv"
     },
     {
       "bytes": 50379770,
       "local_path": "data/raw/council/voting/member-voting-record-2014-2018.csv",
-      "retrieved_at": "2026-08-19T16:41:32Z",
+      "retrieved_at": "2026-08-19T16:41:32.922677Z",
       "sha256": "059f88b52780843151088fe7556d8c47ec23ebc2d8159f4d2517204ea31748d1",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/11d89d61-24c3-4241-8194-04b22098745e/download/member-voting-record-2014-2018.csv"
     },
     {
       "bytes": 14460550,
       "local_path": "data/raw/council/voting/member-voting-record-2018-2022.csv",
-      "retrieved_at": "2026-08-19T16:41:30Z",
+      "retrieved_at": "2026-08-19T16:41:30.270808Z",
       "sha256": "da62a64ce755ebe82731f61644a40e8df0c432d2009a63e4a8970219464dc62c",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/373390e9-af88-4b58-a6a4-6863e3606a4b/download/member-voting-record-2018-2022.csv"
     },
     {
       "bytes": 12028242,
       "local_path": "data/raw/council/voting/member-voting-record-2022-2026.csv",
-      "retrieved_at": "2026-10-30T11:58:51.635233Z",
-      "sha256": "4ea96c43fad9f4035bb5665efa4c079a4b917857f6949f113070669e60f8110f",
+      "retrieved_at": "2026-11-07T20:01:44.495721Z",
+      "sha256": "f8fc2063c8c3a45f6f62e8e3e1d88963f3c133a1e9e08dc7ab2731b08a275be8",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7f5232d6-0d2a-4f95-864a-417cbf341cc4/resource/c4feb78c-c867-42a9-b803-7c6d859df969/download/member-voting-record-2022-2026.csv"
     },
     {
       "bytes": 25628,
       "local_path": "data/raw/federal/ec-be-2008-03-17/35093_e.html",
-      "retrieved_at": "2026-08-20T15:52:33Z",
+      "retrieved_at": "2026-08-20T15:52:33.489641Z",
       "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb",
       "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35093_e.html"
     },
     {
       "bytes": 16712,
       "local_path": "data/raw/federal/ec-be-2008-03-17/35100_e.html",
-      "retrieved_at": "2026-08-20T15:52:33Z",
+      "retrieved_at": "2026-08-20T15:52:33.599066Z",
       "sha256": "11c37e4d7a3a17f8560aef31ab35a1b6c202fbe3b2f49661dd39ed3029f90a62",
       "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35100_e.html"
     },
     {
       "bytes": 23297,
       "local_path": "data/raw/federal/ec-be-2008-03-17/pollbypoll35093.csv",
-      "retrieved_at": "2026-08-20T15:27:18Z",
+      "retrieved_at": "2026-08-20T15:27:18.410004Z",
       "sha256": "ced1d008019c0d709147d2abb0c53e51ab23f83729a4f34397cbfb12ae5b8772",
       "source_url": "https://www.elections.ca/ele/pas/2008/csv/pollbypoll35093.csv"
     },
     {
       "bytes": 20781,
       "local_path": "data/raw/federal/ec-be-2008-03-17/pollbypoll35100.csv",
-      "retrieved_at": "2026-08-20T15:27:18Z",
+      "retrieved_at": "2026-08-20T15:27:18.517658Z",
       "sha256": "ca81bdb276b3a064c3fa90181cdae4b4eade04ab7fc36e8ac024a3ec7076c911",
       "source_url": "https://www.elections.ca/ele/pas/2008/csv/pollbypoll35100.csv"
     },
     {
       "bytes": 20265,
       "local_path": "data/raw/federal/ec-be-2012-03-19/35094_e.html",
-      "retrieved_at": "2026-08-20T15:52:33Z",
+      "retrieved_at": "2026-08-20T15:52:33.710650Z",
       "sha256": "6b1aa1d6ff3ff93fee818710578e66452020442de9e6f8ad1c60b72b89314fea",
       "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35094_e.html"
     },
     {
       "bytes": 19701,
       "local_path": "data/raw/federal/ec-be-2012-03-19/pollbypoll_bureauparbureau35094.csv",
-      "retrieved_at": "2026-08-20T15:27:19Z",
+      "retrieved_at": "2026-08-20T15:27:19.704211Z",
       "sha256": "fca4934f0532bcb937a75634dbc936adf1893c90b4c1e4049c78fad099d2804f",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2012/pollbypoll_bureauparbureau35094.csv"
     },
     {
       "bytes": 20487,
       "local_path": "data/raw/federal/ec-be-2013-11-25/35093_e.csv",
-      "retrieved_at": "2026-08-20T15:27:19Z",
+      "retrieved_at": "2026-08-20T15:27:19.824448Z",
       "sha256": "038c05bd923461178b957077e1ff8a6ee3983892095afab9ac31d4dba1aaa2cb",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2013b2/csv/35093_e.csv"
     },
     {
       "bytes": 25628,
       "local_path": "data/raw/federal/ec-be-2013-11-25/35093_e.html",
-      "retrieved_at": "2026-08-20T15:52:33Z",
+      "retrieved_at": "2026-08-20T15:52:33.865449Z",
       "sha256": "0809b1819dfeae4d4d005d8c0d67472368ecce2842c5231263d789aeafb39bfb",
       "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35093_e.html"
     },
     {
       "bytes": 22007,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35080.csv",
-      "retrieved_at": "2026-08-20T15:27:19Z",
+      "retrieved_at": "2026-08-20T15:27:19.946979Z",
       "sha256": "66a3e7d538214ee39d7c6f3beafe5677d9b8502697ba8de6e6b53239ee41d00f",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2014/csv/35080.csv"
     },
     {
       "bytes": 16460,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35080_e.html",
-      "retrieved_at": "2026-08-20T15:52:33Z",
+      "retrieved_at": "2026-08-20T15:52:33.974471Z",
       "sha256": "f48ad24aeeed0efefa56708aaa14c0285528cff5615e29655581d5eaf89aa1f9",
       "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35080_e.html"
     },
     {
       "bytes": 32786,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35095.csv",
-      "retrieved_at": "2026-08-20T15:27:20Z",
+      "retrieved_at": "2026-08-20T15:27:20.060722Z",
       "sha256": "7cbe7ba791fc4eaf4b58b62411217ef057b41d65f150e3a628c4b31457cea27b",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2014/csv/35095.csv"
     },
     {
       "bytes": 19936,
       "local_path": "data/raw/federal/ec-be-2014-06-30/35095_e.html",
-      "retrieved_at": "2026-08-20T15:52:34Z",
+      "retrieved_at": "2026-08-20T15:52:34.087640Z",
       "sha256": "c899bae92ac08d1ee6b96a45c7461f76201f55e99221b25be0a314d15cda8248",
       "source_url": "https://www.elections.ca/Scripts/VIS/HistoricalResults/35095_e.html"
     },
     {
       "bytes": 216935,
       "local_path": "data/raw/federal/ec-be-2017-12-11/pollresults_resultatsbureau35093.csv",
-      "retrieved_at": "2026-08-20T15:27:20Z",
+      "retrieved_at": "2026-08-20T15:27:20.828791Z",
       "sha256": "03cd92b843582c6bdddc25dfa28d30640195c04cd441e94948ed9a3ebbfb9d38",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2017d/46/data_donnees/pollresults_resultatsbureau35093.csv"
     },
     {
       "bytes": 293325,
       "local_path": "data/raw/federal/ec-be-2020-10-26/pollresults_resultatsbureau35108.csv",
-      "retrieved_at": "2026-08-20T15:27:21Z",
+      "retrieved_at": "2026-08-20T15:27:21.624732Z",
       "sha256": "59bb5388f5fdd288f4ebd362a33c47b08d567be6dce2d923a8f58076bbd0bc89",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2020/52/data_donnees/pollresults_resultatsbureau35108.csv"
     },
     {
       "bytes": 164391,
       "local_path": "data/raw/federal/ec-be-2020-10-26/pollresults_resultatsbureau35118.csv",
-      "retrieved_at": "2026-08-20T15:27:21Z",
+      "retrieved_at": "2026-08-20T15:27:21.762848Z",
       "sha256": "d5a790971a21f76cd50d94d70995f1e1df68aeb401076178fd20ec7ae229517f",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2020/52/data_donnees/pollresults_resultatsbureau35118.csv"
     },
     {
       "bytes": 2669753,
       "local_path": "data/raw/federal/ec-be-2024-06-24/pollresults_resultatsbureau35090.csv",
-      "retrieved_at": "2026-08-20T15:27:22Z",
+      "retrieved_at": "2026-08-20T15:27:22.796560Z",
       "sha256": "4394dcd99d0fce14f48f35773f4c900053956c074200aa77b185dd0e30d46121",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2024b/58/data_donnees/pollresults_resultatsbureau35090.csv"
     },
     {
       "bytes": 240232,
       "local_path": "data/raw/federal/ec-be-2026-04-13/pollresults_resultatsbureau35096.csv",
-      "retrieved_at": "2026-08-20T15:27:23Z",
+      "retrieved_at": "2026-08-20T15:27:23.645800Z",
       "sha256": "1bc267e652038752f70a56b7c77328618ce4d57b206f3202aa28ddf2160febe5",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2026/64/data_donnees/pollresults_resultatsbureau35096.csv"
     },
     {
       "bytes": 356448,
       "local_path": "data/raw/federal/ec-be-2026-04-13/pollresults_resultatsbureau35112.csv",
-      "retrieved_at": "2026-08-20T15:27:23Z",
+      "retrieved_at": "2026-08-20T15:27:23.815065Z",
       "sha256": "b97fdea917dcef943ed00371e8e13b86a8f4eadb53f263b9ed4112f6c980ce74",
       "source_url": "https://www.elections.ca/res/rep/off/ovr_2026/64/data_donnees/pollresults_resultatsbureau35112.csv"
     },
     {
       "bytes": 24877,
       "local_path": "data/raw/federal/ec-be-2026-08-31/ElectoralDistricts.aspx",
-      "retrieved_at": "2026-10-21T16:50:44Z",
+      "retrieved_at": "2026-10-21T16:50:44.409171Z",
       "sha256": "97d8dbd1a8c495c6b23598110a2de45da96b9b9eab37f103424f152f0144fc5b",
       "source_url": "https://enr.elections.ca/ElectoralDistricts.aspx?ed=2385&lang=e"
     },
     {
       "bytes": 419535,
       "local_path": "data/raw/federal/ec-ge-38/ON.zip",
-      "retrieved_at": "2026-08-20T15:27:17Z",
+      "retrieved_at": "2026-08-20T15:27:17.523609Z",
       "sha256": "4ba7c74457e010c5eeabc823213079074d1b29251e280f4cf9fbbe2d167dc4a1",
       "source_url": "https://www.elections.ca/scripts/OVR2004/23/data/ON.zip"
     },
     {
       "bytes": 245421,
       "local_path": "data/raw/federal/ec-ge-38/table12.csv",
-      "retrieved_at": "2026-08-20T15:52:33Z",
+      "retrieved_at": "2026-08-20T15:52:33.376848Z",
       "sha256": "de20c50955fd0f6d0bb38ae3afabe9ea5cc7e4900073e8dce86590f95f594318",
       "source_url": "https://www.elections.ca/scripts/OVR2004/23/data/table12.csv"
     },
     {
       "bytes": 845777,
       "local_path": "data/raw/federal/ec-ge-39/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:17Z",
+      "retrieved_at": "2026-08-20T15:27:17.962507Z",
       "sha256": "aac2aa7b56e97a31e90a901b5c9b3c6460c71c042ddece2329e66741ace8e9e5",
       "source_url": "https://www.elections.ca/Scripts/OVR2006/25/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 949400,
       "local_path": "data/raw/federal/ec-ge-40/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:18Z",
+      "retrieved_at": "2026-08-20T15:27:18.726375Z",
       "sha256": "a24b937e34688804139cdbd2325eb10f00d67b9db2971187660d9ca1fa920152",
       "source_url": "https://www.elections.ca/scripts/OVR2008/31/data/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 971466,
       "local_path": "data/raw/federal/ec-ge-41/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:19Z",
+      "retrieved_at": "2026-08-20T15:27:19.280871Z",
       "sha256": "83ec0819d7455b2ea6094d8841c031b79c8b91f6d6049b64a83e37ea0630f7a2",
       "source_url": "https://www.elections.ca/scripts/OVR2011/34/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1092431,
       "local_path": "data/raw/federal/ec-ge-42/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:20Z",
+      "retrieved_at": "2026-08-20T15:27:20.285244Z",
       "sha256": "fdbf80bb71a0fdb45297436000eda765443ac582540b2f004ef6640d5f621b33",
       "source_url": "https://www.elections.ca/res/rep/off/ovr2015app/41/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1281096,
       "local_path": "data/raw/federal/ec-ge-43/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:21Z",
+      "retrieved_at": "2026-08-20T15:27:21.092566Z",
       "sha256": "b33e23a4d88a18d56ee65258a836e7d5dc9525e10b6e563b9684d20f4deea751",
       "source_url": "https://www.elections.ca/res/rep/off/ovr2019app/51/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1194554,
       "local_path": "data/raw/federal/ec-ge-44/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:22Z",
+      "retrieved_at": "2026-08-20T15:27:22.120937Z",
       "sha256": "63e0c9a2a507b53fa67559b68b0d4db2b20bfa61fab9fd04d40191aaea05e781",
       "source_url": "https://www.elections.ca/res/rep/off/ovr2021app/53/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 1319530,
       "local_path": "data/raw/federal/ec-ge-45/pollresults_resultatsbureau35.zip",
-      "retrieved_at": "2026-08-20T15:27:23Z",
+      "retrieved_at": "2026-08-20T15:27:23.115733Z",
       "sha256": "454dc2a1d0a4b41b8504ee18bcb147198d6fb4752f942e6a443b406df04288e1",
       "source_url": "https://www.elections.ca/res/rep/off/ovrGE45/62/data_donnees/pollresults_resultatsbureau35.zip"
     },
     {
       "bytes": 7287404,
       "local_path": "data/raw/federal/historical/1993results.zip",
-      "retrieved_at": "2026-10-28T23:35:52Z",
+      "retrieved_at": "2026-10-29T00:01:23.608958Z",
       "sha256": "40dc5a1c2c498d63f37f1a8ef744abdab31f2056d1900d91a9d927cb4f5466fa",
       "source_url": "https://mdl.library.utoronto.ca/sites/default/public/mdldata/open/canada/national/elections_canada/official_voting_results/1993results.zip"
     },
     {
       "bytes": 116142,
       "local_path": "data/raw/federal/historical/CAND.ZIP",
-      "retrieved_at": "2026-10-28T23:35:52Z",
+      "retrieved_at": "2026-10-29T00:01:23.396596Z",
       "sha256": "612c9a0dacc666af04de70ee031bf80abcd8a47caea62a0e4aa548fbcff2a7b4",
       "source_url": "https://www.elections.ca/res/rep/off/37p/CAND.ZIP"
     },
     {
       "bytes": 43115,
       "local_path": "data/raw/federal/historical/EDSUM.ZIP",
-      "retrieved_at": "2026-10-28T23:35:52Z",
+      "retrieved_at": "2026-10-29T00:01:23.399868Z",
       "sha256": "f4e6d903bb7f3b0023cf12c334771a170e2d76aa628ec38fe194d20bc0b9a61b",
       "source_url": "https://www.elections.ca/res/rep/off/37p/EDSUM.ZIP"
     },
     {
       "bytes": 265580,
       "local_path": "data/raw/federal/historical/SE1-2-1999-2.pdf",
-      "retrieved_at": "2026-10-28T23:35:52Z",
+      "retrieved_at": "2026-10-29T00:01:23.391915Z",
       "sha256": "cd9b9c7397b958d0fae2c199de23afa59e30af360f0bcf3cc07d5d4310cc0306",
       "source_url": "https://bac-lac.wayback.archive-it.org/web/20061212070736/http://dsp-psd.pwgsc.gc.ca/Collection/SE1-2-1999-2.pdf"
     },
     {
       "bytes": 23649,
       "local_path": "data/raw/federal/historical/dec1396-synopsis1a.html",
-      "retrieved_at": "2026-10-29T00:05:45Z",
+      "retrieved_at": "2026-10-29T00:11:36.192952Z",
       "sha256": "cf72a75d2eb831ec0300386ab075eff5f872fc0e0123c26ec0865ed3fba9fe2b",
       "source_url": "https://www.elections.ca/content.aspx?section=res&dir=rep/off/dec1396&document=synopsis1a&lang=e"
     },
     {
       "bytes": 30215,
       "local_path": "data/raw/federal/historical/dec1396-synopsis2.html",
-      "retrieved_at": "2026-10-29T00:05:45Z",
+      "retrieved_at": "2026-10-29T00:11:36.204785Z",
       "sha256": "7b1373becb13910833e150384ab4dff3308f3b0e389c126070346ff2c9d0b8eb",
       "source_url": "https://www.elections.ca/content.aspx?section=res&dir=rep/off/dec1396&document=synopsis2&lang=e"
     },
     {
       "bytes": 162523,
       "local_path": "data/raw/ontario/report-group-1/candidates-932.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.851032Z",
       "sha256": "f2c00411b4fc7af46f64b5cac1aa69a512c7f56a0939a814db958358131331cd",
       "source_url": "https://results.elections.on.ca/api/report-groups/1/report-outputs/932/csv"
     },
     {
       "bytes": 10962,
       "local_path": "data/raw/ontario/report-group-1/parties-930.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.030254Z",
       "sha256": "2324f385538177b8871aeddb6222cda201a5719efc26718ef10ac89a83143d06",
       "source_url": "https://results.elections.on.ca/api/report-groups/1/report-outputs/930/csv"
     },
     {
       "bytes": 23613,
       "local_path": "data/raw/ontario/report-group-1/statistics-925.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.949237Z",
       "sha256": "b72633fda6f74af112cadcbc7edeb19557cc27b1318a43f15c187d6989fa39d7",
       "source_url": "https://results.elections.on.ca/api/report-groups/1/report-outputs/925/csv"
     },
     {
       "bytes": 124320,
       "local_path": "data/raw/ontario/report-group-2/candidates-488.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.533498Z",
       "sha256": "2961c5d4f12c1c3a2bb1e5d462050cd6fb43ed32751d483468c738b5fa2ce9b1",
       "source_url": "https://results.elections.on.ca/api/report-groups/2/report-outputs/488/csv"
     },
     {
       "bytes": 7591,
       "local_path": "data/raw/ontario/report-group-2/parties-486.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.750619Z",
       "sha256": "c1d85d92bbc8503047f4d9351cf1dc1891077599ef23090b10f94232d3183969",
       "source_url": "https://results.elections.on.ca/api/report-groups/2/report-outputs/486/csv"
     },
     {
       "bytes": 21030,
       "local_path": "data/raw/ontario/report-group-2/statistics-481.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.654233Z",
       "sha256": "a5f234fd80e4d688df4779e9fa42fb34797d5d6add68853e8c29fcb82179c632",
       "source_url": "https://results.elections.on.ca/api/report-groups/2/report-outputs/481/csv"
     },
     {
       "bytes": 124223,
       "local_path": "data/raw/ontario/report-group-3/candidates-499.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.292547Z",
       "sha256": "f8b4590c82a7fb6ae2aca1477d3163ac3c9e0de676795c5e3ff5a18152f1309c",
       "source_url": "https://results.elections.on.ca/api/report-groups/3/report-outputs/499/csv"
     },
     {
       "bytes": 6508,
       "local_path": "data/raw/ontario/report-group-3/parties-497.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.441668Z",
       "sha256": "db8bcef4b140dca3e14f917b07bf83a223ab154c959aa596c2409178af9b96ce",
       "source_url": "https://results.elections.on.ca/api/report-groups/3/report-outputs/497/csv"
     },
     {
       "bytes": 20129,
       "local_path": "data/raw/ontario/report-group-3/statistics-492.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.366997Z",
       "sha256": "6755033c4ad895e9becab538fe42284f1db3b086941338ad5ffc8e7d8da465df",
       "source_url": "https://results.elections.on.ca/api/report-groups/3/report-outputs/492/csv"
     },
     {
       "bytes": 119481,
       "local_path": "data/raw/ontario/report-group-4/candidates-510.csv",
-      "retrieved_at": "2026-08-20T15:21:59Z",
+      "retrieved_at": "2026-08-20T15:21:59.992969Z",
       "sha256": "c889e39d00b29498ca665d68f73ccbd9ad01b875e30187de9f0b8388d91714d5",
       "source_url": "https://results.elections.on.ca/api/report-groups/4/report-outputs/510/csv"
     },
     {
       "bytes": 6865,
       "local_path": "data/raw/ontario/report-group-4/parties-508.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.189689Z",
       "sha256": "baa6badaae6bd6a656a72a756b4dc62c68100be967d0d690314020ee06d7dd40",
       "source_url": "https://results.elections.on.ca/api/report-groups/4/report-outputs/508/csv"
     },
     {
       "bytes": 21036,
       "local_path": "data/raw/ontario/report-group-4/statistics-503.csv",
-      "retrieved_at": "2026-08-20T15:22:00Z",
+      "retrieved_at": "2026-08-20T15:22:00.077640Z",
       "sha256": "29c9fdeef97a70a2226abf7f55e4d75190e335055d273ce70c79bf1b34023c5d",
       "source_url": "https://results.elections.on.ca/api/report-groups/4/report-outputs/503/csv"
     },
     {
       "bytes": 218483,
       "local_path": "data/raw/ontario/report-group-45/candidates-1050.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.130545Z",
       "sha256": "86d1fb5ec1a8710a844152e0704d43d2b2eceed86a62022d820d03ee4c99b024",
       "source_url": "https://results.elections.on.ca/api/report-groups/45/report-outputs/1050/csv"
     },
     {
       "bytes": 5782,
       "local_path": "data/raw/ontario/report-group-45/parties-1048.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.348816Z",
       "sha256": "6c813ab8ce2b423a279fcb5597e11a419243fa1c8c01bd97300057c3a203a10a",
       "source_url": "https://results.elections.on.ca/api/report-groups/45/report-outputs/1048/csv"
     },
     {
       "bytes": 28146,
       "local_path": "data/raw/ontario/report-group-45/statistics-1043.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.211352Z",
       "sha256": "3d8784f3c068aa6488054968e1d7664ca13d39693a5d7e430cb3078aad46100e",
       "source_url": "https://results.elections.on.ca/api/report-groups/45/report-outputs/1043/csv"
     },
     {
       "bytes": 186015,
       "local_path": "data/raw/ontario/report-group-48/candidates-1096.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.499829Z",
       "sha256": "21c09e8729eda6dd996091861aa59aa2cb4af3565c296eee8232a9313848c04e",
       "source_url": "https://results.elections.on.ca/api/report-groups/48/report-outputs/1096/csv"
     },
     {
       "bytes": 12215,
       "local_path": "data/raw/ontario/report-group-48/parties-1094.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.675798Z",
       "sha256": "516a7d5c84706dd95cf34b3a527121e3252635d1d545b356e1399df8d1a78dc0",
       "source_url": "https://results.elections.on.ca/api/report-groups/48/report-outputs/1094/csv"
     },
     {
       "bytes": 25452,
       "local_path": "data/raw/ontario/report-group-48/statistics-1089.csv",
-      "retrieved_at": "2026-08-20T15:22:01Z",
+      "retrieved_at": "2026-08-20T15:22:01.591261Z",
       "sha256": "6d106d334bc7ec02a4e0208dc151233f6dba18bf5d0990d3c35f06b1a15bd365",
       "source_url": "https://results.elections.on.ca/api/report-groups/48/report-outputs/1089/csv"
     },
     {
       "bytes": 100363,
       "local_path": "data/raw/ontario/report-group-5/candidates-521.csv",
-      "retrieved_at": "2026-08-20T15:21:59Z",
+      "retrieved_at": "2026-08-20T15:21:59.719084Z",
       "sha256": "267ece0aef7a14e038c89c0b0012d18698627958b22132b3ab3400bd78064aa1",
       "source_url": "https://results.elections.on.ca/api/report-groups/5/report-outputs/521/csv"
     },
     {
       "bytes": 4436,
       "local_path": "data/raw/ontario/report-group-5/parties-519.csv",
-      "retrieved_at": "2026-08-20T15:21:59Z",
+      "retrieved_at": "2026-08-20T15:21:59.902573Z",
       "sha256": "f0c01e15b5f73423fd72fd38a5be8f6f658a06c89f9805aababecdbb38c85c18",
       "source_url": "https://results.elections.on.ca/api/report-groups/5/report-outputs/519/csv"
     },
     {
       "bytes": 19388,
       "local_path": "data/raw/ontario/report-group-5/statistics-514.csv",
-      "retrieved_at": "2026-08-20T15:21:59Z",
+      "retrieved_at": "2026-08-20T15:21:59.821460Z",
       "sha256": "3e0220ef8d7d1fa4f2d6e8af226f9bd50d9cc5e007cd9d41f2623bf35ddd6d30",
       "source_url": "https://results.elections.on.ca/api/report-groups/5/report-outputs/514/csv"
     },
     {
       "bytes": 105726,
       "local_path": "data/raw/ontario/report-group-6/candidates-532.csv",
-      "retrieved_at": "2026-10-28T21:41:43Z",
+      "retrieved_at": "2026-10-28T21:56:04.226984Z",
       "sha256": "bc72b34296dad4166731bdb3474d796be6791f9340ec9679310d4e663581b998",
       "source_url": "https://results.elections.on.ca/api/report-groups/6/report-outputs/532/csv"
     },
     {
       "bytes": 3094,
       "local_path": "data/raw/ontario/report-group-6/parties-530.csv",
-      "retrieved_at": "2026-10-28T21:41:43Z",
+      "retrieved_at": "2026-10-28T21:56:04.229616Z",
       "sha256": "d28c176ec0f87076b8d0bf4c8c19ed897550e7c07d13d143559a07b91591165a",
       "source_url": "https://results.elections.on.ca/api/report-groups/6/report-outputs/530/csv"
     },
     {
       "bytes": 19081,
       "local_path": "data/raw/ontario/report-group-6/statistics-525.csv",
-      "retrieved_at": "2026-10-28T21:41:43Z",
+      "retrieved_at": "2026-10-28T21:56:04.233301Z",
       "sha256": "59c8e0b27766c02cd96bd4a4fe3a40e3e896630e34b858bd7f74aa7aedcac067",
       "source_url": "https://results.elections.on.ca/api/report-groups/6/report-outputs/525/csv"
     },
     {
       "bytes": 116792,
       "local_path": "data/raw/ontario/report-group-7/candidates-876.csv",
-      "retrieved_at": "2026-10-28T21:41:43Z",
+      "retrieved_at": "2026-10-28T21:56:04.208865Z",
       "sha256": "89371f7b904f38577ac3392711bcf8decf09c9a77972c0a646df3901ed022d5d",
       "source_url": "https://results.elections.on.ca/api/report-groups/7/report-outputs/876/csv"
     },
     {
       "bytes": 3921,
       "local_path": "data/raw/ontario/report-group-7/parties-874.csv",
-      "retrieved_at": "2026-10-28T21:41:43Z",
+      "retrieved_at": "2026-10-28T21:56:04.211575Z",
       "sha256": "49004773ecf2d91ea25091f9d5148ddef4873b43463432127ff7d1f48de3012c",
       "source_url": "https://results.elections.on.ca/api/report-groups/7/report-outputs/874/csv"
     },
     {
       "bytes": 22874,
       "local_path": "data/raw/ontario/report-group-7/statistics-869.csv",
-      "retrieved_at": "2026-10-28T21:41:43Z",
+      "retrieved_at": "2026-10-28T21:56:04.203106Z",
       "sha256": "23e9823efd79ae2c276b8768bd6b39be7c54e0d5c110c5dabd0b877003fc24d1",
       "source_url": "https://results.elections.on.ca/api/report-groups/7/report-outputs/869/csv"
     },
     {
       "bytes": 240944,
       "local_path": "data/raw/ontario/tabulations/on-2026-09-03-by-098.pdf",
-      "retrieved_at": "2026-10-28T08:59:01Z",
+      "retrieved_at": "2026-10-28T09:05:53.296601Z",
       "sha256": "d109b594e64851d8d6b00f4bf335752dfc86c21cb70819b599181905be59f998",
       "source_url": "https://www.elections.on.ca/content/dam/NGW/sitecontent/2026/results/Vote%20Totals%20Report%20from%20Official%20Tabulation%20-%20Scarborough%20Southwest%20098.pdf"
     },
     {
       "bytes": 288273,
       "local_path": "data/raw/results/2003-results.zip",
-      "retrieved_at": "2026-08-19T16:41:20Z",
+      "retrieved_at": "2026-08-19T16:41:20.574298Z",
       "sha256": "d6f4346f4a8371d4b66db69079ff17f5b39f0559b8513245efb1ffb4cdc442d8",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/1ed53c9d-a316-465e-96ce-e72be74f8aa9/download/2003-results.zip"
     },
     {
       "bytes": 297663,
       "local_path": "data/raw/results/2006-results.zip",
-      "retrieved_at": "2026-08-19T16:41:20Z",
+      "retrieved_at": "2026-08-19T16:41:20.441373Z",
       "sha256": "924289fd4d6401587e806b21e747c285a0171a04279a61c9dc5a48ec30304628",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3fb1227c-a279-4523-a1aa-f00190ba717f/download/2006-results.zip"
     },
     {
       "bytes": 273425,
       "local_path": "data/raw/results/2010-results.zip",
-      "retrieved_at": "2026-08-19T16:41:20Z",
+      "retrieved_at": "2026-08-19T16:41:20.324691Z",
       "sha256": "1579650581ef38dcecd9b59b554221ad0da2df65615caca0149c34bfa959e4a3",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/6fbfaab0-bb84-442a-8e4b-1c14d4c10d6d/download/2010-results.zip"
     },
     {
       "bytes": 261053,
       "local_path": "data/raw/results/2014-results.zip",
-      "retrieved_at": "2026-08-19T16:41:20Z",
+      "retrieved_at": "2026-08-19T16:41:20.194962Z",
       "sha256": "a6e7b8acaa4c7acc8756a582b2a4b2a8ac324cdd6823f62a7c1bc22ddb6c4a6b",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/d59b5a52-33c3-4380-a136-82707e4d9aae/download/2014-results.zip"
     },
     {
       "bytes": 727155,
       "local_path": "data/raw/results/2018-results.zip",
-      "retrieved_at": "2026-08-19T16:41:20Z",
+      "retrieved_at": "2026-08-19T16:41:20.053518Z",
       "sha256": "786aa376d5b4d5d3042d3e0b8af148f3cf4edce0c9345677e412ccc744f940e0",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/2fcd5f20-90f5-4dd0-88eb-22e978b9bf89/download/2018-results.zip"
     },
     {
       "bytes": 939065,
       "local_path": "data/raw/results/2022-results.zip",
-      "retrieved_at": "2026-08-19T16:41:19Z",
+      "retrieved_at": "2026-08-19T16:41:19.835434Z",
       "sha256": "127d0a29ee82b1e9694078588999e825377cfbb2c5d9f1d1bfaf234f9dbaba76",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/96d35404-44d9-49d8-95bb-fb1e5489240d/resource/3ad371de-7c51-45d3-9ea4-0b4efac5fc2b/download/2022-results.zip"
     },
     {
       "bytes": 1223076,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2006.zip",
-      "retrieved_at": "2026-08-19T16:41:23Z",
+      "retrieved_at": "2026-08-19T16:41:23.449511Z",
       "sha256": "acbebafd85d72535d994f1a20204ae9458bb73a60a411c6d528516412e76e10b",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/fa84d633-b341-4121-b558-0970c7ea21e2/download/voting-subdivisions-2006.zip"
     },
     {
       "bytes": 4699592,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2010-4326.geojson",
-      "retrieved_at": "2026-08-19T16:41:21Z",
+      "retrieved_at": "2026-08-19T16:41:21.419546Z",
       "sha256": "1e011bfae69f48a69163d55a70930f1ad60d76a124968658326e5032d16b0c03",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/ea904820-42e0-402f-a744-1995b4b67ac0/download/voting-subdivisions-2010-4326.geojson"
     },
     {
       "bytes": 4875461,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2014-4326.geojson",
-      "retrieved_at": "2026-08-19T16:41:22Z",
+      "retrieved_at": "2026-08-19T16:41:22.122566Z",
       "sha256": "fcd866a2d0f7c138aefc395923be74aaac3a02a129fdc3f9eee0968a232324d2",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/16672575-bf8b-494c-8f57-c2f065a91d3d/download/voting-subdivisions-2014-4326.geojson"
     },
     {
       "bytes": 4807539,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2018-4326.geojson",
-      "retrieved_at": "2026-08-19T16:41:22Z",
+      "retrieved_at": "2026-08-19T16:41:22.485562Z",
       "sha256": "4cff92903855e57f92ea9be962450591f92ae7fbef90e330864429b622d29307",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/778119c0-edbb-4fa5-9724-205781200106/download/voting-subdivisions-2018-4326.geojson"
     },
     {
       "bytes": 4967952,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2022-4326.geojson",
-      "retrieved_at": "2026-08-19T16:41:22Z",
+      "retrieved_at": "2026-08-19T16:41:22.896664Z",
       "sha256": "b5ea30c673c89c0a53eb62802cba6e2a5cee9bb5da1786bbb1958b7a7c3d1aef",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/38a9aa78-be8e-468c-9b80-262535c9bd84/download/voting-subdivisions-2022-4326.geojson"
     },
     {
       "bytes": 4918707,
       "local_path": "data/raw/subdivisions/voting-subdivisions-2023-4326.geojson",
-      "retrieved_at": "2026-08-19T16:41:23Z",
+      "retrieved_at": "2026-08-19T16:41:23.225021Z",
       "sha256": "a409309a206977951bc3b0e83ea84f450cf3c3669aa3ab458e891fec6f74a7dc",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/1f5df7fa-8606-4085-b75e-6d658a227558/resource/4cfb651c-9831-4e57-90d9-a22e6335759c/download/voting-subdivisions-2023-4326.geojson"
     },
     {
       "bytes": 15376,
       "local_path": "data/raw/trustee_byelections/2012-tcdsb-ward-8.xls",
-      "retrieved_at": "2026-08-20T15:17:37Z",
+      "retrieved_at": "2026-08-20T15:17:37.861311Z",
       "sha256": "000d935374ca9a1ed51ee77d6194def97d4b3342ab405190a9dddd94e5a5e599",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/a75d576c-f315-4c90-b5c9-1ca7d9f8b51f/download/2012-tcdsb-ward-8.xls"
     },
     {
       "bytes": 23543,
       "local_path": "data/raw/trustee_byelections/2012-tdsb-wards-17-20.xls",
-      "retrieved_at": "2026-08-20T15:17:37Z",
+      "retrieved_at": "2026-08-20T15:17:37.707006Z",
       "sha256": "49879352ace7c5ee08c8869176e77686ce19ce19d2e60650bb2d9834fe24c346",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/79f831c8-48ec-45f2-a65e-3b514f877a93/download/2012-tdsb-wards-17-20.xls"
     },
     {
       "bytes": 12867,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-1-.xlsx",
-      "retrieved_at": "2026-08-20T15:17:38Z",
+      "retrieved_at": "2026-08-20T15:17:38.522523Z",
       "sha256": "0c3b820c268ae4a0b4701690bc1e6caad9b3aa684171b28a56dc0e1aa9d95269",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/836c4152-0603-4fd4-8ab4-a53cf386bc43/download/2016-tdsb-ward-1-.xlsx"
     },
     {
       "bytes": 18255,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-14.xlsx",
-      "retrieved_at": "2026-08-20T15:17:38Z",
+      "retrieved_at": "2026-08-20T15:17:38.306024Z",
       "sha256": "93523bac1cb62f7153265ba3a0d2c7860d6b00616fa123b651338b75e8fca6d7",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/0190932e-d817-4d8e-8634-8a1cc8cf5a9d/download/2016-tdsb-ward-14.xlsx"
     },
     {
       "bytes": 13147,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-21.xlsx",
-      "retrieved_at": "2026-08-20T15:17:38Z",
+      "retrieved_at": "2026-08-20T15:17:38.027447Z",
       "sha256": "a690a5096df51eddc1db36c4c494f478e097bbd349fd46a864e0c036a7b42883",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/7b83316d-f2a7-4dbe-9b67-08138178c739/download/2016-tdsb-ward-21.xlsx"
     },
     {
       "bytes": 11086,
       "local_path": "data/raw/trustee_byelections/2016-tdsb-ward-5.xlsx",
-      "retrieved_at": "2026-08-20T15:17:38Z",
+      "retrieved_at": "2026-08-20T15:17:38.721245Z",
       "sha256": "b0a07ed079465cf09da137f497cb0a302bdfab99ca9ef88fe2e9900d2bc0b042",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/25343469-085b-4c9f-8a36-7d7f9115c630/download/2016-tdsb-ward-5.xlsx"
     },
     {
       "bytes": 32114,
       "local_path": "data/raw/trustee_byelections/2023-csv-ward-3-centre-csc-monavenir-ward-4-toronto-est.zip",
-      "retrieved_at": "2026-08-20T15:17:38Z",
+      "retrieved_at": "2026-08-20T15:17:38.890338Z",
       "sha256": "ce62bf25fb6f739ad6c93b161e055431e07552e0f246246e44edd202f1c71194",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/ef7e9bbc-71ea-4d89-a412-a9ebad706fd7/download/2023-csv-ward-3-centre-csc-monavenir-ward-4-toronto-est.zip"
     },
     {
       "bytes": 17867,
       "local_path": "data/raw/trustee_byelections/2025-tdsb-ward-11.xlsx",
-      "retrieved_at": "2026-08-20T15:17:39Z",
+      "retrieved_at": "2026-08-20T15:17:39.055881Z",
       "sha256": "734a7276f74161c1a8bb8984e1d6d0887d32ed9a0bf5ef03eeb4365cdaeee44c",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/97d72233-8681-4b3d-828e-4929d40d122c/resource/7057b4fe-f71d-469b-bf61-c366895fc62e/download/2025-tdsb-ward-11.xlsx"
     },
     {
       "bytes": 138288,
       "local_path": "data/raw/voter_stats/2003-voter-statistics.xls",
-      "retrieved_at": "2026-08-19T18:44:53Z",
+      "retrieved_at": "2026-08-19T18:44:53.452889Z",
       "sha256": "c0f0ce783382dd8de745cb6976fe077569b8ade7bb575a01f9b3a094d1bd2d76",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/030a7234-7ee0-46a0-94de-3a31fa58352a/download/2003-voter-statistics.xls"
     },
     {
       "bytes": 145423,
       "local_path": "data/raw/voter_stats/2006-voter-statistics.xls",
-      "retrieved_at": "2026-08-19T18:44:53Z",
+      "retrieved_at": "2026-08-19T18:44:53.657769Z",
       "sha256": "67a006f762cd4b170f8f0ccc01b9b817a71665b9d05a7fd325fcd4cd00b2da8d",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/0b5691a6-7235-46d0-94a6-47f309605829/download/2006-voter-statistics.xls"
     },
     {
       "bytes": 330240,
       "local_path": "data/raw/voter_stats/2010-voter-statistics.xls",
-      "retrieved_at": "2026-08-19T18:44:53Z",
+      "retrieved_at": "2026-08-19T18:44:53.835701Z",
       "sha256": "7e0de20d2a24e7a227fcdc80becfb3a22f4c4170e336b63ffd856fcb59f31183",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/4615e48b-11f1-4965-94f1-170401b674c4/download/2010-voter-statistics.xls"
     },
     {
       "bytes": 196608,
       "local_path": "data/raw/voter_stats/2014-voter-statistics.xls",
-      "retrieved_at": "2026-08-19T18:44:53Z",
+      "retrieved_at": "2026-08-19T18:44:53.986651Z",
       "sha256": "9dee143b9348f6d81d2076f4e752990787933104737bbc5d4d2a7e66890153dc",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/a20ad5ef-c77c-4ea3-8144-e270c1f6f9d1/download/2014-voter-statistics.xls"
     },
     {
       "bytes": 226402,
       "local_path": "data/raw/voter_stats/2018-voter-statistics.zip",
-      "retrieved_at": "2026-08-19T18:44:54Z",
+      "retrieved_at": "2026-08-19T18:44:54.159444Z",
       "sha256": "da01568efc8057e685d188c3b793cc5cff88fcdcd19bc6475452f1044d0679fd",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/cb352fd3-7228-48f3-bac3-00c6f7c5dfa6/download/2018-voter-statistics.zip"
     },
     {
       "bytes": 185514,
       "local_path": "data/raw/voter_stats/2022_voter_turnout_statistics_final.xlsx",
-      "retrieved_at": "2026-08-19T18:44:54Z",
+      "retrieved_at": "2026-08-19T18:44:54.320070Z",
       "sha256": "ab66fa7da43c0118ee3455c804b431ae0ec03e491f7496b3061004c1721cbf21",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/7dc606ab-f042-4d90-99e2-9247cb5953d2/resource/631b7042-bd71-46b1-9c27-2d4119462ec7/download/2022_voter_turnout_statistics_final.xlsx"
     },
     {
       "bytes": 139993,
       "local_path": "data/raw/voter_stats/2023-mayoral-by-election-voter-statistics-1.xlsx",
-      "retrieved_at": "2026-08-19T18:44:54Z",
+      "retrieved_at": "2026-08-19T18:44:54.578602Z",
       "sha256": "e2073b8814e505b7f9e53be8fee9e75a407323fc23f6563ddaf9bf32c0bb2fd5",
       "source_url": "https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/c1c7ea74-0088-484f-9508-2165d3dfd629/resource/46ccd64f-4a40-41b3-b045-d13ab34e54eb/download/2023-mayoral-by-election-voter-statistics-1.xlsx"
     },
     {
       "bytes": 347,
       "local_path": "data/reference/campaign_url_curations.csv",
-      "retrieved_at": "2026-10-28T12:11:40.476182Z",
+      "retrieved_at": "2026-11-07T19:55:30.817771Z",
       "sha256": "6d578ef360c1d6a955b398c841cb5b0b60dd5f9a0aa84eb4df2b774f6ae1dab7"
     },
     {
       "bytes": 4255535,
       "local_path": "data/reference/candidacy_identity_ledger.csv",
-      "retrieved_at": "2026-11-07T18:49:33.213723Z",
+      "retrieved_at": "2026-11-07T20:13:41.369608Z",
       "sha256": "9508482b17d764364ac22df2a321e5d7859ab7d97801210447f499b9c6653ff2"
     },
     {
       "bytes": 13378,
       "local_path": "data/reference/candidate_name_curations.csv",
-      "retrieved_at": "2026-11-03T14:43:56.977288Z",
+      "retrieved_at": "2026-11-07T19:55:30.823241Z",
       "sha256": "e6c1e022f3b4a14b1ab4ba41b8e445d32603f6e30b848e9db6c3426dc40f35f8"
     },
     {
       "bytes": 10201,
       "local_path": "data/reference/city_ward_geographic_names.csv",
-      "retrieved_at": "2026-10-28T12:11:40.476242Z",
+      "retrieved_at": "2026-11-07T19:55:30.823416Z",
       "sha256": "0f5f3a92280eb46cf6004997d664012284c58ed433b50cb6e327f97ab82bfee8"
     },
     {
       "bytes": 5426,
       "local_path": "data/reference/council_appointments.csv",
-      "retrieved_at": "2026-11-07T15:11:44.598237Z",
+      "retrieved_at": "2026-11-07T19:55:30.823512Z",
       "sha256": "c5ff628058d2ca88804071bfa201a0f7f5795b3b2701be2ff6961b44a9ad6b26"
     },
     {
       "bytes": 19728,
       "local_path": "data/reference/council_roster_2000.csv",
-      "retrieved_at": "2026-11-05T21:16:18.467977Z",
+      "retrieved_at": "2026-11-07T19:55:30.823607Z",
       "sha256": "40d1b664ef4c179fb0b939a1d7b74528a37b353c35716d1ada1fdce99394fa94"
     },
     {
       "bytes": 62691,
       "local_path": "data/reference/endorsement_assertion_curations.csv",
-      "retrieved_at": "2026-11-03T14:43:56.977288Z",
+      "retrieved_at": "2026-11-07T19:55:30.823811Z",
       "sha256": "249ae1405d25c9a7187e7c6f2fcfd9f85c42e57197b5897e45bb951d5d71f1e8"
     },
     {
       "bytes": 50021,
       "local_path": "data/reference/endorsement_coverage_curations.csv",
-      "retrieved_at": "2026-10-28T12:11:40.476242Z",
+      "retrieved_at": "2026-11-07T19:55:30.824163Z",
       "sha256": "c5aa74c9d4ad023107bcf2bfe861d45edfeea19a9b6d3b0992b2271d8dc200ab"
     },
     {
       "bytes": 2401,
       "local_path": "data/reference/endorser_panel_curations.csv",
-      "retrieved_at": "2026-10-28T12:11:40.476242Z",
+      "retrieved_at": "2026-11-07T19:55:30.824312Z",
       "sha256": "ba045591c098c024603e76e25df566bd248a00b4d306750c42122b3e7d4a6231"
     },
     {
       "bytes": 533616,
       "local_path": "data/reference/house_of_commons_members.csv",
-      "retrieved_at": "2026-11-07T15:11:44.602237Z",
+      "retrieved_at": "2026-11-07T19:55:30.825249Z",
       "sha256": "43999bf770c08fdf25a098c39f17d67dd4d8283ff9d8f9aabf6ae4c0709f3a70"
     },
     {
       "bytes": 190411,
       "local_path": "data/reference/identity_link_basis.csv",
-      "retrieved_at": "2026-11-07T15:11:44.602237Z",
+      "retrieved_at": "2026-11-07T19:55:30.826190Z",
       "sha256": "a187dc986a7380b7b768bfa14570d8d0a28b7e0a07c9bae9428bdd81cccdda6b"
     },
     {
       "bytes": 868801,
       "local_path": "data/reference/identity_review_dispositions.csv",
-      "retrieved_at": "2026-11-07T15:11:44.714237Z",
+      "retrieved_at": "2026-11-07T19:55:30.827804Z",
       "sha256": "5be4286ec8ee508baea229f0dc9c9386b71998649d0e1a1f24f123561b412452"
     },
     {
       "bytes": 13148,
       "local_path": "data/reference/mayoral_career_cohort_2026.csv",
-      "retrieved_at": "2026-10-28T12:11:40.476242Z",
+      "retrieved_at": "2026-11-07T19:55:30.828025Z",
       "sha256": "78119e69b21bcaa1dc05e75cc1a5846d52c7b58b8eb2e7a77650c448db6af8b7"
     },
     {
       "bytes": 64220,
       "local_path": "data/reference/mayoral_career_decisions.csv",
-      "retrieved_at": "2026-10-31T22:51:12.600283Z",
+      "retrieved_at": "2026-11-07T19:55:30.828157Z",
       "sha256": "dfc1efb0eb888f8fa28c45d288d1dea41698ad4fd080d32d417147422935e72a"
     },
     {
       "bytes": 11246,
       "local_path": "data/reference/mayoral_career_occurrence_mapping.csv",
-      "retrieved_at": "2026-10-31T22:51:12.600283Z",
+      "retrieved_at": "2026-11-07T19:55:30.828293Z",
       "sha256": "d77427951cd15d13dc7256533e1df28f503744d154571d21e88c125ec57a388b"
     },
     {
       "bytes": 27216,
       "local_path": "data/reference/mayoral_career_reviews.csv",
-      "retrieved_at": "2026-10-31T22:51:12.600283Z",
+      "retrieved_at": "2026-11-07T19:55:30.828564Z",
       "sha256": "21514bc011a5dc03caf3b0a60b3f4a580ec6dd99475ec22adfc94fc346a8d265"
     },
     {
       "bytes": 166920,
       "local_path": "data/reference/ontario_legislature_members.csv",
-      "retrieved_at": "2026-11-07T15:11:44.714237Z",
+      "retrieved_at": "2026-11-07T19:55:30.836478Z",
       "sha256": "eaf1701d031f49b5cbd47b04ee1a8a2d32776ea5b8a5bc4ef5971b09d1070b1f"
     },
     {
       "bytes": 91622,
       "local_path": "data/reference/person_external_ids.csv",
-      "retrieved_at": "2026-11-07T15:11:44.714237Z",
+      "retrieved_at": "2026-11-07T19:55:30.836685Z",
       "sha256": "e3519df3ecc3665949295d5485f9a339c0fc98e9a43894c1aa1cfd30e084eb07"
     },
     {
       "bytes": 26853,
       "local_path": "data/reference/predecessor_rosters_1997.csv",
-      "retrieved_at": "2026-11-07T15:11:44.714237Z",
+      "retrieved_at": "2026-11-07T19:55:30.836787Z",
       "sha256": "6214cd742ed391aa314ea9fc0708dc44a519f2786554badf35105b81c30bf053"
     },
     {
       "bytes": 23549,
       "local_path": "data/reference/raw_source_urls.csv",
-      "retrieved_at": "2026-11-07T18:43:54.109703Z",
+      "retrieved_at": "2026-11-07T19:55:30.837101Z",
       "sha256": "99a688b295c5d8f66a4d38490f220ff6b98772bb6c3022e44fb119c3388ef097"
     },
     {
       "bytes": 326094,
       "local_path": "data/reference/results_2026/declaration_of_results_2026.pdf",
-      "retrieved_at": "2026-10-30T12:25:01.407326Z",
+      "retrieved_at": "2026-11-07T19:55:30.837973Z",
       "sha256": "e6be04483216f7ed32c6fcfb5327ecc23641cf49531cb53d6629842fb4b95aee"
     },
     {
       "bytes": 65343,
       "local_path": "data/reference/results_2026_declaration.csv",
-      "retrieved_at": "2026-10-30T12:25:01.407326Z",
+      "retrieved_at": "2026-11-07T19:55:30.839013Z",
       "sha256": "2806a838d6c3f106ac4d9b83a2c2a7042e98547612e88911aa76514dceccf7c9"
     },
     {
       "bytes": 3698,
       "local_path": "data/reference/roster_agent_a.txt",
-      "retrieved_at": "2026-10-28T12:11:40.480242Z",
+      "retrieved_at": "2026-11-07T19:55:30.839268Z",
       "sha256": "d4d1757db16f00ad4905ca9432e5046481454cf09fb85082809f69901222f55b"
     },
     {
       "bytes": 3696,
       "local_path": "data/reference/roster_agent_b.txt",
-      "retrieved_at": "2026-10-28T12:11:40.480242Z",
+      "retrieved_at": "2026-11-07T19:55:30.839331Z",
       "sha256": "4780ad055a1d4c0015ca9244b524161a58e9700b9915a363064c417142ce9e3d"
     },
     {
       "bytes": 27577,
       "local_path": "data/reference/trustee_career_cohort_2026.csv",
-      "retrieved_at": "2026-10-31T23:33:30.211669Z",
+      "retrieved_at": "2026-11-07T19:55:30.839997Z",
       "sha256": "ce6d329fc1d6f67b530dd9558732842b5cb5483f91ab1a717e4581b873d7dabd"
     },
     {
       "bytes": 133906,
       "local_path": "data/reference/trustee_career_decisions.csv",
-      "retrieved_at": "2026-11-05T15:08:32.574440Z",
+      "retrieved_at": "2026-11-07T19:55:30.840544Z",
       "sha256": "55965a1b120eb2e8561a7c348618b9678558120bd52441e299748d4fc3059b51"
     },
     {
       "bytes": 87818,
       "local_path": "data/reference/trustee_career_reviews.csv",
-      "retrieved_at": "2026-10-29T10:26:42.694228Z",
+      "retrieved_at": "2026-11-07T19:55:30.841000Z",
       "sha256": "8e30af6460a4257731a70e6c0ffd528d25de05d263e164b3187eb5ba6abedb00"
     },
     {
       "bytes": 49304,
       "local_path": "data/reference/trustee_career_sol_reviews.csv",
-      "retrieved_at": "2026-11-05T15:08:32.574440Z",
+      "retrieved_at": "2026-11-07T19:55:30.841167Z",
       "sha256": "46fa8d2aceafe57d700f8443f451b0f8b687c6e41191b40a4c107fd22e833b45"
     },
     {
       "bytes": 5607,
       "local_path": "data/reference/trustee_incumbents_2026.csv",
-      "retrieved_at": "2026-10-28T12:11:40.480242Z",
+      "retrieved_at": "2026-11-07T19:55:30.841270Z",
       "sha256": "a4ecfa0dcd0e0269e8713d7f8edcc2b9fefc523b3945a902418db89ccf217371"
     },
     {
       "bytes": 91930,
       "local_path": "data/reference/trustee_ward_crosswalks.csv",
-      "retrieved_at": "2026-11-07T17:52:08.025801Z",
+      "retrieved_at": "2026-11-07T19:55:30.841790Z",
       "sha256": "1fbda1b6de07b796759a550f63c1d9a273aea514335e73b6b098a835c1f907f5"
     },
     {
       "bytes": 17038,
       "local_path": "docs/research/endorsement-coverage-luna-editorial-2003-2025.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.848270Z",
       "sha256": "65f872e37d367d904f859646d17b8d0711f82ea3a9d9172e479f9ec94c843e9a"
     },
     {
       "bytes": 20938,
       "local_path": "docs/research/endorsement-coverage-luna-organizations-2003-2025.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.848444Z",
       "sha256": "c7d7dfd60ea42bccf60dccebc33c0509b671d6d3901777489e6e4ca3accb7aaf"
     },
     {
       "bytes": 10781,
       "local_path": "docs/research/endorsement-coverage-terra-mayors-2003-2025.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.848544Z",
       "sha256": "d29c972ff7b7849268fb34bd34caa3613f5c5c98442590c6dd79e16bf219c28a"
     },
     {
       "bytes": 11381,
       "local_path": "docs/research/endorsement-coverage-terra-verification-editorial.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.848793Z",
       "sha256": "3daad2ff23108abc8fbc48a19e394fdaf9c0da15ee70ea4c95f5e052ccecaa38"
     },
     {
       "bytes": 6650,
       "local_path": "docs/research/endorsement-coverage-terra-verification-hold-recovery.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.848928Z",
       "sha256": "4a266b5a75907353758c0bc014498bb0b2b1821c6232328afb1a825736cebf01"
     },
     {
       "bytes": 14337,
       "local_path": "docs/research/endorsement-coverage-terra-verification-organizations.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.849067Z",
       "sha256": "3a785912e4394f6e2b43addd6e6a24dd9e085a1a8794c68a27fc17f077589dbc"
     },
     {
       "bytes": 7008,
       "local_path": "docs/research/endorsement-coverage-terra-verification-wave1.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.849147Z",
       "sha256": "b69a78cc45028b0665b13797f2ac7b8964f4c05e8669ca7cd21247422ce3599a"
     },
     {
       "bytes": 25058,
       "local_path": "docs/research/matt-elliott-2022-endorsement-matrix-audit.md",
-      "retrieved_at": "2026-10-28T12:11:40.483801Z",
+      "retrieved_at": "2026-11-07T19:55:30.850970Z",
       "sha256": "907149a95a5d6f92c4191e86feff7296d724fe829975ae82dd68d12d9d09bf77"
     },
     {
       "bytes": 2534,
       "local_path": "docs/research/trustee-career/2026/can_00559d83c281555b8fb8ef52039a18c3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.863645Z",
       "sha256": "a97f92d2f1aac085a13b17bbcfff88613c0647131e6226af2653fc9a2ef0894e"
     },
     {
       "bytes": 2224,
       "local_path": "docs/research/trustee-career/2026/can_00559d83c281555b8fb8ef52039a18c3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.863703Z",
       "sha256": "755a412776df4bd3f87e2e75d52d5ed3d242d029e51959e3abf4894ba334327f"
     },
     {
       "bytes": 2827,
       "local_path": "docs/research/trustee-career/2026/can_01172eb55cf256048374d94ac7781410-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.863770Z",
       "sha256": "77958b695e5689f4331c856c30cbc3e514c9ace56be3d75ead523755ecea5d45"
     },
     {
       "bytes": 2356,
       "local_path": "docs/research/trustee-career/2026/can_01172eb55cf256048374d94ac7781410-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.863837Z",
       "sha256": "78ea4cc80bd7f810c78d3f619bf70d4d21026def7730236eec3afec6c4fa8d27"
     },
     {
       "bytes": 2988,
       "local_path": "docs/research/trustee-career/2026/can_01a1f4255c465a66ae1e93b82ef01b63-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.863898Z",
       "sha256": "4ab0304b9b3bfc90ffd7b68126b2ccdd0af8b20caada9341a08bc04b56e701fb"
     },
     {
       "bytes": 1520,
       "local_path": "docs/research/trustee-career/2026/can_01a1f4255c465a66ae1e93b82ef01b63-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.863961Z",
       "sha256": "447534d4e661a883684f32123a591026b0483635ac1c54350264e58f3620505c"
     },
     {
       "bytes": 4528,
       "local_path": "docs/research/trustee-career/2026/can_0223966eed3453f8a109f60a720eb111-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864022Z",
       "sha256": "d34a524941c82cef957d5a230b100ac1bde269a6a109e41073dcfb684e7abf84"
     },
     {
       "bytes": 2782,
       "local_path": "docs/research/trustee-career/2026/can_0223966eed3453f8a109f60a720eb111-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864082Z",
       "sha256": "706185a7fa22b21e46a037f74751284d5e0acdd9cd3f5fbae5348e08c9f830b5"
     },
     {
       "bytes": 3649,
       "local_path": "docs/research/trustee-career/2026/can_0223966eed3453f8a109f60a720eb111-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864151Z",
       "sha256": "1e745a0cf3de139f79d9612a46ef2633699f862a94863ac26fe059b50a36a1ee"
     },
     {
       "bytes": 3346,
       "local_path": "docs/research/trustee-career/2026/can_0977564d534e5317abbd4b3955f27b83-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864209Z",
       "sha256": "3036eee7f9712e0edc60a6733a1ab93907dab1345d9475e5a4b33a737434c323"
     },
     {
       "bytes": 1975,
       "local_path": "docs/research/trustee-career/2026/can_0977564d534e5317abbd4b3955f27b83-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864338Z",
       "sha256": "7abc7a91014ff8af4f242bdbd2da95b20ff74bfc8204308976d5cf664e6c6c25"
     },
     {
       "bytes": 4001,
       "local_path": "docs/research/trustee-career/2026/can_0bec302f9a5656f68d9317faf79bd81c-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864651Z",
       "sha256": "e301cff0f3216194b9d5cdf7d4f2c01bbeb8004b4298976a2afea5f4710200f8"
     },
     {
       "bytes": 4596,
       "local_path": "docs/research/trustee-career/2026/can_0bec302f9a5656f68d9317faf79bd81c-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864724Z",
       "sha256": "585370eee4469fb06bc495c79d9aaa7991b3258274f33d1a2b25a46e37223a06"
     },
     {
       "bytes": 3121,
       "local_path": "docs/research/trustee-career/2026/can_0c6cc096ee3759faa4245e67c2840b10-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864790Z",
       "sha256": "90b3bd98b71980ef065b694c0dd6e581d3bd8510cab4c759ddb01de3415be98b"
     },
     {
       "bytes": 1894,
       "local_path": "docs/research/trustee-career/2026/can_0c6cc096ee3759faa4245e67c2840b10-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864858Z",
       "sha256": "273ad84681f2acf9d0bc592bbbd4d29a760140bba1edab841dffb7e1b7901775"
     },
     {
       "bytes": 2851,
       "local_path": "docs/research/trustee-career/2026/can_0f374e3c7faf50efad35d99d3ded7c81-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.864914Z",
       "sha256": "6fafc065954b5f53c833dfdcfb04728443aa6248d0ed96a96aba1300c00832c4"
     },
     {
       "bytes": 1884,
       "local_path": "docs/research/trustee-career/2026/can_0f374e3c7faf50efad35d99d3ded7c81-sol.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.864978Z",
       "sha256": "81798f125eb659d6e714526b512e7dfe8fbdd1195fd265393c454471d4e27128"
     },
     {
       "bytes": 2368,
       "local_path": "docs/research/trustee-career/2026/can_0f374e3c7faf50efad35d99d3ded7c81-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865035Z",
       "sha256": "f3190bb5293d6e7e600663488cb24f6fc5abbc6daec66f63c889b341697d6621"
     },
     {
       "bytes": 2664,
       "local_path": "docs/research/trustee-career/2026/can_0fafd29d4a225baf98cecc410765a8c3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865087Z",
       "sha256": "bc4aba44c70c59c1a2aabe40e3e9c9ed560ab00038d464a31e243e62b9e93853"
     },
     {
       "bytes": 2078,
       "local_path": "docs/research/trustee-career/2026/can_0fafd29d4a225baf98cecc410765a8c3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865139Z",
       "sha256": "874643c13fb5af9a47335a3ec77bca90f31b884d0e8fae85893d0eed5c0fbb3f"
     },
     {
       "bytes": 2906,
       "local_path": "docs/research/trustee-career/2026/can_1161ca93a4615c7698106e70b18a5d53-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865212Z",
       "sha256": "4ab9b175e3654f1aedd0a6035f8026b48e4de6feafbebb0f095c06f20ce07ca3"
     },
     {
       "bytes": 1991,
       "local_path": "docs/research/trustee-career/2026/can_1161ca93a4615c7698106e70b18a5d53-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865276Z",
       "sha256": "6acdc6260956db3d57a38473675aa742cbc0ea6fbb75d9dd397455618c8dadba"
     },
     {
       "bytes": 6074,
       "local_path": "docs/research/trustee-career/2026/can_16a76ce95d88555e9f4c4fe393854af1-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865332Z",
       "sha256": "af27684df0730eb44ed51b242abe5a66a3c4b5ea31d44fe6a7f0102351563276"
     },
     {
       "bytes": 3637,
       "local_path": "docs/research/trustee-career/2026/can_16a76ce95d88555e9f4c4fe393854af1-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865389Z",
       "sha256": "0984a6dcfe604b4249cdb55d643359c504c239f65bcc9115e8bcf87e0533afcf"
     },
     {
       "bytes": 2334,
       "local_path": "docs/research/trustee-career/2026/can_19957a0f657f53778c8d080c975d3a6c-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865446Z",
       "sha256": "bcdfa2bce2e3462ca2456addd5d535832f111531048f5eb2d1514e648d4c5911"
     },
     {
       "bytes": 1788,
       "local_path": "docs/research/trustee-career/2026/can_19957a0f657f53778c8d080c975d3a6c-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865512Z",
       "sha256": "7a91bc720efdb036443fe4d12f1686f3e84f3d4294c03867cb54081ae6284ced"
     },
     {
       "bytes": 2525,
       "local_path": "docs/research/trustee-career/2026/can_202423c400a55a29b4aeabbd24a546b6-luna.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.865572Z",
       "sha256": "6d2c00a048eb5b96ab9eae8659f261b1d5613c8a1cafb760c8052f0a647306ea"
     },
     {
       "bytes": 1971,
       "local_path": "docs/research/trustee-career/2026/can_202423c400a55a29b4aeabbd24a546b6-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865622Z",
       "sha256": "5e05d170d9ad723bb2da1c4492f1af576676e06a24ff289329fff6e0ee1ca2ef"
     },
     {
       "bytes": 3122,
       "local_path": "docs/research/trustee-career/2026/can_225459bb53e25835a16c1731cd216699-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865673Z",
       "sha256": "d4372757aa1b41c11777648c66a9c18be8dece2e4102b8fb46a8058d12abb262"
     },
     {
       "bytes": 1888,
       "local_path": "docs/research/trustee-career/2026/can_225459bb53e25835a16c1731cd216699-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865730Z",
       "sha256": "1b87e7ac668cf6d4bafbf193b8ace17dcdb39f6c3760f1b08f37655078b3cba6"
     },
     {
       "bytes": 1946,
       "local_path": "docs/research/trustee-career/2026/can_225459bb53e25835a16c1731cd216699-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865789Z",
       "sha256": "9e7dc5d0a530429cb5e034fae002b47c9fb4c119caf36445b4aa988f212528d7"
     },
     {
       "bytes": 2464,
       "local_path": "docs/research/trustee-career/2026/can_292fef10530b5163a82e65c79829e541-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865848Z",
       "sha256": "1aa8f30f1b7d54a3e8bf9c5d62f6f5b805e5334333cbdea2cfac6cad8f33ebf4"
     },
     {
       "bytes": 1709,
       "local_path": "docs/research/trustee-career/2026/can_292fef10530b5163a82e65c79829e541-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865910Z",
       "sha256": "4af1ec5989e86ca61039f1033332708326206c9646c5500006675f63cdfca5eb"
     },
     {
       "bytes": 2577,
       "local_path": "docs/research/trustee-career/2026/can_2975279df8ce5342b8cf405d186453ca-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.865963Z",
       "sha256": "444fb05a6dcb6427e3609f9d7d22cc565c1f19814a15c9d7ece331b557e3c5c8"
     },
     {
       "bytes": 1839,
       "local_path": "docs/research/trustee-career/2026/can_2975279df8ce5342b8cf405d186453ca-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866018Z",
       "sha256": "b76b279ac946adc31b6cb6749f958a2851457ecdb5e35e80cebc1f9d8589564b"
     },
     {
       "bytes": 6144,
       "local_path": "docs/research/trustee-career/2026/can_2ad9fa52dee954d4a11c8e3bdbbbb5d7-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866076Z",
       "sha256": "91b578336336b09737a530c7d8d3358e64db68f3ed5075a453a6c92aad61b452"
     },
     {
       "bytes": 3584,
       "local_path": "docs/research/trustee-career/2026/can_2ad9fa52dee954d4a11c8e3bdbbbb5d7-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866127Z",
       "sha256": "a8a7e60904d81198faf0d0600cab711a7b0a92f5ebef0018a9c351f0fff79f03"
     },
     {
       "bytes": 3244,
       "local_path": "docs/research/trustee-career/2026/can_2c8f5a36cc6057549899360a49a4182a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866188Z",
       "sha256": "1986fca4ee4cf27a5f418180254bdce61890b48a45c3ac7e072343a31c3520f4"
     },
     {
       "bytes": 2452,
       "local_path": "docs/research/trustee-career/2026/can_2c8f5a36cc6057549899360a49a4182a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866247Z",
       "sha256": "5ca1e28d4428d4a8ba0fc565d7e01b37c92493e64e351ffebb9170eabf9de22f"
     },
     {
       "bytes": 3207,
       "local_path": "docs/research/trustee-career/2026/can_2ce1f567f57052e09357e59dd3ac8cec-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866302Z",
       "sha256": "a0ab7c115b800fa4d615379d0362b8b52049f9538dae6d91ec69691036a6adb3"
     },
     {
       "bytes": 2916,
       "local_path": "docs/research/trustee-career/2026/can_2ce1f567f57052e09357e59dd3ac8cec-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866358Z",
       "sha256": "05a9296a1d0de2d9bd2bcce0e23ed195286a78c4878930b572f3a4e9baee0bf6"
     },
     {
       "bytes": 4542,
       "local_path": "docs/research/trustee-career/2026/can_2f91a36290e058ea8f377bacce7ea2ff-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866414Z",
       "sha256": "d9a658f22ea94fe2d70270fad6cdcf2c7f93e81eb854d01508c546ff5b091d16"
     },
     {
       "bytes": 3111,
       "local_path": "docs/research/trustee-career/2026/can_2f91a36290e058ea8f377bacce7ea2ff-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866465Z",
       "sha256": "1b8b2906349f5703529c4bd877d6f46ca67837d9b07dae449d3451fc87487297"
     },
     {
       "bytes": 2944,
       "local_path": "docs/research/trustee-career/2026/can_30a3b17f2636579aa3e5b4bf92256517-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866515Z",
       "sha256": "cd49e18dfc709c60f6144e2da29a4e41d8768cc48c746bd16a909043ebf14eb9"
     },
     {
       "bytes": 1878,
       "local_path": "docs/research/trustee-career/2026/can_30a3b17f2636579aa3e5b4bf92256517-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866574Z",
       "sha256": "72e49616436abda4b865d82cf359f4cc1b6a4c0c7a5907614e33bfcf93c4dc61"
     },
     {
       "bytes": 4840,
       "local_path": "docs/research/trustee-career/2026/can_3224e16ce5535e459bc5e4b8f8214aff-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866636Z",
       "sha256": "0c03cbaf0f3f5017f0555871a7f9e293684062bf8fddffb427169fe64b269515"
     },
     {
       "bytes": 2910,
       "local_path": "docs/research/trustee-career/2026/can_3224e16ce5535e459bc5e4b8f8214aff-sol.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.866695Z",
       "sha256": "3efa8a2c0b06b5d5a95c599936b1f2ca289b435a959428291e1264f6129a0e77"
     },
     {
       "bytes": 2349,
       "local_path": "docs/research/trustee-career/2026/can_3224e16ce5535e459bc5e4b8f8214aff-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866751Z",
       "sha256": "3272473dd3551e4c0ba08064711d0b8c1ae4eceb64436a1d4614f8804ee49343"
     },
     {
       "bytes": 2515,
       "local_path": "docs/research/trustee-career/2026/can_333b58acfcd252b9b730bdee59c14909-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866811Z",
       "sha256": "ff4d026c2e17eab6d725cf459fd0c5596c4891fc83cea5dd275688411b8ed259"
     },
     {
       "bytes": 2117,
       "local_path": "docs/research/trustee-career/2026/can_333b58acfcd252b9b730bdee59c14909-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866866Z",
       "sha256": "f8ce29c0dae52a77cebd462a08bd7af20555b55f61b99ef2c7858fbebfce0789"
     },
     {
       "bytes": 2651,
       "local_path": "docs/research/trustee-career/2026/can_3aa1d130e8f3503c941983d9258b7fb9-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866922Z",
       "sha256": "4229c90ecb569f9b62e18626da859bb3beab5e392c02db366f3847dd3de427f1"
     },
     {
       "bytes": 2159,
       "local_path": "docs/research/trustee-career/2026/can_3aa1d130e8f3503c941983d9258b7fb9-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.866977Z",
       "sha256": "9a2a826de070528ce01ce25f8cbb4d026c0cf2d21de7b95982586f8de1883280"
     },
     {
       "bytes": 3819,
       "local_path": "docs/research/trustee-career/2026/can_3c5cf71c069a58b5802a61568489e9b3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867044Z",
       "sha256": "21f5910e61f369bd0d3e8f45898db2c8a393cbfdffe4e639494cceae810cf711"
     },
     {
       "bytes": 2831,
       "local_path": "docs/research/trustee-career/2026/can_3c5cf71c069a58b5802a61568489e9b3-sol.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.867106Z",
       "sha256": "82784823702e97e7594c646e6dcd4f4368f188ce4fc6a37969e90fd856e1e1c0"
     },
     {
       "bytes": 3488,
       "local_path": "docs/research/trustee-career/2026/can_3c5cf71c069a58b5802a61568489e9b3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867163Z",
       "sha256": "8be4ea3a60246d4b4fc61ecf1861e59f21b30d9225c1b4ef7d0eff817a05fcff"
     },
     {
       "bytes": 2796,
       "local_path": "docs/research/trustee-career/2026/can_3f03082b897b5f678b63116eaa7b9871-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867227Z",
       "sha256": "c6c91fc3307c29a5246bc917a5664228406c044a27437d7602f6b7984de1fae1"
     },
     {
       "bytes": 2096,
       "local_path": "docs/research/trustee-career/2026/can_3f03082b897b5f678b63116eaa7b9871-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867284Z",
       "sha256": "2d17d9cc91b31ff941e924ec24aa2afdfd31571a3614f6eb580caa621b049dbf"
     },
     {
       "bytes": 4182,
       "local_path": "docs/research/trustee-career/2026/can_3fd9bf5aab3652fc8710e2fb9b72e168-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867343Z",
       "sha256": "423766395bf21f8db81ec3e5d66b6285b89df4377a654d6d926885b71024621b"
     },
     {
       "bytes": 1845,
       "local_path": "docs/research/trustee-career/2026/can_3fd9bf5aab3652fc8710e2fb9b72e168-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867404Z",
       "sha256": "7d718aa4a42d65f9356054a81c40afa334aa7915660d9faf5a451ab2415aaeba"
     },
     {
       "bytes": 2606,
       "local_path": "docs/research/trustee-career/2026/can_3fd9bf5aab3652fc8710e2fb9b72e168-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867459Z",
       "sha256": "556275b4abf9366b24f0f3f3a557ea76e1b06e3a4f8f4523304c6ee33bf23a10"
     },
     {
       "bytes": 2989,
       "local_path": "docs/research/trustee-career/2026/can_4014990417345d95a6017de5bcd2c6e1-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867518Z",
       "sha256": "735757d364bf52aa341b154defb0839a19dd77d80baf438ab843b868b73518ba"
     },
     {
       "bytes": 1897,
       "local_path": "docs/research/trustee-career/2026/can_4014990417345d95a6017de5bcd2c6e1-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867574Z",
       "sha256": "a13d41086bab0ac5297ee8e0c3ea769cc1c6d656eb8b26f45ea36d25838de50b"
     },
     {
       "bytes": 4221,
       "local_path": "docs/research/trustee-career/2026/can_489331f6970f5c4cae48691377937359-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867635Z",
       "sha256": "914399658cfaa3dd6df54459060e0455052070b4a10e0d87572d5360ce5e471b"
     },
     {
       "bytes": 2832,
       "local_path": "docs/research/trustee-career/2026/can_489331f6970f5c4cae48691377937359-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867689Z",
       "sha256": "00f60bc5b643eab6635f7349785fc09d4cf211349c05c66335b071ba398baa08"
     },
     {
       "bytes": 4129,
       "local_path": "docs/research/trustee-career/2026/can_489331f6970f5c4cae48691377937359-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867744Z",
       "sha256": "741a3b9cd65c13a5e41a13a8d5aaa569fcce6c51c1f07a9e52e307957574e42b"
     },
     {
       "bytes": 6455,
       "local_path": "docs/research/trustee-career/2026/can_4b90bb3f92415cbeacd9c49294844657-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867805Z",
       "sha256": "8ab1e0016ebe55ddd5dba7f7a6049400b46ead997591fc537283fc584765d113"
     },
     {
       "bytes": 3025,
       "local_path": "docs/research/trustee-career/2026/can_4b90bb3f92415cbeacd9c49294844657-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867866Z",
       "sha256": "cc60d297e3ea450e163682225a83188a6f139064de9ea4b041fa1deb03157922"
     },
     {
       "bytes": 5004,
       "local_path": "docs/research/trustee-career/2026/can_4b90bb3f92415cbeacd9c49294844657-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867926Z",
       "sha256": "ad8c62c446c1b24f19f18e909d4cd459712ba06b39578d2b7c69831bb88234af"
     },
     {
       "bytes": 4032,
       "local_path": "docs/research/trustee-career/2026/can_4b9c0c3975265308b0e050b612a05da2-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.867990Z",
       "sha256": "f51507399ca44da73b983b20ee3a8fa6a01520f62da5db93b6ca7e0988035a36"
     },
     {
       "bytes": 3562,
       "local_path": "docs/research/trustee-career/2026/can_4b9c0c3975265308b0e050b612a05da2-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868047Z",
       "sha256": "1f412f774a0201458249ce0cc2639623760cf3565f42fa211975d74c2a9c3aa8"
     },
     {
       "bytes": 3397,
       "local_path": "docs/research/trustee-career/2026/can_4eae390042ec54b1ac198df07635ab16-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868105Z",
       "sha256": "b36cd84d97c9d8cc2e4e6962b67e9143a14230e583ebdee4c528dd2e8faada1e"
     },
     {
       "bytes": 2406,
       "local_path": "docs/research/trustee-career/2026/can_4eae390042ec54b1ac198df07635ab16-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868164Z",
       "sha256": "c0f534802db11ca72ab5b0e09c6ee56ecc1b318d4daab82b29e84a1400a0ca62"
     },
     {
       "bytes": 3354,
       "local_path": "docs/research/trustee-career/2026/can_50bb1753ca4b578ca50b7ae0fc5a3cb1-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868221Z",
       "sha256": "7194451fd5de4b6c2e90c5e05823fad8835cee235646db09245a9bea7256f3f0"
     },
     {
       "bytes": 1689,
       "local_path": "docs/research/trustee-career/2026/can_50bb1753ca4b578ca50b7ae0fc5a3cb1-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868274Z",
       "sha256": "7276adcfb81dc5f82d163eb56cb938d869c3a0643072f9e207ae5a8b7712b8f0"
     },
     {
       "bytes": 3169,
       "local_path": "docs/research/trustee-career/2026/can_50bb1753ca4b578ca50b7ae0fc5a3cb1-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868333Z",
       "sha256": "dd9c79adcddcf565cdfbeaa5094e22ea263f1dff2aa5bd9dc3868f9b4b29e3f0"
     },
     {
       "bytes": 3134,
       "local_path": "docs/research/trustee-career/2026/can_578ca769a6ce55f68cce5609ee2d0a36-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868388Z",
       "sha256": "104fdcee937f07f3a3f41ffc57e6bccf69dcac5d357255bc61c3060092d4f7ed"
     },
     {
       "bytes": 1514,
       "local_path": "docs/research/trustee-career/2026/can_578ca769a6ce55f68cce5609ee2d0a36-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868445Z",
       "sha256": "51c11169d24432dde903602481189f95c40122c53219b1ff35405beb26064d0a"
     },
     {
       "bytes": 2317,
       "local_path": "docs/research/trustee-career/2026/can_578ca769a6ce55f68cce5609ee2d0a36-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868506Z",
       "sha256": "8bf0f9a2c38f068055fb753096ba48877836beb629612ecd2ca597a20a74e3e3"
     },
     {
       "bytes": 2735,
       "local_path": "docs/research/trustee-career/2026/can_57ef18de278e5abdabf014c172641e96-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868562Z",
       "sha256": "e93d6dacf5f2b4c4525bd6bd19ad61d084be8522c1215a1c4fc0b3f1c3c81984"
     },
     {
       "bytes": 2192,
       "local_path": "docs/research/trustee-career/2026/can_57ef18de278e5abdabf014c172641e96-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868845Z",
       "sha256": "df86e00de2d2ae913d97492bb28d397e4776c55d33de3cf65a60755057c66705"
     },
     {
       "bytes": 2951,
       "local_path": "docs/research/trustee-career/2026/can_5a2aca85c3f35652ac94534b8180ca30-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.868966Z",
       "sha256": "c6b89d0142b87ceabb66fed81dee1049c01a719f8171bd2708e1c790cdc299c4"
     },
     {
       "bytes": 1738,
       "local_path": "docs/research/trustee-career/2026/can_5a2aca85c3f35652ac94534b8180ca30-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869017Z",
       "sha256": "bd5e74e8513b2b7d6661de81f23c48204cae2cc94cb593da2d03dd00d6600634"
     },
     {
       "bytes": 2942,
       "local_path": "docs/research/trustee-career/2026/can_5b869f11c2e7501e8360fe5110cb4c1e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869078Z",
       "sha256": "b6c64c2e2bb057150442e41a3914b00cdefa20a45e87505704e59c7085f240f1"
     },
     {
       "bytes": 1391,
       "local_path": "docs/research/trustee-career/2026/can_5b869f11c2e7501e8360fe5110cb4c1e-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869134Z",
       "sha256": "e7ac50e421f957a8ae0553d14330fa76e9dcea98f3950add71257a4e75c6287f"
     },
     {
       "bytes": 2517,
       "local_path": "docs/research/trustee-career/2026/can_5b869f11c2e7501e8360fe5110cb4c1e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869195Z",
       "sha256": "5f5b4917b3189a48cbdabab8b232ef43c70a52c56f0887c94b9decdbe8a6b26f"
     },
     {
       "bytes": 4386,
       "local_path": "docs/research/trustee-career/2026/can_5d2f89362ab7548b817c10597e7bff66-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869254Z",
       "sha256": "83d1646934b6b9df9175ae61d2a5b4ad6a6a4aa46d597b0f015ca338e74b941b"
     },
     {
       "bytes": 1990,
       "local_path": "docs/research/trustee-career/2026/can_5d2f89362ab7548b817c10597e7bff66-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869308Z",
       "sha256": "6cdef2e57c7c6439c95d05c02c5e1cbdb9d23659ff02360dd6957651098c35bd"
     },
     {
       "bytes": 3957,
       "local_path": "docs/research/trustee-career/2026/can_5d2f89362ab7548b817c10597e7bff66-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869368Z",
       "sha256": "8edc693b1e0e0eebcb263d8cada804dedb4a5763442ed908d31acf6e1ee663ab"
     },
     {
       "bytes": 2702,
       "local_path": "docs/research/trustee-career/2026/can_5e7c969bca2f5afb8c9048f5723b4519-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869429Z",
       "sha256": "49d5ace9b439c3c3a930340cb3e1cd956ae1fe423c02e3e6267c7d78b455ff49"
     },
     {
       "bytes": 1889,
       "local_path": "docs/research/trustee-career/2026/can_5e7c969bca2f5afb8c9048f5723b4519-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869488Z",
       "sha256": "df19294449ed976d407af59e1eaead7a7471974b5d3823c843423e18a29e1410"
     },
     {
       "bytes": 2822,
       "local_path": "docs/research/trustee-career/2026/can_5f7f158aef535d02960dc4c058b3359a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869543Z",
       "sha256": "44a076b553ac474bdf2cc8d1c5f20f0ead956cd87c8bbd0bdb2185943d25d8af"
     },
     {
       "bytes": 1563,
       "local_path": "docs/research/trustee-career/2026/can_5f7f158aef535d02960dc4c058b3359a-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869597Z",
       "sha256": "ec00c6c7ed83e997ca7f0686b89f3a88e1b0c5cde2e7027ff43a118e7ffb6fa6"
     },
     {
       "bytes": 2337,
       "local_path": "docs/research/trustee-career/2026/can_5f7f158aef535d02960dc4c058b3359a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869658Z",
       "sha256": "9ae450f920e7e7c73fd375d5324f44743e6068cf448e7f95d332445d09d86dd4"
     },
     {
       "bytes": 3167,
       "local_path": "docs/research/trustee-career/2026/can_607efb391571594e977ad02672037327-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869715Z",
       "sha256": "787c0b0c9dc23f7e660250fba271117dd9ac1e02dae756cc68af845455eb0204"
     },
     {
       "bytes": 1643,
       "local_path": "docs/research/trustee-career/2026/can_607efb391571594e977ad02672037327-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869777Z",
       "sha256": "bb65f4bbb2d4e23c1d626cdcbbe6c75608d1f78b91dccdfb728e5dddc952ceff"
     },
     {
       "bytes": 3195,
       "local_path": "docs/research/trustee-career/2026/can_607efb391571594e977ad02672037327-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869835Z",
       "sha256": "215df4748ef0d156c42c72cf178564821ca39cc6045aff51d91152db7a8c2063"
     },
     {
       "bytes": 4225,
       "local_path": "docs/research/trustee-career/2026/can_614647480cb456b4acff2b95864b823a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869895Z",
       "sha256": "3f944c2244026f6261fe0faeca885aa20200ae47d83d6715d68d3919e6edf190"
     },
     {
       "bytes": 2484,
       "local_path": "docs/research/trustee-career/2026/can_614647480cb456b4acff2b95864b823a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.869949Z",
       "sha256": "2fa8b502e58161f39e4d5e1b80bb58458835fd229858ca61d0415a4263cc081b"
     },
     {
       "bytes": 5041,
       "local_path": "docs/research/trustee-career/2026/can_61fa7af81c8957a0b39ed8104548795f-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870007Z",
       "sha256": "e5717436911a92dc72a5d9005d98627ba0976083258849a4476a4fd2526e5c36"
     },
     {
       "bytes": 4970,
       "local_path": "docs/research/trustee-career/2026/can_61fa7af81c8957a0b39ed8104548795f-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870069Z",
       "sha256": "2f74d3c62259ddb80ec934dff9560a0d7d27c5386d0c066b3a1ba243606c1151"
     },
     {
       "bytes": 4593,
       "local_path": "docs/research/trustee-career/2026/can_62de67b8b5ec5d119f07221a40f6132a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870137Z",
       "sha256": "fc302263b7ecd117ba48a739ca7d0a7b5ea41b6d7981c1cabbd61ac0bd2a6280"
     },
     {
       "bytes": 1646,
       "local_path": "docs/research/trustee-career/2026/can_62de67b8b5ec5d119f07221a40f6132a-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870195Z",
       "sha256": "f98ebfaf6cb5fa6df9870c4ed839e97ef442396fa2558db5310ab77376b1d19c"
     },
     {
       "bytes": 2642,
       "local_path": "docs/research/trustee-career/2026/can_62de67b8b5ec5d119f07221a40f6132a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870260Z",
       "sha256": "97869f2481483167679d9fabed015071ba300c595a477aa41db5dd683d394118"
     },
     {
       "bytes": 2596,
       "local_path": "docs/research/trustee-career/2026/can_633c21ab1fb85a4d8e053f67b033741f-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870317Z",
       "sha256": "dce0047be62553535c617bc744513c665c20b8a838379762c0bfb855fb63028d"
     },
     {
       "bytes": 1983,
       "local_path": "docs/research/trustee-career/2026/can_633c21ab1fb85a4d8e053f67b033741f-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870380Z",
       "sha256": "ed1c934fdc2e919fc94f05c57b13275e83efb1766b388707d44e871e6e69e40d"
     },
     {
       "bytes": 2961,
       "local_path": "docs/research/trustee-career/2026/can_6564e3e01a3c506b880b505fb4c79615-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870430Z",
       "sha256": "828dfdfd4f328d9ad4580138c7d235d85aeb9dba422a5bc0366dab18507e5958"
     },
     {
       "bytes": 2521,
       "local_path": "docs/research/trustee-career/2026/can_6564e3e01a3c506b880b505fb4c79615-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870486Z",
       "sha256": "6ebc7aa88d954f4aa2b9dc57ad74040bb3151bec487fded846df1e31a32b6908"
     },
     {
       "bytes": 3371,
       "local_path": "docs/research/trustee-career/2026/can_656fcfdc512c5d22b05715336b449ee6-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870546Z",
       "sha256": "58bd05871a4866c842d0aa3f8d8dd3c68e9f85e9c1e911c0621f4315e5f7dc4d"
     },
     {
       "bytes": 1649,
       "local_path": "docs/research/trustee-career/2026/can_656fcfdc512c5d22b05715336b449ee6-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870601Z",
       "sha256": "a2fcbea4b019102f09338e0a6211027249965b10aaa7cf945b71cc7030030e94"
     },
     {
       "bytes": 2870,
       "local_path": "docs/research/trustee-career/2026/can_656fcfdc512c5d22b05715336b449ee6-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870660Z",
       "sha256": "c5074bb19fdcdb025860a23f51c0afbd0f1f6a3a1584bf0c20e14c914367f95a"
     },
     {
       "bytes": 2883,
       "local_path": "docs/research/trustee-career/2026/can_68adaabd04ca53548df0dd7eaf2158c8-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870719Z",
       "sha256": "a9c0d94b62b9a6151788452e9c5696dc719fb5265e30c1dceca0c9de5af6af88"
     },
     {
       "bytes": 2060,
       "local_path": "docs/research/trustee-career/2026/can_68adaabd04ca53548df0dd7eaf2158c8-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870774Z",
       "sha256": "4ec51aa3ccfb8e32bf998789522d3948a95776367045b4f06c84021b15c02972"
     },
     {
       "bytes": 2656,
       "local_path": "docs/research/trustee-career/2026/can_6b662e46d4595c758ff1692fdcc69824-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870824Z",
       "sha256": "1855de773fcddde6b9f8f6655d2f539a689ce5d5f28244deca810356d10b6b67"
     },
     {
       "bytes": 2070,
       "local_path": "docs/research/trustee-career/2026/can_6b662e46d4595c758ff1692fdcc69824-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870875Z",
       "sha256": "4d0dacb319cffdb4357218dd67c04cdf2e295f8afbce1c8535c336ca31c218af"
     },
     {
       "bytes": 3242,
       "local_path": "docs/research/trustee-career/2026/can_6c24eafe36fc5421b1f20a497568e3b3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870931Z",
       "sha256": "abd40b3e9c2e0a1d97d815e8a366277fc4125e08329b7991612db722e35565b6"
     },
     {
       "bytes": 2275,
       "local_path": "docs/research/trustee-career/2026/can_6c24eafe36fc5421b1f20a497568e3b3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.870997Z",
       "sha256": "3d9aba47c01ce670ee3eb5d679e02aa9aad4418c10a814ce265983f35b41ca3a"
     },
     {
       "bytes": 3130,
       "local_path": "docs/research/trustee-career/2026/can_752ab998917e5fa1b787e159beed8dc3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871070Z",
       "sha256": "0fabd0a91e9d0f626946012ad85fb0fafcb2be52511d3fff09fdc5253926cdb4"
     },
     {
       "bytes": 1824,
       "local_path": "docs/research/trustee-career/2026/can_752ab998917e5fa1b787e159beed8dc3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871137Z",
       "sha256": "d12a50de733788e7212b0a16e1d0f183bf57fa70514ee7173732bdf125c04ef1"
     },
     {
       "bytes": 2816,
       "local_path": "docs/research/trustee-career/2026/can_76567c8edf995fafadd960dfba8bfc6a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871205Z",
       "sha256": "efb6717c2ecc66fa0868fecce8e8585083552c1f5b93d2d7253b99957225e3ca"
     },
     {
       "bytes": 2035,
       "local_path": "docs/research/trustee-career/2026/can_76567c8edf995fafadd960dfba8bfc6a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871273Z",
       "sha256": "46c1ddd18f8dcfadfbb7118d5b89c2e38ef90f2fb1ce833ecd5f8c700c9f35f2"
     },
     {
       "bytes": 5606,
       "local_path": "docs/research/trustee-career/2026/can_7a668b3b98d35daa915ae28fc4204ae2-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871344Z",
       "sha256": "4cccbcfe5ae668d137c1adf95ad05a528e578a42bd5493b1250e9c03def4986b"
     },
     {
       "bytes": 2213,
       "local_path": "docs/research/trustee-career/2026/can_7a668b3b98d35daa915ae28fc4204ae2-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871410Z",
       "sha256": "f3f4038822a6c7ab6685abc082c5491b6abb87ed4bde67f30bc7fce55564173a"
     },
     {
       "bytes": 3623,
       "local_path": "docs/research/trustee-career/2026/can_7a668b3b98d35daa915ae28fc4204ae2-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871477Z",
       "sha256": "f61bae3f9e7a7fcd8d54d043fc02f1b745944c423123c8c1cca78ceed338b41e"
     },
     {
       "bytes": 3829,
       "local_path": "docs/research/trustee-career/2026/can_7aab9acba89353a7a68beeb8345c4884-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871544Z",
       "sha256": "e15c12b67525fb39c906819caae997fe4762fe021505dbb9b6ef956515bc018a"
     },
     {
       "bytes": 1540,
       "local_path": "docs/research/trustee-career/2026/can_7aab9acba89353a7a68beeb8345c4884-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871613Z",
       "sha256": "7b284f0d1bce4d629025fe4347d5706387baddf4ca25d07d92efdb10b3b99cb5"
     },
     {
       "bytes": 2717,
       "local_path": "docs/research/trustee-career/2026/can_7aab9acba89353a7a68beeb8345c4884-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871679Z",
       "sha256": "befe015060a5e005a2ea5e2187ddea335312d184dd7772dd7c3b2b3dd1dd14c2"
     },
     {
       "bytes": 2222,
       "local_path": "docs/research/trustee-career/2026/can_7b4b0ea086df596fbb7d773fc59d64ef-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871745Z",
       "sha256": "0b935bf5b605911573b4cc436c5c9dfda233ce045f32a1682437e83f63e9132c"
     },
     {
       "bytes": 1912,
       "local_path": "docs/research/trustee-career/2026/can_7b4b0ea086df596fbb7d773fc59d64ef-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871809Z",
       "sha256": "d7a69c3a1ed190dab61869f946d3806a7ea5e1e2fe36a7085f160d4e54fe04f0"
     },
     {
       "bytes": 2971,
       "local_path": "docs/research/trustee-career/2026/can_8076abf4a10552f8bb04fa484ec74c3d-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871879Z",
       "sha256": "7614faf0ff7a78b5eda91e2d1b25e8d32ed9efaed20bf5bce60dfe01cf290392"
     },
     {
       "bytes": 1881,
       "local_path": "docs/research/trustee-career/2026/can_8076abf4a10552f8bb04fa484ec74c3d-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.871943Z",
       "sha256": "cbe5d967bdaff2728b0c7d060d1e038c8e48a8da5d9a5d176cf4af2820fac2ed"
     },
     {
       "bytes": 2743,
       "local_path": "docs/research/trustee-career/2026/can_822c91dc5b7859f3bffaebc49cb4a0ed-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872006Z",
       "sha256": "efbae9be10e2ea4360d869fe5768f261dbe0fcf22c51c902a32676194ace7fdb"
     },
     {
       "bytes": 1687,
       "local_path": "docs/research/trustee-career/2026/can_822c91dc5b7859f3bffaebc49cb4a0ed-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872069Z",
       "sha256": "a066bf0bb9044e71e0c1ce092f3a08ef0a39a0a8f7cc194ec7abe71497268f77"
     },
     {
       "bytes": 2765,
       "local_path": "docs/research/trustee-career/2026/can_860f8fe35a785ef1b8adc09927d517da-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872135Z",
       "sha256": "c4913cf8e656ed1a286f4b1f358fdc4442ad4829a9f7db4311e06bc21834c6bb"
     },
     {
       "bytes": 2126,
       "local_path": "docs/research/trustee-career/2026/can_860f8fe35a785ef1b8adc09927d517da-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872203Z",
       "sha256": "ddfc9c38b3a1f37d937ceb96b10dbfcde290729c45ac8bd0460c10074fc81d04"
     },
     {
       "bytes": 4325,
       "local_path": "docs/research/trustee-career/2026/can_87691f4eaa3b5fad89bc09b6719b79e5-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872273Z",
       "sha256": "c726a92112582458068e34d8983dc3ad0cca9e83536635e6fcbb342cefe32db7"
     },
     {
       "bytes": 2365,
       "local_path": "docs/research/trustee-career/2026/can_87691f4eaa3b5fad89bc09b6719b79e5-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872339Z",
       "sha256": "4af16d9dae14083fb8c420eed0abd201c6323d85dc3dc44f25c8d7371a0accc2"
     },
     {
       "bytes": 2646,
       "local_path": "docs/research/trustee-career/2026/can_87691f4eaa3b5fad89bc09b6719b79e5-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872404Z",
       "sha256": "4e5a8772477488f4049e3871912723e92c934fb8a98b45c7084aec629c08263a"
     },
     {
       "bytes": 2548,
       "local_path": "docs/research/trustee-career/2026/can_87d3e98df80d51819382dc33965bc920-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872466Z",
       "sha256": "b901326b024be0d2ce3a5e1a002cce16c05faa864f9a4ce5810fdb443623dfe7"
     },
     {
       "bytes": 1636,
       "local_path": "docs/research/trustee-career/2026/can_87d3e98df80d51819382dc33965bc920-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872539Z",
       "sha256": "c98a415b1c2806e45cdb1e7e573164969b0015fc52590d597162ec2e8ef26e81"
     },
     {
       "bytes": 4370,
       "local_path": "docs/research/trustee-career/2026/can_89044a41dd6059df8e8c780e41562ab7-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872612Z",
       "sha256": "8d26bcbaf6cfbf99d6cbc9897513234cd18092e078da3d50ac93b71747bd0bd6"
     },
     {
       "bytes": 1997,
       "local_path": "docs/research/trustee-career/2026/can_89044a41dd6059df8e8c780e41562ab7-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872688Z",
       "sha256": "806ba8f7a7eecae8776ef71bba2d6d3d923ba93a9ffa91688248f9ef6cfd4d21"
     },
     {
       "bytes": 3139,
       "local_path": "docs/research/trustee-career/2026/can_89044a41dd6059df8e8c780e41562ab7-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872746Z",
       "sha256": "9a1dd5d6836980bff2384017ee8288a5022f12c99a8776fd1045205356e3afa3"
     },
     {
       "bytes": 3149,
       "local_path": "docs/research/trustee-career/2026/can_8bbdbc503f8c50d1843f6094decf28c4-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872803Z",
       "sha256": "ae503a5c0140359bbf0e677af086d21e8746a69f3386b9ea16a8bd4d473a242a"
     },
     {
       "bytes": 2024,
       "local_path": "docs/research/trustee-career/2026/can_8bbdbc503f8c50d1843f6094decf28c4-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872857Z",
       "sha256": "750b411dd28e2c3b596b95231171737a5aeb9945b7cf1d917ab1738878fac19c"
     },
     {
       "bytes": 2967,
       "local_path": "docs/research/trustee-career/2026/can_8fcf4a8990375683ba8d7255bdf4328e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872914Z",
       "sha256": "467043b8b7c0ba66d019a5fb12d975b922144fc25ad07e55372181eba557077c"
     },
     {
       "bytes": 2114,
       "local_path": "docs/research/trustee-career/2026/can_8fcf4a8990375683ba8d7255bdf4328e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.872976Z",
       "sha256": "9e74ec075a9b6620ec6d35315d11703c186fbb5123639b9cb7846af17369046b"
     },
     {
       "bytes": 4361,
       "local_path": "docs/research/trustee-career/2026/can_907c9762c2315f14a14ef10fa5bc0950-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873034Z",
       "sha256": "80156a7deac303875524fbd8733bc8a2c2660a74b49814213442152772c7fb40"
     },
     {
       "bytes": 2699,
       "local_path": "docs/research/trustee-career/2026/can_907c9762c2315f14a14ef10fa5bc0950-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873092Z",
       "sha256": "56b5d552e944e8bb41039fca5acb7dee8f01977046bbe813b7e29af5ad334805"
     },
     {
       "bytes": 4561,
       "local_path": "docs/research/trustee-career/2026/can_980559d390bb5a989f597daa3a932014-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873151Z",
       "sha256": "3d040e5343f0a4292e19e359af7257701da488da961a765319f913a386dd0b9f"
     },
     {
       "bytes": 2698,
       "local_path": "docs/research/trustee-career/2026/can_980559d390bb5a989f597daa3a932014-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873207Z",
       "sha256": "7b78877bcd0492dc5c55c250a10b715615fc51780506ee6ccdec2ec49ce4d50b"
     },
     {
       "bytes": 2510,
       "local_path": "docs/research/trustee-career/2026/can_98881d67eba65ad08f3713f8be9fa98e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873254Z",
       "sha256": "9ad653909e1e77ef74284e132a2f02986fdd72779226f03894077b8bbd020c1f"
     },
     {
       "bytes": 1824,
       "local_path": "docs/research/trustee-career/2026/can_98881d67eba65ad08f3713f8be9fa98e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873302Z",
       "sha256": "f0c2d50fe627d4f8a3bf938fbc48d05fba35b27e8594b820fd75454a2535e2e0"
     },
     {
       "bytes": 3020,
       "local_path": "docs/research/trustee-career/2026/can_990783c8b1b75211892caa7a4326511e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873364Z",
       "sha256": "2a906d5e4ce80d0a728e7d4d431307d8348825e001ad68fe50d596cd5d34f0fd"
     },
     {
       "bytes": 1653,
       "local_path": "docs/research/trustee-career/2026/can_990783c8b1b75211892caa7a4326511e-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873419Z",
       "sha256": "5be9ce5856fb0ab829f23b86c6c27615b5a4c54e0b1d6af5e95b1e1c9217173e"
     },
     {
       "bytes": 2466,
       "local_path": "docs/research/trustee-career/2026/can_990783c8b1b75211892caa7a4326511e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873473Z",
       "sha256": "ba203ba6a9fed78d436b1867b70dad143105fcb2f2a1997e222838efebc78677"
     },
     {
       "bytes": 4187,
       "local_path": "docs/research/trustee-career/2026/can_9b9511aaebde561a82cfbb130bb8d0b6-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873527Z",
       "sha256": "2c3d00cb6fe07c6cd983b26934982e40039dd144fb125777e6f6765fc9d03154"
     },
     {
       "bytes": 3721,
       "local_path": "docs/research/trustee-career/2026/can_9b9511aaebde561a82cfbb130bb8d0b6-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873583Z",
       "sha256": "48dbe27c49bb8538633892c355e95d87f35f1309a1d9dec0c432a172f74b4897"
     },
     {
       "bytes": 2693,
       "local_path": "docs/research/trustee-career/2026/can_9d5866ae07e957428f16ad530a1999a4-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873642Z",
       "sha256": "2068f787d64365f937f6b86234f8a5a26de0c4184db7077fd7927d55302d7f5c"
     },
     {
       "bytes": 2345,
       "local_path": "docs/research/trustee-career/2026/can_9d5866ae07e957428f16ad530a1999a4-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873701Z",
       "sha256": "6880dd1e5b38deb72b8e15ad054ee04b68920e941f197b72dc5c5923411211fc"
     },
     {
       "bytes": 3108,
       "local_path": "docs/research/trustee-career/2026/can_a89be4d40dfb52bf86ec3f81bf39741a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873757Z",
       "sha256": "c2be822e9eef2cfa43c80669530efcd35ed572f11871013b888114751f57e55f"
     },
     {
       "bytes": 1995,
       "local_path": "docs/research/trustee-career/2026/can_a89be4d40dfb52bf86ec3f81bf39741a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873816Z",
       "sha256": "e0a2b7d1a0181a602ecc7a15e4aa7248757aa667fad3bdfeb05886e05d60599a"
     },
     {
       "bytes": 2986,
       "local_path": "docs/research/trustee-career/2026/can_a914bd264614594fa4f70250bd565593-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873883Z",
       "sha256": "2bcce3f95c40f5b877458b2184cf0cba85bf2d1529867f813447d02f657b5255"
     },
     {
       "bytes": 2978,
       "local_path": "docs/research/trustee-career/2026/can_a914bd264614594fa4f70250bd565593-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.873949Z",
       "sha256": "843f839a4b3205acc4bdc8b0d165abb9243224f02c87e8ba4d97b24a64a34185"
     },
     {
       "bytes": 3075,
       "local_path": "docs/research/trustee-career/2026/can_a9f750bd470c5703b5be465e2dbc65fe-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.874010Z",
       "sha256": "34489b9a1afbf41deb4c39cc269d62287c43205885b086adb1348ecec23796a5"
     },
     {
       "bytes": 1383,
       "local_path": "docs/research/trustee-career/2026/can_a9f750bd470c5703b5be465e2dbc65fe-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.874079Z",
       "sha256": "53071a7ddd664b0c58c2cb93262e7614cae5846403bfb93f35486808cd8157a3"
     },
     {
       "bytes": 2701,
       "local_path": "docs/research/trustee-career/2026/can_a9f750bd470c5703b5be465e2dbc65fe-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.874141Z",
       "sha256": "de0d3e9b2f199f32f6d992fd0a03e9b7b39d81fe984bdf87b9422a8fe4fd4022"
     },
     {
       "bytes": 5385,
       "local_path": "docs/research/trustee-career/2026/can_b224bbdcb6f75bf9ab2e818f00be2435-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.874201Z",
       "sha256": "2e35941a7d2c28b550b5d74a10d6a98d318d95720e3afca75f52ff06c4217529"
     },
     {
       "bytes": 2435,
       "local_path": "docs/research/trustee-career/2026/can_b224bbdcb6f75bf9ab2e818f00be2435-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.874256Z",
       "sha256": "3fb1959a61db4987eb2eef2b1fd6262b60fb81c5a1a5e1da8a41fe99f059ee3c"
     },
     {
       "bytes": 4193,
       "local_path": "docs/research/trustee-career/2026/can_b224bbdcb6f75bf9ab2e818f00be2435-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.489160Z",
+      "retrieved_at": "2026-11-07T19:55:30.874317Z",
       "sha256": "0582ee030b0d25fb8ab55d44dc135acf870be01a5105cfe8fff6d02f055b3cc5"
     },
     {
       "bytes": 2801,
       "local_path": "docs/research/trustee-career/2026/can_b2f8da7a927653cba9608bfeb72f3296-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874381Z",
       "sha256": "3a506b4e71819ed3e3c9ed4dc6b101326f80b838a5fe4f196aafe589ee75dc48"
     },
     {
       "bytes": 1887,
       "local_path": "docs/research/trustee-career/2026/can_b2f8da7a927653cba9608bfeb72f3296-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874436Z",
       "sha256": "5d1db52cd91386b9304d35bc0e2fad35d4c84a7d4cf0829b774577f1fb04ef69"
     },
     {
       "bytes": 6205,
       "local_path": "docs/research/trustee-career/2026/can_b400c405df765e08a0a6a8644aaa701d-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874499Z",
       "sha256": "c3ede27de2b8e4a933c0c54799648ea0c5f6a6a0846f1c50d6b7af7584743503"
     },
     {
       "bytes": 1825,
       "local_path": "docs/research/trustee-career/2026/can_b400c405df765e08a0a6a8644aaa701d-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874557Z",
       "sha256": "aa1f901ccaf4b4b375963a2fd9ea2c5d538eab007e2068c95d434e71ec93d3b4"
     },
     {
       "bytes": 3363,
       "local_path": "docs/research/trustee-career/2026/can_b400c405df765e08a0a6a8644aaa701d-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874626Z",
       "sha256": "2c82e060e80b4b05e941849e886d64dd3e12e14bbaa4c85010aeb99dd1f531d7"
     },
     {
       "bytes": 3171,
       "local_path": "docs/research/trustee-career/2026/can_b6cae47cada7527bbcbba6257c5ae67e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874681Z",
       "sha256": "30946f9af85c9ed3826b1c46e73fa863dfe66705ea2ed737e01ddea14315a7b8"
     },
     {
       "bytes": 2105,
       "local_path": "docs/research/trustee-career/2026/can_b6cae47cada7527bbcbba6257c5ae67e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874734Z",
       "sha256": "4aa185c15999ab11b5e2e80accd0f17b417b3d4419fede78a369ae5d922c5eb3"
     },
     {
       "bytes": 3122,
       "local_path": "docs/research/trustee-career/2026/can_b9b5b55f5f265132afd62fd721c56705-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.874979Z",
       "sha256": "ef7861fac99e6bcfbcdd3b7ffd9352760e49ae95828fd92c03c8546e2013fb95"
     },
     {
       "bytes": 2753,
       "local_path": "docs/research/trustee-career/2026/can_b9b5b55f5f265132afd62fd721c56705-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875126Z",
       "sha256": "7a51a2dde4127b3aa6817658f8d18e3192f3e54993e1a44b03f613732960d4bd"
     },
     {
       "bytes": 2782,
       "local_path": "docs/research/trustee-career/2026/can_bb43967e9b9856a8a1afd8e3e33a0aab-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875199Z",
       "sha256": "08822094b87d8a9efe2a5989c253169842f6ce19e27d8c64061560894e2a2177"
     },
     {
       "bytes": 2036,
       "local_path": "docs/research/trustee-career/2026/can_bb43967e9b9856a8a1afd8e3e33a0aab-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875278Z",
       "sha256": "43b45277bf165b1780fd0f92967629f3a78b4665275f5b6b95cc676a4fba451f"
     },
     {
       "bytes": 4333,
       "local_path": "docs/research/trustee-career/2026/can_bb720ba2d1685e488eb701b6d49711a2-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875359Z",
       "sha256": "46d49cdec671765c12bcb7d12890e4b5140c872bff9f40d8b30ae2e16df43be2"
     },
     {
       "bytes": 2929,
       "local_path": "docs/research/trustee-career/2026/can_bb720ba2d1685e488eb701b6d49711a2-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875426Z",
       "sha256": "07248f8a5b8e1ba5e933057b5f65703730888e6c331a2e6362282c1f6c3f5bc9"
     },
     {
       "bytes": 3053,
       "local_path": "docs/research/trustee-career/2026/can_bc5bceaa50ee5a4fab8b14f50f41450f-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875516Z",
       "sha256": "bfe8b310f190f121a73b24238944b770cbf3f33a118120eefa1a0b2a29cd905b"
     },
     {
       "bytes": 2244,
       "local_path": "docs/research/trustee-career/2026/can_bc5bceaa50ee5a4fab8b14f50f41450f-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875583Z",
       "sha256": "ba3e9f24d1b425dfcd8b6ae514f162e748685e4ba303cedb06f1d5bf5f6680b1"
     },
     {
       "bytes": 4226,
       "local_path": "docs/research/trustee-career/2026/can_bcfeb2fa3b35551290bbd95e4de965b1-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875654Z",
       "sha256": "4cc8bbca041cd1f84b06d7c2592034883f55ba6f6c0bb0666a9d359a6dbdec5c"
     },
     {
       "bytes": 3595,
       "local_path": "docs/research/trustee-career/2026/can_bcfeb2fa3b35551290bbd95e4de965b1-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875727Z",
       "sha256": "4b0ce016e2b8e6cbc59a8f48b06aafb05706a0177a8b1de21c29c3e95d1bdff6"
     },
     {
       "bytes": 3263,
       "local_path": "docs/research/trustee-career/2026/can_be841f8d506757cfb0c1b93dd102e85f-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875792Z",
       "sha256": "255b40fcb43f1a50e125044fb53bf7656f1743a4748a913160f79d16b07385e4"
     },
     {
       "bytes": 3015,
       "local_path": "docs/research/trustee-career/2026/can_be841f8d506757cfb0c1b93dd102e85f-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875856Z",
       "sha256": "ab452228eb6f2e4ae280e62726c4e6a4209b8a18916d1bb46eb250b1e8fe3c60"
     },
     {
       "bytes": 3705,
       "local_path": "docs/research/trustee-career/2026/can_c43ef763892b58168e61705d887e1c97-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875930Z",
       "sha256": "96c299e66ab80c6c6d43f2231733c8d76ec039b1c51cad65230003683fd6349a"
     },
     {
       "bytes": 2164,
       "local_path": "docs/research/trustee-career/2026/can_c43ef763892b58168e61705d887e1c97-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.875994Z",
       "sha256": "c9d51da36f70e0f3f1ea2e2a5940448d5db95464fca40decfef07485ca91ec29"
     },
     {
       "bytes": 3602,
       "local_path": "docs/research/trustee-career/2026/can_c43ef763892b58168e61705d887e1c97-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876062Z",
       "sha256": "65335cba40462ce7547321816afd560fed745ba6ebb26eab01d19f3b8c0940f7"
     },
     {
       "bytes": 3348,
       "local_path": "docs/research/trustee-career/2026/can_c653fe3a72c05a0caeb56eee3eb8fd12-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876125Z",
       "sha256": "b7cb20ce80b445d512da921f1eb5002863b7c88b253b37f6c6f44e88e6a785bb"
     },
     {
       "bytes": 2130,
       "local_path": "docs/research/trustee-career/2026/can_c653fe3a72c05a0caeb56eee3eb8fd12-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876196Z",
       "sha256": "5b91adfbf02697386e19187defbc3221926143bac31f1f31e17e338bc8caece7"
     },
     {
       "bytes": 4458,
       "local_path": "docs/research/trustee-career/2026/can_c9f5d329538656ab8517f5c70c4b6939-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876259Z",
       "sha256": "bfa92aec230653a295db9981a7529752da7a200e854c0a4a2f74420531956697"
     },
     {
       "bytes": 4041,
       "local_path": "docs/research/trustee-career/2026/can_c9f5d329538656ab8517f5c70c4b6939-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876321Z",
       "sha256": "28219048d166551cfdbb38c58794ad641b9c5f4a14a06f577eba23e1b1889c89"
     },
     {
       "bytes": 3454,
       "local_path": "docs/research/trustee-career/2026/can_caef49e28ab35c5fb3a3711fd31a5bbe-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876395Z",
       "sha256": "471a3bb24782e9063de606020c0f20c9136fa35efa2230d06e60828e203b53f2"
     },
     {
       "bytes": 2107,
       "local_path": "docs/research/trustee-career/2026/can_caef49e28ab35c5fb3a3711fd31a5bbe-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876466Z",
       "sha256": "f5127871871fcba867c6d44276c26fe1689ca18224d9367a44882d5aca4be419"
     },
     {
       "bytes": 2957,
       "local_path": "docs/research/trustee-career/2026/can_ccf2917813195c81bfabc1dbfeeebfb3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876540Z",
       "sha256": "3cc0b31154c826d2280e3f1bdabeaed451656a6d109f9ff24b598f9904491c98"
     },
     {
       "bytes": 2626,
       "local_path": "docs/research/trustee-career/2026/can_ccf2917813195c81bfabc1dbfeeebfb3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876654Z",
       "sha256": "4bf26d5dce0692bd057c1266d32d1a3e9e3e0948b55e56f45a0c8b04ebeb8539"
     },
     {
       "bytes": 3163,
       "local_path": "docs/research/trustee-career/2026/can_ce2847d87160597bb60ecb945f851a26-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876741Z",
       "sha256": "cc33413ee5543d12d9b9255bbf99966ef6f89cd61bafe864f96c1cc02efd8e94"
     },
     {
       "bytes": 2248,
       "local_path": "docs/research/trustee-career/2026/can_ce2847d87160597bb60ecb945f851a26-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876875Z",
       "sha256": "230721e22685428c1a63324f3185d2c4f5275f851396c5a50390cbed02a1e105"
     },
     {
       "bytes": 3341,
       "local_path": "docs/research/trustee-career/2026/can_cf329ed10ed3594894c05b6766a5436b-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.876981Z",
       "sha256": "f563fdb0b5681df589ddc2c763930f75299a4badcfc8339b4114bce3a68caf07"
     },
     {
       "bytes": 2327,
       "local_path": "docs/research/trustee-career/2026/can_cf329ed10ed3594894c05b6766a5436b-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877044Z",
       "sha256": "105425d641f80ae5c17088cd74c1a9d05d2cba4bf5dfdd432f9bb6b36ef7278f"
     },
     {
       "bytes": 3203,
       "local_path": "docs/research/trustee-career/2026/can_d1935130d0db55959dd7c5c1988ba9b3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877127Z",
       "sha256": "026e14ce3e5c76889995fee9b4d1e0512acf0d779c452dd17d10067caca20b31"
     },
     {
       "bytes": 2624,
       "local_path": "docs/research/trustee-career/2026/can_d1935130d0db55959dd7c5c1988ba9b3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877192Z",
       "sha256": "57a02d4d134a4e8a638ddce9bacab8db93de56e368d5a97d75438d265cedffc3"
     },
     {
       "bytes": 3002,
       "local_path": "docs/research/trustee-career/2026/can_d408d29fb4c353eb9f90086e7df9836c-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877263Z",
       "sha256": "e62e1419666e24f440f9ea1dcfed324b840caf1a6c5ab9ca5aa522d3bfeeda11"
     },
     {
       "bytes": 1433,
       "local_path": "docs/research/trustee-career/2026/can_d408d29fb4c353eb9f90086e7df9836c-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877333Z",
       "sha256": "65b87faee296acc1cb7cff51843171e12a77d5420f952dedbd8426a3314684cf"
     },
     {
       "bytes": 1593,
       "local_path": "docs/research/trustee-career/2026/can_d408d29fb4c353eb9f90086e7df9836c-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877401Z",
       "sha256": "58effcf6769aeaf63f8d4e59274c6ef899ef54501ea01d835a3481da66eff92a"
     },
     {
       "bytes": 3693,
       "local_path": "docs/research/trustee-career/2026/can_d4ab584a9bbd5256acfef42edaf29d1e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877475Z",
       "sha256": "50d448265b86b65bc4367da5fe5bd0883fb73dc8be1477892ed1065e62a8275d"
     },
     {
       "bytes": 1781,
       "local_path": "docs/research/trustee-career/2026/can_d4ab584a9bbd5256acfef42edaf29d1e-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877535Z",
       "sha256": "e3c2b72efc43362412d3f737f01e76692c0534edfc1fb2a519a6fb17d95afdb7"
     },
     {
       "bytes": 3127,
       "local_path": "docs/research/trustee-career/2026/can_d4ab584a9bbd5256acfef42edaf29d1e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877591Z",
       "sha256": "4c521a86e5a7802c341009d9f42f38aec33b4f9c3ca853f737493cb0df6c6e73"
     },
     {
       "bytes": 4314,
       "local_path": "docs/research/trustee-career/2026/can_d4c1bd7d367e520b8bbc362ec0f3fc2c-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877664Z",
       "sha256": "425a44f8f8b08cafb0bb768512eca53dffedf923aef69dc55ead44a78b39c13a"
     },
     {
       "bytes": 1862,
       "local_path": "docs/research/trustee-career/2026/can_d4c1bd7d367e520b8bbc362ec0f3fc2c-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877750Z",
       "sha256": "ddf7b976315882f546785ad39bcbd4c07c7235d51353cfbda346388c355dff12"
     },
     {
       "bytes": 3258,
       "local_path": "docs/research/trustee-career/2026/can_d4c1bd7d367e520b8bbc362ec0f3fc2c-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877815Z",
       "sha256": "311e5ec719f8a6def7c47735ed0c5dfd5af805b7fc9cb4c096e54d0a64eb759f"
     },
     {
       "bytes": 3828,
       "local_path": "docs/research/trustee-career/2026/can_d6ebf240b3f35a67acc9e1ffc80d4ddf-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.877890Z",
       "sha256": "d7292e44f6b0d9f446c50fa96a13f3e5a93fba0a941269537b494f08f45fdc32"
     },
     {
       "bytes": 2195,
       "local_path": "docs/research/trustee-career/2026/can_d6ebf240b3f35a67acc9e1ffc80d4ddf-sol.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.877946Z",
       "sha256": "ba7b1fac06c69f34aa63ddda4e8d41139b0e2bf1c6123ea759c63083c59fe649"
     },
     {
       "bytes": 3535,
       "local_path": "docs/research/trustee-career/2026/can_d6ebf240b3f35a67acc9e1ffc80d4ddf-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878018Z",
       "sha256": "b49ae604fd90019ce27bb7243f8cad5a6824b22e94f92c27e12b3bc487bcd415"
     },
     {
       "bytes": 9631,
       "local_path": "docs/research/trustee-career/2026/can_d8004d3122615bda892d893bba4560ee-luna.md",
-      "retrieved_at": "2026-10-29T10:26:42.818228Z",
+      "retrieved_at": "2026-11-07T19:55:30.878132Z",
       "sha256": "fb87f4e9890b7d033731e487870707dc86d01c0f455911b9ff1545fbabf5c5bb"
     },
     {
       "bytes": 3458,
       "local_path": "docs/research/trustee-career/2026/can_d8004d3122615bda892d893bba4560ee-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878201Z",
       "sha256": "aa7e54dd1b8cb5121327dc229d66833ad4d8b6ccf1f124683b586c8cbf3cd1b1"
     },
     {
       "bytes": 6920,
       "local_path": "docs/research/trustee-career/2026/can_d8004d3122615bda892d893bba4560ee-terra.md",
-      "retrieved_at": "2026-10-29T10:26:42.818228Z",
+      "retrieved_at": "2026-11-07T19:55:30.878267Z",
       "sha256": "c25ff7a1bf286ac32405075721a74bdad3c6eec36059bd7650ce5fe201f864e9"
     },
     {
       "bytes": 2378,
       "local_path": "docs/research/trustee-career/2026/can_dd2201161043523fa07a932b7990349a-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878333Z",
       "sha256": "e05eba59dad31f51e7d9f5a1fc2ef269066d7b91f914ffa0577784c4fe020f41"
     },
     {
       "bytes": 1849,
       "local_path": "docs/research/trustee-career/2026/can_dd2201161043523fa07a932b7990349a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878404Z",
       "sha256": "1eb4e8eebd22d5c4364ff3f527b2a5b196186a2d383f7b6bf1f35a0fff9dc1e5"
     },
     {
       "bytes": 2523,
       "local_path": "docs/research/trustee-career/2026/can_de9b983c8f4d56819344555bfa37b15f-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878468Z",
       "sha256": "bccac61b7b57bbd6961331f26de4dc3d8c547f164745ccaa7b4f921418736e83"
     },
     {
       "bytes": 1597,
       "local_path": "docs/research/trustee-career/2026/can_de9b983c8f4d56819344555bfa37b15f-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878527Z",
       "sha256": "56eefa7c1b42ce8db0e9c722882d91f9944423d61447a72529475c45803196f7"
     },
     {
       "bytes": 2765,
       "local_path": "docs/research/trustee-career/2026/can_dfc9ea28b5d053e4bfd0d7f836e1761c-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878605Z",
       "sha256": "043910fdffcbd01b8f7afff60ac014d399ef382fa7ae4a8d5daf3f4a1cc5bfa8"
     },
     {
       "bytes": 2599,
       "local_path": "docs/research/trustee-career/2026/can_dfc9ea28b5d053e4bfd0d7f836e1761c-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878658Z",
       "sha256": "0d5721a75ec0b830a22f4ad284e1d107f0f51d2c518fbe9e12dc91b3a25f5ecd"
     },
     {
       "bytes": 2944,
       "local_path": "docs/research/trustee-career/2026/can_e42ba466410057ac951b8a14440c49c6-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878712Z",
       "sha256": "e314e9b8b35736ac8f24a71386fc1cae7898924cc28e5b53c5b04f7ceb8ab96c"
     },
     {
       "bytes": 2358,
       "local_path": "docs/research/trustee-career/2026/can_e42ba466410057ac951b8a14440c49c6-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878778Z",
       "sha256": "f12d870ad9bfe83a33c4f0350f15e7cdc3051a34618d48fb5f218f4099f48544"
     },
     {
       "bytes": 4398,
       "local_path": "docs/research/trustee-career/2026/can_e51ffe35a51f5794b51c81ab5ad77cbc-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878831Z",
       "sha256": "d07e8a9e8f6ce0e6369edfcdc023d04f54c13fa1ee81cb7e7ceb32e8ddef1187"
     },
     {
       "bytes": 3659,
       "local_path": "docs/research/trustee-career/2026/can_e51ffe35a51f5794b51c81ab5ad77cbc-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878893Z",
       "sha256": "1407434a684f0c20c522be17dca24ef8ba9ef94be90a87b2080e0c21638d07a7"
     },
     {
       "bytes": 2488,
       "local_path": "docs/research/trustee-career/2026/can_e774167e9f6c5178b56326acdfda9279-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.878946Z",
       "sha256": "fc8b630449c596fb44281913397cc9a860fb59de02d3b030f1d6ace8aaa918ab"
     },
     {
       "bytes": 1933,
       "local_path": "docs/research/trustee-career/2026/can_e774167e9f6c5178b56326acdfda9279-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879013Z",
       "sha256": "ce3f4c307423844652afe8fb98a8e2b19fdaa2267b08a63a11581a26856727d7"
     },
     {
       "bytes": 3005,
       "local_path": "docs/research/trustee-career/2026/can_e7c787f550605ea09c7eb8e0a4972aef-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879072Z",
       "sha256": "4619bce22c303c833fa501f9792016d9c6a51fb241a966f2a7567149d8ef97c1"
     },
     {
       "bytes": 2723,
       "local_path": "docs/research/trustee-career/2026/can_e7c787f550605ea09c7eb8e0a4972aef-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879130Z",
       "sha256": "c424424627cc90cef929c2ff39e1b3f2cc6ed2dacd86682f341bce5396580928"
     },
     {
       "bytes": 3137,
       "local_path": "docs/research/trustee-career/2026/can_e9e640f8a9925817add41bb96547bd63-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879200Z",
       "sha256": "5eec5ada156b0327caa1bab0349f88d02b3f8e5384c3c3aa89679aa3a269ec40"
     },
     {
       "bytes": 2130,
       "local_path": "docs/research/trustee-career/2026/can_e9e640f8a9925817add41bb96547bd63-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879256Z",
       "sha256": "2e793bb7a824d9bfa189b1ba629f242d1e768f9cc56356ad40b990cb05f76744"
     },
     {
       "bytes": 3171,
       "local_path": "docs/research/trustee-career/2026/can_ea87f678374751f0983b5f6848ce6b59-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879313Z",
       "sha256": "a0247c715232a2a07b9b58766ba7a9ef5759da5115501574674bbae79804ecfa"
     },
     {
       "bytes": 2294,
       "local_path": "docs/research/trustee-career/2026/can_ea87f678374751f0983b5f6848ce6b59-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879368Z",
       "sha256": "5dfea0a72a60111f0452caa5a42be502dd181771d3140a66aa09a84206a437db"
     },
     {
       "bytes": 3724,
       "local_path": "docs/research/trustee-career/2026/can_eaaf331141da5743a5e9fe87cbfc73e4-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879420Z",
       "sha256": "ba608d279b72086da0eb6192b46d5e9bf485baad8d2756d2c474e0d8b2ec0115"
     },
     {
       "bytes": 3228,
       "local_path": "docs/research/trustee-career/2026/can_eaaf331141da5743a5e9fe87cbfc73e4-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879470Z",
       "sha256": "2dd78bcf3e7be67a13546e60cd8df62facc53142310334af48a86c89f6b28fc4"
     },
     {
       "bytes": 5304,
       "local_path": "docs/research/trustee-career/2026/can_ebe410d080165a28b82f117b6af06140-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879523Z",
       "sha256": "c0a38ef5e93290f8a0b9f9163ed7ebe20388db376986f5883c9c1cd350f4d92c"
     },
     {
       "bytes": 2815,
       "local_path": "docs/research/trustee-career/2026/can_ebe410d080165a28b82f117b6af06140-sol.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.879573Z",
       "sha256": "1f358d8e51713495e39bc52ba0a82c9ae6b79561bd5e370dc4fc7dd473e97a3b"
     },
     {
       "bytes": 4371,
       "local_path": "docs/research/trustee-career/2026/can_ebe410d080165a28b82f117b6af06140-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879625Z",
       "sha256": "a772ec4b558ae6d60074d97a02891057425c64e0e957af1b91e3918aab6927d8"
     },
     {
       "bytes": 3198,
       "local_path": "docs/research/trustee-career/2026/can_efde46a33f0b56afa02321b17910321a-luna.md",
-      "retrieved_at": "2026-11-05T15:08:32.734440Z",
+      "retrieved_at": "2026-11-07T19:55:30.879676Z",
       "sha256": "1b5dfed5b86c23778df9d421f05b754aee0608807023826fd8fa570c3d2fbd3b"
     },
     {
       "bytes": 2026,
       "local_path": "docs/research/trustee-career/2026/can_efde46a33f0b56afa02321b17910321a-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879740Z",
       "sha256": "35e9c2aef5dadc5f9b69fe8550653fd65ee3d9980237939e78ca1afd9b52ebc2"
     },
     {
       "bytes": 3146,
       "local_path": "docs/research/trustee-career/2026/can_f01007545e60587691515c07e4a903e8-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879802Z",
       "sha256": "c8e61a99b2c48c8adadc7ab995e92dcaa80fa6e6bb2fb78e5558ea447190184e"
     },
     {
       "bytes": 1760,
       "local_path": "docs/research/trustee-career/2026/can_f01007545e60587691515c07e4a903e8-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879870Z",
       "sha256": "5274121413825abe201b61bc6431d849d8927a0813546f4483976e25c6ce5ab2"
     },
     {
       "bytes": 2249,
       "local_path": "docs/research/trustee-career/2026/can_f06a857d2fc055c8bdcbd1222e6a13ba-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.879933Z",
       "sha256": "1a887c5c24e98daad5db923878b21216c67ddfe54689a4f12ea827c4fcee00a3"
     },
     {
       "bytes": 1910,
       "local_path": "docs/research/trustee-career/2026/can_f06a857d2fc055c8bdcbd1222e6a13ba-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880000Z",
       "sha256": "c8a305d5ff8a1bedb5c06fc1a6a6f4fd1c0a46d3729b5d17fa5226b1c8fe3209"
     },
     {
       "bytes": 2761,
       "local_path": "docs/research/trustee-career/2026/can_f0fb2688068356ad9277ff0a7a01a2f5-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880078Z",
       "sha256": "52560d30ed0f5d2de05b8b3983a4e01939a969f27337bfaf9fbd5cbb49b7b102"
     },
     {
       "bytes": 2615,
       "local_path": "docs/research/trustee-career/2026/can_f0fb2688068356ad9277ff0a7a01a2f5-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880150Z",
       "sha256": "4dfaf92dd20da03626a7f1d11b5aaa88a5522d4eb816ebf6397f6fe7bdc7ef4c"
     },
     {
       "bytes": 4446,
       "local_path": "docs/research/trustee-career/2026/can_f1195ba08c7e563a8ac820d7773ed670-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880219Z",
       "sha256": "d77060834110034df9b8535fdf919e509e36beebf7d85db67dc837d7fc1b319d"
     },
     {
       "bytes": 3958,
       "local_path": "docs/research/trustee-career/2026/can_f1195ba08c7e563a8ac820d7773ed670-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880279Z",
       "sha256": "dcb5f0205cd1e55341a595978df213022e487c9f86377601b1bfb0d935f2cabf"
     },
     {
       "bytes": 2928,
       "local_path": "docs/research/trustee-career/2026/can_f26542d736ec5d39ba661dbefd895ea7-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880338Z",
       "sha256": "65a304d277958d2c2d033ddeaaa638e57cd42fc1b0eae80495d8ecb3469e5ff4"
     },
     {
       "bytes": 1916,
       "local_path": "docs/research/trustee-career/2026/can_f26542d736ec5d39ba661dbefd895ea7-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880398Z",
       "sha256": "87b7b072daadb4fedc96a6c9f89e37fd79da20e068130b6ebc31146c9fd2eac1"
     },
     {
       "bytes": 4172,
       "local_path": "docs/research/trustee-career/2026/can_f41f04d241c35894a49f580c4eaab821-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880450Z",
       "sha256": "32fc96a99785570ce8c22eef2a2153fdb9dc7f860ecd67d2e727126fcb027e86"
     },
     {
       "bytes": 1885,
       "local_path": "docs/research/trustee-career/2026/can_f41f04d241c35894a49f580c4eaab821-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880515Z",
       "sha256": "3f22370053fe8dc9fcf777c41912811573249f299d978c39d98195d70a584cb6"
     },
     {
       "bytes": 2730,
       "local_path": "docs/research/trustee-career/2026/can_f41f04d241c35894a49f580c4eaab821-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880572Z",
       "sha256": "47d8fd0c8031d962bca7d06dd148870330076ea0206208df7570274f4d3a77f0"
     },
     {
       "bytes": 2524,
       "local_path": "docs/research/trustee-career/2026/can_f45567e7c92656f88222bb24d854e9a9-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880627Z",
       "sha256": "c5844c0e92d2f48b2e956d3df45a8a66f381289e25dbe869ab39c605b21911ec"
     },
     {
       "bytes": 2090,
       "local_path": "docs/research/trustee-career/2026/can_f45567e7c92656f88222bb24d854e9a9-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880679Z",
       "sha256": "3d456674f3b79785d1caf1c34d336f2ecf614b6a8bd1fd3618c9e268f475e9b3"
     },
     {
       "bytes": 2804,
       "local_path": "docs/research/trustee-career/2026/can_f522f78a24de5f9195043e5091a4906e-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880748Z",
       "sha256": "4123cc7a3b5c09d5b3a0ac2e8e5b74a18ae54d970d82180b4f652d683c0189ef"
     },
     {
       "bytes": 1890,
       "local_path": "docs/research/trustee-career/2026/can_f522f78a24de5f9195043e5091a4906e-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880802Z",
       "sha256": "71cbeb971d3c2bb0c686c01f536d7b2facd7c89bb3f9db3029459c41998e16f1"
     },
     {
       "bytes": 3674,
       "local_path": "docs/research/trustee-career/2026/can_f6cdb98f716f5927a6d7702be80db45f-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880854Z",
       "sha256": "141507db34fe65f651d43386015f3a791c23881ef183029f96733c2bc12c9f12"
     },
     {
       "bytes": 1653,
       "local_path": "docs/research/trustee-career/2026/can_f6cdb98f716f5927a6d7702be80db45f-sol.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880906Z",
       "sha256": "cd42acdf1474955b33067b3cbd5b59865b565b98d35a687e7ab8d0037f6ba927"
     },
     {
       "bytes": 2683,
       "local_path": "docs/research/trustee-career/2026/can_f6cdb98f716f5927a6d7702be80db45f-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.880960Z",
       "sha256": "25a19da02d21d14b547b4a28d2e7e83f5d8f590e89efc0bd16b0d2015c369fed"
     },
     {
       "bytes": 3982,
       "local_path": "docs/research/trustee-career/2026/can_fbfd95dc861f59e3a88736d6aeb23bf3-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.881016Z",
       "sha256": "503f8f35b0c20538032fb780a760d797e9191fd6f0f5a21c9bf8485afd2adf4c"
     },
     {
       "bytes": 2815,
       "local_path": "docs/research/trustee-career/2026/can_fbfd95dc861f59e3a88736d6aeb23bf3-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.881073Z",
       "sha256": "9d797183aa7d31337d9810c12dc2c1681071265f7c20c849e8f9bf201771e099"
     },
     {
       "bytes": 2871,
       "local_path": "docs/research/trustee-career/2026/can_fe42206a6fe95bdeb68178b4e8826d73-luna.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.881127Z",
       "sha256": "b0584f7b468c696d3464db91f440915599786bf2c7cddcddd20d970311cf0c62"
     },
     {
       "bytes": 2004,
       "local_path": "docs/research/trustee-career/2026/can_fe42206a6fe95bdeb68178b4e8826d73-terra.md",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.881175Z",
       "sha256": "a9cd4b95626323c71e9b54f03cb7c8f1f47c2e3bdc60ee9da0a411084035b393"
     },
     {
       "bytes": 12233,
       "local_path": "docs/research/trustee-career/2026/sol-review-batch-a.csv",
-      "retrieved_at": "2026-11-05T15:08:32.738440Z",
+      "retrieved_at": "2026-11-07T19:55:30.881273Z",
       "sha256": "1dfb848e2d7bace1ea6503a27be1966b3f8293b29f001f37b890b4194290e6d3"
     },
     {
       "bytes": 12360,
       "local_path": "docs/research/trustee-career/2026/sol-review-batch-b.csv",
-      "retrieved_at": "2026-10-28T12:11:40.492242Z",
+      "retrieved_at": "2026-11-07T19:55:30.881361Z",
       "sha256": "3fce3d0fc3de792908c7abaacc23d312bfc756a65c6f2b70003b7e9b20c43d2f"
     },
     {
       "bytes": 12268,
       "local_path": "docs/research/trustee-career/2026/sol-review-batch-c.csv",
-      "retrieved_at": "2026-11-05T15:08:32.738440Z",
+      "retrieved_at": "2026-11-07T19:55:30.881455Z",
       "sha256": "1fe91bf54e20b5bbea694acebb64bb6a6a13c2c3d853cd6118dedabdbe7e4389"
     }
   ],

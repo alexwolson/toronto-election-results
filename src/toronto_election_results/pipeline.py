@@ -75,7 +75,12 @@ from .ontario import (
 from .ontario_rosters import ONTARIO_MEMBERS_FILENAME
 from .pending_candidates import DECLARATION_FILENAME, load_pending_council_candidates
 from .predecessor_incumbency import PREDECESSOR_ROSTERS_FILENAME
-from .release import assemble_bootstrapped_release, validate_tables, write_release
+from .release import (
+    assemble_bootstrapped_release,
+    published_table_names,
+    validate_tables,
+    write_release,
+)
 from .riding_geometry import add_riding_geometries, download_riding_sources
 from .schema import normalize_adapter_frame
 from .trustee_2026 import TRUSTEE_CROSSWALK_FILENAME
@@ -541,7 +546,7 @@ def run_all(
     artifacts = write_release(release, out)
     row_counts = {
         f"{table_name}.{extension}": len(getattr(release, table_name))
-        for table_name in release.__dataclass_fields__
+        for table_name in published_table_names(release)
         for extension in ("csv", "parquet")
     }
     manifest = build_manifest(
@@ -566,7 +571,7 @@ def run_all(
     )
     print(
         f"endorsements: {len(release.endorsements):,} confirmed facts from "
-        f"{len(release.endorsement_assertions):,} reviewed assertions"
+        f"{len(release.endorsement_assertions):,} reviewed assertions, validated and held back"
     )
     print("QC: OK")
     return []
