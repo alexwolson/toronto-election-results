@@ -8,6 +8,7 @@ import pandas as pd
 import pytest
 from shapely.geometry import Point, box
 
+from toronto_election_results.census_points import PopulationPoints
 from toronto_election_results.incumbent_seats import add_incumbent_seat_fields
 
 REPO_ROOT = Path(__file__).parents[1]
@@ -191,3 +192,86 @@ def test_published_seat_fields():
     assert in_2018.loc["Lucy Troisi", "incumbent_changed_district"] == "False"
     assert in_2018.loc["Mike Layton", "incumbent_changed_district"] == "True"
     assert in_2018.loc["Lucy Troisi", "incumbent_appointed"] == "True"
+    # Ridings follow census population (ADR 0013). Toronto Centre's successor is the new Toronto
+    # Centre, not University—Rosedale; York West's is Humber River—Black Creek; and most of Don
+    # Valley East's people stayed in Don Valley East, so Joe Daniel's run in Don Valley North was
+    # a change of seat.
+    federal = results.loc[results["represented_body"].eq("canada_house_of_commons")]
+    changed = federal.set_index(["election_date", "candidate_name"])["incumbent_changed_district"]
+    assert changed.loc[("2015-10-19", "Chrystia Freeland")] == "True"
+    assert changed.loc[("2015-10-19", "Joe Daniel")] == "True"
+    assert changed.loc[("2015-10-19", "Judy Sgro")] == "False"
+    assert changed.loc[("2025-04-28", "Michael Coteau")] == "True"
+
+
+def test_a_move_within_one_regime_after_a_boundary_change_is_still_a_change():
+    # The boundary-change row comes first, so the same-regime row is judged after it. Ward B
+    # has no polls, so only the same-regime rule can settle the move.
+    out = _fields(
+        [
+            _candidacy("most_of_seat", "t_1", "dst_w", "new"),
+            _candidacy("moved", "t_2", "dst_a", "old"),
+        ],
+        [_tenure("t_1", "dst_a"), _tenure("t_2", "dst_b")],
+    )
+    assert out.loc["moved", "incumbent_changed_district"] == True
+
+
+# A riding redistribution: old riding A against new ridings W and E. W holds three of A's four
+# census points but E holds most of A's population.
+CENSUS = {
+    "riding_new_shaped": PopulationPoints(
+        points=(
+            Point(-79.399, 43.701),
+            Point(-79.398, 43.705),
+            Point(-79.397, 43.709),
+            Point(-79.391, 43.705),
+            Point(-79.385, 43.705),
+        ),
+        weights=(100.0, 100.0, 100.0, 900.0, 5000.0),
+    )
+}
+
+
+def _riding_fields(candidacies, tenures, census=CENSUS):
+    ridings = pd.DataFrame(
+        {
+            "district_id": ["dst_ra", "dst_rw", "dst_re"],
+            "boundary_regime": ["riding_old_shaped", "riding_new_shaped", "riding_new_shaped"],
+            "official_district_id": ["35001", "35101", "35102"],
+            "geometry_status": ["available"] * 3,
+            "geometry": [OLD_A, NEW_W, NEW_E],
+        }
+    )
+    out = add_incumbent_seat_fields(
+        pd.DataFrame(candidacies),
+        pd.DataFrame(tenures),
+        pd.concat([_districts(), ridings], ignore_index=True),
+        POLLS,
+        census,
+    ).set_index("candidacy_id")
+    return out["incumbent_changed_district"]
+
+
+def test_a_riding_redistribution_follows_the_held_ridings_population():
+    mp = {"office": "mp", "body": "canada_house_of_commons"}
+    out = _riding_fields(
+        [
+            _candidacy("east", "t_1", "dst_re", "riding_new_shaped", **mp),
+            _candidacy("west", "t_2", "dst_rw", "riding_new_shaped", **mp),
+        ],
+        [_tenure("t_1", "dst_ra"), _tenure("t_2", "dst_ra")],
+    )
+    # Only population inside the held riding counts: the point east of A is not A's.
+    assert out["east"] == False
+    assert out["west"] == True
+
+
+def test_a_riding_redistribution_without_census_points_stays_null():
+    mp = {"office": "mp", "body": "canada_house_of_commons"}
+    out = _riding_fields(
+        [_candidacy("east", "t_1", "dst_re", "riding_new_shaped", **mp)],
+        [_tenure("t_1", "dst_ra")],
+        census={},
+    )
+    assert pd.isna(out["east"])

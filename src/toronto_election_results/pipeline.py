@@ -31,6 +31,7 @@ from .candidate_name_curations import (
     CANDIDATE_NAME_CURATIONS_FILENAME,
     apply_candidate_name_curations,
 )
+from .census_points import CENSUS_POINTS_FILENAME, read_population_points
 from .council_tenures import COUNCIL_APPOINTMENTS_FILENAME
 from .district_geometry import council_poll_points, enrich_district_geometries
 from .endorsement_curations import (
@@ -125,6 +126,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         "council/**/*",
         "subdivisions/*",
         "boundaries/**/*",
+        "census/*",
         "ckan/*",
     ]
     source_paths = {
@@ -165,6 +167,7 @@ def _source_files(raw: Path, reference: Path = REFERENCE) -> list[Path]:
         LINK_BASIS_FILENAME,
         PREDECESSOR_ROSTERS_FILENAME,
         TRUSTEE_CROSSWALK_FILENAME,
+        CENSUS_POINTS_FILENAME,
         DECLARATION_FILENAME,
         "results_2026/declaration_of_results_2026.pdf",
     ):
@@ -505,6 +508,7 @@ def run_all(
             built.tables.office_tenures,
             districts,
             council_poll_points(districts),
+            read_population_points(reference / CENSUS_POINTS_FILENAME),
         ),
         electoral_districts=districts,
         candidacy_person_links=add_evidence_basis(
